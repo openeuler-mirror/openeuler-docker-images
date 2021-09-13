@@ -1,36 +1,47 @@
-# openeuler-docker-images
+# openEuler official container images
 
-#### Description
-Dockerfiles for openEuler official basic and application images.
+#### Introduction
 
-#### Software Architecture
-Software architecture description
-
-#### Installation
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### Instructions
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### Contribution
-
-1.  Fork the repository
-2.  Create Feat_xxx branch
-3.  Commit your code
-4.  Create Pull Request
+Dockerfiles for openEuler official container images, include openEuler basic image and appliaction images.
 
 
-#### Gitee Feature
+#### openEuler Basic Container Image
 
-1.  You can use Readme\_XXX.md to support different languages, such as Readme\_en.md, Readme\_zh.md
-2.  Gitee blog [blog.gitee.com](https://blog.gitee.com)
-3.  Explore open source project [https://gitee.com/explore](https://gitee.com/explore)
-4.  The most valuable open source project [GVP](https://gitee.com/gvp)
-5.  The manual of Gitee [https://gitee.com/help](https://gitee.com/help)
-6.  The most popular members  [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+openEuler basic image is published by openEuler community in [openEuler repo](https://repo.openeuler.org)
+
+
+"openeuler:latest" is current stable avalible image.
+
+After offcial images published, we will push to every remote container images hub:
+
+- name: `openeuler/openeuler`
+- Download: `docker pull [Remote repo URL]openeuler/openeuler[:tags]`
+- Support arch: amd64, arm64
+- Tags:
+    - [20.09](https://repo.openeuler.org/openEuler-20.09/docker_img/)
+    - [20.03-lts](https://repo.openeuler.org/openEuler-20.03-LTS/)
+    - [20.03-lts-sp1, 20.03, latest](https://repo.openeuler.org/openEuler-20.03-LTS-SP1/docker_img/)
+    - [20.03-lts-sp2](https://repo.openeuler.org/openEuler-20.03-LTS-SP2/docker_img/)
+    - [21.03](https://repo.openeuler.org/openEuler-21.03/docker_img/)
+
+#### openEuler Application Container Image
+
+Dockerfiles for various popular application implementations based on openEuler basic image.
+
+Every openEuler application images contains the README, included:
+
+- Desciption for container images build.
+- openEuler, container service (like Docker, iSula) and application version info.
+
+The container images would be published after Dockerfile merged under `openeuler`.
+
+#### Avalible Container Repo
+
+- Hub oepkgs: https://hub.oepkgs.net/
+
+- AtomHub: https://atomhub.org/
+
+
+#### Contributions
+
+Welcome to submit your idea, issue and pull request.

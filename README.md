@@ -1,37 +1,50 @@
-# openeuler-docker-images
+# openEuler官方容器镜像仓
 
 #### 介绍
-Dockerfiles for openEuler official basic and application images.
 
-#### 软件架构
-软件架构说明
+这里存放着由openEuler官方提供的容器镜像，包含openEuler基础镜像、应用镜像。
 
 
-#### 安装教程
+#### openEuler基础镜像
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+openEuler的基础镜像由社区官方发布，目前发布在[openEuler镜像站](https://repo.openeuler.org)。
 
-#### 使用说明
+"openeuler:latest"是最新可用的长期稳定镜像。
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+镜像发布后，会同步推送到各个远端容器镜像仓，信息如下：
+
+- 仓库及镜像名：`openeuler/openeuler`
+- 下载命令：`docker pull [远端容器镜像仓URL]openeuler/openeuler[:tags]`
+- 支持架构：amd64, arm64
+- 当前可用Tags的命名: 
+	- [20.09](https://repo.openeuler.org/openEuler-20.09/docker_img/)
+	- [20.03-lts](https://repo.openeuler.org/openEuler-20.03-LTS/)
+	- [20.03-lts-sp1, 20.03, latest](https://repo.openeuler.org/openEuler-20.03-LTS-SP1/docker_img/)
+	- [20.03-lts-sp2](https://repo.openeuler.org/openEuler-20.03-LTS-SP2/docker_img/)
+	- [21.03](https://repo.openeuler.org/openEuler-21.03/docker_img/)
+
+
+#### openEuler应用镜像
+
+基于openEuler基础镜像，将一些热门应用进行发布，生成基于openEuler应用镜像。
+
+每个应用镜像，应当包含一个README，涵盖以下信息：
+
+- 构建容器镜像的说明。
+- 配套的openEuler、容器（例如Docker, iSula）及应用的版本信息。
+
+合入后，将会发布至openeuler仓库下。
+
+
+#### 国内镜像仓
+
+目前支持的第三方国内镜像仓有：
+
+- Hub oepkgs: https://hub.oepkgs.net/
+
+- AtomHub: https://atomhub.org/
+
 
 #### 参与贡献
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
-
-
-#### 特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+欢迎发表想法、提交问题、贡献代码。
