@@ -3,7 +3,8 @@
 set -ex
 
 archs="x86_64 aarch64"
-versions="20.03-lts 20.03-lts-sp1 20.03-lts-sp2 20.09 21.03"
+input_version=$1
+versions=${input_version:-"20.03-lts 20.03-lts-sp1 20.03-lts-sp2 20.09 21.03 21.09"}
 for ARCH in $archs ;
 do
     if [[ "$ARCH" = "aarch64" ]];then
@@ -19,12 +20,13 @@ do
         mkdir -p $VERSION
         # Download
         cd $VERSION
+        URL_VERSION=`echo $VERSION | tr 'a-z' 'A-Z'`
         if [ ! -f "openEuler-docker.$ARCH.tar.xz" ]; then
-            wget https://repo.openeuler.org/openEuler-$VERSION/docker_img/$ARCH/openEuler-docker.$ARCH.tar.xz
+            wget https://repo.openeuler.org/openEuler-$URL_VERSION/docker_img/$ARCH/openEuler-docker.$ARCH.tar.xz
         fi
         # Re-download and validate sha256sum everytime
         rm -f openEuler-docker.$ARCH.tar.xz.sha256sum
-        wget https://repo.openeuler.org/openEuler-$VERSION/docker_img/$ARCH/openEuler-docker.$ARCH.tar.xz.sha256sum
+        wget https://repo.openeuler.org/openEuler-$URL_VERSION/docker_img/$ARCH/openEuler-docker.$ARCH.tar.xz.sha256sum
         shasum -c openEuler-docker.$ARCH.tar.xz.sha256sum
         # Extract rootfs
         if [ ! -f "openEuler-docker-rootfs.$DOCKER_ARCH.tar.xz" ]; then
@@ -37,4 +39,3 @@ do
         cd ..
     done
 done
-
