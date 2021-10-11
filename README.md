@@ -17,23 +17,29 @@ openEuler的基础镜像由社区官方发布，目前发布在[openEuler镜像�
 - 下载命令：`docker pull [远端容器镜像仓URL]openeuler/openeuler[:tags]`
 - 支持架构：amd64, arm64
 - 当前可用Tags的命名: 
+	- [21.09](https://repo.openeuler.org/openEuler-21.09/docker_img/)
 	- [20.09](https://repo.openeuler.org/openEuler-20.09/docker_img/)
 	- [20.03-lts](https://repo.openeuler.org/openEuler-20.03-LTS/)
 	- [20.03-lts-sp1, 20.03, latest](https://repo.openeuler.org/openEuler-20.03-LTS-SP1/docker_img/)
 	- [20.03-lts-sp2](https://repo.openeuler.org/openEuler-20.03-LTS-SP2/docker_img/)
 	- [21.03](https://repo.openeuler.org/openEuler-21.03/docker_img/)
-
+- 存放路径规则：`openeuler/[openEuler版本号]/Dockerfile`，
+例如：openEuler 21.09的Dockerfile位于`openeuler/21.09/Dockerfile`。
 
 #### openEuler应用镜像
 
 基于openEuler基础镜像，将一些热门应用进行发布，生成基于openEuler应用镜像。
 
-每个应用镜像，应当包含一个README，涵盖以下信息：
+- 存放路径规则：`[应用名]/[应用版本号]/[openEuler版本号]/Dockerfile`，
+例如：基于openEuler 20.03-lts-sp1的nginx 1.20.1的Dockerfile位于`nginx/1.20.1/20.03-lts-sp1/Dockerfile`。
+- Tags命名：合入后，将会发布至openeuler仓库，
+例如：`openeuler/nginx:1.20.1-20.03-lts-sp1`。
+
+每个应用镜像，应当包含一个README（例如nginx/Readme.md），涵盖以下信息：
 
 - 构建容器镜像的说明。
 - 配套的openEuler、容器（例如Docker, iSula）及应用的版本信息。
 
-合入后，将会发布至openeuler仓库下。
 
 
 #### 国内镜像仓
