@@ -12,7 +12,21 @@ jobs:
   build:
     strategy:
       matrix:
-        version: [20.03-lts, 20.03-lts-sp1, 20.03-lts-sp2, 20.09, 21.03, 21.09]
+        include:
+          - version: 20.03-lts
+            tags: openeuler/openeuler-test:20.03-lts
+          - version: 20.03-lts-sp1
+            tags: openeuler/openeuler-test:20.03-lts-sp1
+          - version: 20.03-lts-sp2
+            tags: openeuler/openeuler-test:20.03-lts-sp2
+          - version: 20.09
+            tags: openeuler/openeuler-test:20.09
+          - version: 21.03
+            tags: openeuler/openeuler-test:21.03
+          - version: 21.09
+            tags: openeuler/openeuler-test:21.09
+          - version: 20.03-lts-sp3
+            tags: openeuler/openeuler-test:20.03-lts-sp3,openeuler/openeuler-test:latest,openeuler/openeuler-test:20.03
 
     runs-on: ubuntu-latest
 
@@ -51,7 +65,7 @@ jobs:
         with:
           context: ./openeuler/${{ matrix.version }}/
           push: true
-          tags: openeuler/openeuler:${{ matrix.version }}
+          tags: ${{ matrix.tags }}
           platforms: linux/amd64,linux/arm64
 
       - name: Image digest
