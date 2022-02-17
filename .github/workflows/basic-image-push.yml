@@ -14,19 +14,19 @@ jobs:
       matrix:
         include:
           - version: 20.03-lts
-            tags: openeuler/openeuler-test:20.03-lts
+            tags: openeuler/openeuler:20.03-lts
           - version: 20.03-lts-sp1
-            tags: openeuler/openeuler-test:20.03-lts-sp1
+            tags: openeuler/openeuler:20.03-lts-sp1
           - version: 20.03-lts-sp2
-            tags: openeuler/openeuler-test:20.03-lts-sp2
+            tags: openeuler/openeuler:20.03-lts-sp2
           - version: 20.09
-            tags: openeuler/openeuler-test:20.09
+            tags: openeuler/openeuler:20.09
           - version: 21.03
-            tags: openeuler/openeuler-test:21.03
+            tags: openeuler/openeuler:21.03
           - version: 21.09
-            tags: openeuler/openeuler-test:21.09
+            tags: openeuler/openeuler:21.09
           - version: 20.03-lts-sp3
-            tags: openeuler/openeuler-test:20.03-lts-sp3,openeuler/openeuler-test:latest,openeuler/openeuler-test:20.03
+            tags: openeuler/openeuler:20.03-lts-sp3,openeuler/openeuler:latest,openeuler/openeuler:20.03
 
     runs-on: ubuntu-latest
 
