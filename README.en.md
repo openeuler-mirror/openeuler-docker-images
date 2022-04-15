@@ -21,9 +21,11 @@ After offcial images published, we will push to every remote container images hu
     - [21.09](https://repo.openeuler.org/openEuler-21.09/docker_img/)
     - [20.09](https://repo.openeuler.org/openEuler-20.09/docker_img/)
     - [20.03-lts](https://repo.openeuler.org/openEuler-20.03-LTS/)
-    - [20.03-lts-sp1, 20.03, latest](https://repo.openeuler.org/openEuler-20.03-LTS-SP1/docker_img/)
+    - [20.03-lts-sp1, 20.03](https://repo.openeuler.org/openEuler-20.03-LTS-SP1/docker_img/)
     - [20.03-lts-sp2](https://repo.openeuler.org/openEuler-20.03-LTS-SP2/docker_img/)
+    - [20.03-lts-sp3](https://repo.openeuler.org/openEuler-20.03-LTS-SP3/docker_img/)
     - [21.03](https://repo.openeuler.org/openEuler-21.03/docker_img/)
+    - [22.03-lts, 22.03, latest](https://repo.openeuler.org/openEuler-22.03-LTS/docker_img/)
 - Path rule：`openeuler/[openEuler version]/Dockerfile`,
 such as: openEuler 21.09 Dockerfile is under `openeuler/21.09/Dockerfile` path.
 
