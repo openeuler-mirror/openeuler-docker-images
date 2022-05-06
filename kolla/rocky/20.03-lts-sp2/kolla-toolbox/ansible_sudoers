@@ -1,0 +1,1 @@
+ansible ALL=(root) NOPASSWD: /opt/ansible/bin/ansible localhost -m find_disks -a *, /usr/local/bin/ansible localhost -m find_disks -a *
