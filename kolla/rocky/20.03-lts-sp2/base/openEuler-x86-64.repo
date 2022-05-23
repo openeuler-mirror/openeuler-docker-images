@@ -1,0 +1,17 @@
+[Everything]
+name=everything
+baseurl=https://repo.openeuler.org/openEuler-20.03-LTS-SP2/everything/x86_64/
+gpgcheck=0
+enabled=1
+
+[EPOL]
+name=EPOL
+baseurl=https://repo.openeuler.org/openEuler-20.03-LTS-SP2/EPOL/main/x86_64/
+gpgcheck=0
+enabled=1
+
+[openstack_rocky]
+name=OpenStack_Rocky
+baseurl=https://repo.oepkgs.net/openEuler/rpm/openEuler-20.03-LTS-SP2/budding-openeuler/openstack/rocky/x86_64/
+gpgcheck=0
+enabled=1
