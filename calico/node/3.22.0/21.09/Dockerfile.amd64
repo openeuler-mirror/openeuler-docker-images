@@ -1,0 +1,155 @@
+# Modified for openEuler Based Image
+#
+# Original:
+# Copyright (c) 2015-2021 Tigera, Inc. All rights reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+ARG ARCH=x86_64
+ARG GIT_VERSION=unknown
+ARG RUNIT_VER=2.1.2
+ARG BIRD_IMAGE=calico/bird:latest
+
+
+FROM calico/bpftool:v5.3-amd64 as bpftool
+FROM ${BIRD_IMAGE} as bird
+
+# Use this build stage to build iptables rpm and runit binaries.
+FROM openeuler/openeuler:21.09 as openeuler
+
+ARG ARCH
+ARG RUNIT_VER
+
+# Install build dependencies and security updates.
+RUN dnf install -y 'dnf-command(config-manager)' && \
+    # Install required packages for building rpms. yum-utils is not required but it gives us yum-builddep to easily install build deps.
+    yum install -y rpm-build dnf-utils make && \
+    # Need these to build runit.
+    yum install -y wget glibc-static gcc
+
+# runit is not available in openeuler, ubi or CentOS repos so build it.
+# get it from the debian repos as the official website doesn't support https
+RUN wget -P /tmp https://ftp.debian.org/debian/pool/main/r/runit/runit_${RUNIT_VER}.orig.tar.gz && \
+    gunzip /tmp/runit_${RUNIT_VER}.orig.tar.gz && \
+    tar -xpf /tmp/runit_${RUNIT_VER}.orig.tar -C /tmp && \
+    cd /tmp/admin/runit-${RUNIT_VER}/ && \
+    package/install
+
+FROM openeuler/openeuler:21.09 as base
+ARG ARCH
+ARG GIT_VERSION
+ARG RUNIT_VER
+
+# Update base packages to pick up security updates.  Must do this before adding the centos repo.
+RUN yum update -y
+
+# Copy in runit binaries
+COPY --from=openeuler  /tmp/admin/runit-${RUNIT_VER}/command/* /usr/local/bin/
+
+RUN touch /in-the-container && \
+    dnf install -y \
+    # Don't install copious docs.
+    --setopt=tsflags=nodocs \
+    # Needed for iptables
+    libpcap libmnl libnfnetlink libnetfilter_conntrack \
+    ipset \
+    iputils \
+    # Need arp
+    net-tools \
+    # Need kmod to ensure ip6tables-save works correctly
+    kmod \
+    # Also needed (provides utilities for browsing procfs like ps)
+    procps \
+    iproute \
+    iproute-tc \
+    iptables-libs \
+    libnftnl \
+    iptables \
+    # Needed for conntrack
+    libnetfilter_cthelper libnetfilter_cttimeout libnetfilter_queue \
+    conntrack-tools \
+    # Needed for runit startup script
+    which \
+    # Needed for the cleanup script
+    findutils && \
+    dnf clean all -y && \
+    # Set alternatives
+    alternatives --install /usr/sbin/iptables iptables /usr/sbin/iptables-legacy 1 && \
+    alternatives --install /usr/sbin/ip6tables ip6tables /usr/sbin/ip6tables-legacy 1
+
+# Add mitigation for https://access.redhat.com/security/cve/CVE-2019-15718
+# This can be removed once we update to ubi:8.1
+RUN systemctl disable systemd-resolved
+
+# Change the permissions for ipset so it can be run by any container user.
+RUN chgrp 0 /usr/sbin/ipset && \
+    chmod g=u /usr/sbin/ipset
+
+# Change the permissions for iptables so it can be run by any container user.
+RUN chgrp 0 /usr/sbin/iptables && \
+    chmod g=u /usr/sbin/iptables
+
+# Copy our bird binaries in
+COPY --from=bird /bird* /bin/
+
+# Set the suid bit on bird to allow our user to execute them with root permissions.
+RUN chmod u+s /bin/bird
+RUN chmod u+s /bin/bird6
+
+# Copy in the filesystem - this contains felix, calico-bgp-daemon, licenses, etc...
+COPY filesystem/ /filesystem
+
+RUN cp -arf /filesystem/* /; cp /filesystem/sbin/* /sbin/; rm -rf /filesystem
+
+# Change permissions to make confd templates and output available in /etc/calico
+# to all container users.
+RUN chgrp -R 0 /etc/calico && \
+    chmod -R g=u /etc/calico
+
+# # On UBI, /sbin/ is a symlink so the above copy clobbers it; restore /sbin as symlinks (some binaries and
+# # scripts hard-code /sbin/xyz, for example.
+# RUN ln -s /usr/sbin/* /sbin/
+
+COPY --from=bpftool /bpftool /bin
+
+# Copy in the calico-node binary
+COPY dist/bin/calico-node-amd64 /bin/calico-node
+
+# Set the suid bit on calico-node
+RUN chmod u+s /bin/calico-node
+
+# Clean out as many files as we can from the filesystem.  We no longer need dnf or the platform python install
+# or any of its dependencies.
+ADD clean-up-filesystem.sh /
+RUN /clean-up-filesystem.sh
+
+# Copy everything into a fresh scratch image so that naive CVE scanners don't pick up binaries and libraries
+# that have been removed in our later layers.
+FROM scratch
+COPY --from=base / /
+
+# Add in top-level license file
+COPY LICENSE /licenses
+
+CMD ["start_runit"]
+
+# Required labels for certification
+LABEL name="Calico node" \
+      vendor="Project Calico" \
+      version=$GIT_VERSION \
+      release="1" \
+      summary="Calico node handles networking and policy for Calico" \
+      description="Calico node handles networking and policy for Calico" \
+      maintainer="laurence@tigera.io"
+
+# Tell sv where to find the services.
+ENV SVDIR=/etc/service/enabled
