@@ -3,7 +3,7 @@ MAINTAINER heguofeng <heguofeng@openeuler.sh>
 RUN yum -y update && \
     yum -y install sudo util-linux lsof && \
     yum -y install opengauss && \
-    su - opengauss -c "gs_ctl stop -D /var/lib/opengauss/data -mf " && \
+    su - opengauss -c "gs_ctl stop -D /var/lib/opengauss/data -mi " && \
     rm -rf /var/lib/opengauss/data && \
     sed -i 's/7654/5432/g' /var/lib/opengauss/.bash_profile && \
     sed -i "s/listen_addresses = '127.0.0.1'/listen_addresses = '0.0.0.0'/g"  /usr/local/opengauss/share/postgresql/postgresql.conf.sample && \
