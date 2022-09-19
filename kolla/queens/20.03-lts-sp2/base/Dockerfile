@@ -1,8 +1,8 @@
 FROM openeuler/openeuler:20.03-lts-sp2
 
-ARG ARCH
+ARG TARGETARCH
 
-COPY openEuler-${ARCH}.repo /etc/yum.repos.d/openEuler.repo
+COPY openEuler-${TARGETARCH}.repo /etc/yum.repos.d/openEuler.repo
 
 RUN yum install -y shadow-utils
 RUN groupadd --force --gid 42475 almanach \

@@ -52,9 +52,9 @@ BASE=${2:-"base"}
 DEPLIST=($(findDepList $BASE | sed "s/,/ /g"))
 for i in ${DEPLIST[@]}
 do
-    path=$(find $VERSION -name "Dockerfile" | grep "$i" | sed "s/Dockerfile//g")
+    path=$(find $VERSION -name "Dockerfile" | grep -E "\/$i\/Dockerfile$" | sed "s/Dockerfile//g")
     pushd $path &>/dev/null
-    docker buildx build -t "openeuler/openeuler-binary-$i:$VERSION-$OS_VERSOIN" --build-arg ARCH=`uname -m` --platform linux/amd64,linux/arm64 . --push
+    docker buildx build -t "openeuler/openeuler-binary-$i:$VERSION-$OS_VERSOIN" --platform linux/amd64,linux/arm64 . --push
     [[ $? -ne 0 ]] && echo "docker buildx failed in `pwd`" && exit 1
     popd &>/dev/null
 done
