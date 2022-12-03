@@ -1,0 +1,13 @@
+FROM openeuler/openeuler:22.09 as basic
+
+RUN dnf install harbor -y
+
+FROM openeuler/openeuler:22.09
+
+COPY entrypoint.sh /usr/bin/entrypoint.sh
+
+COPY --from=basic /usr/bin/harbor-jobservice /usr/bin/harbor-jobservice
+
+VOLUME ["/var/log/jobs/"]
+
+ENTRYPOINT ["entrypoint.sh"]
