@@ -1,4 +1,4 @@
-# memcached
+# llm
 
 # Quick reference
 
@@ -15,7 +15,7 @@
 docker buildx build -t "openeuler/llm:$TAG" --platform linux/arm64 ./$TAG --push
 ```
 
-We are using `buildx` in here to generate ARM64 images on different host, see more in [Docker Buildx](https://docs.docker.com/buildx/working-with-buildx/). Note that you may need to configure the proxy for cloning chatglm2-6b from huggingface while building.
+We are using `buildx` in here to generate ARM64 images on different host, see more in [Docker Buildx](https://docs.docker.com/buildx/working-with-buildx/). Note that you may need to configure the proxy for cloning LLMs from huggingface while building.
 
 # How to use this image
 Please run container with this image on Ascend platform of ARM64.
