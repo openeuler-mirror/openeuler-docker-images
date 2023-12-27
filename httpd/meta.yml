@@ -1,3 +1,2 @@
-name: httpd
-tag: 2.4.51-22.03-lts
-file: 2.4.51/22.03-lts/Dockerfile
+- httpd2.4.51-oe2203lts
+  2.4.51/22.03-lts/Dockerfile
