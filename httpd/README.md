@@ -21,7 +21,7 @@ We are using `buildx` in here to generate multi-arch images, see more in [Docker
 # How to use this image
 ## start a httpd instance
 ```shell
-docker run --name my-httpd -d -p 80:80 openeuler/httpd:2.4.51-22.03-lts
+docker run --name my-httpd -d -p 80:80 openeuler/httpd:httpd2.4.51-oe2203lts
 ```
 
 # Supported tags and respective Dockerfile links
