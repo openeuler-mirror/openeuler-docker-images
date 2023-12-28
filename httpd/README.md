@@ -1,4 +1,4 @@
-#httpd
+# httpd
 
 
 # Quick reference
@@ -13,7 +13,7 @@
 
 Build images and push:
 ```shell
-docker buildx build -t "openeuler/httpd:httpd2.4.51-oe2203lts" --platform linux/amd64,linux/arm64 . --push
+docker buildx build -t "openeuler/httpd:{TAG}" --platform linux/amd64,linux/arm64 . --push
 ```
 
 We are using `buildx` in here to generate multi-arch images, see more in [Docker Buildx](https://docs.docker.com/buildx/working-with-buildx/)
@@ -21,7 +21,7 @@ We are using `buildx` in here to generate multi-arch images, see more in [Docker
 # How to use this image
 ## start a httpd instance
 ```shell
-docker run --name my-httpd -d -p 80:80 openeuler/httpd:httpd2.4.51-oe2203lts
+docker run --name my-httpd -d -p 80:80 openeuler/httpd:{TAG}
 ```
 
 # Supported tags and respective Dockerfile links
