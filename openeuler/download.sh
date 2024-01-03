@@ -4,7 +4,7 @@ set -ex
 
 archs="x86_64 aarch64"
 input_version=$1
-versions=${input_version:-"20.03-lts 20.03-lts-sp1 20.03-lts-sp2 20.09 21.03 21.09 22.03-lts"}
+versions=${input_version:-"20.03-lts 20.03-lts-sp1 20.03-lts-sp2 20.09 21.03 21.09 22.03-lts 22.03-lts-sp1 22.03-lts-sp2 22.09 23.03 23.09"}
 for ARCH in $archs ;
 do
     if [[ "$ARCH" = "aarch64" ]];then
