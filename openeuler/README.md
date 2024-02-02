@@ -6,7 +6,7 @@
 
 - Where to get help: [openEuler CloudNative SIG](https://gitee.com/openeuler/cloudnative), [openEuler](https://gitee.com/openeuler/community)
 
-# Build referebce
+# Build reference
 
 1. Download all images:
 
@@ -24,11 +24,17 @@ We are using `buildx` in here to generate multi-arch images, see more in [Docker
 
 # Supported tags and respective Dockerfile links
 
+- 23.09
+- 23.03
+- 22.09
+- 22.03-lts-sp2
+- 22.03-lts-sp1
+- 22.03-lts
 - 21.03
 - 20.09
-- 20.03-LTS-SP2
-- 20.03-LTS-SP1, 20.03, latest
-- 20.03-LTS
+- 20.03-lts-sp2
+- 20.03-lts-sp1, 20.03, latest
+- 20.03-lts
 
 
 ## Operating System

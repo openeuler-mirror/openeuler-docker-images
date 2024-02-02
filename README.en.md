@@ -2,7 +2,7 @@
 
 #### Introduction
 
-Dockerfiles for openEuler official container images, include openEuler basic image and appliaction images.
+Dockerfiles for openEuler official container images, include openEuler basic image and application images.
 
 
 #### openEuler Basic Container Image
@@ -10,9 +10,9 @@ Dockerfiles for openEuler official container images, include openEuler basic ima
 openEuler basic image is published by openEuler community in [openEuler repo](https://repo.openeuler.org)
 
 
-"openeuler:latest" is current stable avalible image.
+"openeuler:latest" is the current stable available image.
 
-After offcial images published, we will push to every remote container images hub:
+After the official images are published, we will push to every remote container images hub:
 
 - name: `openeuler/openeuler`
 - Download: `docker pull [Remote repo URL]openeuler/openeuler[:tags]`
@@ -38,9 +38,9 @@ such as, the nginx 1.20.1 based on openEuler 20.03 LTS SP1 is under `nginx/1.20.
 - The container images would be published after Dockerfile merged under `openeuler`,
 such as: `openeuler/nginx:1.20.1-20.03-lts-sp1`.
 
-Every openEuler application images contains the README (such as nginx/README.md), included:
+All openEuler application images contain a README (such as nginx/README.md), included:
 
-- Desciption for container images build.
+- Description for container images build.
 - openEuler, container service (like Docker, iSula) and application version info.
 
 The container images would be published under `openeuler` after Dockerfile merged. We use `docker buildx` to build the container image for amd64 and arm64 platforms.
@@ -48,7 +48,7 @@ The build steps are as follows:
 - go into directory of `[Application name]/[Application version]/[openEuler version]`
 - execute the command `docker buildx build -t tag_name --platform linux/amd64,linux/arm64 .`
 
-#### Avalible Container Repo
+#### Available Container Repo
 
 - Hub oepkgs: https://hub.oepkgs.net/
 
