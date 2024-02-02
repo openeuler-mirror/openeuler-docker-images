@@ -1,0 +1,27 @@
+diff --git a/fastchat/model/model_chatglm.py b/fastchat/model/model_chatglm.py
+index 5d4db62..07d6425 100644
+--- a/fastchat/model/model_chatglm.py
++++ b/fastchat/model/model_chatglm.py
+@@ -37,7 +37,8 @@ def process_response(response):
+     return response
+
+
+-@torch.inference_mode()
++#@torch.inference_mode()
++@torch.no_grad()
+ def generate_stream_chatglm(
+     model,
+     tokenizer,
+diff --git a/fastchat/serve/model_worker.py b/fastchat/serve/model_worker.py
+index 5e84a42..098c991 100644
+--- a/fastchat/serve/model_worker.py
++++ b/fastchat/serve/model_worker.py
+@@ -101,6 +101,8 @@ class ModelWorker(BaseModelWorker):
+             self.init_heart_beat()
+
+     def generate_stream_gate(self, params):
++        import torch_npu
++        torch_npu.npu.set_device("npu:0")
+         self.call_ct += 1
+
+         try:
