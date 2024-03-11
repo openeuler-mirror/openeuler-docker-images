@@ -1,0 +1,89 @@
+name: Prometheus
+category: cloud
+description: Prometheus是云原生计算基金会（CNCF）项目，是一个系统和服务监控系统。它以给定的时间间隔从配置的目标收集指标，评估规则表达式，显示结果，并可以在观察到指定条件时触发警报。
+environment: |
+  本应用以容器镜像的方式供用户使用，运行于预置docker的Linux环境。Docker的推荐安装方式如下：
+  ## apt安装
+  ### 1.更新系统软件包依赖
+  ```
+  sudo spt update
+  sudo apt install ca-certificates curl gnupg lsb-release
+  ```
+  ### 2.添加Docker官方GPG密钥
+  ```
+  sudo mkdir -p /etc/apt/keyrings
+  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+  sudo chmod a+r /etc/apt/keyrings/docker.gpg
+  ```
+  ### 3.添加Docker官方APT源
+  ```
+  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  ```
+  ### 4.再次更新软件包索引
+  ```
+  sudo apt update
+  ```
+  ### 5.安装Docker
+  ```
+  sudo apt install docker-ce docker-ce-cli containerd.io
+  ```
+
+  ## yum安装
+  ### 1.安装yum-utils
+  ```
+  sudo yum install -y yum-utils
+  ```
+  ### 2.添加Docker源
+  ```
+  sudo yum-config-manager \
+  > --add-repo \
+  > https://download.docker.com/linux/centos/docker-ce.repo
+  ```
+  ### 3.安装Docker
+  ```
+  sudo yum install -y docker-ce docker-ce-cli containerd.io
+  ```
+
+  注意，在openEuler环境安装docker时，可执行如下命令一键安装
+  ```
+  yum install -y docker
+  ```
+
+  ## 脚本安装
+  ### 1.下载安装脚本
+  ```
+  curl -fsSL https://get.docker.com -o get-docker.sh
+  ```
+  ### 2.使用root权限执行脚本
+  ```
+  sudo sh get-docker.sh
+  ```
+  使用脚本安装方式时，如果用户要指定安装的docker版本，需要自行修改`get-docker.sh`的源码内容。
+
+  ## 验证
+  ```
+  sudo docker run hello-world
+  ```
+
+download: |
+  获取容器镜像
+  ```
+  docker pull openeuler/prometheus:{TAG}
+  ```
+
+install: |
+  启动容器
+  ```
+  docker run --name prometheus -p 9090:9090 openeuler/prometheus:{TAG}
+  ```
+    用户可根据自身需求，自定义启动选项。
+
+license: Apache-2.0 license
+similar_packages:
+  - Grafana: Grafana是一种流行的开源数据可视化工具，可以与多个数据源集成，包括Prometheus。它可以通过可视化仪表板展示和分析Prometheus收集的数据。
+  - InfluxDB: InfluxDB是一种开源时间序列数据库，专门用于处理和存储大量时间序列数据，如机器指标、事件日志等。和Prometheus类似，InfluxDB也具备数据采集和查询功能。
+  - Nagios: Nagios是一种广泛使用的开源网络监控系统，可以监测网络设备、服务器和应用程序的运行状况。与Prometheus不同的是，Nagios主要基于主动式监控，而不是Prometheus的基于抓取的方式。
+  - Zabbix: Zabbix是一种功能强大的开源网络监控系统，可以监控各种网络设备、服务器和应用程序。它提供了多种监控方式，包括主动和被动式监控，并支持自定义的监控和警报设置。
+  - Elastic Stack: Elastic Stack（前身是ELK Stack）是一个集成了Elasticsearch、Logstash和Kibana的解决方案，能够处理和分析大量的日志和指标数据。Elasticsearch可以用于存储和查询数据，Logstash用于数据采集和清洗，Kibana则提供了数据可视化和仪表板功能。
+dependency:
+  - Go
