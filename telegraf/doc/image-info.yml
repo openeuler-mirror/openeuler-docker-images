@@ -1,0 +1,89 @@
+name: telegraf
+category: cloud
+description: telegraf一个用Go语言编写的指标收集、处理、聚合的程序。
+environment: "
+  本应用以容器镜像的方式供用户使用，运行于预置docker的Linux环境。Docker的推荐安装方式如下：
+  ## apt安装
+  ### 1.更新系统软件包依赖
+  ```
+  sudo spt update
+  sudo apt install ca-certificates curl gnupg lsb-release
+  ```
+  ### 2.添加Docker官方GPG密钥
+  ```
+  sudo mkdir -p /etc/apt/keyrings
+  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+  sudo chmod a+r /etc/apt/keyrings/docker.gpg
+  ```
+  ### 3.添加Docker官方APT源
+  ```
+  echo \"deb [arch=$(dpkg --print-architecture) signed-by=/usr/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable\" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  ```
+  ### 4.再次更新软件包索引
+  ```
+  sudo apt update
+  ```
+  ### 5.安装Docker
+  ```
+  sudo apt install docker-ce docker-ce-cli containerd.io
+  ```
+
+  ## yum安装
+  ### 1.安装yum-utils
+  ```
+  sudo yum install -y yum-utils
+  ```
+  ### 2.添加Docker源
+  ```
+  sudo yum-config-manager \
+  > --add-repo \
+  > https://download.docker.com/linux/centos/docker-ce.repo
+  ```
+  ### 3.安装Docker
+  ```
+  sudo yum install -y docker-ce docker-ce-cli containerd.io
+  ```
+
+  注意，在openEuler环境安装docker时，可执行如下命令一键安装
+  ```
+  yum install -y docker
+  ```
+
+  ## 脚本安装
+  ### 1.下载安装脚本
+  ```
+  curl -fsSL https://get.docker.com -o get-docker.sh
+  ```
+  ### 2.使用root权限执行脚本
+  ```
+  sudo sh get-docker.sh
+  ```
+  使用脚本安装方式时，如果用户要指定安装的docker版本，需要自行修改`get-docker.sh`的源码内容。
+
+  ## 验证
+  ```
+  sudo docker run hello-world
+  ```
+  "
+download: "
+  获取容器镜像
+  ```
+  docker pull openeuler/telegraf:latest
+  ```
+  "
+install: "
+  启动容器
+  ```
+  docker run --name telegraf -d openeuler/telegraf:latest
+  ```
+  用户可根据自身需求，自定义启动选项。
+  "
+license: MIT license
+similar_packages:
+  - Prometheus: 一个开源的系统监控和警报工具，特别适用于云原生环境。它可以收集多维度的数据，并通过强大的查询语言PromQL进行查询。
+  - StatsD: 一个简单的UDP服务，用于聚合来自客户端的统计信息，如计数器和计时器。它可以将这些数据发送到Graphite、InfluxDB等后端服务进行存储和分析。
+  - Zabbix: 一个企业级的开源分布式监控解决方案，能够监控各种网络参数以及服务器健康性和性能。
+dependency:
+  - coreutils
+  - bash
+  - shadow
