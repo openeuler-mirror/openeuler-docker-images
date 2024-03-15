@@ -4,7 +4,8 @@ FROM ${BASE}
 ARG TARGETARCH
 ARG VERSION=0.27.0
 
-RUN curl -fSL --output alertmanager.tar.gz https://github.com/prometheus/alertmanager/releases/download/v${VERSION}/alertmanager-${VERSION}.linux-${TARGETARCH}.tar.gz && \
+RUN yum update -y && yum install -y wget && \
+    wget -O alertmanager.tar.gz https://github.com/prometheus/alertmanager/releases/download/v${VERSION}/alertmanager-${VERSION}.linux-${TARGETARCH}.tar.gz && \
     mkdir /alertmanager && tar -zxvf alertmanager.tar.gz -C /alertmanager --strip-components 1
 
 RUN mkdir -p /etc/alertmanager                              && \
