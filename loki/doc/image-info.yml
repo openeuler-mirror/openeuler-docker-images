@@ -1,6 +1,6 @@
-name: httpd
-category: others
-description: Httpd，即Apache HTTP Server，是一个功能强大且灵活的符合HTTP/1.1的Web服务器。它最初被设计为NCSA HTTP Server的替代品，现已发展成为Internet上最流行的Web服务器。作为Apache软件基金会的一个项目，开发人员的目标是协作开发和维护一个强大的、商业级的、基于标准的服务器，并提供免费的源代码。。
+name: loki
+category: cloud
+description: Loki是一个受Prometheus启发的水平可扩展、高可用、多租户日志聚合系统。它的设计非常经济高效且易于操作。它不索引日志的内容，而是为每个日志流建立一组标签。
 environment: |
   本应用以容器镜像的方式供用户使用，运行于预置docker的Linux环境。Docker的推荐安装方式如下：
   ## apt安装
@@ -68,24 +68,22 @@ environment: |
 download: |
   获取容器镜像
   ```
-  docker pull openeuler/httpd:{TAG}
+  docker pull openeuler/loki:{TAG}
   ```
 
 install: |
   启动容器
   ```
-  docker run -name my-httpd -d -p 80:80 openeuler/httpd:{TAG}
+  docker run --name loki -p 3100:3100 openeuler/loki:{TAG}
   ```
     用户可根据自身需求，自定义启动选项。
 
-license: Apache-2.0 license
+license: AGPL-3.0 license
 similar_packages:
-  - Nginx: Nginx 是一个高性能的、轻量级的 Web 服务器和反向代理服务器。它以其出色的性能和可扩展性而闻名，并且在处理高并发请求时表现出色。
-  - Microsoft IIS: Microsoft Internet Information Services (IIS)是微软开发的Web服务器软件，主要用于Windows操作系统。它与Windows Server紧密集成，并提供了广泛的功能和工具来托管和管理Web应用程序。
-  - LiteSpeed Web Server: LiteSpeed Web Server是一个高性能的商业级Web服务器，具有低资源消耗和高并发处理能力。它被设计用于替代Apache HTTP Server，可以与现有的Apache配置和模块兼容。
-  - Caddy: Caddy是一个现代化的、易于使用的Web服务器，具有自动HTTPS配置和自动证书管理等特性。它以其简单的配置和内置的自动化功能而受到欢迎。
+  - Prometheus: Prometheus是一个开源的系统监控和警报工具。它最初由SoundCloud开发，现已成为CNCF（Cloud Native Computing Foundation）的毕业项目之一。Prometheus专门设计用于处理大规模分布式系统的监控数据，并提供了灵活的查询语言和强大的警报功能。
+  - Logstash: Logstash是一个开源的数据收集、转换和传输工具，它可以用于收集各种来源的数据，包括日志数据，并将其发送到不同的目标。Logstash是ELK Stack中的一部分，与Elasticsearch和Kibana结合使用，构建一个完整的日志收集、存储和可视化解决方案。。
+  - Fluentd: Fluentd是一个开源的数据收集和转发工具，用于收集、处理和传输各种类型的数据。它具有高度可定制和可扩展的特点，被广泛用于日志收集、流式处理和数据管道的构建。
+  - Vector: Vector是一个开源的数据采集工具，旨在高效、可靠地收集、转换和传输日志和指标数据。它专注于提供简单、轻量级的解决方案，适用于各种规模的环境。
 dependency:
-  - apr
-  - apr-devel
-  - apr-util-devel
-  - pcre-devel
+  - Prometheus
+  - Grafana

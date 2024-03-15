@@ -17,14 +17,21 @@ openEuler的基础镜像由社区官方发布，目前发布在[openEuler镜像�
 - 下载命令：`docker pull [远端容器镜像仓URL]openeuler/openeuler[:tags]`
 - 支持架构：amd64, arm64
 - 当前可用Tags的命名: 
-	- [21.09](https://repo.openeuler.org/openEuler-21.09/docker_img/)
-	- [20.09](https://repo.openeuler.org/openEuler-20.09/docker_img/)
-	- [20.03-lts](https://repo.openeuler.org/openEuler-20.03-LTS/)
-	- [20.03-lts-sp1, 20.03, latest](https://repo.openeuler.org/openEuler-20.03-LTS-SP1/docker_img/)
+	- [20.03-lts](https://repo.openeuler.org/openEuler-20.03-LTS/docker_img/)
+	- [20.03-lts-sp1](https://repo.openeuler.org/openEuler-20.03-LTS-SP1/docker_img/)
 	- [20.03-lts-sp2](https://repo.openeuler.org/openEuler-20.03-LTS-SP2/docker_img/)
 	- [20.03-lts-sp3](https://repo.openeuler.org/openEuler-20.03-LTS-SP3/docker_img/)
-	- [21.03](https://repo.openeuler.org/openEuler-21.03/docker_img/)
-	- [22.03-lts, 22.03, latest](https://repo.openeuler.org/openEuler-22.03-LTS/docker_img/)
+	- [20.03-lts-sp4, 20.03](https://repo.openeuler.org/openEuler-20.03-LTS-SP4/docker_img/)
+	- [20.09](https://archives.openeuler.openatom.cn/openEuler-20.09/docker_img/)
+	- [21.03](https://archives.openeuler.openatom.cn/openEuler-21.03/docker_img/)
+	- [21.09](https://archives.openeuler.openatom.cn/openEuler-21.09/docker_img/)
+	- [22.03-lts](https://repo.openeuler.org/openEuler-22.03-LTS/docker_img/)
+	- [22.09](https://archives.openeuler.openatom.cn/openEuler-22.09/docker_img/)
+	- [22.03-lts-sp1](https://repo.openeuler.org/openEuler-22.03-LTS-SP1/docker_img/)
+	- [22.03-lts-sp2](https://repo.openeuler.org/openEuler-22.03-LTS-SP2/docker_img/)
+	- [22.03-lts-sp3, 22.03, latest](https://repo.openeuler.org/openEuler-22.03-LTS-SP3/docker_img/)
+	- [23.03](https://repo.openeuler.org/openEuler-23.03/docker_img/)
+	- [23.09](https://repo.openeuler.org/openEuler-23.09/docker_img/)
 - 存放路径规则：`openeuler/[openEuler版本号]/Dockerfile`，
 例如：openEuler 21.09的Dockerfile位于`openeuler/21.09/Dockerfile`。
 
@@ -34,8 +41,10 @@ openEuler的基础镜像由社区官方发布，目前发布在[openEuler镜像�
 
 - 存放路径规则：`[应用名]/[应用版本号]/[openEuler版本号]/Dockerfile`，
 例如：基于openEuler 20.03-lts-sp1的nginx 1.20.1的Dockerfile位于`nginx/1.20.1/20.03-lts-sp1/Dockerfile`。
+特殊地，对于复杂软件栈的应用容器镜像，为了准确表达其依赖情况，Dockerfile存放路径的`[应用版本号]`可以描述为完整的软件栈版本号，例如：`pytorch/2.1.0-cann7.0.RC1.alpha002/22.03-lts-sp2/Dockerfile`存放基于cann7.0.RC1.alpha002和openEuler 22.03-lts-sp2的pytorch 2.1.0应用镜像Dockerfile。
+
 - Tags命名：合入后，将会发布至openeuler仓库，
-例如：`openeuler/nginx:1.20.1-20.03-lts-sp1`。
+例如：`openeuler/nginx:1.20.1-oe2003sp1`。
 
 每个应用镜像，应当包含一个README（例如nginx/README.md），涵盖以下信息：
 
@@ -46,6 +55,24 @@ openEuler的基础镜像由社区官方发布，目前发布在[openEuler镜像�
 - 切换到`[应用名]/[应用版本号]/[openEuler版本号]`目录
 - 执行`docker buildx build -t tag_name --platform linux/amd64,linux/arm64 .`
 
+每个应用镜像，包含一个`doc/`目录，存放该镜像的图文信息：
+- `doc/image-info.yml`
+
+	内容如下：
+
+		名称（name）
+		分类（category），共6大类：大数据（bigdata）、AI（ai）、分布式存储（storage）、数据库（database）、云服务（cloud）、HPC（hpc）
+		功能简介（description）
+		运行环境（environment）
+		获取方式（download）
+		使用方式（install）
+		LICENSE（license）
+		近似软件（similar_packages）
+		依赖软件（dependency）
+
+- `doc/picture/`
+
+	存放应用相关的图片
 
 #### 国内镜像仓
 

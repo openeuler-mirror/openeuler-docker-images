@@ -1,0 +1,103 @@
+name: traefik
+category: cloud
+description: Traefik（发音和traffic相同，采用Golang编写）是一个云原生的新型的HTTP反向代理、负载均衡软件。Traefik负责接收系统的请求，然后使用合适的组件来对这些请求进行处理。Traefik兼容所有主流的集群技术，比如Kubernetes，Docker，Docker Swarm，AWS，Mesos，Marathon等。
+environment: "
+  本应用以容器镜像的方式供用户使用，运行于预置docker的Linux环境。Docker的推荐安装方式如下：
+  ## apt安装
+  ### 1.更新系统软件包依赖
+  ```
+  sudo spt update
+  sudo apt install ca-certificates curl gnupg lsb-release
+  ```
+  ### 2.添加Docker官方GPG密钥
+  ```
+  sudo mkdir -p /etc/apt/keyrings
+  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+  sudo chmod a+r /etc/apt/keyrings/docker.gpg
+  ```
+  ### 3.添加Docker官方APT源
+  ```
+  echo \"deb [arch=$(dpkg --print-architecture) signed-by=/usr/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable\" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  ```
+  ### 4.再次更新软件包索引
+  ```
+  sudo apt update
+  ```
+  ### 5.安装Docker
+  ```
+  sudo apt install docker-ce docker-ce-cli containerd.io
+  ```
+
+  ## yum安装
+  ### 1.安装yum-utils
+  ```
+  sudo yum install -y yum-utils
+  ```
+  ### 2.添加Docker源
+  ```
+  sudo yum-config-manager \
+  > --add-repo \
+  > https://download.docker.com/linux/centos/docker-ce.repo
+  ```
+  ### 3.安装Docker
+  ```
+  sudo yum install -y docker-ce docker-ce-cli containerd.io
+  ```
+
+  注意，在openEuler环境安装docker时，可执行如下命令一键安装
+  ```
+  yum install -y docker
+  ```
+
+  ## 脚本安装
+  ### 1.下载安装脚本
+  ```
+  curl -fsSL https://get.docker.com -o get-docker.sh
+  ```
+  ### 2.使用root权限执行脚本
+  ```
+  sudo sh get-docker.sh
+  ```
+  使用脚本安装方式时，如果用户要指定安装的docker版本，需要自行修改`get-docker.sh`的源码内容。
+
+  ## 验证
+  ```
+  sudo docker run hello-world
+  ```
+  "
+download: "
+  获取容器镜像
+  ```
+  docker pull openeuler/traefik:{TAG}
+  ```
+  "
+install: "
+  ## 1. 使能docker和web UI
+  ```
+  ## traefik.yml
+
+  # Docker configuration backend
+  providers:
+    docker:
+      defaultRule: \"Host(`{{ trimPrefix `/` .Name }}.docker.localhost`)\"
+  # API and dashboard configuration
+  api:
+    insecure: true
+  ```
+  ## 2. 启动容器
+  ```
+  docker run -d -p 8080:8080 -p 80:80 \
+      -v $PWD/traefik.yml:/etc/traefik/traefik.yml \
+      -v /var/run/docker.sock:/var/run/docker.sock \
+      openeuler/traefik:{TAG}
+  ```
+    用户可根据自身需求，自定义启动选项。
+  "
+license: MIT license
+similar_packages:
+  - Nginx: Nginx是一款高性能的反向代理和Web服务器软件。它支持负载均衡、SSL/TLS 终止、缓存和许多其他功能。与Traefik类似，Nginx也可以用于容器化环境中。
+  - HAProxy: HAProxy是一款高可用性的TCP/HTTP反向代理和负载均衡软件。它具有高性能和可靠性，并支持动态配置和健康检查。
+  - Envoy: Envoy是一个开源的边缘和服务代理，具有动态配置、负载均衡、故障恢复和流量监控等功能。它被广泛用于云原生环境和微服务架构中。
+  - Caddy: Caddy是一款现代化的Web服务器和反向代理软件，具有自动HTTPS、自动HTTP/2和易于使用的配置功能。它支持动态代理和负载均衡，并适用于容器化环境。
+dependency:
+  - N/A
