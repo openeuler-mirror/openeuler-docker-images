@@ -1,0 +1,91 @@
+name: httpd
+category: others
+description: Httpd，即Apache HTTP Server，是一个功能强大且灵活的符合HTTP/1.1的Web服务器。它最初被设计为NCSA HTTP Server的替代品，现已发展成为Internet上最流行的Web服务器。作为Apache软件基金会的一个项目，开发人员的目标是协作开发和维护一个强大的、商业级的、基于标准的服务器，并提供免费的源代码。。
+environment: |
+  本应用以容器镜像的方式供用户使用，运行于预置docker的Linux环境。Docker的推荐安装方式如下：
+  ## apt安装
+  ### 1.更新系统软件包依赖
+  ```
+  sudo spt update
+  sudo apt install ca-certificates curl gnupg lsb-release
+  ```
+  ### 2.添加Docker官方GPG密钥
+  ```
+  sudo mkdir -p /etc/apt/keyrings
+  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+  sudo chmod a+r /etc/apt/keyrings/docker.gpg
+  ```
+  ### 3.添加Docker官方APT源
+  ```
+  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  ```
+  ### 4.再次更新软件包索引
+  ```
+  sudo apt update
+  ```
+  ### 5.安装Docker
+  ```
+  sudo apt install docker-ce docker-ce-cli containerd.io
+  ```
+
+  ## yum安装
+  ### 1.安装yum-utils
+  ```
+  sudo yum install -y yum-utils
+  ```
+  ### 2.添加Docker源
+  ```
+  sudo yum-config-manager \
+  > --add-repo \
+  > https://download.docker.com/linux/centos/docker-ce.repo
+  ```
+  ### 3.安装Docker
+  ```
+  sudo yum install -y docker-ce docker-ce-cli containerd.io
+  ```
+
+  注意，在openEuler环境安装docker时，可执行如下命令一键安装
+  ```
+  yum install -y docker
+  ```
+
+  ## 脚本安装
+  ### 1.下载安装脚本
+  ```
+  curl -fsSL https://get.docker.com -o get-docker.sh
+  ```
+  ### 2.使用root权限执行脚本
+  ```
+  sudo sh get-docker.sh
+  ```
+  使用脚本安装方式时，如果用户要指定安装的docker版本，需要自行修改`get-docker.sh`的源码内容。
+
+  ## 验证
+  ```
+  sudo docker run hello-world
+  ```
+
+download: |
+  获取容器镜像
+  ```
+  docker pull openeuler/httpd:{TAG}
+  ```
+
+install: |
+  启动容器
+  ```
+  docker run -name my-httpd -d -p 80:80 openeuler/httpd:{TAG}
+  ```
+    用户可根据自身需求，自定义启动选项。
+
+license: Apache-2.0 license
+similar_packages:
+  - Nginx: Nginx 是一个高性能的、轻量级的 Web 服务器和反向代理服务器。它以其出色的性能和可扩展性而闻名，并且在处理高并发请求时表现出色。
+  - Microsoft IIS: Microsoft Internet Information Services (IIS)是微软开发的Web服务器软件，主要用于Windows操作系统。它与Windows Server紧密集成，并提供了广泛的功能和工具来托管和管理Web应用程序。
+  - LiteSpeed Web Server: LiteSpeed Web Server是一个高性能的商业级Web服务器，具有低资源消耗和高并发处理能力。它被设计用于替代Apache HTTP Server，可以与现有的Apache配置和模块兼容。
+  - Caddy: Caddy是一个现代化的、易于使用的Web服务器，具有自动HTTPS配置和自动证书管理等特性。它以其简单的配置和内置的自动化功能而受到欢迎。
+dependency:
+  - apr
+  - apr-devel
+  - apr-util-devel
+  - pcre-devel
