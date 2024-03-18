@@ -12,7 +12,7 @@ RUN yum install -y autoconf make gcc apr apr-devel apr-util-devel pcre-devel && 
 
 RUN cd /src/httpd && \
     ./configure --prefix=/usr/local/apache2 && \
-	make -j "$(nproc)" && \
+	make && \
 	make install && \
     rm -rf /src/httpd
 
