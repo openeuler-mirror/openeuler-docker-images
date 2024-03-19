@@ -74,7 +74,7 @@ download: "
 install: "
   启动容器
   ```
-  docker run -d --name dotnet-aspnet openeuler/dotnet-aspnet:{TAG}
+  docker run -it --rm --name dotnet-aspnet openeuler/dotnet-aspnet:{TAG}
   ```
     用户可根据自身需求，自定义启动选项。
   "
