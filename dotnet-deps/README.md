@@ -19,7 +19,7 @@ We are using `buildx` in here to generate multi-arch images, see more in [Docker
 
 2. Run:
 ```shell
-docker run -d -name dotnet-deps openeuler/dotnet-deps:$TAG
+docker run -it --rm -name dotnet-deps openeuler/dotnet-deps:$TAG
 ```
 
 # Supported tags and respective Dockerfile links
