@@ -1,0 +1,97 @@
+name: postgres
+category: database
+description: postgres是一个功能强大、灵活且高度可定制的数据库管理系统，广泛应用于金融、物流、制造、电信等领域。
+environment: "
+  本应用以容器镜像的方式供用户使用，运行于预置docker的Linux环境。Docker的推荐安装方式如下：
+  ## apt安装
+  ### 1.更新系统软件包依赖
+  ```
+  sudo spt update
+  sudo apt install ca-certificates curl gnupg lsb-release
+  ```
+  ### 2.添加Docker官方GPG密钥
+  ```
+  sudo mkdir -p /etc/apt/keyrings
+  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+  sudo chmod a+r /etc/apt/keyrings/docker.gpg
+  ```
+  ### 3.添加Docker官方APT源
+  ```
+  echo \"deb [arch=$(dpkg --print-architecture) signed-by=/usr/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable\" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  ```
+  ### 4.再次更新软件包索引
+  ```
+  sudo apt update
+  ```
+  ### 5.安装Docker
+  ```
+  sudo apt install docker-ce docker-ce-cli containerd.io
+  ```
+
+  ## yum安装
+  ### 1.安装yum-utils
+  ```
+  sudo yum install -y yum-utils
+  ```
+  ### 2.添加Docker源
+  ```
+  sudo yum-config-manager \
+  > --add-repo \
+  > https://download.docker.com/linux/centos/docker-ce.repo
+  ```
+  ### 3.安装Docker
+  ```
+  sudo yum install -y docker-ce docker-ce-cli containerd.io
+  ```
+
+  注意，在openEuler环境安装docker时，可执行如下命令一键安装
+  ```
+  yum install -y docker
+  ```
+
+  ## 脚本安装
+  ### 1.下载安装脚本
+  ```
+  curl -fsSL https://get.docker.com -o get-docker.sh
+  ```
+  ### 2.使用root权限执行脚本
+  ```
+  sudo sh get-docker.sh
+  ```
+  使用脚本安装方式时，如果用户要指定安装的docker版本，需要自行修改`get-docker.sh`的源码内容。
+
+  ## 验证
+  ```
+  sudo docker run hello-world
+  ```
+  "
+download: "
+  获取容器镜像
+  ```
+  docker pull openeuler/postgres:latest
+  ```
+  "
+install: "
+  启动容器
+  ```
+  docker run --name postgres -d openeuler/postgres:latest
+  ```
+  用户可根据自身需求，自定义启动选项。
+  "
+license: PostgreSQL license
+similar_packages:
+  - MySQL: 一个广泛使用的开源关系型数据库管理系统。它提供了高性能、稳定性和易用性，适用于各种规模的应用程序。
+  - Oracle Database: 一款商业关系型数据库管理系统。它提供了强大的性能和高级功能，适用于大型企业级应用。
+  - SQLite: 一款轻量级的关系型数据库管理系统，常用于嵌入式系统和移动应用。它占用资源少，性能稳定，且无需独立的服务器进程。
+dependency:
+  - gcc
+  - make
+  - libevent-devel
+  - icu
+  - libicu-devel
+  - readline-devel
+  - zlib-devel
+  - perl
+  - bison
+  - m4
+  - flex
