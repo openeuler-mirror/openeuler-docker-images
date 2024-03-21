@@ -1,0 +1,88 @@
+name: dotnet-runtime
+category: cloud
+description: Dotnet Runtime (.NET Runtime)是一个运行时环境，用于执行基于.NET平台的应用程序。它提供了必要的组件和功能，使得.NET应用程序能够在特定的操作系统上运行。
+environment: |
+  本应用以容器镜像的方式供用户使用，运行于预置docker的Linux环境。Docker的推荐安装方式如下：
+  ## apt安装
+  ### 1.更新系统软件包依赖
+  ```
+  sudo spt update
+  sudo apt install ca-certificates curl gnupg lsb-release
+  ```
+  ### 2.添加Docker官方GPG密钥
+  ```
+  sudo mkdir -p /etc/apt/keyrings
+  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+  sudo chmod a+r /etc/apt/keyrings/docker.gpg
+  ```
+  ### 3.添加Docker官方APT源
+  ```
+  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  ```
+  ### 4.再次更新软件包索引
+  ```
+  sudo apt update
+  ```
+  ### 5.安装Docker
+  ```
+  sudo apt install docker-ce docker-ce-cli containerd.io
+  ```
+
+  ## yum安装
+  ### 1.安装yum-utils
+  ```
+  sudo yum install -y yum-utils
+  ```
+  ### 2.添加Docker源
+  ```
+  sudo yum-config-manager \
+  > --add-repo \
+  > https://download.docker.com/linux/centos/docker-ce.repo
+  ```
+  ### 3.安装Docker
+  ```
+  sudo yum install -y docker-ce docker-ce-cli containerd.io
+  ```
+
+  注意，在openEuler环境安装docker时，可执行如下命令一键安装
+  ```
+  yum install -y docker
+  ```
+
+  ## 脚本安装
+  ### 1.下载安装脚本
+  ```
+  curl -fsSL https://get.docker.com -o get-docker.sh
+  ```
+  ### 2.使用root权限执行脚本
+  ```
+  sudo sh get-docker.sh
+  ```
+  使用脚本安装方式时，如果用户要指定安装的docker版本，需要自行修改`get-docker.sh`的源码内容。
+
+  ## 验证
+  ```
+  sudo docker run hello-world
+  ```
+
+download: "
+  获取容器镜像
+  ```
+  docker pull openeuler/dotnet-runtime:{TAG}
+  ```
+  "
+install: "
+  启动容器
+  ```
+  docker run -it --rm --name dotnet-runtime openeuler/dotnet-runtime:{TAG}
+  ```
+    用户可根据自身需求，自定义启动选项。
+  "
+license: MIT license
+similar_packages:
+  - Java Runtime Environment (JRE): JRE是用于执行基于Java平台的应用程序的运行时环境。它提供了类似的功能，包括字节码解释和执行、垃圾回收、异常处理等。
+  - Python Runtime: Python运行时是用于执行基于Python编程语言的应用程序的环境。它提供了解释和执行Python脚本的功能，并提供了许多标准库和扩展库，用于各种计算和应用开发。
+  - Node.js Runtime: Node.js是一个基于Chrome V8引擎的JavaScript运行时。它允许使用JavaScript编写服务器端的应用程序，并提供了许多内置的库和模块，用于处理网络请求、文件系统访问等任务。
+  - Go Runtime: Go是一种编程语言，Go运行时用于执行基于Go语言编写的应用程序。它提供了垃圾回收、协程（goroutine）管理、并发编程等功能，使得Go语言应用程序能够高效地运行。
+dependency:
+  - .NET Core
