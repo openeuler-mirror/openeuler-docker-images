@@ -1,0 +1,92 @@
+name: bind9
+category: others
+description: BIND9 (Berkeley Internet Name Domain 9）是一款开源的域名系统（DNS）软件，用于将域名转换为对应的IP地址，包括权威服务器、递归解析器和相关实用程序。
+environment: |
+  本应用以容器镜像的方式供用户使用，运行于预置docker的Linux环境。Docker的推荐安装方式如下：
+  ## apt安装
+  ### 1.更新系统软件包依赖
+  ```
+  sudo spt update
+  sudo apt install ca-certificates curl gnupg lsb-release
+  ```
+  ### 2.添加Docker官方GPG密钥
+  ```
+  sudo mkdir -p /etc/apt/keyrings
+  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+  sudo chmod a+r /etc/apt/keyrings/docker.gpg
+  ```
+  ### 3.添加Docker官方APT源
+  ```
+  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  ```
+  ### 4.再次更新软件包索引
+  ```
+  sudo apt update
+  ```
+  ### 5.安装Docker
+  ```
+  sudo apt install docker-ce docker-ce-cli containerd.io
+  ```
+
+  ## yum安装
+  ### 1.安装yum-utils
+  ```
+  sudo yum install -y yum-utils
+  ```
+  ### 2.添加Docker源
+  ```
+  sudo yum-config-manager \
+  > --add-repo \
+  > https://download.docker.com/linux/centos/docker-ce.repo
+  ```
+  ### 3.安装Docker
+  ```
+  sudo yum install -y docker-ce docker-ce-cli containerd.io
+  ```
+
+  注意，在openEuler环境安装docker时，可执行如下命令一键安装
+  ```
+  yum install -y docker
+  ```
+
+  ## 脚本安装
+  ### 1.下载安装脚本
+  ```
+  curl -fsSL https://get.docker.com -o get-docker.sh
+  ```
+  ### 2.使用root权限执行脚本
+  ```
+  sudo sh get-docker.sh
+  ```
+  使用脚本安装方式时，如果用户要指定安装的docker版本，需要自行修改`get-docker.sh`的源码内容。
+
+  ## 验证
+  ```
+  sudo docker run hello-world
+  ```
+
+download: |
+  获取容器镜像
+  ```
+  docker pull openeuler/bind9:{TAG}
+  ```
+
+install: |
+  启动容器
+  ```
+  docker run -d --name bind9 -p 30053:53 openeuler/bind9:{TAG}
+  ```
+    用户可根据自身需求，自定义启动选项。
+
+license: MPL-2.0 license
+similar_packages:
+  - PowerDNS: PowerDNS是另一个流行的开源DNS服务器软件。它提供高性能、可扩展性和灵活性，支持多种后端数据库（如 MySQL、PostgreSQL）和多种扩展模块。PowerDNS还具有DNSSEC支持和灵活的API。
+  - NSD: NSD（Name Server Daemon）是一个轻量级的开源DNS服务器软件，专注于高性能和安全性。它设计简单，易于配置，并支持DNSSEC。NSD适用于高负载环境，特别是作为权威DNS服务器。
+  - Unbound: Unbound是一个快速、适应性强的递归DNS解析器，也可以用作局部缓存DNS服务器。它专注于安全性和性能，并支持DNSSEC。Unbound的设计目标是简单、轻量级和易于管理。
+  - Knot DNS: Knot DNS是一个高性能的开源DNS服务器，具有强大的安全性和可扩展性。它支持动态更新、DNSSEC、负载均衡和多线程处理，适用于大型网络和高负载环境。
+dependency:
+  - libcap-devel
+  - libuv-devel
+  - libnghttp2-devel
+  - openssl-devel
+  - perl
