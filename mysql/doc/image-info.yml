@@ -1,0 +1,93 @@
+name: MySQL
+category: database
+description: MySQL是一种开源关系型数据库管理系统。与其他关系型数据库一样，MySQL将数据存储在由行和列组成的表中。用户可以使用结构化查询语言（通常称为SQL）定义、操作、控制和查询数据。MySQL凭借其经过验证的性能、可靠性和易用性成为基于Web的应用程序的领先数据库选择，涵盖从个人项目和网站，到电子商务和信息服务，一直到高端应用程序的整个范围。
+environment: |
+  本应用以容器镜像的方式供用户使用，运行于预置docker的Linux环境。Docker的推荐安装方式如下：
+  ## apt安装
+  ### 1.更新系统软件包依赖
+  ```
+  sudo spt update
+  sudo apt install ca-certificates curl gnupg lsb-release
+  ```
+  ### 2.添加Docker官方GPG密钥
+  ```
+  sudo mkdir -p /etc/apt/keyrings
+  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+  sudo chmod a+r /etc/apt/keyrings/docker.gpg
+  ```
+  ### 3.添加Docker官方APT源
+  ```
+  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  ```
+  ### 4.再次更新软件包索引
+  ```
+  sudo apt update
+  ```
+  ### 5.安装Docker
+  ```
+  sudo apt install docker-ce docker-ce-cli containerd.io
+  ```
+
+  ## yum安装
+  ### 1.安装yum-utils
+  ```
+  sudo yum install -y yum-utils
+  ```
+  ### 2.添加Docker源
+  ```
+  sudo yum-config-manager \
+  > --add-repo \
+  > https://download.docker.com/linux/centos/docker-ce.repo
+  ```
+  ### 3.安装Docker
+  ```
+  sudo yum install -y docker-ce docker-ce-cli containerd.io
+  ```
+
+  注意，在openEuler环境安装docker时，可执行如下命令一键安装
+  ```
+  yum install -y docker
+  ```
+
+  ## 脚本安装
+  ### 1.下载安装脚本
+  ```
+  curl -fsSL https://get.docker.com -o get-docker.sh
+  ```
+  ### 2.使用root权限执行脚本
+  ```
+  sudo sh get-docker.sh
+  ```
+  使用脚本安装方式时，如果用户要指定安装的docker版本，需要自行修改`get-docker.sh`的源码内容。
+
+  ## 验证
+  ```
+  sudo docker run hello-world
+  ```
+
+download: |
+  获取容器镜像
+  ```
+  docker pull openeuler/mysql:{TAG}
+  ```
+
+install: |
+  启动容器
+  ```
+  docker run --name mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d openeuler/mysql:{TAG}
+  ```
+    其中，mysql是分配给容器的名称，my-secret-pw是为MySQL根用户设置的密码。用户可根据自身需求，自定义启动选项。
+
+license: View license
+similar_packages:
+  - PostgreSQL: PostgreSQL是一个功能强大的开源关系型数据库管理系统，它提供了与MySQL类似的功能，并且支持广泛的标准SQL语法。PostgreSQL具有高度的可扩展性、可靠性和数据一致性，同时还提供了许多高级功能，如复杂查询、事务控制和触发器等。
+  - Oracle Database: Oracle Database是一款商业的关系型数据库管理系统，它是市场上最受欢迎和广泛使用的数据库之一。Oracle Database提供了丰富的功能集，包括高级查询、分布式数据库、数据复制和高可用性选项等。
+  - Microsoft SQL Server: Microsoft SQL Server是由Microsoft开发的关系型数据库管理系统。它提供了与MySQL类似的功能，同时还与Microsoft的其他产品和技术集成紧密。Microsoft SQL Server适用于Windows操作系统，并提供了高性能、可伸缩性和企业级功能。
+  - SQLite: SQLite是一种嵌入式关系型数据库管理系统，它提供了轻量级的、零配置的数据库解决方案。SQLite具有小巧、高效、可嵌入的特点，适用于嵌入式设备和移动应用程序。
+dependency:
+  - ncurses-devel
+  - openssl
+  - libtirpc-devel
+  - rpcgen
+  - bison
+  - m4
