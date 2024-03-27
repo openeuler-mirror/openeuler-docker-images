@@ -1,5 +1,5 @@
 name: dotnet-deps
-category: cloud
+category: others
 description: Dotnet-deps镜像供开发人员对独立的.NET和ASP.NET应用程序进行分层。它仅包含运行标准独立.NET应用程序所需的运行时依赖项：ca-certificates, glibc, libgcc, libicu, openssl-libs, libstdc++, tzdata, zlib。
 environment: |
   本应用以容器镜像的方式供用户使用，运行于预置docker的Linux环境。Docker的推荐安装方式如下：
@@ -65,19 +65,19 @@ environment: |
   sudo docker run hello-world
   ```
 
-download: "
+download: |
   获取容器镜像
   ```
   docker pull openeuler/dotnet-deps:{TAG}
   ```
-  "
-install: "
+
+install: |
   启动容器
   ```
   docker run -it --rm --name dotnet-deps openeuler/dotnet-deps:{TAG}
   ```
     用户可根据自身需求，自定义启动选项。
-  "
+
 license: N/A
 similar_packages:
   - N/A

@@ -1,7 +1,7 @@
 name: squid
 category: cloud
 description: Squid是支持HTTP、HTTPS、FTP等的Web缓存代理。它通过缓存和重用经常请求的网页来减少带宽并提高响应时间。Squid具有广泛的访问控制，是一个出色的服务器加速器。它可以在大多数可用操作系统上运行，包括 Windows，并根据GNU GPL获得许可。
-environment: "
+environment: |
   本应用以容器镜像的方式供用户使用，运行于预置docker的Linux环境。Docker的推荐安装方式如下：
   ## apt安装
   ### 1.更新系统软件包依赖
@@ -17,7 +17,7 @@ environment: "
   ```
   ### 3.添加Docker官方APT源
   ```
-  echo \"deb [arch=$(dpkg --print-architecture) signed-by=/usr/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable\" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
   ```
   ### 4.再次更新软件包索引
   ```
@@ -64,20 +64,20 @@ environment: "
   ```
   sudo docker run hello-world
   ```
-  "
-download: "
+
+download: |
   获取容器镜像
   ```
   docker pull openeuler/squid:{TAG}
   ```
-  "
-install: "
+
+install: |
   启动容器
   ```
   docker run -d --name squid -p 3128:3128 openeuler/squid:{TAG}
   ```
     用户可根据自身需求，自定义启动选项。
-  "
+
 license: GPL-2.0 license
 similar_packages:
   - Privoxy: Privacy Enhancing Proxy是一个非缓存类Web代理软件，它自带的高级过滤功能可以用来增强隐私保护、修改页面内容和 HTTP 头部信息、访问控制，以及去除广告和其它招人反感的互联网垃圾。Privoxy的配置非常灵活，能充分定制已满足各种各样的需求和偏好。它支持单机和多用户网络两种模式。

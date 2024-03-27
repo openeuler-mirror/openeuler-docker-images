@@ -1,5 +1,5 @@
 name: dotnet-runtime
-category: cloud
+category: others
 description: Dotnet Runtime (.NET Runtime)是一个运行时环境，用于执行基于.NET平台的应用程序。它提供了必要的组件和功能，使得.NET应用程序能够在特定的操作系统上运行。
 environment: |
   本应用以容器镜像的方式供用户使用，运行于预置docker的Linux环境。Docker的推荐安装方式如下：
@@ -65,19 +65,19 @@ environment: |
   sudo docker run hello-world
   ```
 
-download: "
+download: |
   获取容器镜像
   ```
   docker pull openeuler/dotnet-runtime:{TAG}
   ```
-  "
-install: "
+
+install: |
   启动容器
   ```
   docker run -it --rm --name dotnet-runtime openeuler/dotnet-runtime:{TAG}
   ```
     用户可根据自身需求，自定义启动选项。
-  "
+
 license: MIT license
 similar_packages:
   - Java Runtime Environment (JRE): JRE是用于执行基于Java平台的应用程序的运行时环境。它提供了类似的功能，包括字节码解释和执行、垃圾回收、异常处理等。

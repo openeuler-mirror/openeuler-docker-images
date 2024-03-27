@@ -1,7 +1,7 @@
 name: traefik
 category: cloud
 description: Traefik（发音和traffic相同，采用Golang编写）是一个云原生的新型的HTTP反向代理、负载均衡软件。Traefik负责接收系统的请求，然后使用合适的组件来对这些请求进行处理。Traefik兼容所有主流的集群技术，比如Kubernetes，Docker，Docker Swarm，AWS，Mesos，Marathon等。
-environment: "
+environment: |
   本应用以容器镜像的方式供用户使用，运行于预置docker的Linux环境。Docker的推荐安装方式如下：
   ## apt安装
   ### 1.更新系统软件包依赖
@@ -17,7 +17,7 @@ environment: "
   ```
   ### 3.添加Docker官方APT源
   ```
-  echo \"deb [arch=$(dpkg --print-architecture) signed-by=/usr/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable\" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
   ```
   ### 4.再次更新软件包索引
   ```
@@ -64,14 +64,14 @@ environment: "
   ```
   sudo docker run hello-world
   ```
-  "
-download: "
+
+download: |
   获取容器镜像
   ```
   docker pull openeuler/traefik:{TAG}
   ```
-  "
-install: "
+
+install: |
   ## 1. 使能docker和web UI
   ```
   ## traefik.yml
@@ -92,7 +92,7 @@ install: "
       openeuler/traefik:{TAG}
   ```
     用户可根据自身需求，自定义启动选项。
-  "
+
 license: MIT license
 similar_packages:
   - Nginx: Nginx是一款高性能的反向代理和Web服务器软件。它支持负载均衡、SSL/TLS 终止、缓存和许多其他功能。与Traefik类似，Nginx也可以用于容器化环境中。

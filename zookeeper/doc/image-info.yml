@@ -1,7 +1,7 @@
 name: zookeeper
 category: cloud
 description: zookeeper一个功能强大、易于使用的分布式协调服务，为分布式应用提供了可靠的协调功能，使得应用能够在分布式环境中高效、稳定地运行。
-environment: "
+environment: |
   本应用以容器镜像的方式供用户使用，运行于预置docker的Linux环境。Docker的推荐安装方式如下：
   ## apt安装
   ### 1.更新系统软件包依赖
@@ -17,7 +17,7 @@ environment: "
   ```
   ### 3.添加Docker官方APT源
   ```
-  echo \"deb [arch=$(dpkg --print-architecture) signed-by=/usr/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable\" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
   ```
   ### 4.再次更新软件包索引
   ```
@@ -64,20 +64,20 @@ environment: "
   ```
   sudo docker run hello-world
   ```
-  "
-download: "
+
+download: |
   获取容器镜像
   ```
   docker pull openeuler/zookeeper:latest
   ```
-  "
-install: "
+
+install: |
   启动容器
   ```
   docker run --name zookeeper -d openeuler/zookeeper:latest
   ```
   用户可根据自身需求，自定义启动选项。
-  "
+
 license:  Apache-2.0 license
 similar_packages:
   - etcd: 一个开源的、分布式的键值存储系统，用于共享配置和服务发现。
