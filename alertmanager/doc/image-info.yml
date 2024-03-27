@@ -1,7 +1,7 @@
 name: Alertmanager
 category: cloud
 description: Alertmanager处理客户端应用程序（例如Prometheus服务器）发送的警报。它负责重复数据删除、分组，并将它们路由到正确的接收器集成，例如电子邮件、PagerDuty、OpsGenie或借助Webhook接收器的许多其他机制。它还负责警报的静音和抑制。
-environment: "
+environment: |
   本应用以容器镜像的方式供用户使用，运行于预置docker的Linux环境。Docker的推荐安装方式如下：
   ## apt安装
   ### 1.更新系统软件包依赖
@@ -17,7 +17,7 @@ environment: "
   ```
   ### 3.添加Docker官方APT源
   ```
-  echo \"deb [arch=$(dpkg --print-architecture) signed-by=/usr/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable\" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
   ```
   ### 4.再次更新软件包索引
   ```
@@ -64,20 +64,20 @@ environment: "
   ```
   sudo docker run hello-world
   ```
-  "
-download: "
+
+download: |
   获取容器镜像
   ```
   docker pull openeuler/alertmanager:{TAG}
   ```
-  "
-install: "
+
+install: |
   启动容器
   ```
   docker run --name alertmanager -p 9093:9093 openeuler/alertmanager:{TAG}
   ```
     用户可根据自身需求，自定义启动选项。
-  "
+
 license: Apache-2.0 license
 similar_packages:
   - VictoriaMetrics Alertmanager: 这是一个与Prometheus兼容的开源告警管理器，它提供类似于Prometheus Alertmanager的功能。它可以接收来自Prometheus的告警，并根据配置的规则进行处理和发送通知。

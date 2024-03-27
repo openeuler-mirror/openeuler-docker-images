@@ -1,5 +1,5 @@
 name: dotnet-aspnet
-category: cloud
+category: others
 description: Dotnet-aspnet（ASP.NET Core）是一个开源跨平台框架，用于构建基于云的现代互联网连接应用程序，例如Web应用程序、物联网应用程序和移动后端。ASP.NET Core应用程序在.NET上运行。
 environment: |
   本应用以容器镜像的方式供用户使用，运行于预置docker的Linux环境。Docker的推荐安装方式如下：
@@ -65,19 +65,19 @@ environment: |
   sudo docker run hello-world
   ```
 
-download: "
+download: |
   获取容器镜像
   ```
   docker pull openeuler/dotnet-aspnet:{TAG}
   ```
-  "
-install: "
+
+install: |
   启动容器
   ```
   docker run -it --rm --name dotnet-aspnet openeuler/dotnet-aspnet:{TAG}
   ```
     用户可根据自身需求，自定义启动选项。
-  "
+
 license: MIT license
 similar_packages:
   - Ruby on Rails: Ruby on Rails（简称 Rails）是一个使用Ruby编程语言开发的开源Web应用程序框架。它提供了类似于ASP.NET的MVC（Model-View-Controller）架构以及许多内置功能，如路由、模板引擎、数据库访问等。

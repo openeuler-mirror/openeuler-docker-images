@@ -1,7 +1,7 @@
 name: postgres
 category: database
 description: postgres是一个功能强大、灵活且高度可定制的数据库管理系统，广泛应用于金融、物流、制造、电信等领域。
-environment: "
+environment: |
   本应用以容器镜像的方式供用户使用，运行于预置docker的Linux环境。Docker的推荐安装方式如下：
   ## apt安装
   ### 1.更新系统软件包依赖
@@ -17,7 +17,7 @@ environment: "
   ```
   ### 3.添加Docker官方APT源
   ```
-  echo \"deb [arch=$(dpkg --print-architecture) signed-by=/usr/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable\" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
   ```
   ### 4.再次更新软件包索引
   ```
@@ -64,20 +64,20 @@ environment: "
   ```
   sudo docker run hello-world
   ```
-  "
-download: "
+
+download: |
   获取容器镜像
   ```
   docker pull openeuler/postgres:latest
   ```
-  "
-install: "
+
+install: |
   启动容器
   ```
   docker run --name postgres -d openeuler/postgres:latest
   ```
   用户可根据自身需求，自定义启动选项。
-  "
+
 license: PostgreSQL license
 similar_packages:
   - MySQL: 一个广泛使用的开源关系型数据库管理系统。它提供了高性能、稳定性和易用性，适用于各种规模的应用程序。

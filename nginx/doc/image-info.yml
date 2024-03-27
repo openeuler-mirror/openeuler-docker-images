@@ -1,7 +1,7 @@
 name: nginx
 category: cloud
 description: nginx是一款轻量级的Web服务器、反向代理服务器，由于它的内存占用少，启动极快，高并发能力强，在互联网项目中广泛应用。
-environment: "
+environment: |
   本应用以容器镜像的方式供用户使用，运行于预置docker的Linux环境。Docker的推荐安装方式如下：
   ## apt安装
   ### 1.更新系统软件包依赖
@@ -17,7 +17,7 @@ environment: "
   ```
   ### 3.添加Docker官方APT源
   ```
-  echo \"deb [arch=$(dpkg --print-architecture) signed-by=/usr/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable\" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
   ```
   ### 4.再次更新软件包索引
   ```
@@ -64,20 +64,20 @@ environment: "
   ```
   sudo docker run hello-world
   ```
-  "
-download: "
+
+download: |
   获取容器镜像
   ```
   docker pull openeuler/nginx:latest
   ```
-  "
-install: "
+
+install: |
   启动容器
   ```
   docker run --name nginx -d openeuler/nginx:latest
   ```
   用户可根据自身需求，自定义启动选项。
-  "
+
 license: 2-Clause BSD-like license
 similar_packages:
   - Lighttpd: 一个轻量级、高性能的Web服务器软件。它旨在提供快速、稳定且资源消耗低的服务，适用于小型到中型的网站和应用。

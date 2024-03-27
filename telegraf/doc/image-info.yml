@@ -1,7 +1,7 @@
 name: telegraf
 category: cloud
 description: telegraf一个用Go语言编写的指标收集、处理、聚合的程序。
-environment: "
+environment: |
   本应用以容器镜像的方式供用户使用，运行于预置docker的Linux环境。Docker的推荐安装方式如下：
   ## apt安装
   ### 1.更新系统软件包依赖
@@ -17,7 +17,7 @@ environment: "
   ```
   ### 3.添加Docker官方APT源
   ```
-  echo \"deb [arch=$(dpkg --print-architecture) signed-by=/usr/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable\" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
   ```
   ### 4.再次更新软件包索引
   ```
@@ -64,20 +64,20 @@ environment: "
   ```
   sudo docker run hello-world
   ```
-  "
-download: "
+
+download: |
   获取容器镜像
   ```
   docker pull openeuler/telegraf:latest
   ```
-  "
-install: "
+
+install: |
   启动容器
   ```
   docker run --name telegraf -d openeuler/telegraf:latest
   ```
   用户可根据自身需求，自定义启动选项。
-  "
+
 license: MIT license
 similar_packages:
   - Prometheus: 一个开源的系统监控和警报工具，特别适用于云原生环境。它可以收集多维度的数据，并通过强大的查询语言PromQL进行查询。
