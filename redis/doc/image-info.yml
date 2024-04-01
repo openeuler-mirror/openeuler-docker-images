@@ -1,7 +1,7 @@
 name: redis
 category: database
 description: Redis（Remote Dictionary Server）是一个使用 ANSI C 编写的开源、支持网络、基于内存、分布式、可选持久性的键值对存储数据库。
-environment: "
+environment: |
   本应用以容器镜像的方式供用户使用，运行于预置docker的Linux环境。Docker的推荐安装方式如下：
   ## apt安装
   ### 1.更新系统软件包依赖
@@ -17,7 +17,7 @@ environment: "
   ```
   ### 3.添加Docker官方APT源
   ```
-  echo \"deb [arch=$(dpkg --print-architecture) signed-by=/usr/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable\" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
   ```
   ### 4.再次更新软件包索引
   ```
@@ -64,20 +64,20 @@ environment: "
   ```
   sudo docker run hello-world
   ```
-  "
-download: "
+
+download: |
   获取容器镜像
   ```
-  docker pull openeuler/redis:latest
+  docker pull openeuler/redis:{TAG}
   ```
-  "
-install: "
+
+install: |
   启动容器
   ```
-  docker run --name redis -d openeuler/redis:latest
+  docker run --name my-redis -d -p 6379:6379 openeuler/redis:{TAG}
   ```
   用户可根据自身需求，自定义启动选项。
-  "
+
 license: BSD-3-Clause license
 similar_packages:
   - Memcached: 一个高性能的内存对象缓存系统，与 Redis 类似，但只能缓存简单的键值对。
@@ -88,12 +88,6 @@ similar_packages:
   - Tarantool: 一个内存中的 NoSQL 数据库系统，可以提供高性能和高可用性，同时还提供了 Lua 脚本支持。
 dependency:
   - acl
-  - cryptsetup
-  - device-mapper
-  - lmod-libs
-  - libargon2
-  - libfdisk
-  - libutemper
-  - systemd
-  - util-linux
-  - xkeyboard-config
+  - glibc-devel
+  - openssl-devel
+  - gosu
