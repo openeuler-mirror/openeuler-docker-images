@@ -1,6 +1,6 @@
-name: grafana-agent
+name: Grafana
 category: cloud
-description: Grafana Agent是一个供应商中立的、包含电池的遥测收集器，其配置灵感来自Terraform。它被设计为灵活、高性能，并与Prometheus和OpenTelemetry等多个生态系统兼容。
+description: Grafana是一个开源的数据可视化和监控平台。它提供了丰富的仪表盘和图表，用于实时监控和分析数据，帮助用户可视化数据并进行数据驱动的决策。
 environment: |
   本应用以容器镜像的方式供用户使用，运行于预置docker的Linux环境。Docker的推荐安装方式如下：
   ## apt安装
@@ -68,21 +68,21 @@ environment: |
 download: |
   获取容器镜像
   ```
-  docker pull openeuler/grafana-agent:{TAG}
+  docker pull openeuler/grafana:{TAG}
   ```
 
 install: |
   启动容器
   ```
-  docker run --name grafana-agent openeuler/grafana-agent:{TAG}
+  docker run --name my_grafana -d -p 3000:3000 openeuler/grafana:{TAG}
   ```
     用户可根据自身需求，自定义启动选项。
 
-license: Apache-2.0 license
+license: AGPL-3.0 license
 similar_packages:
-  - Telegraf: Telegraf是一个开源的代理程序，用于从各种数据源收集指标数据。它支持多种输入和输出插件，可以从系统、应用程序、数据库等收集数据，并将其发送到不同的目标，如InfluxDB、Prometheus等。
-  - Collectd: collectd是一个轻量级的系统统计数据收集守护程序，用于收集各种系统和应用程序指标。它支持多个插件和输出目标，可以将数据发送到后端存储，如Graphite、InfluxDB等。
-  - StatsD: StatsD是一个用于应用程序性能监测的守护程序。它接收应用程序发送的指标数据，并进行聚合、计数和计时，然后将数据转发给后端存储，如Graphite、InfluxDB等。
-  - Prometheus Node Exporter: Prometheus Node Exporter是一个用于收集系统级别指标数据的开源软件。它可以收集CPU使用率、内存使用量、磁盘空间、网络流量等系统指标，并将其公开为Prometheus可以抓取的格式。
+  - Kibana: 一个开源的数据可视化工具，与Elasticsearch配合使用，用于实时分析和可视化日志数据。
+  - Tableau: 一款商业化的数据可视化工具，提供了丰富的数据分析和可视化功能，适用于各种数据源和业务场景。
+  - Superset: 一个开源的数据探索和可视化平台，支持广泛的数据源和可视化图表，并具有灵活的仪表盘和报表定制能力。
+  - Redash: 一个开源的数据查询和可视化工具，支持多种数据源和查询语言，并提供共享查询和仪表盘的功能。
 dependency:
   - N/A
