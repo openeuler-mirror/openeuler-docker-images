@@ -10,9 +10,8 @@ RUN yum -y update; \
 	useradd -r -g redis -u 909 redis
 
 ENV GOSU_VERSION 1.17
-RUN wget -O /usr/local/bin/gosu.asc "https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-${TARGETARCH}.asc" && \
-    wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-${TARGETARCH}" && \
-    chmod 755 /usr/local/bin/gosu; \
+RUN wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-${TARGETARCH}"; \
+    chmod +x /usr/local/bin/gosu; \
     wget -O redis.tar.gz https://github.com/redis/redis/archive/refs/tags/${VERSION}.tar.gz; \
     mkdir -p /redis; tar -vxzf redis.tar.gz -C /redis --strip-components=1; \
     rm -rf redis.tar.gz; \
