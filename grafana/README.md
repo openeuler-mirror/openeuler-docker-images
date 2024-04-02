@@ -25,6 +25,7 @@ docker run --name my_grafana -d -p 3000:3000 openeuler/grafana:$VERSION
 # Supported tags and respective Dockerfile links
 
 - 7.5.11-22.03-lts: grafana v7.5.11, openEuler 22.03 LTS
+- 10.4.1-oe2203sp3: grafana v10.4.1, openEuler 22.03 LTS SP3
 
 ## Operating System
 Linux/Unix, ARM64 or x86-64 architecture.
