@@ -68,13 +68,13 @@ environment: |
 download: |
   获取容器镜像
   ```
-  docker pull openeuler/redis:latest
+  docker pull openeuler/redis:{TAG}
   ```
 
 install: |
   启动容器
   ```
-  docker run --name redis -d openeuler/redis:latest
+  docker run --name my-redis -d -p 6379:6379 openeuler/redis:{TAG}
   ```
   用户可根据自身需求，自定义启动选项。
 
@@ -88,12 +88,6 @@ similar_packages:
   - Tarantool: 一个内存中的 NoSQL 数据库系统，可以提供高性能和高可用性，同时还提供了 Lua 脚本支持。
 dependency:
   - acl
-  - cryptsetup
-  - device-mapper
-  - lmod-libs
-  - libargon2
-  - libfdisk
-  - libutemper
-  - systemd
-  - util-linux
-  - xkeyboard-config
+  - glibc-devel
+  - openssl-devel
+  - gosu
