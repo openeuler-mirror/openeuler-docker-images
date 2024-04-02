@@ -7,7 +7,6 @@ ARG GOSU_VERSION=1.17
 
 RUN yum update -y && \
     yum install -y git wget g++ make ncurses-devel cmake openssl openssl-devel libtirpc-devel rpcgen bison m4 && \
-    yum clean all && \
     mkdir -p /docker-entrypoint-initdb.d && \
     wget -O /usr/local/bin/gosu.asc "https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-${TARGETARCH}.asc" && \
 	  wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-${TARGETARCH}" && \
@@ -24,7 +23,11 @@ RUN yum update -y && \
         -DMYSQL_TCP_PORT=3306 \
         -DDOWNLOAD_BOOST=0 && \
     make -j "$(nproc)" && make install && \
-    rm -f mysql.tar.gz
+    rm -f mysql.tar.gz && \
+    rm -rf /mysql && \
+    yum -y remove wget g++ make && \
+    yum clean all
+
 
 ENV PATH=$PATH:/usr/local/mysql/server/bin
 COPY config/ /etc/mysql/
