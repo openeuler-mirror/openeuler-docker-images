@@ -1,82 +1,48 @@
 name: Alertmanager
 category: cloud
 description: Alertmanager处理客户端应用程序（例如Prometheus服务器）发送的警报。它负责重复数据删除、分组，并将它们路由到正确的接收器集成，例如电子邮件、PagerDuty、OpsGenie或借助Webhook接收器的许多其他机制。它还负责警报的静音和抑制。
-environment: |
-  本应用以容器镜像的方式供用户使用，运行于预置docker的Linux环境。Docker的推荐安装方式如下：
-  ## apt安装
-  ### 1.更新系统软件包依赖
-  ```
-  sudo spt update
-  sudo apt install ca-certificates curl gnupg lsb-release
-  ```
-  ### 2.添加Docker官方GPG密钥
-  ```
-  sudo mkdir -p /etc/apt/keyrings
-  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-  sudo chmod a+r /etc/apt/keyrings/docker.gpg
-  ```
-  ### 3.添加Docker官方APT源
-  ```
-  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-  ```
-  ### 4.再次更新软件包索引
-  ```
-  sudo apt update
-  ```
-  ### 5.安装Docker
-  ```
-  sudo apt install docker-ce docker-ce-cli containerd.io
-  ```
-
-  ## yum安装
-  ### 1.安装yum-utils
-  ```
-  sudo yum install -y yum-utils
-  ```
-  ### 2.添加Docker源
-  ```
-  sudo yum-config-manager \
-  > --add-repo \
-  > https://download.docker.com/linux/centos/docker-ce.repo
-  ```
-  ### 3.安装Docker
-  ```
-  sudo yum install -y docker-ce docker-ce-cli containerd.io
-  ```
-
-  注意，在openEuler环境安装docker时，可执行如下命令一键安装
+environment: ｜
+  本应用在Docker环境中运行，安装Docker执行如下命令
   ```
   yum install -y docker
   ```
+tags: |
+  Alertmanager镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
 
-  ## 脚本安装
-  ### 1.下载安装脚本
-  ```
-  curl -fsSL https://get.docker.com -o get-docker.sh
-  ```
-  ### 2.使用root权限执行脚本
-  ```
-  sudo sh get-docker.sh
-  ```
-  使用脚本安装方式时，如果用户要指定安装的docker版本，需要自行修改`get-docker.sh`的源码内容。
-
-  ## 验证
-  ```
-  sudo docker run hello-world
-  ```
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[0.27.0-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/alertmanager/0.27.0/22.03-lts-sp3/Dockerfile)| Alertmanager 0.27.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
 
 download: |
-  获取容器镜像
+  拉取镜像到本地
   ```
   docker pull openeuler/alertmanager:{TAG}
   ```
 
-install: |
-  启动容器
+usage: |
+  - 启动容器
   ```
-  docker run --name alertmanager -p 9093:9093 openeuler/alertmanager:{TAG}
+  docker run -d --name my-alertmanager -p 9093:9093 openeuler/alertmanager:{TAG}
   ```
-    用户可根据自身需求，自定义启动选项。
+    用户可根据自身需求选择对应版本的{TAG}、容器启动的选项。`my-alertmanager`启动之后，通过`http://localhost:9093`地址访问该实例。
+  
+  - 启动参数
+  |    Parameter   |  Description  |
+  |----------------|---------------|
+  | -p 9093:9093  | 通过`localhost:9093`端口暴露`my-alertmanager`实例 |
+  | -v /path/to/alertmanager.yml:/etc/prometheus/alertmanager.yml | 指定本地配置文件进行配置 |
+  | -v /path/to/persisted/data:/alertmaanger | 用于保留运行数据，这样就不必为每个新启动的容器初始化新数据库 |
+
+  - 容器测试
+  查看运行日志
+  ```
+  docker logs -f my-alertmanager
+  ```
+
+  使用shell交互
+  ```
+  docker exec -it my-alertmanager /bin/bash
+  ```
 
 license: Apache-2.0 license
 similar_packages:

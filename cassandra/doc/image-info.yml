@@ -1,82 +1,52 @@
-name: cassandra
+name: Cassandra
 category: database
-description: cassandra是一套开源的分布式NoSQL数据库系统。它基于Amazon Dynamo的分布式设计和Google BigTable的数据模型，是一个网络社交云计算方面理想的数据库。
+description: Cassandra是一套开源的分布式NoSQL数据库系统。它基于Amazon Dynamo的分布式设计和Google BigTable的数据模型，是一个网络社交云计算方面理想的数据库。
 environment: |
-  本应用以容器镜像的方式供用户使用，运行于预置docker的Linux环境。Docker的推荐安装方式如下：
-  ## apt安装
-  ### 1.更新系统软件包依赖
-  ```
-  sudo spt update
-  sudo apt install ca-certificates curl gnupg lsb-release
-  ```
-  ### 2.添加Docker官方GPG密钥
-  ```
-  sudo mkdir -p /etc/apt/keyrings
-  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-  sudo chmod a+r /etc/apt/keyrings/docker.gpg
-  ```
-  ### 3.添加Docker官方APT源
-  ```
-  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-  ```
-  ### 4.再次更新软件包索引
-  ```
-  sudo apt update
-  ```
-  ### 5.安装Docker
-  ```
-  sudo apt install docker-ce docker-ce-cli containerd.io
-  ```
-
-  ## yum安装
-  ### 1.安装yum-utils
-  ```
-  sudo yum install -y yum-utils
-  ```
-  ### 2.添加Docker源
-  ```
-  sudo yum-config-manager \
-  > --add-repo \
-  > https://download.docker.com/linux/centos/docker-ce.repo
-  ```
-  ### 3.安装Docker
-  ```
-  sudo yum install -y docker-ce docker-ce-cli containerd.io
-  ```
-
-  注意，在openEuler环境安装docker时，可执行如下命令一键安装
+  本应用在Docker环境中运行，安装Docker执行如下命令
   ```
   yum install -y docker
   ```
+tags: |
+  cassandra镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
 
-  ## 脚本安装
-  ### 1.下载安装脚本
-  ```
-  curl -fsSL https://get.docker.com -o get-docker.sh
-  ```
-  ### 2.使用root权限执行脚本
-  ```
-  sudo sh get-docker.sh
-  ```
-  使用脚本安装方式时，如果用户要指定安装的docker版本，需要自行修改`get-docker.sh`的源码内容。
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[4.1.4-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/cassandra/4.1.1/22.03-lts-sp3/Dockerfile)| Cassandra 4.1.4 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
 
-  ## 验证
-  ```
-  sudo docker run hello-world
-  ```
-  
 download: |
-  获取容器镜像
+  拉取镜像到本地
   ```
-  docker pull openeuler/cassandra:latest
+  docker pull openeuler/cassandra:{TAG}
   ```
 
-install: |
-  启动容器
+usage: |
+  - 启动容器
   ```
-  docker run --name cassandra -d openeuler/cassandra:latest
+  docker run -d --name my-cassandra -p 7000:7000 -p 7001:7001 -p 7199:7199 -p 9042:9042 -p 9160:9160 openeuler/cassandra:{TAG}
   ```
-  用户可根据自身需求，自定义启动选项。
+    用户可根据自身需求选择对应版本的{TAG}、容器启动的选项。`my-cassandra`启动之后，通过`cqlsh localhost 9042`访问服务（使用`pip install cqlsh`安装cqlsh）。
+  
+  - 启动参数
+  |    Parameter   |  Description  |
+  |----------------|---------------|
+  | -p 7000:7000	 | 暴露节点之间通信使用的端口                   |
+  | -p 7001:7001	 | 暴露节点之间TLS加密通信使用的端口             |
+  | -p 7199:7199	 | 暴露JMX管理端口                            |
+  | -p 9042:9042	 | 暴露CQL交互端口                            |
+  | -p 9160:9160	 | 暴露thrift服务端口                         |
+  | -v /local/path/to/data:/var/lib/cassandra	| 存储数据的位置  |
+  | -v /path/to/logs:/var/log/cassandra	      | 存储日志的位置  |
+
+  - 容器测试
+  查看运行日志
+  ```
+  docker logs -f my-cassandra
+  ```
+
+  使用shell交互
+  ```
+  docker exec -it my-cassandra /bin/bash
+  ```
   
 license: Apache-2.0 license
 similar_packages:
