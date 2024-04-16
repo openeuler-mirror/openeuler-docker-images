@@ -2,81 +2,56 @@ name: Kafka
 category: cloud
 description: Kafka是一个分布式系统，由通过高性能TCP网络协议进行通信的服务器和客户端组成。它可以部署在本地和云环境中的裸机硬件、虚拟机和容器上。
 environment: |
-  本应用以容器镜像的方式供用户使用，运行于预置docker的Linux环境。Docker的推荐安装方式如下：
-  ## apt安装
-  ### 1.更新系统软件包依赖
-  ```
-  sudo spt update
-  sudo apt install ca-certificates curl gnupg lsb-release
-  ```
-  ### 2.添加Docker官方GPG密钥
-  ```
-  sudo mkdir -p /etc/apt/keyrings
-  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-  sudo chmod a+r /etc/apt/keyrings/docker.gpg
-  ```
-  ### 3.添加Docker官方APT源
-  ```
-  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-  ```
-  ### 4.再次更新软件包索引
-  ```
-  sudo apt update
-  ```
-  ### 5.安装Docker
-  ```
-  sudo apt install docker-ce docker-ce-cli containerd.io
-  ```
-
-  ## yum安装
-  ### 1.安装yum-utils
-  ```
-  sudo yum install -y yum-utils
-  ```
-  ### 2.添加Docker源
-  ```
-  sudo yum-config-manager \
-  > --add-repo \
-  > https://download.docker.com/linux/centos/docker-ce.repo
-  ```
-  ### 3.安装Docker
-  ```
-  sudo yum install -y docker-ce docker-ce-cli containerd.io
-  ```
-
-  注意，在openEuler环境安装docker时，可执行如下命令一键安装
+  本应用在Docker环境中运行，安装Docker执行如下命令
   ```
   yum install -y docker
   ```
+tags: |
+  kafka镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
 
-  ## 脚本安装
-  ### 1.下载安装脚本
-  ```
-  curl -fsSL https://get.docker.com -o get-docker.sh
-  ```
-  ### 2.使用root权限执行脚本
-  ```
-  sudo sh get-docker.sh
-  ```
-  使用脚本安装方式时，如果用户要指定安装的docker版本，需要自行修改`get-docker.sh`的源码内容。
-
-  ## 验证
-  ```
-  sudo docker run hello-world
-  ```
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[3.7.0-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/kafka/3.7.0/22.03-lts-sp3/Dockerfile)| Apache Kafka server 3.7.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
 
 download: |
-  获取容器镜像
+  拉取镜像到本地
   ```
-  docker pull openeuler/kafka:{TAG}
+  docker pull openeuler/kafka:{Tag}
   ```
 
-install: |
-  启动容器
-  ```
-  docker run -d --name kafka -p 9092:9092 openeuler/kafka:{TAG}
-  ```
-    用户可根据自身需求，自定义启动选项。
+usage: |
+  - 启动容器
+    ```
+    docker run -d --name my-kafka -p 9092:9092 openeuler/kafka:{Tag}
+    ```
+    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。`my-kafka`启动之后，通过`http://localhost:9092`访问服务。
+  
+  - 启动参数
+
+    |    Parameter   |  Description  |
+    |----------------|---------------|
+    | -p 9092:9092	   | Kafka通过`localhost:9092`提供服务 |
+    | -e ZOOKEEPER_HOST=<zookeeper> | 指定关联的Zookeeper实例主机名 |
+    | -e ZOOKEEPER_PORT=2181	| 关联的Zookeeper实例服务端口 |
+    | -v /path/to/config/file:/etc/kafka/server.properties | 使用贝蒂配置文件 |
+
+-e ZOOKEEPER_HOST=<zookeeper>	Hostname for the related Zookeeper instance.
+-e ZOOKEEPER_PORT=2181	Port for the related Zookeeper instance.
+-p 9092:9092	Expose Apache Kafka server on localhost:2181.
+-v /path/to/config/file:/etc/kafka/server.properties	Local Kafka configuration file.
+-v kafkaData:/var/lib/kafka	"Persist data in a docker volume named kafkaData. " "Make sure that the mount point is consistent with the configuration property logs.dirs.
+
+  - 容器测试
+
+    查看运行日志
+    ```
+    docker logs -f my-kafka
+    ```
+
+    使用shell交互
+    ```
+    docker exec -it my-kafka /bin/bash
+    ```
 
 license: Apache-2.0 license
 similar_packages:

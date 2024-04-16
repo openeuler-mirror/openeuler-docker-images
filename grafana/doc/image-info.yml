@@ -2,81 +2,50 @@ name: Grafana
 category: cloud
 description: Grafana是一个开源的数据可视化和监控平台。它提供了丰富的仪表盘和图表，用于实时监控和分析数据，帮助用户可视化数据并进行数据驱动的决策。
 environment: |
-  本应用以容器镜像的方式供用户使用，运行于预置docker的Linux环境。Docker的推荐安装方式如下：
-  ## apt安装
-  ### 1.更新系统软件包依赖
-  ```
-  sudo spt update
-  sudo apt install ca-certificates curl gnupg lsb-release
-  ```
-  ### 2.添加Docker官方GPG密钥
-  ```
-  sudo mkdir -p /etc/apt/keyrings
-  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-  sudo chmod a+r /etc/apt/keyrings/docker.gpg
-  ```
-  ### 3.添加Docker官方APT源
-  ```
-  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-  ```
-  ### 4.再次更新软件包索引
-  ```
-  sudo apt update
-  ```
-  ### 5.安装Docker
-  ```
-  sudo apt install docker-ce docker-ce-cli containerd.io
-  ```
-
-  ## yum安装
-  ### 1.安装yum-utils
-  ```
-  sudo yum install -y yum-utils
-  ```
-  ### 2.添加Docker源
-  ```
-  sudo yum-config-manager \
-  > --add-repo \
-  > https://download.docker.com/linux/centos/docker-ce.repo
-  ```
-  ### 3.安装Docker
-  ```
-  sudo yum install -y docker-ce docker-ce-cli containerd.io
-  ```
-
-  注意，在openEuler环境安装docker时，可执行如下命令一键安装
+  本应用在Docker环境中运行，安装Docker执行如下命令
   ```
   yum install -y docker
   ```
+tags: |
+  Grafana镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
 
-  ## 脚本安装
-  ### 1.下载安装脚本
-  ```
-  curl -fsSL https://get.docker.com -o get-docker.sh
-  ```
-  ### 2.使用root权限执行脚本
-  ```
-  sudo sh get-docker.sh
-  ```
-  使用脚本安装方式时，如果用户要指定安装的docker版本，需要自行修改`get-docker.sh`的源码内容。
-
-  ## 验证
-  ```
-  sudo docker run hello-world
-  ```
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[7.5.11-22.03-lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/grafana/7.5.1/22.03-lts/Dockerfile)| Grafana 7.5.1 on openEuler 22.03-LTS | amd64, arm64 |
+  |[10.4.1-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/grafana/10.4.1/22.03-lts-sp3/Dockerfile)| Grafana 10.4.1 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
 
 download: |
-  获取容器镜像
+  拉取镜像到本地
   ```
-  docker pull openeuler/grafana:{TAG}
+  docker pull openeuler/grafana:{Tag}
   ```
 
-install: |
-  启动容器
-  ```
-  docker run --name my_grafana -d -p 3000:3000 openeuler/grafana:{TAG}
-  ```
-    用户可根据自身需求，自定义启动选项。
+usage: |
+  - 启动容器
+    ```
+    docker run -d --name my-grafana -p 3000:3000 openeuler/grafana:{Tag}
+    ```
+    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。`my-grafana`启动之后，通过`http://localhost:3000`访问服务。
+  
+  - 启动参数
+
+    |    Parameter   |  Description  |
+    |----------------|---------------|
+    | -p 3000:3000	   | 通过`localhost:3000`暴露实例 |
+    | -v /path/to/grafana/provisioning/files/:/etc/grafana/provisioning/ | 使用本地配置文件进行配置，详情查看[documentation](https://grafana.com/docs/grafana/latest/administration/provisioning/) |
+    | -v /path/to/persisted/data:/var/lib/grafana	| 用于保留运行数据，这样就不必为每个新启动的容器初始化新数据库 |
+
+  - 容器测试
+
+    查看运行日志
+    ```
+    docker logs -f my-grafana
+    ```
+
+    使用shell交互
+    ```
+    docker exec -it my-grafana /bin/bash
+    ```
 
 license: AGPL-3.0 license
 similar_packages:

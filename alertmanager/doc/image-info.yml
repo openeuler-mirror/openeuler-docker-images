@@ -16,33 +16,35 @@ tags: |
 download: |
   拉取镜像到本地
   ```
-  docker pull openeuler/alertmanager:{TAG}
+  docker pull openeuler/alertmanager:{Tag}
   ```
 
 usage: |
   - 启动容器
-  ```
-  docker run -d --name my-alertmanager -p 9093:9093 openeuler/alertmanager:{TAG}
-  ```
-    用户可根据自身需求选择对应版本的{TAG}、容器启动的选项。`my-alertmanager`启动之后，通过`http://localhost:9093`地址访问该实例。
+    ```
+    docker run -d --name my-alertmanager -p 9093:9093 openeuler/alertmanager:{Tag}
+    ```
+    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。`my-alertmanager`启动之后，通过`http://localhost:9093`地址访问该实例。
   
   - 启动参数
-  |    Parameter   |  Description  |
-  |----------------|---------------|
-  | -p 9093:9093  | 通过`localhost:9093`端口暴露`my-alertmanager`实例 |
-  | -v /path/to/alertmanager.yml:/etc/prometheus/alertmanager.yml | 指定本地配置文件进行配置 |
-  | -v /path/to/persisted/data:/alertmaanger | 用于保留运行数据，这样就不必为每个新启动的容器初始化新数据库 |
+
+    |    Parameter   |  Description  |
+    |----------------|---------------|
+    | -p 9093:9093  | 通过`localhost:9093`端口暴露`my-alertmanager`实例 |
+    | -v /path/to/alertmanager.yml:/etc/prometheus/alertmanager.yml | 指定本地配置文件进行配置 |
+    | -v /path/to/persisted/data:/alertmaanger | 用于保留运行数据，这样就不必为每个新启动的容器初始化新数据库 |
 
   - 容器测试
-  查看运行日志
-  ```
-  docker logs -f my-alertmanager
-  ```
 
-  使用shell交互
-  ```
-  docker exec -it my-alertmanager /bin/bash
-  ```
+    查看运行日志
+    ```
+    docker logs -f my-alertmanager
+    ```
+
+    使用shell交互
+    ```
+    docker exec -it my-alertmanager /bin/bash
+    ```
 
 license: Apache-2.0 license
 similar_packages:

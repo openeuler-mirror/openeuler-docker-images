@@ -16,37 +16,38 @@ tags: |
 download: |
   拉取镜像到本地
   ```
-  docker pull openeuler/cassandra:{TAG}
+  docker pull openeuler/cassandra:{Tag}
   ```
 
 usage: |
   - 启动容器
-  ```
-  docker run -d --name my-cassandra -p 7000:7000 -p 7001:7001 -p 7199:7199 -p 9042:9042 -p 9160:9160 openeuler/cassandra:{TAG}
-  ```
-    用户可根据自身需求选择对应版本的{TAG}、容器启动的选项。`my-cassandra`启动之后，通过`cqlsh localhost 9042`访问服务（使用`pip install cqlsh`安装cqlsh）。
+    ```
+    docker run -d --name my-cassandra -p 7000:7000 -p 7001:7001 -p 7199:7199 -p 9042:9042 -p 9160:9160 openeuler/cassandra:{Tag}
+    ```
+    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。`my-cassandra`启动之后，通过`cqlsh localhost 9042`访问服务（使用`pip install cqlsh`安装cqlsh）。
   
   - 启动参数
-  |    Parameter   |  Description  |
-  |----------------|---------------|
-  | -p 7000:7000	 | 暴露节点之间通信使用的端口                   |
-  | -p 7001:7001	 | 暴露节点之间TLS加密通信使用的端口             |
-  | -p 7199:7199	 | 暴露JMX管理端口                            |
-  | -p 9042:9042	 | 暴露CQL交互端口                            |
-  | -p 9160:9160	 | 暴露thrift服务端口                         |
-  | -v /local/path/to/data:/var/lib/cassandra	| 存储数据的位置  |
-  | -v /path/to/logs:/var/log/cassandra	      | 存储日志的位置  |
+    |    Parameter   |  Description  |
+    |----------------|---------------|
+    | -p 7000:7000	 | 暴露节点之间通信使用的端口                   |
+    | -p 7001:7001	 | 暴露节点之间TLS加密通信使用的端口             |
+    | -p 7199:7199	 | 暴露JMX管理端口                            |
+    | -p 9042:9042	 | 暴露CQL交互端口                            |
+    | -p 9160:9160	 | 暴露thrift服务端口                         |
+    | -v /local/path/to/data:/var/lib/cassandra	| 存储数据的位置  |
+    | -v /path/to/logs:/var/log/cassandra	      | 存储日志的位置  |
 
   - 容器测试
-  查看运行日志
-  ```
-  docker logs -f my-cassandra
-  ```
 
-  使用shell交互
-  ```
-  docker exec -it my-cassandra /bin/bash
-  ```
+    查看运行日志
+    ```
+    docker logs -f my-cassandra
+    ```
+
+    使用shell交互
+    ```
+    docker exec -it my-cassandra /bin/bash
+    ```
   
 license: Apache-2.0 license
 similar_packages:
