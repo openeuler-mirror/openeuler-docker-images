@@ -9,7 +9,7 @@ RUN yum update -y && \
     yum install -y git wget g++ make ncurses-devel cmake openssl openssl-devel libtirpc-devel rpcgen bison m4 && \
     mkdir -p /docker-entrypoint-initdb.d && \
     wget -O /usr/local/bin/gosu.asc "https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-${TARGETARCH}.asc" && \
-	  wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-${TARGETARCH}" && \
+	wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-${TARGETARCH}" && \
     wget -O mysql.tar.gz https://github.com/mysql/mysql-server/archive/refs/tags/mysql-${VERSION}.tar.gz && \
     mkdir -p /mysql && tar -xvf mysql.tar.gz -C /mysql --strip-components=1 && \
     mkdir -p /mysql/build && cd /mysql/build && \
@@ -38,6 +38,8 @@ RUN groupadd -r mysql && \
     mkdir -p /usr/local/mysql/data && \
     chown mysql:mysql /usr/local/mysql/data && \
     chmod 755 /usr/local/mysql/data && \
+    chmod 755 /usr/local/bin/entrypoint.sh && \
+    chmod 755 /usr/local/bin/gosu && \
     ln -s /usr/local/bin/entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT ["entrypoint.sh"]
