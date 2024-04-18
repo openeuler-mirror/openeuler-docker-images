@@ -1,82 +1,43 @@
-name: openjdk
+name: OpenJDK
 category: others
 description: OpenJDK（Open Java Development Kit）是一个自由开放源代码的Java开发工具包，提供了Java编译器（javac）、Java虚拟机（JVM）以及其他一些与Java开发相关的工具和库。
 environment: |
-  本应用以容器镜像的方式供用户使用，运行于预置docker的Linux环境。Docker的推荐安装方式如下：
-  ## apt安装
-  ### 1.更新系统软件包依赖
-  ```
-  sudo spt update
-  sudo apt install ca-certificates curl gnupg lsb-release
-  ```
-  ### 2.添加Docker官方GPG密钥
-  ```
-  sudo mkdir -p /etc/apt/keyrings
-  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-  sudo chmod a+r /etc/apt/keyrings/docker.gpg
-  ```
-  ### 3.添加Docker官方APT源
-  ```
-  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-  ```
-  ### 4.再次更新软件包索引
-  ```
-  sudo apt update
-  ```
-  ### 5.安装Docker
-  ```
-  sudo apt install docker-ce docker-ce-cli containerd.io
-  ```
-
-  ## yum安装
-  ### 1.安装yum-utils
-  ```
-  sudo yum install -y yum-utils
-  ```
-  ### 2.添加Docker源
-  ```
-  sudo yum-config-manager \
-  > --add-repo \
-  > https://download.docker.com/linux/centos/docker-ce.repo
-  ```
-  ### 3.安装Docker
-  ```
-  sudo yum install -y docker-ce docker-ce-cli containerd.io
-  ```
-
-  注意，在openEuler环境安装docker时，可执行如下命令一键安装
+  本应用在Docker环境中运行，安装Docker执行如下命令
   ```
   yum install -y docker
   ```
+tags: |
+  OpenJDK镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
 
-  ## 脚本安装
-  ### 1.下载安装脚本
-  ```
-  curl -fsSL https://get.docker.com -o get-docker.sh
-  ```
-  ### 2.使用root权限执行脚本
-  ```
-  sudo sh get-docker.sh
-  ```
-  使用脚本安装方式时，如果用户要指定安装的docker版本，需要自行修改`get-docker.sh`的源码内容。
-
-  ## 验证
-  ```
-  sudo docker run hello-world
-  ```
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[23_13-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/openjdk/23+13/22.03-lts-sp3/Dockerfile)| OpenJDK 23+13 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
 
 download: |
-  获取容器镜像
+  拉取镜像到本地
   ```
-  docker pull openeuler/openjdk:{TAG}
+  docker pull openeuler/openjdk:{Tag}
   ```
 
-install: |
-  启动容器
-  ```
-  docker run -it --name openjdk openeuler/openjdk:{TAG}
-  ```
-    用户可根据自身需求，自定义启动选项。
+usage: |
+  - 启动容器
+    ```
+    docker run -it --name my-openjdk openeuler/openjdk:{Tag}
+    ```
+    `openeuler/openjdk`镜像提供基础Java开发及运行环境，用户进入容器使用。
+
+  - 容器测试
+
+    使用以下方式验证镜像内安装的JAVA环境：
+    ```
+    docker run -it openeuler/openjdk:{Tag} java --version
+    ```
+    例如，`{Tag}`为`23_13-oe2203sp3`时，返回类似如下信息则证明环境正常：
+    ```
+    openjdk 23-ea 2024-09-17
+    OpenJDK Runtime Environment (build 23-ea+13-981)
+    OpenJDK 64-Bit Server VM (build 23-ea+13-981, mixed mode, sharing)
+    ```
 
 license: GPL-2.0 license
 similar_packages:

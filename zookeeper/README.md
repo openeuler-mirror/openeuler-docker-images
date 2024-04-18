@@ -25,7 +25,7 @@ docker run --name zookeeper --restart always -p 2181:2181 -d openeuler/zookeeper
 
 # Supported tags and respective Dockerfile links
 
-- 3.8.3-22.03-lts-sp3: zookeeper v3.8.3, openEuler 22.03-LTS-SP3
+- 3.8.3-oe2203sp3: zookeeper v3.8.3, openEuler 22.03-LTS-SP3
 
 ## Operating System
 Linux/Unix, ARM64 or x86-64 architecture.

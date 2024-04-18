@@ -19,10 +19,7 @@ We are using `buildx` in here to generate multi-arch images, see more in [Docker
 
 2. Run:
 ```shell
-docker run -d -p 8080:8080 -p 80:80 \
-      -v $PWD/traefik.yml:/etc/traefik/traefik.yml \
-      -v /var/run/docker.sock:/var/run/docker.sock \
-      openeuler/traefik:{TAG}
+docker run -d -p 80:80 openeuler/traefik:{TAG}
 ```
 
 # Supported tags and respective Dockerfile links
