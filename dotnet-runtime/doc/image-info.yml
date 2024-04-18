@@ -1,82 +1,81 @@
-name: dotnet-runtime
+name: Dotnet-runtime
 category: others
 description: Dotnet Runtime (.NET Runtime)是一个运行时环境，用于执行基于.NET平台的应用程序。它提供了必要的组件和功能，使得.NET应用程序能够在特定的操作系统上运行。
 environment: |
-  本应用以容器镜像的方式供用户使用，运行于预置docker的Linux环境。Docker的推荐安装方式如下：
-  ## apt安装
-  ### 1.更新系统软件包依赖
-  ```
-  sudo spt update
-  sudo apt install ca-certificates curl gnupg lsb-release
-  ```
-  ### 2.添加Docker官方GPG密钥
-  ```
-  sudo mkdir -p /etc/apt/keyrings
-  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-  sudo chmod a+r /etc/apt/keyrings/docker.gpg
-  ```
-  ### 3.添加Docker官方APT源
-  ```
-  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-  ```
-  ### 4.再次更新软件包索引
-  ```
-  sudo apt update
-  ```
-  ### 5.安装Docker
-  ```
-  sudo apt install docker-ce docker-ce-cli containerd.io
-  ```
-
-  ## yum安装
-  ### 1.安装yum-utils
-  ```
-  sudo yum install -y yum-utils
-  ```
-  ### 2.添加Docker源
-  ```
-  sudo yum-config-manager \
-  > --add-repo \
-  > https://download.docker.com/linux/centos/docker-ce.repo
-  ```
-  ### 3.安装Docker
-  ```
-  sudo yum install -y docker-ce docker-ce-cli containerd.io
-  ```
-
-  注意，在openEuler环境安装docker时，可执行如下命令一键安装
+  本应用在Docker环境中运行，安装Docker执行如下命令
   ```
   yum install -y docker
   ```
+tags: |
+  dotnet-runtime镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
 
-  ## 脚本安装
-  ### 1.下载安装脚本
-  ```
-  curl -fsSL https://get.docker.com -o get-docker.sh
-  ```
-  ### 2.使用root权限执行脚本
-  ```
-  sudo sh get-docker.sh
-  ```
-  使用脚本安装方式时，如果用户要指定安装的docker版本，需要自行修改`get-docker.sh`的源码内容。
-
-  ## 验证
-  ```
-  sudo docker run hello-world
-  ```
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[8.0.3-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/dotnet-runtime/8.0.3/22.03-lts-sp3/Dockerfile)| Dotnet-runtime 8.0.3 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
 
 download: |
-  获取容器镜像
+  拉取镜像到本地
   ```
-  docker pull openeuler/dotnet-runtime:{TAG}
+  docker pull openeuler/dotnet-runtime:{Tag}
   ```
 
-install: |
-  启动容器
-  ```
-  docker run -it --rm --name dotnet-runtime openeuler/dotnet-runtime:{TAG}
-  ```
-    用户可根据自身需求，自定义启动选项。
+usage: |
+  - 启动容器
+    ```
+    docker run -d --name my-dotnet-runtime openeuler/dotnet-runtime:{Tag}
+    ```
+    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。`my-dotnet-runtime`启动之后，通过`http://localhost:8080`访问服务。
+  
+  - 使用示例
+
+    以HelloWorld应用为例说明该容器镜像使用方法
+    1. 创建HelloWorld.csproj文件并填入以下内容
+        ```
+        <Project Sdk="Microsoft.NET.Sdk">
+          <PropertyGroup>
+            <OutputType>Exe</OutputType>
+            <TargetFramework>net{x.x}</TargetFramework>
+            <ImplicitUsings>enable</ImplicitUsings>
+            <Nullable>enable</Nullable>
+          </PropertyGroup>
+        </Project>
+        ```
+        注意，上面`{x.x}`需要替换成相应的dotnet版本号。
+
+    2. 创建Program.cs文件并填入以下内容
+        ```
+        Console.WriteLine("Hello, World!");
+        ```
+
+    3. 发布应用
+        ```
+        dotnet publish -c Release -o /app
+        ```
+        执行过程会出现以下关键信息：
+        ```
+        Determining projects to restore...
+        Restored /tmp/demo/HelloWorld.csproj (in 59 ms).
+        HelloWorld -> /tmp/demo/bin/Release/net{x.x}/HelloWorld.dll
+        HelloWorld -> /tmp/demo/bin/Release/net{x.x}/publish/
+        ```
+
+    4. 使用`openeuler/dotnet-runtime:{Tag}`运行该应用
+        ```
+        docker run --rm -v $PWD/app:/app openeuler/dotnet-runtime:{Tag} /app/HelloWorld.dll 
+        ```
+        注意，发布应用使用的dotnet版本`{x.x}`必须和`{Tag}`所指向的dotnet版本一致。
+
+  - 容器测试
+
+    查看运行日志
+    ```
+    docker logs -f my-dotnet-runtime
+    ```
+
+    运行启动shell会话
+    ```
+    docker run -it --entrypoint /bin/bash --name my-dotnet-runtime openeuler/dotnet-runtime:{Tag}
+    ```
 
 license: MIT license
 similar_packages:

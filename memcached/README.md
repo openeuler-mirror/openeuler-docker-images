@@ -25,6 +25,7 @@ docker run --name my_memcached -d -p 11211:11211 openeuler/memcached:$VERSION
 # Supported tags and respective Dockerfile links
 
 - 1.6.12-22.03-lts: memcached v1.6.12, openEuler 22.03 LTS
+- 1.6.24-oe2203sp3: memcached v1.6.24, openEuler 22.03 LTS SP3
 
 ## Operating System
 Linux/Unix, ARM64 or x86-64 architecture.

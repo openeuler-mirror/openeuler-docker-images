@@ -16,32 +16,34 @@ tags: |
 download: |
   拉取镜像到本地
   ```
-  docker pull openeuler/bind9:{TAG}
+  docker pull openeuler/bind9:{Tag}
   ```
 
 usage: |
   - 启动容器
-  ```
-  docker run -d --name my-bind9 -p 30053:53 openeuler/bind9:{TAG}
-  ```
-    用户可根据自身需求选择对应版本的{TAG}、容器启动的选项。`my-bind9`启动之后，通过`http://localhost:30053`地址访问该实例。
+    ```
+    docker run -d --name my-bind9 -p 30053:53 openeuler/bind9:{Tag}
+    ```
+    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。`my-bind9`启动之后，通过`http://localhost:30053`地址访问该实例。
   
   - 启动参数
-  |    Parameter   |  Description  |
-  |----------------|---------------|
-  | -p 30053:53	   | 通过`localhost:30053`暴露实例 |
-  | -v /path/to/bind/configuration:/etc/named.conf | 使用本地配置文件进行配置 |
+
+    |    Parameter   |  Description  |
+    |----------------|---------------|
+    | -p 30053:53	   | 通过`localhost:30053`暴露实例 |
+    | -v /path/to/bind/configuration:/etc/named.conf | 使用本地配置文件进行配置 |
 
   - 容器测试
-  查看运行日志
-  ```
-  docker logs -f my-bind9
-  ```
 
-  使用shell交互
-  ```
-  docker exec -it my-bind9 /bin/bash
-  ```
+    查看运行日志
+    ```
+    docker logs -f my-bind9
+    ```
+
+    使用shell交互
+    ```
+    docker exec -it my-bind9 /bin/bash
+    ```
 
 license: MPL-2.0 license
 similar_packages:
