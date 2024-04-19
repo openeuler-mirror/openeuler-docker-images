@@ -26,7 +26,7 @@ The default postgres user and database are created in the entrypoint with initdb
 
 ## connect database using gsql from os
 ```shell
-docker run --name my_postgresql -d -e POSTGRES_PASSWORD=PostgreSQL@123 -p5433:5432 openeuler/postgres:13.3
+docker run --name my_postgresql -d -e POSTGRES_PASSWORD=PostgreSQL@123 -p 5433:5432 openeuler/postgres:13.3
 psql -d postgres -U postgres -W 'PostgreSQL@123' -h host_ip -p 5433
 ```
 
@@ -38,6 +38,7 @@ docker run --name my_postgresql -d -e POSTGRES_PASSWORD=PostgreSQL@123 -v /postg
 # Supported tags and respective Dockerfile links
 
 - 13.3-22.03-lts: postgres v13.3, openEuler 22.03 LTS
+- 16.2-oe2203sp3: postgres v16.2, openEuler 22.03 LTS SP3
 
 ## Operating System
 Linux/Unix, ARM64 or x86-64 architecture.

@@ -1,91 +1,69 @@
-name: redis
+name: Redis
 category: database
-description: Redis（Remote Dictionary Server）是一个使用 ANSI C 编写的开源、支持网络、基于内存、分布式、可选持久性的键值对存储数据库。
+description: Redis（Remote Dictionary Server）是一个使用ANSI C编写的开源、支持网络、基于内存、分布式、可选持久性的键值对存储数据库。
 environment: |
-  本应用以容器镜像的方式供用户使用，运行于预置docker的Linux环境。Docker的推荐安装方式如下：
-  ## apt安装
-  ### 1.更新系统软件包依赖
-  ```
-  sudo spt update
-  sudo apt install ca-certificates curl gnupg lsb-release
-  ```
-  ### 2.添加Docker官方GPG密钥
-  ```
-  sudo mkdir -p /etc/apt/keyrings
-  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-  sudo chmod a+r /etc/apt/keyrings/docker.gpg
-  ```
-  ### 3.添加Docker官方APT源
-  ```
-  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-  ```
-  ### 4.再次更新软件包索引
-  ```
-  sudo apt update
-  ```
-  ### 5.安装Docker
-  ```
-  sudo apt install docker-ce docker-ce-cli containerd.io
-  ```
-
-  ## yum安装
-  ### 1.安装yum-utils
-  ```
-  sudo yum install -y yum-utils
-  ```
-  ### 2.添加Docker源
-  ```
-  sudo yum-config-manager \
-  > --add-repo \
-  > https://download.docker.com/linux/centos/docker-ce.repo
-  ```
-  ### 3.安装Docker
-  ```
-  sudo yum install -y docker-ce docker-ce-cli containerd.io
-  ```
-
-  注意，在openEuler环境安装docker时，可执行如下命令一键安装
+  本应用在Docker环境中运行，安装Docker执行如下命令
   ```
   yum install -y docker
   ```
+tags: |
+  Redis镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
 
-  ## 脚本安装
-  ### 1.下载安装脚本
-  ```
-  curl -fsSL https://get.docker.com -o get-docker.sh
-  ```
-  ### 2.使用root权限执行脚本
-  ```
-  sudo sh get-docker.sh
-  ```
-  使用脚本安装方式时，如果用户要指定安装的docker版本，需要自行修改`get-docker.sh`的源码内容。
-
-  ## 验证
-  ```
-  sudo docker run hello-world
-  ```
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[6.2.7-22.03-lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/redis/6.2.7/22.03-lts/Dockerfile)| Redis 6.2.7 on openEuler 22.03-LTS | amd64, arm64 |
+  |[7.2.4-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/redis/7.2.4/22.03-lts-sp3/Dockerfile)| Redis 7.2.4 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
 
 download: |
-  获取容器镜像
+  拉取镜像到本地
   ```
-  docker pull openeuler/redis:{TAG}
+  docker pull openeuler/redis:{Tag}
   ```
 
-install: |
-  启动容器
-  ```
-  docker run --name my-redis -d -p 6379:6379 openeuler/redis:{TAG}
-  ```
-  用户可根据自身需求，自定义启动选项。
+usage: |
+  - 启动容器
+    ```
+    docker run -d --name my-redis -p 6379:6379 openeuler/redis:{Tag}
+    ```
+    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。
+    
+    `my-redis`启动之后，通过`redis-cli`（安装命令：`yum install -y redis`）访问Redis服务：
+    ```
+    redis-cli -h 127.0.0.1 -p 6379
+    ```
+  
+  - 启动参数
+
+    |    Parameter   |  Description  |
+    |----------------|---------------|
+    | -p 6379:6379	 | 暴露Redis服务端口 |
+    | -e ALLOW_EMPTY_PASSWORD=yes	 | 允许不使用密码连接Redis服务器 |
+    | -e REDIS_PASSWORD	 | 设置访问密码 |
+    | -e REDIS_RANDOM_PASSWORD=1 | 允许容器启动时生成随机访问密码，可通过`docker logs`查看生成的密码 |
+    | -e REDIS_ALLOW_REMOTE_CONNECTIONS=yes	 | 允许通过远程连接访问Redis服务，而不仅仅是侦听`127.0.0.1` |
+    | -e REDIS_EXTRA_FLAGS	 | 指定初始化时传递给redis-server的额外标志 |
+    | -v /path/to/redis.conf:/etc/redis/redis.conf	 | 指定使用的配置文件redis.conf，如果要启用TLS模式，请注释掉`port 6379`行并取消注释`# port 0`和`# tls-port 6379`行。 |
+
+  - 容器测试
+
+    查看运行日志
+    ```
+    docker logs -f my-redis
+    ```
+
+    使用shell交互
+    ```
+    docker exec -it my-redis /bin/bash
+    ```
 
 license: BSD-3-Clause license
 similar_packages:
-  - Memcached: 一个高性能的内存对象缓存系统，与 Redis 类似，但只能缓存简单的键值对。
-  - Apache Cassandra: 一个分布式的 NoSQL 数据库系统，可以提供高可用性和高可扩展性。
+  - Memcached: 一个高性能的内存对象缓存系统，与Redis类似，但只能缓存简单的键值对。
+  - Apache Cassandra: 一个分布式的NoSQL数据库系统，可以提供高可用性和高可扩展性。
   - Apache Ignite: 一个内存中的数据网格系统，可以提供分布式缓存和计算。
-  - Aerospike: 一个高性能的 NoSQL 数据库系统，可以提供高可用性和可扩展性。
-  - Couchbase: 一个分布式 NoSQL 数据库系统，可以提供高可用性和高扩展性，同时还提供了 Memcached 兼容接口。
-  - Tarantool: 一个内存中的 NoSQL 数据库系统，可以提供高性能和高可用性，同时还提供了 Lua 脚本支持。
+  - Aerospike: 一个高性能的NoSQL数据库系统，可以提供高可用性和可扩展性。
+  - Couchbase: 一个分布式NoSQL数据库系统，可以提供高可用性和高扩展性，同时还提供了Memcached兼容接口。
+  - Tarantool: 一个内存中的NoSQL数据库系统，可以提供高性能和高可用性，同时还提供了Lua脚本支持。
 dependency:
   - acl
   - glibc-devel

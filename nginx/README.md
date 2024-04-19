@@ -26,6 +26,7 @@ docker run -d openeuler/nginx:$VERSION
 
 - 1.16.1-20.03-lts-sp1: nginx v1.16.1, openEuler 20.03 LTS SP1
 - 1.21.5-22.03-lts: nginx v1.21.5, openEuler 22.03 LTS
+- 1.25.4-22.03-lts-sp3: nginx v1.25.4, openEuler 22.03 LTS SP3
 
 ## Operating System
 Linux/Unix, ARM64 or x86-64 architecture.

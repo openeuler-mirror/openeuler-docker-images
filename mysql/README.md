@@ -19,9 +19,9 @@ We are using `buildx` in here to generate multi-arch images, see more in [Docker
 
 2. Run:
 ```shell
-docker run --name mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d openeuler/mysql:{TAG}
+docker run -d --name my-mysql -p 30306:3306 -e MYSQL_ROOT_PASSWORD=openEuler:S3cr3t/ openeuler/mysql:{Tag}
 ```
-where `mysql` is the name you want to assign to your container, `my-secret-pw` is the password to be set for the MySQL root user.
+where `mysql` is the name you want to assign to your container, `openEuler:S3cr3t/` is the password to be set for the MySQL root user.
 
 # Supported tags and respective Dockerfile links
 

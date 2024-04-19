@@ -1,82 +1,63 @@
-name: postgres
+name: Postgres
 category: database
-description: postgres是一个功能强大、灵活且高度可定制的数据库管理系统，广泛应用于金融、物流、制造、电信等领域。
+description: Postgres是一个功能强大、灵活且高度可定制的数据库管理系统，广泛应用于金融、物流、制造、电信等领域。
 environment: |
-  本应用以容器镜像的方式供用户使用，运行于预置docker的Linux环境。Docker的推荐安装方式如下：
-  ## apt安装
-  ### 1.更新系统软件包依赖
-  ```
-  sudo spt update
-  sudo apt install ca-certificates curl gnupg lsb-release
-  ```
-  ### 2.添加Docker官方GPG密钥
-  ```
-  sudo mkdir -p /etc/apt/keyrings
-  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-  sudo chmod a+r /etc/apt/keyrings/docker.gpg
-  ```
-  ### 3.添加Docker官方APT源
-  ```
-  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-  ```
-  ### 4.再次更新软件包索引
-  ```
-  sudo apt update
-  ```
-  ### 5.安装Docker
-  ```
-  sudo apt install docker-ce docker-ce-cli containerd.io
-  ```
-
-  ## yum安装
-  ### 1.安装yum-utils
-  ```
-  sudo yum install -y yum-utils
-  ```
-  ### 2.添加Docker源
-  ```
-  sudo yum-config-manager \
-  > --add-repo \
-  > https://download.docker.com/linux/centos/docker-ce.repo
-  ```
-  ### 3.安装Docker
-  ```
-  sudo yum install -y docker-ce docker-ce-cli containerd.io
-  ```
-
-  注意，在openEuler环境安装docker时，可执行如下命令一键安装
+  本应用在Docker环境中运行，安装Docker执行如下命令
   ```
   yum install -y docker
   ```
+tags: |
+  Postgres镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
 
-  ## 脚本安装
-  ### 1.下载安装脚本
-  ```
-  curl -fsSL https://get.docker.com -o get-docker.sh
-  ```
-  ### 2.使用root权限执行脚本
-  ```
-  sudo sh get-docker.sh
-  ```
-  使用脚本安装方式时，如果用户要指定安装的docker版本，需要自行修改`get-docker.sh`的源码内容。
-
-  ## 验证
-  ```
-  sudo docker run hello-world
-  ```
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[13.3-22.03-lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/postgres/13.3/22.03-lts/Dockerfile)| Postgres 13.3 on openEuler 22.03-LTS | amd64, arm64 |
+  |[16.2-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/postgres/1.25.4/22.03-lts-sp3/Dockerfile)| Postgres 16.2 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
 
 download: |
-  获取容器镜像
+  拉取镜像到本地
   ```
-  docker pull openeuler/postgres:latest
+  docker pull openeuler/postgres:{Tag}
   ```
 
-install: |
-  启动容器
-  ```
-  docker run --name postgres -d openeuler/postgres:latest
-  ```
-  用户可根据自身需求，自定义启动选项。
+usage: |
+  - 启动容器
+    ```
+    docker run -d --name my-postgres -p 30432:5432 -e POSTGRES_PASSWORD=PostgreSQL@123 openeuler/postgres:{Tag}
+    ```
+    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。默认的postgres用户和数据库已经在entrypoint.sh中使用initdb创建。
+    
+    容器启动后，可在本地通过`psql`命令行（安装命令：yum install -y postgresql）访问PostgreSQL服务:
+    ```
+    psql -d postgres -U postgres -W -h 127.0.0.1 -p 30432
+    ```
+  
+  - 启动参数
+
+    |    Parameter   |  Description  |
+    |----------------|---------------|
+    | -p 30432:5432	       | 暴露PostgreSQL服务端口 |
+    | -e POSTGRES_PASSWORD | 设置超级用户（默认是`postgres`）的访问密码。需要注意的是，连接到同一主机中的数据库，不需要密码，但要通过外部主机（例如容器）访问它，则需要密码。此选项是强制性的，不能为空。 |
+    | -e POSTGRES_USER     | 创建一个具有超级用户权限的新用户，通过`POSTGRES_PASSWORD`设置其访问密码 |
+    | -e POSTGRES_INITDB_ARGS="--data-checksums" | 传递参数到容器内容，使postgres initdb调用，如`initdb --data-checksums` |
+    | -e POSTGRES_DB=postgres | 设置默认数据库名称为`postgres` |
+    | -e POSTGRES_INITDB_WALDIR | 设置Postgres事务日志的位置。默认情况下，它存储在主Postgres数据文件夹 (PGDATA) 的子目录中。 |
+    | -e POSTGRES_HOST_AUTH_METHOD=trust | 为所有数据库、所有用户和所有地址的主机连接设置身份验证方法。如果使用此选项，以下内容将被添加到pg_hba.conf中：`host all all all $POSTGRES_HOST_AUTH_METHOD`。 |
+    | -e PGDATA=/path/to/location | 使用本地配置文件 |
+    | -v /path/to/postgresql.conf:/etc/postgresql/postgresql.conf | 指定使用的数据库配置文件。默认为`/var/lib/postgresql/data`。 |
+    | -v /path/to/persisted/data:/var/lib/postgresql/data | 保留运行数据，这样就不必为每个新启动的容器初始化新数据库 |
+
+  - 容器测试
+
+    查看运行日志
+    ```
+    docker logs -f my-postgres
+    ```
+
+    使用shell交互
+    ```
+    docker exec -it my-postgres /bin/bash
+    ```
 
 license: PostgreSQL license
 similar_packages:

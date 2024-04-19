@@ -1,0 +1,4 @@
+13.3-22.03-lts:
+  postgres/13.3/22.03-lts/Dockerfile
+16.2-oe2203sp3:
+  postgres/16.2/22.03-lts-sp3/Dockerfile

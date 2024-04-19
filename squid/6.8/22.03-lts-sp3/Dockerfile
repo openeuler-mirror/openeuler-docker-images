@@ -24,6 +24,7 @@ COPY entrypoint.sh /usr/local/bin/
 RUN sed -i '$a\cache_effective_user squid' $SQUID_PREFIX/etc/squid.conf && \
     sed -i '$a\cache_effective_group squid' $SQUID_PREFIX/etc/squid.conf && \
     sed -i '$a\visible_hostname 192.168.0.101' $SQUID_PREFIX/etc/squid.conf && \
+    sed -i '$a\max_filedescriptors 65536' $SQUID_PREFIX/etc/squid.conf && \
     sed -i '$a\cache_dir ufs /usr/local/squid/var/cache/squid 100 16 256' $SQUID_PREFIX/etc/squid.conf && \
     chmod 755 /usr/local/bin/entrypoint.sh
 
