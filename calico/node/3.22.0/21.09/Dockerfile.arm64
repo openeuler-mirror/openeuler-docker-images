@@ -1,0 +1,157 @@
+# Modified for openEuler Based Image
+#
+# Original:
+# Copyright (c) 2015-2021 Tigera, Inc. All rights reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+ARG ARCH=aarch64
+ARG GIT_VERSION=unknown
+ARG RUNIT_VER=2.1.2
+ARG QEMU_IMAGE=calico/go-build:v0.55-arm64
+ARG BIRD_IMAGE=calico/bird:latest
+
+FROM calico/bpftool:v5.0-arm64 as bpftool
+FROM ${QEMU_IMAGE} as qemu
+FROM ${BIRD_IMAGE} as bird
+
+FROM openeuler/openeuler:21.09 as openeuler
+
+MAINTAINER Reza Ramezanpour <reza@projectcalico.org>
+# Enable non-native builds of this image on an amd64 hosts.
+# This must be the first RUN command in this file!
+COPY --from=qemu /usr/bin/qemu-*-static /usr/bin/
+
+ARG ARCH
+ARG RUNIT_VER
+
+# Install build dependencies and security updates.
+RUN dnf install -y 'dnf-command(config-manager)' && \
+    # Enable PowerTools repo for '-devel' packages
+    yum install -y rpm-build dnf-utils make && \
+    # Need these to build runit.
+    yum install -y wget glibc-static gcc
+
+# runit is not available in openeuler, ubi or CentOS repos so build it.
+RUN wget -P /tmp http://smarden.org/runit/runit-${RUNIT_VER}.tar.gz && \
+    gunzip /tmp/runit-${RUNIT_VER}.tar.gz && \
+    tar -xpf /tmp/runit-${RUNIT_VER}.tar -C /tmp && \
+    cd /tmp/admin/runit-${RUNIT_VER}/ && \
+    # runit compilation trigger a false positive error halting the process.
+    sed -i "s/runit-init/\/tmp\/admin\/runit-2.1.2\/compile\/runit-init/" src/runit-init.dist && \
+    sed -i "s/runsv/\/tmp\/admin\/runit-2.1.2\/compile\/runsv/" src/runsv.dist && \
+    sed -i "s/runsvchdir/\/tmp\/admin\/runit-2.1.2\/compile\/runsvchdir/" src/runsvchdir.dist && \
+    sed -i "s/runsvdir/\/tmp\/admin\/runit-2.1.2\/compile\/runsvdir/" src/runsvdir.dist && \
+    sed -i "s/svlogd/\/tmp\/admin\/runit-2.1.2\/compile\/svlogd/" src/svlogd.dist && \
+    sed -i "s/utmpset/\/tmp\/admin\/runit-2.1.2\/compile\/utmpset/" src/utmpset.dist && \
+    package/install
+
+ARG UBI_DIGEST
+FROM openeuler/openeuler:21.09 as base
+ARG ARCH
+ARG GIT_VERSION
+ARG RUNIT_VER
+
+# Enable non-native builds of this image on an amd64 hosts.
+# This must be the first RUN command in this file!
+COPY --from=qemu /usr/bin/qemu-*-static /usr/bin/
+
+# Update base packages to pick up security updates.  Must do this before adding the centos repo.
+RUN yum update -y
+
+# Copy in runit binaries
+COPY --from=openeuler  /tmp/admin/runit-${RUNIT_VER}/command/* /usr/local/bin/
+
+RUN touch /in-the-container && \
+    dnf install -y \
+    # Don't install copious docs.
+    --setopt=tsflags=nodocs \
+    # Needed for iptables
+    libpcap libmnl libnfnetlink libnetfilter_conntrack \
+    ipset \
+    iputils \
+    # Need arp
+    net-tools \
+    # Need kmod to ensure ip6tables-save works correctly
+    kmod \
+    # Also needed (provides utilities for browsing procfs like ps)
+    procps-ng \
+    iproute \
+    iproute-tc \
+    iptables-libs \
+    libnftnl \
+    iptables \
+    # Needed for conntrack
+    libnetfilter_cthelper libnetfilter_cttimeout libnetfilter_queue \
+    conntrack-tools \
+    # Needed for runit startup script
+    which \
+    # Needed for the cleanup script
+    findutils && \
+    dnf clean all -y && \
+    # Set alternatives
+    alternatives --install /usr/sbin/iptables iptables /usr/sbin/iptables-legacy 1 && \
+    alternatives --install /usr/sbin/ip6tables ip6tables /usr/sbin/ip6tables-legacy 1
+
+# Add mitigation for https://access.redhat.com/security/cve/CVE-2019-15718
+# This can be removed once we update to ubi:8.1
+RUN systemctl disable systemd-resolved
+
+# Copy our bird binaries in
+COPY --from=bird /bird* /bin/
+
+# Copy in the filesystem - this contains felix, calico-bgp-daemon, licenses, etc...
+COPY filesystem/ /filesystem
+
+RUN cp -arf /filesystem/* /; cp /filesystem/sbin/* /sbin/; rm -rf /filesystem
+
+# # On UBI, /sbin/ is a symlink so the above copy clobbers it; restore /sbin as symlinks (some binaries and
+# # scripts hard-code /sbin/xyz, for example.
+# RUN ln -s /usr/sbin/* /sbin/
+
+COPY --from=bpftool /bpftool /bin
+
+# Copy in the calico-node binary
+COPY dist/bin/calico-node-arm64 /bin/calico-node
+
+# # Clean out as many files as we can from the filesystem.  We no longer need dnf or the platform python install
+# # or any of its dependencies.
+# ADD clean-up-filesystem.sh /
+
+# # Allowing qemu binaries to persist.
+# RUN sed -i 's#zmore#zmore\n\tqemu\n#m' clean-up-filesystem.sh
+# RUN /clean-up-filesystem.sh
+
+# Copy everything into a fresh scratch image so that naive CVE scanners don't pick up binaries and libraries
+# that have been removed in our later layers.
+FROM scratch
+COPY --from=base / /
+
+# Add in top-level license file
+COPY LICENSE /licenses
+
+# Delete qemu binaries
+RUN rm /usr/bin/qemu-*-static
+
+CMD ["start_runit"]
+
+# Required labels for certification
+LABEL name="Calico node" \
+      vendor="Project Calico" \
+      version=$GIT_VERSION \
+      release="1" \
+      summary="Calico node handles networking and policy for Calico" \
+      description="Calico node handles networking and policy for Calico" \
+      maintainer="reza@tigera.io"
+
+# Tell sv where to find the services.
+ENV SVDIR=/etc/service/enabled
