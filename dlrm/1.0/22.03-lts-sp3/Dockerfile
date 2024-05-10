@@ -4,7 +4,7 @@ RUN yum install -y python3 python3-pip git
 
 RUN git clone https://github.com/facebookresearch/dlrm.git /opt/dlrm
 
-RUN pip3 install -r /opt/dlrm/requirements.txt
+RUN pip3 install --default-timeout=10000 -r /opt/dlrm/requirements.txt
 
 RUN pip3 install tensorboard
 
