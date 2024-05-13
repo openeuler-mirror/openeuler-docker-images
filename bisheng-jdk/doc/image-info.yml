@@ -1,0 +1,69 @@
+name: BiSheng JDK
+category: others
+description: BiSheng JDK（BiSheng Java Development Kit），即毕昇JDK，是华为内部基于OpenJDK定制的Huawei JDK的开源版本，作为OpenJDK的下游，是一款高性能、可用于生产环境的OpenJDK发行版。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  BiSheng JDK镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[17.0.10-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/bisheng-jdk/17.0.10/22.03-lts-sp3/Dockerfile)| BiSheng JDK 17.0.10 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+
+  注意，以下`{Tag}`的值按照需求，替换为上述表格中的tag内容。
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/bisheng-jdk:{Tag}
+  ```
+
+usage: |
+  `openeuler/bisheng-jdk`镜像提供基于OpenJDK定制的Java开发及运行环境，使用方式如下
+  - 运行JAVA应用
+    使用`openeuler/bisheng-jdk`容器作为构建和运行时环境，可按照以下内容编译并运行项目
+    ```
+    # Dockerfile
+    FROM openeuler/bisheng-jdk:{Tag}
+
+    COPY . /usr/src/myapp
+    WORKDIR /usr/src/myapp
+    RUN javac Main.java
+    CMD ["java", "Main"]
+    ```
+    
+    构建并运行应用
+    ```
+    docker build -t my-java-app .
+    docker run -it --rm --name my-running-app my-java-app
+    ```
+
+  - 编译JAVA源码
+
+    只编译源码不运行，可采用如下方式
+    ```
+    docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp openeuler/bisheng-jdk:{Tag} javac Main.java
+    ```
+    这会将当前目录作为卷添加到容器中，将工作目录设置为该卷，然后运行执行`javac Main.java`编译`Main.java`中的代码。
+
+  - 容器测试
+
+    使用以下方式验证镜像内安装的JAVA环境：
+    ```
+    docker run -it openeuler/bisheng-jdk:{Tag} java --version
+    ```
+    例如，`{Tag}`为`17.0.10-oe2203sp3`时，返回类似如下信息则证明环境正常：
+    ```
+    openjdk 17.0.10 2024-01-16
+    OpenJDK Runtime Environment BiSheng (build 17.0.10+11)
+    OpenJDK 64-Bit Server VM BiSheng (build 17.0.10+11, mixed mode, sharing)
+    ```
+
+license: GPL-2.0 license
+similar_packages:
+  - N/A
+dependency:
+  - N/A
