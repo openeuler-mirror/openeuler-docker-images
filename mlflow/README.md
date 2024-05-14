@@ -10,7 +10,7 @@
 
 # Build reference
 
-1. Build images and push:
+1. Build images and push: (you may need to replace "openeuler" with your own repo name.)
 ```shell
 docker buildx build -t "openeuler/mlflow:$TAG" --platform linux/amd64,linux/arm64 . --push
 ```
@@ -24,14 +24,9 @@ Specify a port in your host so that you can access the Web UI at 127.0.0.1:{YOUR
 docker run -it --name mlflow -p {YOUR_PORT}:5000 openeuler/mlflow:{TAG}
 ```
 
-If you want to store the data permanently, add the parameter "-v" and specify a directory in your host.
+If you want to store the data permanently, use parameter ```-v``` to specify a volume such as ```mlruns```.
 ```shell
-docker run -it --name mlflow -p {YOUR_PORT}:5000 -v {DIR_IN_YOUR_HOST}:/mlflow openeuler/mlflow:{TAG}
-```
-Please make sure the DIR_IN_YOUR_HOST is writable. Maybe you should run the commands below before the ```docker run -v```.
-```shell
-mkdir {DIR_IN_YOUR_HOST}
-chmod 777 {DIR_IN_YOUR_HOST}
+docker run -it --name mlflow -p {YOUR_PORT}:5000 -v mlruns:/mlflow openeuler/mlflow:{TAG}
 ```
 
 # Supported tags and respective Dockerfile links
