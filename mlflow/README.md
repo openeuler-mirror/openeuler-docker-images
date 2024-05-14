@@ -18,8 +18,20 @@ docker buildx build -t "openeuler/mlflow:$TAG" --platform linux/amd64,linux/arm6
 We are using `buildx` in here to generate multi-arch images, see more in [Docker Buildx](https://docs.docker.com/buildx/working-with-buildx/)
 
 2. Run:
+
+Specify a port in your host so that you can access the Web UI at 127.0.0.1:{YOUR_PORT}.
 ```shell
-docker run -it --name mlflow openeuler/mlflow:{TAG}
+docker run -it --name mlflow -p {YOUR_PORT}:5000 openeuler/mlflow:{TAG}
+```
+
+If you want to store the data permanently, add the parameter "-v" and specify a directory in your host.
+```shell
+docker run -it --name mlflow -p {YOUR_PORT}:5000 -v {DIR_IN_YOUR_HOST}:/mlflow openeuler/mlflow:{TAG}
+```
+Please make sure the DIR_IN_YOUR_HOST is writable. Maybe you should run the commands below before the ```docker run -v```.
+```shell
+mkdir {DIR_IN_YOUR_HOST}
+chmod 777 {DIR_IN_YOUR_HOST}
 ```
 
 # Supported tags and respective Dockerfile links
