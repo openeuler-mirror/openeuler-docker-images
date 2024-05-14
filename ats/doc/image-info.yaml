@@ -1,0 +1,59 @@
+name: ATS
+category: others
+description: ATS(Apache Traffic Server)是一个高性能的、模块化的HTTP代理和缓存服务器。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  ATS镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[8.0.5-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/ats/8.0.5/22.03-lts-sp3/Dockerfile)| ATS 8.0.5 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/ats:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+    ```
+    docker run -d --name my-ats -p 8080:8080 openeuler/ats:{Tag}
+    ```
+    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。
+  
+  - 启动参数
+
+    |    Parameter   |  Description  |
+    |----------------|---------------|
+    | -p 8080:8080	   | 通过`localhost:8080`暴露实例 |
+    | -v /path/to/ats/cacheConfig:/opt/trafficServer/etc/trafficserver/cache.config | 配置缓存策略 |
+    | -v /path/to/ats/remapConfig:/opt/trafficServer/etc/trafficserver/remap.config | 配置转发策略 |
+
+
+  - 容器测试
+
+    查看运行日志
+    ```
+    docker logs -f my-ats
+    ```
+
+    使用shell交互
+    ```
+    docker exec -it my-ats /bin/bash
+    ```
+
+license: Apache-2.0 license
+similar_packages:
+  - Nginx: Nginx (engine x) 是一个高性能的HTTP和反向代理web服务器，同时也提供了IMAP/POP3/SMTP服务。
+  - Squid: Squid cache（简称为 Squid）是一个流行的自由软件（GNU 通用公共许可证）的代理服务器和 Web 缓存服务器。
+dependency:
+  - openssl-devel
+  - libtool
+  - pcre-devel
+  - tcl-devel
+  - ncurses-devel
