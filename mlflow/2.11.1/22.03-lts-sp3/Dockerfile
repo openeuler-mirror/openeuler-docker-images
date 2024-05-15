@@ -1,7 +1,6 @@
-FROM openeuler/openeuler:22.03-lts-sp3
+ARG BASE=openeuler/openeuler:22.03-lts-sp3
 
-RUN ln -sf /usr/share/zoneinfo/UTC /etc/localtime && \
-    sed -i "s/TMOUT=300/TMOUT=0/g" /etc/bashrc
+FROM ${BASE}
 
 ARG VERSION=2.11.1
 
