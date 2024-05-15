@@ -1,5 +1,5 @@
 name: BWA
-category: others
+category: HPCs
 description: BWA(Burrow-Wheeler Aligner)是用于将低分叉序列比对到大的参考基因组比如人基因组的软件包。
 environment: |
   本应用在Docker环境中运行，安装Docker执行如下命令
