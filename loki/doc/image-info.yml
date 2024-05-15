@@ -15,7 +15,7 @@ tags: |
 
 download: |
   拉取镜像到本地
-  ``
+  ```
   docker pull openeuler/loki:{Tag}
   ```
 
