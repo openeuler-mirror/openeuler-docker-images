@@ -1,0 +1,49 @@
+name: BWA
+category: HPCs
+description: BWA(Burrow-Wheeler Aligner)是用于将低分叉序列比对到大的参考基因组比如人基因组的软件包。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  BWA镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[0.7.18-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/bwa/0.7.18/22.03-lts-sp3/Dockerfile)| BWA 0.7.18 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/bwa:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+    ```
+    docker run -d --name my-bwa openeuler/bwa:{Tag}
+    ```
+    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。
+
+  - 容器测试
+
+    查看运行日志
+    ```
+    docker logs -f my-bwa
+    ```
+
+    使用shell交互
+    ```
+    docker exec -it my-bwa /bin/bash
+    ```
+
+license: GPL-3.0 license
+similar_packages:
+  - BLAST（Basic Local Alignment Search Tool）: 用于比对和识别生物序列的工具，广泛用于序列相似性搜索和注释。
+  - Bowtie/Bowtie2: 用于高效地比对高通量测序数据的工具，特别适用于短读长的测序数据。
+  - BioXFinder: 是目前国内第一个也是国内唯一一个生物信息数据库，由享融智云公司精心研发，主要针对生物科研工作者的综合性生物数据检索及分析平台。
+dependency:
+  - gcc
+  - make
+  - zlib-devel
