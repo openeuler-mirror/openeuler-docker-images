@@ -1,12 +1,12 @@
 ARG BASE=openeuler/openeuler:22.03-lts-sp3
 FROM ${BASE}
 
-ARG VERSION=v0.7.18
+ARG VERSION=0.7.18
 ARG TARGETARCH
 
 RUN yum -y install make gcc zlib-devel && \
     mkdir -p /tmp/bwa && cd /tmp/bwa && \
-    curl -fSL -o bwa.tar.gz https://github.com/lh3/bwa/archive/${VERSION}.tar.gz && \
+    curl -fSL -o bwa.tar.gz https://github.com/lh3/bwa/archive/v${VERSION}.tar.gz && \
     tar -xvf bwa.tar.gz -C /tmp/bwa --strip-components=1 && \
     rm -f bwa.tar.gz && \
     make clean && make -j "$(nproc)" && \ 
