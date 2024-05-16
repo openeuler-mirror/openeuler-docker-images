@@ -1,4 +1,4 @@
-name: Traefik
+name: traefik
 category: cloud
 description: Traefik（发音和traffic相同，采用Golang编写）是一个云原生的新型的HTTP反向代理、负载均衡软件。Traefik负责接收系统的请求，然后使用合适的组件来对这些请求进行处理。Traefik兼容所有主流的集群技术，比如Kubernetes，Docker，Docker Swarm，AWS，Mesos，Marathon等。
 environment: |

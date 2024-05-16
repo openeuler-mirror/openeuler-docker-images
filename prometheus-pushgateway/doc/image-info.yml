@@ -1,4 +1,4 @@
-name: Prometheus-pushgateway
+name: prometheus-pushgateway
 category: cloud
 description: Prometheus Pushgateway的存在是为了允许临时作业和批处理作业将其指标公开给Prometheus。由于此类工作可能存在的时间不够长而无法被删除，因此他们可以将其指标推送到Pushgateway。然后Pushgateway将这些指标公开给Prometheus。
 environment: |

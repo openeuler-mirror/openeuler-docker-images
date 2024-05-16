@@ -1,4 +1,4 @@
-name: ZooKeeper
+name: zooKeeper
 category: cloud
 description: ZooKeeper一个功能强大、易于使用的分布式协调服务，为分布式应用提供了可靠的协调功能，使得应用能够在分布式环境中高效、稳定地运行。
 environment: |

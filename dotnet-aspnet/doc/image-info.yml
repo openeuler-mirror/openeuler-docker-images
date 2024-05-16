@@ -1,4 +1,4 @@
-name: Dotnet-aspnet
+name: dotnet-aspnet
 category: others
 description: Dotnet-aspnet（ASP.NET Core）是一个开源跨平台框架，用于构建基于云的现代互联网连接应用程序，例如Web应用程序、物联网应用程序和移动后端。ASP.NET Core应用程序在.NET上运行。
 environment: |

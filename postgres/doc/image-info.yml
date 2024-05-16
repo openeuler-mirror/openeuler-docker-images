@@ -1,4 +1,4 @@
-name: Postgres
+name: postgres
 category: database
 description: Postgres是一个功能强大、灵活且高度可定制的数据库管理系统，广泛应用于金融、物流、制造、电信等领域。
 environment: |

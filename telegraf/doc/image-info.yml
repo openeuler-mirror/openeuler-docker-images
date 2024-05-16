@@ -1,4 +1,4 @@
-name: Telegraf
+name: telegraf
 category: cloud
 description: Telegraf一个用Go语言编写的指标收集、处理、聚合的程序。
 environment: |

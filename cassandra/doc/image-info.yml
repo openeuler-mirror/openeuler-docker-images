@@ -1,4 +1,4 @@
-name: Cassandra
+name: cassandra
 category: database
 description: Cassandra是一套开源的分布式NoSQL数据库系统。它基于Amazon Dynamo的分布式设计和Google BigTable的数据模型，是一个网络社交云计算方面理想的数据库。
 environment: |

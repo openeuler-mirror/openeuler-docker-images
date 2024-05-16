@@ -1,4 +1,4 @@
-name: Memcached
+name: memcached
 category: database
 description: Memcached是一个高性能的分布式内存对象缓存系统，主要用于动态Web应用以减轻数据库负载。
 environment: |

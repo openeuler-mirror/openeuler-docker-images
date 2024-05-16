@@ -1,4 +1,4 @@
-name: BiSheng JDK
+name: bisheng-jdk
 category: others
 description: BiSheng JDK（BiSheng Java Development Kit），即毕昇JDK，是华为内部基于OpenJDK定制的Huawei JDK的开源版本，作为OpenJDK的下游，是一款高性能、可用于生产环境的OpenJDK发行版。
 environment: |

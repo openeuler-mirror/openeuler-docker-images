@@ -1,4 +1,4 @@
-name: Bind9
+name: bind9
 category: others
 description: BIND9 (Berkeley Internet Name Domain 9）是一款开源的域名系统（DNS）软件，用于将域名转换为对应的IP地址，包括权威服务器、递归解析器和相关实用程序。
 environment: |

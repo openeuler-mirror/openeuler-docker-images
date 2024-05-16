@@ -1,4 +1,4 @@
-name: MLflow
+name: mlflow
 category: ai
 description: MLflow是一个简化机器学习开发的平台，包括跟踪实验、将代码打包成可重复的运行以及共享和部署模型。MLflow提供了一组轻量级API，可与任何现有的机器学习应用程序或库（TensorFlow、PyTorch、XGBoost等）一起使用，无论您当前在何处运行ML代码（例如在笔记本、独立应用程序或云中）。
 environment: |
