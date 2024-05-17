@@ -1,4 +1,4 @@
-name: Grafana-agent
+name: grafana-agent
 category: cloud
 description: Grafana-agent是一个供应商中立的、包含电池的遥测收集器，其配置灵感来自Terraform。它被设计为灵活、高性能，并与Prometheus和OpenTelemetry等多个生态系统兼容。
 environment: |

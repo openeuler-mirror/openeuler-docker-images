@@ -1,4 +1,4 @@
-name: Dotnet-deps
+name: dotnet-deps
 category: others
 description: Dotnet-deps镜像供开发人员对独立的.NET和ASP.NET应用程序进行分层。它仅包含运行标准独立.NET应用程序所需的运行时依赖项：ca-certificates, glibc, libgcc, libicu, openssl-libs, libstdc++, tzdata, zlib。
 environment: |

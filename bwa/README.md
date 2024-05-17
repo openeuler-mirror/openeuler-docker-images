@@ -24,7 +24,7 @@ docker run -ti openeuler/bwa:$VERSION
 
 # Supported tags and respective Dockerfile links
 
-- 0.7.18.oe2203sp3: bwa v0.7.18, openEuler 22.03-lts-sp3
+- 0.7.18-oe2203sp3: bwa v0.7.18, openEuler 22.03-lts-sp3
 
 ## Operating System
 Linux/Unix, ARM64 or x86-64 architecture.

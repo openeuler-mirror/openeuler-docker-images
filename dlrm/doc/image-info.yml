@@ -1,6 +1,7 @@
 name: dlrm
 category: ai
 description: Deep Learning Recommendation Model for Personalization and Recommendation Systems,Copyright (c) Facebook, Inc. and its affiliates。
+show-on-appstore: false
 environment: |
   本应用在Docker环境中运行，安装Docker执行如下命令
   ```

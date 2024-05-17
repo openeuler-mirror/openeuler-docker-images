@@ -1,4 +1,4 @@
-name: Kafka
+name: kafka
 category: cloud
 description: Kafka是一个分布式系统，由通过高性能TCP网络协议进行通信的服务器和客户端组成。它可以部署在本地和云环境中的裸机硬件、虚拟机和容器上。
 environment: |

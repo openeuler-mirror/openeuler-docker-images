@@ -1,4 +1,4 @@
-name: MySQL
+name: mysql
 category: database
 description: MySQL是一种开源关系型数据库管理系统。与其他关系型数据库一样，MySQL将数据存储在由行和列组成的表中。用户可以使用结构化查询语言（通常称为SQL）定义、操作、控制和查询数据。MySQL凭借其经过验证的性能、可靠性和易用性成为基于Web的应用程序的领先数据库选择，涵盖从个人项目和网站，到电子商务和信息服务，一直到高端应用程序的整个范围。
 environment: |

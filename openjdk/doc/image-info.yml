@@ -1,4 +1,4 @@
-name: OpenJDK
+name: openjdk
 category: others
 description: OpenJDK（Open Java Development Kit）是一个自由开放源代码的Java开发工具包，提供了Java编译器（javac）、Java虚拟机（JVM）以及其他一些与Java开发相关的工具和库。
 environment: |

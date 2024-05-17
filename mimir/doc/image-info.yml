@@ -1,4 +1,4 @@
-name: Mimir
+name: mimir
 category: cloud
 description: Grafana Mimir是一个开源软件项目，为Prometheus提供可扩展的长期存储。
 environment: |

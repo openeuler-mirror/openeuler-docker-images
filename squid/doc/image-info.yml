@@ -1,4 +1,4 @@
-name: Squid
+name: squid
 category: cloud
 description: Squid是支持HTTP、HTTPS、FTP等的Web缓存代理。它通过缓存和重用经常请求的网页来减少带宽并提高响应时间。Squid具有广泛的访问控制，是一个出色的服务器加速器。它可以在大多数可用操作系统上运行，包括Windows，并根据GNU GPL获得许可。
 environment: |

@@ -1,4 +1,4 @@
-name: Dotnet-runtime
+name: dotnet-runtime
 category: others
 description: Dotnet Runtime (.NET Runtime)是一个运行时环境，用于执行基于.NET平台的应用程序。它提供了必要的组件和功能，使得.NET应用程序能够在特定的操作系统上运行。
 environment: |

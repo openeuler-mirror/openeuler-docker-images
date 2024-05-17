@@ -1,4 +1,4 @@
-name: Grafana
+name: grafana
 category: cloud
 description: Grafana是一个开源的数据可视化和监控平台。它提供了丰富的仪表盘和图表，用于实时监控和分析数据，帮助用户可视化数据并进行数据驱动的决策。
 environment: |
