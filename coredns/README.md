@@ -24,7 +24,7 @@ docker run -ti openeuler/coredns:1.7.0-21.09
 
 # Supported tags and respective Dockerfile links
 
-- 1.7.0-oe2109: coredns v1.7.0, openEuler 21.09
+- 1.7.0-21.09: coredns v1.7.0, openEuler 21.09
 
 ## Operating System
 Linux/Unix, ARM64 or x86-64 architecture.
