@@ -1,6 +1,6 @@
 name: httpd
 category: others
-description: Httpd，即Apache HTTP Server，是一个功能强大且灵活的符合HTTP/1.1的Web服务器。它最初被设计为NCSA HTTP Server的替代品，现已发展成为Internet上最流行的Web服务器。作为Apache软件基金会的一个项目，开发人员的目标是协作开发和维护一个强大的、商业级的、基于标准的服务器，并提供免费的源代码。。
+description: Httpd，即Apache HTTP Server，是一个功能强大且灵活的符合HTTP/1.1的Web服务器。它最初被设计为NCSA HTTP Server的替代品，现已发展成为Internet上最流行的Web服务器。作为Apache软件基金会的一个项目，开发人员的目标是协作开发和维护一个强大的、商业级的、基于标准的服务器，并提供免费的源代码。
 environment: |
   本应用在Docker环境中运行，安装Docker执行如下命令
   ```
