@@ -1,4 +1,4 @@
 2.50.1-oe2203sp3:
   - prometheus/2.50.1/22.03-lts-sp3/Dockerfile
-2.20.0-22.03-lts:
+2.20.0-oe2203lts:
   - prometheus/2.20.0/22.03-lts/Dockerfile

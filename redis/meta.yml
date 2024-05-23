@@ -1,4 +1,4 @@
-6.2.7-22.03-lts:
+6.2.7-oe2203lts:
   redis/6.2.7/22.03-lts/Dockerfile
 7.2.4-oe2203sp3:
   redis/7.2.4/22.03-lts-sp3/Dcokerfile

@@ -11,7 +11,7 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
-  |[1.6.12-22.03-lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/memcached/1.6.12/22.03-lts-sp3/Dockerfile)| Memcached 1.6.12 on openEuler 22.03-LTS | amd64, arm64 |
+  |[1.6.12-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/memcached/1.6.12/22.03-lts-sp3/Dockerfile)| Memcached 1.6.12 on openEuler 22.03-LTS | amd64, arm64 |
   |[1.6.24-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/memcached/1.6.24/22.03-lts-sp3/Dockerfile)| Memcached 1.6.24 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
 
 download: |

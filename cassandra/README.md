@@ -25,7 +25,7 @@ docker run --name cassandra openeuler/cassandra:{TAG}
 
 # Supported tags and respective Dockerfile links
 
-- 4.1.4-22.03-lts-sp3: cassandra v4.1.4, openEuler 22.03-LTS-SP3
+- 4.1.4-oe2203sp3: cassandra v4.1.4, openEuler 22.03-LTS-SP3
 
 ## Operating System
 Linux/Unix, ARM64 or x86-64 architecture.

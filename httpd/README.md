@@ -26,7 +26,7 @@ docker run --name my-httpd -d -p 80:80 openeuler/httpd:{TAG}
 
 # Supported tags and respective Dockerfile links
 
-- httpd2.4.51-oe2203lts: httpd v2.4.51, openEuler 22.03 LTS
+- 2.4.51-oe2203lts: httpd v2.4.51, openEuler 22.03 LTS
 - 2.4.58-oe2203sp3: httpd v2.4.58, openEuler 22.03 LTS SP3
 
 ## Operating System

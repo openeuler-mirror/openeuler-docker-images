@@ -37,7 +37,7 @@ docker run --name my_postgresql -d -e POSTGRES_PASSWORD=PostgreSQL@123 -v /postg
 
 # Supported tags and respective Dockerfile links
 
-- 13.3-22.03-lts: postgres v13.3, openEuler 22.03 LTS
+- 13.3-oe2203lts: postgres v13.3, openEuler 22.03 LTS
 - 16.2-oe2203sp3: postgres v16.2, openEuler 22.03 LTS SP3
 
 ## Operating System

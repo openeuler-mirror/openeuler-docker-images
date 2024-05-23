@@ -11,8 +11,8 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
-  |[1.16.1-20.03-lts-sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/nginx/1.16.1/20.03-lts-sp1/Dockerfile)| Nginx 1.16.1 on openEuler 20.03-LTS-SP1 | amd64, arm64 |
-  |[1.21.5-22.03-lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/nginx/1.21.5/22.03-lts/Dockerfile)| Nginx 1.21.5 on openEuler 22.03-LTS | amd64, arm64 |
+  |[1.16.1-oe2203sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/nginx/1.16.1/20.03-lts-sp1/Dockerfile)| Nginx 1.16.1 on openEuler 20.03-LTS-SP1 | amd64, arm64 |
+  |[1.21.5-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/nginx/1.21.5/22.03-lts/Dockerfile)| Nginx 1.21.5 on openEuler 22.03-LTS | amd64, arm64 |
   |[1.25.4-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/nginx/1.25.4/22.03-lts-sp3/Dockerfile)| Nginx 1.25.4 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
 
 download: |

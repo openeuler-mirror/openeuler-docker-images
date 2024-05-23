@@ -1,4 +1,4 @@
-httpd2.4.51-oe2203lts:
+2.4.51-oe2203lts:
   - 2.4.51/22.03-lts/Dockerfile
 2.4.58-oe2203sp3:
   - 2.4.58/22.03-lts-sp3/Dockerfile

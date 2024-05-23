@@ -24,7 +24,7 @@ docker run --name my_prometheus -d -p 9090:9090 openeuler/prometheus:$VERSION
 
 # Supported tags and respective Dockerfile links
 
-- 2.20.0-22.03-lts: prometheus v2.20.0, openEuler 22.03 LTS
+- 2.20.0-oe2203lts: prometheus v2.20.0, openEuler 22.03 LTS
 - 2.50.1-oe2203sp3: prometheus v2.50.1, openEuler 22.03 LTS SP3
 
 ## Operating System
