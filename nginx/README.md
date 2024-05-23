@@ -24,7 +24,7 @@ docker run -d openeuler/nginx:$VERSION
 
 # Supported tags and respective Dockerfile links
 
-- 1.16.1-oe2203sp1: nginx v1.16.1, openEuler 20.03 LTS SP1
+- 1.16.1-oe2003sp1: nginx v1.16.1, openEuler 20.03 LTS SP1
 - 1.21.5-oe2203lts: nginx v1.21.5, openEuler 22.03 LTS
 - 1.25.4-oe2203sp3: nginx v1.25.4, openEuler 22.03 LTS SP3
 
