@@ -2,7 +2,7 @@
 
 set -ex
 
-archs="x86_64 aarch64"
+archs="x86_64 aarch64 loong64"
 input_version=$1
 versions=${input_version:-"20.03-lts 20.03-lts-sp1 20.03-lts-sp2 20.09 21.03 21.09 22.03-lts 22.03-lts-sp1 22.03-lts-sp2 22.09 23.03 23.09"}
 for ARCH in $archs ;
@@ -11,6 +11,8 @@ do
         DOCKER_ARCH=arm64
     elif [[ "$ARCH" = "x86_64" ]];then
         DOCKER_ARCH=amd64
+    elif [[ "$ARCH" = "loong64" && "$versions" = "22.03-lts" ]];then
+        DOCKER_ARCH=loong64
     else
         echo "Unknow arch: "$ARCH
         exit 1
