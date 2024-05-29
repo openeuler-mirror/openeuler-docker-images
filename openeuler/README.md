@@ -16,7 +16,7 @@ download.sh
 
 2. Build images and push:
 ```shell
-docker buildx build -t "openeuler/openeuler:$VERSION" --platform linux/amd64,linux/arm64 . --push
+docker buildx build -t "openeuler/openeuler:$VERSION" --platform linux/amd64,linux/arm64,linux/loong64 . --push
 ```
 
 We are using `buildx` in here to generate multi-arch images, see more in [Docker Buildx](https://docs.docker.com/buildx/working-with-buildx/)

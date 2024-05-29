@@ -53,13 +53,18 @@ build_app_os()
 {
     local app_name=$1
     local app_version=$2
+    local platforms="linux/amd64,linux/arm64"
         
     for os_version in $(ls -l ${WORKDIR}/${app_name}/${app_version} | grep -v grep | grep ^d | awk '{print $9}')
     do
-        ##TODO: consider deduplicate the build of the same docker image
+        if [[ "$os_version" == "22.03-lts" ]]; then  
+            platforms="${platforms},linux/loong64"  
+        fi
+
+	##TODO: consider deduplicate the build of the same docker image
         echo "start to build docker image for ${app_name}-${app_version} on openEuler-${os_version}"
         cd ${WORKDIR}/${app_name}/${app_version}/${os_version} && \
-        docker buildx build -t "${REPOSITORY}/${app_name}:${app_version}-${os_version}" --platform linux/amd64,linux/arm64 . --push
+	docker buildx build -t "${REPOSITORY}/${app_name}:${app_version}-${os_version}" --platform ${platforms} . --push
     done
 }
 
