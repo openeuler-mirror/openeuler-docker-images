@@ -24,6 +24,8 @@ docker run -it --name openjdk openeuler/bisheng-jdk:{TAG}
 
 # Supported tags and respective Dockerfile links
 
+- 1.8.0-oe2203lts: BiSheng JDK 1.8.0, openEuler 22.03 LTS
+- 1.8.0-oe2203sp3: BiSheng JDK 1.8.0, openEuler 22.03 LTS SP3
 - 17.0.10-oe2203sp3: BiSheng JDK 17.0.10, openEuler 22.03 LTS SP3
 
 ## Operating System
