@@ -1,0 +1,65 @@
+name: PyTorch
+category: ai
+description: PyTorch是一个开源的Python机器学习库，基于Torch，用于自然语言处理等应用程序。PyTorch既可以看作加入了GPU支持的numpy，同时也可以看成一个拥有自动求导功能的强大的深度神经网络。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  PyTorch镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[2.1.0.a1-cann7.0.RC1.alpha002-oe2203sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/pytorch/2.1.0.a1-cann7.0.RC1.alpha002/22.03-lts-sp2/Dockerfile)| PyTorch 2.1.0.a1-cann7.0.RC1.alpha002-oe2203sp2 on openEuler 22.03-LTS-SP2 | arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/pytorch:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+    ```
+    docker run -d --name my-pytorch openeuler/pytorch:{Tag}
+    ```
+    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。
+
+  - 容器测试
+
+    查看运行日志
+    ```
+    docker logs -f my-pytorch
+    ```
+
+    使用shell交互
+    ```
+    docker exec -it my-pytorch /bin/bash
+    ```
+
+license: 3-Clause BSD-like license
+similar_packages:
+  - TensorFlow: 一个基于数据流编程（dataflow programming）的符号数学系统，被广泛应用于各类机器学习（machine learning）算法的编程实现，其前身是谷歌的神经网络算法库DistBelief。
+  - OpenCV: OpenCV是一个基于Apache2.0许可（开源）发行的跨平台计算机视觉和机器学习软件库，可以运行在Linux、Windows、Android和Mac OS操作系统上。
+dependency:
+  - astunparse
+  - expecttest
+  - hypothesis
+  - numpy
+  - pyyaml
+  - psutil
+  - requests
+  - setuptools
+  - types-dataclasses
+  - typing-extensions
+  - sympy
+  - filelock
+  - networkx
+  - jinja2
+  - fsspec
+  - lintrunner
+  - ninja
+  - setuptools
+  - packaging
+  - optree

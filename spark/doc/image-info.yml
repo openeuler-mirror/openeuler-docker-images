@@ -1,0 +1,56 @@
+name: Spark
+category: other
+description: Spark是专为大规模数据处理而设计的快速通用的计算引擎。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  spark镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[3.3.1-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/spark/3.3.1/22.03-lts/Dockerfile)| Spark 3.3.1 on openEuler 22.03-LTS | amd64, arm64 |
+  |[3.3.2-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/spark/3.3.2/22.03-lts/Dockerfile)| Spark 3.3.2 on openEuler 22.03-LTS | amd64, arm64 |
+  |[3.4.0-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/spark/3.4.0/22.03-lts/Dockerfile)| Spark 3.4.0 on openEuler 22.03-LTS | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/spark:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+    ```
+    docker run -d --name my-spark openeuler/spark:{Tag}
+    ```
+  用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。
+
+  - 容器测试
+
+    查看运行日志
+    ```
+    docker logs -f my-spark
+    ```
+
+    使用shell交互
+    ```
+    docker exec -it my-spark /bin/bash
+    ```
+
+license: Apache-2.0 license
+similar_packages:
+  - Hadoop: Hadoop是一个由Apache基金会所开发的分布式系统基础架构。用户可以在不了解分布式底层细节的情况下，开发分布式程序。充分利用集群的威力进行高速运算和存储。
+  - Storm: Storm是一个分布式实时大数据处理系统。Storm设计用于在容错和水平可扩展方法中处理大量数据。它是一个流数据框架，具有最高的摄取率。
+dependency:
+  - gnupg2
+  - procps
+  - net-tools
+  - krb5
+  - shadow
+  - java-11-openjdk
+  - dpkg
+  - python3
+  - python3-pip

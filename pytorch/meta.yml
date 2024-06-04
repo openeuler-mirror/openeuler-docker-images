@@ -1,4 +1,2 @@
-# key为镜像的tag，value为构建对应tag镜像的Dockerfile保存路径
-
-pytorch2.1.0.a1-cann7.0.RC1.alpha002-oe2203sp2:
-  - pytorch/2.1.0.a1/22.03-lts-sp2/Dockerfile
+2.1.0.a1-cann7.0.RC1.alpha002-oe2203sp2:
+  pytorch/2.1.0.a1-cann7.0.RC1.alpha002/22.03-lts-sp2/Dockerfile
