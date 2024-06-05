@@ -4,7 +4,7 @@ FROM ${BASE}
 
 ARG VERSION=2.13.1
 
-RUN yum install -y python3-pip && yum clean all
+RUN yum install -y python3-pip shadow-utils && yum clean all
 
 RUN pip3 install mlflow==${VERSION} -i https://pypi.tuna.tsinghua.edu.cn/simple && \
     groupadd --gid 10001 mlflow && \
