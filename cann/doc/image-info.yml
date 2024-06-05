@@ -1,6 +1,6 @@
 name: cann
 category: ai
-description: cann向上支持多种AI框架，向下服务AI处理器，发挥承上启下的关键作用，是提升昇腾AI处理器计算效率的关键平台。
+description: CANN（Compute Architecture for Neural Networks）是华为针对AI场景推出的异构计算架构，对上支持多种AI框架，对下服务AI处理器与编程，发挥承上启下的关键作用，是提升昇腾AI处理器计算效率的关键平台。
 environment: |
   本应用在Docker环境中运行，安装Docker执行如下命令
   ```
@@ -38,7 +38,7 @@ usage: |
     docker exec -it my-cann /bin/bash
     ```
 
-license: 3-Clause BSD-like license
+license: Apache-2.0 license
 similar_packages:
   - MindSpore: MindSpore是全场景AI计算框架，目前已覆盖逾1.6万用户，与33所高校开展AI课程、研究合作，提供20多种主流模型，覆盖150多种应用。
   - Mindx: MindX是昇腾应用使能平台，通过“2+1+X”助力AI计算融入千行百业，2是深度学习平台MindX DL和智能边缘平台MindX Edge，1是优选模型库ModelZoo，X则是使能各行业的SDK。
