@@ -24,8 +24,7 @@ docker run --device $DEVICE --device /dev/davinci_manager --device /dev/devmm_sv
 ```
 
 # Supported tags and respective Dockerfile links
-
-- pytorch2.1.0.a1-cann7.0.RC1.alpha002-oe2203sp2
+- 2.1.0.a1-cann7.0.RC1.alpha002-oe2203sp2: pytorch 2.1.0.a1-cann7.0.RC1.alpha002, openEuler 22.03 LTS SP2
 
 ## Operating System
 Linux/Unix, ARM64 architecture.
