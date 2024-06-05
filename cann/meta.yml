@@ -1,4 +1,4 @@
 # key为镜像的tag，value为构建对应tag镜像的Dockerfile保存路径
 
 cann7.0.RC1.alpha002-oe2203sp2:
-  cann/7.0.RC1.alpha002/22.03-lts-sp2/Dockerfile
+  - cann/7.0.RC1.alpha002/22.03-lts-sp2/Dockerfile
