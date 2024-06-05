@@ -1,13 +1,13 @@
-name: PyTorch
+name: pyTorch
 category: ai
-description: PyTorch是一个开源的Python机器学习库，基于Torch，用于自然语言处理等应用程序。PyTorch既可以看作加入了GPU支持的numpy，同时也可以看成一个拥有自动求导功能的强大的深度神经网络。
+description: pyTorch是一个开源的Python机器学习库，基于Torch，用于自然语言处理等应用程序。pyTorch既可以看作加入了GPU支持的numpy，同时也可以看成一个拥有自动求导功能的强大的深度神经网络。
 environment: |
   本应用在Docker环境中运行，安装Docker执行如下命令
   ```
   yum install -y docker
   ```
 tags: |
-  PyTorch镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+  pyTorch镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
