@@ -11,9 +11,9 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
-  |[3.3.1-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/spark/3.3.1/22.03-lts/Dockerfile)| spark 3.3.1 on openEuler 22.03-LTS | amd64, arm64 |
-  |[3.3.2-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/spark/3.3.2/22.03-lts/Dockerfile)| spark 3.3.2 on openEuler 22.03-LTS | amd64, arm64 |
-  |[3.4.0-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/spark/3.4.0/22.03-lts/Dockerfile)| spark 3.4.0 on openEuler 22.03-LTS | amd64, arm64 |
+  |[3.3.1-22.03-lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/spark/3.3.1/22.03-lts/Dockerfile)| spark 3.3.1 on openEuler 22.03-LTS | amd64, arm64 |
+  |[3.3.2-22.03-lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/spark/3.3.2/22.03-lts/Dockerfile)| spark 3.3.2 on openEuler 22.03-LTS | amd64, arm64 |
+  |[3.4.0-22.03-lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/spark/3.4.0/22.03-lts/Dockerfile)| spark 3.4.0 on openEuler 22.03-LTS | amd64, arm64 |
 
 download: |
   拉取镜像到本地
