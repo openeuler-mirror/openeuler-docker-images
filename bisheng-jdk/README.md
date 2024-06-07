@@ -21,20 +21,10 @@ Key Features:
 The tag of each BiSheng JDK docker image is consist of the version of BiSheng JDK and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+| [1.8.0-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/bisheng-jdk/1.8.0/22.03-lts/Dockerfile) | BiSheng JDK 1.8.0 on openEuler 22.03-LTS |  amd64, arm64 |
+| [1.8.0-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/bisheng-jdk/1.8.0/22.03-lts-sp3/Dockerfile) | BiSheng JDK 1.8.0 on openEuler 22.03-LTS-SP3 |  amd64, arm64 |
 | [17.0.10-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/bisheng-jdk/17.0.10/22.03-lts-sp3/Dockerfile) | BiSheng JDK 17.0.10 on openEuler 22.03-LTS-SP3 |  amd64, arm64 |
 
-# Quick reference (cont.)
-- Where to file issues: [https://gitee.com/openeuler/openeuler-docker-images/issues](https://gitee.com/openeuler/openeuler-docker-images/issues)
-
-- Supported architectures: ([more info](https://gitee.com/openeuler/openeuler-docker-images/tree/master/bisheng-jdk))
-	amd64, arm64
-
-- Image updates:
-[official-images repo's library/bishengjdk-17 label](https://gitee.com/openeuler/bishengjdk-17/issues)
-[official-images repo's library/bishengjdk-17 file](https://gitee.com/openeuler/bishengjdk-17/blob/master/README.en.md)([history](https://gitee.com/openeuler/bishengjdk-17/commits/master))
-
-- Source of this description:
-[docs repo's bisheng-jdk/ directory](https://gitee.com/openeuler/openeuler-docker-images/tree/master/bisheng-jdk#bisheng-jdk) ([history](https://gitee.com/openeuler/openeuler-docker-images/commits/master/bisheng-jdk))
 # Usage
   
   BiSheng JDK docker images provide a customized Java development and running environment based on OpenJDK, it can be used as follows
