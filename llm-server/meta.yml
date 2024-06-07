@@ -1,0 +1,4 @@
+1.0.0.gpu-oe2203sp3:
+  llm-server/1.0.0.gpu/22.03-lts-sp3/Dockerfile
+1.0.0.cpu-oe2203sp3:
+  llm-server/1.0.0.cpu/22.03-lts-sp3/Dockerfile
