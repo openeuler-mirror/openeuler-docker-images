@@ -1,4 +1,4 @@
-FROM openeuler/openeuler:22.03-lts-sp3
+FROM hub.oepkgs.net/openeuler/openeuler:22.03-lts-sp3
 
 RUN sed -i 's|http://repo.openeuler.org/|https://mirrors.huaweicloud.com/openeuler/|g' /etc/yum.repos.d/openEuler.repo &&\
     yum update -y &&\
