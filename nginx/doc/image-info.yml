@@ -49,7 +49,7 @@ usage: |
     docker exec -it my-nginx /bin/bash
     ```
 
-license: BSD 2-Clause License
+license: BSD 2-Clause license
 similar_packages:
   - Lighttpd: 一个轻量级、高性能的Web服务器软件。它旨在提供快速、稳定且资源消耗低的服务，适用于小型到中型的网站和应用。
   - Apache HTTP Server: 一个广泛使用的Web服务器软件，具有悠久的历史和广泛的应用。
