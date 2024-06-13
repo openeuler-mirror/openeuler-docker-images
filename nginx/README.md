@@ -1,32 +1,63 @@
-# Nginx
-
 # Quick reference
 
 - The official Nginx docker image.
 
-- Maintained by: [openEuler CloudNative SIG](https://gitee.com/openeuler/cloudnative)
+- Maintained by: [openEuler CloudNative SIG](https://gitee.com/openeuler/cloudnative).
 
-- Where to get help: [openEuler CloudNative SIG](https://gitee.com/openeuler/cloudnative), [openEuler](https://gitee.com/openeuler/community)
+- Where to get help: [openEuler CloudNative SIG](https://gitee.com/openeuler/cloudnative), [openEuler](https://gitee.com/openeuler/community).
+# Nginx | openEuler
+Current Nginx docker images are built on the [openEuler](https://repo.openeuler.org/). This repository is free to use and exempted from per-user rate limits.
 
-# Build reference
+Nginx (pronounced "engine-x") is an open source reverse proxy server for HTTP, HTTPS, SMTP, POP3, and IMAP protocols, as well as a load balancer, HTTP cache, and a web server (origin server). The nginx project started with a strong focus on high concurrency, high performance and low memory usage. It is licensed under the 2-clause BSD-like license and it runs on Linux, BSD variants, Mac OS X, Solaris, AIX, HP-UX, as well as on other *nix flavors. It also has a proof of concept port for Microsoft Windows. Learn more on [https://en.wikipedia.org/wiki/Nginx](https://en.wikipedia.org/wiki/Nginx)⁠.
 
-1. Build images and push:
-```shell
-docker buildx build -t "openeuler/nginx:$VERSION" --platform linux/amd64,linux/arm64 . --push
-```
+Features:
+- Nginx is easy to configure in order to serve static [web content](https://en.wikipedia.org/wiki/Web_content) or to act as a [proxy server](https://en.wikipedia.org/wiki/Proxy_server).
 
-We are using `buildx` in here to generate multi-arch images, see more in [Docker Buildx](https://docs.docker.com/buildx/working-with-buildx/)
+- Nginx can be deployed to also serve [dynamic content](https://en.wikipedia.org/wiki/Dynamic_web_pagehttps://en.wikipedia.org/wiki/Dynamic_web_page) on the network using [FastCGI](https://en.wikipedia.org/wiki/FastCGI), [SCGI](https://en.wikipedia.org/wiki/Simple_Common_Gateway_Interface) handlers for [scripts](https://en.wikipedia.org/wiki/Scripting_languagehttps://en.wikipedia.org/wiki/Scripting_language), [WSGI](https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface) application servers or [Phusion Passenger](https://en.wikipedia.org/wiki/Phusion_Passenger) modules, and can serve as a software load balancer[load balancer](https://en.wikipedia.org/wiki/Load_balancing_%28computing%29).
 
-2. Run:
-```shell
-docker run -d openeuler/nginx:$VERSION
-```
-
+- Nginx uses an [asynchronous](https://en.wikipedia.org/wiki/Asynchronous_system) [event-driven](https://en.wikipedia.org/wiki/Event_%28computing%29) approach, rather than threads, to handle requests. Nginx's modular [event-driven architecture](https://en.wikipedia.org/wiki/Event-driven_architecture) can provide predictable performance under high loads.
 # Supported tags and respective Dockerfile links
+The tag of each `nginx` docker image is consist of the version of `nginx` and the version of basic image. The details are as follows
+|    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.16.1-oe2003sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/nginx/1.16.1/20.03-lts-sp1/Dockerfile)| Nginx 1.16.1 on openEuler 20.03-LTS-SP1 | amd64, arm64 |
+  |[1.21.5-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/nginx/1.21.5/22.03-lts/Dockerfile)| Nginx 1.21.5 on openEuler 22.03-LTS | amd64, arm64 |
+  |[1.25.4-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/nginx/1.25.4/22.03-lts-sp3/Dockerfile)| Nginx 1.25.4 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
 
-- 1.16.1-oe2003sp1: nginx v1.16.1, openEuler 20.03 LTS SP1
-- 1.21.5-oe2203lts: nginx v1.21.5, openEuler 22.03 LTS
-- 1.25.4-oe2203sp3: nginx v1.25.4, openEuler 22.03 LTS SP3
+# Usage
+In this usage, users can select the corresponding `{Tag}` and `container startup options` based on their requirements.
 
-## Operating System
-Linux/Unix, ARM64 or x86-64 architecture.
+- Pull the `openeuler/nginx` image from docker
+```bash
+docker pull openeuler/nginx:{Tag}
+```
+
+- Start a nginx instance
+
+```bash
+docker run -d --name my-nginx -p 8080:80 openeuler/nginx:{Tag}
+```
+After the instance `my-nginx` is started, access the Nginx service through `http://localhost:8080`.
+
+- View container running logs
+
+```bash
+docker logs -f my-nginx
+```
+
+- To get an interactive shell
+
+```bash
+docker exec -it my-nginx /bin/bash
+```
+
+- Container startup options
+
+| Option | Description |
+|--|--|
+| -p 8080:80	   | Expose nginx on `localhost:8080`. |
+| -v /local/path/to/website:/var/www/html | Mount local web pages for service |
+| -v /path/to/conf.template:/etc/nginx/templates/conf.template	| Mount the template file to `/etc/nginx/templates` |
+| v /path/to/nginx.conf:/etc/nginx/nginx.conf | Use a local configuration file |
+# Question and answering
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
