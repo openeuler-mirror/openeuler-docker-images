@@ -45,7 +45,7 @@ config set protected-mode no
 
 # Supported tags and respective Dockerfile links
 
-- 6.2.7-oe2203lts: redis v{TAG}, openEuler 22.03 LTS
+- 6.2.7-oe2203lts: redis v6.2.7, openEuler 22.03 LTS
 - 7.2.4-oe2203sp3: redis v7.2.4, openEuler 22.03 LTS SP3
 
 ## Operating System
