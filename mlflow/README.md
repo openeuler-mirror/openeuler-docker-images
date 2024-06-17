@@ -7,7 +7,7 @@
 - Where to get help: [openEuler CloudNative SIG](https://gitee.com/openeuler/cloudnative), [openEuler](https://gitee.com/openeuler/community).
 
 
-# Redis | openEuler
+# MLflow | openEuler
 Current MLflow docker images are built on the [openEuler](https://repo.openeuler.org/). This repository is free to use and exempted from per-user rate limits.
 
 MLflow, at its core, provides a suite of tools aimed at simplifying the ML workflow. It is tailored to assist ML practitioners throughout the various stages of ML development and deployment. Despite its expansive offerings, MLflow’s functionalities are rooted in several foundational components:
@@ -30,7 +30,7 @@ Learn more on [MLflow website](https://mlflow.org/docs/latest/introduction/index
 
 
 # Supported tags and respective Dockerfile links
-The tag of each mlflow docker image is consist of the version of redis and the version of basic image. The details are as follows
+The tag of each mlflow docker image is consist of the version of mlflow and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
 |[2.11.1-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/mlflow/2.11.1/22.03-lts-sp3/Dockerfile)| MLflow 2.11.1 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
