@@ -48,12 +48,6 @@ The easiest way to start using PySpark is through the Python shell:
 	```bash
 	>>> spark.range(1000 * 1000 * 1000).count()
 	```
-- Interactive R Shell
-The easiest way to start using R on Spark is through the R shell:
-	
-	```bash
-	docker run -it --name spark openeuler/spark:{Tag} /opt/spark/bin/sparkR
-	```
 - Running Spark on Kubernetes
 
     [https://spark.apache.org/docs/latest/running-on-kubernetes.html⁠](https://spark.apache.org/docs/latest/running-on-kubernetes.html).
