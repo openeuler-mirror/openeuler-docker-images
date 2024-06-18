@@ -21,7 +21,7 @@ The tag of each kafka docker image is consist of the version of kafka and the ve
 
 
 # Usage
-In this usage, users can select the corresponding `{Tag}`  based on their requirements.
+In this usage, users can select the corresponding `{Tag}` and `container startup options` based on their requirements.
 
 - Pull the `openeuler/kafka` image from docker
 	```bash

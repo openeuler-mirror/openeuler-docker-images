@@ -14,7 +14,7 @@ Learn more on [MySQL website]().
 
 
 # Supported tags and respective Dockerfile links
-The tag of each mlflow docker image is consist of the version of mysql and the version of basic image. The details are as follows
+The tag of each mysql docker image is consist of the version of mysql and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
 |[8.3.0-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/mysql/8.3.0/22.03-lts-sp3/Dockerfile)| MySQL server 8.3.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
