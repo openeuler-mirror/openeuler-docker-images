@@ -1,31 +1,53 @@
-# grafana
-
 # Quick reference
 
-- The official grafana docker image.
+- The official Grafana docker image.
 
-- Maintained by: [openEuler CloudNative SIG](https://gitee.com/openeuler/cloudnative)
+- Maintained by: [openEuler CloudNative SIG](https://gitee.com/openeuler/cloudnative).
 
-- Where to get help: [openEuler CloudNative SIG](https://gitee.com/openeuler/cloudnative), [openEuler](https://gitee.com/openeuler/community)
+- Where to get help: [openEuler CloudNative SIG](https://gitee.com/openeuler/cloudnative), [openEuler](https://gitee.com/openeuler/community).
+- 
+# Grafana | openEuler
+Current Grafana docker images are built on the [openEuler](https://repo.openeuler.org/). This repository is free to use and exempted from per-user rate limits.
 
-# Build reference
+[Grafana open source software](https://grafana.com/oss/) enables you to query, visualize, alert on, and explore your metrics, logs, and traces wherever they are stored. Grafana OSS provides you with tools to turn your time-series database (TSDB) data into insightful graphs and visualizations. The Grafana OSS plugin framework also enables you to connect other data sources like NoSQL/SQL databases, ticketing tools like Jira or ServiceNow, and CI/CD tooling like GitLab.
 
-1. Build images and push:
-```shell
-docker buildx build -t "openeuler/grafana:$VERSION" --platform linux/amd64,linux/arm64 . --push
-```
-
-We are using `buildx` in here to generate multi-arch images, see more in [Docker Buildx](https://docs.docker.com/buildx/working-with-buildx/)
-
-# How to use this image
-```shell
-docker run --name my_grafana -d -p 3000:3000 openeuler/grafana:$VERSION
-```
+Learn more on [Grafana website](https://grafana.com/docs/grafana/latest/introduction/).
 
 # Supported tags and respective Dockerfile links
+The tag of each grafana docker image is consist of the version of grafana and the version of basic image. The details are as follows
+| Tags | Currently |  Architectures|
+|--|--|--|
+|[7.5.11-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/grafana/7.5.1/22.03-lts/Dockerfile)| Grafana 7.5.1 on openEuler 22.03-LTS | amd64, arm64 |
+|[10.4.1-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/grafana/10.4.1/22.03-lts-sp3/Dockerfile)| Grafana 10.4.1 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+# Usage
+In this usage, users can select the corresponding `{Tag}` and `container startup options` based on their requirements.
 
-- 7.5.11-oe2203lts: grafana v7.5.11, openEuler 22.03 LTS
-- 10.4.1-oe2203sp3: grafana v10.4.1, openEuler 22.03 LTS SP3
+- Pull the `openeuler/grafana` image from docker
+	```bash
+	docker pull openeuler/grafana:{Tag}
+	```
+- Start a grafana instance
 
-## Operating System
-Linux/Unix, ARM64 or x86-64 architecture.
+	```bash
+	docker run -d --name my-grafana -p 3000:3000 openeuler/grafana:{Tag}
+	```
+	After the instance `my-grafana` is started, access the kafka service through `http://localhost:3000`.
+			
+			
+- Container startup options
+	| Option | Description |
+	|--|--|
+	| `-p 3000:3000`	 | 	Expose Apache Kafka server on `localhost:3000`. |
+    | `-v /path/to/grafana/provisioning/files/:/etc/grafana/provisioning/` | Directory to provision Grafana (see [documentation](https://grafana.com/docs/grafana/latest/administration/provisioning/)⁠). |
+    | `-v /path/to/persisted/data:/var/lib/grafana`	| Persist data with a volume instead of initializing a new database for each newly launched container. |
+
+- View container running logs
+	```bash
+	docker logs -f my-grafana
+	```
+- To get an interactive shell
+	```bash
+	docker exec -it my-grafana /bin/bash
+	```
+# Question and answering
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
