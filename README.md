@@ -80,7 +80,7 @@ openEuler的基础镜像由社区官方发布，目前发布在[openEuler镜像�
 
 - Hub oepkgs: https://hub.oepkgs.net/
 
-- AtomHub: https://atomhub.org/
+- AtomHub: https://atomhub.openatom.cn/
 
 
 #### 参与贡献

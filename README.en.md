@@ -80,7 +80,7 @@ Store application-related images
 
 - Hub oepkgs: https://hub.oepkgs.net/
 
-- AtomHub: https://atomhub.org/
+- AtomHub: https://atomhub.openatom.cn/
 
 
 #### Contributions
