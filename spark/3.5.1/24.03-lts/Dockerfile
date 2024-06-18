@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-FROM openeuler/openeuler:22.03-lts
+FROM openeuler/openeuler:24.03-lts
 
 ARG spark_uid=185
 
