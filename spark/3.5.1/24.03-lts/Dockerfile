@@ -65,8 +65,6 @@ RUN set -ex; \
     mv data /opt/spark/; \
     mv python/pyspark /opt/spark/python/pyspark/; \
     mv python/lib /opt/spark/python/lib/; \
-    mv R /opt/spark/; \
-    chmod a+x /opt/decom.sh; \
     cd ..; \
     rm -rf "$SPARK_TMP";
 
