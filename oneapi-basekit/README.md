@@ -1,0 +1,34 @@
+# Intel® oneAPI Base Toolkit
+
+# Quick reference
+Intel® oneAPI products will deliver the tools needed to deploy applications and solutions across scalar, vector, matrix, and spatial (SVMS) architectures. Its set of complementary toolkits—a base kit and specialty add-ons—simplify programming and help developers improve efficiency and innovation.
+
+The openEuler oneAPI docker image created on top of openEuler 24.03 LTS release and maintained oneAPI tookit including basekit, runtime, etc.
+
+- Maintained by: [openEuler Intelligence SIG](https://gitee.com/openeuler/community/tree/master/sig/sig-intelligence)
+
+- Where to get help: [openEuler Intelligence SIG](https://gitee.com/openeuler/community/tree/master/sig/sig-intelligence), [openEuler Intel Arch SIG](https://gitee.com/openeuler/community/tree/master/sig/sig-Intel-Arch)
+
+# Build reference
+
+1. Build images and push:
+```shell
+docker buildx build -t "openeuler/oneapi-basekit:$TAG" -f oneapi-basekit/2024.2.0/24.03-lts/Dockerfiler .  # oneAPI Base Toolkit
+```
+
+# How to use this image
+## Intel® oneAPI Base Toolkit
+Get started with this foundational kit that enables developers of all types to build, test, and deploy performance-driven, data-centric applications across CPUs, GPUs, and FPGAs.
+```shell
+image=openeuler/oneapi-basekit:$TAG
+docker pull "$image"
+docker run --device=/dev/dri -it "$image"
+```
+More details for [oneAPI Basekit](https://software.intel.com/oneapi/base-kit).
+
+# Supported tags and respective Dockerfile links
+
+- 2024.2.0-oe2403lts
+
+## Operating System
+Linux/Unix

@@ -1,0 +1,4 @@
+# key is the image tag, value is the Dockerfile path for creating the image with corresponding tag
+
+2024.2.0-oe2403lts:
+  - oneapi-basekit/2024.2.0/24.03-lts/Dockerfile
