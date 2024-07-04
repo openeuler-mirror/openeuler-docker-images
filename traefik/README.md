@@ -23,11 +23,13 @@ The tag of each `traefik` docker image is consist of the version of `traefik` an
 In this usage, users can select the corresponding `{Tag}` and `container startup options` based on their requirements.
 
 - Pull the `openeuler/traefik` image from docker
+
 	```bash
 	docker pull openeuler/traefik:{Tag}
 	```
 
 - Start a traefik instance
+
 	```bash
 	docker run -d --name my-traefik -p 80:80 openeuler/traefik:{Tag}
 	```

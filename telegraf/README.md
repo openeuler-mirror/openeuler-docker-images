@@ -23,6 +23,7 @@ The tag of each `telegraf` docker image is consist of the version of `telegraf` 
 In this usage, users can select the corresponding `{Tag}` and `container startup options` based on their requirements.
 
 - Pull the `openeuler/telegraf` image from docker
+
 	```bash
 	docker pull openeuler/telegraf:{Tag}
 	```

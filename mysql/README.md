@@ -21,9 +21,11 @@ The tag of each mysql docker image is consist of the version of mysql and the ve
 In this usage, users can select the corresponding `{Tag}` and `container startup options` based on their requirements.
 
 - Pull the `openeuler/mysql` image from docker
+
 	```bash
 	docker pull openeuler/mysql:{Tag}
 	```
+	
 - Start a mysql instance
 
 	```bash
@@ -49,6 +51,7 @@ In this usage, users can select the corresponding `{Tag}` and `container startup
 	```bash
 	docker logs -f my-mysql
 	```
+
 - To get an interactive shell
 
 	```bash

@@ -31,6 +31,7 @@ The tag of each `nginx` docker image is consist of the version of `nginx` and th
 In this usage, users can select the corresponding `{Tag}` and `container startup options` based on their requirements.
 
 - Pull the `openeuler/nginx` image from docker
+
 	```bash
 	docker pull openeuler/nginx:{Tag}
 	```

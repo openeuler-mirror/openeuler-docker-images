@@ -23,6 +23,7 @@ The tag of each `openjdk` docker image is consist of the version of `openjdk` an
 In this usage, users can select the corresponding `{Tag}`  based on their requirements.
 
 - Pull the `openeuler/openjdk` image from docker
+
 	```bash
 	docker pull openeuler/openjdk:{Tag}
 	```

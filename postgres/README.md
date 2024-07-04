@@ -24,6 +24,7 @@ The tag of each `postgres` docker image is consist of the version of `postgres` 
 In this usage, users can select the corresponding `{Tag}` and `container startup options` based on their requirements.
 
 - Pull the `openeuler/postgres` image from docker
+
 	```bash
 	docker pull openeuler/postgres:{Tag}
 	```

@@ -23,6 +23,7 @@ The tag of each `zookeeper` docker image is consist of the version of `zookeeper
 In this usage, users can select the corresponding `{Tag}` and `container startup options` based on their requirements.
 
 - Pull the `openeuler/zookeeper` image from docker
+
 	```bash
 	docker pull openeuler/zookeeper:{Tag}
 	```

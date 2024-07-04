@@ -23,6 +23,7 @@ The tag of each `prometheus-pushgateway` docker image is consist of the version 
 In this usage, users can select the corresponding `{Tag}` and `container startup options` based on their requirements.
 
 - Pull the `openeuler/prometheus-pushgateway` image from docker
+
 	```bash
 	docker pull openeuler/prometheus-pushgateway:{Tag}
 	```

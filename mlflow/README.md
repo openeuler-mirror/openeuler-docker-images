@@ -38,9 +38,11 @@ The tag of each mlflow docker image is consist of the version of mlflow and the 
 In this usage, users can select the corresponding `{Tag}`  based on their requirements.
 
 - Pull the `openeuler/mlflow` image from docker
+
 	```bash
 	docker pull openeuler/mlflow:{Tag}
 	```
+    
 - Start a mlflow instance
 
 	```bash

@@ -23,9 +23,11 @@ The tag of each `squid` docker image is consist of the version of `squid` and th
 In this usage, users can select the corresponding `{Tag}` and `container startup options` based on their requirements.
 
 - Pull the `openeuler/squid` image from docker
+
 	```bash
 	docker pull openeuler/squid:{Tag}
 	```
+	
 - Start a squid instance
 
 	```bash

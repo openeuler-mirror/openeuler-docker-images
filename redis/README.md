@@ -44,6 +44,7 @@ The tag of each redis docker image is consist of the version of redis and the ve
 In this usage, users can select the corresponding `{Tag}` and `container startup options` based on their requirements.
 
 - Pull the `openeuler/redis` image from docker
+
 	```bash
 	docker pull openeuler/redis:{Tag}
 	```
@@ -98,6 +99,6 @@ In this usage, users can select the corresponding `{Tag}` and `container startup
 	```bash
 	docker exec -it my-redis /bin/bash
 	```
-	
+
 # Question and answering
 If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
