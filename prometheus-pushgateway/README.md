@@ -1,30 +1,56 @@
-# Prometheus-pushgateway
-
 # Quick reference
 
-- The official prometheus-pushgateway docker image.
+- The official Prometheus-pushgateway docker image.
 
-- Maintained by: [openEuler CloudNative SIG](https://gitee.com/openeuler/cloudnative)
+- Maintained by: [openEuler CloudNative SIG](https://gitee.com/openeuler/cloudnative).
 
-- Where to get help: [openEuler CloudNative SIG](https://gitee.com/openeuler/cloudnative), [openEuler](https://gitee.com/openeuler/community)
+- Where to get help: [openEuler CloudNative SIG](https://gitee.com/openeuler/cloudnative), [openEuler](https://gitee.com/openeuler/community).
 
-# Build reference
+# Prometheus-pushgateway | openEuler
+Current Prometheus-pushgateway docker images are built on the [openEuler](https://repo.openeuler.org/). This repository is free to use and exempted from per-user rate limits.
 
-1. Build images and push:
-```shell
-docker buildx build -t "openeuler/prometheus-pushgateway:$TAG" --platform linux/amd64,linux/arm64 . --push
-```
+The Pushgateway is an intermediary service which allows you to push metrics from jobs which cannot be scraped. For details, see [Pushing metrics](https://prometheus.io/docs/instrumenting/pushing/).
 
-We are using `buildx` in here to generate multi-arch images, see more in [Docker Buildx](https://docs.docker.com/buildx/working-with-buildx/)
-
-2. Run:
-```shell
-docker run -d -p 9091:9091 openeuler/prometheus-pushgateway:$TAG
-```
+Learn more about Prometheus-pushgateway on the [Prometheus-pushgateway Website](https://prometheus.io/docs/practices/pushing/).
 
 # Supported tags and respective Dockerfile links
+The tag of each `prometheus-pushgateway` docker image is consist of the version of `prometheus-pushgateway` and the version of basic image. The details are as follows
+|    Tag   |  Currently  |   Architectures  |
+|----------|-------------|------------------|
+|[1.7.0-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/prometheus-pushgateway/1.7.0/22.03-lts-sp3/Dockerfile)| Prometheus-pushgateway 1.7.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
 
-- 1.7.0-oe2203sp3: prometheus-pushgateway v1.7.0, openEuler 22.03-LTS-SP3
+# Usage
+In this usage, users can select the corresponding `{Tag}` and `container startup options` based on their requirements.
 
-## Operating System
-Linux/Unix, ARM64 or x86-64 architecture.
+- Pull the `openeuler/prometheus-pushgateway` image from docker
+	```bash
+	docker pull openeuler/prometheus-pushgateway:{Tag}
+	```
+	
+- Start a prometheus-pushgateway instance
+
+	```bash
+	docker run -d --name my-prometheus-pushgateway -p 9091:9091 openeuler/prometheus-pushgateway:{Tag}
+	```
+	After the instance `my-prometheus-pushgateway` is started, access the Prometheus-pushgateway service through `http://localhost:9091`.
+
+- Container startup options
+
+	| Option | Description |
+	|--|--|
+	| `-p 9091:9091` | Expose Prometheus-pushgateway server on `localhost:9091`. |
+
+- View container running logs
+
+	```bash
+	docker logs -f my-prometheus-pushgateway
+	```
+
+- To get an interactive shell
+
+	```bash
+	docker exec -it my-prometheus-pushgateway /bin/bash
+	```
+
+# Question and answering
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).

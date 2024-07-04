@@ -1,31 +1,57 @@
-# Telegraf
-
 # Quick reference
 
-- The official telegraf docker image.
+- The official Telegraf docker image.
 
-- Maintained by: [openEuler CloudNative SIG](https://gitee.com/openeuler/cloudnative)
+- Maintained by: [openEuler CloudNative SIG](https://gitee.com/openeuler/cloudnative).
 
-- Where to get help: [openEuler CloudNative SIG](https://gitee.com/openeuler/cloudnative), [openEuler](https://gitee.com/openeuler/community)
+- Where to get help: [openEuler CloudNative SIG](https://gitee.com/openeuler/cloudnative), [openEuler](https://gitee.com/openeuler/community).
 
-# Build reference
+# Telegraf | openEuler
+Current Telegraf docker images are built on the [openEuler](https://repo.openeuler.org/). This repository is free to use and exempted from per-user rate limits.
 
-1. Build images and push:
-```shell
-docker buildx build -t "openeuler/telegraf:$VERSION" --platform linux/amd64,linux/arm64 . --push
-```
+Telegraf, a server-based agent, collects and sends metrics and events from databases, systems, and IoT sensors. Written in Go, Telegraf compiles into a single binary with no external dependencies–requiring very minimal memory.
 
-We are using `buildx` in here to generate multi-arch images, see more in [Docker Buildx](https://docs.docker.com/buildx/working-with-buildx/)
-
-2. Run:
-
-```shell
-docker run --name telegraf -d -v /your-path/telegraf.conf:/etc/telegraf/telegraf.conf openeuler/telegraf:{TAG}
-```
+Learn more on [Telegraf website](https://docs.influxdata.com/telegraf/v1/).
 
 # Supported tags and respective Dockerfile links
+The tag of each `telegraf` docker image is consist of the version of `telegraf` and the version of basic image. The details are as follows
+|    Tag   |  Currently  |   Architectures  |
+|----------|-------------|------------------|
+|[1.29.5-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/telegraf/1.29.5/22.03-lts-sp3/Dockerfile)| Telegraf 1.29.5 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
 
-- 1.29.5-oe2203sp3: telegraf v1.29.5, openEuler 22.03 LTS SP3
+# Usage
+In this usage, users can select the corresponding `{Tag}` and `container startup options` based on their requirements.
 
-## Operating System
-Linux/Unix, ARM64 or x86-64 architecture.
+- Pull the `openeuler/telegraf` image from docker
+	```bash
+	docker pull openeuler/telegraf:{Tag}
+	```
+
+- Start a telegraf instance
+
+	```bash
+	docker run -d --name my-telegraf -p 8094:8094 -v /path/to/telegraf.conf:/etc/telegraf/telegraf.conf openeuler/telegraf:{Tag}
+	```
+	After the instance `my-telegraf` is started, access the Telegraf service through `http://localhost:8094`.
+
+- Container startup options
+
+	| Option | Description |
+	|--|--|
+	| -p 8094:8094 | Expose telegraf on `localhost:8094`. |
+	| v /path/to/telegraf.conf:/etc/telegraf/telegraf.conf | Local [configuration file](https://docs.influxdata.com/telegraf/v1/)⁠ `telegraf.conf`. |
+
+- View container running logs
+
+	```bash
+	docker logs -f my-telegraf
+	```
+
+- To get an interactive shell
+
+	```bash
+	docker exec -it my-telegraf /bin/bash
+	```
+	
+# Question and answering
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
