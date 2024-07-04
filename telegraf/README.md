@@ -38,8 +38,8 @@ In this usage, users can select the corresponding `{Tag}` and `container startup
 
 	| Option | Description |
 	|--|--|
-	| -p 8094:8094 | Expose telegraf on `localhost:8094`. |
-	| v /path/to/telegraf.conf:/etc/telegraf/telegraf.conf | Local [configuration file](https://docs.influxdata.com/telegraf/v1/)⁠ `telegraf.conf`. |
+	| `-p 8094:8094` | Expose telegraf on `localhost:8094`. |
+	| `-v /path/to/telegraf.conf:/etc/telegraf/telegraf.conf` | Local [configuration file](https://docs.influxdata.com/telegraf/v1/)⁠ `telegraf.conf`. |
 
 - View container running logs
 

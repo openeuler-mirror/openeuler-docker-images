@@ -6,7 +6,6 @@
 
 - Where to get help: [openEuler CloudNative SIG](https://gitee.com/openeuler/cloudnative), [openEuler](https://gitee.com/openeuler/community).
 
-
 # MLflow | openEuler
 Current MLflow docker images are built on the [openEuler](https://repo.openeuler.org/). This repository is free to use and exempted from per-user rate limits.
 
@@ -28,7 +27,6 @@ MLflow, at its core, provides a suite of tools aimed at simplifying the ML workf
 
 Learn more on [MLflow website](https://mlflow.org/docs/latest/introduction/index.html).
 
-
 # Supported tags and respective Dockerfile links
 The tag of each mlflow docker image is consist of the version of mlflow and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
@@ -36,32 +34,31 @@ The tag of each mlflow docker image is consist of the version of mlflow and the 
 |[2.11.1-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/mlflow/2.11.1/22.03-lts-sp3/Dockerfile)| MLflow 2.11.1 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
 |[2.13.1-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/mlflow/2.13.1/22.03-lts-sp3/Dockerfile)| MLflow 2.13.1 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
 
-
 # Usage
 In this usage, users can select the corresponding `{Tag}`  based on their requirements.
 
 - Pull the `openeuler/mlflow` image from docker
-```bash
-docker pull openeuler/mlflow:{Tag}
-```
+	```bash
+	docker pull openeuler/mlflow:{Tag}
+	```
 - Start a mlflow instance
 
-```bash
-docker run -d --name my-mlflow -p 5000:5000 openeuler/mlflow:{Tag}
-```
-After the instance `my-mlflow` is started, access the mlflow service through `http://localhost:5000`.
+	```bash
+	docker run -d --name my-mlflow -p 5000:5000 openeuler/mlflow:{Tag}
+	```
+	After the instance `my-mlflow` is started, access the mlflow service through `http://localhost:5000`.
 
 - View container running logs
 
-```bash
-docker logs -f my-mlflow
-```
+	```bash
+	docker logs -f my-mlflow
+	```
+	
 - To get an interactive shell
 
-```bash
-docker exec -it my-mlflow /bin/bash
-```
-
+	```bash
+	docker exec -it my-mlflow /bin/bash
+	```
 
 # Question and answering
 If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
