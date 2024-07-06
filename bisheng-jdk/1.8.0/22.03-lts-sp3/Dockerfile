@@ -10,6 +10,10 @@ ENV PATH $JAVA_HOME/bin:$PATH
 ENV LANG C.UTF-8
 ENV JAVA_VERSION 1.8.0_412-b11
 
+RUN yum update -y; \
+    yum install -y ca-certificates p11-kit; \
+    yum clean all
+
 RUN if [ "$TARGETARCH" = "amd64" ]; then \
       BUILDARCH="x64"; \
     elif [ "$TARGETARCH" = "arm64" ]; then \
@@ -19,12 +23,15 @@ RUN if [ "$TARGETARCH" = "amd64" ]; then \
     mkdir -p ${JAVA_HOME}; \
     tar -xvf bisheng-jdk.tar.gz -C ${JAVA_HOME} --strip-components=1; \
     rm -f bisheng-jdk.tar.gz
-  
+
 RUN rm -rf "$JAVA_HOME/jre/lib/security/cacerts"; \
     ln -sT /etc/pki/ca-trust/extracted/java/cacerts "$JAVA_HOME/jre/lib/security/cacerts"; \
+    update-ca-trust; \
     alternatives --install /usr/bin/java java "$JAVA_HOME/bin/java" 20000; \
     alternatives --install /usr/bin/javac javac "$JAVA_HOME/bin/javac" 20000; \
     javac -version; \
     java -version
+
+RUN yum -y install freetype fontconfig
 
 CMD ["java"]
