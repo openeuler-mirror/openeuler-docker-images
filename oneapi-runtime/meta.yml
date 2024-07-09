@@ -1,4 +1,5 @@
 # key is the image tag, value is the Dockerfile path for creating the image with corresponding tag
 
 2024.2.0-oe2403lts:
-  - oneapi-runtime/2024.2.0/24.03-lts/Dockerfile
+  path: oneapi-runtime/2024.2.0/24.03-lts/Dockerfile
+  arch: x86_64

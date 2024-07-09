@@ -1,2 +1,2 @@
 3.7.0-oe2203sp3:
-  - kafka/3.7.0/22.03-lts-sp3/Dockerfile
+  path: kafka/3.7.0/22.03-lts-sp3/Dockerfile

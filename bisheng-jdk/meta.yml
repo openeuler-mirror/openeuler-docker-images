@@ -1,6 +1,6 @@
 1.8.0-oe2203lts:
-  bisheng-jdk/1.8.0/22.03-lts/Dockerfile
+  path: bisheng-jdk/1.8.0/22.03-lts/Dockerfile
 1.8.0-oe2203sp3:
-  bisheng-jdk/1.8.0/22.03-lts-sp3/Dockerfile
+  path: bisheng-jdk/1.8.0/22.03-lts-sp3/Dockerfile
 17.0.10-oe2203sp3:
-  bisheng-jdk/17.0.10/22.03-lts-sp3/Dockerfile
+  path: bisheng-jdk/17.0.10/22.03-lts-sp3/Dockerfile

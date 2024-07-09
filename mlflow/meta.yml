@@ -1,5 +1,4 @@
 2.11.1-oe2203sp3:
-  mlflow/2.11.1/22.03-lts-sp3/Dockerfile
-
+  path: mlflow/2.11.1/22.03-lts-sp3/Dockerfile
 2.13.1-oe2203sp3:
-  mlflow/2.13.1/22.03-lts-sp3/Dockerfile
+  path: mlflow/2.13.1/22.03-lts-sp3/Dockerfile
