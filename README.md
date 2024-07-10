@@ -29,9 +29,11 @@ openEuler的基础镜像由社区官方发布，目前发布在[openEuler镜像�
 	- [22.09](https://archives.openeuler.openatom.cn/openEuler-22.09/docker_img/)
 	- [22.03-lts-sp1](https://repo.openeuler.org/openEuler-22.03-LTS-SP1/docker_img/)
 	- [22.03-lts-sp2](https://repo.openeuler.org/openEuler-22.03-LTS-SP2/docker_img/)
-	- [22.03-lts-sp3, 22.03, latest](https://repo.openeuler.org/openEuler-22.03-LTS-SP3/docker_img/)
+	- [22.03-lts-sp3](https://repo.openeuler.org/openEuler-22.03-LTS-SP3/docker_img/)
+	- [22.03-lts-sp4, 22.03](https://repo.openeuler.org/openEuler-22.03-LTS-SP4/docker_img/)
 	- [23.03](https://repo.openeuler.org/openEuler-23.03/docker_img/)
 	- [23.09](https://repo.openeuler.org/openEuler-23.09/docker_img/)
+	- [24.03-lts, latest](https://repo.openeuler.org/openEuler-24.03-LTS/docker_img/)
 - 存放路径规则：`openeuler/[openEuler版本号]/Dockerfile`，
 例如：openEuler 21.09的Dockerfile位于`openeuler/21.09/Dockerfile`。
 
@@ -73,16 +75,39 @@ openEuler的基础镜像由社区官方发布，目前发布在[openEuler镜像�
 - `doc/picture/`
 
 	存放应用相关的图片
+	
+每个应用镜像，包含一个meta.yml文件，存放该镜像的版本信息，文件路径为:`[应用名]/meta.yml`
+
+ - `meta.yml`
+	
+	示例如下：
+
+		# spark/meta.yml
+		3.3.1-oe2203lts:
+  			path: spark/3.3.1/22.03-lts/Dockerfile
+		3.3.2-oe2203lts:
+		  	path: spark/3.3.2/22.03-lts/Dockerfile
+			arch: aarch64
+	
+	配置项说明:
+	| 配置项 | 是否必填 | 配置说明 | 配置示例 |
+	|--|--|--|--|
+	| path | 是 | dockerfile相对路径 | spark/3.3.1/22.03-lts/Dockerfile |
+	| arch | 否 | 用于发布单架构镜像时指定镜像架构；无该字段时，默认发布x86_64和aarch64的双架构镜像。| x86_64，配置仅支持x86_64或aarch64 |
 
 #### 国内镜像仓
 
 目前支持的第三方国内镜像仓有：
 
-- Hub oepkgs: https://hub.oepkgs.net/
+- [hub.oepkgs.net](https://hub.oepkgs.net/)
 
-- AtomHub: https://atomhub.openatom.cn/
+- [hub.docker.com](https://hub.docker.com/)
 
+- [quay.io](https://quay.io/)
 
-#### 参与贡献
+#### 镜像发布指南
 
-欢迎发表想法、提交问题、贡献代码。
+1. 提交镜像的PR合入后，会触发CI流程自动发布镜像。
+2. 镜像dockerfile文件新增和修改合入后，会触发CI流程自动发布镜像。
+3. 镜像README.md文件新增和修改合入后，会触发CI流程自动发布镜像README信息。
+4. 欢迎在`eulerPublisher`提交镜像的测试用例；当镜像没有测试用例时，自动发布流程中仅检查能否成功构建镜像。

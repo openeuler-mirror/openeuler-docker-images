@@ -1,0 +1,93 @@
+name: go
+category: others
+description: Go（又称 Golang）是 Google 的 Robert Griesemer，Rob Pike 及 Ken Thompson 开发的一种静态强类型、编译型语言。Go 语言语法与 C 相近，但功能上有：内存安全，GC（垃圾回收），结构形态及 CSP-style 并发计算。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  Go镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.17.3-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/go/1.17.3/22.03-lts/Dockerfile)| go 1.17.3 on openEuler 22.03-LTS | amd64, arm64 |
+  |[1.22.5-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/go/1.22.5/22.03-lts-sp4/Dockerfile)| go 1.22.5 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+
+  注意，以下`{Tag}`的值按照需求，替换为上述表格中的tag内容。
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/go:{Tag}
+  ```
+
+usage: |
+  `openeuler/go`最直接的方法是作为构建和运行时环境,编写类似以下内容的Dockerfile代码编译和运行：
+  - 运行Go实例
+    使用`openeuler/go`容器作为构建和运行时环境，可按照以下内容编译并运行项目
+    ```
+    # Dockerfile
+    FROM openeuler/go:1.22.5-oe2203sp4
+
+    WORKDIR /usr/src/app
+    COPY go.mod go.sum ./
+    RUN go mod download && go mod verify
+    COPY . .
+    RUN go build -v -o /usr/local/bin/app ./...
+    CMD ["app"]
+    ```
+    
+    构建并运行Docker容器
+    ```
+    docker build -t my-golang-app .
+    docker run -it --rm --name my-running-app my-golang-app
+    ```
+
+  - 编译Go项目
+
+    在某些情况下，在容器内运行应用程序可能并不合适。要编译但不在Docker实例内运行应用程序，可采用如下方式：
+    ```
+    docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp openeuler/go:1.22.5-oe2203sp4 go build -v
+    ```
+    这会将当前目录作为卷添加到容器中，将工作目录设置为该卷，然后运行执行`go build`编译项目中的代码，输出为可执行文件myapp。如果项目中包含Makefile编译文件，可以在容器内通过make命令编译:
+    ```
+    docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp openeuler/go:1.22.5-oe2203sp4 make
+    ```
+  
+  - 交叉编译
+
+    如果需要为除去linux/amd64之外的其他平台编译应用(例如：windows/386), 可采用如下方式：
+    ```
+    docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp -e GOOS=windows -e GOARCH=386 openeuler/go:1.22.5-oe2203sp4 go build -v
+    ```
+    或者，多平台同时构建如下：
+    ```
+    # 第一步， 运行Go容器
+    docker run --rm -it -v "$PWD":/usr/src/myapp -w /usr/src/myapp openeuler/go:1.22.5-oe2203sp4 bash
+
+    # 第二步，多平台构建应用
+    for GOOS in darwin linux; do
+      for GOARCH in 386 amd64; do
+        export GOOS GOARCH
+        go build -v -o myapp-$GOOS-$GOARCH
+      done
+    done
+    ```
+
+  - 容器测试
+
+    使用以下方式验证镜像内安装的Go环境：
+    ```
+    docker run -it openeuler/go:{Tag} go --version
+    ```
+    例如，`{Tag}`为`1.22.5-oe2203sp4`时，返回类似如下信息则证明环境正常：
+    ```
+    go version go1.22.5 linux/amd64
+    ```
+
+license: BSD 3-Clause license
+similar_packages:
+  - N/A
+dependency:
+  - N/A

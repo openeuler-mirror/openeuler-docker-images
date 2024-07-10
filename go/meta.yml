@@ -1,0 +1,4 @@
+1.17.3-oe2203lts:
+  path: go/1.17.3/22.03-lts/Dockerfile
+1.22.5-oe2203sp4:
+  path: go/1.22.5/22.03-lts-sp4/Dockerfile

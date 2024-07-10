@@ -1,4 +1,3 @@
-# key为镜像的tag，value为构建对应tag镜像的Dockerfile保存路径
 fastchat-pytorch2.1.0.a1-cann7.0.RC1.alpha002-oe2203sp2:
   path: llm/fastchat-pytorch2.1.0.a1-cann7.0.RC1.alpha002/22.03-lts-sp2/Dockerfile
 chatglm2_6b-pytorch2.1.0.a1-cann7.0.RC1.alpha002-oe2203sp2:
