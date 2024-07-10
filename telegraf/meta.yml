@@ -1,2 +1,2 @@
 1.29.5-oe2203sp3:
-  telegraf/1.29.5/22.03-lts-sp3/Dockerfile
+  path: telegraf/1.29.5/22.03-lts-sp3/Dockerfile

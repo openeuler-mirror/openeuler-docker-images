@@ -1,2 +1,2 @@
 0.27.0-oe2203sp3:
-  - altermanager/0.27.0/22.03-lts-sp3/Dockerfile
+  path: altermanager/0.27.0/22.03-lts-sp3/Dockerfile

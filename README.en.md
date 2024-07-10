@@ -30,9 +30,11 @@ After the official images are published, we will push to every remote container 
 	- [22.09](https://archives.openeuler.openatom.cn/openEuler-22.09/docker_img/)
 	- [22.03-lts-sp1](https://repo.openeuler.org/openEuler-22.03-LTS-SP1/docker_img/)
 	- [22.03-lts-sp2](https://repo.openeuler.org/openEuler-22.03-LTS-SP2/docker_img/)
-	- [22.03-lts-sp3, 22.03, latest](https://repo.openeuler.org/openEuler-22.03-LTS-SP3/docker_img/)
+	- [22.03-lts-sp3](https://repo.openeuler.org/openEuler-22.03-LTS-SP3/docker_img/)
+	- [22.03-lts-sp4, 22.03](https://repo.openeuler.org/openEuler-22.03-LTS-SP4/docker_img/)
 	- [23.03](https://repo.openeuler.org/openEuler-23.03/docker_img/)
 	- [23.09](https://repo.openeuler.org/openEuler-23.09/docker_img/)
+	- [24.03-lts, latest](https://repo.openeuler.org/openEuler-24.03-LTS/docker_img/)
 - Path rule：`openeuler/[openEuler version]/Dockerfile`,
 such as: openEuler 21.09 Dockerfile is under `openeuler/21.09/Dockerfile` path.
 
@@ -76,13 +78,37 @@ The content is as follows:
 
 Store application-related images
 
+All openEuler application images contain a `meta.yml` file，which stores the image tag info，the file path is: `[app-name]/meta.yml`
+
+ - `meta.yml`
+	
+	The example is as follows：
+
+		# spark/meta.yml
+		3.3.1-oe2203lts:
+  			path: spark/3.3.1/22.03-lts/Dockerfile
+		3.3.2-oe2203lts:
+		 	path: spark/3.3.2/22.03-lts/Dockerfile
+	
+	Configuration item description:
+	| Configuration item | Required or not | Description | Example |
+	|--|--|--|--|
+	| path | yes | Relative path of the image dockerfile | spark/3.3.1/22.03-lts/Dockerfile |
+	| arch | no |  This configuration is required when only one architecture is supported. By default, it supports arm64 and amd64 architectures.| x86_64，only x86_64 or aarch64 can be configured. |
+
 #### Available Container Repo
 
-- Hub oepkgs: https://hub.oepkgs.net/
+- [hub.oepkgs.net](https://hub.oepkgs.net/)
 
-- AtomHub: https://atomhub.openatom.cn/
+- [hub.docker.com](https://hub.docker.com/)
+
+- [quay.io](https://quay.io/)
+
 
 
 #### Contributions
 
-Welcome to submit your idea, issue and pull request.
+1. After the pull request is merged, the CI process will automatically publish the image.
+2. After the `dockerfile` is added or modified, the CI process will automatically publish the image. 
+3. After the `README.md` is added or modified, the CI process will automatically publish the image README information.
+4. Welcome to submit image test cases to the project `eulerPublisher`; The automatic publishing process only checks whether the image can be successfully constructed if the image has no test cases.

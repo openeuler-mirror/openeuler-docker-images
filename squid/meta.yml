@@ -1,2 +1,2 @@
 6.8-oe2203sp3:
-  - squid/6.8/22.03-lts-sp3/Dockerfile
+  path: squid/6.8/22.03-lts-sp3/Dockerfile

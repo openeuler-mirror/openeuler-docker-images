@@ -1,2 +1,2 @@
 8.0.3-oe2203sp3:
-  - dotnet-runtime/8.0.3/22.03-lts-sp3/Dockerfile
+  path: dotnet-runtime/8.0.3/22.03-lts-sp3/Dockerfile
