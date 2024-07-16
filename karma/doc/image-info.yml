@@ -1,0 +1,52 @@
+name: karma
+category: cloud
+description: Karma是Prometheus Alertmanager的警报仪表板。虽然Alertmanager UI对于查看警报和管理沉默很有用，但它缺乏作为仪表板工具的功能，而karma填补了这一空白。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  karma镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[0.120-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/karma/0.120/24.03-lts/Dockerfile)| Karma 0.120 on openEuler 24.03-LTS | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/karma:{Tag}
+  ```
+  注意，使用karma要求Alertmanager版本 >= 0.22.0。
+
+usage: |
+  - 启动容器
+    ```
+    docker run -d --name my-karma -p 8080:8080 openeuler/karma:{Tag}
+    ```
+    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。`my-karma`启动之后，通过`http://localhost:8080`访问服务。
+  
+  - 启动参数
+
+    |    Parameter   |  Description  |
+    |----------------|---------------|
+    | `-p 8080:8080`  | 	通过`http://localhost:8080`访问服务 |
+
+  - 容器测试
+
+    查看运行日志
+    ```
+    docker logs -f my-karma
+    ```
+
+    使用shell交互
+    ```
+    docker exec -it my-karma /bin/bash
+    ```
+
+license: Apache-2.0 license
+similar_packages:
+  - N/A
+dependency:
+  - Alertmanager
