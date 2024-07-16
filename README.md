@@ -10,9 +10,7 @@
 
 ## 基础镜像
 
-openEuler的基础镜像由社区官方发布，目前发布在[openEuler镜像站](https://repo.openeuler.org)。
-
-其中"openeuler:latest"是最新可用的长期稳定镜像。
+openEuler的基础镜像由社区官方发布，目前发布在[openEuler镜像站](https://repo.openeuler.org), 其中"openeuler:latest"是最新可用的长期稳定镜像。
 
 镜像发布后，会同步推送到各个远端容器镜像仓，信息如下：
 
@@ -74,6 +72,7 @@ openEuler的基础镜像由社区官方发布，目前发布在[openEuler镜像�
 		path: spark/3.3.2/22.03-lts/Dockerfile
 		arch: aarch64
 	```
+
 	上述文件中，每一对`<key, value>`描述一个镜像的构建发布规则，其中：
 	- key：表示镜像的tag，如`3.3.1-oe2203lts`和`3.3.2-oe2203lts`均表示`openeuler/spark`镜像的不同tag
 	- value: 用于描述如何构建镜像，说明如下
@@ -82,22 +81,25 @@ openEuler的基础镜像由社区官方发布，目前发布在[openEuler镜像�
 		| path | 是 | 描述构建镜像的Dockerfile相对路径 | spark/3.3.1/22.03-lts/Dockerfile |
 		| arch | 否 | 用于发布单架构镜像时，指定构建架构可选`x86_64`或`aarch64`；未填写该项时，默认发布`x86_64`和`aarch64`的双架构镜像 | x86_64 |
 
-2. （可选）包含一个`doc/`目录，存放该镜像的图文信息：
-- `doc/image-info.yml`，内容如下：
+	备注： 镜像tag更新时，需要同步更新上述配置。
 
-		名称（name）：应用名
-		分类（category）：应用镜像功能分类，可选：大数据（bigdata）、AI（ai）、分布式存储（storage）、数据库（database）、云服务（cloud）、HPC（hpc）、其他（others）
-		功能简介（description）
-		运行环境（environment）
-		镜像标签（tags）
-		获取方式（download）
-		使用方式（usage）
-		LICENSE（license）
-		近似软件（similar_packages）
-		依赖软件（dependency）
-- `doc/picture/`
+3. （可选）包含一个`doc/`目录，存放该镜像的图文信息：
 
-	存放与应用特征相关的图片，如应用的logo或典型场景的运行时截图
+	- `doc/image-info.yml`，内容如下：
+
+			名称（name）：应用名
+			分类（category）：应用镜像功能分类，可选：大数据（bigdata）、AI（ai）、分布式存储（storage）、数据库（database）、云服务（cloud）、HPC（hpc）、其他（others）
+			功能简介（description）
+			运行环境（environment）
+			镜像标签（tags）
+			获取方式（download）
+			使用方式（usage）
+			LICENSE（license）
+			近似软件（similar_packages）
+			依赖软件（dependency）
+	- `doc/picture/`
+
+		存放与应用特征相关的图片，如应用的logo或典型场景的运行时截图
 	
 
 ## 镜像托管平台
@@ -118,6 +120,6 @@ openEuler的基础镜像由社区官方发布，目前发布在[openEuler镜像�
 
 关于PR合入后，自动发布镜像的规则说明：
 
-1. 新增或修改镜像Dockerfile的PR合入后，会触发新增镜像自动发布或已有镜像更新。
+3. 新增或修改镜像Dockerfile的PR合入后，会触发新增镜像自动发布或已有镜像更新。
 
-2. 新增或修改镜像README.md的PR合入后，会触发所有镜像托管平台的Overview或Description信息刷新。
+4. 新增或修改镜像README.md的PR合入后，会触发所有镜像托管平台的Overview或Description信息刷新。
