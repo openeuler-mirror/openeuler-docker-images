@@ -1,18 +1,15 @@
 # openEuler official container images
 
-#### Introduction
+## Introduction
 
 Dockerfiles for openEuler official container images, include openEuler basic image and application images.
 
 
-#### openEuler Basic Container Image
+## Basic Container Image
 
-openEuler basic image is published by openEuler community in [openEuler repo](https://repo.openeuler.org)
+openEuler basic image is published by openEuler community in [openEuler repo](https://repo.openeuler.org), "openeuler:latest" is the current stable available image.
 
-
-"openeuler:latest" is the current stable available image.
-
-After the official images are published, we will push to every remote container images hub:
+After the official images are published, we will push to the third-party Hubs, details are as follows:
 
 - name: `openeuler/openeuler`
 - Download: `docker pull [Remote repo URL]openeuler/openeuler[:tags]`
@@ -36,79 +33,87 @@ After the official images are published, we will push to every remote container 
 	- [23.09](https://repo.openeuler.org/openEuler-23.09/docker_img/)
 	- [24.03-lts, latest](https://repo.openeuler.org/openEuler-24.03-LTS/docker_img/)
 - Path rule：`openeuler/[openEuler version]/Dockerfile`,
-such as: openEuler 21.09 Dockerfile is under `openeuler/21.09/Dockerfile` path.
+	such as: openEuler 21.09 Dockerfile is under `openeuler/21.09/Dockerfile` path.
 
-#### openEuler Application Container Image
+## Application Container Image
 
 Dockerfiles for various popular application implementations based on openEuler basic image.
 
-- Path rule：`[Application name]/[Application version]/[openEuler version]/Dockerfile`,
-such as, the nginx 1.20.1 based on openEuler 20.03 LTS SP1 is under `nginx/1.20.1/20.03-lts-sp1/Dockerfile`.
-In particular, for application container images of complex software stacks, in order to accurately express their dependencies, the `[application version number]` in the Dockerfile storage path can be described as the complete software stack version, for example: `pytorch/2.1.0-cann7 .0.RC1.alpha002/22.03-lts-sp2/Dockerfile` stores the pytorch 2.1.0 application image Dockerfile based on cann7.0.RC1.alpha002 and openEuler 22.03-lts-sp2.
-- The container images would be published after Dockerfile merged under `openeuler`,
-such as: `openeuler/nginx:1.20.1-oe2003sp1`.
+- Repository rule：`openeuler/[Application name]`, such as: `openeuler/nginx`.
+- Path rule：`[Application name]/[Application version]/[openEuler version]/Dockerfile`, such as: the nginx 1.20.1 based on openEuler 20.03 LTS SP1 is under `nginx/1.20.1/20.03-lts-sp1/Dockerfile`.
 
-All openEuler application images contain a README (such as nginx/README.md), included:
+	In particular, for application container images of complex software stacks, in order to accurately express their dependencies, the `[application version]` in the Dockerfile storage path can be described as the complete software stack version, for example: `pytorch/2.1.0-cann7 .0.RC1.alpha002/22.03-lts-sp2/Dockerfile` stores the pytorch 2.1.0 application image Dockerfile based on cann7.0.RC1.alpha002 and openEuler 22.03-lts-sp2.
+- Tag rule: `[Application version]-[openEuler version]`, such as: `openeuler/nginx:1.20.1-oe2003sp1`.
 
-- Description for container images build.
-- openEuler, container service (like Docker, iSula) and application version info.
+The contents of each application container image directory:
 
-The container images would be published under `openeuler` after Dockerfile merged. We use `docker buildx` to build the container image for amd64 and arm64 platforms.
-The build steps are as follows:
-- go into directory of `[Application name]/[Application version]/[openEuler version]`
-- execute the command `docker buildx build -t tag_name --platform linux/amd64,linux/arm64 .`
+1. All openEuler application images contain a README (such as nginx/README.md), included:
+	- `Quick reference`：related links
+	- `[Application name] | openEuler`：application descriptions
+	- `Supported tags and respective Dockerfile links`：tags and Dockerfile links, this must be updated when a new tag is published
+	- `Usage`：describe how to use the application container image, and try to give a test case that can be easily run
+	- `Question and answering`：where to file bugs and issues
 
-All openEuler application images contain a `doc/` directory, which stores the graphic and text information of the image:
+	The README will be synchronously published to the third-party Hubs, so please be serious while contributing.
 
-- `doc/image-info.yml`
+2. All openEuler application images contain a `meta.yml` file，which stores the image tag info，the file path is: `[app-name]/meta.yml`. The example is as follows：
 
-The content is as follows:
+ 	- `meta.yml`
 
-    name
-    category (such as: bigdata, ai, storage, database, cloud, hpc)
-    description
-    environment
-    download
-    install
-    license
-    similar_packages
-    Dependency
-
-- `doc/picture/`
-
-Store application-related images
-
-All openEuler application images contain a `meta.yml` file，which stores the image tag info，the file path is: `[app-name]/meta.yml`
-
- - `meta.yml`
+			# spark/meta.yml
+			3.3.1-oe2203lts:
+	  			path: spark/3.3.1/22.03-lts/Dockerfile
+			3.3.2-oe2203lts:
+			 	path: spark/3.3.2/22.03-lts/Dockerfile
+		 	
+	In the above example, each pair of `<key, value>` contains image's publishing configuration, it's as follows:
+	- key: Tag of the image,  `3.3.1-oe2203lts` and `3.3.2-oe2203lts` are different image tags of the openeuler/spark.
+	- value: It contains configuration items those are used to build image, thos are follows.
 	
-	The example is as follows：
-
-		# spark/meta.yml
-		3.3.1-oe2203lts:
-  			path: spark/3.3.1/22.03-lts/Dockerfile
-		3.3.2-oe2203lts:
-		 	path: spark/3.3.2/22.03-lts/Dockerfile
+		Configuration description:
+		| Item | Optional | Description | Example |
+		|--|--|--|--|
+		| path | yes | Relative path of the image dockerfile | spark/3.3.1/22.03-lts/Dockerfile |
+		| arch | no |  This configuration is required when only one architecture is supported. By default, it supports arm64 and amd64 architectures.| x86_64，only x86_64 or aarch64 can be configured. |
 	
-	Configuration item description:
-	| Configuration item | Required or not | Description | Example |
-	|--|--|--|--|
-	| path | yes | Relative path of the image dockerfile | spark/3.3.1/22.03-lts/Dockerfile |
-	| arch | no |  This configuration is required when only one architecture is supported. By default, it supports arm64 and amd64 architectures.| x86_64，only x86_64 or aarch64 can be configured. |
+	It is required to add or update the meta.yml while Dockerfile is changed.
 
-#### Available Container Repo
+3. All openEuler application images contain a `doc/` directory, which stores the graphic and text information of the image:
 
-- [hub.oepkgs.net](https://hub.oepkgs.net/)
+	- `doc/image-info.yml`
 
-- [hub.docker.com](https://hub.docker.com/)
+		The content is as follows:
 
-- [quay.io](https://quay.io/)
+			name
+			category (such as: bigdata, ai, storage, database, cloud, hpc, others)
+			description
+			environment
+			tags
+			download
+			usage
+			license
+			similar_packages
+			dependency
+
+	- `doc/picture/`
+
+		Store application-related images, such as application logos or runtime screenshots of typical scenes.
 
 
+## Available Container Registries
 
-#### Contributions
+Available container registries included:
+1. [hub.oepkgs.net](https://hub.oepkgs.net/)
+2. [hub.docker.com](https://hub.docker.com/)
+3. [quay.io](https://quay.io/)
 
-1. After the pull request is merged, the CI process will automatically publish the image.
-2. After the `dockerfile` is added or modified, the CI process will automatically publish the image. 
-3. After the `README.md` is added or modified, the CI process will automatically publish the image README information.
-4. Welcome to submit image test cases to the project `eulerPublisher`; The automatic publishing process only checks whether the image can be successfully constructed if the image has no test cases.
+
+## Contributions
+
+Welcome to contribute openEuler application container images, please submit PR according to the above rules. As the PR is passed and merged, the automatically publishing process will be triggered, and these images will be published to available container registries mentioned above!
+
+Code check instruction:
+1. [EulerPublisher](https://gitee.com/openeuler/eulerpublisher) is used to build, check and publish container images.
+2. All test cases of application container images are stored in [/tests/container/app](https://gitee.com/openeuler/eulerpublisher/tree/master/tests/container/app). Developers who want to publish container images can also submit test cases to [EulerPublisher](https://gitee.com/openeuler/eulerpublisher).
+3. When the PR in which you add or modify a Dockerfile is merged, a new image will be automatically published or the existing image will be updated.
+4. When the PR in which you add or modify a README.md is merged, the README.md will be synchronously published to the third-party Hubs.
