@@ -25,7 +25,7 @@ usage: |
     docker run -d --name my-traefik -p 80:80 openeuler/traefik:{Tag}
     ```
     用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。
-    `my-traefik`启动之后，通过`localhost:80`访问traefik反向代理服务。
+    `my-traefik`启动之后，通过`http://localhost:80`访问traefik反向代理服务。
   
   - 启动参数
 
