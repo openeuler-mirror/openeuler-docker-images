@@ -1,9 +1,7 @@
 # Quick reference
 
 - The official Go docker image.
-- The official Go docker image.
 
-- Maintained by: [openEuler CloudNative SIG](https://gitee.com/openeuler/cloudnative).
 - Maintained by: [openEuler CloudNative SIG](https://gitee.com/openeuler/cloudnative).
 
 - Where to get help: [openEuler CloudNative SIG](https://gitee.com/openeuler/cloudnative), [openEuler](https://gitee.com/openeuler/community).
