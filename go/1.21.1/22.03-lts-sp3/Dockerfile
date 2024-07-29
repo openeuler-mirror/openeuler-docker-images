@@ -1,4 +1,4 @@
-ARG BASE=openeuler/openeuler:22.03-lts-sp4
+ARG BASE=openeuler/openeuler:22.03-lts-sp3
 FROM ${BASE}
 
 ARG TARGETARCH
@@ -6,12 +6,12 @@ ARG LOCAL_PATH=/usr/local
 
 ENV GOPATH=/go
 ENV GOTOOLCHAIN=local
-ENV GOLANG_VERSION=1.22.5
-ENV GOROOT=${LOCAL_PATH}/go
+ENV GOLANG_VERSION=1.21.1
+ENV GOROOT=$LOCAL_PATH/go
 ENV PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
 RUN set -eux; \
-    yum update -y && yum -y install g++ gcc glibc-devel make pkg-config findutils && yum clean all; \
+    yum update -y && yum -y install g++ gcc glibc-devel make pkg-config findutils ca-certificates && yum clean all; \
     curl -fSL -o ${LOCAL_PATH}/go.tar.gz https://dl.google.com/go/go${GOLANG_VERSION}.linux-${TARGETARCH}.tar.gz; \
     tar -xvf ${LOCAL_PATH}/go.tar.gz -C ${LOCAL_PATH}; \
     rm -f ${LOCAL_PATH}/go.tar.gz
