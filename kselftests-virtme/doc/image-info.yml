@@ -1,0 +1,56 @@
+name: kselftests-virtme
+category: other
+description: kselftests-virtme (Kernel self-tests by Virtme) 是一个用来验证 mptcp_net-next (https://github.com/multipath-tcp/mptcp_net-next) 源码的虚拟环境，可用于开发或CI环节。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+    yum install -y docker
+  ```
+tags: |
+  kselftests-virtme镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.25-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/kselftests-virtme/1.25/22.03-lts-sp4/Dockerfile)| Virtme-ng 1.25 on openEuler 22.03-LTS-sp4 | amd64, arm64 |
+
+download: |
+  由于kselftests-virtme镜像体积较大，建议单独pull到本地后再启动容器：
+  ```
+    docker pull openeuler/kselftests-virtme:{Tag}
+  ```
+
+usage: |
+  - 下载[mptcp_net-next](https://github.com/multipath-tcp/mptcp_net-next)源码
+    ```
+      git clone https://github.com/multipath-tcp/mptcp_net-next.git
+    ```
+  
+  - 编译并测试`mptcp_net-next`源码
+    ```
+      # 进入源码目录
+      cd mptcp_net-next
+      # 启动容器编译、测试源码
+      docker run \
+        -e INPUT_NO_BLOCK=1 \
+        -e INPUT_PACKETDRILL_NO_SYNC=1 \
+        -v "${PWD}:${PWD}:rw" -w "${PWD}" --privileged --rm -it \
+        openeuler/kselftests-virtme:{Tag} \
+        auto-normal
+    ```
+      
+      容器启动后会提示以下编译信息:
+    ```
+      Check extented exec files
+      Start: auto (normal)
+      Setup environment
+      Generate kernel config
+      make[1]: Entering directory '/home/mptcp_net-next/.virtme/build'
+      <...>
+    ```
+
+license: GPL-2.0 license
+similar_packages:
+  - N/A
+dependency:
+  - qemu
+  - kvm
