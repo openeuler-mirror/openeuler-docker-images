@@ -1,3 +1,5 @@
+[中文](README.md) | English
+
 # openEuler official container images
 
 ## Introduction
