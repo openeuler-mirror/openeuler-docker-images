@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0
-ARG BASE=openeuler/openeuler:24.03-lts
+ARG BASE=openeuler/openeuler:22.03-lts-sp4
 FROM ${BASE}
 
 LABEL name=openeuler-kselftests-virtme-docker
@@ -8,7 +8,7 @@ LABEL name=openeuler-kselftests-virtme-docker
 RUN yum update -y && \
 	yum upgrade -y && \
 	yum install -y \
-        make ncurses-devel gcc gcc-c++ openssl-devel bc bison byacc automake \
+        make ncurses-devel gcc openssl-devel bc bison byacc automake \
 		elfutils-libelf-devel flex git curl tar perl-Digest-SHA qemu-kvm sudo expect \
 		python3 python3-pip python3-setuptools file libvirt-daemon-config-network \
 		busybox coreutils python3-requests libvirt-client udev \
