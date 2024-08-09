@@ -1,0 +1,62 @@
+
+name: tempo
+category: cloud
+description: Grafana Tempo 是一个开源、易于使用的大规模分布式跟踪后端。 Tempo 具有成本效益，仅需要对象存储即可运行，并且与 Grafana、Prometheus 和 Loki 深度集成。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  Tempo镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[2.5.0-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/tempo/2.5.0/24.03-lts/Dockerfile)| Grafana Tempo 2.5.0 on openEuler 24.03-LTS | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/tempo:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+    ```
+    docker run -d \
+      --name my-tempo \
+      -p 3200:3200 -p 14268:14268 -p 9095:9095 -p 4317:4317 -p 4318:4318 -p 9411:9411 \
+      openeuler/tempo:{Tag}
+    ```
+    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。
+    `my-tempo`启动之后，通过`localhost:3200`访问tempo API。
+  
+  - 启动参数
+
+    |    Parameter   |  Description  |
+    |----------------|---------------|
+    | -p 3200:3200	 | Tempo HTTP API访问端口 |
+    | -p 9095:9095	 | Tempo GRPC API访问端口 |
+    | -p 14268:14268 | Jaeger thrift格式的数据接收端口 |
+    | -p 4317:4317	 | OpenTelemetry GRPC数据接收端口 |
+    | -p 4318:4318	 | OpenTelemetry HTTP数据接收端口 |
+    | -p 9411:9411	 | Zipkin格式的数据接收端口        |
+    | -v /path/to/tempo/config.yml:/etc/tempo/config.yml | 使用本地自定义配置文件 |
+ 
+  - 容器测试
+
+    查看运行日志
+    ```
+    docker logs -f my-tempo
+    ```
+
+    使用shell交互
+    ```
+    docker exec -it my-tempo /bin/bash
+    ```
+
+license:  AGPL-3.0 license
+similar_packages:
+  - N/A
+dependency:
+  - N/A
