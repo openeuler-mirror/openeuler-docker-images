@@ -1,2 +1,4 @@
 cann7.0.RC1.alpha002-oe2203sp2:
   path: cann/7.0.RC1.alpha002/22.03-lts-sp2/Dockerfile
+8.0.RC1-oe2203sp4:
+  path: cann/8.0.RC1/22.03-lts-sp4/Dockerfile

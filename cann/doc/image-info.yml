@@ -1,0 +1,70 @@
+name: cann
+category: ai
+description: CANN（Compute Architecture for Neural Networks）是华为针对AI场景推出的异构计算架构，对上支持多种AI框架，对下服务AI处理器与编程，发挥承上启下的关键作用，是提升昇腾AI处理器计算效率的关键平台。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  CANN镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[cann7.0.RC1.alpha002-oe2203sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/cann/7.0.RC1.alpha002/22.03-lts-sp2/Dockerfile)| CANN 7.0.RC1.alpha002 on openEuler 22.03-LTS-SP2 | arm64 |
+  |[8.0.RC1-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/cann/8.0.RC1/22.03-lts-sp4/Dockerfile)| CANN 8.0.RC1 with Python 3.8 on openEuler 22.03-LTS-SP4 | arm64,amd64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/cann:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+    ```
+    docker run \
+        --name my-cann \
+        --device ${device} \
+        --device /dev/davinci_manager \
+        --device /dev/devmm_svm \
+        --device /dev/hisi_hdc \
+        -v /usr/local/dcmi:/usr/local/dcmi \
+        -v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi \
+        -v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/ \
+        -v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info \
+        -v /etc/ascend_install.info:/etc/ascend_install.info \
+        -it openeuler/cann:{Tag} bash
+    ```
+    用户可根据自身需求选择对应版本的{Tag}以及对应的硬件设备{device}、容器启动的选项。
+
+  - 容器测试
+
+    查看运行日志
+    ```
+    docker logs -f my-cann
+    ```
+
+    使用shell交互
+    ```
+    docker exec -it my-cann /bin/bash
+    ```
+
+license: Apache-2.0 license
+similar_packages:
+  - CUDA: CUDA是英伟达公司设计研发一种并行计算平台和编程模型，包含了CUDA指令集架构以及GPU内部的并行计算引擎。
+dependency:
+  - attrs 
+  - decorator 
+  - sympy 
+  - numpy
+  - cffi 
+  - pathlib2 
+  - pyyaml 
+  - psutil 
+  - protobuf 
+  - scipy 
+  - requests 
+  - absl-py
+  - wheel 
+  - typing_extensions
