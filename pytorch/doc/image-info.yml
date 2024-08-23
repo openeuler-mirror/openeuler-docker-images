@@ -1,17 +1,18 @@
-name: pyTorch
+name: pytorch
 category: ai
-description: pyTorch是一个开源的Ppython机器学习库，基于torch，用于自然语言处理等应用程序。pyTorch既可以看作加入了GPU支持的numpy，同时也可以看成一个拥有自动求导功能的强大的深度神经网络。
+description: PyTorch是一个开源的Python机器学习库，基于torch，用于自然语言处理等应用程序。PyTorch既可以看作加入了GPU支持的numpy，同时也可以看成一个拥有自动求导功能的强大的深度神经网络。
 environment: |
   本应用在Docker环境中运行，安装Docker执行如下命令
   ```
   yum install -y docker
   ```
 tags: |
-  pyTorch镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+  PyTorch镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
-  |[pytorch2.1.0.a1-cann7.0.RC1.alpha002-oe2203sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/pytorch/2.1.0.a1-cann7.0.RC1.alpha002/22.03-lts-sp2/Dockerfile)| pyTorch pytorch2.1.0.a1-cann7.0.RC1.alpha002 on openEuler 22.03-LTS-SP2 | arm64 |
+  |[pytorch2.1.0.a1-cann7.0.RC1.alpha002-oe2203sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/pytorch/2.1.0.a1-cann7.0.RC1.alpha002/22.03-lts-sp2/Dockerfile)| PyTorch pytorch2.1.0.a1-cann7.0.RC1.alpha002 on openEuler 22.03-LTS-SP2 | arm64 |
+  |[2.2.0-cann8.0.RC1-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/pytorch/2.2.0-cann8.0.RC1/22.03-lts-sp4/Dockerfile)| PyTorch 2.2.0 with CANN 8.0.RC1 on openEuler 22.03-LTS-SP4 | arm64,amd64 |
 
 download: |
   拉取镜像到本地
@@ -22,9 +23,36 @@ download: |
 usage: |
   - 启动容器
     ```
-    docker run -d --name my-pytorch openeuler/pytorch:{Tag}
+    docker run \
+        --name my-pytorch \
+        --device ${device} \
+        --device /dev/davinci_manager \
+        --device /dev/devmm_svm \
+        --device /dev/hisi_hdc \
+        -v /usr/local/dcmi:/usr/local/dcmi \
+        -v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi \
+        -v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/ \
+        -v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info \
+        -v /etc/ascend_install.info:/etc/ascend_install.info \
+        -it openeuler/pytorch:{Tag} bash
     ```
-    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。
+    用户可根据自身需求选择对应的硬件设备{device}和对应版本的{Tag}、容器启动的选项。
+
+  - 参数说明
+    | 配置项 | 描述 |
+    |--|--|
+    | `--name my-pytorch` | 容器名称。|
+    | `--device /dev/davinci1` | NPU设备，X是芯片物理ID号，例如davinci1。 |
+    | `--device /dev/davinci_manager` | davinci相关的管理设备。 |
+    | `--device /dev/devmm_svm` | 内存管理相关设备。 |
+    | `--device /dev/hisi_hdc` | hdc相关管理设备。 |
+    | `-v /usr/local/dcmi:/usr/local/dcmi` | 将宿主机dcmi的.so和接口文件目录`/usr/local/dcmi`挂载到容器中，请根据实际情况修改。 |
+    | `-v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi` | 将宿主机`npu-smi`工具`/usr/local/bin/npu-smi`挂载到容器中，请根据实际情况修改。 |
+    | `-v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/` | 将宿主机目录`/usr/local/Ascend/driver/lib64/driver`挂载到容器中。请根据driver的驱动.so所在路径修改。 |
+    | `-v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info` | 将宿主机版本信息文件`/usr/local/Ascend/driver/version.info`挂载到容器中，请根据实际情况修改。 |
+    | `-v /etc/ascend_install.info:/etc/ascend_install.info` |将宿主机安装信息文件`/etc/ascend_install.info`挂载到容器中。 |
+    | `-it` | 以交互模式启动容器。 |
+    | `openeuler/pytorch:{Tag}` | 指定要运行的镜像为 `openeuler/pytorch`，其中` {Tag}` 是需要替换的镜像标签。 |
 
   - 容器测试
 
@@ -40,8 +68,7 @@ usage: |
 
 license: BSD 3-Clause license
 similar_packages:
-  - TensorFlow: TensorFlow是一个基于数据流编程（dataflow programming）的符号数学系统，被广泛应用于各类机器学习（machine learning）算法的编程实现，其前身是谷歌的神经网络算法库DistBelief。
-  - OpenCV: OpenCV是一个基于Apache2.0许可（开源）发行的跨平台计算机视觉和机器学习软件库，可以运行在Linux、Windows、Android和Mac OS操作系统上。
+  - MindSpore: 昇思MindSpore是由华为于2019年8月推出的新一代全场景AI框架，2020年3月28日，华为宣布昇思MindSpore正式开源。昇思MindSpore是一个全场景AI框架，旨在实现易开发、高效执行、全场景统一部署三大目标
 dependency:
   - astunparse
   - expecttest
