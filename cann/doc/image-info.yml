@@ -36,13 +36,13 @@ usage: |
         -v /etc/ascend_install.info:/etc/ascend_install.info \
         -it openeuler/cann:{Tag} bash
     ```
-    用户可根据自身需求选择对应版本的{Tag}、对应的硬件设备{device}以及容器启动的参数配置。
+    用户可根据自身需求选择对应版本的`{Tag}`、对应的NPU设备`{device}`以及容器启动的其他参数配置。
   
   - 参数说明
     | 配置项 | 描述 |
     |--|--|
     | `--name my-cann` | 容器名称。|
-    | `--device /dev/davinci1` | NPU设备，X是芯片物理ID号，例如davinci0。 |
+    | `--device /dev/davinci1` | NPU设备，X是芯片物理ID号，例如davinci1。 |
     | `--device /dev/davinci_manager` | davinci相关的管理设备。 |
     | `--device /dev/devmm_svm` | 内存管理相关设备。 |
     | `--device /dev/hisi_hdc` | hdc相关管理设备。 |
