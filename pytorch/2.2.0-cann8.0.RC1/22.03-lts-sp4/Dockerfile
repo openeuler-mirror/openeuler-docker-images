@@ -3,9 +3,9 @@ FROM ${BASE}
 
 # Arguments
 ARG VERSION=2.2.0
-ARG TORCH_AUDIO_VERSION=2.2.0
-ARG TORCH_NPU_VERSION=2.2.0
-ARG TORCH_VISION_VERSION=0.17.0
+ARG AUDIO_VERSION=2.2.0
+ARG NPU_VERSION=2.2.0
+ARG TORCH_VERSION=0.17.0
 
 # Change the default shell
 SHELL [ "/bin/bash", "-c" ]
@@ -16,7 +16,7 @@ SHELL [ "/bin/bash", "-c" ]
 RUN pip uninstall -y numpy sympy && \
     pip install --no-cache-dir --index-url https://download.pytorch.org/whl/cpu \
     torch==${VERSION} \
-    torchvision==${TORCH_VISION_VERSION} \
-    torchaudio==${TORCH_AUDIO_VERSION} && \
+    torchvision==${TORCH_VERSION} \
+    torchaudio==${AUDIO_VERSION} && \
     pip install --no-cache-dir \
-    torch-npu==${TORCH_NPU_VERSION}
+    torch-npu==${NPU_VERSION}
