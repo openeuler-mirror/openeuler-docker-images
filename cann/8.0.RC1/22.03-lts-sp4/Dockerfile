@@ -1,12 +1,12 @@
 # Arguments
-ARG BASE_VERSION=22.03-lts-sp4
-ARG PLATFORM=${TARGETPLATFORM}
+ARG TARGETPLATFORM
 ARG PY_VERSION=3.8
 ARG CANN_CHIP=910b
-ARG CANN_VERSION=8.0.RC1
+ARG VERSION=8.0.RC1
+ARG BASE=openeuler/openeuler:22.03-lts-sp4
 
 # Phase 1: Install Python
-FROM openeuler/openeuler:${BASE_VERSION} as py-installer
+FROM ${BASE} as py-installer
 
 # Arguments
 ARG PY_VERSION
@@ -54,9 +54,9 @@ RUN bash /tmp/python.sh --install && \
 FROM py-installer as cann-installer
 
 # Arguments
-ARG PLATFORM
+ARG TARGETPLATFORM
 ARG CANN_CHIP
-ARG CANN_VERSION
+ARG VERSION
 
 # Install dependencies
 RUN yum update -y && \
@@ -91,13 +91,13 @@ RUN bash /tmp/cann.sh --install && \
     rm /tmp/cann.sh
 
 # Phase 3: Copy results from previous phases
-FROM openeuler/openeuler:${BASE_VERSION} as official
+FROM ${BASE} as official
 
 # Arguments
-ARG PLATFORM
+ARG TARGETPLATFORM
 ARG PY_VERSION
 ARG CANN_CHIP
-ARG CANN_VERSION
+ARG VERSION
 
 # Environment variables
 ENV PATH=/usr/local/python${PY_VERSION}/bin:${PATH}
