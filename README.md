@@ -111,6 +111,19 @@ openEuler的基础镜像由社区官方发布，目前发布在[openEuler镜像�
 - [hub.docker.com](https://hub.docker.com/)
 - [quay.io](https://quay.io/)
 
+以基础镜像`openeuler/openeuler:latest`为例，从指定托管平台获取镜像的方式如下：
+```
+# 从hub.oepkgs.net获取镜像
+docker pull hub.oepkgs.net/openeuler/openeuler:latest
+
+# 从hub.docker.com获取镜像
+docker pull docker.io/openeuler/openeuler:latest
+
+# 从quay.io获取镜像
+docker pull quay.io/openeuler/openeuler:latest
+```
+注意：由于国内用户访问`hub.docker.com`受限，建议从`hub.oepkgs.net`或`quay.io`拉取所需的镜像。
+
 ## 镜像发布指南
 欢迎广发开发者贡献openEuler应用容器镜像，请根据上述要求提交PR，待门禁检查成功且合入后，会触发自动发布流程，您的镜像将会出现在上文中提到的镜像托管平台中！
 

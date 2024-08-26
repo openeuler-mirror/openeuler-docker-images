@@ -11,7 +11,7 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
-  |[1.25-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/kselftests-virtme/1.25/22.03-lts-sp4/Dockerfile)| Virtme-ng 1.25 on openEuler 22.03-LTS-sp4 | amd64, arm64 |
+  |[1.27-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/kselftests-virtme/1.27/22.03-lts-sp4/Dockerfile)| Virtme-ng 1.27 on openEuler 22.03-LTS-sp4 | amd64, arm64 |
 
 download: |
   由于kselftests-virtme镜像体积较大，建议单独pull到本地后再启动容器：

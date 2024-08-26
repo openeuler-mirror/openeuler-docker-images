@@ -109,6 +109,17 @@ Available container registries included:
 2. [hub.docker.com](https://hub.docker.com/)
 3. [quay.io](https://quay.io/)
 
+For example, users can obtain the base image `openeuler/openeuler:latest` by the following commands
+```
+# pull image from hub.oepkgs.net
+docker pull hub.oepkgs.net/openeuler/openeuler:latest
+
+# pull image from hub.docker.com
+docker pull docker.io/openeuler/openeuler:latest
+
+# pull from quay.io
+docker pull quay.io/openeuler/openeuler:latest
+```
 
 ## Contributions
 
