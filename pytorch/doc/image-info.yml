@@ -68,6 +68,7 @@ usage: |
 
 license: BSD 3-Clause license
 similar_packages:
+  - TensorFlow: TensorFlow是一个基于数据流编程（dataflow programming）的符号数学系统，被广泛应用于各类机器学习（machine learning）算法的编程实现，其前身是谷歌的神经网络算法库DistBelief。
   - MindSpore: 昇思MindSpore是由华为于2019年8月推出的新一代全场景AI框架，2020年3月28日，华为宣布昇思MindSpore正式开源。昇思MindSpore是一个全场景AI框架，旨在实现易开发、高效执行、全场景统一部署三大目标。
 dependency:
   - astunparse
