@@ -1,8 +1,7 @@
-ARG BASE=hub.oepkgs.net/openeuler/openeuler:22.03-lts-sp3
+ARG BASE=openeuler/openeuler:22.03-lts-sp3
 FROM ${BASE}
 
-RUN yum update -y && \
-    yum upgrade -y && \
+RUN yum upgrade -y && \
     yum -y install gcc make && \
     yum clean all
 
