@@ -15,26 +15,27 @@ Link to dockerfile is (https://gitee.com/openeuler/openeuler-docker-images/blob/
 5. View model inference results
 6. example
     download: |
-      由于euler-copilot-fast-inference镜像体积较大，建议单独pull到本地后再启动容器：
+      Due to the large size of euler-copilot-fast-inference image, it is recommended to pull it locally separately before starting the container:
+
       ```
         docker pull openeuler/euler-copilot-fast-inference:{Tag}
       ```
     
     usage: |
-      - 下载[qwen1_5-7b-chat-q4_0.gguf](https://hf-mirror.com/Qwen/Qwen1.5-7B-Chat-GGUF/tree/main)权重文件
+      - download[qwen1_5-7b-chat-q4_0.gguf](https://hf-mirror.com/Qwen/Qwen1.5-7B-Chat-GGUF/tree/main)
         ```
           wget https://hf-mirror.com/Qwen/Qwen1.5-7B-Chat-GGUF/resolve/main/qwen1_5-7b-chat-q4_0.gguf
         ```
       
-      - 启动docker容器，cp权重文件，执行推理
+      - start docker，copy weight file into docker，start inference
         ```
-          # 进入源码目录
-          cd mptcp_net-next
-          # 启动容器
+          # cd source code
+          cd euler-copilot-fast-inference
+          # start docker
           docker run --name **** -it -d --net=host --privileged=true --entrypoint=bash openeuler/fast-llm:1.0.0-oe2203sp3
-          # copy权重文件
+          # copy weight file
           docker cp qwen1_5-7b-chat-q4_0.gguf <CONTAINER ID>:/home/euler-copilot-fast-inference
-          # 进入docker执行推理
+          # start inference
           docker exec -it <name> bash
           cd /home/euler-copilot-fast-inference
           # example
