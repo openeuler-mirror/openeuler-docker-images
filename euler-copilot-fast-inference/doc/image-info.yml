@@ -1,6 +1,6 @@
-name:euler-copilot-fast-inference
-category:ai
-description:euler-copilot-fast-inference是一个用于验证鲲鹏CPU推理引擎的相关组件，可用于CPU推理测试。
+name: euler-copilot-fast-inference
+category: ai
+description: euler-copilot-fast-inference是一个用于验证鲲鹏CPU推理引擎的相关组件，可用于CPU推理测试。
 environment: |
   本应用在Docker环境中运行，安装Docker执行如下命令
   ```
