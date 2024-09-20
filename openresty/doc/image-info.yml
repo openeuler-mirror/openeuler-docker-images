@@ -1,0 +1,58 @@
+name: openresty
+category: cloud
+description: OpenResty是一个基于Nginx与Lua的高性能Web平台，其内部集成了大量精良的Lua库、第三方模块以及大多数的依赖项。用于方便地搭建能够处理超高并发、扩展性极高的动态Web应用、Web服务和动态网关。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  openresty镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.21.4.1-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/openresty/1.21.4.1/22.03-lts-sp3/Dockerfile)| openresty 1.21.4.1 on openEuler 22.03-LTS-SP3 | amd64, arm64 |  
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/openresty:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+    ```
+    docker run -d --name my-openresty -p 8080:80 openeuler/openresty:{Tag}
+    ```
+    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。`my-openresty`启动之后，通过`http://localhost:8080`访问openresty服务。
+  
+  - 启动参数
+
+    |    Parameter   |  Description  |
+    |----------------|---------------|
+    | -p 8080:80	   | 暴露Nginx服务端口 |
+    | -v /local/path/to/website:/usr/local/nginx/html | 挂载本地网页进行服务 |    
+    | v /path/to/nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf | 使用本地配置文件 |
+
+  - 容器测试
+
+    查看运行日志
+    ```
+    docker logs -f my-openresty
+    ```
+
+    使用shell交互
+    ```
+    docker exec -it my-openresty /bin/bash
+    ```
+
+license: 2-clause BSD license.  
+similar_packages:
+  - Nginx: 一款轻量级的Web服务器、反向代理服务器，由于它的内存占用少，启动极快，高并发能力强，在互联网项目中广泛应用。
+  - Apache HTTP Server: 一个广泛使用的Web服务器软件，具有悠久的历史和广泛的应用。
+  - Tomcat: 一个Java应用服务器，但它也提供了Web服务器的功能。
+  - Caddy: 一个现代的Web服务器，具有简洁的配置和强大的功能。它支持自动HTTPS、HTTP/2、反向代理等，并且易于扩展和定制
+dependency:
+  - gcc
+  - make
+  - openssl-devel
