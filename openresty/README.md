@@ -23,9 +23,21 @@ The tag of each `openresty` docker image is consist of the version of `openresty
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
 |[1.21.4.1-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/openresty/1.21.4.1/22.03-lts-sp3/Dockerfile)| openresty 1.21.4.1 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[1.25.3.1-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/openresty/1.25.3.1/22.03-lts-sp3/Dockerfile)| openresty 1.25.3.1 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+
+
+
+# Dependent version
+
+| Tag                                                          | OpenResty | Nginx-core | LuaJit       |
+| ------------------------------------------------------------ | --------- | ---------- | ------------ |
+| [1.21.4.1-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/openresty/1.21.4.1/22.03-lts-sp3/Dockerfile) | 1.21.4.1  | 1.21.4     | 2.1-20220411 |
+| [1.25.3.1-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/openresty/1.25.3.1/22.03-lts-sp3/Dockerfile) | 1.25.3.1  | 1.25.3     | 2.1-20231117 |
+
 
 
 # Usage
+
 In this usage, users can select the corresponding `{Tag}` and `container startup options` based on their requirements.
 
 - Pull the `openeuler/openresty` image from docker
