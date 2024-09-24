@@ -2,7 +2,7 @@ ARG BASE=openeuler/openeuler:22.03-lts-sp3
 FROM ${BASE}
 
 RUN yum upgrade -y && \
-    yum -y install gcc make && \
+    yum -y install gcc make wget && \
     yum clean all
 
 RUN mkdir -p /home/euler-copilot-fast-inference &&\
