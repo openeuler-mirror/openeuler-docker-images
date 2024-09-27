@@ -4,8 +4,8 @@
 An inference framework that can be used for large-scale CPU inference, based on the Kunpeng and openEuler basic image, containerized package after release, can be used for one-click deployment
 
 # Supported tags and respective Dockerfile links
-tags of the current container image: openeuler/euler-copilot-fast-inference:1.0.0-oe2203sp3
-Link to dockerfile is (https://gitee.com/openeuler/openeuler-docker-images/blob/master/euler-copilot-fast-inference/1.0.0/22.03-lts-sp3/Dockerfile)
+tags of the current container image: openeuler/euler-copilot-fast-inference:qwen1.5-oe2203sp3
+Link to dockerfile is (https://gitee.com/openeuler/openeuler-docker-images/blob/master/euler-copilot-fast-inference/qwen1.5/22.03-lts-sp3/Dockerfile)
 
 # Usage：
 1. Start the container based on the application image
@@ -32,7 +32,7 @@ Link to dockerfile is (https://gitee.com/openeuler/openeuler-docker-images/blob/
           # cd source code
           cd euler-copilot-fast-inference
           # start docker
-          docker run --name **** -it -d --net=host --privileged=true --entrypoint=bash openeuler/fast-llm:1.0.0-oe2203sp3
+          docker run --name **** -it -d --net=host --privileged=true --entrypoint=bash openeuler/fast-llm:qwen1.5-oe2203sp3
           # copy weight file
           docker cp qwen1_5-7b-chat-q4_0.gguf <CONTAINER ID>:/home/euler-copilot-fast-inference
           # start inference
