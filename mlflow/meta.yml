@@ -4,3 +4,5 @@
   path: mlflow/2.13.1/22.03-lts-sp3/Dockerfile
 2.16.2-oe2203sp3:
   path: mlflow/2.16.2/22.03-lts-sp3/Dockerfile
+2.17.0rc0-oe2203sp3:
+  path: mlflow/2.17.0rc0/22.03-lts-sp3/Dockerfile
