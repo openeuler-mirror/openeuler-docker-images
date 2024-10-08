@@ -1,3 +1,0 @@
-qwen1.5-oe2203sp3:
-  path: euler-copilot-fast-inference/qwen1.5/22.03-lts-sp3/Dockerfile
-  arch: aarch64
