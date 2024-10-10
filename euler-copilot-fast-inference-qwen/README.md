@@ -33,8 +33,6 @@ Link to dockerfile is (https://gitee.com/openeuler/openeuler-docker-images/blob/
           cd euler-copilot-fast-inference
           # start docker
           docker run --name **** -it -d --net=host --privileged=true --entrypoint=bash openeuler/euler-copilot-fast-inference-qwen:1.5-oe2203sp3
-          # copy weight file
-          docker cp qwen1_5-7b-chat-q4_0.gguf <CONTAINER ID>:/home/euler-copilot-fast-inference
           # start inference
           docker exec -it <name> bash
           cd /home/euler-copilot-fast-inference

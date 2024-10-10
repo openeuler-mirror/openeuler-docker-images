@@ -31,8 +31,6 @@ usage: |
       cd mptcp_net-next
       # 启动容器
       docker run --name **** -it -d --net=host --privileged=true --entrypoint=bash openeuler/euler-copilot-fast-inference-qwen:1.5-oe2203sp3
-      # copy权重文件
-      docker cp qwen1_5-7b-chat-q4_0.gguf <CONTAINER ID>:/home/euler-copilot-fast-inference
       # 进入docker执行推理
       docker exec -it <name> bash
       cd /home/euler-copilot-fast-inference
