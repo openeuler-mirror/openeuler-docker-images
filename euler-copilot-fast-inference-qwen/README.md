@@ -1,11 +1,14 @@
 # Quick reference
 
-# euler-copilot-fast-inference | openEuler
+# euler-copilot-fast-inference-qwen | openEuler
 An inference framework that can be used for large-scale CPU inference, based on the Kunpeng and openEuler basic image, containerized package after release, can be used for one-click deployment
 
 # Supported tags and respective Dockerfile links
-tags of the current container image: openeuler/euler-copilot-fast-inference-qwen:1.5-oe2203sp3
-Link to dockerfile is (https://gitee.com/openeuler/openeuler-docker-images/blob/master/euler-copilot-fast-inference-qwen/1.5/22.03-lts-sp3/Dockerfile)
+The tag of each euler-copilot-fast-inference-qwen docker image is consist of the version of euler-copilot-fast-inference-qwen and the version of basic image. The details are as follows
+
+| Tags                                                         | Currently                                                    | Architectures |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------- |
+| [1.5-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/euler-copilot-fast-inference-qwen/1.5/22.03-lts-sp3/Dockerfile) | euler-copilot-fast-inference-qwen 1.5 on openEuler 22.03-lts-sp3 | arm64         |
 
 # Usage：
 1. Start the container based on the application image
