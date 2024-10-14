@@ -14,3 +14,5 @@
   path: spark/3.5.3/22.03-lts-sp4/Dockerfile
 3.5.3-oe2203sp1:
   path: spark/3.5.3/22.03-lts-sp1/Dockerfile
+3.5.3-oe2003sp4:
+  path: spark/3.5.3/20.03-lts-sp4/Dockerfile
