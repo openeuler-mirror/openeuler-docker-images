@@ -4,3 +4,5 @@
   path: dotnet-aspnet/8.0.8/22.03-lts-sp3/Dockerfile
 8.0.10-oe2403lts:
   path: dotnet-aspnet/8.0.10/24.03-lts/Dockerfile
+8.0.10-oe2203sp3:
+  path: dotnet-aspnet/8.0.10/22.03-lts-sp3/Dockerfile
