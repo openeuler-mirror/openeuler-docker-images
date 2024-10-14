@@ -6,3 +6,5 @@
   path: spark/3.4.0/22.03-lts/Dockerfile
 3.5.1-oe2403lts:
   path: spark/3.5.1/24.03-lts/Dockerfile
+3.5.3-oe2403lts:
+  path: spark/3.5.3/24.03-lts/Dockerfile
