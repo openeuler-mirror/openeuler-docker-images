@@ -10,3 +10,5 @@
   path: traefik/3.1.6/22.03-lts-sp3/Dockerfile
 3.1.6-oe2203sp4:
   path: traefik/3.1.6/22.03-lts-sp4/Dockerfile
+3.1.6-oe2203sp1:
+  path: traefik/3.1.6/22.03-lts-sp1/Dockerfile
