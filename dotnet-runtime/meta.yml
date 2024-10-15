@@ -8,3 +8,5 @@
   path: dotnet-runtime/8.0.10/22.03-lts-sp3/Dockerfile
 8.0.10-oe2203sp4:
   path: dotnet-runtime/8.0.10/22.03-lts-sp4/Dockerfile
+8.0.10-oe2203sp1:
+  path: dotnet-runtime/8.0.10/22.03-lts-sp1/Dockerfile
