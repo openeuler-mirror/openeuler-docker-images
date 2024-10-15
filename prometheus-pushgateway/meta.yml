@@ -2,3 +2,5 @@
   path: prometheus-pushgateway/1.7.0/22.03-lts-sp3/Dockerfile
 1.10.0-oe2203sp3:
   path: prometheus-pushgateway/1.10.0/22.03-lts-sp3/Dockerfile
+1.10.0-oe2403lts:
+  path: prometheus-pushgateway/1.10.0/24.03-lts/Dockerfile
