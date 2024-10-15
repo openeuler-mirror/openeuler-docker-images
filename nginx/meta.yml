@@ -8,3 +8,5 @@
   path: nginx/1.27.1/22.03-lts-sp3/Dockerfile
 1.27.2-oe2203sp3:
   path: nginx/1.27.2/22.03-lts-sp3/Dockerfile
+1.27.2-oe2403lts:
+  path: nginx/1.27.2/24.03-lts/Dockerfile
