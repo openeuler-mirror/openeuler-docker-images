@@ -4,3 +4,5 @@
   path: alertmanager/0.27.0/24.03-lts/Dockerfile
 0.27.0-oe2203sp4:
   path: alertmanager/0.27.0/22.03-lts-sp4/Dockerfile
+0.27.0-oe2203sp1:
+  path: alertmanager/0.27.0/22.03-lts-sp1/Dockerfile
