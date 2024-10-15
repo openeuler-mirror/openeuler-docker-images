@@ -2,3 +2,5 @@
   path: grafana-agent/0.40.2/22.03-lts-sp3/Dockerfile
 0.43.3-oe2203sp3:
   path: grafana-agent/0.43.3/22.03-lts-sp3/Dockerfile
+0.43.3-oe2403lts:
+  path: grafana-agent/0.43.3/24.03-lts/Dockerfile
