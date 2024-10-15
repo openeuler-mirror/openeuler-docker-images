@@ -6,3 +6,5 @@
   path: redis/8.0-m01/22.03-lts-sp3/Dockerfile
 7.4.1-oe2203sp3:
   path: /redis/7.4.1/22.03-lts-sp4/Dockerfile
+7.4.1-oe2403lts:
+  path: redis/7.4.1/24.03-lts/Dockerfile
