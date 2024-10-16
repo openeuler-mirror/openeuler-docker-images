@@ -4,7 +4,7 @@ FROM ${BASE}
 ARG TARGETARCH
 ARG VERSION=1.10.0
     
-RUN yum update -y && yum install -y wget && yum clean all && \
+RUN yum update -y && yum install -y wget shadow-utils && yum clean all && \
     wget -O pushgateway.tar.gz https://github.com/prometheus/pushgateway/releases/download/v${VERSION}/pushgateway-${VERSION}.linux-${TARGETARCH}.tar.gz && \
     mkdir /pushgateway && tar -zxvf pushgateway.tar.gz -C /pushgateway --strip-components 1 && \
     mv /pushgateway/pushgateway /bin/pushgateway && \
