@@ -4,7 +4,7 @@ FROM ${BASE}
 ARG TARGETARCH
 ARG VERSION=1.27.2
 
-RUN yum -y install gcc openssl-devel make libxml2-devel libxslt-devel gd-devel perl\
+RUN yum -y install gcc openssl-devel make libxml2-devel libxslt-devel gd-devel perl-devel\
     GeoIP-devel gperftools-devel && \
     yum clean all && \
     curl -o /tmp/nginx.tar.gz https://nginx.org/download/nginx-${VERSION}.tar.gz && \
