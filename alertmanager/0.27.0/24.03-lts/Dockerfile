@@ -4,7 +4,7 @@ FROM ${BASE}
 ARG TARGETARCH
 ARG VERSION=0.27.0
 
-RUN yum update -y && yum install -y wget && \
+RUN yum update -y && yum install -y wget shadow-utils && \
     wget -O alertmanager.tar.gz https://github.com/prometheus/alertmanager/releases/download/v${VERSION}/alertmanager-${VERSION}.linux-${TARGETARCH}.tar.gz && \
     mkdir /alertmanager && tar -zxvf alertmanager.tar.gz -C /alertmanager --strip-components 1
 
