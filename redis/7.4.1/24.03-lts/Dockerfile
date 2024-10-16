@@ -5,7 +5,7 @@ ARG TARGETARCH
 ARG VERSION=7.4.1
 
 RUN yum -y update; \
-	yum -y install findutils wget gcc make glibc-devel openssl-devel ca-certificates; \
+	yum -y install findutils wget gcc make glibc-devel openssl-devel ca-certificates shadow-utils; \
     groupadd -r -g 909 redis; \
 	useradd -r -g redis -u 909 redis
 
