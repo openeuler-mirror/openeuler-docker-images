@@ -1,8 +1,8 @@
-ARG BASE=openeuler/openeuler:22.03-lts-sp3
+ARG BASE=openeuler/openeuler:24.03-lts
 FROM ${BASE}
 
 ARG TARGETARCH
-ARG VERSION=1.32.0
+ARG VERSION=1.32.1
 
 COPY telegraf.conf /etc/telegraf/
 
