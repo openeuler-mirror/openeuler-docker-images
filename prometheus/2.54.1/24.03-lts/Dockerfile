@@ -4,8 +4,8 @@ FROM ${BASE}
 ARG TARGETARCH
 ARG VERSION=2.54.1
 
-RUN yum -y update && yum -y install wget && yum clean all && \
-    wget -O prometheus.tar.gz https://github.com/prometheus/prometheus/releases/download/v${VERSION}/prometheus-${VERSION}.linux-${TARGETARCH}.tar.gz && \
+RUN yum -y update && yum -y install shadow-utils && yum clean all && \
+    curl -fSL --output prometheus.tar.gz https://github.com/prometheus/prometheus/releases/download/v${VERSION}/prometheus-${VERSION}.linux-${TARGETARCH}.tar.gz && \
     mkdir /prometheus && tar -zxvf prometheus.tar.gz -C /prometheus --strip-components 1 && \
     rm -f prometheus.tar.gz
 
