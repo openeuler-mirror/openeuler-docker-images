@@ -4,3 +4,5 @@
   path: prometheus/2.20.0/22.03-lts/Dockerfile
 2.54.1-oe2403lts:
   path: prometheus/2.54.1/24.03-lts/Dockerfile
+2.54.1-oe2203sp3:
+  path: prometheus/2.54.1/22.03-lts-sp3/Dockerfile
