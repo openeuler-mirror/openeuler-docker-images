@@ -1,10 +1,10 @@
-ARG BASE=openeuler/openeuler:22.03-lts-sp3
+ARG BASE=openeuler/openeuler:24.03-lts
 FROM ${BASE}
 
 ARG TARGETARCH
 ARG VERSION=1.27.2
 
-RUN yum -y install gcc openssl-devel make libxml2-devel libxslt-devel gd-devel perl-devel\
+RUN yum -y install gcc openssl-devel make libxml2-devel libxslt-devel gd-devel perl-devel pcre pcre-devel\
     GeoIP-devel gperftools-devel && \
     yum clean all && \
     curl -o /tmp/nginx.tar.gz https://nginx.org/download/nginx-${VERSION}.tar.gz && \
