@@ -1,3 +1,0 @@
-langchain0.3.3-bge-base-en-v1.5-oe2403lts:
-  path: embedding-tei/langchain0.3.3-bge-base-en-v1.5/Dockerfile
-  arch: x86_64
