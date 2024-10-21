@@ -1,0 +1,3 @@
+langchain0.3.3-redis5.1.1-oe2403lts:
+  path: retriever-redis/langchain0.3.3-redis5.1.1/Dockerfile
+  arch: x86_64

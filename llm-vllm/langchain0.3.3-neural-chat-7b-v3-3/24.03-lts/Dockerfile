@@ -32,7 +32,7 @@ RUN pip install --no-cache-dir --upgrade pip && \
       pip install --no-cache-dir -r /home/user/comps/llms/text-generation/vllm/langchain/requirements.txt; \
     fi
 
-ENV PYTHONPATH=$PYTHONPATH:/home/user
+ENV PYTHONPATH=/usr/bin/python:/home/user
 
 WORKDIR /home/user/comps/llms/text-generation/vllm/langchain
 

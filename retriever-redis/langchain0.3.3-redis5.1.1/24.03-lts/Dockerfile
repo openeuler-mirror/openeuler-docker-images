@@ -29,7 +29,7 @@ RUN pip install --no-cache-dir --upgrade pip && \
     if [ ${ARCH} = "cpu" ]; then pip install --no-cache-dir torch torchvision --index-url https://download.pytorch.org/whl/cpu; fi && \
     pip install --no-cache-dir -r /home/user/comps/retrievers/redis/langchain/requirements.txt
 
-ENV PYTHONPATH=$PYTHONPATH:/home/user
+ENV PYTHONPATH=/usr/bin/python:/home/user
 
 WORKDIR /home/user/comps/retrievers/redis/langchain
 
