@@ -29,7 +29,7 @@ RUN git clone https://gitee.com/zhihang161013/GenAIExamples.git
 RUN cp GenAIExamples/ChatQnA/chatqna.py .
 RUN rm -rf GenAIExamples
 
-ENV PYTHONPATH=/usr/bin/python:/home/user
+ENV PYTHONPATH=/usr/bin/python:/home/user/GenAIComps
 
 USER user
 
