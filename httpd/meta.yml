@@ -9,3 +9,5 @@
   path: httpd/2.4.62/22.03-lts-sp3/Dockerfile
 2.4.62-oe2203sp4:
   path: httpd/2.4.62/22.03-lts-sp4/Dockerfile
+2.4.62-oe2203sp1:
+  path: httpd/2.4.62/22.03-lts-sp1/Dockerfile
