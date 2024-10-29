@@ -1,2 +1,5 @@
 0.120-oe2403lts:
   path: karma/0.120/24.03-lts/Dockerfile
+
+0.120-oe2203sp3:
+  path: karma/0.120/22.03-lts-sp3/Dockerfile
