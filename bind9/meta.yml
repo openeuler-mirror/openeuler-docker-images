@@ -4,3 +4,5 @@
   path: bind9/9.21.2/24.03-lts/Dockerfile
 9.21.2-oe2203sp3:
   path: bind9/9.21.2/22.03-lts-sp3/Dockerfile
+9.21.2-oe2203sp4:
+  path: bind9/9.21.2/22.03-lts-sp4/Dockerfile
