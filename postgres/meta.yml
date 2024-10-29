@@ -8,3 +8,5 @@
   path: postgres/17.0/22.03-lts-sp3/Dockerfile
 17.0-oe2203sp4:
   path: postgres/17.0/22.03-lts-sp4/Dockerfile
+17.0-oe2203sp1:
+  path: postgres/17.0/22.03-lts-sp1/Dockerfile
