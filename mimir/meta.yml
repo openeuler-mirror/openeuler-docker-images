@@ -16,3 +16,5 @@
   path: mimir/2.14.1/24.03-lts/Dockerfile
 2.14.1-oe2203sp3:
   path: mimir/2.14.1/22.03-lts-sp3/Dockerfile
+2.14.1-oe2203sp4:
+  path: mimir/2.14.1/22.03-lts-sp4/Dockerfile
