@@ -8,8 +8,7 @@ FROM openeuler/openeuler:24.03-lts
 RUN yum update -y && \
     yum install -y --setopt=install_weak_deps=False \
     git \
-    npm \
-    git
+    npm
 
 WORKDIR /home/user
 
