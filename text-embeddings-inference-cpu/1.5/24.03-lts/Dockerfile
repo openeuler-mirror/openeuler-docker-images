@@ -7,13 +7,12 @@ ENV RUSTC_WRAPPER=/usr/local/bin/sccache
 RUN yum update -y && \
     yum install -y  \
     --setopt=install_weak_deps=False \
-    cargo \
     openssl-devel \
     gcc \
     g++ \
     git
 
- RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs -o rustup-init && \
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs -o rustup-init && \
     chmod +x rustup-init && \
     ./rustup-init -y && \
     rm rustup-init && \
