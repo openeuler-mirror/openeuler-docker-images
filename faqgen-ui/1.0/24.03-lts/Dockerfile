@@ -5,10 +5,7 @@
 FROM openeuler/openeuler:24.03-lts
 
 # Update package manager and install Git
-RUN yum update -y && \
-    yum install -y --setopt=install_weak_deps=False \
-    git \
-    npm
+RUN yum update -y && yum install -y git npm
 
 WORKDIR /home/user
 
@@ -16,7 +13,7 @@ WORKDIR /home/user
 RUN git clone https://gitee.com/zhihang161013/GenAIExamples.git
 
 # Set the working directory
-WORKDIR /home/user/GenAIExamples/ChatQnA/ui/svelte
+WORKDIR /home/user/GenAIExamples/FaqGen/ui/svelte
 
 # Install front-end dependencies
 RUN npm install
