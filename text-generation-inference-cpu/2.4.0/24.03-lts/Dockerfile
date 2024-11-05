@@ -19,7 +19,6 @@ RUN cargo install cargo-chef --locked
 
 ARG CARGO_REGISTRIES_CRATES_IO_PROTOCOL=sparse
 
-FROM chef AS planner
 RUN git clone https://github.com/huggingface/text-generation-inference.git && cd text-generation-inference && git checkout v2.4.0
 
 RUN mv text-generation-inference/Cargo.lock Cargo.lock && \
@@ -34,8 +33,6 @@ RUN mv text-generation-inference/Cargo.lock Cargo.lock && \
 
 RUN cargo chef prepare --recipe-path recipe.json
 
-FROM chef AS builder
-
 RUN yum update -y && yum install -y --setopt=install_weak_deps=False \
     python3-devel \
     unzip \
@@ -46,27 +43,21 @@ RUN PROTOC_ZIP=protoc-21.12-linux-x86_64.zip && \
     unzip -o $PROTOC_ZIP -d /usr/local 'include/*' && \
     rm -f $PROTOC_ZIP
 
-COPY --from=planner /usr/src/recipe.json recipe.json
 RUN cargo chef cook --profile release-opt --recipe-path recipe.json
 
 ARG GIT_SHA
 ARG DOCKER_LABEL
 
-RUN git clone https://github.com/huggingface/text-generation-inference.git && cd text-generation-inference && git checkout v2.4.0
+COPY Cargo.lock Cargo.lock
+COPY Cargo.toml Cargo.toml
+COPY rust-toolchain.toml rust-toolchain.toml
+COPY proto proto
+COPY benchmark benchmark
+COPY router router
+COPY backends backends
+COPY launcher launcher
+RUN cargo build --profile release-opt --frozen
 
-RUN mv text-generation-inference/Cargo.lock Cargo.lock && \
-    mv text-generation-inference/Cargo.toml Cargo.toml && \
-    mv text-generation-inference/rust-toolchain.toml rust-toolchain.toml && \
-    mv text-generation-inference/proto proto && \
-    mv text-generation-inference/benchmark benchmark && \
-    mv text-generation-inference/router router && \
-    mv text-generation-inference/backends backends && \
-    mv text-generation-inference/launcher launcher && \
-    rm -rf text-generation-inference
-
-RUN cargo build --profile release-opt --offline
-
-# Text Generation Inference base image for Intel-cpu
 FROM openeuler/openeuler:24.03-lts AS cpu
 
 RUN yum update -y && yum install -y --setopt=install_weak_deps=False \
@@ -78,7 +69,8 @@ RUN yum update -y && yum install -y --setopt=install_weak_deps=False \
     git \
     wget \
     cmake \
-    numactl-devel
+    numactl-devel \
+    numactl-libs
 
 RUN update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-12 12
 RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-12 12
@@ -156,11 +148,11 @@ RUN cd server && \
     pip install ".[accelerate, peft, outlines]" --no-cache-dir
 
 # Install benchmarker
-COPY --from=builder /usr/src/target/release-opt/text-generation-benchmark /usr/local/bin/text-generation-benchmark
+COPY --from=chef /usr/src/target/release-opt/text-generation-benchmark /usr/local/bin/text-generation-benchmark
 # Install router
-COPY --from=builder /usr/src/target/release-opt/text-generation-router /usr/local/bin/text-generation-router
+COPY --from=chef /usr/src/target/release-opt/text-generation-router /usr/local/bin/text-generation-router
 # Install launcher
-COPY --from=builder /usr/src/target/release-opt/text-generation-launcher /usr/local/bin/text-generation-launcher
+COPY --from=chef /usr/src/target/release-opt/text-generation-launcher /usr/local/bin/text-generation-launcher
 
 FROM ${PLATFORM} AS final
 ENV ATTENTION=paged
