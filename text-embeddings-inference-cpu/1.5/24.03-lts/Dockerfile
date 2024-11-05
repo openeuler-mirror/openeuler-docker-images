@@ -15,8 +15,9 @@ RUN yum update -y && \
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs -o rustup-init && \
     chmod +x rustup-init && \
     ./rustup-init -y && \
-    rm rustup-init && \
-    source $HOME/.cargo/env
+    rm rustup-init
+
+ENV PATH="/root/.cargo/bin:$PATH"
 
 # Donwload, configure sccache
 RUN curl -fsSL https://github.com/mozilla/sccache/releases/download/v$SCCACHE/sccache-v$SCCACHE-x86_64-unknown-linux-musl.tar.gz | tar -xzv --strip-components=1 -C /usr/local/bin sccache-v$SCCACHE-x86_64-unknown-linux-musl/sccache && \
