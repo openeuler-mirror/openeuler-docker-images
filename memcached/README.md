@@ -19,6 +19,16 @@ The tag of each `memcached` docker image is consist of the version of `memcached
 |----------|-------------|------------------|
 |[1.6.12-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/memcached/1.6.12/22.03-lts-sp3/Dockerfile)| Memcached 1.6.12 on openEuler 22.03-LTS | amd64, arm64 |
 |[1.6.24-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/memcached/1.6.24/22.03-lts-sp3/Dockerfile)| Memcached 1.6.24 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[1.6.29-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/memcached/1.6.29/22.03-lts-sp3/Dockerfile)| Memcached 1.6.29 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[1.6.31-oe2003sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/memcached/1.6.31/20.03-lts-sp4/Dockerfile)| Memcached 1.6.31 on openEuler 20.03-LTS-SP4 | amd64, arm64 |
+|[1.6.31-oe2203sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/memcached/1.6.31/22.03-lts-sp1/Dockerfile)| Memcached 1.6.31 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
+|[1.6.31-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/memcached/1.6.31/22.03-lts-sp3/Dockerfile)| Memcached 1.6.31 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[1.6.31-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/memcached/1.6.31/22.03-lts-sp4/Dockerfile)| Memcached 1.6.31 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+|[1.6.31-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/memcached/1.6.31/24.03-lts/Dockerfile)| Memcached 1.6.31 on openEuler 24.03-LTS | amd64, arm64 |
+|[1.6.32-oe2203sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/memcached/1.6.32/22.03-lts-sp1/Dockerfile)| Memcached 1.6.32 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
+|[1.6.32-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/memcached/1.6.32/22.03-lts-sp3/Dockerfile)| Memcached 1.6.32 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[1.6.32-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/memcached/1.6.32/22.03-lts-sp4/Dockerfile)| Memcached 1.6.32 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+|[1.6.32-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/memcached/1.6.32/24.03-lts/Dockerfile)| Memcached 1.6.32 on openEuler 24.03-LTS | amd64, arm64 |
   
 # Usage
 In this usage, users can select the corresponding `{Tag}` and `container startup options` based on their requirements.

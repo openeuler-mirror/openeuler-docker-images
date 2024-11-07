@@ -6,21 +6,21 @@
   path: go/1.21.1/22.03-lts-sp3/Dockerfile
 1.22.5-oe2203sp4:
   path: go/1.22.5/22.03-lts-sp4/Dockerfile
-1.23.2-oe2403lts:
-  path: go/1.23.2/24.03-lts/Dockerfile
+1.23.2-oe2003sp4:
+  path: go/1.23.2/20.03-lts-sp4/Dockerfile
+1.23.2-oe2203sp1:
+  path: go/1.23.2/22.03-lts-sp1/Dockerfile
 1.23.2-oe2203sp3:
   path: go/1.23.2/22.03-lts-sp3/Dockerfile
 1.23.2-oe2203sp4:
   path: go/1.23.2/22.03-lts-sp4/Dockerfile
-1.23.2-oe2203sp1:
-  path: go/1.23.2/22.03-lts-sp1/Dockerfile
-1.23.2-oe2003sp4:
-  path: go/1.23.2/20.03-lts-sp4/Dockerfile
-1.23.3-oe2403lts:
-  path: go/1.23.3/24.03-lts/Dockerfile
+1.23.2-oe2403lts:
+  path: go/1.23.2/24.03-lts/Dockerfile
+1.23.3-oe2203sp1:
+  path: go/1.23.3/22.03-lts-sp1/Dockerfile
 1.23.3-oe2203sp3:
   path: go/1.23.3/22.03-lts-sp3/Dockerfile
 1.23.3-oe2203sp4:
   path: go/1.23.3/22.03-lts-sp4/Dockerfile
-1.23.3-oe2203sp1:
-  path: go/1.23.3/22.03-lts-sp1/Dockerfile
+1.23.3-oe2403lts:
+  path: go/1.23.3/24.03-lts/Dockerfile

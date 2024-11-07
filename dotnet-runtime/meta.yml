@@ -1,14 +1,16 @@
 8.0.3-oe2203sp3:
   path: dotnet-runtime/8.0.3/22.03-lts-sp3/Dockerfile
+8.0.7-oe2203sp3:
+  path: dotnet-runtime/8.0.7/22.03-lts-sp3/Dockerfile
 8.0.8-oe2203sp3:
   path: dotnet-runtime/8.0.8/22.03-lts-sp3/Dockerfile
-8.0.10-oe2403lts:
-  path: dotnet-runtime/8.0.10/24.03-lts/Dockerfile
+8.0.10-oe2003sp4:
+  path: dotnet-runtime/8.0.10/20.03-lts-sp4/Dockerfile
+8.0.10-oe2203sp1:
+  path: dotnet-runtime/8.0.10/22.03-lts-sp1/Dockerfile
 8.0.10-oe2203sp3:
   path: dotnet-runtime/8.0.10/22.03-lts-sp3/Dockerfile
 8.0.10-oe2203sp4:
   path: dotnet-runtime/8.0.10/22.03-lts-sp4/Dockerfile
-8.0.10-oe2203sp1:
-  path: dotnet-runtime/8.0.10/22.03-lts-sp1/Dockerfile
-8.0.10-oe2003sp4:
-  path: dotnet-runtime/8.0.10/20.03-lts-sp4/Dockerfile
+8.0.10-oe2403lts:
+  path: dotnet-runtime/8.0.10/24.03-lts/Dockerfile
