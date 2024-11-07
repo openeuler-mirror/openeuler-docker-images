@@ -10,14 +10,48 @@ RUN yum update -y && yum install -y --setopt=install_weak_deps=False \
 
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs -o rustup-init && \
     chmod +x rustup-init && \
-    ./rustup-init -y && \
-    rm rustup-init
+    ./rustup-init -y
 
-ENV PATH="/root/.cargo/bin:$PATH"
+ENV PATH "/root/.cargo/bin:$PATH"
     
 RUN cargo install cargo-chef --locked
 
 ARG CARGO_REGISTRIES_CRATES_IO_PROTOCOL=sparse
+
+FROM chef AS planner
+RUN git clone https://github.com/huggingface/text-generation-inference.git && cd text-generation-inference && git checkout v2.4.0
+
+RUN mv text-generation-inference/Cargo.lock Cargo.lock && \
+    mv text-generation-inference/Cargo.toml Cargo.toml && \
+    mv text-generation-inference/rust-toolchain.toml rust-toolchain.toml && \
+    mv text-generation-inference/proto proto && \
+    mv text-generation-inference/server server && \
+    mv text-generation-inference/benchmark benchmark && \
+    mv text-generation-inference/router router && \
+    mv text-generation-inference/backends backends && \
+    mv text-generation-inference/launcher launcher && \
+    rm -rf text-generation-inference
+  
+RUN cargo chef prepare --recipe-path recipe.json
+
+FROM chef AS builder
+RUN yum update -y && yum install -y --setopt=install_weak_deps=False \
+    python3-devel \
+    openssl-devel \
+    unzip 
+
+RUN PROTOC_ZIP=protoc-21.12-linux-x86_64.zip && \
+    curl -OL https://github.com/protocolbuffers/protobuf/releases/download/v21.12/$PROTOC_ZIP && \
+    unzip -o $PROTOC_ZIP -d /usr/local bin/protoc && \
+    unzip -o $PROTOC_ZIP -d /usr/local 'include/*' && \
+    rm -f $PROTOC_ZIP
+
+COPY --from=planner /usr/src/recipe.json recipe.json
+
+RUN cargo chef cook --profile release-opt --recipe-path recipe.json && rm -rf *
+
+ARG GIT_SHA
+ARG DOCKER_LABEL
 
 RUN git clone https://github.com/huggingface/text-generation-inference.git && cd text-generation-inference && git checkout v2.4.0
 
@@ -25,37 +59,13 @@ RUN mv text-generation-inference/Cargo.lock Cargo.lock && \
     mv text-generation-inference/Cargo.toml Cargo.toml && \
     mv text-generation-inference/rust-toolchain.toml rust-toolchain.toml && \
     mv text-generation-inference/proto proto && \
+    mv text-generation-inference/server server && \
     mv text-generation-inference/benchmark benchmark && \
     mv text-generation-inference/router router && \
     mv text-generation-inference/backends backends && \
     mv text-generation-inference/launcher launcher && \
     rm -rf text-generation-inference
-
-RUN cargo chef prepare --recipe-path recipe.json
-
-RUN yum update -y && yum install -y --setopt=install_weak_deps=False \
-    python3-devel \
-    unzip \
-    openssl-devel
-RUN PROTOC_ZIP=protoc-21.12-linux-x86_64.zip && \
-    curl -OL https://github.com/protocolbuffers/protobuf/releases/download/v21.12/$PROTOC_ZIP && \
-    unzip -o $PROTOC_ZIP -d /usr/local bin/protoc && \
-    unzip -o $PROTOC_ZIP -d /usr/local 'include/*' && \
-    rm -f $PROTOC_ZIP
-
-RUN cargo chef cook --profile release-opt --recipe-path recipe.json
-
-ARG GIT_SHA
-ARG DOCKER_LABEL
-
-COPY Cargo.lock Cargo.lock
-COPY Cargo.toml Cargo.toml
-COPY rust-toolchain.toml rust-toolchain.toml
-COPY proto proto
-COPY benchmark benchmark
-COPY router router
-COPY backends backends
-COPY launcher launcher
+ 
 RUN cargo build --profile release-opt --frozen
 
 FROM openeuler/openeuler:24.03-lts AS cpu
@@ -133,13 +143,13 @@ ENV CCL_ROOT=/opt/conda/lib/python3.11/site-packages/oneccl_bindings_for_pytorch
 ENV I_MPI_ROOT=/opt/conda/lib/python3.11/site-packages/oneccl_bindings_for_pytorch
 ENV FI_PROVIDER_PATH=/opt/conda/lib/python3.11/site-packages/oneccl_bindings_for_pytorch/opt/mpi/libfabric/lib/prov:/usr/lib64/libfabric
 ENV LD_LIBRARY_PATH=/opt/conda/lib/python3.11/site-packages/oneccl_bindings_for_pytorch/opt/mpi/libfabric/lib:/opt/conda/lib/python3.11/site-packages/oneccl_bindings_for_pytorch/lib
-ENV LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/opt/conda/lib/"
+# ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/conda/lib/
 
 # Install server
 RUN git clone https://github.com/huggingface/text-generation-inference.git && cd text-generation-inference && git checkout v2.4.0
 
-RUN mv text-generation-inference/proto proto && \
-    mv text-generation-inference/server server && \
+RUN mv text-generation-inference/server server && \
+    mv text-generation-inference/proto proto && \
     rm -rf text-generation-inference
 
 RUN cd server && \
@@ -148,11 +158,11 @@ RUN cd server && \
     pip install ".[accelerate, peft, outlines]" --no-cache-dir
 
 # Install benchmarker
-COPY --from=chef /usr/src/target/release-opt/text-generation-benchmark /usr/local/bin/text-generation-benchmark
+COPY --from=builder /usr/src/target/release-opt/text-generation-benchmark /usr/local/bin/text-generation-benchmark
 # Install router
-COPY --from=chef /usr/src/target/release-opt/text-generation-router /usr/local/bin/text-generation-router
+COPY --from=builder /usr/src/target/release-opt/text-generation-router /usr/local/bin/text-generation-router
 # Install launcher
-COPY --from=chef /usr/src/target/release-opt/text-generation-launcher /usr/local/bin/text-generation-launcher
+COPY --from=builder /usr/src/target/release-opt/text-generation-launcher /usr/local/bin/text-generation-launcher
 
 FROM ${PLATFORM} AS final
 ENV ATTENTION=paged
