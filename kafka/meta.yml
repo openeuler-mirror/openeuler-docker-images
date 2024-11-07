@@ -20,3 +20,5 @@
   path: kafka/3.8.1/22.03-lts-sp1/Dockerfile
 3.9.0-oe2403lts:
   path: kafka/3.9.0/24.03-lts/Dockerfile
+3.9.0-oe2203sp3:
+  path: kafka/3.9.0/22.03-lts-sp3/Dockerfile
