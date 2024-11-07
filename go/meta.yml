@@ -22,3 +22,5 @@
   path: go/1.23.3/22.03-lts-sp3/Dockerfile
 1.23.3-oe2203sp4:
   path: go/1.23.3/22.03-lts-sp4/Dockerfile
+1.23.3-oe2203sp1:
+  path: go/1.23.3/22.03-lts-sp1/Dockerfile
