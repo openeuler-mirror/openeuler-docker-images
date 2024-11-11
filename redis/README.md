@@ -39,6 +39,12 @@ The tag of each redis docker image is consist of the version of redis and the ve
 |--|--|--|
 |[6.2.7-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/redis/6.2.7/22.03-lts/Dockerfile)| Redis 6.2.7 on openEuler 22.03-LTS | amd64, arm64 |
 |[7.2.4-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/redis/7.2.4/22.03-lts-sp3/Dockerfile)| Redis 7.2.4 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[7.2.5-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/redis/7.2.5/22.03-lts-sp3/Dockerfile)| Redis 7.2.5 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[7.4.1-oe2003sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/redis/7.4.1/20.03-lts-sp4/Dockerfile)| Redis 7.4.1 on openEuler 20.03-LTS-SP4 | amd64, arm64 |
+|[7.4.1-oe2203sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/redis/7.4.1/22.03-lts-sp1/Dockerfile)| Redis 7.4.1 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
+|[7.4.1-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/redis/7.4.1/22.03-lts-sp3/Dockerfile)| Redis 7.4.1 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[7.4.1-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/redis/7.4.1/22.03-lts-sp4/Dockerfile)| Redis 7.4.1 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+|[7.4.1-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/redis/7.4.1/24.03-lts/Dockerfile)| Redis 7.4.1 on openEuler 24.03-LTS | amd64, arm64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` and `container startup options` based on their requirements.

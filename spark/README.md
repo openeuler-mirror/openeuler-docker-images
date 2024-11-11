@@ -21,6 +21,11 @@ The tag of each spark docker image is consist of the version of spark and the ve
 |[3.3.2-22.03-lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/spark/3.3.2/22.03-lts/Dockerfile)| spark 3.3.2 on openEuler 22.03-LTS | amd64, arm64 |
 |[3.4.0-22.03-lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/spark/3.4.0/22.03-lts/Dockerfile)| spark 3.4.0 on openEuler 22.03-LTS | amd64, arm64 |
 |[3.5.1-24.03-lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/spark/3.5.1/24.03-lts/Dockerfile)| spark 3.5.1 on openEuler 24.03-LTS | amd64, arm64 |
+|[3.5.3-oe2003sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/spark/3.5.3/20.03-lts-sp4/Dockerfile)| spark 3.5.3 on openEuler 20.03-LTS-SP4 | amd64, arm64 |
+|[3.5.3-oe2203sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/spark/3.5.3/22.03-lts-sp1/Dockerfile)| spark 3.5.3 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
+|[3.5.3-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/spark/3.5.3/22.03-lts-sp3/Dockerfile)| spark 3.5.3 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[3.5.3-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/spark/3.5.3/22.03-lts-sp4/Dockerfile)| spark 3.5.3 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+|[3.5.3-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/spark/3.5.3/24.03-lts/Dockerfile)| spark 3.5.3 on openEuler 24.03-LTS | amd64, arm64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}`  based on their requirements.
