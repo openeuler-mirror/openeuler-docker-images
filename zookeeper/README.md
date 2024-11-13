@@ -18,6 +18,7 @@ The tag of each `zookeeper` docker image is consist of the version of `zookeeper
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
 |[3.8.3-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/zookeeper/3.8.3/22.03-lts-sp3/Dockerfile)| zookeeper 3.8.3 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[3.9.2-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/zookeeper/3.9.2/22.03-lts-sp3/Dockerfile)| zookeeper 3.9.2 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` and `container startup options` based on their requirements.
