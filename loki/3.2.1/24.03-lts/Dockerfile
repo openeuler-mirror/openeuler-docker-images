@@ -6,7 +6,7 @@ ARG BUILDARCH
 ARG VERSION=3.2.1
 
 RUN yum -y update && \
-    yum -y install wget && \
+    yum -y install shadow-utils && \
     yum clean all
 
 RUN if [ "$TARGETARCH" = "amd64" ]; then \
@@ -14,9 +14,9 @@ RUN if [ "$TARGETARCH" = "amd64" ]; then \
     elif [ "$TARGETARCH" = "arm64" ]; then \
       BUILDARCH="aarch64"; \
     fi && \
-    wget -O grafana-logcli.rpm https://github.com/grafana/loki/releases/download/v${VERSION}/logcli-${VERSION}.${BUILDARCH}.rpm && \
-    wget -O grafana-loki.rpm https://github.com/grafana/loki/releases/download/v${VERSION}/loki-${VERSION}.${BUILDARCH}.rpm && \
-    wget -O grafana-promtail.rpm https://github.com/grafana/loki/releases/download/v${VERSION}/promtail-${VERSION}.${BUILDARCH}.rpm && \
+    curl -fSL --output grafana-logcli.rpm https://github.com/grafana/loki/releases/download/v${VERSION}/logcli-${VERSION}.${BUILDARCH}.rpm && \
+    curl -fSL --output grafana-loki.rpm https://github.com/grafana/loki/releases/download/v${VERSION}/loki-${VERSION}.${BUILDARCH}.rpm && \
+    curl -fSL --output grafana-promtail.rpm https://github.com/grafana/loki/releases/download/v${VERSION}/promtail-${VERSION}.${BUILDARCH}.rpm && \
     yum -y install grafana-loki.rpm grafana-promtail.rpm grafana-logcli.rpm && \
     rm -rf grafana-loki.rpm grafana-promtail.rpm grafana-logcli.rpm
 
