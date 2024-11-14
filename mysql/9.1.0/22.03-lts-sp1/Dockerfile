@@ -7,8 +7,8 @@ ARG GOSU_VERSION=1.17
 
 RUN yum update -y && \
     mkdir -p /docker-entrypoint-initdb.d && \
-    curl -fSL --output /usr/local/bin/gosu.asc "https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-${TARGETARCH}.asc" && \
-    curl -fSL --output /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-${TARGETARCH}" && \
+    curl -fSL --output /usr/local/bin/gosu.asc https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-${TARGETARCH}.asc && \
+    curl -fSL --output /usr/local/bin/gosu https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-${TARGETARCH} && \
     curl -fSL --output mysql.tar.gz https://github.com/mysql/mysql-server/archive/refs/tags/mysql-${VERSION}.tar.gz && \
     mkdir -p /mysql && tar -xvf mysql.tar.gz -C /mysql --strip-components=1 && \
     mkdir -p /mysql/build && cd /mysql/build && \
