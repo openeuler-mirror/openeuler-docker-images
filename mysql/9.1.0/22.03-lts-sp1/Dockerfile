@@ -5,7 +5,8 @@ ARG TARGETARCH
 ARG VERSION=9.1.0
 ARG GOSU_VERSION=1.17
 
-RUN yum update -y && \    mkdir -p /docker-entrypoint-initdb.d && \
+RUN yum update -y && \
+    mkdir -p /docker-entrypoint-initdb.d && \
     curl -fSL --output /usr/local/bin/gosu.asc "https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-${TARGETARCH}.asc" && \
 	curl -fSL --output /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-${TARGETARCH}" && \
     curl -fSL --output mysql.tar.gz https://github.com/mysql/mysql-server/archive/refs/tags/mysql-${VERSION}.tar.gz && \
