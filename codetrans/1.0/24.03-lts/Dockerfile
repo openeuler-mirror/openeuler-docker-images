@@ -18,14 +18,14 @@ RUN useradd -m -s /bin/bash user && \
     chown -R user /home/user/
 
 WORKDIR /home/user/
-RUN git clone https://gitee.com/zhihang161013/GenAIComps.git
+RUN git clone https://github.com/opea-projcet/GenAIComps.git && git checkout v1.0
 
 WORKDIR /home/user/GenAIComps
 RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir -r /home/user/GenAIComps/requirements.txt
 
 WORKDIR /home/user/
-RUN git clone https://gitee.com/zhihang161013/GenAIExamples.git
+RUN git clone https://github.com/opea-project/GenAIExamples.git && git checkout v1.0
 RUN cp GenAIExamples/CodeTrans/code_translation.py .
 RUN rm -rf GenAIExamples
 

@@ -43,8 +43,9 @@ USER user
 
 WORKDIR /home/user/
 
-RUN git clone https://gitee.com/zhihang161013/GenAIComps.git && \
-    cp -r GenAIComps/comps . && \
+RUN git clone https://github.com/opea-project/GenAIComps.git && cd GenAIComps && git checkout v1.0
+
+RUN cp -r GenAIComps/comps . && \
     rm -rf GenAIComps
 
 RUN pip install --no-cache-dir --upgrade pip setuptools && \
