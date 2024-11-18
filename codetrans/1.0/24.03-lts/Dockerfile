@@ -25,7 +25,7 @@ RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir -r /home/user/GenAIComps/requirements.txt
 
 WORKDIR /home/user/
-RUN git clone https://github.com/opea-project/GenAIExamples.git && git checkout v1.0
+RUN git clone https://github.com/opea-project/GenAIExamples.git && cd GenAIExamples && git checkout v1.0
 RUN cp GenAIExamples/CodeTrans/code_translation.py .
 RUN rm -rf GenAIExamples
 
