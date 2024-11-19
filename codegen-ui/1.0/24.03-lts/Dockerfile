@@ -13,7 +13,7 @@ RUN yum update -y && \
 WORKDIR /home/user
 
 # Copy the front-end code repository
-RUN git clone https://gitee.com/zhihang161013/GenAIExamples.git
+RUN git clone https://github.com/opea-project/GenAIExamples.git && cd GenAIExamples && git checkout v1.0
 
 # Set the working directory
 WORKDIR /home/user/GenAIExamples/CodeGen/ui/svelte
