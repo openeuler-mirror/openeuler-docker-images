@@ -7,9 +7,9 @@ ARG VERSION=3.8.0
 ARG SCALA_VERSION=2.13
 ARG KAFKA_URL=https://archive.apache.org/dist/kafka/${VERSION}/kafka_${SCALA_VERSION}-${VERSION}.tgz 
 
-RUN yum -y install wget hostname java-1.8.0-openjdk java-1.8.0-openjdk-devel
+RUN yum -y install hostname java-1.8.0-openjdk java-1.8.0-openjdk-devel
 RUN mkdir opt/kafka; \
-    wget -O kafka.tgz "${KAFKA_URL}"; \
+    curl -fSL --output kafka.tgz "${KAFKA_URL}"; \
     tar xfz kafka.tgz -C /opt/kafka --strip-components 1; \
     mkdir -p /var/lib/kafka/data /etc/kafka/secrets; \
     mkdir -p /etc/kafka/docker /usr/logs /mnt/shared/config; \
@@ -21,7 +21,7 @@ RUN mkdir opt/kafka; \
     cp /opt/kafka/config/tools-log4j.properties /etc/kafka/docker/tools-log4j.properties; \
     cp /opt/kafka/config/kraft/server.properties /etc/kafka/docker/server.properties; \
     rm kafka.tgz; \
-    yum remove wget findutils; \
+    yum remove findutils; \
     yum clean all
 
 COPY --chown=appuser:appuser scripts /etc/kafka/docker
