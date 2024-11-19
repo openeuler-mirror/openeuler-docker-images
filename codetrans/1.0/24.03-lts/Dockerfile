@@ -18,7 +18,7 @@ RUN useradd -m -s /bin/bash user && \
     chown -R user /home/user/
 
 WORKDIR /home/user/
-RUN git clone https://github.com/opea-projcet/GenAIComps.git && git checkout v1.0
+RUN git clone https://github.com/opea-projcet/GenAIComps.git && cd GenAIComps && git checkout v1.0
 
 WORKDIR /home/user/GenAIComps
 RUN pip install --no-cache-dir --upgrade pip && \
