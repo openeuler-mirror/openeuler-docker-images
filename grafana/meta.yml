@@ -30,3 +30,5 @@
   path: grafana/11.3.1/22.03-lts-sp3/Dockerfile
 11.3.1-oe2203sp4:
   path: grafana/11.3.1/22.03-lts-sp4/Dockerfile
+11.3.1-oe2203sp1:
+  path: grafana/11.3.1/22.03-lts-sp1/Dockerfile
