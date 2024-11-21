@@ -19,7 +19,7 @@ USER user
 
 WORKDIR /home/user/
 
-RUN git clone --depth=1 --branch v1.0 https://github.com/opea-project/GenAIComps.git && && \
+RUN git clone --depth=1 --branch v1.0 https://github.com/opea-project/GenAIComps.git && \
     cp -r GenAIComps/comps . && \
     rm -rf GenAIComps
 
