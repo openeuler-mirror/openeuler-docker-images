@@ -13,8 +13,6 @@ RUN mkdir -p /etc/prometheus/ /usr/share/prometheus/                            
     mv /prometheus/prometheus               /bin/prometheus                             && \
     mv /prometheus/promtool                 /bin/promtool                               && \
     mv /prometheus/prometheus.yml           /etc/prometheus/prometheus.yml              && \
-    mv /prometheus/console_libraries/       /usr/share/prometheus/console_libraries/    && \
-    mv /prometheus/consoles/                /usr/share/prometheus/consoles/             && \
     mv /prometheus/LICENSE                  /LICENSE                                    && \
     mv /prometheus/NOTICE                   /NOTICE                                     && \
     rm -rf /prometheus/
