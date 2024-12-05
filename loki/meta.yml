@@ -10,3 +10,5 @@
   path: loki/3.2.1/24.03-lts/Dockerfile
 3.3.1-oe2403lts:
   path: loki/3.3.1/24.03-lts/Dockerfile
+3.3.1-oe2203sp3:
+  path: loki/3.3.1/22.03-lts-sp3/Dockerfile
