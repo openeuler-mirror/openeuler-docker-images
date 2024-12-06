@@ -26,3 +26,5 @@
   path: memcached/1.6.33/24.03-lts/Dockerfile
 1.6.33-oe2203sp3:
   path: memcached/1.6.33/22.03-lts-sp3/Dockerfile
+1.6.33-oe2203sp4:
+  path: memcached/1.6.33/22.03-lts-sp4/Dockerfile
