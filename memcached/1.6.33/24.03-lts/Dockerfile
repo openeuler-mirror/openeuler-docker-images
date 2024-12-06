@@ -4,6 +4,8 @@ FROM ${BASE}
 ARG TARGETARCH
 ARG VERSION=1.6.33
 
+RUN dnf -y install shadow-utils
+
 RUN groupadd --system --gid 11211 memcache && \
     useradd --system --gid memcache --uid 11211 memcache && \
     mkdir -p /memcache/rules && \
