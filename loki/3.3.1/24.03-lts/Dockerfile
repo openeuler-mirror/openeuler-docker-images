@@ -5,6 +5,8 @@ ARG TARGETARCH
 ARG BUILDARCH
 ARG VERSION=3.3.1
 
+RUN dnf -y install shadow-utils
+
 RUN if [ "$TARGETARCH" = "amd64" ]; then \
       BUILDARCH="x86_64"; \
     elif [ "$TARGETARCH" = "arm64" ]; then \
