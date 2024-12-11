@@ -1,0 +1,94 @@
+name: kong
+category: cloud
+description: Kong 是一个开源的 API 网关和微服务管理平台，广泛用于管理、保护、扩展和监控应用程序的 API（应用程序编程接口）和微服务。Kong 提供了一个高效、可扩展的架构，帮助开发者在云原生环境中实现 API 管理、负载均衡、安全性、监控等功能。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  Httpd镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[3.4.0-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/kong/3.4.0/24.03-lts/Dockerfile)| Kong 3.4.0 on openEuler 24.03-LTS | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/kong:{Tag}
+  ```
+
+usage: |
+  准备数据库
+  1. 创建一个自定义的 Docker 网络，以便容器之间可以相互发现并通信：
+    ```bash
+    docker network create kong-net
+    ```
+    您可以将此网络命名为任何您想要的名称, 在本指南中，我们使用 kong-net 作为示例。
+
+  2. 启动一个 PostgreSQL 容器：
+    ```bash
+    docker run -d --name kong-database \
+    --network=kong-net \
+    -p 5432:5432 \
+    -e "POSTGRES_USER=kong" \
+    -e "POSTGRES_DB=kong" \
+    -e "POSTGRES_PASSWORD=kongpass" \
+    openeuler/postgres:{Tag}
+    ```
+
+  3. 准备 Kong 数据库：
+    ```bash
+    docker run --rm --network=kong-net \
+    -e "KONG_DATABASE=postgres" \
+    -e "KONG_PG_HOST=kong-database" \
+    -e "KONG_PG_PASSWORD=kongpass" \
+    openeuler/kong:{Tag} kong migrations bootstrap
+    ```
+  启动 Kong Gateway
+
+  1. 运行以下命令启动 Kong Gateway 容器：
+    ```bash
+    docker run -d --name kong-gateway \
+    --network=kong-net \
+    -e "KONG_DATABASE=postgres" \
+    -e "KONG_PG_HOST=kong-database" \
+    -e "KONG_PG_USER=kong" \
+    -e "KONG_PG_PASSWORD=kongpass" \
+    -e "KONG_PROXY_ACCESS_LOG=/dev/stdout" \
+    -e "KONG_ADMIN_ACCESS_LOG=/dev/stdout" \
+    -e "KONG_PROXY_ERROR_LOG=/dev/stderr" \
+    -e "KONG_ADMIN_ERROR_LOG=/dev/stderr" \
+    -e "KONG_ADMIN_LISTEN=0.0.0.0:8001, 0.0.0.0:8444 ssl" \
+    -e "KONG_ADMIN_GUI_URL=http://localhost:8002" \
+    -p 8000:8000 \
+    -p 8443:8443 \
+    -p 127.0.0.1:8001:8001 \
+    -p 127.0.0.1:8002:8002 \
+    -p 127.0.0.1:8444:8444 \
+    openeuler/kong:${Tag}
+    ```
+
+  2. 访问Admin API:
+    ```bash
+    curl -i -X GET --url http://localhost:8001/services
+    ```
+    返回200表示安装正常
+
+  3. 通过KONG_ADMIN_GUI_URL指的的URL访问Kong Manager:
+    ```bash
+    http://localhost:8002
+    ```
+
+license: Apache-2.0 license
+similar_packages:
+  - Nginx: Nginx 是一个高性能的、轻量级的 Web 服务器和反向代理服务器。它以其出色的性能和可扩展性而闻名，并且在处理高并发请求时表现出色。
+  - Zuul: Zuul 是一个由 Netflix 提供的开源 API 网关，设计用于在微服务架构中实现动态路由、负载均衡和安全认证等功能。
+  - Spring Cloud Gateway: Spring Cloud Gateway 是 Spring Framework 提供的 API 网关解决方案，基于 Spring 生态系统构建。
+dependency:
+  - PostgreSQL
+  - Lua
+  - OpenResty
+  - Nginx
+  - LuaJIT
