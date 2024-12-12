@@ -44,3 +44,5 @@
   path: mlflow/2.19.0/22.03-lts-sp3/Dockerfile
 2.19.0-oe2203sp4:
   path: mlflow/2.19.0/22.03-lts-sp4/Dockerfile
+2.19.0-oe2203sp1:
+  path: mlflow/2.19.0/22.03-lts-sp1/Dockerfile
