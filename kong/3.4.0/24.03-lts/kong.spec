@@ -1,10 +1,11 @@
+# update the bazel version if nessary when kong version changes
 %global bazel_version 6.1.0
 %global debug_package %{nil}
 # You need to set the GITHUB_TOKEN environment variable to a valid GitHub personal access token
 %global github_token ${GITHUB_TOKEN}
 
 Name:           kong
-Version:        3.4.0
+Version:        ${kong_version}
 Release:        1
 Summary:        Kong Gateway - Open source API Gateway and Microservices Management Layer
 License:        Apache License 2.0
@@ -54,8 +55,9 @@ cp -ar %{_sourcedir}/bazel-%{bazel_version}-linux-%{build_arch} /usr/bin/bazel
 export GITHUB_TOKEN=%{github_token}
 make package/rpm
 mkdir -p %{_rpmdir}/%{build_arch}
-cp %{_builddir}/kong-3.4.0/bazel-bin/pkg/kong*.rpm %{_rpmdir}/%{build_arch}/
+cp %{_builddir}/kong-${kong_version}/bazel-bin/pkg/kong*.rpm %{_rpmdir}/%{build_arch}/
 
+# update when you build a new version
 %changelog
-* Fri Dec 06 2024 baigj <guangjiebai@gmail.com> - 3.4.0-1
-- Initial RPM package for Kong 3.4.0
+* Fri Dec 06 2024 You name <You Email> - ${kong_version}-1
+- Initial RPM package for Kong ${kong_version}
