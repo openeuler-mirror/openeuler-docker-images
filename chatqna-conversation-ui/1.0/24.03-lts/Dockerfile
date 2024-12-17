@@ -22,9 +22,9 @@ RUN ["npm", "run", "build"]
 
 FROM openeuler/nginx:1.27.2-oe2403lts
 
-COPY --from=vite-app /home/user/GenAIExamples/ChatQnA/ui/react/dist /usr/share/nginx/html
+COPY --from=vite-app /home/user/GenAIExamples/ChatQnA/ui/react/dist /usr/local/nginx/html
 
-COPY --from=vite-app /home/user/GenAIExamples/ChatQnA/ui/react/env.sh /docker-entrypoint.d/env.sh
+COPY env.sh /docker-entrypoint.d/env.sh
 
-COPY --from=vite-app /home/user/GenAIExamples/ChatQnA/ui/react/nginx.conf /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 RUN chmod +x /docker-entrypoint.d/env.sh
