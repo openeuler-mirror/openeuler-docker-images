@@ -32,3 +32,11 @@
   path: go/1.23.4/22.03-lts-sp4/Dockerfile
 1.23.4-oe2203sp1:
   path: go/1.23.4/22.03-lts-sp1/Dockerfile
+1.24rc1-oe2403lts:
+  path: go/1.24rc1/24.03-lts/Dockerfile
+1.24rc1-oe2203sp3:
+  path: go/1.24rc1/22.03-lts-sp3/Dockerfile
+1.24rc1-oe2203sp4:
+  path: go/1.24rc1/22.03-lts-sp4/Dockerfile
+1.24rc1-oe2203sp1:
+  path: go/1.24rc1/22.03-lts-sp1/Dockerfile
