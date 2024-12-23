@@ -1,7 +1,7 @@
 FROM openeuler/openeuler:22.03-lts
 MAINTAINER heguofeng <heguofeng@openeuler.sh>
 RUN yum -y update && \
-    yum -y install sudo util-linux lsof && \
+    yum -y install sudo util-linux lsof findutils && \
     yum -y install postgresql-server postgresql && \
     mkdir /docker-entrypoint-initdb.d && \
     chown postgres:postgres /docker-entrypoint-initdb.d && \
