@@ -24,7 +24,7 @@ usage: |
     ```
     docker run -d --name my-guacd openeuler/guacd:{Tag}
     ```
-    用户可根据自身需求选择对应版本的{Tag}。容器启动之后，guacd 将监听端口 4822，但该端口仅对已明确链接到 my-guacd 的 Docker 容器可用。。
+    用户可根据自身需求选择对应版本的{Tag}。容器启动之后，guacd 将监听端口 4822，但该端口仅对已明确链接到 my-guacd 的 Docker 容器可用。
   
   - 容器测试
 
