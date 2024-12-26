@@ -67,7 +67,7 @@ usage: |
     -p 127.0.0.1:8001:8001 \
     -p 127.0.0.1:8002:8002 \
     -p 127.0.0.1:8444:8444 \
-    openeuler/kong:${Tag}
+    openeuler/kong:{Tag}
     ```
 
   2. 访问Admin API:
