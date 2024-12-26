@@ -1,0 +1,47 @@
+name: cp2k
+category: hpc
+description: CP2K是一个量子化学和固态物理软件包，可以对固态，液态，分子，周期性，材料，晶体和生物系统进行原子模拟。CP2K为不同的建模方法提供了通用框架。支持的理论水平包括DFTB，LDA，GGA，MP2，RPA，半经验方法（AM1，PM3，PM6，RM1，MNDO等）和经典力场（AMBER，CHARMM等）。CP2K可以使用NEB或二聚体方法进行分子动力学，元动力学，蒙特卡洛，埃伦菲斯特动力学，振动分析，核心能谱，能量最小化和过渡态优化的模拟。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  cp2k镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[2024.3-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/cp2k/2024.3/24.03-lts/Dockerfile)| CP2K 2024.3 on openEuler 24.03-LTS | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/cp2k:{Tag}
+  ```
+
+usage: |
+  以下命令验证容器内软件版本是否和`{Tag}`指示一致:
+  ```
+  docker run openeuler/cp2k:{Tag} cp2k --version
+  ```
+  
+  以下示例使用2个OpenMP线程和3个MPI进程运行包含32个水分子的[benchmark](https://github.com/cp2k/cp2k/tree/master/benchmarks/QS)
+  ```
+  mkdir playground
+  cd playground
+  wget https://raw.githubusercontent.com/cp2k/cp2k/master/benchmarks/QS/H2O-32.inp
+  docker run -v $PWD:/mnt --shm-size=1g -e OMP_NUM_THREADS=2 -it --rm openeuler/cp2k:{Tag} mpiexec -np 3 cp2k H2O-32.inp
+  ```
+
+license: GPL-2.0 license
+similar_packages:
+  - N/A
+dependency:
+  - openblas
+  - openmpi
+  - mpich
+  - fftw
+  - cosma
+  - quip
+  - hdf5
+  - dbcsr
