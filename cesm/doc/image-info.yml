@@ -1,0 +1,66 @@
+name: cesm
+category: hpc
+description: CESM，全称 The Community Earth System Model，是一个完全耦合的气候模型，在CESM中包括大气、陆地、海洋、海冰、陆冰等几大模块。其主要用于研究地球过去、现在、和未来的气候状况。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  cesm镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  | Tags | Currently |  Architectures|
+  |------|-----------|---------------|
+  |[2.2.2-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/cesm/2.2.2/24.03-lts/Dockerfile)| CESM 2.2.2 on openEuler 24.03-LTS | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/cesm:{Tag}
+  ```
+
+usage: |
+  - 拉取镜像
+
+    ```
+    docker pull openeuler/cesm:{Tag}
+    ```
+    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。
+  
+  - 运行容器
+
+    ```
+    docker run -it --name my-cesm openeuler/cesm:{Tag}
+    ```
+    `my-cesm`启动之后，会进入如下目录
+    ```
+    [root@cesm ncar]$
+    ```
+    这里，用户可以按照标准 CESM 文档执行 creating/building 用例。
+
+  - 测试验证
+
+    这里，提供一个构建`2-degree F2000climo`的测试用例 
+    ```
+    create_newcase --case mycase --compset F2000climo --res f19_g17 --run-unsupported
+    cd mycase
+    ./xmlchange NTASKS=4
+    ./case.setup
+    ./case.build
+    ```
+
+    执行成功后的结果示例如下
+    ```
+    Time spent building: 289.431136 sec
+    MODEL BUILD HAS FINISHED SUCCESSFULLY
+    ```
+
+license: Artistic License 2.0
+similar_packages:
+  - N/A
+dependency:
+  - mpich
+  - hdf5
+  - netcdf-c
+  - netcdf-fortran
+  - pnetcdf
