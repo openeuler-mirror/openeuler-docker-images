@@ -2,24 +2,34 @@
 
 set -ex
 
-archs="x86_64 aarch64 loong64"
+archs="x86_64 aarch64 loongarch64"
 input_version=$1
 versions=${input_version:-"20.03-lts 20.03-lts-sp1 20.03-lts-sp2 20.09 21.03 21.09 22.03-lts 22.03-lts-sp1 22.03-lts-sp2 22.09 23.03 23.09"}
-for ARCH in $archs ;
-do
-    if [[ "$ARCH" = "aarch64" ]];then
-        DOCKER_ARCH=arm64
-    elif [[ "$ARCH" = "x86_64" ]];then
-        DOCKER_ARCH=amd64
-    elif [[ "$ARCH" = "loong64" && "$versions" = "22.03-lts" ]];then
-        DOCKER_ARCH=loong64
-    else
-        echo "Unknow arch: "$ARCH
-        exit 1
-    fi
-    for VERSION in $versions ;
-    do
+
+for ARCH in $archs; do
+    case "$ARCH" in
+        "aarch64")
+            DOCKER_ARCH=arm64
+            ;;
+        "x86_64")
+            DOCKER_ARCH=amd64
+            ;;
+        "loongarch64")
+            DOCKER_ARCH=loong64
+            ;;
+        *)
+            echo "Unknown arch: $ARCH"
+            exit 1
+            ;;
+    esac
+    for VERSION in $versions; do
         mkdir -p $VERSION
+        # "Loongarch64 is supported in 22.03-lts and 24.03-lts"
+        if [ "$ARCH" == "loongarch64" ]; then
+            if [[ ! "$VERSION" =~ ^(22\.03|24\.03)-lts$ ]]; then
+                continue
+            fi
+        fi
         # Download
         cd $VERSION
         URL_VERSION=`echo $VERSION | tr 'a-z' 'A-Z'`
