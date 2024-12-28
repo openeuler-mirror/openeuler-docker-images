@@ -15,5 +15,5 @@ RUN wget -O /tmp/traefik.tar.gz https://github.com/traefik/traefik/releases/down
 	
 COPY entrypoint.sh /
 EXPOSE 80
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["bash", "/entrypoint.sh"]
 CMD ["traefik"]

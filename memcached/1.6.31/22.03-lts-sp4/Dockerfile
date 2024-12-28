@@ -23,7 +23,7 @@ RUN curl -o /tmp/memcached.tar.gz https://www.memcached.org/files/memcached-${VE
 
 
 COPY entrypoint.sh /
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["bash", "/entrypoint.sh"]
 
 USER memcache
 EXPOSE 11211
