@@ -34,8 +34,7 @@ After the official images are published, we will push to the third-party Hubs, d
 	- [23.03](https://repo.openeuler.org/openEuler-23.03/docker_img/)
 	- [23.09](https://repo.openeuler.org/openEuler-23.09/docker_img/)
 	- [24.03-lts, latest](https://repo.openeuler.org/openEuler-24.03-LTS/docker_img/)
-- Path rule：`openeuler/[openEuler version]/Dockerfile`,
-	such as: openEuler 21.09 Dockerfile is under `openeuler/21.09/Dockerfile` path.
+- Path rule：`openeuler/Dockerfile`
 
 ## Application Container Image
 
