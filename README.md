@@ -37,8 +37,9 @@ openEuler的基础镜像由社区官方发布，目前发布在[openEuler镜像�
 	- [23.03](https://repo.openeuler.org/openEuler-23.03/docker_img/)
 	- [23.09](https://repo.openeuler.org/openEuler-23.09/docker_img/)
 	- [24.03-lts, latest](https://repo.openeuler.org/openEuler-24.03-LTS/docker_img/)
-- 存放路径规则：`openeuler/[openEuler版本号]/Dockerfile`，
-    例如：openEuler 21.09的Dockerfile位于`openeuler/21.09/Dockerfile`。
+	- [24.09](https://repo.openeuler.org/openEuler-24.09/docker_img/)
+
+- 存放路径：`openeuler/Dockerfile`
 
 ## 应用镜像
 

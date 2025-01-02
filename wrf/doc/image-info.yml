@@ -1,0 +1,42 @@
+
+name: wrf
+category: hpc
+description: Weather Research & Forecasting Model (WRF) 是最先进的中尺度数值天气预报系统，专为大气研究和业务预报应用而设计。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  WRF镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[4.6.1-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/wrf/4.6.1/24.03-lts/Dockerfile)| WRF 4.6.1 on openEuler 24.03-LTS | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/wrf:{Tag}
+  ```
+
+usage: |
+    启动容器
+    ```
+    docker run -ti --name my-wrf openeuler/wrf:{Tag}
+    ```
+
+    启动之后会进入如下WRF目录:
+    ```
+    [root@13fb722beaec WRF]$
+    ```
+    此时，用户可以在该目录下执行WRF任务。
+    
+
+license: public domain
+similar_packages:
+  - N/A
+dependency:
+  - mpich
+  - hdf5
+  - netcdf
