@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 set -Eeo pipefail
 
-export PATH="/usr/local/pgsql/bin:$PATH"
-
 arch=$(case $(uname -m) in i386)   echo "386" ;; i686)   echo "386" ;; x86_64) echo "amd64";; aarch64)echo "arm64";; esac)
 if [ "${arch}" = "amd64" ]; then
     GOSU_EXEC=/usr/local/bin/gosu_amd64

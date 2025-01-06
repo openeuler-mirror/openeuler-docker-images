@@ -5,7 +5,7 @@ ARG TARGETARCH
 ARG VERSION=16_2
 ARG GOSU_VERSION=1.17
 
-RUN yum -y install wget make gcc icu libicu-devel readline-devel zlib-devel \
+RUN yum -y install wget make gcc icu libicu-devel readline-devel zlib-devel findutils \
     perl bison m4 flex && \
     yum clean all && \
     groupadd --system --gid 1000 postgres && \
@@ -27,7 +27,7 @@ ENV PGDATA /var/lib/pgsql/data
 COPY entrypoint.sh /var/lib/pgsql/
 RUN chmod 755 /var/lib/pgsql/entrypoint.sh
 
-WORKDIR /usr/local/pgsql/bin/
+ENV PATH ${PATH}:/usr/local/pgsql/bin
 
 ENTRYPOINT ["/var/lib/pgsql/entrypoint.sh"]
 EXPOSE 5432
