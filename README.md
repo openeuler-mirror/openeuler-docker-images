@@ -109,8 +109,8 @@ openEuler的基础镜像由社区官方发布，目前发布在[openEuler镜像�
 
 目前支持的第三方镜像托管平台有：
 - [hub.oepkgs.net](https://hub.oepkgs.net/)
-- [hub.docker.com](https://hub.docker.com/)
-- [quay.io](https://quay.io/)
+- [hub.docker.com](https://hub.docker.com/u/openeuler)
+- [quay.io](https://quay.io/organization/openeuler)
 
 以基础镜像`openeuler/openeuler:latest`为例，从指定托管平台获取镜像的方式如下：
 ```
