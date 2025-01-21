@@ -1,0 +1,68 @@
+name: openlb
+category: HPC
+description: OpenLB是Lattice-Boltzmann方法（LBM）面向对象的实现。它是与开源社区（GPLv2）共享的第一个通用平台实现的LBM程序。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  openresty镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.7.0-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/openlb/1.7.0/24.03-lts/Dockerfile)| OpenLB 1.7.0 on openEuler 24.03-LTS | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/openlb:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+    ```
+    docker run -it --rm openeuler/openlb:{Tag}
+    ```
+    用户可根据自身需求选择对应版本的{Tag}。
+
+  - 运行算例
+    - 非并行计算
+      1. 执行以下命令，进入算例目录。
+        ```bash
+        cd examples/laminar/cylinder2d
+        ```
+      2. 执行以下命令，编译算例。
+        ```bash
+        make
+        ```
+      3. 执行以下命令，运行程序，执行计算。
+        ```bash
+        ./cylinder2d
+        ```
+        生成的VTK和gnuplot结果储存在/tmp路径下。
+
+    - 并行计算
+      1. 执行以下命令，进入算例目录。
+        ```bash
+        cd examples/laminar/cylinder2d
+        ```
+      2. 执行以下命令，编译算例。
+        ```bash
+        make
+        ```
+      3. 执行以下命令，运行程序，执行计算，以-np=64，OMP_NUM_THREADS=1为例。
+        ```bash
+        mpirun –allow-run-as-root –np 64 –x OMP_NUM_THREADS=1 ./cylinder2d
+        ```
+        生成的VTK和gnuplot结果储存在/tmp路径下。
+
+license: GNU General Public License Version 2 (GPLv2).  
+
+similar_packages:
+  - Palabos: Palabos 是一个功能强大的开源 LBM 软件库，广泛应用于科学研究和工业仿真。它专注于多相流、流体与结构耦合等复杂流体模拟。
+
+dependency:
+  - openmpi
+  - findutils
+  - gcc
