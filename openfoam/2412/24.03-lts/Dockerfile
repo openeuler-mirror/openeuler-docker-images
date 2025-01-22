@@ -11,9 +11,8 @@ RUN yum install -y wget m4 flex clang make gcc g++ cmake openmpi-devel zlib-deve
 RUN wget https://sourceforge.net/projects/openfoam/files/v${VERSION}/ThirdParty-v${VERSION}.tgz && \
     wget https://sourceforge.net/projects/openfoam/files/v${VERSION}/OpenFOAM-v${VERSION}.tgz && \
     tar -xvf ThirdParty-v${VERSION}.tgz && \
-    tar -xvf OpenFOAM-v${VERSION}.tgz
-
-RUN cd OpenFOAM-v${VERSION} && \
+    tar -xvf OpenFOAM-v${VERSION}.tgz && \
+    cd OpenFOAM-v${VERSION} && \
     source etc/bashrc && \
     ./Allwmake -j -k -s -q && \
     rm -rf ThirdParty-v${VERSION}.tgz && \
@@ -22,3 +21,5 @@ RUN cd OpenFOAM-v${VERSION} && \
 WORKDIR /opt/OpenFOAM-v${VERSION}
 ENV OMPI_ALLOW_RUN_AS_ROOT=1
 ENV OMPI_ALLOW_RUN_AS_ROOT_CONFIRM=1
+
+ENTRYPOINT ["/bin/bash", "-c", "source etc/bashrc && exec /bin/bash"]
