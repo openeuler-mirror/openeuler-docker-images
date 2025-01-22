@@ -1,0 +1,60 @@
+name: openfoam
+category: hpc
+description: OpenFOAM（Open Source Field Operation and Manipulation，意为开源的场运算和处理软件）是ESI集团下属的OpenCFD公司开发的一款物理场计算软件。该软件能够进行流体、传热、分子动力学、电磁流体、固体应力的解析，能够实现从网格划分到后处理的可视化流程。它可进行数据预处理、后处理和自定义求解器，常用于计算流体力学（CFD）领域。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  openfoam镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[2412-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/openfoam/2412/24.03-lts/Dockerfile)| OpenFOAM 2412 on openEuler 24.03-LTS | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/openfoam:{Tag}
+  ```
+
+usage: |
+  - 运行容器
+    ```
+    docker run -it --rm openeuler/openfoam:{Tag}
+    ```
+    用户可根据自身需求选择对应版本的{Tag}。容器启动之后即进入如下工作目录：
+    ```
+    /opt/OpenFOAM-v{VERSION}
+    ```
+    不同的`Tag`对应不同的`VERSION`。
+
+  - 测试验证
+
+    在`/opt/OpenFOAM-v{VERSION}`目录下进行如下测试：
+    ```
+    ./Allrun
+    ```
+    得到如下类似的结果：
+    ```
+    [root@7ae3c3cbfedf motorBike]# ./Allrun
+    Running blockMesh on /opt/OpenFOAM-v2412/tutorials/incompressible/pisoFoam/LES/motorBike/motorBike
+    Running decomposePar on /opt/OpenFOAM-v2412/tutorials/incompressible/pisoFoam/LES/motorBike/motorBike
+    Running snappyHexMesh (8 processes) on /opt/OpenFOAM-v2412/tutorials/incompressible/pisoFoam/LES/motorBike/motorBike
+    Restore 0/ from 0.orig/  [processor dirs]
+    Running renumberMesh (8 processes) on /opt/OpenFOAM-v2412/tutorials/incompressible/pisoFoam/LES/motorBike/motorBike
+    Running potentialFoam (8 processes) on /opt/OpenFOAM-v2412/tutorials/incompressible/pisoFoam/LES/motorBike/motorBike
+    Running checkMesh (8 processes) on /opt/OpenFOAM-v2412/tutorials/incompressible/pisoFoam/LES/motorBike/motorBike
+    Running simpleFoam (8 processes) on /opt/OpenFOAM-v2412/tutorials/incompressible/pisoFoam/LES/motorBike/motorBike
+    ```
+    计算结束正常退出后，生成计算日志文件，执行vi log.simpleFoam打开log.simpleFoam。需要查看“log.simpleFoam”日志中的“ExecutionTime”数值，单位是“s”，数值越少性能越优。
+
+license: GNU General Public License  
+similar_packages:
+  - N/A
+dependency:
+  - openmpi-devel
+  - ncurses-devel
+  - mpfr-devel
+  - gmp-devel
