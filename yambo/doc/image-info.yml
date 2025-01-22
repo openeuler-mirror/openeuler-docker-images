@@ -1,0 +1,45 @@
+name: yambo
+category: hpc
+description: Oyambo实现了多体扰动理论（MBPT）方法（如GW和BSE）和瞬态密度泛函理论（TDDFT），可以准确预测基本属性，如半导体的带隙，带对准，缺陷准粒子能量，光学和材料的失衡特性。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  openresty镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[5.3.0-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/yambo/5.3.0/24.03-lts/Dockerfile)| Yambo 5.3.0 on openEuler 24.03-LTS | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/yambo:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+    ```
+    docker run -it --rm openeuler/yambo:{Tag}
+    ```
+    使用如下命令进行简单可用性测试
+    ```
+    ./bin/yambo --version
+    ```
+    输出类似如下结果则说明yambo可用
+    ```
+    This is yambo - Serial+HDF5_IO - Ver. 5.3.0 Revision 23900 Hash e51825f30d
+    ```
+
+license: GPL-2.0 license 
+
+similar_packages:
+  - N/A
+
+dependency:
+  - hdf5
+  - netcdf
+  - libxc
+  - lapack
