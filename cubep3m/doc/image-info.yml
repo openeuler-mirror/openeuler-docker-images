@@ -1,0 +1,38 @@
+name: cubep3m
+category: hpc
+description: CubeP3M是由Fortran编写的开源程序，是专门为高度并行而设计的N体数值模拟程序，利用MPI和OpenMP两层并行结构对N体问题Particle-Mesh算法进行加速，并针对天河二号的MIC架构进行了优化。CubeP3M运用P3M原理，善于模拟宇宙大尺度均匀结构，程序可扩展性经过weak scaling测试，结果显示增加核心数对计算速度提高能接近线性。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  cubep3m镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  | Tags | Currently |  Architectures|
+  |------|-----------|---------------|
+  |[1.0.0-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/cubep3m/1.0.0/24.03-lts/Dockerfile)| CubeP3M 1.0.0 on openEuler 24.03-LTS | amd64, arm64 |
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/cubep3m:{Tag}
+  ```
+usage: |
+  - 拉取镜像
+
+    ```
+    docker pull openeuler/cubep3m:{Tag}
+    ```
+    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。
+  
+  - 运行容器
+
+    ```
+    docker run -it --name my-cubep3m openeuler/cubep3m:{Tag}
+    ```
+license: N/A
+similar_packages:
+  - N/A
+dependency:
+  - openmpi
+  - fftw2
