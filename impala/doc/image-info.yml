@@ -1,0 +1,70 @@
+name: impala
+category: bigdata
+description: Apache Impala 是一个现代化的开源 SQL 查询引擎，专为大规模数据集的实时交互式分析而设计。它可以直接运行在 Apache Hadoop 和云存储之上，无需复杂的数据预处理，提供高效的分布式查询性能。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  dotnet-deps镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[4.4.1-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/impala/4.4.1/24.03-lts/Dockerfile)| Apache impala 4.4.1 on openEuler 24.03-LTS | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/impala:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+    ```
+    docker run -d --name my-impala openeuler/impala:{Tag}
+    ```
+    用户可根据自身需求选择对应版本的{Tag}。
+  
+  - 容器测试
+
+    查看运行日志
+      ```
+      docker logs -f my-impala
+      ```
+
+    运行启动shell会话
+      ```
+      docker run -it --name my-impala openeuler/impala:{Tag} /bin/bash
+      ```
+
+license: Apache-2.0 license
+
+similar_packages:
+  - Presto: Presto（现在分支为 Trino）是一个开源的分布式 SQL 查询引擎，专注于高性能、低延迟的数据查询，适用于交互式分析
+
+dependency:
+  - avro
+  - binutils
+  - boost
+  - breakpad  
+  - calloncehack
+  - bzip2
+  - cctz
+  - cloudflarezlib
+  - crcutil
+  - flatbuffers
+  - gdb
+  - python
+  - openldap
+  - libunwind
+  - gperftools
+  - protobuf
+  - re2
+  - PostgreSQL
+  - kudu
+  - hbase 
+  - hive
+  - thrift
+  - Hadoop  
+  - llvm
