@@ -42,3 +42,5 @@
   path: telegraf/1.33.1/24.03-lts/Dockerfile
 1.33.1-oe2203sp3:
   path: telegraf/1.33.1/22.03-lts-sp3/Dockerfile
+1.33.1-oe2203sp4:
+  path: telegraf/1.33.1/22.03-lts-sp4/Dockerfile
