@@ -18,3 +18,5 @@
   path: dotnet-aspnet/9.0.1/24.03-lts/Dockerfile
 9.0.1-oe2203sp3:
   path: dotnet-aspnet/9.0.1/22.03-lts-sp3/Dockerfile
+9.0.1-oe2203sp4:
+  path: dotnet-aspnet/9.0.1/22.03-lts-sp4/Dockerfile
