@@ -1,0 +1,77 @@
+name: swan
+category: hpc
+description: SWAN()是第三代波浪模型，用于根据给定的风、谷底和当前条件获得沿海地区、湖泊和河口的波浪参数的实际估计。SWAN可以在与风产生的表面重力波相关的任何规模下使用。该模型的控制方程是基于带有源、汇项的波作用平衡方程。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  swan镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[41.51-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/swan/41.51/24.03-lts/Dockerfile)| SWAN 41.51 on openEuler 24.03-LTS | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/swan:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+    ```
+    docker run -it --rm openeuler/swan:{Tag}
+    ```
+    用户可根据自身需求选择对应版本的{Tag}。
+
+  - 运行测试
+
+    1. 下载测试用例
+    ```
+    mkdir swan-testcse
+    cd swan-testcse
+    wget http://swanmodel.sourceforge.net/download/zip/refrac.tar.gz --no-check-certif icate
+    tar -zxvf refrac.tar.gz
+    ```
+  
+    2. 执行用例
+    ```
+    cd refrac
+    ln -s $workdir/swan.exe ./
+    cp a11refr.swn INPUT
+    mpirun -np 8 ./swan.exe
+    ```
+    输出如下测试结果：
+    ```
+    SWAN is preparing computation
+
+    iteration    1; sweep 1
+    +iteration    1; sweep 2
+    +iteration    1; sweep 3
+    +iteration    1; sweep 4
+    not possible to compute, first iteration
+
+    iteration    2; sweep 1
+    +iteration    2; sweep 2
+    +iteration    2; sweep 3
+    +iteration    2; sweep 4
+    accuracy OK in 100.00 % of wet grid points ( 99.50 % required)
+
+    +SWAN is processing output request    1
+    +SWAN is processing output request    2
+    +SWAN is processing output request    3
+    +SWAN is processing output request    4
+    ```
+
+license: GNU General Public License  
+
+similar_packages:
+  - N/A
+
+dependency:
+  - perl
+  - gfortran
+  - hdf5-devel 
+  - mpich-devel
