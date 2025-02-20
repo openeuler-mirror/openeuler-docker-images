@@ -3,7 +3,9 @@ FROM ${BASE}
 
 ARG VERSION=9.21.4
 
-RUN yum -y update && yum -y install make gcc xz libcap-devel libuv-devel libnghttp2-devel openssl-devel perl && yum clean all
+RUN yum -y update && yum -y install make gcc xz libcap-devel libuv-devel libnghttp2-devel openssl-devel perl userspace-rcu userspace-rcu-devel && \
+    yum clean all
+    
 RUN curl -fSL --output bind9.tar.xz https://downloads.isc.org/isc/bind9/${VERSION}/bind-${VERSION}.tar.xz && \
     mkdir -p /bind9 && tar -xvf bind9.tar.xz -C /bind9 --strip-components=1 && \
     rm -rf bind9.tar.xz && cd /bind9 && \
