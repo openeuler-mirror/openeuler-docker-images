@@ -1,0 +1,90 @@
+name: suricata
+category: others
+description: Suricata 是一个开源、高性能的网络威胁检测引擎，主要用于入侵检测 (IDS)、入侵防御 (IPS) 和网络安全监控 (NSM)。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  suricata镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[7.0.8-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/suricata/7.0.8/24.03-lts/Dockerfile)| suricata 7.0.8 on openEuler 24.03-LTS | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/suricata:{Tag}
+  ```
+
+usage: |
+
+  - 在线文档
+    您可以在 [官方文档](https://docs.suricata.io/en/latest/) 上找到最新的Suricata文档，包括编程指南。此README文件仅包含基本的设置说明。
+  
+  - 拉取镜像
+    ```bash
+    docker pull openeuler/suricata:{Tag}
+    ```
+  
+  - 使用介绍
+    在主机上的网络接口上运行Suricata，而不是在容器的网络接口：
+      ```bash
+      docker run -it --rm \
+      -v /var/log/suricata:/var/log/suricata \
+      -v /var/lib/suricata:/var/lib/suricata \
+      -v /var/run/suricata:/var/run/suricata \
+      -v /etc/suricata:/etc/suricata \
+      --net=host \
+      --cap-add=net_admin \
+      --cap-add=net_raw \
+      --cap-add=sys_nice \
+      openeuler/suricata:<Tag> \
+      -i eth0
+      ```
+    为了监控网络接口并以非root用户运行Suricata，容器必须具备sys_nice、net_admin和net_raw权限。如果容器检测到它没有这些权限，Suricata将以root用户运行。
+  
+  
+  - 容器启动参数
+      
+      | Option | Description |
+      |----------|----------|
+      | `-i eth0` | 指定Suricata监控的网络接口`eth0`。 |
+      | `-v /var/log/suricata:/var/log/suricata` | 挂载日志目录。 |
+      | `-v /var/lib/suricata:/var/lib/suricata` | 挂载库目录。 |
+      | `-v /etc/suricata:/etc/suricata` | 挂载配置文件目录。 |
+      | `--cap-add=net_admin` | 允许容器执行网络管理任务。 |
+      | `--cap-add=sys_nice` | 允许容器调整内部进程的优先级（nice）。 |
+      | `--cap-add=net_raw` | 授予容器发送和接收原始网络数据包的能力。 |
+      | `--net=host` | 允许容器直接使用主机的网络。 |
+  
+
+license: GPL-2.0 licenses
+similar_packages:
+  - Snort: Snort是一套开放源代码的网络入侵预防软件与网络入侵检测软件。
+dependency:
+  - cronie
+  - dpdk
+  - elfutils-libelf
+  - lua-libs
+  - libbpf
+  - libyaml
+  - libnfnetlink
+  - libnetfilter_queue
+  - libnet
+  - libcap-ng
+  - libevent
+  - libmaxminddb
+  - libpcap
+  - logrotate
+  - lz4
+  - net-tools
+  - nss
+  - numactl
+  - pcre2
+  - procps-ng
+  - python3
+  - tcpdump
+  - zlib
