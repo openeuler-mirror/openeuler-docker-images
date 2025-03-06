@@ -1,2 +1,2 @@
-0.3.3-oe2403lts:
-  path: embedding-tei-langchain/0.3.3/24.03-lts/Dockerfile
+0.3.0-oe2403lts:
+  path: embedding-tei-langchain/0.3.0/24.03-lts/Dockerfile
