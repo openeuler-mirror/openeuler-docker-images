@@ -3,7 +3,7 @@
 
 FROM openeuler/openeuler:24.03-lts
 
-ARG ARCH="cpu"
+ARG PLATFORM="cpu"
 
 RUN yum update -y && \
     yum install -y --setopt=install_weak_deps=False \
@@ -27,7 +27,7 @@ RUN cp -r GenAIComps/comps . && \
     rm -rf GenAIComps
 
 RUN pip install --no-cache-dir --upgrade pip && \
-    if [ ${ARCH} = "cpu" ]; then pip install --no-cache-dir torch torchvision --index-url https://download.pytorch.org/whl/cpu; fi && \
+    if [ ${PLATFORM} = "cpu" ]; then pip install --no-cache-dir torch torchvision --index-url https://download.pytorch.org/whl/cpu; fi && \
     pip install --no-cache-dir -r /home/user/comps/llms/summarization/tgi/langchain/requirements.txt
 
 ENV PYTHONPATH=$PYTHONPATH:/home/user
