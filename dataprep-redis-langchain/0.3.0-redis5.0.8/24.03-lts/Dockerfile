@@ -22,15 +22,15 @@ RUN yum update -y && \
 
     
 RUN mkdir -p /tmp/LibreOffice/LibreOffice && \
-    wget -O /tmp/LibreOffice/LibreOffice.tar.gz https://mirrors.cloud.tencent.com/libreoffice/libreoffice/stable/24.8.5/rpm/x86_64/LibreOffice_24.8.5_Linux_x86-64_rpm.tar.gz && \
+    wget -O /tmp/LibreOffice/LibreOffice.tar.gz https://mirrors.cloud.tencent.com/libreoffice/libreoffice/stable/24.8.2/rpm/x86_64/LibreOffice_24.8.2_Linux_x86-64_rpm.tar.gz && \
     tar -zxvf /tmp/LibreOffice/LibreOffice.tar.gz -C /tmp/LibreOffice/LibreOffice/ --strip-components 1 && \
     yum -y install /tmp/LibreOffice/LibreOffice/RPMS/*.rpm && \
     mkdir -p /tmp/LibreOffice/langpack_zh-CN && \
-    wget -O /tmp/LibreOffice/langpack_zh-CN.tar.gz https://mirrors.cloud.tencent.com/libreoffice/libreoffice/stable/24.8.5/rpm/x86_64/LibreOffice_24.8.5_Linux_x86-64_rpm_langpack_zh-CN.tar.gz && \
+    wget -O /tmp/LibreOffice/langpack_zh-CN.tar.gz https://mirrors.cloud.tencent.com/libreoffice/libreoffice/stable/24.8.2/rpm/x86_64/LibreOffice_24.8.2_Linux_x86-64_rpm_langpack_zh-CN.tar.gz && \
     tar -zxvf /tmp/LibreOffice/langpack_zh-CN.tar.gz -C /tmp/LibreOffice/langpack_zh-CN/ --strip-components 1 && \
     yum -y install /tmp/LibreOffice/langpack_zh-CN/RPMS/*.rpm && \
     mkdir -p /tmp/LibreOffice/helppack_zh-CN && \
-    wget -O /tmp/LibreOffice/helppack_zh-CN.tar.gz https://mirrors.cloud.tencent.com/libreoffice/libreoffice/stable/24.8.5/rpm/x86_64/LibreOffice_24.8.5_Linux_x86-64_rpm_helppack_zh-CN.tar.gz && \
+    wget -O /tmp/LibreOffice/helppack_zh-CN.tar.gz https://mirrors.cloud.tencent.com/libreoffice/libreoffice/stable/24.8.2/rpm/x86_64/LibreOffice_24.8.2_Linux_x86-64_rpm_helppack_zh-CN.tar.gz && \
     tar -zxvf /tmp/LibreOffice/helppack_zh-CN.tar.gz -C /tmp/LibreOffice/helppack_zh-CN/ --strip-components 1 && \
     yum -y install /tmp/LibreOffice/helppack_zh-CN/RPMS/*.rpm && \
     rm -rf /tmp/LibreOffice
