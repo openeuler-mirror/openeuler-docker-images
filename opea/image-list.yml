@@ -18,7 +18,8 @@ images:
   llm-docsum-tgi: opea/llm-docsum-tgi
   llm-faqgen-tgi: opea/llm-faqgen-tgi
   llm-tgi: opea/llm-tgi
-  reranking-tei: opea/ai/reranking-tei
+  llm-vllm: opea/llm-vllm
+  reranking-tei: opea/reranking-tei
   retriever-redis: opea/retriever-redis
   searchqna: opea/searchqna
   searchqna-ui: opea/searchqna-ui
@@ -28,3 +29,5 @@ images:
   tts: opea/tts
   web-retriever-chroma: opea/web-retriever-chroma
   whisper: opea/whisper
+  finetuning: opea/finetuning
+
