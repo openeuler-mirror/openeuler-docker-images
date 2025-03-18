@@ -1,5 +1,0 @@
-0.3.3-oe2403lts:
-  path: llm-vllm-langchain/0.3.3/24.03-lts/Dockerfile
-  arch: x86_64
-0.3.3-npu-oe2203lts:
-  path: llm-vllm-langchain/0.3.3-npu/24.03-lts/Dockerfile
