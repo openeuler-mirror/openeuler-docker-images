@@ -1,0 +1,10 @@
+images:
+  asr: AI/opea/asr
+  audioqna: AI/opea/audioqna
+  doc-index-retriever: AI/opea/doc-index-retriever
+  finetuning: AI/opea/finetuning
+  speecht5: AI/opea/speecht5
+  tts: AI/opea/tts
+  whisper: AI/opea/whisper
+  text-embeddings-inference-cpu: AI/text-embeddings-inference-cpu
+
