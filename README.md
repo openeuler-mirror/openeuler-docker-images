@@ -4,7 +4,7 @@
 
 ## 介绍
 
-这里存放着由openEuler官方提供的容器镜像，包含openEuler基础镜像、应用镜像。
+这里存放着由openEuler官方提供的容器镜像Dockerfile，包含openEuler基础镜像、应用镜像。
 
 ## 相关链接
 - [openEuler容器镜像使用指南](https://forum.openeuler.org/t/topic/4189)
@@ -61,7 +61,7 @@ openEuler的基础镜像由社区官方发布，目前发布在[openEuler镜像�
   - 其他:      `Others/`
 
 #### 2.1 整体目录
-由于应用镜像功能的复杂性，存放文件的路径深度具有不确定性，如：
+由于应用镜像功能的复杂性，存放文件的路径深度具有不确定性，整体存放路径如下：
 ```
 openeuler-docker-images/
 └── AI/
@@ -78,7 +78,7 @@ openeuler-docker-images/
 	└───Image7/
 ```
 
-在上述示例中，存放应用镜像的**最小目录单元**是`Image_i/`，在每个场景目录下必包含一个`image-list.yml`文件用以描述每个应用镜像**最小目录单元**的起始路径，便于CI检查镜像目录完整性。格式如下：
+每个场景目录下必须包含一个`image-list.yml`用以描述每个应用镜像**最小目录单元**（即，示例中的所有`Image_i/`）的起始路径，其格式如下：
 ```
 # AI/image-list.yml示例
 images:
@@ -90,11 +90,14 @@ images:
 	Image_6: Image_6/
 	Image_7: Image_7/
 ```
+`image-list.yml`的存在：
+- 有助于检查镜像目录完整性；
+- 方便[openEuler软件中心应用镜像板块](https://easysoftware.openeuler.org/zh/image)上架应用镜像。
 
 #### 2.2 最小目录
-本仓库要求**最小目录单元**`Image_i`严格遵循以下结构：
+本仓库要求**最小目录单元**`Image_i/`严格遵循以下结构：
 ```
-# 以`Image_i` == `nginx`为例
+# 以Image_i == nginx为例
 nginx/
 	|── README.md
 	|── meta.yml
@@ -112,7 +115,7 @@ nginx/
 	     └── 22.03-lts-sp1
 		      └── Dockerfile
 ```
-在每个**最小目录单元**中`Image_i/`下，包含以下内容：
+在每个**最小目录单元**`Image_i/`下，包含以下内容：
 - Dockerfile：
 
     存放路径为`[应用的版本号]/[openEuler的版本号]/Dockerfile`。示例：基于openEuler `22.03-lts-sp1`的nginx `1.27.1`应用镜像Dockerfile位于`1.27.1/22.03-lts-sp1/Dockerfile`。
@@ -153,7 +156,7 @@ nginx/
 
 - （可选）`doc/`目录
 
-	存放该镜像的图文信息，用于在[openEuler软件中心的应用镜像版本](https://easysoftware.openeuler.org/zh/image)展示该镜像。无需展示在软件中心时，可不填写本部分内容。
+	存放该镜像的图文信息，用于在[openEuler软件中心应用镜像板块](https://easysoftware.openeuler.org/zh/image)展示该镜像。无需展示在软件中心时，可不填写本部分内容。
 	- `doc/image-info.yml`，内容如下：
 
 			名称（name）：应用名
