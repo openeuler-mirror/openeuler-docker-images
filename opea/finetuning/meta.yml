@@ -1,3 +1,3 @@
 1.0-oe2403lts:
-  path: finetuning/1.0/24.03-lts/Dockerfile
+  path: opea/finetuning/1.0/24.03-lts/Dockerfile
   arch: x86_64
