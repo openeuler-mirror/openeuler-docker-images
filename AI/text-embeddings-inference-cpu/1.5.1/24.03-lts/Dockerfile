@@ -27,7 +27,9 @@ RUN cargo install cargo-chef --locked
 
 FROM chef AS planner
 
-RUN git clone https://github.com/huggingface/text-embeddings-inference.git
+RUN git clone https://github.com/huggingface/text-embeddings-inference.git && \
+    cd text-embeddings-inference && \
+    git checkout v1.5.1
 
 WORKDIR /usr/src/text-embeddings-inference
 
@@ -47,7 +49,9 @@ COPY --from=planner /usr/src/text-embeddings-inference/recipe.json recipe.json
 
 RUN cargo chef cook --release --features ort --no-default-features --recipe-path recipe.json && sccache -s
 
-RUN git clone https://github.com/huggingface/text-embeddings-inference.git
+RUN git clone https://github.com/huggingface/text-embeddings-inference.git && \
+    cd text-embeddings-inference && \
+    git checkout v1.5.1
 
 FROM builder AS http-builder
 WORKDIR /usr/src/text-embeddings-inference
@@ -62,8 +66,6 @@ RUN PROTOC_ZIP=protoc-21.12-linux-x86_64.zip && \
     unzip -o $PROTOC_ZIP -d /usr/local bin/protoc && \
     unzip -o $PROTOC_ZIP -d /usr/local 'include/*' && \
     rm -f $PROTOC_ZIP
-
-COPY proto proto
 
 RUN cargo build --release --bin text-embeddings-router -F grpc -F ort --no-default-features && sccache -s
 
