@@ -1,0 +1,18 @@
+images:
+  bind9: bind9
+  bisheng-jdk: bisheng-jdk
+  coredns: coredns
+  dotnet-aspnet: dotnet-aspnet
+  dotnet-deps: dotnet-deps
+  dotnet-runtime: dotnet-runtime
+  go: go
+  guacd: guacd
+  httpd: httpd
+  kselftests-virtme: kselftests-virtme
+  node: node
+  opengauss-lite: opengauss-lite
+  openjdk: openjdk
+  openssh-server: openssh-server
+  python: python
+  suricata: suricata
+  tomcat: tomcat

@@ -1,0 +1,2 @@
+base-oe2203lts:
+  path: base/22.03-lts/Dockerfile

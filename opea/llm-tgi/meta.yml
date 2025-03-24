@@ -1,3 +1,0 @@
-1.0-oe2403lts:
-  path: opea/llm-tgi/1.0/24.03-lts/Dockerfile
-  arch: x86_64

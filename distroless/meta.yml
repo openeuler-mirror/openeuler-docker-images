@@ -1,2 +1,0 @@
-base-oe2203lts:
-  path: distroless/base/22.03-lts/Dockerfile

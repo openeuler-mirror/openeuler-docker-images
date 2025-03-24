@@ -1,0 +1,22 @@
+0.40.2-oe2203sp3:
+  path: 0.40.2/22.03-lts-sp3/Dockerfile
+0.41.1-oe2203sp3:
+  path: 0.41.1/22.03-lts-sp3/Dockerfile
+0.43.3-oe2003sp4:
+  path: 0.43.3/20.03-lts-sp4/Dockerfile
+0.43.3-oe2203sp1:
+  path: 0.43.3/22.03-lts-sp1/Dockerfile
+0.43.3-oe2203sp3:
+  path: 0.43.3/22.03-lts-sp3/Dockerfile
+0.43.3-oe2203sp4:
+  path: 0.43.3/22.03-lts-sp4/Dockerfile
+0.43.3-oe2403lts:
+  path: 0.43.3/24.03-lts/Dockerfile
+0.44.2-oe2403lts:
+  path: 0.44.2/24.03-lts/Dockerfile
+0.44.2-oe2203sp3:
+  path: 0.44.2/22.03-lts-sp3/Dockerfile
+0.44.2-oe2203sp4:
+  path: 0.44.2/22.03-lts-sp4/Dockerfile
+0.44.2-oe2203sp1:
+  path: 0.44.2/22.03-lts-sp1/Dockerfile

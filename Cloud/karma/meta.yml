@@ -1,0 +1,8 @@
+0.120-oe2403lts:
+  path: 0.120/24.03-lts/Dockerfile
+0.120-oe2203sp3:
+  path: 0.120/22.03-lts-sp3/Dockerfile
+0.120-oe2203sp4:
+  path: 0.120/22.03-lts-sp4/Dockerfile
+0.120-oe2203sp1:
+  path: 0.120/22.03-lts-sp1/Dockerfile

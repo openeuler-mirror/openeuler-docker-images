@@ -1,0 +1,5 @@
+images:
+  flink: flink
+  impala: impala
+  kafka: kafka
+  spark: spark

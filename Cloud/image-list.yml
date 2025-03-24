@@ -1,0 +1,21 @@
+images:
+  alertmanager: alertmanager
+  calico: calico
+  grafana: grafana
+  grafana-agent: grafana-agent
+  karma: karma
+  kolla: kolla
+  kong: kong
+  kebernetes: kebernetes
+  loki: loki
+  mimir: mimir
+  nginx: nginx
+  openresty: openresty
+  prometheus: prometheus
+  prometheus-pushgateway: prometheus-pushgateway
+  rabbitmq: rabbitmq
+  squid: squid
+  telegraf: telegraf
+  tempo: tempo
+  traefik: traefik
+  zookeeper: zookeeper

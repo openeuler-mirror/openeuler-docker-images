@@ -1,0 +1,7 @@
+images:
+  cassandra: cassandra
+  memcached: memcached
+  mysql: mysql
+  postgres: postgres
+  redis: redis
+  
