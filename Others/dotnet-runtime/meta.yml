@@ -22,3 +22,5 @@
   path: 9.0.1/22.03-lts-sp4/Dockerfile
 9.0.1-oe2203sp1:
   path: 9.0.1/22.03-lts-sp1/Dockerfile
+9.0.3-oe2403lts:
+  path: Others/dotnet-runtime/9.0.3/24.03-lts/Dockerfile
