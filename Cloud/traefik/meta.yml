@@ -46,3 +46,5 @@
   path: 3.3.3/22.03-lts-sp4/Dockerfile
 3.3.3-oe2203sp1:
   path: 3.3.3/22.03-lts-sp1/Dockerfile
+3.3.4-oe2403lts:
+  path: Cloud/traefik/3.3.4/24.03-lts/Dockerfile
