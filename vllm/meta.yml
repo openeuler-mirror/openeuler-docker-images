@@ -1,3 +1,0 @@
-0.6.3-oe2403lts:
-  path: vllm/0.6.3/24.03-lts/Dockerfile
-  arch: x86_64

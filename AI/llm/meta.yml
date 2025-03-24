@@ -1,0 +1,4 @@
+fastchat-pytorch2.1.0.a1-cann7.0.RC1.alpha002-oe2203sp2:
+  path: fastchat-pytorch2.1.0.a1-cann7.0.RC1.alpha002/22.03-lts-sp2/Dockerfile
+chatglm2_6b-pytorch2.1.0.a1-cann7.0.RC1.alpha002-oe2203sp2:
+  path: chatglm2_6b-pytorch2.1.0.a1-cann7.0.RC1.alpha002/22.03-lts-sp2/Dockerfile

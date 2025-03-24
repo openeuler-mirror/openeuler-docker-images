@@ -1,0 +1,5 @@
+pytorch2.1.0.a1-cann7.0.RC1.alpha002-oe2203sp2:
+  path: 2.1.0.a1-cann7.0.RC1.alpha002/22.03-lts-sp2/Dockerfile
+  arch: aarch64
+2.2.0-cann8.0.RC1-oe2203sp4:
+  path: 2.2.0-cann8.0.RC1/22.03-lts-sp4/Dockerfile

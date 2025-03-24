@@ -1,0 +1,12 @@
+13.3-oe2203lts:
+  path: 13.3/22.03-lts/Dockerfile
+16.2-oe2203sp3:
+  path: 16.2/22.03-lts-sp3/Dockerfile
+17.0-oe2203sp1:
+  path: 17.0/22.03-lts-sp1/Dockerfile
+17.0-oe2203sp3:
+  path: 17.0/22.03-lts-sp3/Dockerfile
+17.0-oe2203sp4:
+  path: 17.0/22.03-lts-sp4/Dockerfile
+17.0-oe2403lts:
+  path: 17.0/24.03-lts/Dockerfile

@@ -1,0 +1,11 @@
+images:
+  bwa: bwa
+  cesm: cesm
+  cp2k: cp2k
+  cubep3m: cubep3m
+  openfoam: openfoam
+  openlb: openlb
+  swan: swan
+  wrf: wrf
+  yambo: yambo
+  

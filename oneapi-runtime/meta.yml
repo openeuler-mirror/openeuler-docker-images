@@ -1,3 +1,0 @@
-2024.2.0-oe2403lts:
-  path: oneapi-runtime/2024.2.0/24.03-lts/Dockerfile
-  arch: x86_64
