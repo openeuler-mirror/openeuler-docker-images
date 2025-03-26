@@ -1,2 +1,4 @@
 5.3.0-oe2403lts:
   path: 5.3.0/24.03-lts/Dockerfile
+5.3.0-oe2403sp1:
+  path: HPC/yambo/5.3.0/24.03-lts-sp1/Dockerfile
