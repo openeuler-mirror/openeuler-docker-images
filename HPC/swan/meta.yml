@@ -1,2 +1,4 @@
 41.51-oe2403lts:
   path: 41.51/24.03-lts/Dockerfile
+41.51-oe2403sp1:
+  path: HPC/swan/41.51/24.03-lts-sp1/Dockerfile
