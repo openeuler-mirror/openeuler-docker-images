@@ -16,3 +16,7 @@ images:
   python: python
   suricata: suricata
   tomcat: tomcat
+  maven: maven
+  conda: conda
+  pypi: pypi
+  npmjs: npmjs
