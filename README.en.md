@@ -58,6 +58,7 @@ Application images are categorized into seven types based on scenarios, and the 
   - Distributed Storage: `Storage/`
   - Database:    `Database/`
   - Cloud Service:    `Cloud/`
+  - Distroless: `Distroless/`
   - High-Performance Computing: `HPC/`
   - Others:      `Others/`
 
