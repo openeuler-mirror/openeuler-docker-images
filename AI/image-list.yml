@@ -7,7 +7,7 @@ images:
   llvm-build-deps: llvm-build-deps
   mindspore: mindspore
   mlflow: mlflow
-  oneapi-baselit: oneapi-basekit
+  oneapi-basekit: oneapi-basekit
   oneapi-runtime: oneapi-runtime
   asr: opea/asr
   audioqna: opea/audioqna
