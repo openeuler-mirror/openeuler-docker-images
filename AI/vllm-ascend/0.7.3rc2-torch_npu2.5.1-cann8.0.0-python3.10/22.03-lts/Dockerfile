@@ -1,14 +1,9 @@
 FROM quay.io/ascend/cann:8.0.0-910b-openeuler22.03-py3.10
 
-ARG PIP_INDEX_URL="https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"
-
-
 RUN yum update -y && \
     yum install -y python3-pip git vim wget net-tools && \
     rm -rf /var/cache/yum &&\
     rm -rf /tmp/*
-
-RUN pip config set global.index-url ${PIP_INDEX_URL}
 
 # Install vLLM
 ARG VLLM_REPO=https://github.com/vllm-project/vllm.git
