@@ -45,3 +45,4 @@ images:
   text-generation-inference-cpu: text-generation-inference-cpu
   vllm: vllm
   vllm-ascend: vllm-ascend
+  langchain: langchain

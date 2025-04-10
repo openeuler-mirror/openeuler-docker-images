@@ -1,0 +1,50 @@
+name: langchain
+category: ai
+description: LangChain is an open-source programming framework based on Large Language Models (LLMs), aimed at simplifying and accelerating the development of LLM based applications.
+show-on-appstore: false
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  langchain镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.0-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/langchain/1.0/22.03-lts-sp4/Dockerfile)| langchain 1.0 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/langchain:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+    ```
+    docker run -itd --name langchain openeuler/langchain:{Tag}
+    ```
+    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。`langchain`启动之后，通过`docker exec -it langchain /bin/bash`进入容器的/目录，就可以验证langchain正常使用。
+  
+
+  - 容器测试
+
+    查看运行日志
+    ```
+    docker logs -f langchain
+    ```
+
+    使用shell交互
+    ```
+    docker exec -it langchain /bin/bash
+    ```
+
+license: MIT license
+similar_packages:
+  - langchain-core: 包含必要工具(如文本拆分、基础工具调用)
+  - langchain-community: 提供预构建的组件,开箱即用 
+dependency:
+  - python3
+  - python3-pip
+  - langchain-community
