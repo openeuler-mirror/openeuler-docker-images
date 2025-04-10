@@ -12,7 +12,7 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
-  |[1.0-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/langchain/1.0/22.03-lts-sp4/Dockerfile)| langchain 1.0 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+  |[0.3.23-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/langchain/0.3.23/22.03-lts-sp4/Dockerfile)| langchain 0.3.23 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
 
 download: |
   拉取镜像到本地
@@ -23,21 +23,21 @@ download: |
 usage: |
   - 启动容器
     ```
-    docker run -itd --name langchain openeuler/langchain:{Tag}
+    docker run -itd --name my-langchain openeuler/langchain:{Tag}
     ```
-    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。`langchain`启动之后，通过`docker exec -it langchain /bin/bash`进入容器的/目录，就可以验证langchain正常使用。
+    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。`my-langchain`启动之后，通过`docker exec -it my-langchain /bin/bash`进入容器的/目录，就可以验证langchain正常使用。
   
 
   - 容器测试
 
     查看运行日志
     ```
-    docker logs -f langchain
+    docker logs -f my-langchain
     ```
 
     使用shell交互
     ```
-    docker exec -it langchain /bin/bash
+    docker exec -it my-langchain /bin/bash
     ```
 
 license: MIT license
