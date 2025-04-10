@@ -13,9 +13,9 @@ RUN dnf install -y \
 RUN git clone --branch v0.1.108 https://github.com/open-webui/open-webui.git
 
 RUN if [ "$TARGETARCH" = "amd64" ]; then \
-        BUILDARCH = "x64"; \
+        BUILDARCH="x64"; \
     elif [ "$TARGETARCH" = "arm64" ]; then \
-        BUILDARCH = "arm64"; \
+        BUILDARCH="arm64"; \
     fi && \
     wget https://nodejs.org/download/release/v18.0.0/node-v18.0.0-linux-${BUILDARCH}.tar.gz && \
     tar -xvf node-v18.0.0-linux-${BUILDARCH}.tar.gz -C /usr/local && \
