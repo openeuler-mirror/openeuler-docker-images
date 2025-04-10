@@ -1,5 +1,7 @@
 FROM    openeuler/openeuler:22.03-lts-sp4
 
+ARG TARGETARCH
+
 WORKDIR /root
 
 RUN dnf install -y \
@@ -9,7 +11,12 @@ RUN dnf install -y \
 
 RUN git clone --branch v0.1.108 https://github.com/open-webui/open-webui.git
 
-RUN wget https://nodejs.org/download/release/v18.0.0/node-v18.0.0-linux-${TARGETARCH}.tar.gz && \
+RUN if [ "$TARGEiARCH" = "amd64" ]; then \
+        BUILDARCH = "x64"; \
+    elif [ "$TARGEiARCH" = "arm64" ]; then \
+        BUILDARCH = "arm64"; \
+    fi && \
+    wget https://nodejs.org/download/release/v18.0.0/node-v18.0.0-linux-${TARGETARCH}.tar.gz && \
     tar -xvf node-v18.0.0-linux-${TARGETARCH}.tar.gz -C /usr/local && \
     ln -s /usr/local/node-v18.0.0-linux-${TARGETARCH}/bin/node /usr/local/bin/node && \
     ln -s /usr/local/node-v18.0.0-linux-${TARGETARCH}/bin/npm /usr/local/bin/npm ;\
