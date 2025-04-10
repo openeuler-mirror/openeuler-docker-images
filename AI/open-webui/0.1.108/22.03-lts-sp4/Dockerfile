@@ -16,10 +16,10 @@ RUN if [ "$TARGEiARCH" = "amd64" ]; then \
     elif [ "$TARGEiARCH" = "arm64" ]; then \
         BUILDARCH = "arm64"; \
     fi && \
-    wget https://nodejs.org/download/release/v18.0.0/node-v18.0.0-linux-${TARGETARCH}.tar.gz && \
-    tar -xvf node-v18.0.0-linux-${TARGETARCH}.tar.gz -C /usr/local && \
-    ln -s /usr/local/node-v18.0.0-linux-${TARGETARCH}/bin/node /usr/local/bin/node && \
-    ln -s /usr/local/node-v18.0.0-linux-${TARGETARCH}/bin/npm /usr/local/bin/npm ;\
+    wget https://nodejs.org/download/release/v18.0.0/node-v18.0.0-linux-${BUILDARCH}.tar.gz && \
+    tar -xvf node-v18.0.0-linux-${BUILDARCH}.tar.gz -C /usr/local && \
+    ln -s /usr/local/node-v18.0.0-linux-${BUILDARCH}/bin/node /usr/local/bin/node && \
+    ln -s /usr/local/node-v18.0.0-linux-${BUILDARCH}/bin/npm /usr/local/bin/npm ;\
 
 WORKDIR /root/open-webui
 
