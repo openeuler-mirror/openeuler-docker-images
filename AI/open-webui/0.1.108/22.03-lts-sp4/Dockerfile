@@ -1,4 +1,5 @@
-FROM    openeuler/openeuler:22.03-lts-sp4
+ARG BASE=openeuler/openeuler:22.03-lts-sp4
+FROM ${BASE}
 
 ARG TARGETARCH
 ARG BUILDARCH
