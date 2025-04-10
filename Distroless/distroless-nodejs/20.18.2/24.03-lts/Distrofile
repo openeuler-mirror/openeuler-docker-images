@@ -1,0 +1,9 @@
+name: distroless-python
+summary: summary for `distroless-nodejs` image
+base: scratch
+release: 24.03-LTS
+platforms:
+  - linux/amd64
+  - linux/arm64
+parts:
+  - nodejs_bins

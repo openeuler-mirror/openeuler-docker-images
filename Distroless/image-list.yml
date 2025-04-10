@@ -1,0 +1,4 @@
+images:
+  distroless-python: distroless-python
+  distroless-nodejs: distroless-nodejs
+  distroless-jre: distroless-jre
