@@ -1,6 +1,7 @@
 FROM    openeuler/openeuler:22.03-lts-sp4
 
 ARG TARGETARCH
+ARG BUILDARCH
 
 WORKDIR /root
 
