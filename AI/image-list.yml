@@ -46,3 +46,4 @@ images:
   vllm: vllm
   vllm-ascend: vllm-ascend
   langchain: langchain
+  open-webui: open-webui
