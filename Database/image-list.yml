@@ -6,4 +6,4 @@ images:
   redis: redis
   clickhouse: clickhouse
   influxdb: influxdb
-  
+  pymilvus: pymilvus

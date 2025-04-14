@@ -20,3 +20,10 @@ images:
   conda: conda
   pypi: pypi
   npmjs: npmjs
+  tensorflow: tensorflow
+  paddlepaddle: paddlepaddle
+  horovod: horovod
+  catj: catj
+  swagger-ui: swagger-ui
+  react: react
+  next: next
