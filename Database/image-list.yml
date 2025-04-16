@@ -4,4 +4,6 @@ images:
   mysql: mysql
   postgres: postgres
   redis: redis
+  clickhouse: clickhouse
+  influxdb: influxdb
   
