@@ -1,3 +1,8 @@
 images:
   daos: daos
   kudu: kudu
+  alluxio: alluxio
+  arrow: arrow
+  cubefs: cubefs
+  drill: drill
+  lizardfs: lizardfs
