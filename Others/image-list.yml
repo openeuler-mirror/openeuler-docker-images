@@ -20,3 +20,5 @@ images:
   conda: conda
   pypi: pypi
   npmjs: npmjs
+  glassfish: glassfish
+  jenkins: jenkins
