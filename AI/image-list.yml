@@ -47,3 +47,4 @@ images:
   vllm-ascend: vllm-ascend
   langchain: langchain
   open-webui: open-webui
+  caffe: caffe

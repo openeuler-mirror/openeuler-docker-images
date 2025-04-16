@@ -1,0 +1,26 @@
+diff --git a/Makefile b/Makefile
+index 4d324160..fc3f66c5 100644
+--- a/Makefile
++++ b/Makefile
+@@ -365,7 +365,7 @@ ifeq ($(WITH_PYTHON_LAYER), 1)
+ endif
+
+ # BLAS configuration (default = ATLAS)
+-BLAS ?= atlas
++BLAS ?= open
+ ifeq ($(BLAS), mkl)
+        # MKL
+        LIBRARIES += mkl_rt
+diff --git a/cmake/Dependencies.cmake b/cmake/Dependencies.cmake
+index 4a5bac47..231d88ee 100644
+--- a/cmake/Dependencies.cmake
++++ b/cmake/Dependencies.cmake
+@@ -106,7 +106,7 @@ endif()
+
+ # ---[ BLAS
+ if(NOT APPLE)
+-  set(BLAS "Atlas" CACHE STRING "Selected BLAS library")
++  set(BLAS "Open" CACHE STRING "Selected BLAS library")
+   set_property(CACHE BLAS PROPERTY STRINGS "Atlas;Open;MKL")
+
+   if(BLAS STREQUAL "Atlas" OR BLAS STREQUAL "atlas")
