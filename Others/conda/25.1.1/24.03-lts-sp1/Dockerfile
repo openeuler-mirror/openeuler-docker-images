@@ -6,7 +6,7 @@ ARG BUILDARCH
 ARG VERSION=25.1.1-1
 
 RUN yum update -y && \
-    yum install -y wget cronie procps jq && \
+    yum install -y wget&& \
     yum clean all && \
     rm -rf /var/cache/yum
 
@@ -21,11 +21,3 @@ RUN if [ "$TARGETARCH" = "amd64" ]; then \
     wget https://repo.anaconda.com/miniconda/Miniconda3-py311_${VERSION}-Linux-${BUILDARCH}.sh -O ~/miniconda.sh && \
     bash ~/miniconda.sh -b -p /usr/local/miniconda && \
     rm -f ~/miniconda.sh
-
-COPY entrypoint.sh /usr/local/miniconda/bin/entrypoint.sh
-
-RUN chmod +x /usr/local/miniconda/bin/entrypoint.sh
-
-ENTRYPOINT ["/usr/local/miniconda/bin/entrypoint.sh"]
-
-CMD ["bash"]
