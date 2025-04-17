@@ -12,6 +12,7 @@ RUN git clone https://github.com/lizardfs/lizardfs.git
 WORKDIR /lizardfs
 RUN sed -i "s/fsync(ctx, fileinfo)/fsync(ctx, fileinfo, ec)/g" src/mount/client/client.cc && \
     sed -i "s/readlink(ctx, inode)/readlink(ctx, inode, ec)/g" src/mount/client/client.cc && \
+    sed -i "s/first(\*reinterpret_cast<first_type \*>(first_data.data())), second(b)/first_data{}, first(\*reinterpret_cast<first_type \*>(first_data.data())), second(b)/g" src/common/judy_map.h && \
     ./configure && \
     make -j4 && \
     make install
