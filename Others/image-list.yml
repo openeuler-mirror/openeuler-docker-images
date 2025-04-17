@@ -22,3 +22,10 @@ images:
   npmjs: npmjs
   glassfish: glassfish
   jenkins: jenkins
+  tensorflow: tensorflow
+  paddlepaddle: paddlepaddle
+  horovod: horovod
+  catj: catj
+  swagger-ui: swagger-ui
+  react: react
+  next: next
