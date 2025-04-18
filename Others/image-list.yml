@@ -20,6 +20,8 @@ images:
   conda: conda
   pypi: pypi
   npmjs: npmjs
+  glassfish: glassfish
+  jenkins: jenkins
   tensorflow: tensorflow
   paddlepaddle: paddlepaddle
   horovod: horovod
