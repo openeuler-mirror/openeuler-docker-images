@@ -19,3 +19,5 @@ images:
   tempo: tempo
   traefik: traefik
   zookeeper: zookeeper
+  flannel: flannel
+  istio: istio
