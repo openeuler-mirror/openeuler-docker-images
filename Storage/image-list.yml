@@ -6,3 +6,6 @@ images:
   cubefs: cubefs
   drill: drill
   lizardfs: lizardfs
+  moosefs: moosefs
+  seaweedfs: seaweedfs
+  sheepdog: sheepdog
