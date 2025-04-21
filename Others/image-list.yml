@@ -30,3 +30,7 @@ images:
   react: react
   next: next
   spring-boot: spring-boot
+  ndpi: ndpi
+  siege: siege
+  snort3: snort3
+  solr: solr
