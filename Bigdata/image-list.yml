@@ -8,4 +8,4 @@ images:
   elasticsearch: elasticsearch
   kibana: kibana
   logstash: logstash
-  
+  mesos: mesos
