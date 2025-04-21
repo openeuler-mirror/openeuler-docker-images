@@ -3,11 +3,10 @@ FROM ${BASE}
 
 ARG VERSION=1.0.1
 
-RUN yum install -y git gcc make g++ autoconf libtool automake
+RUN yum install -y git gcc make g++ autoconf libtool automake userspace-rcu-devel corosync corosynclib corosynclib-devel yasm-devel
 RUN git clone -b v${VERSION} https://github.com/sheepdog/sheepdog.git
 
 WORKDIR /sheepdog
-RUN yum install -y userspace-rcu-devel corosync corosynclib corosynclib-devel
 
 COPY sha1.patch /
 RUN git apply /sha1.patch && \
