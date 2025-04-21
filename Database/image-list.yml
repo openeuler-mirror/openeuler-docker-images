@@ -9,3 +9,6 @@ images:
   pymilvus: pymilvus
   mongoose: mongoose
   orientdb: orientdb
+  phoenix: phoenix
+  tdengine: tdengine
+  tengine: tengine
