@@ -1,0 +1,12 @@
+# distrofile
+name: distroless-static
+summary: summary for `distroless-static` image
+base: scratch
+release: 24.03-LTS
+platforms:
+  - linux/amd64
+  - linux/arm64
+parts:
+  - tzdata_base
+  - tzdata_zoneinfo
+  - ca-certificates_static

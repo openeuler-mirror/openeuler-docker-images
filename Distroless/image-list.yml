@@ -2,3 +2,4 @@ images:
   distroless-python: distroless-python
   distroless-nodejs: distroless-nodejs
   distroless-jre: distroless-jre
+  distroless-static: distroless-static
