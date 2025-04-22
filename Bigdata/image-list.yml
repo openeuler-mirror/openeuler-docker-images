@@ -3,3 +3,9 @@ images:
   impala: impala
   kafka: kafka
   spark: spark
+  consul: consul
+  doris: doris
+  elasticsearch: elasticsearch
+  kibana: kibana
+  logstash: logstash
+  mesos: mesos
