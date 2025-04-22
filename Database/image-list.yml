@@ -7,3 +7,8 @@ images:
   clickhouse: clickhouse
   influxdb: influxdb
   pymilvus: pymilvus
+  mongoose: mongoose
+  orientdb: orientdb
+  phoenix: phoenix
+  tdengine: tdengine
+  tengine: tengine
