@@ -1,0 +1,12 @@
+name: distroless-cc
+summary: summary for `distroless-cc` image
+base: scratch
+release: 24.03-LTS
+platforms:
+  - linux/amd64
+parts:
+  - tzdata_base
+  - tzdata_zoneinfo
+  - ca-certificates_static
+  - libstdc++_libs
+  - openssl-libs_libs
