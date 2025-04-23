@@ -3,3 +3,4 @@ images:
   distroless-nodejs: distroless-nodejs
   distroless-jre: distroless-jre
   distroless-static: distroless-static
+  distroless-cc: distroless-cc
