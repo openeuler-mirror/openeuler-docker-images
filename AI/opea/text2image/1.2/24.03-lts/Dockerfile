@@ -11,8 +11,10 @@ RUN dnf install -y python3-pip python3-wheel python3-setuptools git && \
 ARG ARCH="cpu"
 
 RUN git clone https://github.com/opea-project/GenAIComps.git && \
-    cp -r GenAIComps/comps /home/comps && \
-    rm -rf GenAIComps
+    cd GenAIComps && \
+    git checkout v1.2 && \
+    cp -r comps /home/comps && \
+    rm -rf /GenAIComps
 
 RUN pip3 install --upgrade pip setuptools && \
     if [ ${ARCH} = "cpu" ]; then \

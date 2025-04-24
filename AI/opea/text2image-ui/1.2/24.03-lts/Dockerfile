@@ -9,8 +9,10 @@ RUN dnf install -y git nodejs && \
 RUN node --version && npm --version
 
 RUN git clone https://github.com/opea-project/GenAIExamples.git && \
-    cp -r  GenAIExamples/Text2Image/ui/svelte /home/svelte && \
-    rm -rf GenAIExamples
+    cd GenAIExamples && \
+    git checkout v1.2 && \
+    cp -r  Text2Image/ui/svelte /home/svelte && \
+    rm -rf /GenAIExamples
 
 WORKDIR /home/svelte
 
