@@ -9,7 +9,7 @@ services:
       - "6379:6379"
       - "8001:8001"
   dataprep-redis-service:
-    image: openeuler/dataprep-redis:1.0-oe2403lts
+    image: openeuler/dataprep-redis:latest
     container_name: dataprep-redis-server
     depends_on:
       - redis-vector-db
@@ -39,7 +39,7 @@ services:
       https_proxy: ${https_proxy}
     command: --model-id ${EMBEDDING_MODEL_ID} --auto-truncate
   embedding:
-    image: openeuler/embedding-tei:1.0-oe2403lts
+    image: openeuler/embedding-tei:latest
     container_name: embedding-tei-server
     depends_on:
       - tei-embedding-service
@@ -53,7 +53,7 @@ services:
       TEI_EMBEDDING_ENDPOINT: ${TEI_EMBEDDING_ENDPOINT}
     restart: unless-stopped
   retriever:
-    image: openeuler/retriever-redis:1.0-oe2403lts
+    image: openeuler/retriever-redis:latest
     container_name: retriever-redis-server
     depends_on:
       - redis-vector-db
@@ -86,7 +86,7 @@ services:
       HF_HUB_ENABLE_HF_TRANSFER: 0
     command: --model-id ${RERANK_MODEL_ID} --auto-truncate
   reranking:
-    image: openeuler/reranking-tei:1.0-oe2403lts
+    image: openeuler/reranking-tei:latest
     container_name: reranking-tei-xeon-server
     depends_on:
       - tei-reranking-service
@@ -119,7 +119,7 @@ services:
       HF_HUB_ENABLE_HF_TRANSFER: 0
     command: --model-id ${LLM_MODEL_ID} --cuda-graphs 0
   llm:
-    image: openeuler/llm-tgi:1.0-oe2403lts
+    image: openeuler/llm-tgi:latest
     container_name: llm-tgi-server
     depends_on:
       - tgi-service
@@ -136,7 +136,7 @@ services:
       HF_HUB_ENABLE_HF_TRANSFER: 0
     restart: unless-stopped
   chaqna-xeon-backend-server:
-    image: openeuler/chatqna:1.0-oe2403lts
+    image: openeuler/chatqna:latest
     container_name: chatqna-xeon-backend-server
     depends_on:
       - redis-vector-db
@@ -162,7 +162,7 @@ services:
     ipc: host
     restart: always
   chaqna-xeon-ui-server:
-    image: openeuler/chatqna-ui:1.0-oe2403lts
+    image: openeuler/chatqna-ui:latest
     container_name: chatqna-xeon-ui-server
     depends_on:
       - chaqna-xeon-backend-server
