@@ -1,5 +1,5 @@
 name: daos
-category: others
+category: storage
 description: DAOS（Distributed Asynchronous Object Storage） 是一个高性能、分布式的对象存储系统，专为大规模、高吞吐量、高并发的应用场景设计，特别是在处理海量数据时具有非常优秀的性能。
 environment: |
   本应用在Docker环境中运行，安装Docker执行如下命令
