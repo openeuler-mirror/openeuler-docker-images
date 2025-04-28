@@ -1,0 +1,10 @@
+FROM openeuler/openeuler:latest AS build-env
+COPY . /app
+WORKDIR /app
+RUN yum install -y gcc g++
+RUN g++ hello.cc -o hello
+
+FROM openeuler/distroless-cc:12.3.1-oe2403lts
+COPY --from=build-env /app /app
+WORKDIR /app
+CMD ["./hello"]

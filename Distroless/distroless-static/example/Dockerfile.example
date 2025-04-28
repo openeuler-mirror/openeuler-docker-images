@@ -1,0 +1,11 @@
+FROM openeuler/go:latest AS build
+WORKDIR /go/src/app
+COPY . .
+RUN go mod download
+RUN go vet -v
+RUN go test -v
+RUN CGO_ENABLED=0 go build -o /go/bin/app
+
+FROM openeuler/distroless-static:1.0.0-oe2403lts
+COPY --from=build /go/bin/app /
+CMD ["/app"]

@@ -28,9 +28,10 @@ Users are expected to include their compiled application and set the correct cmd
 ```
 # Dockerfile
 
-FROM gcc:latest AS build-env
+FROM openeuler/openeuler:latest AS build-env
 COPY . /app
 WORKDIR /app
+RUN yum install -y gcc g++
 RUN cc hello.c -o hello
 
 FROM openeuler/distroless-base:2.38-oe2403lts
