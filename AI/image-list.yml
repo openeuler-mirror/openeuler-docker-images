@@ -48,3 +48,11 @@ images:
   langchain: langchain
   open-webui: open-webui
   caffe: caffe
+  dataprep-multimodal-vdms: opea/dataprep-multimodal-vdms
+  lvm-video-llama: opea/lvm-video-llama
+  video-llama-lvm-server: opea/video-llama-lvm-server
+  videoqna: opea/videoqna
+  videoqna-ui: opea/videoqna-ui
+  embedding-multimodal-clip: opea/embedding-multimodal-clip
+  reranking-videoqna: opea/reranking-videoqna
+  retriever-vdms: opea/retriever-vdms
