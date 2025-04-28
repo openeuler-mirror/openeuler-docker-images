@@ -1,0 +1,94 @@
+name: kyuubi
+category: bigdata
+description: Kyuubi是一个开源的分布式和多租户SQL查询引擎服务器，它的目标是为大数据场景提供高性能、高可靠性、易扩展的SQL服务接口。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  kyuubi镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.10.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kyuubi/1.10.0/24.03-lts/Dockerfile)| kyuubi 1.10.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/kyuubi:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+    容器运行成功后，会将服务器实例的PID存储到pid/kyuubi-<username>-org.apache.kyuubi.server.KyuubiServer.pid文件。
+    在日志文件logs/kyuubi-<username>-org.apache.kyuubi.server.KyuubiServer-<hostname>.out中获取JDBC连接URL。
+    ```
+    docker run -d --name my-kyuubi openeuler/kyuubi:{Tag}
+    ```
+  用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。
+
+  - 进入容器
+    查看上述提到的日志文件获取JDBC链接URL
+    ```
+    docker exec -it kyuubi bash
+    ```
+    示例：
+    ```
+    Starting and exposing JDBC connection at: jdbc:kyuubi://localhost:10009/
+    ```
+  
+  - 打开连接
+    将主机名和端口号替换为在服务器启动步骤中实际的值，下面的例子为apache的用户开启一个会话。
+    ```
+    bin/kyuubi-beeline -u 'jdbc:kyuubi://localhost:10009/' -n apache
+    ```
+  
+  - 执行 SQL 语句
+    成功连接到服务器后，你可以在kyuubi-beeline控制台中运行SQL查询。例如：
+    ```
+    > SHOW DATABASES;
+    ```
+  
+    在kyuubi-beeline控制台中看到操作日志和一个结果表
+    ```
+    略去的日志
+    +------------+
+    | namespace  |
+    +------------+
+    | default    |
+    +------------+
+    1 row selected (0.2 seconds)
+    ```
+
+  - 启动引擎
+  引擎会由服务器自动启动，无需终端用户关注。
+  如果你在上面的例子中使用同一个用户再次创建连接，引擎会被复用，时间比第一次明显更短。
+  使用不同的用户创建连接，会启动一个新的引擎。
+  ```
+  bin/kyuubi-beeline -u 'jdbc:kyuubi://localhost:10009/' -n kentyao
+  ```
+  
+  - 关闭连接
+  ```
+  > !quit
+  Closing: 0: jdbc:kyuubi://localhost:10009/
+  ```
+  
+  - 停止Kyuubi
+  在$KYUUBI_HOME目录下，执行以下命令，停止后台运行的Kyuubi：
+  ```
+  bin/kyuubi stop
+  ```
+
+license: Apache-2.0 license
+similar_packages:
+  - HiveServer2: HiveServer2是Apache Hive的SQL服务层，它允许用户通过JDBC和ODBC协议来访问Hive数据仓库。
+dependency:
+  - Spark
+  - Flink
+  - Trino
+  - Doris
+  - Hive
+  - Java
+  - Zookeeper
