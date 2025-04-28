@@ -1,7 +1,7 @@
 name: alertmanager
 category: cloud
 description: Alertmanager处理客户端应用程序（例如Prometheus服务器）发送的警报。它负责重复数据删除、分组，并将它们路由到正确的接收器集成，例如电子邮件、PagerDuty、OpsGenie或借助Webhook接收器的许多其他机制。它还负责警报的静音和抑制。
-environment: ｜
+environment: |
   本应用在Docker环境中运行，安装Docker执行如下命令
   ```
   yum install -y docker
