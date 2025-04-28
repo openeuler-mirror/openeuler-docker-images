@@ -26,7 +26,7 @@ services:
       TEI_ENDPOINT: ${TEI_EMBEDDING_ENDPOINT}
       HUGGINGFACEHUB_API_TOKEN: ${HUGGINGFACEHUB_API_TOKEN}
   tei-embedding-service:
-    image: openeuler/text-embeddings-inference-cpu:1.5-oe2403lts
+    image: openeuler/text-embeddings-inference-cpu:1.5.0-oe2403lts
     container_name: tei-embedding-server
     ports:
       - "6006:80"
@@ -70,7 +70,7 @@ services:
       HUGGINGFACEHUB_API_TOKEN: ${HUGGINGFACEHUB_API_TOKEN}
     restart: unless-stopped
   tei-reranking-service:
-    image: openeuler/text-embeddings-inference-cpu:1.5-oe2403lts
+    image: openeuler/text-embeddings-inference-cpu:1.5.0-oe2403lts
     container_name: tei-reranking-server
     ports:
       - "8808:80"

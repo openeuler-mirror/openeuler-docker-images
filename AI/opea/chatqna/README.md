@@ -29,6 +29,7 @@ The tag of each ChatQnA docker image is consist of the version of ChatQnA and th
 | Tags | Currently |  Architectures|
 |--|--|--|
 |[1.0-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/opea/chatqna/1.0/24.03-lts/Dockerfile)| ChatQnA 1.0 on openEuler 24.03-LTS | amd64 |
+|[1.2-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/opea/chatqna/1.2/24.03-lts/Dockerfile)| ChatQnA 1.2 on openEuler 24.03-LTS | amd64 |
 
 # Usage
 
