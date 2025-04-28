@@ -17,7 +17,7 @@ For more details please check out our [Architecture Guide](https://www.mindspore
 The tag of each `mindspore` docker image is consist of the complete software stack version. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
-|[2.3.0rc1-cann8.0.RC1-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/mindspore/2.3.0.rc1-cann8.0.RC1/22.03-lts-sp4/Dockerfile)| MindSpore 2.3.0.rc1 with CANN 8.0.RC1 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+|[2.3.0rc1-cann8.0.RC1-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/mindspore/2.3.0.rc1-cann8.0.RC1/22.03-lts-sp4/Dockerfile)| MindSpore 2.3.0.rc1 with CANN 8.0.RC1 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` and `container startup options` based on their requirements.

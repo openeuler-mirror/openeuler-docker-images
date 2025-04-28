@@ -17,8 +17,8 @@ Python is dynamically type-checked and garbage-collected. It supports multiple p
 The tag of each Python docker image is consist of the version of Python and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
-|[3.9.9-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/python/3.9.9/22.03-lts/Dockerfile)| Python 3.9.9 on openEuler 22.03-LTS | amd64, arm64 |
-|[3.10.17-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/python/3.10.17/24.03-lts/Dockerfile)| Python 3.10.17 on openEuler 24.03-LTS | amd64, arm64 |
+|[3.9.9-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/Others/python/3.9.9/22.03-lts/Dockerfile)| Python 3.9.9 on openEuler 22.03-LTS | amd64, arm64 |
+|[3.10.17-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/Others/python/3.10.17/24.03-lts/Dockerfile)| Python 3.10.17 on openEuler 24.03-LTS | amd64, arm64 |
 
 
 # Usage

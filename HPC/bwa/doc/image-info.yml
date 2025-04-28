@@ -12,7 +12,7 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
-  |[0.7.18-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/bwa/0.7.18/22.03-lts-sp3/Dockerfile)| BWA 0.7.18 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+  |[0.7.18-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/bwa/0.7.18/22.03-lts-sp3/Dockerfile)| BWA 0.7.18 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
 
 download: |
   拉取镜像到本地

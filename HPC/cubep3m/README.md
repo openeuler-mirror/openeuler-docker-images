@@ -18,7 +18,7 @@ The tag of each cubep3m docker image is consist of the version of CubeP3M and th
 
 | Tags | Currently |  Architectures|
 |------|-----------|---------------|
-|[1.0.0-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/cubep3m/1.0.0/24.03-lts/Dockerfile)| CubeP3M 1.0.0 on openEuler 24.03-LTS | amd64, arm64 |
+|[1.0.0-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/cubep3m/1.0.0/24.03-lts/Dockerfile)| CubeP3M 1.0.0 on openEuler 24.03-LTS | amd64, arm64 |
 
 
 # Usage

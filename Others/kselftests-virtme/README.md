@@ -15,7 +15,7 @@ This image provides a virtual environment with Virtme to validate [mptcp_net-nex
 The tag of each `kselftests-virtme` docker image is consist of the version of `virtme-ng` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
-|[1.27-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/kselftests-virtme/1.27/22.03-lts-sp4/Dockerfile)| Virtme-ng 1.27 on openEuler 22.03-LTS-sp4 | amd64, arm64 |
+|[1.27-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/kselftests-virtme/1.27/22.03-lts-sp4/Dockerfile)| Virtme-ng 1.27 on openEuler 22.03-LTS-sp4 | amd64, arm64 |
 
 
 # Usage

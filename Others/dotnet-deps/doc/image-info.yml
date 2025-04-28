@@ -11,7 +11,7 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
-  |[8.0-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/dotnet-deps/8.0/22.03-lts-sp3/Dockerfile)| It includes the runtime dependencies required to run a standard self-contained .NET application of version 8.0.x on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+  |[8.0-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/dotnet-deps/8.0/22.03-lts-sp3/Dockerfile)| It includes the runtime dependencies required to run a standard self-contained .NET application of version 8.0.x on openEuler 22.03-LTS-SP3 | amd64, arm64 |
 
 download: |
   拉取镜像到本地
