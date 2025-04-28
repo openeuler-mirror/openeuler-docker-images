@@ -1,5 +1,5 @@
 name: distroless-base
-summary: `distroless-base` contains all of the slices in `distroless-static` and `glibc_libs`, `openssl-libs_libs`
+summary: This image contains all of the slices in `distroless-static` and `glibc_libs`, `openssl-libs_libs`
 base: scratch
 release: 24.03-LTS
 platforms:
