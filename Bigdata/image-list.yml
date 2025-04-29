@@ -11,3 +11,4 @@ images:
   mesos: mesos
   kyuubi: kyuubi
   druid: druid
+  presto: presto
