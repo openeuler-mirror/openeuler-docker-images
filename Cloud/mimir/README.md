@@ -24,17 +24,17 @@ Learn more about Grafana Mimir on the [https://grafana.com/docs/mimir/latest/).
 The tag of each `mimir` docker image is consist of the version of `mimir` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
-|[2.11.0-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/mimir/2.11.0/22.03-lts-sp3/Dockerfile)| Grafana mimir 2.11.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
-|[2.13.0-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/mimir/2.13.0/22.03-lts-sp3/Dockerfile)| Grafana mimir 2.13.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
-|[2.14.0-oe2003sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/mimir/2.14.0/20.03-lts-sp4/Dockerfile)| Grafana mimir 2.14.0 on openEuler 20.03-LTS-SP4 | amd64, arm64 |
-|[2.14.0-oe2203sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/mimir/2.14.0/22.03-lts-sp1/Dockerfile)| Grafana mimir 2.14.0 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
-|[2.14.0-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/mimir/2.14.0/22.03-lts-sp3/Dockerfile)| Grafana mimir 2.14.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
-|[2.14.0-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/mimir/2.14.0/22.03-lts-sp4/Dockerfile)| Grafana mimir 2.14.0 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
-|[2.14.0-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/mimir/2.14.0/24.03-lts/Dockerfile)| Grafana mimir 2.14.0 on openEuler 24.03-LTS | amd64, arm64 |
-|[2.14.1-oe2203sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/mimir/2.14.1/22.03-lts-sp1/Dockerfile)| Grafana mimir 2.14.1 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
-|[2.14.1-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/mimir/2.14.1/22.03-lts-sp3/Dockerfile)| Grafana mimir 2.14.1 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
-|[2.14.1-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/mimir/2.14.1/22.03-lts-sp4/Dockerfile)| Grafana mimir 2.14.1 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
-|[2.14.1-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/mimir/2.14.1/24.03-lts/Dockerfile)| Grafana mimir 2.14.1 on openEuler 24.03-LTS | amd64, arm64 |
+|[2.11.0-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/mimir/2.11.0/22.03-lts-sp3/Dockerfile)| Grafana mimir 2.11.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[2.13.0-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/mimir/2.13.0/22.03-lts-sp3/Dockerfile)| Grafana mimir 2.13.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[2.14.0-oe2003sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/mimir/2.14.0/20.03-lts-sp4/Dockerfile)| Grafana mimir 2.14.0 on openEuler 20.03-LTS-SP4 | amd64, arm64 |
+|[2.14.0-oe2203sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/mimir/2.14.0/22.03-lts-sp1/Dockerfile)| Grafana mimir 2.14.0 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
+|[2.14.0-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/mimir/2.14.0/22.03-lts-sp3/Dockerfile)| Grafana mimir 2.14.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[2.14.0-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/mimir/2.14.0/22.03-lts-sp4/Dockerfile)| Grafana mimir 2.14.0 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+|[2.14.0-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/mimir/2.14.0/24.03-lts/Dockerfile)| Grafana mimir 2.14.0 on openEuler 24.03-LTS | amd64, arm64 |
+|[2.14.1-oe2203sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/mimir/2.14.1/22.03-lts-sp1/Dockerfile)| Grafana mimir 2.14.1 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
+|[2.14.1-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/mimir/2.14.1/22.03-lts-sp3/Dockerfile)| Grafana mimir 2.14.1 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[2.14.1-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/mimir/2.14.1/22.03-lts-sp4/Dockerfile)| Grafana mimir 2.14.1 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+|[2.14.1-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/mimir/2.14.1/24.03-lts/Dockerfile)| Grafana mimir 2.14.1 on openEuler 24.03-LTS | amd64, arm64 |
   
 # Usage
 In this usage, users can select the corresponding `{Tag}` and `container startup options` based on their requirements.

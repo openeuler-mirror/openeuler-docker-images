@@ -17,7 +17,7 @@ Learn more on [Squid website](https://www.squid-cache.org/).
 The tag of each `squid` docker image is consist of the version of `squid` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
-|[6.8-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/squid/6.8/22.03-lts-sp3/Dockerfile)| Squid 6.8 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[6.8-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/squid/6.8/22.03-lts-sp3/Dockerfile)| Squid 6.8 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` and `container startup options` based on their requirements.

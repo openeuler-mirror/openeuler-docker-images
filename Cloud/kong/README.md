@@ -17,7 +17,7 @@ Learn more on [Kong Website](https://docs.konghq.com/)⁠.
 The tag of each `kong` docker image is consist of the version of `kong` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
-|[3.4.0-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/kong/3.4.0/24.03-lts/Dockerfile)| Kong 3.4.0 on openEuler 24.03-LTS | amd64, arm64 |
+|[3.4.0-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/kong/3.4.0/24.03-lts/Dockerfile)| Kong 3.4.0 on openEuler 24.03-LTS | amd64, arm64 |
 
 
 # Usage

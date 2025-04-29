@@ -1,7 +1,7 @@
 name: alertmanager
 category: cloud
 description: Alertmanager处理客户端应用程序（例如Prometheus服务器）发送的警报。它负责重复数据删除、分组，并将它们路由到正确的接收器集成，例如电子邮件、PagerDuty、OpsGenie或借助Webhook接收器的许多其他机制。它还负责警报的静音和抑制。
-environment: ｜
+environment: |
   本应用在Docker环境中运行，安装Docker执行如下命令
   ```
   yum install -y docker
@@ -11,15 +11,15 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
-  |[0.27.0-oe2003sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/alertmanager/0.27.0/20.03-lts-sp4/Dockerfile)| Alertmanager 0.27.0 on openEuler 20.03-LTS-SP4 | amd64, arm64 |
-  |[0.27.0-oe2203sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/alertmanager/0.27.0/22.03-lts-sp1/Dockerfile)| Alertmanager 0.27.0 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
-  |[0.27.0-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/alertmanager/0.27.0/22.03-lts-sp3/Dockerfile)| Alertmanager 0.27.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
-  |[0.27.0-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/alertmanager/0.27.0/22.03-lts-sp4/Dockerfile)| Alertmanager 0.27.0 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
-  |[0.27.0-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/alertmanager/0.27.0/24.03-lts/Dockerfile)| Alertmanager 0.27.0 on openEuler 24.03-LTS | amd64, arm64 |
-  |[0.28.0-rc.0-oe2003sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/alertmanager/0.28.0-rc.0/20.03-lts-sp4/Dockerfile)| Alertmanager 0.28.0-rc.0 on openEuler 20.03-LTS-SP4 | amd64, arm64 |
-  |[0.28.0-rc.0-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/alertmanager/0.28.0-rc.0/22.03-lts-sp3/Dockerfile)| Alertmanager 0.28.0-rc.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
-  |[0.28.0-rc.0-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/alertmanager/0.28.0-rc.0/22.03-lts-sp4/Dockerfile)| Alertmanager 0.28.0-rc.0 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
-  |[0.28.0-rc.0-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/alertmanager/0.28.0-rc.0/24.03-lts/Dockerfile)| Alertmanager 0.28.0-rc.0 on openEuler 24.03-LTS | amd64, arm64 |
+  |[0.27.0-oe2003sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/alertmanager/0.27.0/20.03-lts-sp4/Dockerfile)| Alertmanager 0.27.0 on openEuler 20.03-LTS-SP4 | amd64, arm64 |
+  |[0.27.0-oe2203sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/alertmanager/0.27.0/22.03-lts-sp1/Dockerfile)| Alertmanager 0.27.0 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
+  |[0.27.0-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/alertmanager/0.27.0/22.03-lts-sp3/Dockerfile)| Alertmanager 0.27.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+  |[0.27.0-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/alertmanager/0.27.0/22.03-lts-sp4/Dockerfile)| Alertmanager 0.27.0 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+  |[0.27.0-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/alertmanager/0.27.0/24.03-lts/Dockerfile)| Alertmanager 0.27.0 on openEuler 24.03-LTS | amd64, arm64 |
+  |[0.28.0-rc.0-oe2003sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/alertmanager/0.28.0-rc.0/20.03-lts-sp4/Dockerfile)| Alertmanager 0.28.0-rc.0 on openEuler 20.03-LTS-SP4 | amd64, arm64 |
+  |[0.28.0-rc.0-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/alertmanager/0.28.0-rc.0/22.03-lts-sp3/Dockerfile)| Alertmanager 0.28.0-rc.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+  |[0.28.0-rc.0-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/alertmanager/0.28.0-rc.0/22.03-lts-sp4/Dockerfile)| Alertmanager 0.28.0-rc.0 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+  |[0.28.0-rc.0-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/alertmanager/0.28.0-rc.0/24.03-lts/Dockerfile)| Alertmanager 0.28.0-rc.0 on openEuler 24.03-LTS | amd64, arm64 |
 
 download: |
   拉取镜像到本地

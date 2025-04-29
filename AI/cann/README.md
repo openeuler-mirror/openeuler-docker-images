@@ -17,8 +17,8 @@ Learn more about on [CANN Document](https://www.hiascend.com/en/document).
 The tag of each `cann` docker image is consist of the complete software stack version. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
-|[cann7.0.RC1.alpha002-oe2203sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/cann/7.0.RC1.alpha002/22.03-lts-sp2/Dockerfile)| CANN 7.0.RC1.alpha002 on openEuler 22.03-LTS-SP2 | arm64 |
-|[8.0.RC1-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/cann/8.0.RC1/22.03-lts-sp4/Dockerfile)| CANN 8.0.RC1 with Python 3.8 on openEuler 22.03-LTS-SP4 | arm64,amd64 |
+|[cann7.0.RC1.alpha002-oe2203sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/cann/7.0.RC1.alpha002/22.03-lts-sp2/Dockerfile)| CANN 7.0.RC1.alpha002 on openEuler 22.03-LTS-SP2 | arm64 |
+|[8.0.RC1-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/cann/8.0.RC1/22.03-lts-sp4/Dockerfile)| CANN 8.0.RC1 with Python 3.8 on openEuler 22.03-LTS-SP4 | arm64,amd64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` and `container startup options` based on their requirements.

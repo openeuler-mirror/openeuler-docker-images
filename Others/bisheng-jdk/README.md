@@ -21,9 +21,9 @@ Key Features:
 The tag of each BiSheng JDK docker image is consist of the version of BiSheng JDK and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
-| [1.8.0-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/bisheng-jdk/1.8.0/22.03-lts/Dockerfile) | BiSheng JDK 1.8.0 on openEuler 22.03-LTS |  amd64, arm64 |
-| [1.8.0-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/bisheng-jdk/1.8.0/22.03-lts-sp3/Dockerfile) | BiSheng JDK 1.8.0 on openEuler 22.03-LTS-SP3 |  amd64, arm64 |
-| [17.0.10-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/bisheng-jdk/17.0.10/22.03-lts-sp3/Dockerfile) | BiSheng JDK 17.0.10 on openEuler 22.03-LTS-SP3 |  amd64, arm64 |
+| [1.8.0-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/bisheng-jdk/1.8.0/22.03-lts/Dockerfile) | BiSheng JDK 1.8.0 on openEuler 22.03-LTS |  amd64, arm64 |
+| [1.8.0-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/bisheng-jdk/1.8.0/22.03-lts-sp3/Dockerfile) | BiSheng JDK 1.8.0 on openEuler 22.03-LTS-SP3 |  amd64, arm64 |
+| [17.0.10-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/bisheng-jdk/17.0.10/22.03-lts-sp3/Dockerfile) | BiSheng JDK 17.0.10 on openEuler 22.03-LTS-SP3 |  amd64, arm64 |
 
 # Usage
   

@@ -1,5 +1,5 @@
 name: spark
-category: others
+category: bigdata
 description: spark是一个通用的并行计算框架，由加州伯克利大学的AMP于2009开发，并于2010年进行开源，后续发展为大数据领域的最活跃的开源项目之一。
 environment: |
   本应用在Docker环境中运行，安装Docker执行如下命令
@@ -11,15 +11,15 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
-  |[3.3.1-22.03-lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/spark/3.3.1/22.03-lts/Dockerfile)| spark 3.3.1 on openEuler 22.03-LTS | amd64, arm64 |
-  |[3.3.2-22.03-lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/spark/3.3.2/22.03-lts/Dockerfile)| spark 3.3.2 on openEuler 22.03-LTS | amd64, arm64 |
-  |[3.4.0-22.03-lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/spark/3.4.0/22.03-lts/Dockerfile)| spark 3.4.0 on openEuler 22.03-LTS | amd64, arm64 |
-  |[3.5.1-24.03-lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/spark/3.5.1/24.03-lts/Dockerfile)| spark 3.5.1 on openEuler 24.03-LTS | amd64, arm64 |
-  |[3.5.3-oe2003sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/spark/3.5.3/20.03-lts-sp4/Dockerfile)| spark 3.5.3 on openEuler 20.03-LTS-SP4 | amd64, arm64 |
-  |[3.5.3-oe2203sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/spark/3.5.3/22.03-lts-sp1/Dockerfile)| spark 3.5.3 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
-  |[3.5.3-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/spark/3.5.3/22.03-lts-sp3/Dockerfile)| spark 3.5.3 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
-  |[3.5.3-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/spark/3.5.3/22.03-lts-sp4/Dockerfile)| spark 3.5.3 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
-  |[3.5.3-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/spark/3.5.3/24.03-lts/Dockerfile)| spark 3.5.3 on openEuler 24.03-LTS | amd64, arm64 |
+  |[3.3.1-22.03-lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.3.1/22.03-lts/Dockerfile)| spark 3.3.1 on openEuler 22.03-LTS | amd64, arm64 |
+  |[3.3.2-22.03-lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.3.2/22.03-lts/Dockerfile)| spark 3.3.2 on openEuler 22.03-LTS | amd64, arm64 |
+  |[3.4.0-22.03-lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.4.0/22.03-lts/Dockerfile)| spark 3.4.0 on openEuler 22.03-LTS | amd64, arm64 |
+  |[3.5.1-24.03-lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.5.1/24.03-lts/Dockerfile)| spark 3.5.1 on openEuler 24.03-LTS | amd64, arm64 |
+  |[3.5.3-oe2003sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.5.3/20.03-lts-sp4/Dockerfile)| spark 3.5.3 on openEuler 20.03-LTS-SP4 | amd64, arm64 |
+  |[3.5.3-oe2203sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.5.3/22.03-lts-sp1/Dockerfile)| spark 3.5.3 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
+  |[3.5.3-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.5.3/22.03-lts-sp3/Dockerfile)| spark 3.5.3 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+  |[3.5.3-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.5.3/22.03-lts-sp4/Dockerfile)| spark 3.5.3 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+  |[3.5.3-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.5.3/24.03-lts/Dockerfile)| spark 3.5.3 on openEuler 24.03-LTS | amd64, arm64 |
 
 download: |
   拉取镜像到本地

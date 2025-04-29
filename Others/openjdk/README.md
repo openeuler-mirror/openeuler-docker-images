@@ -17,7 +17,7 @@ Learn more about OpenJDK on the [https://openjdk.org/).
 The tag of each `openjdk` docker image is consist of the version of `openjdk` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
-|[23_13-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/openjdk/23+13/22.03-lts-sp3/Dockerfile)| OpenJDK 23+13 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[23_13-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/openjdk/23+13/22.03-lts-sp3/Dockerfile)| OpenJDK 23+13 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
   
 # Usage
 In this usage, users can select the corresponding `{Tag}`  based on their requirements.
