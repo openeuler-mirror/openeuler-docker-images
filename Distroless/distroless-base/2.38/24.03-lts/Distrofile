@@ -1,0 +1,13 @@
+name: distroless-base
+summary: This image contains all of the slices in `distroless-static` and `glibc_libs`, `openssl-libs_libs`
+base: scratch
+release: 24.03-LTS
+platforms:
+  - linux/amd64
+  - linux/arm64
+parts:
+  - tzdata_base
+  - tzdata_zoneinfo
+  - ca-certificates_static
+  - openssl-libs_libs
+  - glibc_libs
