@@ -1,0 +1,51 @@
+name: druid
+category: bigdata
+description: Druid是一个高性能、分布式的实时数据分析系统，专门设计用于快速查询和分析大规模的、结构化的事件数据。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  dotnet-deps镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[32.0.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/druid/32.0.1/24.03-lts-sp1/Dockerfile)| Apache druid 32.0.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/impala:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+    ```
+    docker run -d -p 8888:8888 --name my-druid openeuler/druid:{Tag}
+    ```
+    用户可根据自身需求选择对应版本的{Tag}。
+  
+  - 容器测试
+
+    查看运行日志
+      ```
+      docker logs -f my-druid
+      ```
+
+  - 运行启动shell会话
+      ```
+      docker exec -it my-druid /bin/bash
+      ```
+
+license: Apache-2.0 license
+
+similar_packages:
+  - Apache Pinot: Apache Pinot是一个分布式实时分析平台，专注于大规模实时数据处理。Pinot旨在提供低延迟的查询，并支持多维度的聚合查询。
+  - Apache Kylin: Apache Kylin是一个开源的分布式分析引擎，用于在Hadoop上进行大规模数据的OLAP分析。
+
+dependency:
+  - java
+  - perl
+  - iproute
+  - busybox
