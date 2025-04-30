@@ -5,3 +5,4 @@ images:
   distroless-static: distroless-static
   distroless-cc: distroless-cc
   distroless-base: distroless-base
+  distroless-ruby: distroless-ruby
