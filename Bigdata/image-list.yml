@@ -12,3 +12,4 @@ images:
   kyuubi: kyuubi
   druid: druid
   presto: presto
+  livy: livy
