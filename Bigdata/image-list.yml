@@ -10,3 +10,5 @@ images:
   logstash: logstash
   mesos: mesos
   kyuubi: kyuubi
+  druid: druid
+  presto: presto

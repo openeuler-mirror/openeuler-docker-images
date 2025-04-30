@@ -1,0 +1,77 @@
+name: presto
+category: bigdata
+description: PrestoDB是一个分布式SQL查询引擎，最初由Facebook（现 Meta）开发，用于在大规模数据集上进行低延迟的交互式分析查询。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  presto镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[0.292-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/presto/0.292/24.03-lts-sp1/Dockerfile)| Presto 0.292 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/presto:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+    Presto启动成功后，日志最后以SERVER STARTED结束。
+    ```
+    docker run -d --name presto openeuler/presto:{Tag}
+    ```
+    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。
+
+  - 进入容器
+    进入容器时运行Presto CLI连接到Presto
+    ```
+    docker exec -it presto presto
+    ```
+  
+  - 查询tpch目录
+    ```
+    presto> SELECT
+        ->   l.returnflag,
+        ->   l.linestatus,
+        ->   sum(l.quantity)                                       AS sum_qty,
+        ->   sum(l.extendedprice)                                  AS sum_base_price,
+        ->   sum(l.extendedprice * (1 - l.discount))               AS sum_disc_price,
+        ->   sum(l.extendedprice * (1 - l.discount) * (1 + l.tax)) AS sum_charge,
+        ->   avg(l.quantity)                                       AS avg_qty,
+        ->   avg(l.extendedprice)                                  AS avg_price,
+        ->   avg(l.discount)                                       AS avg_disc,
+        ->   count(*)                                              AS count_order
+        -> FROM
+        ->   tpch.sf1.lineitem AS l
+        -> WHERE
+        ->   l.shipdate <= DATE '1998-12-01' - INTERVAL '90' DAY
+        -> GROUP BY
+        ->   l.returnflag,
+        ->   l.linestatus
+        -> ORDER BY
+        ->   l.returnflag,
+        ->   l.linestatus;
+    returnflag | linestatus |   sum_qty   |    sum_base_price     |    sum_disc_price     |      sum_charge       |      avg_qty       |     avg_price     |       avg_disc       | count_order
+    ------------+------------+-------------+-----------------------+-----------------------+-----------------------+--------------------+-------------------+----------------------+-------------
+    A          | F          | 3.7734107E7 |  5.658655440072982E10 | 5.3758257134869644E10 |  5.590906522282741E10 | 25.522005853257337 | 38273.12973462155 |  0.04998529583846928 |     1478493
+    N          | F          |    991417.0 |  1.4875047103800006E9 |  1.4130821680540998E9 |   1.469649223194377E9 | 25.516471920522985 | 38284.46776084832 |  0.05009342667421586 |       38854
+    N          | O          |  7.447604E7 | 1.1170172969773982E11 | 1.0611823030760503E11 | 1.1036704387249734E11 |  25.50222676958499 | 38249.11798890821 |   0.0499965860537345 |     2920374
+    R          | F          | 3.7719753E7 |   5.65680413808999E10 |  5.374129268460365E10 |  5.588961911983193E10 |  25.50579361269077 | 38250.85462609959 | 0.050009405830198916 |     1478870
+    (4 rows)
+      
+    Query 20200625_171123_00000_xqmp4, FINISHED, 1 node
+    Splits: 56 total, 56 done (100.00%)
+    0:05 [6M rows, 0B] [1.1M rows/s, 0B/s]
+    ```
+
+license: Apache-2.0 license
+similar_packages:
+  - Impala: Apache Impala是一个由Cloudera开发的高性能、低延迟SQL查询引擎，专为Hadoop数据仓库设计，用于在大数据集上进行快速交互式分析查询。
+dependency:
+  - java
+  - python
