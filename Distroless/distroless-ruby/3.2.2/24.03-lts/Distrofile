@@ -1,0 +1,15 @@
+name: distroless-ruby
+summary: summary for `distroless-ruby` image
+base: scratch
+release: 24.03-LTS
+platforms:
+  - linux/amd64
+parts:
+  - ruby-irb_bins
+  - rubygem-bundler_bins
+  - rubygem-bigdecimal_libs
+  - rubygems_libs
+  - rubygem-bundler_rbs
+  - rubygem-bigdecimal_rbs
+  - rubygem-did_you_mean_rbs
+  - ruby-irb_rbs
