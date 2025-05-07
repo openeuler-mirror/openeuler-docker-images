@@ -15,7 +15,7 @@ Deep Learning Recommendation Model for Personalization and Recommendation System
 The tag of each dlrm docker image is consist of the version of dlrm and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
-|[1.0-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/dlrm/1.0/22.03-lts-SP3/Dockerfile)| Dlrm 1.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[1.0-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/dlrm/1.0/22.03-lts-SP3/Dockerfile)| Dlrm 1.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
 
 # Build reference
 

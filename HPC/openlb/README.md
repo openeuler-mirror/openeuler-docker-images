@@ -14,7 +14,7 @@ The OpenLB project is a C++ package for the implementation of lattice Boltzmann 
 The tag of each `openlb` docker image is consist of the version of `openlb` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
-|[1.7.0-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/openlb/1.7.0/24.03-lts/Dockerfile)| OpenLB 1.7.0 on openEuler 24.03-LTS | amd64, arm64 |
+|[1.7.0-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/openlb/1.7.0/24.03-lts/Dockerfile)| OpenLB 1.7.0 on openEuler 24.03-LTS | amd64, arm64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` and `container startup options` based on their requirements.

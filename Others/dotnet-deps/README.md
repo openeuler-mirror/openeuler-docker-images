@@ -17,7 +17,7 @@ Learn more about Dotnet-deps(.NET Deps) on [learn.microsoft.com](https://learn.m
 The tag of each `dotnet-deps` docker image is consist of the version of `dotnet-deps` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
-|[8.0-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/dotnet-deps/8.0/22.03-lts-sp3/Dockerfile)| It includes the runtime dependencies required to run a standard self-contained .NET application of version 8.0.x on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[8.0-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/dotnet-deps/8.0/22.03-lts-sp3/Dockerfile)| It includes the runtime dependencies required to run a standard self-contained .NET application of version 8.0.x on openEuler 22.03-LTS-SP3 | amd64, arm64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.

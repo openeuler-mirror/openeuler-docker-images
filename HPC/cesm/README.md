@@ -18,7 +18,7 @@ The tag of each cesm docker image is consist of the version of cesm and the vers
 
 | Tags | Currently |  Architectures|
 |------|-----------|---------------|
-|[2.2.2-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/cesm/2.2.2/24.03-lts/Dockerfile)| CESM 2.2.2 on openEuler 24.03-LTS | amd64, arm64 |
+|[2.2.2-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/cesm/2.2.2/24.03-lts/Dockerfile)| CESM 2.2.2 on openEuler 24.03-LTS | amd64, arm64 |
 
 
 # Usage

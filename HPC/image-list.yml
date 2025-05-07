@@ -9,3 +9,4 @@ images:
   wrf: wrf
   yambo: yambo
   tensorrt: tensorrt
+  mne: mne

@@ -18,7 +18,7 @@ Each tag of cp2k container image consists of the version of CP2K and the version
 
 | Tags | Currently |  Architectures|
 |------|-----------|---------------|
-|[2024.3-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/cp2k/2024.3/24.03-lts/Dockerfile)| CP2K 2024.3 on openEuler 24.03-LTS | amd64, arm64 |
+|[2024.3-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/cp2k/2024.3/24.03-lts/Dockerfile)| CP2K 2024.3 on openEuler 24.03-LTS | amd64, arm64 |
 
 
 # Usage

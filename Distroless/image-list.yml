@@ -4,3 +4,6 @@ images:
   distroless-jre: distroless-jre
   distroless-static: distroless-static
   distroless-cc: distroless-cc
+  distroless-base: distroless-base
+  distroless-php: distroless-php
+  distroless-ruby: distroless-ruby

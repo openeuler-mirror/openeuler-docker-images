@@ -1,0 +1,59 @@
+name: livy
+category: bigdata
+description: Apache Livy是一个开源的REST服务，用于与Apache Spark集群进行交互式通信。它允许用户通过HTTP REST API提交Spark作业、管理会话，并支持多种编程语言（如Scala、Python、SQL和R）。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  livy镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[0.8.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/livy/0.8.0/24.03-lts-sp1/Dockerfile)| Livy 0.8.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/livy:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+    ```
+    docker run -d -p 8998:8998 -v /path/to/livy.conf:/opt/livy/conf/livy.conf --name livy openeuler/livy:{Tag}
+    ```
+    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。
+  
+  - 测试提交Spark任务
+    尝试通过Livy提交一个简单的Spark任务（例如PySpark或Scala代码），确认功能完整。例如：
+    ```
+    curl -X POST \
+    -H "Content-Type: application/json" \
+    -d '{"kind": "spark"}' \
+    http://localhost:8998/sessions
+    ```
+    如果返回会话 ID（如 {"id":0,...}），则说明Livy与Spark集成正常。
+  
+  - 检查会话状态
+    运行以下命令查看会话0的实时状态：
+    ```
+    curl http://localhost:8998/sessions/0
+    ```
+    如果返回 "state": "idle"，说明Spark会话已就绪，可以提交代码；若为 "error"，需检查日志。
+  
+  - livy使用介绍
+    当Livy服务启动后，您可以通过端口8998连接（该端口可通过配置项livy.server.port修改）。
+    以下资源可供入门参考：
+    - [示例代码](https://livy.incubator.apache.org/examples/)
+    - API文档：
+      - [REST API](https://livy.incubator.apache.org/docs/latest/rest-api.html)
+      - [编程式API](https://livy.incubator.apache.org/docs/latest/programmatic-api.html)
+
+license: Apache-2.0 license
+similar_packages:
+  - Spark Job Server: 提供REST API提交Spark作业，支持Jar包和SQL。
+dependency:
+  - java
+  - spark
