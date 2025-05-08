@@ -5,7 +5,7 @@
 在云原生与容器化技术迅猛发展的今天，如何兼顾应用部署的**极致轻量化**与**高安全性**，成为开发者面临的核心挑战。openEuler社区正式发布Base、Static、CC、Ruby、Python、Node.js、PHP、JRE等Distroless镜像，通过“**零操作系统冗余**”的设计理念，为容器化应用提供**更小、更快、更安全**的运行时环境。
 
 
-## 一、什么是Distroless？
+## 一、什么是Distroless镜像？
 
 Distroless镜像是**移除所有非必要组件**（如Shell、包管理器、系统工具）的极简容器镜像，仅保留应用运行所需的**最小依赖**。其核心价值在于：
 
@@ -13,7 +13,7 @@ Distroless镜像是**移除所有非必要组件**（如Shell、包管理器、�
 - **镜像瘦身**：相比传统镜像体积缩小50%~90%，更利于存储和传播
 
 
-## 二、如何构建openEuler Distroless镜像
+## 二、如何构建openEuler Distroless镜像？
 
 openEuler distroless镜像构建时，首先使用[splitter](https://gitee.com/openeuler/splitter)对RPM软件包进行切分处理，每个软件包会被切分成多个slices（每个slice包含一组具有特定功能的文件集合），软件包之间的依赖关系也更精细地表现为slice之间的依赖；然后以slice为最小构建单元生成最终的distroless镜像，可以有效减少冗余文件。
 
@@ -109,7 +109,7 @@ slices:
 
 **2. openEuler Distroless镜像与标准镜像体积对比**
 
-<img src="./doc/compare.png" alt="替代文本" width="1100px" />
+<img src="./doc/compare.png" alt="替代文本" width="1000px" />
 
 
 ## 四、3步体验openEuler Distroless镜像
@@ -122,7 +122,7 @@ slices:
 # dockerfile
 FROM openeuler/distroless-python:3.11.6-oe2403lts
 COPY app.py /app.py  
-CMD ["/app.py"]  
+CMD ["/usr/bin/python3.11", "/app.py"]  
 ```
 **2. 构建镜像**  
 ```
