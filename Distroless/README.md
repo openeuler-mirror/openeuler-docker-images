@@ -107,12 +107,13 @@ slices:
 | [`ruby`](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Distroless/distroless-ruby)      | ruby原生应用               | 仅保留Ruby解释器及核心gem运行时       |
 | [`php`](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Distroless/distroless-php)        | php原生应用                | 保留PHP解释器、cli工具及其依赖的库     |
 
-**2. 镜像体积对比**
+**2. openEuler Distroless镜像与标准镜像体积对比**
 
 <img src="./doc/compare.png" alt="替代文本" width="1100px" />
 
 
-## 四、3步体验openEuler Distroless
+## 四、3步体验openEuler Distroless镜像
+通常情况下，建议用户使用openEuler Distroless镜像作为运行时环境的基础镜像来使用，使用方法如下
 
 **以Python镜像为例**：
 
