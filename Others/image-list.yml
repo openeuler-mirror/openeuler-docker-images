@@ -35,3 +35,4 @@ images:
   snort3: snort3
   solr: solr
   wildfly: wildfly
+  dubbo: dubbo
