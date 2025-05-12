@@ -29,6 +29,7 @@ images:
   llm-faqgen-tgi: opea/llm-faqgen-tgi
   llm-tgi: opea/llm-tgi
   llm-vllm: opea/llm-vllm
+  llm-textgen: opea/llm-textgen
   reranking-tei: opea/reranking-tei
   retriever-redis: opea/retriever-redis
   searchqna: opea/searchqna
