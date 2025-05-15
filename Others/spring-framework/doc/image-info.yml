@@ -1,0 +1,44 @@
+name: spring-framework
+category: others
+description: Spring Framework是一个开源的Java企业级开发框架，最初由Rod Johnson于2003年发布，目的是为了解决J2EE开发中存在的复杂性问题。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  spring-framework镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[6.2.6-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/spring-framework/6.2.6/24.03-lts-sp1/Dockerfile)| Spring Framework 6.2.6 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/spring-framework:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+    ```
+    docker run -d --name my-spring-framework openeuler/spring-framework:{Tag}
+    ```
+
+  - 容器运行
+    ```
+    docker run --rm openeuler/spring-framework:{Tag}
+    ```
+    运行成功后回看到`Hello, Spring Framework!`
+
+  - 运行启动shell会话
+    ```
+    docker run -it --rm openeuler/spring-framework:{Tag} bash
+    ```
+
+license: Apache-2.0 license
+similar_packages:
+  - N/A
+dependency:
+  - java
+  - maven
