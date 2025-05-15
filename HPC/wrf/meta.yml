@@ -1,2 +1,4 @@
 4.6.1-oe2403lts:
   path: 4.6.1/24.03-lts/Dockerfile
+4.7.0-oe2403sp1:
+  path: HPC/wrf/4.7.0/24.03-lts-sp1/Dockerfile
