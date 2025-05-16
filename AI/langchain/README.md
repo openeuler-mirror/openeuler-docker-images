@@ -14,6 +14,7 @@ The tag of each langchain docker image is consist of the version of langchain an
 | Tags | Currently |  Architectures|
 |--|--|--|
 |[0.3.23-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/langchain/0.3.23/22.03-lts-sp4/Dockerfile)| langchain 0.3.23 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+|[0.3.23-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/langchain/0.3.23/24.03-lts-sp1/Dockerfile)| langchain 0.3.23 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
 
