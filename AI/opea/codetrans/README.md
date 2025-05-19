@@ -24,24 +24,24 @@ Read more about OPEA at [opea.dev](https://opea.dev/) and explore the OPEA techn
 
 # Supported tags and respective Dockerfile links
 
-The tag of each CodeGen docker image is consist of the version of CodeGen and the version of basic image. The details are as follows
+The tag of each CodeTrans docker image is consist of the version of CodeTrans and the version of basic image. The details are as follows
 
 | Tags | Currently |  Architectures|
 |--|--|--|
-|[1.0-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/opea/codegen/1.0/24.03-lts/Dockerfile)| CodeGen 1.0 on openEuler 24.03-LTS | amd64 |
+|[1.0-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/opea/codetrans/1.0/24.03-lts/Dockerfile)| CodeTrans 1.0 on openEuler 24.03-LTS | amd64 |
 
-|[1.2-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/opea/codegen/1.2/24.03-lts/Dockerfile)| CodeGen 1.2 on openEuler 24.03-LTS | amd64 |
+|[1.2-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/opea/codetrans/1.2/24.03-lts/Dockerfile)| CodeTrans 1.2 on openEuler 24.03-LTS | amd64 |
 
 # Usage
 
-The CodeGen service can be effortlessly deployed on either Intel Gaudi2 or Intel Xeon Scalable Processor.
+The CodeTrans service can be effortlessly deployed on either Intel Gaudi2 or Intel Xeon Scalable Processor.
 
-Currently we support two ways of deploying CodeGen services with docker compose:
+Currently we support two ways of deploying CodeTrans services with docker compose:
 
 1. Start services using the docker image on `docker hub`:
 
    ```bash
-   docker pull openeuler/codegen:latest
+   docker pull openeuler/codetrans:latest
    ```
 
 2. Start services using the docker images built from source.
@@ -50,18 +50,13 @@ Currently we support two ways of deploying CodeGen services with docker compose:
 
 By default, the LLM model is set to a default value as listed below:
 
-| Service      | Model                                                                           |
-| ------------ | ------------------------------------------------------------------------------- |
-| LLM_MODEL_ID | [meta-llama/CodeLlama-7b-hf](https://huggingface.co/meta-llama/CodeLlama-7b-hf) |
-
-[meta-llama/CodeLlama-7b-hf](https://huggingface.co/meta-llama/CodeLlama-7b-hf) is a gated model that requires submitting an access request through Hugging Face. You can replace it with another model.
-Change the `LLM_MODEL_ID` below for your needs, such as: [Qwen/CodeQwen1.5-7B-Chat](https://huggingface.co/Qwen/CodeQwen1.5-7B-Chat), [deepseek-ai/deepseek-coder-6.7b-instruct](https://huggingface.co/deepseek-ai/deepseek-coder-6.7b-instruct)
-
-If you choose to use `meta-llama/CodeLlama-7b-hf` as LLM model, you will need to visit [here](https://huggingface.co/meta-llama/CodeLlama-7b-hf), click the `Expand to review and access` button to ask for model access.
+| Service | Model                              |
+| ------- | ---------------------------------- |
+| LLM     | mistralai/Mistral-7B-Instruct-v0.3 |
 
 ### Quick Start: 1.Setup Environment Variable
 
-To set up environment variables for deploying CodeGen services, follow these steps:
+To set up environment variables for deploying CodeTrans services, follow these steps:
 
 1. Set the required environment variables:
 
@@ -82,7 +77,7 @@ To set up environment variables for deploying CodeGen services, follow these ste
 
 3. Set up other environment variables:
 
-   > Get `set_env.sh` here: [set_env.sh](https://gitee.com/openeuler/openeuler-docker-images/tree/master/AI/opea/codegen/doc/set_env.sh) 
+   > Get `set_env.sh` here: [set_env.sh](https://gitee.com/openeuler/openeuler-docker-images/tree/master/AI/opea/codetrans/doc/set_env.sh) 
 
    ```bash
    source set_env.sh
@@ -90,7 +85,7 @@ To set up environment variables for deploying CodeGen services, follow these ste
 
 ### Quick Start: 2.Run Docker Compose 
 
-> Get `compose.yml` here: [compose.yml](https://gitee.com/openeuler/openeuler-docker-images/tree/master/AI/opea/codegen/doc/compose.yml)
+> Get `compose.yml` here: [compose.yml](https://gitee.com/openeuler/openeuler-docker-images/tree/master/AI/opea/codetrans/doc/compose.yml)
 
 ```bash
 docker compose -f compose.yml up -d
@@ -99,8 +94,8 @@ docker compose -f compose.yml up -d
 It will automatically download the docker image on `docker hub`:
 
 ```bash
-docker pull openeuler/codegen:latest
-docker pull openeuler/codegen-ui:latest
+docker pull openeuler/codetrans:latest
+docker pull openeuler/codetrans-ui:latest
 ```
 
 ### QuickStart: 3.Consume the CodeGen Service
@@ -108,9 +103,9 @@ docker pull openeuler/codegen-ui:latest
 1. Use cURL command on terminal
 
    ```bash
-   curl http://${host_ip}:7778/v1/codegen \
+   curl http://${host_ip}:7777/v1/codetrans \
        -H "Content-Type: application/json" \
-       -d '{"messages": "Implement a high-level API for a TODO list application. The API takes as input an operation request and updates the TODO list in place. If the request is invalid, raise an exception."}'
+       -d '{"language_from": "Golang","language_to": "Python","source_code": "package main\n\nimport \"fmt\"\nfunc main() {\n    fmt.Println(\"Hello, World!\");\n}"}'
    ```
 
 2. Access via frontend
