@@ -32,6 +32,21 @@ The tag of each Go docker image is consist of the version of Go and the version 
 |[1.23.3-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/go/1.23.3/22.03-lts-sp3/Dockerfile)| go 1.23.3 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
 |[1.23.3-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/go/1.23.3/22.03-lts-sp4/Dockerfile)| go 1.23.3 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
 |[1.23.3-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/go/1.23.3/24.03-lts/Dockerfile)| go 1.23.3 on openEuler 24.03-LTS | amd64, arm64 |
+|[1.23.4-oe2203sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/go/1.23.4/22.03-lts-sp1/Dockerfile)| go 1.23.4 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
+|[1.23.4-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/go/1.23.4/22.03-lts-sp3/Dockerfile)| go 1.23.4 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[1.23.4-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/go/1.23.4/22.03-lts-sp4/Dockerfile)| go 1.23.4 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+|[1.23.4-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/go/1.23.4/24.03-lts/Dockerfile)| go 1.23.4 on openEuler 24.03-LTS | amd64, arm64 |
+|[1.24.0-oe2203sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/go/1.24.0/22.03-lts-sp1/Dockerfile)| go 1.24.0 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
+|[1.24.0-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/go/1.24.0/22.03-lts-sp3/Dockerfile)| go 1.24.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[1.24.0-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/go/1.24.0/22.03-lts-sp4/Dockerfile)| go 1.24.0 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+|[1.24.0-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/go/1.24.0/24.03-lts/Dockerfile)| go 1.24.0 on openEuler 24.03-LTS | amd64, arm64 |
+|[1.24.1-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/go/1.24.1/24.03-lts/Dockerfile)| go 1.24.1 on openEuler 24.03-LTS | amd64, arm64 |
+|[1.24.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/go/1.24.1/24.03-lts-sp1/Dockerfile)| go 1.24.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[1.24.3-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/go/1.24.3/24.03-lts-sp1/Dockerfile)| go 1.24.3 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[1.24rc1-oe2203sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/go/1.24rc1/22.03-lts-sp1/Dockerfile)| go 1.24rc1 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
+|[1.24rc1-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/go/1.24rc1/22.03-lts-sp3/Dockerfile)| go 1.24rc1 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[1.24rc1-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/go/1.24rc1/22.03-lts-sp4/Dockerfile)| go 1.24rc1 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+|[1.24rc1-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/go/1.24rc1/24.03-lts/Dockerfile)| go 1.24rc1 on openEuler 24.03-LTS | amd64, arm64 |
 
 # Usage
 
