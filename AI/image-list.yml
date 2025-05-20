@@ -30,6 +30,8 @@ images:
   llm-tgi: opea/llm-tgi
   llm-vllm: opea/llm-vllm
   llm-textgen: opea/llm-textgen
+  llm-docsum: opea/llm-docsum
+  docsum-gradio-ui: opea/docsum-gradio-ui
   reranking-tei: opea/reranking-tei
   retriever-redis: opea/retriever-redis
   searchqna: opea/searchqna
