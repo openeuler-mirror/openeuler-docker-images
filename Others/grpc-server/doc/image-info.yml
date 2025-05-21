@@ -1,0 +1,46 @@
+name: grpc-server
+category: others
+description: gRPC-server是基于gRPC（Google Remote Procedure Call）框架 的服务端实现，用于处理客户端发来的远程调用请求。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  grpc-server镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.72.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/grpc-server/1.72.0/24.03-lts-sp1/Dockerfile)| gRPC-server 1.72.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/grpc-server:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+    ```
+    docker run -d --name my-grpc-server -p 50051:50051 openeuler/grpc-server:{Tag}
+    ```
+    `my-grpc-server`启动之后，通过`http://localhost:50051`访问服务。
+
+  - 容器测试
+
+    查看运行日志
+    ```
+    docker logs -f my-grpc-server
+    ```
+
+    运行启动shell会话
+    ```
+    docker run -it --rm openeuler/grpc-server:{Tag} bash
+    ```
+
+license: Apache-2.0 license
+similar_packages:
+  - Dubbo: 阿里巴巴开源的 RPC 框架，主要用于 Java 服务之间的通信。
+dependency:
+  - java
+  - maven

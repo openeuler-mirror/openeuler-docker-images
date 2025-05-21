@@ -36,3 +36,6 @@ images:
   solr: solr
   wildfly: wildfly
   dubbo: dubbo
+  fastjson: fastjson
+  spring-framework: spring-framework
+  grpc-server: grpc-server
