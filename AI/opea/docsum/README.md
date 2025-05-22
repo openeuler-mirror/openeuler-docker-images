@@ -29,7 +29,6 @@ The tag of each DocSum docker image is consist of the version of DocSum and the 
 | Tags | Currently |  Architectures|
 |--|--|--|
 |[1.0-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/opea/docsum/1.0/24.03-lts/Dockerfile)| DocSum 1.0 on openEuler 24.03-LTS | amd64 |
-
 |[1.2-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/opea/docsum/1.2/24.03-lts/Dockerfile)| DocSum 1.2 on openEuler 24.03-LTS | amd64 |
 
 # Usage
