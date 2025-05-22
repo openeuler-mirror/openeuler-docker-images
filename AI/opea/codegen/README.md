@@ -29,7 +29,6 @@ The tag of each CodeGen docker image is consist of the version of CodeGen and th
 | Tags | Currently |  Architectures|
 |--|--|--|
 |[1.0-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/opea/codegen/1.0/24.03-lts/Dockerfile)| CodeGen 1.0 on openEuler 24.03-LTS | amd64 |
-
 |[1.2-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/opea/codegen/1.2/24.03-lts/Dockerfile)| CodeGen 1.2 on openEuler 24.03-LTS | amd64 |
 
 # Usage
