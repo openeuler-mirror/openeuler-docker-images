@@ -25,6 +25,7 @@ images:
   embedding-tei: opea/embedding-tei
   faqgen-ui: opea/faqgen-ui
   faqgen: opea/faqgen
+  llm-faqgen: opea/llm-faqgen
   llm-docsum-tgi: opea/llm-docsum-tgi
   llm-faqgen-tgi: opea/llm-faqgen-tgi
   llm-tgi: opea/llm-tgi
