@@ -70,3 +70,6 @@ images:
   unixbench: unixbench
   webbench: webbench
   wrk: wrk
+  binder: binder
+  cjson: cjson
+  musl: musl
