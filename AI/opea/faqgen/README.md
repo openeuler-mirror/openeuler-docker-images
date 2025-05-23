@@ -113,5 +113,3 @@ curl http://${host_ip}:8888/v1/graphrag \
         "model": "gpt-4o-mini","messages": [{"role": "user","content": "What is the revenue of Nike in 2023?
     "}]}'
 ```
-
-
