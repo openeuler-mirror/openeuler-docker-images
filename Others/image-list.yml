@@ -76,3 +76,4 @@ images:
   mesa: mesa
   nemo: nemo
   lammps: lammps
+  haproxy: haproxy
