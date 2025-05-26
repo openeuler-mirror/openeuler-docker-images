@@ -40,3 +40,5 @@
   path: 3.0.0/22.03-lts-sp1/Dockerfile
 3.2.1-oe2403lts:
   path: Cloud/prometheus/3.2.1/24.03-lts/Dockerfile
+3.3.1-oe2403sp1:
+  path: Cloud/prometheus/3.3.1/24.03-lts-sp1/Dockerfile

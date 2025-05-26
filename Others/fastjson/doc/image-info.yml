@@ -1,0 +1,33 @@
+name: fastjson
+category: others
+description: Fastjson2 是阿里巴巴开源的高性能JSON处理库，是Fastjson的下一代版本，专注于提升性能、安全性和对新特性的支持。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  fastjson镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[2.0.57-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/fastjson/2.0.57/24.03-lts-sp1/Dockerfile)| FastJson2 2.0.57 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/fastjson:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+    ```
+    docker run -it --rm openeuler/fastjson:{Tag}
+    ```
+
+license: Apache-2.0 license
+similar_packages:
+  - N/A
+dependency:
+  - java
+  - maven

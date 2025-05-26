@@ -1,34 +1,42 @@
 # Copyright (C) 2024 Intel Corporation
 # SPDX-License-Identifier: Apache-2.0
 
+# Base image
 FROM openeuler/openeuler:24.03-lts
 
-ENV LANG=C.UTF-8
-
-ARG ARCH="cpu"
-
-RUN yum update -y && yum install -y \
-    make gcc gcc-c++ \
-    java-11-openjdk \
+#安装python3.11
+RUN yum update -y && \
+    yum install -y \
+    python3.11 \
+    python3-devel \
+    python3-pip \
+    git \
+    wget \
+    gcc \
+    gcc-c++ \
+    java-1.8.0-openjdk \
+    cairo \
     mesa-libGL \
     jemalloc-devel \
+    postgresql-devel \
     poppler-utils \
-    python3-devel python-pip \
     tesseract \
-    tesseract-langpack-eng \
-    libpq-devel \
-    cairo \
-    wget \
-    git \
-    xz
+    curl && \
+    ln -s /usr/bin/python3.11 /usr/bin/python  && \
+    yum clean all
 
+ENV LANG=C.UTF-8
+ARG ARCH="cpu"
+
+# Install LibreOffice
 RUN wget https://mirrors.bfsu.edu.cn/libreoffice/libreoffice/stable/24.8.6/rpm/x86_64/LibreOffice_24.8.6_Linux_x86-64_rpm.tar.gz && \
     tar -xvf LibreOffice_24.8.6_Linux_x86-64_rpm.tar.gz && \
     yum install -y ./LibreOffice_24.8.6.2_Linux_x86-64_rpm/RPMS/*.rpm && \
     cd / && rm -rf LibreOffice_24.8.6.2_Linux_x86-64_rpm*  && rm LibreOffice_24.8.6_Linux_x86-64_rpm.tar.gz
 
 # Install ffmpeg static build
-RUN cd /root && wget https://johnvansickle.com/ffmpeg/builds/ffmpeg-git-amd64-static.tar.xz && \
+RUN yum install -y xz && \
+cd /root && wget https://johnvansickle.com/ffmpeg/builds/ffmpeg-git-amd64-static.tar.xz && \
 mkdir ffmpeg-git-amd64-static && tar -xvf ffmpeg-git-amd64-static.tar.xz -C ffmpeg-git-amd64-static --strip-components 1 && \
 export PATH=/root/ffmpeg-git-amd64-static:$PATH && \
 cp /root/ffmpeg-git-amd64-static/ffmpeg /usr/local/bin/
@@ -38,13 +46,9 @@ RUN useradd -m -s /bin/bash user && \
     mkdir -p /home/user && \
     chown -R user /home/user/
 
-USER user
-
-WORKDIR /home/user/
-
-RUN git clone https://github.com/opea-project/GenAIComps.git && cd GenAIComps && git checkout v1.2
-
-RUN cp -r GenAIComps/comps . && \
+# COPY comps /home/user/comps
+RUN git clone --depth=1 --branch v1.2 https://github.com/opea-project/GenAIComps.git && \
+    cp -r GenAIComps/comps /home/user/comps && \
     rm -rf GenAIComps
 
 RUN pip install --no-cache-dir --upgrade pip setuptools && \
@@ -57,9 +61,7 @@ RUN pip install --no-cache-dir --upgrade pip setuptools && \
     pip install --no-cache-dir ${PIP_EXTRA_INDEX_URL} -r /home/user/comps/dataprep/src/requirements.txt && \
     pip install opentelemetry-api==1.29.0 opentelemetry-exporter-otlp==1.29.0 opentelemetry-sdk==1.29.0
 
-ENV PYTHONPATH=$PYTHONPATH:/home/user
-
-USER root
+ENV PYTHONPATH=/usr/bin/python3:/home/user
 
 RUN mkdir -p /home/user/comps/dataprep/src/uploaded_files && chown -R user /home/user/comps/dataprep/src/uploaded_files
 

@@ -9,4 +9,6 @@
 9.21.4-oe2203sp1:
   path: 9.21.4/22.03-lts-sp1/Dockerfile
 9.21.6-oe2403lts:
-  path: Others/bind9/9.21.6/24.03-lts/Dockerfile
+  path: 9.21.6/24.03-lts/Dockerfile
+9.21.7-oe2403sp1:
+  path: 9.21.7/24.03-lts-sp1/Dockerfile
