@@ -1,2 +1,5 @@
 1.0-oe2403lts:
   path: 1.0/24.03-lts/Dockerfile
+
+1.2-oe2403lts:
+  path: 1.2/24.03-lts/Dockerfile
