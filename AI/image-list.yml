@@ -11,6 +11,7 @@ images:
   oneapi-runtime: oneapi-runtime
   asr: opea/asr
   audioqna: opea/audioqna
+  audioqna-ui: opea/audioqna-ui
   chatqna-conversation-ui: opea/chatqna-conversation-ui
   chatqna-ui: opea/chatqna-ui
   chatqna: opea/chatqna
