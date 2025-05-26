@@ -19,11 +19,13 @@ images:
   codegen: opea/codegen
   codetrans-ui: opea/codetrans-ui
   codetrans: opea/codetrans
+  dataprep: opea/dataprep  
   dataprep-redis: opea/dataprep-redis
   doc-index-retriever: opea/doc-index-retriever
   docsum-ui: opea/docsum-ui
   docsum: opea/docsum
   embedding-tei: opea/embedding-tei
+  embedding: opea/embedding
   faqgen-ui: opea/faqgen-ui
   faqgen: opea/faqgen
   llm-faqgen: opea/llm-faqgen
@@ -43,6 +45,7 @@ images:
   translation: opea/translation
   tts: opea/tts
   web-retriever-chroma: opea/web-retriever-chroma
+  web-retriever: opea/web-retriever
   whisper: opea/whisper
   finetuning: opea/finetuning
   pytorch: pytorch
@@ -60,6 +63,7 @@ images:
   videoqna-ui: opea/videoqna-ui
   embedding-multimodal-clip: opea/embedding-multimodal-clip
   reranking-videoqna: opea/reranking-videoqna
+  reranking: opea/reranking
   retriever-vdms: opea/retriever-vdms
   text2sql: opea/text2sql
   text2sql-ui: opea/text2sql-ui
