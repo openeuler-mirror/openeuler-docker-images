@@ -61,3 +61,6 @@ images:
   embedding-multimodal-clip: opea/embedding-multimodal-clip
   reranking-videoqna: opea/reranking-videoqna
   retriever-vdms: opea/retriever-vdms
+  text2sql: opea/text2sql
+  text2sql-ui: opea/text2sql-ui
+  
