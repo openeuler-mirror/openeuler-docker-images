@@ -74,3 +74,5 @@ images:
   cjson: cjson
   musl: musl
   mesa: mesa
+  nemo: nemo
+  lammps: lammps
