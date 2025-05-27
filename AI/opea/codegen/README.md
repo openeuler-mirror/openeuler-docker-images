@@ -114,6 +114,6 @@ docker pull openeuler/codegen-ui:latest
 
 2. Access via frontend
 
-   To access the frontend, open the following URL in your browser: http://{host_ip}:5173.
+   To access the frontend, open the following URL in your browser: `http://{host_ip}:5173`.
 
    By default, the UI runs on port 5173 internally.

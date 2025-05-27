@@ -67,4 +67,5 @@ images:
   retriever-vdms: opea/retriever-vdms
   text2sql: opea/text2sql
   text2sql-ui: opea/text2sql-ui
-  
+  text2image: opea/text2image
+  text2image-ui: opea/text2image-ui
