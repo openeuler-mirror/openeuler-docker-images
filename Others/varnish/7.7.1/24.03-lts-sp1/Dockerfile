@@ -13,7 +13,7 @@ WORKDIR /opt
 
 RUN wget https://varnish-cache.org/downloads/varnish-${VERSION}.tgz \
     && tar -zxvf varnish-${VERSION}.tgz \
-    && varnish-${VERSION}.tgz
+    && rm -f varnish-${VERSION}.tgz
 
 WORKDIR /opt/varnish-${VERSION}
 
