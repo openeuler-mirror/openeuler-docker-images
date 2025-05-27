@@ -10,3 +10,5 @@ images:
   yambo: yambo
   tensorrt: tensorrt
   mne: mne
+  nemo: nemo
+  lammps: lammps
