@@ -18,3 +18,5 @@
   path: 3.5.3/24.03-lts/Dockerfile
 3.5.5-oe2403lts:
   path: Bigdata/spark/3.5.5/24.03-lts/Dockerfile
+4.0.0-oe2403sp1:
+  path: Bigdata/spark/4.0.0/24.03-lts-sp1/Dockerfile
