@@ -81,3 +81,5 @@ images:
   jetty: jetty
   keepalived: keepalived
   trafficserver: trafficserver
+  uwsgi: uwsgi
+  nagios: nagios
