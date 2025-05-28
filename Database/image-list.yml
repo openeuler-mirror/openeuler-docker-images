@@ -12,3 +12,6 @@ images:
   phoenix: phoenix
   tdengine: tdengine
   tengine: tengine
+  etcd: etcd
+  mariadb: mariadb
+  tidb: tidb
