@@ -6,7 +6,6 @@ FROM ${BASE} as builder
 ARG VERSION
 ARG TARGETARCH
 
-
 # Install dependencies
 RUN yum update -y && \
     yum install -y \
@@ -50,15 +49,15 @@ FROM ${BASE} AS official
 
 ARG VERSION
 
-COPY --from=builder /usr/local/python* /usr/local/python
+COPY --from=builder /usr/local/python* /usr/local/python${VERSION}
 
 RUN VERSION_SHORT=$(echo "${VERSION}" | cut -d. -f1,2) && \
-    VERSION_MAJOR=$(echo "${VERSION}" | cut -d. -f1,2,3) && \
-    PY_HOME=/usr/local/python${VERSION_SHORT} && \
-    mv /usr/local/python ${PY_HOME} && \
+    VERSION_MAJOR=$(echo "${VERSION}" | cut -d. -f1) && \
+    PY_HOME=/usr/local/python${VERSION} && \
     ln -sf ${PY_HOME}/bin/python${VERSION_SHORT} ${PY_HOME}/bin/python${VERSION_MAJOR} && \
     ln -sf ${PY_HOME}/bin/pip${VERSION_SHORT} ${PY_HOME}/bin/pip${VERSION_MAJOR} && \
     ln -sf ${PY_HOME}/bin/python${VERSION_MAJOR} ${PY_HOME}/bin/python && \
-    ln -sf ${PY_HOME}/bin/pip${VERSION_MAJOR} ${PY_HOME}/bin/pip && \
-    echo "export PATH=${PY_HOME}/bin:${PATH}" >> /etc/profile && \
-    echo "export PATH=${PY_HOME}/bin:${PATH}" >> ~/.bashrc
+    ln -sf ${PY_HOME}/bin/pip${VERSION_MAJOR} ${PY_HOME}/bin/pip
+
+ENV PATH=/usr/local/python${VERSION}/bin:${PATH}
+ENV LD_LIBRARY_PATH=/usr/local/python${VERSION}/lib:${LD_LIBRARY_PATH}
