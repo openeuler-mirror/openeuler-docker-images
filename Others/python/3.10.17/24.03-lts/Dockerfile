@@ -32,8 +32,7 @@ RUN yum update -y && \
     rm -rf /var/cache/yum && \
     rm -rf /tmp/*
 
-RUN VERSION_SHORT=$(echo "${VERSION}" | cut -d. -f1,2) && \
-    PY_HOME=/usr/local/python${VERSION_SHORT} && \
+RUN PY_HOME=/usr/local/python${VERSION} && \
     PY_INSTALLER_DIR=Python-${VERSION} && \
     PY_INSTALLER_TGZ=Python-${VERSION}.tgz && \
     curl -fsSL -o "/tmp/${PY_INSTALLER_TGZ}" "https://repo.huaweicloud.com/python/${VERSION}/${PY_INSTALLER_TGZ}" && \
@@ -43,13 +42,7 @@ RUN VERSION_SHORT=$(echo "${VERSION}" | cut -d. -f1,2) && \
     ./configure --prefix=${PY_HOME} --enable-shared LDFLAGS="-Wl,-rpath ${PY_HOME}/lib" && \
     make -j "$(nproc)" && \
     make altinstall && \
-    rm -rf /tmp/${PY_INSTALLER_TGZ} /tmp/${PY_INSTALLER_DIR}
-
-FROM ${BASE} AS official
-
-ARG VERSION
-
-COPY --from=builder /usr/local/python* /usr/local/python${VERSION}
+    rm -rf /tmp/*
 
 RUN VERSION_SHORT=$(echo "${VERSION}" | cut -d. -f1,2) && \
     VERSION_MAJOR=$(echo "${VERSION}" | cut -d. -f1) && \
@@ -59,5 +52,10 @@ RUN VERSION_SHORT=$(echo "${VERSION}" | cut -d. -f1,2) && \
     ln -sf ${PY_HOME}/bin/python${VERSION_MAJOR} ${PY_HOME}/bin/python && \
     ln -sf ${PY_HOME}/bin/pip${VERSION_MAJOR} ${PY_HOME}/bin/pip
 
+FROM ${BASE} AS official
+
+ARG VERSION
+
 ENV PATH=/usr/local/python${VERSION}/bin:${PATH}
-ENV LD_LIBRARY_PATH=/usr/local/python${VERSION}/lib:${LD_LIBRARY_PATH}
+
+COPY --from=builder /usr/local/python${VERSION} /usr/local/python${VERSION}
