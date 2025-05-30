@@ -83,3 +83,5 @@ images:
   trafficserver: trafficserver
   uwsgi: uwsgi
   nagios: nagios
+  libyuv: libyuv
+  spring-cloud: spring-cloud

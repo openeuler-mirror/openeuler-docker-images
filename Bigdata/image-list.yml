@@ -25,3 +25,4 @@ images:
   storm: storm
   thrift: thrift
   knox: knox
+  tez: tez
