@@ -1,7 +1,6 @@
 images:
   bind9: bind9
   bisheng-jdk: bisheng-jdk
-  coredns: coredns
   dotnet-aspnet: dotnet-aspnet
   dotnet-deps: dotnet-deps
   dotnet-runtime: dotnet-runtime

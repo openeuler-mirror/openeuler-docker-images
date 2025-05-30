@@ -24,3 +24,6 @@ images:
   docker: docker
   containerd: containerd
   envoy: envoy
+  libvirt: libvirt
+  openvswitch: openvswitch
+  coredns: coredns
