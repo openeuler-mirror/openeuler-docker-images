@@ -85,3 +85,4 @@ images:
   nagios: nagios
   libyuv: libyuv
   spring-cloud: spring-cloud
+  llvm: llvm
