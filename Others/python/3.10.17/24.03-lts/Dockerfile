@@ -44,6 +44,12 @@ RUN PY_HOME=/usr/local/python${VERSION} && \
     make altinstall && \
     rm -rf /tmp/*
 
+FROM ${BASE} AS official
+
+ARG VERSION
+
+COPY --from=builder /usr/local/python${VERSION} /usr/local/python${VERSION}
+
 RUN VERSION_SHORT=$(echo "${VERSION}" | cut -d. -f1,2) && \
     VERSION_MAJOR=$(echo "${VERSION}" | cut -d. -f1) && \
     PY_HOME=/usr/local/python${VERSION} && \
@@ -52,10 +58,6 @@ RUN VERSION_SHORT=$(echo "${VERSION}" | cut -d. -f1,2) && \
     ln -sf ${PY_HOME}/bin/python${VERSION_MAJOR} ${PY_HOME}/bin/python && \
     ln -sf ${PY_HOME}/bin/pip${VERSION_MAJOR} ${PY_HOME}/bin/pip
 
-FROM ${BASE} AS official
-
-ARG VERSION
+RUN echo "${VERSION}" > /test.txt
 
 ENV PATH=/usr/local/python${VERSION}/bin:${PATH}
-
-COPY --from=builder /usr/local/python${VERSION} /usr/local/python${VERSION}
