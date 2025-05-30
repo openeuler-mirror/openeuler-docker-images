@@ -8,4 +8,7 @@ images:
   lizardfs: lizardfs
   moosefs: moosefs
   seaweedfs: seaweedfs
-  sheepdog: sheepdog
+  drbd: drbd
+  fastdfs: fastdfs
+  glusterfs: glusterfs
+  lustre: lustre
