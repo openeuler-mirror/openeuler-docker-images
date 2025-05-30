@@ -21,3 +21,6 @@ images:
   zookeeper: zookeeper
   flannel: flannel
   istio: istio
+  docker: docker
+  containerd: containerd
+  envoy: envoy
