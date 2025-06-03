@@ -1,4 +1,6 @@
-cann7.0.RC1.alpha002-oe2203sp2:
+7.0.RC1.alpha002-oe2203sp2:
   path: 7.0.RC1.alpha002/22.03-lts-sp2/Dockerfile
 8.0.RC1-oe2203sp4:
   path: 8.0.RC1/22.03-lts-sp4/Dockerfile
+8.1.RC1-python3.11-oe2203lts:
+  path: 8.1.RC1-python3.11/22.03-lts/Dockerfile
