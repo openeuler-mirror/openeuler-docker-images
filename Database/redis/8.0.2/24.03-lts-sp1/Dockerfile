@@ -28,6 +28,7 @@ RUN wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/downloa
     sed -ri 's!cd jemalloc && ./configure !&'"$extraJemallocConfigureFlags"' !' /redis/deps/Makefile; \
     grep -F "cd jemalloc && ./configure $extraJemallocConfigureFlags " /redis/deps/Makefile; \
     export BUILD_TLS=yes; \
+    make -C /redis/deps -j"$(nproc)"; \
     make -C /redis -j "$(nproc)" all MALLOC=libc; \
     make -C /redis install
 
