@@ -6,7 +6,7 @@ images:
   karma: karma
   kolla: kolla
   kong: kong
-  kebernetes: kebernetes
+  kubernetes: kubernetes
   loki: loki
   mimir: mimir
   nginx: nginx
