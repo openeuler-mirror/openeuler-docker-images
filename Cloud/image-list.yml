@@ -27,3 +27,4 @@ images:
   libvirt: libvirt
   openvswitch: openvswitch
   coredns: coredns
+  strongswan: strongswan
