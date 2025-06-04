@@ -5,16 +5,14 @@ ARG TARGETARCH
 ARG VERSION=8.0.2
 
 RUN yum -y update; \
-	yum -y install findutils wget gcc make glibc-devel openssl-devel ca-certificates shadow-utils; \
+	yum -y install findutils git wget gcc make glibc-devel openssl-devel ca-certificates shadow-utils; \
     groupadd -r -g 909 redis; \
 	useradd -r -g redis -u 909 redis
 
 ENV GOSU_VERSION 1.17
 RUN wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-${TARGETARCH}"; \
     chmod +x /usr/local/bin/gosu; \
-    wget -O redis.tar.gz https://github.com/redis/redis/archive/refs/tags/${VERSION}.tar.gz; \
-    mkdir -p /redis; tar -vxzf redis.tar.gz -C /redis --strip-components=1; \
-    rm -rf redis.tar.gz; \
+    git clone --recursive -b 8.0.2 --depth 1 https://github.com/redis/redis.git /redis; \
     grep -E '^ *createBoolConfig[(]"protected-mode",.*, *1 *,.*[)],$' /redis/src/config.c; \
     sed -ri 's!^( *createBoolConfig[(]"protected-mode",.*, *)1( *,.*[)],)$!\10\2!' /redis/src/config.c; \
     grep -E '^ *createBoolConfig[(]"protected-mode",.*, *0 *,.*[)],$' /redis/src/config.c; \
@@ -28,6 +26,13 @@ RUN wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/downloa
     sed -ri 's!cd jemalloc && ./configure !&'"$extraJemallocConfigureFlags"' !' /redis/deps/Makefile; \
     grep -F "cd jemalloc && ./configure $extraJemallocConfigureFlags " /redis/deps/Makefile; \
     export BUILD_TLS=yes; \
+    cd /redis/deps/jemalloc; \
+    sed -i 's/LDFLAGS = /LDFLAGS = -lpthread /' Makefile; \
+    make distclean; \
+    ./configure $extraJemallocConfigureFlags; \
+    make -j && make install; \
+    cd /redis; \
+    sed -i 's/LIBS = /LIBS = -lpthread /' /redis/src/Makefile; \
     make -C /redis -j "$(nproc)" all MALLOC=libc; \
     make -C /redis install
 
