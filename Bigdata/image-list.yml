@@ -26,3 +26,5 @@ images:
   thrift: thrift
   knox: knox
   tez: tez
+  oozie: oozie
+  lucene: lucene
