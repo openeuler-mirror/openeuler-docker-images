@@ -29,3 +29,4 @@ images:
   coredns: coredns
   strongswan: strongswan
   qemu: qemu
+  o3de: o3de
