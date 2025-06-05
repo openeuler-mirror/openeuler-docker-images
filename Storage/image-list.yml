@@ -12,3 +12,4 @@ images:
   fastdfs: fastdfs
   glusterfs: glusterfs
   lustre: lustre
+  curve: curve
