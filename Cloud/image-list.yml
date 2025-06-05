@@ -28,3 +28,4 @@ images:
   openvswitch: openvswitch
   coredns: coredns
   strongswan: strongswan
+  qemu: qemu
