@@ -8,19 +8,24 @@ RUN dnf update -y && \
     gcc \
     gcc-c++ \
     make \
-    git \
+    wget \
+    xz \
     && dnf clean all \
     && rm -rf /var/cache/dnf/*
 
 WORKDIR /opt
-RUN git clone -b release/${VERSION}/master --depth=1 https://sourceware.org/git/glibc.git
 
-WORKDIR /opt/glibc/build
-RUN ../configure --prefix=/opt/glibc-${VERSION} && \
+RUN wget https://mirrors.tuna.tsinghua.edu.cn/gnu/glibc/glibc-${VERSION}.tar.xz \
+    && tar -xvf  glibc-${VERSION}.tar.xz \
+    && rm -f glibc-${VERSION}.tar.xz
+
+WORKDIR /opt/glibc-${VERSION}/build
+
+RUN ../configure --prefix=/usr/local/glibc && \
     make -j$(nproc) && \
     make install
 
 FROM ${BASE}
-ARG VERSION=2.41
-COPY --from=BUILDER /opt/glibc-${VERSION} /opt/glibc-${VERSION}
-CMD ["/opt/glibc-2.41/bin/ldd", "--version"]
+COPY --from=BUILDER /usr/local/glibc /usr/local/glibc
+WORKDIR /usr/local/glibc
+CMD ["./bin/ldd", "--version"]
