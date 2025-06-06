@@ -25,7 +25,7 @@ ENV PATH=/jdk-17.0.12/bin:$PATH
 
 WORKDIR /opt
 
-RUN git clone -b 11.0.7 --depth 1 https://github.com/apache/tomcat.git \
+RUN git clone -b ${VERSION} --depth 1 https://github.com/apache/tomcat.git \
     && cd tomcat \
     && ant
 
