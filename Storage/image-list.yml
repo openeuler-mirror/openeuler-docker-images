@@ -13,3 +13,4 @@ images:
   glusterfs: glusterfs
   lustre: lustre
   curve: curve
+  ceph: ceph
