@@ -46,4 +46,9 @@ RUN git clone -b v${VERSION} --recursive --depth 1 https://github.com/ceph/ceph.
 
 ENV LD_LIBRARY_PATH=/usr/local/lib64:$LD_LIBRARY_PATH
 
-CMD ["ceph", "--help"]
+COPY --chmod=755 entrypoint.sh /opt/ceph/entrypoint.sh
+
+WORKDIR /opt/ceph
+
+ENTRYPOINT [ "./entrypoint.sh" ]
+
