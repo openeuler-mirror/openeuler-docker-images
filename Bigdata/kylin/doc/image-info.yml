@@ -1,0 +1,82 @@
+name: kylin
+category: bigdata
+description: Apache Kylin 是一款高并发、高性能、智能的 OLAP 引擎，提供低成本、极致的数据分析体验。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  kylin镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  | Tags | Currently |  Architectures|
+  |------|-----------|---------------|
+  |[5.0.2-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kylin/5.0.2/24.03-lts-sp1/Dockerfile)| Apache kylin 5.0.2 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/kylin:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+
+    ```bash
+    docker run -d \
+        --name Kylin \
+        --hostname localhost \
+        -e TZ=UTC \
+        -m 10G \
+        -p 7070:7070 \
+        -p 8088:8088 \
+        -p 9870:9870 \
+        -p 8032:8032 \
+        -p 8042:8042 \
+        -p 2181:2181 \
+        openeuler/kylin:latest
+    ```
+
+  - 查看运行日志
+
+    ```
+    docker logs --follow Kylin
+    ```
+
+    出现如下信息则说明Kylin已经部署成功：
+    ```
+    Kylin service is already available for you to preview.
+    ```
+  
+  - 访问服务
+
+    Kylin部署成功后，使用`Ctrl + C`退出容器的日志, 并使用如下链接访问Kylin web UI：
+
+    | Service Name |   URL    |
+    |--------------|----------|
+    |Kylin         | http://localhost:7070/kylin⁠ |
+    |Yarn          | http://localhost:8088⁠       |
+    |HDFS          | http://localhost:9870⁠       |
+
+    进入Kylin web UI后, 使用默认用户`ADMIN`和密码`KYLIN`登录。
+
+  - 停止服务
+
+    使用如下命令终止容器：
+    ```
+    docker stop Kylin
+    docker rm Kylin
+    ```
+
+license: Apache-2.0 license
+similar_packages:
+  - Druid: 实时 OLAP 数据库，支持低延迟查询和高并发，适合事件流分析（如点击流、日志分析）。
+  - Apache Doris: 原名 Palo，MPP 架构的 OLAP 数据库，支持高并发点查询和实时分析。
+  - ClickHouse: 列式存储的 OLAP 数据库，以单表查询性能著称，适合大规模日志分析。
+dependency:
+  - openjdk
+  - hadoop
+  - spark
+  - hive
+  - zookeeper
+  - mariadb
