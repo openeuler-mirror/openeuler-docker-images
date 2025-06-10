@@ -18,7 +18,15 @@ The tag of each Python docker image is consist of the version of Python and the 
 | Tags | Currently |  Architectures|
 |--|--|--|
 |[3.9.9-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/Others/python/3.9.9/22.03-lts/Dockerfile)| Python 3.9.9 on openEuler 22.03-LTS | amd64, arm64 |
+|[3.9.9-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/Others/python/3.9.9/24.03-lts/Dockerfile)| Python 3.9.9 on openEuler 24.03-LTS | amd64, arm64 |
+|[3.10.17-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/Others/python/3.10.17/22.03-lts/Dockerfile)| Python 3.10.17 on openEuler 22.03-LTS | amd64, arm64 |
 |[3.10.17-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/Others/python/3.10.17/24.03-lts/Dockerfile)| Python 3.10.17 on openEuler 24.03-LTS | amd64, arm64 |
+|[3.11.13-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/Others/python/3.11.13/22.03-lts/Dockerfile)| Python 3.11.13 on openEuler 22.03-LTS | amd64, arm64 |
+|[3.11.13-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/Others/python/3.11.13/24.03-lts/Dockerfile)| Python 3.11.13 on openEuler 24.03-LTS | amd64, arm64 |
+|[3.12.10-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/Others/python/3.12.10/22.03-lts/Dockerfile)| Python 3.12.10 on openEuler 22.03-LTS | amd64, arm64 |
+|[3.12.10-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/Others/python/3.12.10/24.03-lts/Dockerfile)| Python 3.12.10 on openEuler 24.03-LTS | amd64, arm64 |
+|[3.13.4-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/Others/python/3.13.4/22.03-lts/Dockerfile)| Python 3.13.4 on openEuler 22.03-LTS | amd64, arm64 |
+|[3.13.4-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/Others/python/3.13.4/24.03-lts/Dockerfile)| Python 3.13.4 on openEuler 24.03-LTS | amd64, arm64 |
 
 
 # Usage

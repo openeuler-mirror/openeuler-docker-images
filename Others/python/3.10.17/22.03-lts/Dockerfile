@@ -1,5 +1,5 @@
 ARG BASE=openeuler/openeuler:22.03-lts
-ARG VERSION=3.9.9
+ARG VERSION=3.10.17
 
 FROM ${BASE} as builder
 
