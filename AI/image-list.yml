@@ -51,7 +51,7 @@ images:
   pytorch: pytorch
   text-embeddings-inference-cpu: text-embeddings-inference-cpu
   text-generation-inference-cpu: text-generation-inference-cpu
-  vllm: vllm
+  vllm-cpu: vllm-cpu
   vllm-ascend: vllm-ascend
   langchain: langchain
   open-webui: open-webui
