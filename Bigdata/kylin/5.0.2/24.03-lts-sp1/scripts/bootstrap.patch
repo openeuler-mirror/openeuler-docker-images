@@ -1,0 +1,24 @@
+diff --git a/sbin/bootstrap.sh b/sbin/bootstrap.sh
+index 99f6490f07..91cf9039e2 100755
+--- a/sbin/bootstrap.sh
++++ b/sbin/bootstrap.sh
+@@ -254,7 +254,7 @@ function runToolInternal() {
+     else
+         kylin_tools_log4j="file:${KYLIN_HOME}/tool/conf/kylin-tools-log4j.xml"
+     fi
+-    java -Xms${JAVA_VM_TOOL_XMS} -Xmx${JAVA_VM_TOOL_XMX} ${KYLIN_KERBEROS_OPTS} -Dfile.encoding=UTF-8 -Dlog4j.configurationFile=${kylin_tools_log4j} -Dkylin.hadoop.conf.dir=${kylin_hadoop_conf_dir} -Dhdp.version=current -cp "${kylin_hadoop_conf_dir}:${KYLIN_HOME}/conf/:${KYLIN_HOME}/lib/ext/*:${SPARK_HOME}/jars/*:${KYLIN_HOME}/server/jars/*" "$@"
++    java -Xms${JAVA_VM_TOOL_XMS} -Xmx${JAVA_VM_TOOL_XMX} ${KYLIN_KERBEROS_OPTS} -Dfile.encoding=UTF-8 -Dlog4j.configurationFile=${kylin_tools_log4j} -Dkylin.hadoop.conf.dir=${kylin_hadoop_conf_dir} -Dhdp.version=current -cp "${kylin_hadoop_conf_dir}:${KYLIN_HOME}/conf/:${KYLIN_HOME}/lib/ext/*:${SPARK_HOME}/jars/*:${KYLIN_HOME}/server/jars/*:${HADOOP_HOME}/share/hadoop/common/lib/*:${HADOOP_HOME}/share/hadoop/common/*:${ZOOKEEPER_HOME}/lib/*:${HADOOP_HOME}/share/hadoop/hdfs/*" "$@"
+ }
+ 
+ function killChildProcess {
+@@ -442,8 +442,10 @@ function startKylin(){
+ 
+     SERVER_MODE=$("${KYLIN_HOME}"/bin/get-properties.sh kylin.server.mode)
+ 
++    rm -rf ${HADOOP_HOME}/share/hadoop/common/lib/slf4j-reload4j-1.7.35.jar
++
+     cd "${KYLIN_HOME}"/server
+-    nohup java ${KYLIN_KERBEROS_OPTS} ${KYLIN_EXTRA_START_OPTS} ${TIME_ZONE} -Dfile.encoding=UTF-8 -Dlogging.path=${KYLIN_HOME}/logs -Dspring.profiles.active=prod -Dlogging.config=${KYLIN_SERVER_LOG4J} -Dkylin.hadoop.conf.dir=${kylin_hadoop_conf_dir} -Dhdp.version=current -Dloader.path="${kylin_hadoop_conf_dir},${KYLIN_HOME}/conf,${KYLIN_HOME}/lib/ext,${KYLIN_HOME}/server/jars,${SPARK_HOME}/jars" -XX:OnOutOfMemoryError="sh ${KYLIN_HOME}/bin/guardian.sh kill"  -jar newten.jar --kylin.server.mode=${SERVER_MODE} >> ${KYLIN_HOME}/logs/kylin.out 2>&1 < /dev/null & echo $! >> ${KYLIN_HOME}/pid &
++    nohup java ${KYLIN_KERBEROS_OPTS} ${KYLIN_EXTRA_START_OPTS} ${TIME_ZONE} -Dfile.encoding=UTF-8 -Dlogging.path=${KYLIN_HOME}/logs -Dspring.profiles.active=prod -Dlogging.config=${KYLIN_SERVER_LOG4J} -Dkylin.hadoop.conf.dir=${kylin_hadoop_conf_dir} -Dhdp.version=current -Dloader.path="${kylin_hadoop_conf_dir},${KYLIN_HOME}/conf,${KYLIN_HOME}/lib/ext,${KYLIN_HOME}/server/jars,${SPARK_HOME}/jars,${HADOOP_HOME}/share/hadoop/common,${HADOOP_HOME}/share/hadoop/common/lib/,${ZOOKEEPER_HOME}/lib,${HADOOP_HOME}/share/hadoop/hdfs" -XX:OnOutOfMemoryError="sh ${KYLIN_HOME}/bin/guardian.sh kill"  -jar newten.jar --kylin.server.mode=${SERVER_MODE} >> ${KYLIN_HOME}/logs/kylin.out 2>&1 < /dev/null & echo $! >> ${KYLIN_HOME}/pid &
+ 
+     clearRedundantProcess 3
