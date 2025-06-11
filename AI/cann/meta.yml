@@ -4,3 +4,5 @@
   path: 8.0.RC1/22.03-lts-sp4/Dockerfile
 8.1.RC1-python3.11-oe2203lts:
   path: 8.1.RC1-python3.11/22.03-lts/Dockerfile
+8.1.RC1-python3.11-oe2403lts:
+  path: 8.1.RC1-python3.11/24.03-lts/Dockerfile
