@@ -19,7 +19,9 @@ The tag of each `cann` docker image is consist of the complete software stack ve
 |----------|-------------|------------------|
 |[cann7.0.RC1.alpha002-oe2203sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/cann/7.0.RC1.alpha002/22.03-lts-sp2/Dockerfile)| CANN 7.0.RC1.alpha002 on openEuler 22.03-LTS-SP2 | arm64 |
 |[8.0.RC1-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/cann/8.0.RC1/22.03-lts-sp4/Dockerfile)| CANN 8.0.RC1 with Python 3.8 on openEuler 22.03-LTS-SP4 | arm64,amd64 |
-|[8.1.RC1-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/cann/8.1.RC1-python3.11/22.03-lts/Dockerfile)| CANN 8.1.RC1 with Python 3.11 on openEuler 22.03-LTS | arm64,amd64 |
+|[8.1.RC1-python3.11-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/cann/8.1.RC1-python3.11/22.03-lts/Dockerfile)| CANN 8.1.RC1 with Python 3.11 on openEuler 22.03-LTS | arm64,amd64 |
+|[8.1.RC1-python3.11-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/cann/8.1.RC1-python3.11/24.03-lts/Dockerfile)| CANN 8.1.RC1 with Python 3.11 on openEuler 24.03-LTS | arm64,amd64 |
+
 # Usage
 In this usage, users can select the corresponding `{Tag}` and `container startup options` based on their requirements.
 
