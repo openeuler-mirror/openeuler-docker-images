@@ -1,0 +1,57 @@
+name: oceanbase
+category: database
+description: oceanbase是一种开源关系型数据库管理系统。与其他关系型数据库一样，oceanbase将数OceanBase 数据库是一款完全自研的企业级原生分布式数据库，在普通硬件上实现金融级高可用，首创“三地五中心”城市级故障自动无损容灾新标准，刷新 TPC-C 标准测试，单集群规模超过 1500 节点，具有云原生、强一致性、高度兼容 Oracle/MySQL 等特性。据存储在由行和列组成的表中。用户可以使用结构化查询语言（通常称为SQL）定义、操作、控制和查询数据。oceanbase凭借其经过验证的性能、可靠性和易用性成为基于Web的应用程序的领先数据库选择，涵盖从个人项目和网站，到电子商务和信息服务，一直到高端应用程序的整个范围。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  oceanbase镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  | Tags | Currently |  Architectures|
+  |------|-----------|---------------|
+  |[4.3.5_CE_BP2_HF1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/oceanbase/4.3.5_CE_BP2_HF1/24.03-lts-sp1/Dockerfile)| oceanbase 4.3.5_CE_BP2_HF1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/oceanbase:{Tag}
+  ```
+usage: |
+  - 启动容器
+    ```
+    docker run -it --name my-oceanbase -p 2881:2881 openeuler/oceanbase:{Tag}
+    ```
+
+    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。`my-oceanbase`启动之后，用户根据个人需求完成oceanbase的配置和部署
+    ```
+    [root@6559d851ae46 /]# obd --help
+        Usage: obd <command> [options]
+        Available commands:
+
+        binlog         binlog service tools
+        cluster        Deploy and manage a cluster.
+        demo           Quickly start
+        display-trace  display trace_id log.
+        host           Host tools
+        license        Register and display license.
+        mirror         Manage a component repository for OBD.
+        obdiag         Oceanbase Diagnostic Tool
+        pwd            Obd cluster password management.
+        repo           Manage local repository for OBD.
+        test           Run test for a running deployment.
+        tool           Tools
+        update         Update OBD.
+        web            Start obd deploy application as web.
+        ...
+    ```
+
+license: View license
+similar_packages:
+  - PostgreSQL: PostgreSQL是一个功能强大的开源关系型数据库管理系统，它提供了与oceanbase类似的功能，并且支持广泛的标准SQL语法。PostgreSQL具有高度的可扩展性、可靠性和数据一致性，同时还提供了许多高级功能，如复杂查询、事务控制和触发器等。
+  - Oracle Database: Oracle Database是一款商业的关系型数据库管理系统，它是市场上最受欢迎和广泛使用的数据库之一。Oracle Database提供了丰富的功能集，包括高级查询、分布式数据库、数据复制和高可用性选项等。
+  - Microsoft SQL Server: Microsoft SQL Server是由Microsoft开发的关系型数据库管理系统。它提供了与oceanbase类似的功能，同时还与Microsoft的其他产品和技术集成紧密。Microsoft SQL Server适用于Windows操作系统，并提供了高性能、可伸缩性和企业级功能。
+  - SQLite: SQLite是一种嵌入式关系型数据库管理系统，它提供了轻量级的、零配置的数据库解决方案。SQLite具有小巧、高效、可嵌入的特点，适用于嵌入式设备和移动应用程序。
+dependency:
+  - N/A
