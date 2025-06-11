@@ -34,9 +34,13 @@ The tag of each vLLM docker image is consist of the version of vLLM and the vers
 | Tags | Currently |  Architectures|
 |--|--|--|
 |[0.6.3-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.6.3/24.03-lts/Dockerfile)| vLLM 0.6.3 on openEuler 24.03-LTS | amd64 |
+|[0.8.3-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.8.3/22.03-lts/Dockerfile)| vLLM 0.8.3 on openEuler 22.03-LTS | amd64, arm64 |
 |[0.8.3-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.8.3/24.03-lts/Dockerfile)| vLLM 0.8.3 on openEuler 24.03-LTS | amd64, arm64 |
+|[0.8.4-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.8.4/22.03-lts/Dockerfile)| vLLM 0.8.4 on openEuler 22.03-LTS | amd64 |
 |[0.8.4-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.8.4/24.03-lts/Dockerfile)| vLLM 0.8.4 on openEuler 24.03-LTS | amd64 |
+|[0.8.5-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.8.5/22.03-lts/Dockerfile)| vLLM 0.8.5 on openEuler 22.03-LTS | amd64, arm64 |
 |[0.8.5-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.8.5/24.03-lts/Dockerfile)| vLLM 0.8.5 on openEuler 24.03-LTS | amd64, arm64 |
+|[0.9.0-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.9.0/22.03-lts/Dockerfile)| vLLM 0.9.0 on openEuler 22.03-LTS | amd64, arm64 |
 |[0.9.0-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.9.0/24.03-lts/Dockerfile)| vLLM 0.9.0 on openEuler 24.03-LTS | amd64, arm64 |
 
 # Usage
