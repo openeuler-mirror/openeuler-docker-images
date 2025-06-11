@@ -31,7 +31,7 @@ Here, users can select `{Tag}` based on their requirements.
 - Start a oceanbase instance
 
 	```bash
-	docker run -it --name my-oceanbase -p 2881:2881 openeuler/oceanbase:{Tag}
+	docker run -it --name my-oceanbase -p 2881:2881 openeuler/oceanbase:{Tag} bash
 	```
 	When `my-oceanbase` started, you can config and run your tasks
     ```

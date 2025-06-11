@@ -21,7 +21,7 @@ download: |
 usage: |
   - 启动容器
     ```
-    docker run -it --name my-oceanbase -p 2881:2881 openeuler/oceanbase:{Tag}
+    docker run -it --name my-oceanbase -p 2881:2881 openeuler/oceanbase:{Tag} bash
     ```
 
     用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。`my-oceanbase`启动之后，用户根据个人需求完成oceanbase的配置和部署
