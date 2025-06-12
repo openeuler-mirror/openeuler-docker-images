@@ -17,3 +17,9 @@
 0.8.4-oe2203sp4:
   path: 0.8.4/22.03-lts-sp4/Dockerfile
   arch: x86_64
+
+0.8.5-oe2203sp4:
+  path: 0.8.5/22.03-lts-sp4/Dockerfile
+
+0.9.0-oe2203sp4:
+  path: 0.9.0/22.03-lts-sp4/Dockerfile
