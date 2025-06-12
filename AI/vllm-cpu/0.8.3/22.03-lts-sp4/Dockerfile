@@ -1,4 +1,4 @@
-ARG BASE=openeuler/openeuler:22.03-lts
+ARG BASE=openeuler/openeuler:22.03-lts-sp4
 ARG VERSION=v0.8.3
 
 FROM ${BASE}
@@ -6,8 +6,11 @@ FROM ${BASE}
 ARG VERSION
 
 RUN yum update -y && \
-    yum install -y make gcc gcc-c++ python python-pip python3-devel git vim wget net-tools numactl-devel && \
+    yum install -y make gcc-toolset-12-gcc gcc-toolset-12-gcc-c++ python python-pip python3-devel git vim wget net-tools numactl-devel && \
     rm -rf /var/cache/yum
+
+ENV PATH=/opt/openEuler/gcc-toolset-12/root/usr/bin/:$PATH
+ENV LD_LIBRARY_PATH=/opt/openEuler/gcc-toolset-12/root/usr/lib64/:$LD_LIBRARY_PATH
 
 WORKDIR /workspace
 
