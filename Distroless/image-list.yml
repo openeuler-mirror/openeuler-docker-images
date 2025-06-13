@@ -6,4 +6,5 @@ images:
   distroless-cc: distroless-cc
   distroless-base: distroless-base
   distroless-php: distroless-php
+  distroless-pip: distroless-pip
   distroless-ruby: distroless-ruby
