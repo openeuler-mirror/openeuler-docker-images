@@ -3,13 +3,13 @@ FROM ${BASE}
 
 ARG VERSION=0.3.1
 
-RUN yum install -y git make gcc g++ clang automake zlib-devel libcurl-devel openssl-devel && \
+RUN yum install -y git make gcc g++ clang automake zlib-devel libcurl-devel openssl-devel wget && \
     yum clean all
 
 WORKDIR /opt/
 # install required autoconf version
 RUN rpm -e --nodeps autoconf && \
-    curl -O -L https://ftp.gnu.org/gnu/autoconf/autoconf-2.69.tar.gz && \
+    wget https://ftp.gnu.org/gnu/autoconf/autoconf-2.69.tar.gz && \
     tar -xzf autoconf-2.69.tar.gz && rm -rf autoconf-2.69.tar.gz && \
     cd autoconf-2.69 && \
     ./configure && \
