@@ -9,7 +9,7 @@ RUN yum install -y git make gcc g++ clang automake zlib-devel libcurl-devel open
 WORKDIR /opt/
 # install required autoconf version
 RUN rpm -e --nodeps autoconf && \
-    curl -O -L http://ftpmirror.gnu.org/autoconf/autoconf-2.69.tar.gz && \
+    curl -O -L https://ftp.gnu.org/gnu/autoconf/autoconf-2.69.tar.gz && \
     tar -xzf autoconf-2.69.tar.gz && rm -rf autoconf-2.69.tar.gz && \
     cd autoconf-2.69 && \
     ./configure && \
