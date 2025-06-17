@@ -1,2 +1,2 @@
-11.8.0-torch2.3.0-python3.10-oe2203lts:
-  path: 11.8.0-torch2.3.0-python3.10/22.03-lts/Dockerfile
+11.8.0-python3.10-oe2203lts:
+  path: 11.8.0-python3.10/22.03-lts/Dockerfile

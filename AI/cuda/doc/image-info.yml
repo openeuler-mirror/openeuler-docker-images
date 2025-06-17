@@ -11,7 +11,7 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
-  |[cuda11.8.0-torch2.3.0-python3.10-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/cuda/11.8.0-torch2.3.0-python3.10/22.03-lts/Dockerfile)| CUDA 11.8.0 on openEuler 22.03-LTS | arm64 |
+  |[cuda11.8.0-python3.10-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/cuda/11.8.0-python3.10/22.03-lts/Dockerfile)| CUDA 11.8.0 on openEuler 22.03-LTS | amd64, arm64 |
 
 download: |
   拉取镜像到本地
@@ -68,3 +68,11 @@ usage: |
 license: Apache-2.0 license
 similar_packages:
   - CANN: CANN是华为针对AI场景推出的异构计算架构，对上支持多种AI框架，对下服务AI处理器与编程，发挥承上启下的关键作用，是提升昇腾AI处理器计算效率的关键平台。
+dependency:
+  - nvcc
+  - libcudart.so
+  - libcublas.so
+  - libcufft.so
+  - libcurand.so
+  - libcusparse.so
+

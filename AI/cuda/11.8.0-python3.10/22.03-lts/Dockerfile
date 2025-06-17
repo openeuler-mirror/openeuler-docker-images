@@ -1,7 +1,6 @@
 ARG BASE=openeuler/openeuler:22.03
 ARG PY_VERSION=3.10.12
 ARG PY_MAJOR_VERSION=3.10
-ARG TORCH_VERSION=2.3.0
 
 # Stage 1: Install Python
 FROM ${BASE} AS python-installer
@@ -53,13 +52,12 @@ RUN PY_INSTALLER_DIR=Python-${PY_VERSION} && \
     ln -sf ${PY_HOME}/bin/pip3 ${PY_HOME}/bin/pip && \
     rm -rf /tmp/*
 
-# Stage 2: Install CUDA and torch
+# Stage 2: Install CUDA
 FROM ${BASE} AS cuda-installer
 
 ARG TARGETPLATFORM
 ARG PY_VERSION
 ARG PY_MAJOR_VERSION
-ARG TORCH_VERSION
 ARG PY_HOME=/usr/local/python${PY_VERSION}
 
 ENV PATH=${PY_HOME}/bin:${PATH}
@@ -95,5 +93,3 @@ RUN ARCH=$(case "${TARGETPLATFORM}" in \
     cp /tmp/cudnn/lib/libcudnn* /usr/local/cuda-11.8/lib64 && \
     chmod a+r /usr/local/cuda-11.8/include/cudnn.h /usr/local/cuda-11.8/lib64/libcudnn* && \
     rm -rf /tmp/cudnn*
-
-RUN pip3 install torch==${TORCH_VERSION} --index-url https://download.pytorch.org/whl/cu118
