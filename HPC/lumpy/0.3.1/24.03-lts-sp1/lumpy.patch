@@ -1,0 +1,63 @@
+diff --git a/Makefile b/Makefile
+index 9b206fc..8b94c94 100644
+--- a/Makefile
++++ b/Makefile
+@@ -64,17 +64,17 @@ lumpy:
+ 		echo ""; \
+ 	done
+
+-lumpy_filter: htslib
++lumpy_filter:
+ 	[ -d $(BIN_DIR) ] || mkdir -p $(BIN_DIR)
+ 	$(MAKE) --no-print-directory -C src/filter/
+ 	cp src/filter/lumpy_filter $(BIN_DIR)
+
+
+-htslib:
+-	$(shell cd lib/htslib && autoreconf)
+-	cd lib/htslib && \
+-	./configure --disable-bz2 --disable-lzma --enable-libcurl
+-	CFLAGS="$(CFLAGS) -DBGZF" $(MAKE) -C lib/htslib --no-print-directory CFLAGS="-DBGZF_MT"
++#htslib:
++#	cd lib/htslib && autoreconf
++#        cd lib/htslib && \
++#	./configure --disable-bz2 --disable-lzma --enable-libcurl
++#	CFLAGS="$(CFLAGS) -DBGZF" $(MAKE) -C lib/htslib --no-print-directory CFLAGS="-DBGZF_MT"
+
+ lumpyexpress:
+ 	[ -d $(BIN_DIR) ] || mkdir -p $(BIN_DIR)
+diff --git a/src/utils/BamTools/src/api/algorithms/Sort.h b/src/utils/BamTools/src/api/algorithms/Sort.h
+index 32902e1..754df63 100644
+--- a/src/utils/BamTools/src/api/algorithms/Sort.h
++++ b/src/utils/BamTools/src/api/algorithms/Sort.h
+@@ -76,7 +76,7 @@ struct API_EXPORT Sort {
+         { }
+
+         // comparison function
+-        bool operator()(const BamTools::BamAlignment& lhs, const BamTools::BamAlignment& rhs) {
++        bool operator()(const BamTools::BamAlignment& lhs, const BamTools::BamAlignment& rhs) const {
+             return sort_helper(m_order, lhs.Name, rhs.Name);
+         }
+
+@@ -112,7 +112,7 @@ struct API_EXPORT Sort {
+         { }
+
+         // comparison function
+-        bool operator()(const BamTools::BamAlignment& lhs, const BamTools::BamAlignment& rhs) {
++        bool operator()(const BamTools::BamAlignment& lhs, const BamTools::BamAlignment& rhs) const {
+
+             // force unmapped aligmnents to end
+             if ( lhs.RefID == -1 ) return false;
+diff --git a/src/utils/BamTools/src/api/internal/bam/BamMultiMerger_p.h b/src/utils/BamTools/src/api/internal/bam/BamMultiMerger_p.h
+index 3000097..ceac8ed 100644
+--- a/src/utils/BamTools/src/api/internal/bam/BamMultiMerger_p.h
++++ b/src/utils/BamTools/src/api/internal/bam/BamMultiMerger_p.h
+@@ -61,7 +61,7 @@ struct MergeItemSorter : public std::binary_function<MergeItem, MergeItem, bool>
+             : m_comp(comp)
+         { }
+
+-        bool operator()(const MergeItem& lhs, const MergeItem& rhs) {
++        bool operator()(const MergeItem& lhs, const MergeItem& rhs) const {
+             const BamAlignment& l = *lhs.Alignment;
+             const BamAlignment& r = *rhs.Alignment;
+             return m_comp(l,r);
