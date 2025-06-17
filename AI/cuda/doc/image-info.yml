@@ -33,7 +33,7 @@ usage: |
     | 配置项 | 描述 |
     |--|--|
     | `--name my-cann` | 容器名称。|
-    | `--gpus all` | 指定容器可以访问所有GPU设备 |
+    | `--gpus all` | 指定容器可以访问所有GPU设备，也可指定具体的GPU，如 --gpus '"device=0,1"' |
     | `-it` | 以交互模式启动容器。 |
     | `openeuler/cuda:{Tag}` | 指定要运行的镜像为 `openeuler/cuda`，其中` {Tag}` 是需要替换的镜像标签。 |
 
