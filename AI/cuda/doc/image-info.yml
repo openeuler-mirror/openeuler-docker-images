@@ -24,15 +24,7 @@ usage: |
     ```
     docker run \
         --name my-cuda \
-        --device ${device} \
-        --device /dev/davinci_manager \
-        --device /dev/devmm_svm \
-        --device /dev/hisi_hdc \
-        -v /usr/local/dcmi:/usr/local/dcmi \
-        -v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi \
-        -v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/ \
-        -v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info \
-        -v /etc/ascend_install.info:/etc/ascend_install.info \
+        --gpus all \
         -it openeuler/cuda:{Tag} bash
     ```
     用户可根据自身需求选择对应版本的`{Tag}`、对应的NPU设备`{device}`以及容器启动的其他参数配置。
@@ -41,15 +33,7 @@ usage: |
     | 配置项 | 描述 |
     |--|--|
     | `--name my-cann` | 容器名称。|
-    | `--device /dev/davinci1` | NPU设备，X是芯片物理ID号，例如davinci1。 |
-    | `--device /dev/davinci_manager` | davinci相关的管理设备。 |
-    | `--device /dev/devmm_svm` | 内存管理相关设备。 |
-    | `--device /dev/hisi_hdc` | hdc相关管理设备。 |
-    | `-v /usr/local/dcmi:/usr/local/dcmi` | 将宿主机dcmi的.so和接口文件目录`/usr/local/dcmi`挂载到容器中，请根据实际情况修改。 |
-    | `-v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi` | 将宿主机`npu-smi`工具`/usr/local/bin/npu-smi`挂载到容器中，请根据实际情况修改。 |
-    | `-v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/` | 将宿主机目录`/usr/local/Ascend/driver/lib64/driver`挂载到容器中。请根据driver的驱动.so所在路径修改。 |
-    | `-v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info` | 将宿主机版本信息文件`/usr/local/Ascend/driver/version.info`挂载到容器中，请根据实际情况修改。 |
-    | `-v /etc/ascend_install.info:/etc/ascend_install.info` |将宿主机安装信息文件`/etc/ascend_install.info`挂载到容器中。 |
+    | `--gpus all` | 指定容器可以访问所有GPU设备 |
     | `-it` | 以交互模式启动容器。 |
     | `openeuler/cuda:{Tag}` | 指定要运行的镜像为 `openeuler/cuda`，其中` {Tag}` 是需要替换的镜像标签。 |
 
