@@ -76,7 +76,12 @@ RUN yum update -y && \
     && rm -rf /var/cache/yum
 
 RUN \
-    wget --quiet https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda_11.8.0_520.61.05_linux.run -O ~/cuda_11.8.0_520.61.05_linux.run && \
+    if [ "${TARGETPLATFORM}" = "linux/arm64" ]; then \
+        CUDA_URL="https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda_11.8.0_520.61.05_linux_sbsa.run"; \
+    else \
+        CUDA_URL="https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda_11.8.0_520.61.05_linux.run"; \
+    fi && \
+    wget --quiet ${CUDA_URL} -O ~/cuda_11.8.0_520.61.05_linux.run && \
     chmod +x ~/cuda_11.8.0_520.61.05_linux.run && \
     ~/cuda_11.8.0_520.61.05_linux.run --toolkit --silent && \
     rm -f ~/cuda_11.8.0_520.61.05_linux.run
