@@ -17,7 +17,7 @@ Learn more about on [CUDA Document](https://docs.nvidia.com/cuda/).
 The tag of each `cuda` docker image is consist of the complete software stack version. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
-|[11.8.0-python3.10-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/cuda/11.8.0-python3.10/22.03-lts/Dockerfile)| CUDA 11.8.0 with Python 3.10 on openEuler 22.03-LTS | arm64,amd64 |
+|[11.8.0-cudnn8.9.0-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/cuda/11.8.0-cudnn8.9.0/22.03-lts/Dockerfile)| CUDA 11.8.0 with cudnn 8.9.0 on openEuler 22.03-LTS | arm64,amd64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` and `container startup options` based on their requirements.
