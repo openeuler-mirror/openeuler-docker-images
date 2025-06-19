@@ -8,3 +8,4 @@ images:
   distroless-php: distroless-php
   distroless-pip: distroless-pip
   distroless-ruby: distroless-ruby
+  distroless-base-nonroot: distroless-base-nonroot
