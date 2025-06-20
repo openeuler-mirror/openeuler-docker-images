@@ -1,0 +1,96 @@
+name: edk2
+category: others
+description: EDK II（EFI Development Kit II）是由TianoCore社区维护的开放源代码UEFI固件开发框架，用于构建符合UEFI（统一可扩展固件接口）规范的BIOS固件。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  edk2镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[202502-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/edk2/202502/24.03-lts-sp1/Dockerfile)| EDK II 202502 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/edk2:{Tag}
+  ```
+
+usage: |
+  - 步骤1：启动EDK II容器实例:
+    ```
+    docker run -it --privileged --device /dev/kvm --rm openeuler/edk2:{Tag}
+    ```
+    * `--privileged`：授予容器特权模式，可访问所有主机设备和内核功能（QEMU/KVM加速必需）
+    * `--device /dev/kvm`：将主机的KVM设备透传给容器，启用硬件辅助虚拟化（提升仿真性能）
+ 
+  - 步骤2：初始化EDK II环境
+    环境：openEuler操作系统 + AArch64架构 + QEMU
+    ```
+    docker run -it --rm openeuler/edk2:{Tag} bash
+    ```
+    * 配置EDK II编译环境（设置WORKSPACE/EDK_TOOLS_PATH等关键路径）
+    * 初始化Python脚本和工具链变量
+      
+  - 步骤3：配置编译目标
+    ```
+    TARGET_ARCH = AArch64
+    TOOL_CHAIN_TAG = GCC5
+    ```
+    * 使用AArch64架构+GCC5工具链（Linux）
+    * x86_64主机需改为TARGET_ARCH=X64
+      
+  - 步骤4：编译HelloWorld UEFI应用
+      ```
+      build -p MdeModulePkg/MdeModulePkg.dsc \
+        -m MdeModulePkg/Application/HelloWorld/HelloWorld.inf \
+        -a AARCH64
+      ```
+      * 程序路径：/opt/edk2/Build/MdeModule/DEBUG_GCC5/AARCH64/HelloWorld.efi
+  
+  - 步骤5：安装QEMU环境
+      ```
+      dnf install -y qemu-system-aarch64 wget
+      ```
+      下载UEFI固件：
+      ```
+      wget https://releases.linaro.org/components/kernel/uefi-linaro/latest/release/qemu64/QEMU_EFI.fd -O /opt/QEMU_EFI.fd
+      ```
+
+  - 步骤6：QEMU运行测试
+    ```
+    qemu-system-aarch64 \
+      -machine virt \
+      -cpu cortex-a57 \
+      -bios /opt/QEMU_EFI.fd \
+      -kernel /opt/edk2/Build/MdeModule/DEBUG_GCC5/AARCH64/HelloWorld.efi \
+      -nographic \
+      -monitor none \
+      -serial stdio
+    ```
+
+    参数：
+    * `-machine virt`：标准ARM虚拟机
+    * `-cpu cortex-a57`：指定CPU型号
+    * `-bios`：加载UEFI固件
+    * `-kernel`：直接启动EFI应用
+    * `-nographic -serial stdio`：控制台输出重定向
+  
+    预期输出：
+    ```
+    UEFI Hello World!
+    ......
+    ```
+
+license: BSD-2-Clause-Patent
+similar_packages:
+  - N/A
+dependency:
+  - Python
+  - QEMU
+  - KVM
+  - NASM
+  - IASL
