@@ -1,0 +1,39 @@
+name: busco
+category: hpc
+description: BUSCO是Benchmarking Universal Single-Copy Orthologs（通用单拷贝同源基因基准）的缩写，基于基因进化（有参比对）评估基因组组装和注释完整性的开源python软件。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  busco镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  | Tags | Currently |  Architectures|
+  |------|-----------|---------------|
+  |[5.8.3-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/busco/5.8.3/24.03-lts-sp1/Dockerfile)| BUSCO 5.8.3 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/busco:{Tag}
+  ```
+usage: |
+  - 拉取镜像
+
+    ```
+    docker pull openeuler/busco:{Tag}
+    ```
+    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。
+  
+  - 运行容器
+
+    ```
+    docker run -it --name my-busco openeuler/busco:{Tag}
+    ```
+    容器运行后，按照[BUSCO官方说明](https://busco.ezlab.org/)使用。
+    
+license: MIT License
+similar_packages:
+  - N/A
+dependency:
+  - pandas

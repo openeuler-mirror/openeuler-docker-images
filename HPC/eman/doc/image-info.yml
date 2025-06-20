@@ -1,0 +1,66 @@
+name: eman
+category: hpc
+description: EMAN2是一个基础广泛的灰度科学图像处理套件，主要专注于处理来自透射电子显微镜的数据。EMAN2能够非常有效地处理大型数据集（>100,000个粒子）。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  lumpy-sv镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  | Tags | Currently |  Architectures|
+  |------|-----------|---------------|
+  |[2.99.69-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/eman/2.99.69/24.03-lts-sp1/Dockerfile)| EMAN2 2.99.69 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/eman:{Tag}
+  ```
+usage: |
+  - 拉取镜像
+
+    ```
+    docker pull openeuler/eman:{Tag}
+    ```
+    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。
+  
+  - 运行容器
+
+    ```
+	  docker run -it --name my-eman openeuler/eman:{Tag}
+	  ```
+
+    使用EMAN2之前, 需要先激活`eman2`环境
+    ```
+    conda activate eman2
+    ```
+
+  - 测试验证
+    运行`e2speedtest.py`脚本：
+    ```
+     /usr/local/miniconda/envs/eman2/bin/e2speedtest.py
+    ```
+    正常返回以下内容：
+    ```
+    This could take a few minutes. Please be patient.
+    Initializing
+    ....................
+    ....................
+    ....................
+    ....................
+    ....................
+    ....................
+    ....................
+    ....................
+
+    Your machines speed factor = 2.6758 +- 0.0200 (0.0086 +- 0.00006 sec)
+    ```
+
+license: GPL2、BSD 3-Clause
+similar_packages:
+  - N/A
+dependency:
+  - conda
+  - python
