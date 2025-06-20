@@ -30,7 +30,7 @@ usage: |
 
     ```
     docker run -it --name my-eman openeuler/eman:{Tag}
-	  ```
+    ```
 
     使用EMAN2之前, 需要先激活`eman2`环境
     ```
@@ -40,7 +40,7 @@ usage: |
   - 测试验证
     运行`e2speedtest.py`脚本：
     ```
-     /usr/local/miniconda/envs/eman2/bin/e2speedtest.py
+    /usr/local/miniconda/envs/eman2/bin/e2speedtest.py
     ```
     正常返回以下内容：
     ```
