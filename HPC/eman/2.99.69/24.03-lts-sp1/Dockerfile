@@ -3,6 +3,7 @@ FROM ${BASE}
 
 ARG VERSION=2.99.69
 ARG TARGETARCH
+ARG BUILDARCH
 
 RUN yum install -y \
         git python3-pip wget \
@@ -10,7 +11,12 @@ RUN yum install -y \
         mesa-libGL mesa-libGL-devel mesa-libGLU mesa-libGLU-devel \
         libSM xcb-util-renderutil xcb-util-keysyms xcb-util-image xcb-util-wm 
 
-RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-aarch64.sh -O miniconda.sh && \
+RUN if [ "$TARGETARCH" = "amd64" ]; then \
+        BUILDARCH="x86_64"; \
+    elif [ "$TARGETARCH" = "arm64" ]; then \
+        BUILDARCH="aarch64"; \
+    fi && \
+    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-$BUILDARCH.sh -O miniconda.sh && \
     bash miniconda.sh -b -p /usr/local/miniconda && \
     /usr/local/miniconda/bin/conda init bash
 
