@@ -1,0 +1,65 @@
+name: dpdk
+category: others
+description: DPDK（Data Plane Development Kit）是一个由Intel发起、广泛用于数据包处理的高性能软件开发框架，专为用户态高速网络包处理场景设计。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  dpdk镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[25.03-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/dpdk/25.03/24.03-lts-sp1/Dockerfile)| DPDK 25.03 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/dpdk:{Tag}
+  ```
+
+usage: |
+  - 临时设置hugePages（重启后失效）
+    ```	
+    echo 64 > /sys/devices/system/node/node0/hugepages/hugepages-2048kB/nr_hugepages
+    mkdir -p /dev/hugepages
+    mount -t hugetlbfs nodev /dev/hugepages
+    ```
+    这将启用64个2MB的HugePages，并将其挂载到 `/dev/hugepages`.
+ 
+  - 运行DPDK容器
+      ```
+      docker run -it --rm \
+        --cap-add=IPC_LOCK \
+        --privileged \
+        -v /dev/hugepages:/dev/hugepages \
+        -v /sys/bus/pci:/sys/bus/pci \
+        -v /sys/devices:/sys/devices \
+        -v /sys/kernel/mm/hugepages:/sys/kernel/mm/hugepages \
+        -v /lib/modules:/lib/modules \
+        --network host \
+        openeuler/dpdk:{Tag} bash
+      ```
+      * `--privileged`: 授予访问设备绑定（如 VFIO和HugePages的权限
+      * `--network host`: 允许DPDK访问宿主机上的实际物理网卡
+      
+  - 运行示例程序helloworld
+      Once inside the container:
+      ```
+      cd /dpdk/examples/helloworld
+      make
+      ./build/helloworld -l 0 -n 2
+      ```
+      该命令会编译并运行DPDK的`helloworld`示例程序，绑定到逻辑核心0，并使用2个内存通道。
+ 
+
+license: BSD-3-Clause
+similar_packages:
+  - netmap: 高性能的网络I/O框架，旨在简化内核与用户空间之间的网络包传输，并提供接近线速（line-rate）的网络性能。
+dependency:
+  - numactl-devel
+  - pcre
+  - libelf/elfutils
+  - libbsd
+  - libpcap
