@@ -1,0 +1,63 @@
+name: gcc
+category: others
+description: GCC (GNU Compiler Collection) 是 GNU 项目开发的一套开源编译器工具集，支持多种编程语言，是 Linux 系统中最常用的编译器。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  gcc镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[15.1.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/gcc/15.1.0/24.03-lts-sp1/Dockerfile)| GCC 15.1.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/gcc:{Tag}
+  ```
+
+usage: |
+  - 使用交互式Shell运行:
+
+    启动一个带交互式Shell的容器，使用GCC运行自己的代码。
+    ```
+    docker run -it --rm openeuler/gcc:{Tag} bash  
+    ```
+      
+  - 个最简单的GCC程序
+  
+      创建一个名为hello.c的文件，内容如下：
+      ```
+      // hello.c  
+      #include <stdio.h>  
+
+      int main() {  
+          printf("Hello from GCC %d.%d.%d\n",  
+              __GNUC__, __GNUC_MINOR__, __GNUC_PATCHLEVEL__);  
+          return 0;  
+      }  
+      ```
+      
+  - 编译程序:
+      使用新版本的gcc编译程序：
+      ```
+      /usr/local/gcc/bin/gcc hello.c -o hello  
+      ```
+  
+  - 运行程序
+      ```
+      $ ./hello
+      ```
+
+license: GPLv3
+similar_packages:
+  - G++: G++是GNU C++编译器（GNU C++ Compiler），属于GCC（GNU Compiler Collection）的一部分，专门用于编译C++代码。
+dependency:
+  - gmp
+  - mpfr
+  - mpc
+  - gettext
+  - isl
