@@ -2,6 +2,7 @@ ARG BASE=openeuler/openeuler:24.03-lts-sp1
 FROM ${BASE}
 
 ARG VERSION=5.8.1
+ARG BRANCH=v${VERSION}
 ARG TARGETARCH
 
 RUN yum install -y \
@@ -19,4 +20,7 @@ COPY build-CTKAppLauncher.sh /opt/
 WORKDIR /opt/
 RUN ./build-CTKAppLauncher.sh && \
     ./build-tbb.sh && \
-    ./build-Slicer.sh $VERSION /opt/zlib.patch
+    if [ "$TARGETARCH" = "arm64" ]; then \
+        BRANCH="main"; \
+    fi && \
+    ./build-Slicer.sh ${BRANCH} /opt/zlib.patch

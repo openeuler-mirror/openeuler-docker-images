@@ -47,7 +47,7 @@ source_dir=$script_dir/Slicer
 build_dir=$script_dir/Slicer-$build_type
 
 if [[ ! -d $source_dir ]]; then
-  git clone -b v$branch https://github.com/Slicer/Slicer $source_dir
+  git clone -b $branch https://github.com/Slicer/Slicer $source_dir
 fi
 
 echo "source_dir [$source_dir]"
