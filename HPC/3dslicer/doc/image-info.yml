@@ -1,0 +1,50 @@
+name: 3dslicer
+category: hpc
+description: 3D Slicer 是一款免费的开源软件，用于可视化、处理、分割、配准和分析医学、生物医学和其他 3D 图像和网格；以及规划和导航图像引导程序。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  lumpy-sv镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  | Tags | Currently |  Architectures|
+  |------|-----------|---------------|
+  |[5.8.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/3dslicer/5.8.1/24.03-lts-sp1/Dockerfile)| 3D Slicer 5.8.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/3dslicer:{Tag}
+  ```
+usage: |
+  - 拉取镜像
+
+    ```
+    docker pull openeuler/3dslicer:{Tag}
+    ```
+    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。
+  
+  - 运行容器
+
+    ```
+    docker run -it --name my-3dslicer openeuler/3dslicer:{Tag}
+    ```
+    进入容器后, 可以按照3D Slicer的 [用户指南](https://slicer.readthedocs.io/en/latest/developer_guide/index.html) 运行程序：
+    ```
+    # 进入可执行目录
+    cd Slicer-install/
+    ./Slicer
+    ```
+    也可以运行简单的测试用例：
+    ```
+    cd Slicer-install/
+    ctest -j4
+    ```
+
+license: Security policy
+similar_packages:
+  - N/A
+dependency:
+  - qt5
