@@ -1,0 +1,59 @@
+name: npm
+category: others
+description: npm（Node Package Manager）是 Node.js 的官方包管理工具。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  npm镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[11.4.2-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/npm/11.4.2/24.03-lts-sp1/Dockerfile)| npm 11.4.2 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/npm:{Tag}
+  ```
+
+usage: |
+  - 以交互式Shell运行容器:
+
+    通过交互式 Shell 启动容器，使用npm命令：
+    ```
+    docker run -it --rm openeuler/npm:{Tag} bash
+    ```
+ 
+  - 使用npm CLI
+  
+      安装 npm 仓库中的最新版本模块：
+      ```
+      npm install <package_name>
+      ```
+      
+      示例：
+      ```
+      npm install sax
+      ```
+      说明：
+      * 省略版本标签（如 @latest）时，默认安装最新的稳定版本
+      * 该命令会自动获取 npm 仓库中标记为 latest 的包
+  >[!WARNING]
+  >Do not run `npm install` in root directory (`/`). This will cause dependency resolution errors.
+      
+  - 查看所有可用命令：
+      参考完整的 [npm CLI 文档](https://docs.npmjs.com/cli/v11/commands/npm)
+      ```
+      npm help
+      ```
+
+license: Artistic License 2.0
+similar_packages:
+  - yarn: Yarn（Yet Another Resource Negotiator）是 Facebook 推出的 JavaScript 包管理工具，旨在优化 npm 的依赖管理流程。
+dependency:
+  - nodejs
+  - openssl
+  - ca-certificates
