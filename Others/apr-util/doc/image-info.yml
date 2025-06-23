@@ -1,0 +1,79 @@
+name: apr-util
+category: others
+description: APR-util（Apache Portable Runtime Utility）是APR（Apache Portable Runtime）的扩展工具库。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  apr-util镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.6.3-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/apr-util/1.6.3/24.03-lts-sp1/Dockerfile)| APR-util 1.6.3 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/apr-util:{Tag}
+  ```
+
+usage: |
+  - 使用交互式Shell运行:
+
+    启动一个带交互式Shell的容器，使用apr-util运行自己的代码。
+    ```
+    docker run -it --rm openeuler/apr-util:{Tag} bash 
+    ```
+    
+  - 一个简单的使用示例
+  
+      创建`parse.c`文件，内容如下：
+      ```
+      // parse.c
+      #include <apr_general.h>
+      #include <apr_uri.h>
+      #include <stdio.h>
+  
+      int main() {
+          apr_initialize();
+          apr_pool_t *pool;
+          apr_pool_create(&pool, NULL);
+      
+          apr_uri_t uri;
+          const char *url = "http://example.com/path?key=value";
+          
+          if (apr_uri_parse(pool, url, &uri) == APR_SUCCESS) {
+              printf("Host: %s\n", uri.hostname);
+          } else {
+              printf("Parse failed\n");
+          }
+      
+          apr_pool_destroy(pool);
+          apr_terminate();
+          return 0;
+      }
+      ```
+      
+  - 编译程序:
+      ```
+        gcc parse.c -o parse \
+          -I/usr/local/apr/include/apr-1 \
+          -I/usr/include/apr-util-1 \
+          -L/usr/local/apr/lib \
+          -lapr-1 -laprutil-1
+      ```
+    
+  - 运行程序
+      ```
+      $ ./parse
+      ```
+
+license: Apache-2.0
+similar_packages:
+  - N/A
+dependency:
+  - apr
+  - expat
+  - openssl
