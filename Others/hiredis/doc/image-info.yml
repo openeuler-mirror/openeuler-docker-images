@@ -1,0 +1,93 @@
+name: hiredis
+category: others
+description: Hiredis 是 Redis 官方推荐的 C 语言客户端库，专为高性能、低延迟的 Redis 交互设计。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  hiredis镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.3.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/hiredis/1.3.0/24.03-lts-sp1/Dockerfile)| Hiredis 1.3.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/hiredis:{Tag}
+  ```
+
+usage: |
+  - 使用 Hiredis 的 Redis 客户端示例
+
+    这个示例演示了如何使用 C 语言中的 Hiredis 客户端库连接到 Redis 服务器并执行基本命令。
+    该示例连接到运行在 127.0.0.1 地址、端口为 6379 的 Redis 服务器，发送一个 PING 命令，并打印响应。
+  
+    请确保安装并运行了 Redis，可以使用以下命令启动 Redis 服务：
+    ```
+    dnf install -y redis
+    nohup redis-server /etc/redis.conf --daemonize no > /var/log/redis.log 2>&1 &
+    ```
+  
+  - 一个最简的 Hiredis 程序
+    
+      创建一个名为 hiredis.c 的文件，内容如下：
+      ```
+      #include <stdlib.h>
+      #include <hiredis/hiredis.h>
+  
+      int main() {
+          // Connect to Redis (default: 127.0.0.1:6379)
+          redisContext *c = redisConnect("127.0.0.1", 6379);
+      
+          // Check connection status
+          if (c == NULL || c->err) {
+              printf("Connection failed: %s\n", c ? c->errstr : "Memory allocation failed");
+              exit(1);  // Exit with error code
+          }
+          printf("Redis connection established!\n");
+  
+          // Execute PING command
+          redisReply *reply = redisCommand(c, "PING");
+          printf("PING response: %s\n", reply->str);
+      
+          // Free reply memory
+          freeReplyObject(reply);
+  
+          // Close connection
+          redisFree(c);
+      
+          return 0;  // Exit successfully
+      }
+      ```
+      
+  - 编译
+     
+      使用以下命令编译 hiredis.c 程序：
+      ```
+      gcc -o hiredis hiredis.c -lhiredis
+      ```
+  
+  - 运行
+  
+      使用以下命令运行编译后的可执行文件：
+      ```
+      ./hiredis
+      ```
+      
+  - 输出
+    
+      预期输出内容如下：
+      ```
+      Redis connection established!
+      PING response: PONG
+      ```
+
+license: BSD-3-Clause
+similar_packages:
+  - N/A
+dependency:
+  - zlib
+  - openssl
