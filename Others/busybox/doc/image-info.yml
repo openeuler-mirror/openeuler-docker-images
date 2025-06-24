@@ -1,0 +1,46 @@
+name: busybox
+category: others
+description: BusyBox 是一个为类 UNIX 系统设计的 超轻量工具集，它将常用的 Unix 命令（如 ls, cp, mv, sh, ifconfig 等）集成到一个单一的可执行文件中。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  busybox镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  | [1.37.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/busybox/1.37.0/24.03-lts-sp1/Dockerfile) | BusyBox 1.37.0 on openEuler 24.03-LTS-SP1 |  amd64, arm64 |
+
+  注意，以下`{Tag}`的值按照需求，替换为上述表格中的tag内容。
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/busybox:{Tag}
+  ```
+
+usage: |
+  你可以通过在命令行中将命令作为参数传递来调用 BusyBox。例如，输入:
+     
+    busybox ls
+  
+  也会使 BusyBox 表现得像 ls 命令。
+  
+  当然，如果每次命令都要加上 /bin/busybox 会很麻烦。所以大多数人会通过为 BusyBox 创建链接（软链接）来使用它：
+  
+    ln -s /usr/local/busybox/bin/busybox ls
+    ./ls
+  
+  这将使 BusyBox 表现为 ls（前提是 ls 命令已被编译进 BusyBox）。
+
+  一般来说，你不需要手动为每个命令创建这些链接，因为当你运行 make install 时，BusyBox 的构建系统会自动为你完成这些操作。
+
+  如果你直接运行 BusyBox 而不带任何参数，它会列出该 BusyBox 可执行文件中已经编译进去的所有命令（即 applets）。
+
+license: GPL-2.0 license
+similar_packages:
+  - N/A
+dependency:
+  - N/A
