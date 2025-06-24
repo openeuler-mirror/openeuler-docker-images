@@ -41,7 +41,8 @@ COPY --from=git $HOME/GenAIComps/*.* $HOME/GenAIComps/LICENSE $HOME/GenAIComps/
 
 WORKDIR $HOME/GenAIComps
 RUN yum install -y python3 && \
-    yum install -y python3-pip 
+    yum install -y python3-pip && \
+    yum install -y git
 
 
 RUN pip install --no-cache-dir --upgrade pip setuptools && \
@@ -55,6 +56,8 @@ USER user
 
 # Stage 4: unique part
 FROM comps-base
+
+RUN git clone -b v1.2 https://github.com/opea-project/GenAIExamples.git
 
 COPY ./chatqna.py /home/user/chatqna.py
 
