@@ -1,0 +1,113 @@
+name: netty
+category: others
+description: Netty 是一个基于 Java 的 高性能、异步事件驱动的网络通信框架，适用于快速开发可靠、可扩展的网络应用程序。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  netty镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[4.2.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/netty/4.2.1/24.03-lts-sp1/Dockerfile)| Netty 4.2.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/netty:{Tag}
+  ```
+
+usage: |
+  - 引入Netty依赖:
+  
+    Maven：
+    ```
+    <dependency>
+      <groupId>io.netty</groupId>
+      <artifactId>netty-all</artifactId>
+      <version>4.2.1.Final</version>
+    </dependency>
+    ```
+    Gradle:
+    ```
+    implementation 'io.netty:netty-all:4.2.1.Final'
+    ```
+   
+  - 编写一个简单的服务器
+    
+    **EchoServer.java**：
+    ```
+    public class EchoServer {
+        private final int port;
+      
+        public EchoServer(int port) {
+            this.port = port;
+        }
+      
+        public void start() throws Exception {
+            EventLoopGroup bossGroup = new NioEventLoopGroup();
+            EventLoopGroup workerGroup = new NioEventLoopGroup();
+      
+            try {
+                ServerBootstrap b = new ServerBootstrap();
+                b.group(bossGroup, workerGroup)
+                 .channel(NioServerSocketChannel.class)
+                 .childHandler(new ChannelInitializer<SocketChannel>() {
+                     @Override
+                     public void initChannel(SocketChannel ch) {
+                         ch.pipeline().addLast(new EchoServerHandler());
+                     }
+                 });
+      
+                ChannelFuture f = b.bind(port).sync();
+                f.channel().closeFuture().sync();
+            } finally {
+                bossGroup.shutdownGracefully();
+                workerGroup.shutdownGracefully();
+            }
+        }
+      
+        public static void main(String[] args) throws Exception {
+            new EchoServer(8080).start(); 
+        }
+    }
+    ```
+      
+    **EchoServerHandler.java**
+    ```
+    public class EchoServerHandler extends ChannelInboundHandlerAdapter {
+        @Override
+        public void channelRead(ChannelHandlerContext ctx, Object msg) {
+            ctx.write(msg);
+        }
+      
+        @Override
+        public void channelReadComplete(ChannelHandlerContext ctx) {
+            ctx.flush();
+        }
+      
+        @Override
+        public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
+            cause.printStackTrace();
+            ctx.close();
+        }
+    }
+    ```
+  
+  - 运行服务器
+  
+    直接运行 EchoServer 类中的 main 方法即可。
+    通过命令行连接测试：
+    ```
+    telnet localhost 8080
+    ```
+    输入的任何内容都会被服务器原样返回。
+
+license: Apache-2.0 license
+similar_packages:
+  - Mina: Apache MINA（Multipurpose Infrastructure for Network Applications）是 Apache 软件基金会开发的一个 Java 网络通信框架，用于构建高性能和高可扩展性的网络应用程序。
+dependency:
+  - openjdk
+  - maven
