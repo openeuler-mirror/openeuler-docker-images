@@ -40,6 +40,8 @@ RUN git clone https://github.com/opea-project/GenAIComps.git && cd GenAIComps &&
 RUN cp -r GenAIComps/comps . && \
     rm -rf GenAIComps
 
+COPY comps/dataprep/redis/langchain/requirements.txt /home/user/comps/dataprep/redis/langchain/requirements.txt
+
 RUN pip install --no-cache-dir --upgrade pip setuptools && \
     if [ ${ARCH} = "cpu" ]; then pip install --no-cache-dir torch torchvision --index-url https://download.pytorch.org/whl/cpu; fi && \
     pip install --no-cache-dir -r /home/user/comps/dataprep/redis/langchain/requirements.txt
