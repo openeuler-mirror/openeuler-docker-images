@@ -43,7 +43,7 @@ USER user
 
 WORKDIR /home/user/
 
-RUN git clone https://github.com/opea-project/GenAIComps.git && cd GenAIComps && git checkout v1.0
+RUN git clone https://github.com/opea-project/GenAIComps.git && cd GenAIComps && git checkout v1.2
 
 RUN cp -r GenAIComps/comps . && \
     rm -rf GenAIComps

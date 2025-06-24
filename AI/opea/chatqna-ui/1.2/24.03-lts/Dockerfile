@@ -19,8 +19,7 @@ RUN curl -fsSL https://nodejs.org/dist/v20.11.1/node-v20.11.1-linux-x64.tar.xz -
 RUN yum update -y && yum install -y git
 
 # Copy the front-end code repository
-RUN git clone https://github.com/opea-project/GenAIComps.git && \
-    git checkout v1.2 && \
+RUN git clone -b v1.2 https://github.com/opea-project/GenAIComps.git && \
     cp ./GenAIExamples/ChatQnA/ui/svelte /home/user/svelte
 
 #COPY svelte /home/user/svelte
