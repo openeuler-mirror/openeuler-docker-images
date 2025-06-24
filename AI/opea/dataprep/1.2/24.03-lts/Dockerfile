@@ -40,20 +40,24 @@ RUN git clone https://github.com/opea-project/GenAIComps.git && cd GenAIComps &&
 RUN cp -r GenAIComps/comps . && \
     rm -rf GenAIComps
 
-COPY comps/dataprep/redis/langchain/requirements.txt /home/user/comps/dataprep/redis/langchain/requirements.txt
-
 RUN pip install --no-cache-dir --upgrade pip setuptools && \
-    if [ ${ARCH} = "cpu" ]; then pip install --no-cache-dir torch torchvision --index-url https://download.pytorch.org/whl/cpu; fi && \
-    pip install --no-cache-dir -r /home/user/comps/dataprep/redis/langchain/requirements.txt
+    if [ ${ARCH} = "cpu" ]; then \
+        PIP_EXTRA_INDEX_URL="--extra-index-url https://download.pytorch.org/whl/cpu"; \
+    else \
+        PIP_EXTRA_INDEX_URL=""; \
+    fi && \
+    pip install --no-cache-dir torch torchvision ${PIP_EXTRA_INDEX_URL} && \
+    pip install --no-cache-dir ${PIP_EXTRA_INDEX_URL} -r /home/user/comps/dataprep/src/requirements.txt && \
+    pip install opentelemetry-api==1.29.0 opentelemetry-exporter-otlp==1.29.0 opentelemetry-sdk==1.29.0
 
-ENV PYTHONPATH=/usr/bin/python:/home/user
+ENV PYTHONPATH=$PYTHONPATH:/home/user
 
 USER root
 
-RUN mkdir -p /home/user/comps/dataprep/redis/langchain/uploaded_files && chown -R user /home/user/comps/dataprep/redis/langchain/uploaded_files
+RUN mkdir -p /home/user/comps/dataprep/src/uploaded_files && chown -R user /home/user/comps/dataprep/src/uploaded_files
 
 USER user
 
-WORKDIR /home/user/comps/dataprep/redis/langchain
+WORKDIR /home/user/comps/dataprep/src
 
-ENTRYPOINT ["python", "prepare_doc_redis.py"]
+ENTRYPOINT ["sh", "-c", "python $( [ \"$MULTIMODAL_DATAPREP\" = \"true\" ] && echo 'opea_dataprep_multimodal_microservice.py' || echo 'opea_dataprep_microservice.py')"]
