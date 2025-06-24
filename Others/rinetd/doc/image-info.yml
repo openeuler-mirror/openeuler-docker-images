@@ -1,0 +1,61 @@
+name: rinetd
+category: others
+description: rinetd 是一个轻量级的 TCP 端口转发工具，主要用于将网络流量从一个 IP 地址和端口转发到另一个 IP 地址和端口。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  rinetd镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[0.73-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/rinetd/0.73/24.03-lts-sp1/Dockerfile)| Rinetd 0.73 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/rinetd:{Tag}
+  ```
+
+usage: |
+  - 以交互式Shell运行容器:
+
+    通过交互式 Shell 启动容器，使用rinetd命令：
+    ```
+    docker run -it --rm openeuler/rinetd:{Tag} bash
+    ```
+ 
+  - 配置文件
+  
+      默认的配置文件通常位于 /etc/rinetd.conf， 格式如下：
+      ```
+      bindaddress  bindport  connectaddress  connectport
+      ```
+      
+      示例：
+      ```
+      0.0.0.0 8080 127.0.0.1 80
+      ```
+      这表示会将所有发送到本机任意网卡的`8080 端口`的TCP流量转发到`127.0.0.1:80`（即本机的80端口）。
+      
+  - 启动rinetd
+      ```
+      rinetd -c /etc/rinetd.conf
+      ```
+  - 检查监听端口
+      安装 ss 工具（如果尚未安装）：
+      ```
+      dnf install -y iproute
+      ```
+      检查 rinetd 是否在监听：
+      ```
+      ss -ltnp | grep rinetd
+      ```
+
+license: GPL-2.0 license
+similar_packages:
+  - iptables: Linux 内核自带的防火墙工具，通过 NAT 规则实现端口转发，功能强大，灵活性高，但配置相对复杂。
+dependency:
+  - glibc
