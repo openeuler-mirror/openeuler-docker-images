@@ -20,6 +20,7 @@ RUN yum update -y && yum install -y git
 
 # Copy the front-end code repository
 RUN git clone -b v1.2 https://github.com/opea-project/GenAIExamples.git && \
+    mkdir -p /home/user && \
     cp -r ./GenAIExamples/ChatQnA/ui/svelte /home/user/svelte
 
 #COPY svelte /home/user/svelte
