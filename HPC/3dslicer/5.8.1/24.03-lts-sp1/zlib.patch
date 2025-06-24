@@ -1,0 +1,25 @@
+diff --git a/SuperBuild/External_zlib.cmake b/SuperBuild/External_zlib.cmake
+index 5257ac65f2..86aa015307 100644
+--- a/SuperBuild/External_zlib.cmake
++++ b/SuperBuild/External_zlib.cmake
+@@ -19,6 +19,11 @@ if(DEFINED ZLIB_ROOT AND NOT EXISTS ${ZLIB_ROOT})
+   message(FATAL_ERROR "ZLIB_ROOT variable is defined but corresponds to nonexistent directory")
+ endif()
+ 
++set(${proj}_CMAKE_C_FLAGS ${ep_common_c_flags})
++  if(CMAKE_SIZEOF_VOID_P EQUAL 8) # 64-bit
++    set(${proj}_CMAKE_C_FLAGS "${ep_common_c_flags} -fPIC")
++  endif()
++
+ if(NOT DEFINED ZLIB_ROOT AND NOT Slicer_USE_SYSTEM_${proj})
+ 
+   set(EP_SOURCE_DIR ${CMAKE_BINARY_DIR}/${proj})
+@@ -48,7 +53,7 @@ if(NOT DEFINED ZLIB_ROOT AND NOT Slicer_USE_SYSTEM_${proj})
+       ## CXX should not be needed, but it a cmake default test
+       -DCMAKE_CXX_COMPILER:FILEPATH=${CMAKE_CXX_COMPILER}
+       -DCMAKE_C_COMPILER:FILEPATH=${CMAKE_C_COMPILER}
+-      -DCMAKE_C_FLAGS:STRING=${ep_common_c_flags}
++      -DCMAKE_C_FLAGS:STRING=${${proj}_CMAKE_C_FLAGS}
+       -DZLIB_MANGLE_PREFIX:STRING=slicer_zlib_
+       -DCMAKE_INSTALL_PREFIX:PATH=<INSTALL_DIR>
+     DEPENDS
