@@ -1,72 +1,65 @@
 # Copyright (C) 2024 Intel Corporation
 # SPDX-License-Identifier: Apache-2.0
 
-# Base image
 FROM openeuler/openeuler:24.03-lts
 
-#安装python3.11
-RUN yum update -y && \
-    yum install -y \
-    python3.11 \
-    python3-devel \
-    python3-pip \
-    git \
-    wget \
-    gcc \
-    gcc-c++ \
-    java-1.8.0-openjdk \
-    cairo \
-    mesa-libGL \
-    jemalloc-devel \
-    postgresql-devel \
-    poppler-utils \
-    tesseract \
-    curl && \
-    ln -s /usr/bin/python3.11 /usr/bin/python  && \
-    yum clean all
-
 ENV LANG=C.UTF-8
+
 ARG ARCH="cpu"
 
-# Install LibreOffice
-RUN wget https://mirrors.bfsu.edu.cn/libreoffice/libreoffice/stable/24.8.6/rpm/x86_64/LibreOffice_24.8.6_Linux_x86-64_rpm.tar.gz && \
-    tar -xvf LibreOffice_24.8.6_Linux_x86-64_rpm.tar.gz && \
-    yum install -y ./LibreOffice_24.8.6.2_Linux_x86-64_rpm/RPMS/*.rpm && \
-    cd / && rm -rf LibreOffice_24.8.6.2_Linux_x86-64_rpm*  && rm LibreOffice_24.8.6_Linux_x86-64_rpm.tar.gz
-
-# Install ffmpeg static build
-RUN yum install -y xz && \
-cd /root && wget https://johnvansickle.com/ffmpeg/builds/ffmpeg-git-amd64-static.tar.xz && \
-mkdir ffmpeg-git-amd64-static && tar -xvf ffmpeg-git-amd64-static.tar.xz -C ffmpeg-git-amd64-static --strip-components 1 && \
-export PATH=/root/ffmpeg-git-amd64-static:$PATH && \
-cp /root/ffmpeg-git-amd64-static/ffmpeg /usr/local/bin/
-
+RUN yum update -y && \ 
+    yum install -y \
+    wget \
+    java-11-openjdk \
+    mesa-libGL \
+    shadow-utils \
+    jemalloc jemalloc-devel \
+    poppler-utils \
+    python-pip python \
+    tesseract \
+    tesseract-langpack-eng \
+    git
+    
+    
+RUN mkdir -p /tmp/LibreOffice/LibreOffice && \
+    wget -O /tmp/LibreOffice/LibreOffice.tar.gz https://mirrors.cloud.tencent.com/libreoffice/libreoffice/stable/25.2.1/rpm/x86_64/LibreOffice_25.2.1_Linux_x86-64_rpm.tar.gz && \
+    tar -zxvf /tmp/LibreOffice/LibreOffice.tar.gz -C /tmp/LibreOffice/LibreOffice/ --strip-components 1 && \
+    yum -y install /tmp/LibreOffice/LibreOffice/RPMS/*.rpm && \
+    mkdir -p /tmp/LibreOffice/langpack_zh-CN && \
+    wget -O /tmp/LibreOffice/langpack_zh-CN.tar.gz https://mirrors.cloud.tencent.com/libreoffice/libreoffice/stable/25.2.1/rpm/x86_64/LibreOffice_25.2.1_Linux_x86-64_rpm_langpack_zh-CN.tar.gz && \
+    tar -zxvf /tmp/LibreOffice/langpack_zh-CN.tar.gz -C /tmp/LibreOffice/langpack_zh-CN/ --strip-components 1 && \
+    yum -y install /tmp/LibreOffice/langpack_zh-CN/RPMS/*.rpm && \
+    mkdir -p /tmp/LibreOffice/helppack_zh-CN && \
+    wget -O /tmp/LibreOffice/helppack_zh-CN.tar.gz https://mirrors.cloud.tencent.com/libreoffice/libreoffice/stable/25.2.1/rpm/x86_64/LibreOffice_25.2.1_Linux_x86-64_rpm_helppack_zh-CN.tar.gz && \
+    tar -zxvf /tmp/LibreOffice/helppack_zh-CN.tar.gz -C /tmp/LibreOffice/helppack_zh-CN/ --strip-components 1 && \
+    yum -y install /tmp/LibreOffice/helppack_zh-CN/RPMS/*.rpm && \
+    rm -rf /tmp/LibreOffice
 
 RUN useradd -m -s /bin/bash user && \
     mkdir -p /home/user && \
     chown -R user /home/user/
 
-# COPY comps /home/user/comps
-RUN git clone --depth=1 --branch v1.2 https://github.com/opea-project/GenAIComps.git && \
-    cp -r GenAIComps/comps /home/user/comps && \
+USER user
+
+WORKDIR /home/user/
+
+RUN git clone https://github.com/opea-project/GenAIComps.git && cd GenAIComps && git checkout v1.0
+
+RUN cp -r GenAIComps/comps . && \
     rm -rf GenAIComps
 
 RUN pip install --no-cache-dir --upgrade pip setuptools && \
-    if [ ${ARCH} = "cpu" ]; then \
-        PIP_EXTRA_INDEX_URL="--extra-index-url https://download.pytorch.org/whl/cpu"; \
-    else \
-        PIP_EXTRA_INDEX_URL=""; \
-    fi && \
-    pip install --no-cache-dir torch torchvision ${PIP_EXTRA_INDEX_URL} && \
-    pip install --no-cache-dir ${PIP_EXTRA_INDEX_URL} -r /home/user/comps/dataprep/src/requirements.txt && \
-    pip install opentelemetry-api==1.29.0 opentelemetry-exporter-otlp==1.29.0 opentelemetry-sdk==1.29.0
+    if [ ${ARCH} = "cpu" ]; then pip install --no-cache-dir torch torchvision --index-url https://download.pytorch.org/whl/cpu; fi && \
+    pip install --no-cache-dir -r /home/user/comps/dataprep/redis/langchain/requirements.txt
 
-ENV PYTHONPATH=/usr/bin/python3:/home/user
+ENV PYTHONPATH=/usr/bin/python:/home/user
 
-RUN mkdir -p /home/user/comps/dataprep/src/uploaded_files && chown -R user /home/user/comps/dataprep/src/uploaded_files
+USER root
+
+RUN mkdir -p /home/user/comps/dataprep/redis/langchain/uploaded_files && chown -R user /home/user/comps/dataprep/redis/langchain/uploaded_files
 
 USER user
 
-WORKDIR /home/user/comps/dataprep/src
+WORKDIR /home/user/comps/dataprep/redis/langchain
 
-ENTRYPOINT ["sh", "-c", "python $( [ \"$MULTIMODAL_DATAPREP\" = \"true\" ] && echo 'opea_dataprep_multimodal_microservice.py' || echo 'opea_dataprep_microservice.py')"]
+ENTRYPOINT ["python", "prepare_doc_redis.py"]
