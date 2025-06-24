@@ -11,4 +11,4 @@
 1.10.0-oe2403lts:
   path: 1.10.0/24.03-lts/Dockerfile
 1.11.1-oe2403sp1:
-  path: Cloud/prometheus-pushgateway/1.11.1/24.03-lts-sp1/Dockerfile
+  path: 1.11.1/24.03-lts-sp1/Dockerfile
