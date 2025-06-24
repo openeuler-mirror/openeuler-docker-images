@@ -1,0 +1,50 @@
+name: wildfly
+category: others
+description: WildFly（原名 JBoss Application Server）是一个开源的、轻量级、高性能的Java EE/Jakarta EE应用服务器，并提供模块化架构，适用于云原生和微服务环境。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  WildFly镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[36.0.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/wildfly/36.0.0/24.03-lts-sp1/Dockerfile)| WildFly 36.0.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/wildfly:{Tag}
+  ```
+
+usage: |
+  - 单节点模式运行
+    ```
+    docker run -d -p 8080:8080 --name my-wildfly openeuler/wildfly:{TAG}
+    ```
+  
+  - 多节点集群模式运行
+    ```
+    docker run -d --name my-wildfly openeuler/wildfly:{TAG} ./bin/domain.sh -b 0.0.0.0 -bmanagement 0.0.0.0
+    ```
+
+  - 容器测试
+
+    查看运行日志
+    ```
+    docker logs -f my-wildfly
+    ```
+
+    使用shell交互
+    ```
+    docker exec -it my-wildfly /bin/bash
+    ```
+
+license: Apache-2.0 license
+similar_packages:
+  - Tomcat: Apache Tomcat（简称 Tomcat）是一个轻量级Web服务器和Servlet/JSP容器，它实现了Java Servlet、JSP（JavaServer Pages）和WebSocket规范，是运行Java Web应用的核心服务器之一。
+dependency:
+  - java
+  - maven

@@ -1,0 +1,9 @@
+name: distroless-pip
+summary: summary for distroless-pip
+base: scratch
+release: 24.03-LTS
+platforms:
+  - linux/amd64
+  - linux/arm64
+parts:
+  - python3-pip_bins

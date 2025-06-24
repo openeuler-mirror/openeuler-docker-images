@@ -1,0 +1,41 @@
+name: spdk
+category: others
+description: SPDK（Storage Performance Development Kit） 是由Intel牵头开发的一个开源项目，在用户态实现高性能存储设备访问，特别是NVMe和NVMe-oF。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  spdk镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[24.09-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/spdk/24.09/24.03-lts-sp1/Dockerfile)| SPDK 24.09 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/spdk:{Tag}
+  ```
+
+usage: |
+  - 运行默认单元测试:
+
+    默认情况下，启动容器没有指定命令（例如 bash）时，将自动运行默认的单元测试。
+
+    ```
+    docker run -it --rm openeuler/spdk:{Tag}
+    ```
+
+license: BSD-3-Clause
+similar_packages:
+  - N/A
+dependency:
+  - pkg-config
+  - libuuid
+  - libevent
+  - OpenSSL
+  - librdmacm
+  - libibverbs
+  - libaio

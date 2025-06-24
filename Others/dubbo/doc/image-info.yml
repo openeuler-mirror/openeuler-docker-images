@@ -1,0 +1,60 @@
+name: dubbo
+category: others
+description: Apache Dubbo 是一款 RPC 服务开发框架，用于解决微服务架构下的服务治理与通信问题，官方提供了 Java、Golang 等多语言 SDK 实现。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  dubbo镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[3.3.4-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/dubbo/3.3.4/24.03-lts-sp1/Dockerfile)| Dubbo 3.3.4 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/dubbo:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+    ```
+    docker run -d -p 50051:50051 --name my-dubbo openeuler/dubbo:{Tag}
+    ```
+    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。`my-dubbo`启动之后，通过`http://localhost:50051`访问服务。
+  
+  - 验证容器运行状态
+
+    可直接使用 cURL 测试服务是否已经正常运行：
+    ```
+    curl \
+  	    --header "Content-Type: application/json" \
+        --data '["Dubbo"]' \
+        http://localhost:50051/org.apache.dubbo.samples.quickstart.dubbo.api.DemoService/sayHello/
+    ```
+
+  - 容器测试
+
+    查看运行日志
+    ```
+    docker logs -f my-dubbo
+    ```
+
+    运行启动shell会话
+    ```
+    docker run -it --entrypoint /bin/bash --name my-dubbo openeuler/dubbo:{Tag}
+    ```
+
+license: Apache-2.0 license
+similar_packages:
+  - Spring Cloud: Spring Cloud 是一套基于 Spring Boot 的分布式系统开发工具集，专注于提供微服务架构中的常见模式（如配置管理、服务发现、熔断、路由等）。
+dependency:
+  - JDK
+  - zookeeper
+  - nacos
+  - Triple
+  - Spring Boot
+  - maven

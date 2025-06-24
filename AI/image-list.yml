@@ -11,6 +11,7 @@ images:
   oneapi-runtime: oneapi-runtime
   asr: opea/asr
   audioqna: opea/audioqna
+  audioqna-ui: opea/audioqna-ui
   chatqna-conversation-ui: opea/chatqna-conversation-ui
   chatqna-ui: opea/chatqna-ui
   chatqna: opea/chatqna
@@ -18,17 +19,23 @@ images:
   codegen: opea/codegen
   codetrans-ui: opea/codetrans-ui
   codetrans: opea/codetrans
+  dataprep: opea/dataprep  
   dataprep-redis: opea/dataprep-redis
   doc-index-retriever: opea/doc-index-retriever
   docsum-ui: opea/docsum-ui
   docsum: opea/docsum
   embedding-tei: opea/embedding-tei
+  embedding: opea/embedding
   faqgen-ui: opea/faqgen-ui
   faqgen: opea/faqgen
+  llm-faqgen: opea/llm-faqgen
   llm-docsum-tgi: opea/llm-docsum-tgi
   llm-faqgen-tgi: opea/llm-faqgen-tgi
   llm-tgi: opea/llm-tgi
   llm-vllm: opea/llm-vllm
+  llm-textgen: opea/llm-textgen
+  llm-docsum: opea/llm-docsum
+  docsum-gradio-ui: opea/docsum-gradio-ui
   reranking-tei: opea/reranking-tei
   retriever-redis: opea/retriever-redis
   searchqna: opea/searchqna
@@ -40,12 +47,13 @@ images:
   translation: opea/translation
   tts: opea/tts
   web-retriever-chroma: opea/web-retriever-chroma
+  web-retriever: opea/web-retriever
   whisper: opea/whisper
   finetuning: opea/finetuning
   pytorch: pytorch
   text-embeddings-inference-cpu: text-embeddings-inference-cpu
   text-generation-inference-cpu: text-generation-inference-cpu
-  vllm: vllm
+  vllm-cpu: vllm-cpu
   vllm-ascend: vllm-ascend
   langchain: langchain
   open-webui: open-webui
@@ -57,4 +65,10 @@ images:
   videoqna-ui: opea/videoqna-ui
   embedding-multimodal-clip: opea/embedding-multimodal-clip
   reranking-videoqna: opea/reranking-videoqna
+  reranking: opea/reranking
   retriever-vdms: opea/retriever-vdms
+  text2sql: opea/text2sql
+  text2sql-ui: opea/text2sql-ui
+  text2image: opea/text2image
+  text2image-ui: opea/text2image-ui
+  cuda: cuda

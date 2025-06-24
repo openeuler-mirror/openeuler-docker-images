@@ -1,0 +1,117 @@
+name: hyperscan
+category: others
+description: Hyperscan是由英特尔（Intel）开发的高性能正则表达式匹配引擎，专注于处理大规模网络流量和安全检测场景。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  hyperscan镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[5.4.2-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/hyperscan/5.4.2/24.03-lts-sp1/Dockerfile)| Hyperscan 5.4.2 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/hyperscan:{Tag}
+  ```
+
+usage: |
+  - 运行默认单元测试:
+
+    默认情况下，启动容器没有指定命令（例如 bash）时，将自动运行默认的单元测试。
+
+    ```
+    docker run -it --rm openeuler/hyperscan:{Tag}
+    ```
+ 
+  - 启动交互式 Shell
+  
+      可以通过指定交互式Shell启动容器，在容器中运行自定义的Hyperscan程序。
+      ```
+      docker run -it --rm openeuler/hyperscan:{Tag} bash
+      ```
+      
+  - 简单使用Hyperscan示例
+  
+      创建test.cpp文件，内容如下：
+      ```
+      #include <hs.h>
+      #include <stdio.h>
+      #include <stdlib.h>
+      #include <string.h>
+      
+      // Callback function that is called each time a match is found
+      static int eventHandler(unsigned int id, unsigned long long from,
+                              unsigned long long to, unsigned int flags, void *ctx) {
+          printf("Match for pattern ID %u at offset %llu - %llu\n", id, from, to);
+          return 0; // Continue scanning
+      }
+      
+      int main() {
+          const char *pattern = "foo.*bar";    // Regular expression pattern
+          const char *input = "some foo stuff and then bar finally";
+      
+          hs_database_t *database;
+          hs_compile_error_t *compile_err;
+      
+          // Compile the regular expression
+          if (hs_compile(pattern, HS_FLAG_DOTALL, HS_MODE_BLOCK, NULL, &database, &compile_err) != HS_SUCCESS) {
+              fprintf(stderr, "ERROR: Unable to compile pattern \"%s\": %s\n",
+                      pattern, compile_err->message);
+              hs_free_compile_error(compile_err);
+              return -1;
+          }
+      
+          hs_scratch_t *scratch = NULL;
+      
+          // Allocate scratch space
+          if (hs_alloc_scratch(database, &scratch) != HS_SUCCESS) {
+              fprintf(stderr, "ERROR: Unable to allocate scratch space.\n");
+              hs_free_database(database);
+              return -1;
+          }
+      
+          // Scan the input buffer
+          if (hs_scan(database, input, strlen(input), 0, scratch, eventHandler, NULL) != HS_SUCCESS) {
+              fprintf(stderr, "ERROR: Unable to scan input buffer.\n");
+              hs_free_scratch(scratch);
+              hs_free_database(database);
+              return -1;
+          }
+      
+          // Free resources
+          hs_free_scratch(scratch);
+          hs_free_database(database);
+      
+          return 0;
+      }
+      ```
+      
+  - 编译程序:
+      使用g++将该程序与Hyperscan库进行编译和链接：
+      ```
+      g++ test.cpp -o test \
+       -I/usr/local/include/hs \
+       -L/usr/local/lib \
+       -lhs
+      ```
+  
+  - 运行程序
+      ```
+      $ ./test
+      Match for pattern ID 0 at offset 0 - 27
+      ```
+
+license: BSD-3-Clause
+similar_packages:
+  - Rust Regex: Rust Regex（regex crate）是Rust生态中高效、安全的正则表达式库，广泛应用于文本处理、日志分析、网络协议解析等场景。
+dependency:
+  - sqlite
+  - pcre
+  - ragel
+  - boost
+  - libpcap

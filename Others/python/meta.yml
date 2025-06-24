@@ -1,4 +1,20 @@
 3.9.9-oe2203lts:
   path: 3.9.9/22.03-lts/Dockerfile
+3.9.9-oe2403lts:
+  path: 3.9.9/24.03-lts/Dockerfile
+3.10.17-oe2203lts:
+  path: 3.10.17/22.03-lts/Dockerfile
 3.10.17-oe2403lts:
   path: 3.10.17/24.03-lts/Dockerfile
+3.11.13-oe2203lts:
+  path: 3.11.13/22.03-lts/Dockerfile
+3.11.13-oe2403lts:
+  path: 3.11.13/24.03-lts/Dockerfile
+3.12.10-oe2203lts:
+  path: 3.12.10/22.03-lts/Dockerfile
+3.12.10-oe2403lts:
+  path: 3.12.10/24.03-lts/Dockerfile
+3.13.4-oe2203lts:
+  path: 3.13.4/22.03-lts/Dockerfile
+3.13.4-oe2403lts:
+  path: 3.13.4/24.03-lts/Dockerfile

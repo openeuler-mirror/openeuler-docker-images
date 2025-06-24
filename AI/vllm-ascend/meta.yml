@@ -1,2 +1,17 @@
 0.7.3rc2-torch_npu2.5.1-cann8.0.0-python3.10-oe2203lts:
   path: 0.7.3rc2-torch_npu2.5.1-cann8.0.0-python3.10/22.03-lts/Dockerfile
+
+0.7.3-torch_npu2.5.1-cann8.1.rc1-python3.10-oe2203lts:
+  path: 0.7.3-torch_npu2.5.1-cann8.1.rc1-python3.10/22.03-lts/Dockerfile
+
+0.8.4rc1-torch_npu2.5.1-cann8.0.0-python3.10-oe2203lts:
+  path: 0.8.4rc1-torch_npu2.5.1-cann8.0.0-python3.10/22.03-lts/Dockerfile
+
+0.8.5rc1-torch_npu2.5.1-cann8.1.rc1-python3.10-oe2203lts:
+  path: 0.8.5rc1-torch_npu2.5.1-cann8.1.rc1-python3.10/22.03-lts/Dockerfile
+
+0.9.0rc1-torch_npu2.5.1-cann8.1.rc1-python3.10-oe2203lts:
+  path: 0.9.0rc1-torch_npu2.5.1-cann8.1.rc1-python3.10/22.03-lts/Dockerfile
+
+0.9.0rc2-torch_npu2.5.1-cann8.1.rc1-python3.10-oe2203lts:
+  path: 0.9.0rc2-torch_npu2.5.1-cann8.1.rc1-python3.10/22.03-lts/Dockerfile

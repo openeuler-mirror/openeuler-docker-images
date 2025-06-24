@@ -6,7 +6,6 @@ FROM ${BASE} as builder
 ARG VERSION
 ARG TARGETARCH
 
-
 # Install dependencies
 RUN yum update -y && \
     yum install -y \
@@ -33,8 +32,7 @@ RUN yum update -y && \
     rm -rf /var/cache/yum && \
     rm -rf /tmp/*
 
-RUN VERSION_SHORT=$(echo "${VERSION}" | cut -d. -f1,2) && \
-    PY_HOME=/usr/local/python${VERSION_SHORT} && \
+RUN PY_HOME=/usr/local/python${VERSION} && \
     PY_INSTALLER_DIR=Python-${VERSION} && \
     PY_INSTALLER_TGZ=Python-${VERSION}.tgz && \
     curl -fsSL -o "/tmp/${PY_INSTALLER_TGZ}" "https://repo.huaweicloud.com/python/${VERSION}/${PY_INSTALLER_TGZ}" && \
@@ -44,21 +42,22 @@ RUN VERSION_SHORT=$(echo "${VERSION}" | cut -d. -f1,2) && \
     ./configure --prefix=${PY_HOME} --enable-shared LDFLAGS="-Wl,-rpath ${PY_HOME}/lib" && \
     make -j "$(nproc)" && \
     make altinstall && \
-    rm -rf /tmp/${PY_INSTALLER_TGZ} /tmp/${PY_INSTALLER_DIR}
+    rm -rf /tmp/*
 
 FROM ${BASE} AS official
 
 ARG VERSION
 
-COPY --from=builder /usr/local/python* /usr/local/python
+COPY --from=builder /usr/local/python${VERSION} /usr/local/python${VERSION}
 
 RUN VERSION_SHORT=$(echo "${VERSION}" | cut -d. -f1,2) && \
-    VERSION_MAJOR=$(echo "${VERSION}" | cut -d. -f1,2,3) && \
-    PY_HOME=/usr/local/python${VERSION_SHORT} && \
-    mv /usr/local/python ${PY_HOME} && \
+    VERSION_MAJOR=$(echo "${VERSION}" | cut -d. -f1) && \
+    PY_HOME=/usr/local/python${VERSION} && \
     ln -sf ${PY_HOME}/bin/python${VERSION_SHORT} ${PY_HOME}/bin/python${VERSION_MAJOR} && \
     ln -sf ${PY_HOME}/bin/pip${VERSION_SHORT} ${PY_HOME}/bin/pip${VERSION_MAJOR} && \
     ln -sf ${PY_HOME}/bin/python${VERSION_MAJOR} ${PY_HOME}/bin/python && \
-    ln -sf ${PY_HOME}/bin/pip${VERSION_MAJOR} ${PY_HOME}/bin/pip && \
-    echo "export PATH=${PY_HOME}/bin:${PATH}" >> /etc/profile && \
-    echo "export PATH=${PY_HOME}/bin:${PATH}" >> ~/.bashrc
+    ln -sf ${PY_HOME}/bin/pip${VERSION_MAJOR} ${PY_HOME}/bin/pip
+
+RUN echo "${VERSION}" > /test.txt
+
+ENV PATH=/usr/local/python${VERSION}/bin:${PATH}

@@ -1,0 +1,18 @@
+diff --git a/cmake/Platform/Common/GCC/Configurations_gcc.cmake b/cmake/Platform/Common/GCC/Configurations_gcc.cmake
+index 4718895295..cd507d4e2a 100644
+--- a/cmake/Platform/Common/GCC/Configurations_gcc.cmake
++++ b/cmake/Platform/Common/GCC/Configurations_gcc.cmake
+@@ -73,6 +73,13 @@ ly_append_configurations_options(
+         -Wno-switch
+         -Wno-uninitialized
+         -Wno-unused-result
++        -Wno-dangling-pointer
++        -Wno-nonnull
++        -Wno-unused-variable
++        -Wno-unused-but-set-variable
++        -Wno-use-after-free
++        -Wno-pragmas
++        -Wno-return-local-addr
+
+     COMPILATION_DEBUG
+         -O0 # No optimization

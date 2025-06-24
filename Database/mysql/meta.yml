@@ -8,3 +8,5 @@
   path: 9.1.0/22.03-lts-sp4/Dockerfile
 9.1.0-oe2403lts:
   path: 9.1.0/24.03-lts/Dockerfile
+9.3.0-oe2403sp1:
+  path: Database/mysql/9.3.0/24.03-lts-sp1/Dockerfile

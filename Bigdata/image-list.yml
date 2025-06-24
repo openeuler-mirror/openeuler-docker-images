@@ -13,3 +13,20 @@ images:
   druid: druid
   presto: presto
   livy: livy
+  accumulo: accumulo
+  avro: avro
+  flume: flume
+  hadoop: hadoop
+  hbase: hbase
+  hive: hive
+  parquet: parquet
+  pig: pig
+  ranger: ranger
+  storm: storm
+  thrift: thrift
+  knox: knox
+  tez: tez
+  oozie: oozie
+  lucene: lucene
+  atlas: atlas
+  kylin: kylin

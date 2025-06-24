@@ -8,7 +8,7 @@
 
 # OPEA | openEuler
 
-Current Redis docker images are built on the [openEuler](https://repo.openeuler.org/)⁠. This repository is free to use and exempted from per-user rate limits.
+Current OPEA docker images are built on the [openEuler](https://repo.openeuler.org/)⁠. This repository is free to use and exempted from per-user rate limits.
 
 OPEA is an open platform project that lets you create open, multi-provider, robust, and composable GenAI solutions that harness the best innovation across the ecosystem.
 
@@ -29,6 +29,7 @@ The tag of each CodeGen docker image is consist of the version of CodeGen and th
 | Tags | Currently |  Architectures|
 |--|--|--|
 |[1.0-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/opea/codegen/1.0/24.03-lts/Dockerfile)| CodeGen 1.0 on openEuler 24.03-LTS | amd64 |
+|[1.2-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/opea/codegen/1.2/24.03-lts/Dockerfile)| CodeGen 1.2 on openEuler 24.03-LTS | amd64 |
 
 # Usage
 
@@ -113,6 +114,6 @@ docker pull openeuler/codegen-ui:latest
 
 2. Access via frontend
 
-   To access the frontend, open the following URL in your browser: http://{host_ip}:5173.
+   To access the frontend, open the following URL in your browser: `http://{host_ip}:5173`.
 
    By default, the UI runs on port 5173 internally.

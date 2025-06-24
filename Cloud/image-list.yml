@@ -6,7 +6,7 @@ images:
   karma: karma
   kolla: kolla
   kong: kong
-  kebernetes: kebernetes
+  kubernetes: kubernetes
   loki: loki
   mimir: mimir
   nginx: nginx
@@ -21,3 +21,13 @@ images:
   zookeeper: zookeeper
   flannel: flannel
   istio: istio
+  docker: docker
+  containerd: containerd
+  envoy: envoy
+  libvirt: libvirt
+  openvswitch: openvswitch
+  coredns: coredns
+  strongswan: strongswan
+  qemu: qemu
+  o3de: o3de
+  ovirt-engine: ovirt-engine

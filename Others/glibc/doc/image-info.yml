@@ -1,0 +1,74 @@
+name: glibc
+category: others
+description: GNU C库（glibc）项目为GNU系统、GNU/Linux系统以及众多以Linux为内核的其他系统提供核心库支持。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  glibc镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[2.41-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/glibc/2.41/24.03-lts-sp1/Dockerfile)| glibc 2.41 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/glibc:{Tag}
+  ```
+
+usage: |
+  - 进入容器交互式终端
+    ```
+    docker run -it --rm openeuler/glibc:{Tag} bash
+    ```
+    用户可根据自身需求选择对应版本的{Tag}。
+  
+  - 编写测试程序
+    创建测试程序（如test.c）验证Glibc功能
+    ```
+    #include <stdio.h>
+    #include <gnu/libc-version.h>
+    
+    int main() {
+        printf("Hello, Glibc 2.41!\n");
+        printf("Current Glibc version: %s\n", gnu_get_libc_version());
+        return 0;
+    }
+    ```
+    编译前需确保安装GCC：
+    ```
+    dnf install -y gcc
+    ```
+
+  - 使用新版本的glibc依赖编译程序
+
+    新版本glibc安装路径为：`/usr/local/glibc`
+    ```
+    gcc test.c -o test_program \
+    -I/usr/local/glibc/include \
+    -Wl,--rpath=/usr/local/glibc/lib \
+    -Wl,--dynamic-linker=/usr/local/glibc/lib/ld-linux-aarch64.so.1
+    ```
+  
+    编译完成后，可以运行一下编译后的二进制文件:
+    ```
+    ./test_program
+    ```
+  
+  - 关键参数说明
+  
+    |    Parameter   |  Function  |
+    |----------|-------------|
+    | -I/usr/local/glibc/include | 指定新版Glibc头文件路径. |
+    | -Wl,--rpath=/usr/local/glibc/lib | 运行时优先加载该路径下的库文件. |
+    | -Wl,--dynamic-linker=/usr/local/glibc/lib/ld-linux-aarch64.so.1 | 指定新版动态链接器, 这是aarch64的示例，其他平台需要替换为对应平台的路径. |
+
+license: LGPL
+similar_packages:
+  - Musl libc: Musl libc 是一个轻量级、快速且符合标准的 C 标准库（C library） 实现，专为 Linux 系统 设计。
+dependency:
+  - kernel-headers
+  - bison

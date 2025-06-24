@@ -1,7 +1,6 @@
 images:
   bind9: bind9
   bisheng-jdk: bisheng-jdk
-  coredns: coredns
   dotnet-aspnet: dotnet-aspnet
   dotnet-deps: dotnet-deps
   dotnet-runtime: dotnet-runtime
@@ -34,3 +33,55 @@ images:
   siege: siege
   snort3: snort3
   solr: solr
+  wildfly: wildfly
+  dubbo: dubbo
+  fastjson: fastjson
+  spring-framework: spring-framework
+  grpc-server: grpc-server
+  apr-util: apr-util
+  bcache: bcache
+  dpdk: dpdk
+  edk2: edk2
+  glibc: glibc
+  hyperscan: hyperscan
+  spdk: spdk
+  busybox: busybox
+  fio: fio
+  canal: canal
+  wireshark: wireshark
+  rinetd: rinetd
+  dhcp: dhcp
+  npm: npm
+  netty: netty
+  hiredis: hiredis
+  activemq: activemq
+  rsyslog: rsyslog
+  pacemaker: pacemaker
+  netdata: netdata
+  memtester: memtester
+  quartz: quartz
+  dnsmasq: dnsmasq
+  filebeat: filebeat
+  gcc: gcc
+  iperf: iperf
+  netperf: netperf
+  sysbench: sysbench
+  unixbench: unixbench
+  webbench: webbench
+  wrk: wrk
+  binder: binder
+  cjson: cjson
+  musl: musl
+  mesa: mesa
+  varnish: varnish
+  nemo: nemo
+  lammps: lammps
+  haproxy: haproxy
+  jetty: jetty
+  keepalived: keepalived
+  trafficserver: trafficserver
+  uwsgi: uwsgi
+  nagios: nagios
+  libyuv: libyuv
+  spring-cloud: spring-cloud
+  llvm: llvm

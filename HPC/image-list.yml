@@ -10,3 +10,9 @@ images:
   yambo: yambo
   tensorrt: tensorrt
   mne: mne
+  nemo: nemo
+  lammps: lammps
+  lumpy: lumpy
+  busco: busco
+  eman: eman
+  3dslicer: 3dslicer

@@ -22,3 +22,5 @@
   path: 2.14.1/24.03-lts/Dockerfile
 2.15.1-oe2403lts:
   path: Cloud/mimir/2.15.1/24.03-lts/Dockerfile
+2.16.0-oe2403sp1:
+  path: Cloud/mimir/2.16.0/24.03-lts-sp1/Dockerfile
