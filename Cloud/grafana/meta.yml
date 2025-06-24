@@ -40,3 +40,5 @@
   path: 11.4.0/22.03-lts-sp4/Dockerfile
 11.4.0-oe2203sp1:
   path: 11.4.0/22.03-lts-sp1/Dockerfile
+12.0.2-oe2403sp1:
+  path: Cloud/grafana/12.0.2/24.03-lts-sp1/Dockerfile
