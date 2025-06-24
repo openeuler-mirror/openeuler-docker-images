@@ -7,18 +7,25 @@ ENV LANG=C.UTF-8
 
 ARG ARCH="cpu"
 
-RUN yum update -y && \ 
+RUN yum update -y && \
     yum install -y \
+    python3.11 \
+    python3-devel \
+    python3-pip \
+    git \
     wget \
-    java-11-openjdk \
+    gcc \
+    gcc-c++ \
+    java-1.8.0-openjdk \
+    cairo \
     mesa-libGL \
-    shadow-utils \
-    jemalloc jemalloc-devel \
+    jemalloc-devel \
+    postgresql-devel \
     poppler-utils \
-    python-pip python \
     tesseract \
-    tesseract-langpack-eng \
-    git
+    curl && \
+    ln -s /usr/bin/python3.11 /usr/bin/python  && \
+    yum clean all
     
     
 RUN LIBREOFFICE_URL=https://mirrors.bfsu.edu.cn/libreoffice/libreoffice/stable/24.8.6/rpm/x86_64/LibreOffice_24.8.6_Linux_x86-64_rpm.tar.gz && \
