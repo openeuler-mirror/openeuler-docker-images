@@ -48,7 +48,7 @@ RUN pip install --no-cache-dir --upgrade pip setuptools && \
     pip install --no-cache-dir -r $HOME/GenAIComps/requirements.txt
 WORKDIR $HOME
 
-ENV PYTHONPATH=$PYTHONPATH:$HOME/GenAIComps
+ENV PYTHONPATH=$PYTHONPATH:/home/user/GenAIComps
 
 USER user
 
@@ -56,6 +56,6 @@ USER user
 # Stage 4: unique part
 FROM comps-base
 
-COPY ./chatqna.py $HOME/chatqna.py
+COPY ./chatqna.py /home/user/chatqna.py
 
 ENTRYPOINT ["python3", "chatqna.py"]
