@@ -3,32 +3,29 @@
 
 FROM openeuler/openeuler:24.03-lts
 
-# Set environment variables
 ENV LANG=en_US.UTF-8
+
+RUN dnf install -y python3-pip python3-wheel python3-setuptools git && \
+    dnf clean all
 
 ARG ARCH="cpu"
 
-RUN yum update -y && \
-    yum install -y \
-    python python-pip \
-    git
+RUN git clone https://github.com/opea-project/GenAIComps.git && \
+    cd GenAIComps && \
+    git checkout v1.2 && \
+    cp -r comps /home/comps && \
+    rm -rf /GenAIComps
 
-WORKDIR /home/user
-
-RUN git clone -b v1.2 https://github.com/opea-project/GenAIComps.git
-
-RUN cp -r GenAIComps/comps /home/user/comps && \
-    rm -rf GenAIComps
-
-RUN pip install --no-cache-dir --upgrade pip setuptools && \
+RUN pip3 install --upgrade pip setuptools && \
     if [ ${ARCH} = "cpu" ]; then \
-      pip install --no-cache-dir torch torchvision --index-url https://download.pytorch.org/whl/cpu; fi && \
-    pip install --no-cache-dir -r /home/user/comps/text2image/src/requirements.txt
+      pip3 install --no-cache-dir torch torchvision --index-url https://download.pytorch.org/whl/cpu; fi && \
+    pip3 install --no-cache-dir -r /home/comps/text2image/src/requirements.txt
 
-ENV PYTHONPATH=$PYTHONPATH:/home/user
+ENV PYTHONPATH=$PYTHONPATH:/home
 
-WORKDIR /home/user/comps/text2image/src
+WORKDIR /home/comps/text2image/src
 
-RUN echo python opea_text2image_microservice.py --bf16 >> run.sh
+RUN echo "python3 opea_text2image_microservice.py --bf16" >> run.sh && \
+    chmod +x run.sh
 
-CMD bash run.sh
+CMD ["/bin/bash", "run.sh"]
