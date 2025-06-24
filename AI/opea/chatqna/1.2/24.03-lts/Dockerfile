@@ -41,9 +41,7 @@ COPY --from=git $HOME/GenAIComps/*.* $HOME/GenAIComps/LICENSE $HOME/GenAIComps/
 
 WORKDIR $HOME/GenAIComps
 RUN yum install -y python3 && \
-    yum install -y python3-pip && \
-    yum install -y git
-
+    yum install -y python3-pip
 
 RUN pip install --no-cache-dir --upgrade pip setuptools && \
     pip install --no-cache-dir -r $HOME/GenAIComps/requirements.txt
@@ -59,6 +57,6 @@ FROM comps-base
 
 RUN git clone -b v1.2 https://github.com/opea-project/GenAIExamples.git
 
-COPY ./chatqna.py /home/user/chatqna.py
+RUN cp GenAIExamples/ChatQnA/chatqna.py /home/user/chatqna.py
 
 ENTRYPOINT ["python3", "chatqna.py"]
