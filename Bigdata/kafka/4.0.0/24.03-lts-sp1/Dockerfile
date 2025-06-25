@@ -7,7 +7,7 @@ ARG VERSION=4.0.0
 ARG SCALA_VERSION=2.13
 ARG KAFKA_URL=https://archive.apache.org/dist/kafka/${VERSION}/kafka_${SCALA_VERSION}-${VERSION}.tgz 
 
-RUN yum -y install wget hostname java-1.8.0-openjdk java-1.8.0-openjdk-devel
+RUN yum -y install wget hostname java-17-openjdk java-17-openjdk-devel
 RUN mkdir opt/kafka; \
     wget -O kafka.tgz "${KAFKA_URL}"; \
     tar xfz kafka.tgz -C /opt/kafka --strip-components 1; \
