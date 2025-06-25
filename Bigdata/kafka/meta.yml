@@ -27,4 +27,4 @@
 3.9.0-oe2403lts:
   path: 3.9.0/24.03-lts/Dockerfile
 4.0.0-oe2403sp1:
-  path: Bigdata/kafka/4.0.0/24.03-lts-sp1/Dockerfile
+  path: 4.0.0/24.03-lts-sp1/Dockerfile
