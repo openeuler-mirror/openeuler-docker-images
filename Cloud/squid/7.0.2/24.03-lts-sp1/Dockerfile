@@ -4,8 +4,8 @@ FROM ${BASE}
 ARG VERSION=7.0.2
 ARG SQUID_PREFIX=/usr/local/squid
 RUN yum -y update && yum -y install wget gcc g++ make perl openssl && yum clean all && \
-    wget -O squid.tar.bz2 https://github.com/squid-cache/squid/releases/download/SQUID_7_0_2/squid${VERSION}.tar.gz
-RUN mkdir /squid && tar -jxvf squid.tar.bz2 -C /squid --strip-components 1 && \
+    wget -O squid.tar.gz https://github.com/squid-cache/squid/releases/download/SQUID_7_0_2/squid-${VERSION}.tar.gz
+RUN mkdir /squid && tar -xvf squid.tar.gz -C /squid --strip-components 1 && \
     cd /squid && ./configure \
         --prefix=$SQUID_PREFIX \
         --enable-arp-acl \
