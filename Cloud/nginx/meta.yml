@@ -19,4 +19,4 @@
 1.27.2-oe2403lts:
   path: 1.27.2/24.03-lts/Dockerfile
 1.29.0-oe2403sp1:
-  path: Cloud/nginx/1.29.0/24.03-lts-sp1/Dockerfile
+  path: 1.29.0/24.03-lts-sp1/Dockerfile
