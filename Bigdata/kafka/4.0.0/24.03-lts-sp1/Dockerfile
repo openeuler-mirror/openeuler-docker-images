@@ -21,7 +21,6 @@ RUN mkdir opt/kafka; \
     cp /opt/kafka/config/tools-log4j2.yaml /etc/kafka/docker/tools-log4j2.yaml; \
     cp /opt/kafka/config/server.properties /etc/kafka/docker/server.properties; \
     rm kafka.tgz; \
-    yum remove wget findutils; \
     yum clean all
 
 COPY --chown=appuser:appuser scripts /etc/kafka/docker
