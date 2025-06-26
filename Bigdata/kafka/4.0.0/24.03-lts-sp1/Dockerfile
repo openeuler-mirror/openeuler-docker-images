@@ -19,7 +19,7 @@ RUN mkdir opt/kafka; \
     chmod -R ug+w /etc/kafka /var/lib/kafka /etc/kafka/secrets; \
     cp /opt/kafka/config/log4j2.yaml /etc/kafka/docker/log4j2.yaml; \
     cp /opt/kafka/config/tools-log4j2.yaml /etc/kafka/docker/tools-log4j2.yaml; \
-    cp /opt/kafka/config/server.properties /etc/kafka/docker/server.properties; \
+    cp /opt/kafka/docker/server.properties /etc/kafka/docker/server.properties; \
     rm kafka.tgz; \
     yum clean all
 
