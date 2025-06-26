@@ -19,12 +19,12 @@ RUN mkdir opt/kafka; \
     chmod -R ug+w /etc/kafka /var/lib/kafka /etc/kafka/secrets; \
     cp /opt/kafka/config/log4j2.yaml /etc/kafka/docker/log4j2.yaml; \
     cp /opt/kafka/config/tools-log4j2.yaml /etc/kafka/docker/tools-log4j2.yaml; \
-    cp /opt/kafka/docker/server.properties /etc/kafka/docker/server.properties; \
     rm kafka.tgz; \
     yum clean all
 
 COPY --chown=appuser:appuser scripts /etc/kafka/docker
 COPY --chown=appuser:appuser launch /etc/kafka/docker/launch
+COPY --chown=appuser:appuser server.properties /etc/kafka/docker/server.properties
 RUN chmod 755 /etc/kafka/docker/run
 
 EXPOSE 9092
