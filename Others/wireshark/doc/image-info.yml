@@ -1,0 +1,51 @@
+name: wireshark
+category: others
+description: Wireshark 是一款功能强大的 网络协议分析工具，广泛用于网络故障排查、安全分析、软件调试、学习网络协议等场景。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  wireshark镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[4.4.6-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/wireshark/4.4.6/24.03-lts-sp1/Dockerfile)| wireshark 4.4.6 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/wireshark:{Tag}
+  ```
+
+usage: |
+  - 以交互式Shell运行容器:
+
+    通过交互式 Shell 启动容器，使用wireshark：
+    ```
+    docker run -it --rm openeuler/wireshark:{Tag} bash
+    ```
+ 
+  - 列出可用的网络接口
+      
+      此命令会列出系统中所有可用于抓包的网络接口
+      ```
+      tshark -D
+      ```
+  
+  - 在指定接口上抓包
+      
+      使用此命令可以在指定的网络接口`xxx`上抓包，并将抓到的包写入一个 .pcap 文件中
+      ```
+      tshark -i xxx -w capture_output.pcap
+      ```
+      此外，也可以运行 tshark --help 更详细的了解如何使用其他命令。
+
+license: GPL v2
+similar_packages:
+  - tcpdump: 命令行抓包工具，轻量、速度快，适合服务器环境。
+dependency:
+  - libpcap
+  - Qt6
+  - dumpcap
