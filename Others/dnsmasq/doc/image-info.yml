@@ -1,0 +1,72 @@
+name: dnsmasq
+category: others
+description: dnsmasq 是一个轻量级的网络服务程序，常用于 本地 DNS 缓存、DHCP 服务、TFTP、PXE 引导等小型网络环境。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  dnsmasq镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[2.91-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/dnsmasq/2.91/24.03-lts-sp1/Dockerfile)| dnsmasq 2.91 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/dnsmasq:{Tag}
+  ```
+
+usage: |
+  - 以交互式Shell运行容器:
+
+    通过交互式 Shell 启动容器，使用dnsmasq命令：
+    ```
+    docker run -it --rm openeuler/dnsmasq:{Tag} bash
+    ```
+  
+  - 创建配置文件`/etc/dnsmasq.conf`
+    
+      配置文件`dnsmasq.conf`内容如下:
+      ```
+      # dnsmasq.conf
+      no-resolv
+      address=/test.local/192.168.1.100
+      log-queries
+      log-facility=/var/log/dnsmasq.log
+      ```
+    
+  - 后台启动`dnsmasq`服务
+  
+      ```
+      nohup dnsmasq --no-daemon &
+      ```
+  
+      检查是否运行:
+      ```
+      ps aux | grep dnsmasq
+      ```
+  
+  - 使用`dig`命令测试:
+      
+      需要安装bind-utils软件包，包含dig命令
+      ```
+      dnf install -y bind-utils
+      dig @127.0.0.1 test.local
+      ```
+    
+  - 输出类似:
+  
+      ```
+      ;; ANSWER SECTION:
+      test.local.     0   IN  A   192.168.1.100
+      ```
+
+license: GPLv2
+similar_packages:
+  - CoreDNS : CoreDNS 是一个现代化、灵活、模块化的 DNS 服务器，它是云原生环境（如 Kubernetes）中默认的 DNS 服务组件，用于服务发现和 DNS 名称解析。
+dependency:
+  - libdbus
+  - systemd

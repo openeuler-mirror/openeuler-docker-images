@@ -15,4 +15,6 @@ RUN wget https://ftp.isc.org/isc/dhcp/${VERSION}/dhcp-${VERSION}.tar.gz \
     && make -j$(nproc) \
     && make install
 
+RUN mkdir -p /var/db && touch /var/db/dhcpd.leases
+
 CMD ["/usr/local/dhcp/sbin/dhcpd", "--help"]
