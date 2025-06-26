@@ -1,6 +1,6 @@
 name: dhcp
 category: others
-description: DHCP 是 Redis 官方推荐的 C 语言客户端库，专为高性能、低延迟的 Redis 交互设计。
+description: DHCP（动态主机配置协议）是一种网络协议，自动给局域网中的设备分配 IP 地址、网关、DNS 等网络配置参数。
 environment: |
   本应用在Docker环境中运行，安装Docker执行如下命令
   ```
@@ -54,9 +54,9 @@ usage: |
       * `-f` 参数：使进程保持在前台运行，便于调试。
       * 省略 `-f`：则以守护进程（后台）模式运行。
 
-license: BSD-3-Clause
+license: MPL 2.0
 similar_packages:
-  - N/A
+  - dnsmasq: dnsmasq 是一个轻量级的网络服务程序，常用于 本地 DNS 缓存、DHCP 服务、TFTP、PXE 引导等小型网络环境。
 dependency:
-  - zlib
-  - openssl
+  - libcap
+  - libc
