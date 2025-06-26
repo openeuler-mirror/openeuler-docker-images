@@ -1,0 +1,62 @@
+name: dhcp
+category: others
+description: DHCP 是 Redis 官方推荐的 C 语言客户端库，专为高性能、低延迟的 Redis 交互设计。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  dhcp镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[4.4.3-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/dhcp/4.4.3/24.03-lts-sp1/Dockerfile)| DHCP 4.4.3 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/dhcp:{Tag}
+  ```
+
+usage: |
+  - 交互式shell启动进入容器中
+
+    通过交互式 Shell 启动容器，使用DHCP：
+    ```
+    docker run -it --rm openeuler/dhcp:{Tag} bash
+    ```
+  
+  - 创建文件`dhcpd.conf`
+    
+      添加与 eth0 接口 IP 匹配的子网声明。例如：
+      ```
+     # 根据 eth0 的 IP (172.17.0.7) 配置子网
+      subnet 172.17.0.0 netmask 255.255.0.0 {
+        range 172.17.1.100 172.17.1.200;       # 可分配的 IP 范围
+        option routers 172.17.0.1;             # 默认网关（根据实际修改）
+        option domain-name-servers 8.8.8.8;    # DNS 服务器
+        default-lease-time 600;                # 默认租约时间（秒）
+        max-lease-time 7200;
+      }
+      ```
+      **关键点:**
+      * subnet 的网段和掩码必须覆盖 `eth0` 的 IP（`172.17.0.7`）。
+      * 如果实际网络是 `172.17.0.0/24`，则将 netmask 改为 `255.255.255.0`。
+  
+  - 指定监听接口（可选）
+  
+      启动时强制绑定到 `eth0`：
+      ```   
+      /usr/local/dhcp/sbin/dhcpd -cf /tmp/dhcp/dhcpd.conf eth0 -f
+      ```
+      **说明:**
+      * `-f` 参数：使进程保持在前台运行，便于调试。
+      * 省略 `-f`：则以守护进程（后台）模式运行。
+
+license: BSD-3-Clause
+similar_packages:
+  - N/A
+dependency:
+  - zlib
+  - openssl
