@@ -1,0 +1,54 @@
+name: filebeat
+category: others
+description: Filebeat 是 Elastic Stack（ELK） 中的轻量级日志采集工具，专为高效收集、转发和预处理日志数据设计。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  filebeat镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[9.0.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/filebeat/9.0.1/24.03-lts-sp1/Dockerfile)| Filebeat 9.0.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/filebeat:{Tag}
+  ```
+
+usage: |
+  - 交互式shell启动进入容器中
+
+    通过交互式 Shell 启动容器，使用Filebeat：
+    ```
+    docker run -it --rm openeuler/filebeat:{Tag} bash
+    ```
+ 
+  - filebeat配置文件
+    
+    一个简单的filebeat启动配置示例
+    ```
+    filebeat.inputs:
+    - type: filestream
+        enabled: true
+        paths: ["/var/log/log"]
+
+    output.file:
+        path: "/tmp/output"
+        filename: "logs.json"
+    ```
+    更多filebeat详细配置请参考Filebeat官方文档: [Configure Filebeat](https://www.elastic.co/docs/reference/beats/filebeat/configuring-howto-filebeat)。
+      
+  - 前台启动filebeat
+    ```
+    filebeat -e -c filebeat.yml
+    ```
+
+license: Apache-2.0 license
+similar_packages:
+  - N/A
+dependency:
+  - N/A
