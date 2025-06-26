@@ -36,6 +36,9 @@ FROM openeuler/distroless-static:1.0.0-oe2403lts
 COPY --from=build /go/bin/app /
 CMD ["/app"]
 ```
+
+# Run Applications as a Non-Root User
+For implementation details, refer to the [distroless-base-nonroot documentation](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Distroless/distroless-base-nonroot/README.md).
 	
 # Question and answering
 If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
