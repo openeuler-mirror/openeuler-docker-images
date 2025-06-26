@@ -1,0 +1,52 @@
+name: activemq
+category: others
+description: Apache ActiveMQ 是一个开源的 消息中间件（Message Broker），实现了 JMS（Java Message Service） 规范，支持多种协议（AMQP、STOMP、MQTT等）。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  activemq镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[6.1.6-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/activemq/6.1.6/24.03-lts-sp1/Dockerfile)| ActiveMQ 6.1.6 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/activemq:{Tag}
+  ```
+
+usage: |
+  - 以交互式Shell运行容器:
+
+    通过交互式 Shell 启动容器，使用activemq命令：
+    ```
+    docker run -it --rm openeuler/activemq:{Tag} bash
+    ```
+
+  - 启动 ActiveMQ
+      
+    运行以下命令来启动 ActiveMQ：
+    ```
+    ./bin/activemq start
+    ```
+    这会在后台启动 ActiveMQ 消息代理（broker）。
+  
+  - 访问 Web 控制台
+  
+    使用以下 `curl` 命令访问 ActiveMQ 的 Web 管理界面：
+    ```
+    curl -u admin:admin -L http://localhost:8161/
+    ```
+    * `-u admin:admin`: 提供默认的用户名和密码。
+    * `-L`: 允许 `curl` 跟随 HTTP 重定向。
+
+license: Apache-2.0 license
+similar_packages:
+  - RabbitMQ: RabbitMQ 是一个开源的 消息代理（Message Broker），实现了 AMQP（Advanced Message Queuing Protocol） 协议，支持多种消息模式（点对点、发布/订阅等）。
+dependency:
+  - openjdk
+  - maven
