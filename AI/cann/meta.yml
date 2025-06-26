@@ -6,3 +6,7 @@
   path: 8.1.RC1-python3.11/22.03-lts/Dockerfile
 8.1.RC1-python3.11-oe2403lts:
   path: 8.1.RC1-python3.11/24.03-lts/Dockerfile
+8.2.RC1.alpha001-python3.10-oe2203lts:
+  path: 8.1.RC1.alpha001-python3.10/22.03-lts/Dockerfile
+8.2.RC1.alpha002-python3.10-oe2203lts:
+  path: 8.1.RC1.alpha002-python3.10/22.03-lts/Dockerfile
