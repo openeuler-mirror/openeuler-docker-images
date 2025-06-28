@@ -1,0 +1,45 @@
+name: netperf
+category: others
+description: netperf 是一个经典的网络性能测试工具，用于测量 TCP、UDP 等传输协议的吞吐量、延迟、请求/响应性能等。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  netperf镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[2.7.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/netperf/2.7.0/24.03-lts-sp1/Dockerfile)| netperf 2.7.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/netperf:{Tag}
+  ```
+
+usage: |
+  - 以交互式Shell运行容器:
+
+    通过交互式 Shell 启动容器，使用netperf：
+    ```
+    docker run -it --rm openeuler/netperf:{Tag} bash
+    ```
+ 
+  - 使用netperf
+  
+    在要作为服务端的机器上执行netserver：
+    ```
+    netserver -p 12865
+    ```
+    * 默认监听 TCP 端口 12865，你也可以通过 -p 指定端口。
+    * 默认监听所有网卡 0.0.0.0。
+    ```
+
+license:  MIT license
+similar_packages:
+  - iperf: iperf 是一款网络性能测试工具，用于测量 带宽（Throughput） 和 延迟（Latency）。
+dependency:
+  - texinfo
+  - libtool
