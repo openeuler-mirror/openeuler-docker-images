@@ -1,0 +1,104 @@
+name: quartz
+category: others
+description: Quartz 是一个开源的 Java 任务调度框架，用于在应用程序中实现定时任务、周期性任务或复杂调度需求。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  quartz镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[2.5.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/quartz/2.5.0/24.03-lts-sp1/Dockerfile)| quartz 2.5.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/quartz:{Tag}
+  ```
+
+usage: |
+  - Add quartz dependency
+  
+    Maven: Add the following dependency to your `pom.xml`.
+    ```
+    <dependency>
+        <groupId>org.quartz-scheduler</groupId>
+        <artifactId>quartz</artifactId>
+        <version>${quartz.version}</version>
+    </dependency>
+    ```
+  
+  - Define a Job
+  
+    Create a class that implements `Job` interface:
+    ```
+    package com.example;
+  
+    import org.quartz.Job;
+    import org.quartz.JobDataMap;
+    import org.quartz.JobExecutionContext;
+    import org.quartz.JobExecutionException;
+    
+    public class SimpleJob implements Job {
+        @Override
+        public void execute(JobExecutionContext context) throws JobExecutionException {
+            System.out.println("SimpleJob is executed at: " + new java.util.Date());
+    
+            JobDataMap dataMap = context.getJobDetail().getJobDataMap();
+            String jobParam = dataMap.getString("jobParam");
+            if(jobParam != null) {
+                System.out.println("Job parameter: " + jobParam);
+            }
+        }
+    }
+    ```
+    
+  - Schedule the job
+  
+    ```
+    package com.example;
+  
+    import org.quartz.*;
+    import org.quartz.impl.StdSchedulerFactory;
+    
+    public class QuartzDemo {
+        public static void main(String[] args) {
+            try {
+                Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
+    
+                JobDetail job = JobBuilder.newJob(SimpleJob.class)
+                        .withIdentity("job1", "group1")
+                        .usingJobData("jobParam", "Hello, Quartz!")
+                        .build();
+    
+                Trigger trigger = TriggerBuilder.newTrigger()
+                        .withIdentity("trigger1", "group1")
+                        .startNow()
+                        .withSchedule(SimpleScheduleBuilder.simpleSchedule()
+                                .withIntervalInSeconds(5)
+                                .repeatForever())
+                        .build();
+    
+                scheduler.scheduleJob(job, trigger);
+    
+                scheduler.start();
+    
+                while (true) {
+                    Thread.sleep(1000);
+                }
+    
+            } catch (SchedulerException | InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    ```
+
+license: Apache-2.0 license
+similar_packages:
+  - Spring Scheduler: Spring Scheduler 是 Spring 框架内置的轻量级任务调度模块，通过简单的注解即可实现定时任务，无需额外依赖。
+dependency:
+  - openjdk
