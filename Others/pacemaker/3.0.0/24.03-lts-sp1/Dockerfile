@@ -13,8 +13,10 @@ RUN dnf update -y \
 RUN git clone -b Pacemaker-${VERSION} --depth 1 https://github.com/ClusterLabs/pacemaker.git \
     && cd pacemaker \
     && ./autogen.sh \
-    && ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+    && ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --without-systemd --disable-fatal-warnings \
     && make -j $(nproc) \
     && make install
 
-CMD [" /usr/sbin/pacemakerd", "--help"]
+RUN ldconfig
+
+CMD ["pacemakerd", "--help"]

@@ -1,0 +1,44 @@
+name: pacemaker
+category: others
+description: Pacemaker 是一个高可用性（HA, High Availability）集群资源管理器，用于在 Linux 系统中确保关键服务在节点故障时自动迁移并持续运行。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  pacemaker镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[3.0.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/pacemaker/3.0.0/24.03-lts-sp1/Dockerfile)| Pacemaker 3.0.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/pacemaker:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+    ```
+    docker run -it --rm openeuler/pacemaker:{Tag} 
+    ```
+    查看pacemaker编译后的二进制运行提示。
+
+   - 使用shell交互
+    ```
+    docker run -it --rm openeuler/pacemaker:{Tag} bash
+    ```
+
+license: GPLv2 or later
+similar_packages:
+  - Keepalived: 提供虚拟 IP 漂移功能（VRRP），通常用于负载均衡器或简单主备。适合轻量级高可用。
+dependency:
+  - pciutils
+  - libxml2
+  - libxslt
+  - dbus
+  - corosync
+  - libqb
+  - sqlite
