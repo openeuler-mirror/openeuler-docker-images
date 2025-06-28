@@ -1,0 +1,44 @@
+name: unixbench
+category: others
+description: UnixBench 是一个经典的、跨 Unix/Linux 平台的系统基准测试套件，主要用于衡量操作系统和硬件整体性能表现。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  unixbench镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[ 6.0.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/unixbench/ 6.0.0/24.03-lts-sp1/Dockerfile)| UnixBench  6.0.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/unixbench:{Tag}
+  ```
+
+usage: |
+  - 以交互式Shell运行容器:
+
+    通过交互式 Shell 启动容器，使用unixbench：
+    ```
+    docker run -it --rm openeuler/unixbench:{Tag} bash
+    ```
+
+  - 系统测试
+
+    Run 是用于执行 UnixBench 的主脚本，UnixBench 是一个在类 Unix 操作系统上广泛使用的系统基准测试套件。
+    ```
+    ./Run dhry2reg
+    ```
+    只执行 `Dhrystone 2` 基准测试，而不是运行完整的 UnixBench 测试套件。
+
+license: GPL-2.0 license
+similar_packages:
+  - sysbench: sysbench 是一个轻量级的、模块化的多线程基准测试工具，常用于测试 Linux 系统的 CPU 性能、内存读写、磁盘 I/O、线程调度、互斥锁，以及数据库（MySQL、PostgreSQL）负载。
+dependency:
+  - openssl
+  - systemd
+  - perl
