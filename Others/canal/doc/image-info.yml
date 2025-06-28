@@ -1,0 +1,98 @@
+name: busybox
+category: others
+description: canal主要用途是基于 MySQL 数据库增量日志解析，提供增量数据订阅和消费
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  busybox镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  | [1.1.8-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/canal/1.1.8/24.03-lts-sp1/Dockerfile) | canal 1.1.8 on openEuler 24.03-LTS-SP1 |  amd64, arm64 |
+
+  注意，以下`{Tag}`的值按照需求，替换为上述表格中的tag内容。
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/busybox:{Tag}
+  ```
+
+usage: |
+  - 添加 canal 客户端依赖
+    在你的 pom.xml 中添加以下依赖项，以引入 Canal Java 客户端：
+    ```
+    <dependency>
+      <groupId>com.alibaba.otter</groupId>
+      <artifactId>canal.client</artifactId>
+      <version>1.1.0</version>
+    </dependency>
+    ```
+    
+  - 创建标准 Maven 工程
+    
+    你可以使用 Maven Archetype 插件来创建一个标准的 Maven 工程。
+
+    **旧版本 Maven:**
+    ```
+    mvn archetype:create -DgroupId=com.alibaba.otter -DartifactId=canal.sample
+    ```
+    **Maven 3.0.5 及以上（推荐）:**
+    ```
+    mvn archetype:generate -DgroupId=com.alibaba.otter -DartifactId=canal.sample
+    ```
+    这将生成一个基础的 Maven 项目结构。
+  
+  - 编写 ClientSample 类
+    以下是一个 Java 客户端连接 `Canal Server` 的基本示例：
+    ```
+    package com.alibaba.otter;
+  
+    import com.alibaba.otter.canal.client.CanalConnector;
+    import com.alibaba.otter.canal.client.CanalConnectors;
+    import com.alibaba.otter.canal.protocol.Message;
+    
+    import java.net.InetSocketAddress;
+    
+    public class ClientSample {
+        public static void main(String[] args) {
+            CanalConnector connector = CanalConnectors.newSingleConnector(
+                new InetSocketAddress("127.0.0.1", 11111),
+                "example",
+                "",
+                ""
+            );
+            try {
+                connector.connect();
+                connector.subscribe(".*\\..*");
+                connector.rollback();
+                while (true) {
+                    Message message = connector.getWithoutAck(100);
+                    long batchId = message.getId();
+                    int size = message.getEntries().size();
+                    if (batchId != -1 && size > 0) {
+                        System.out.printf("Received batchId: %d, entry size: %d%n", batchId, size);
+                    }
+                    connector.ack(batchId);
+                }
+            } finally {
+                connector.disconnect();
+            }
+        }
+    }
+    ```
+    
+    **注意事项：**
+    * 请确保 `Canal Server` 已启动并正确配置(参考 [QuickStart](https://github.com/alibaba/canal/wiki/QuickStart))。
+    * 上述代码连接的是 `127.0.0.1:11111`，这是 Canal Server 的默认 TCP 端口。
+    * `subscribe(".*\\..*")` 表示订阅所有数据库的所有表。
+
+license: Apache-2.0 license
+similar_packages:
+  - N/A
+dependency:
+  - openjdk
+  - maven
