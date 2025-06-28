@@ -1,0 +1,53 @@
+name: fio
+category: others
+description: FIO 是一款强大的 存储性能测试工具，用于精确测量磁盘、SSD、网络存储等设备的 I/O 性能。它支持多种 I/O 模式、多线程测试，并能生成详细的性能报告，是存储行业的标准基准测试工具之一。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  fio镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[3.40-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/fio/3.40/24.03-lts-sp1/Dockerfile)| FIO 3.40 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/fio:{Tag}
+  ```
+
+usage: |
+  - 以交互式Shell运行容器:
+
+    通过交互式 Shell 启动容器，使用fio命令：
+    ```
+    docker run -it --rm openeuler/fio:{Tag} bash
+    ```
+ 
+  - 基础随机读测试
+  
+    基础随机读测试（10秒，单线程，100MB文件）
+    ```
+    fio --name=quick_test \
+    --rw=randread \
+    --size=100M \                  # 测试文件大小降为100MB
+    --bs=4k \
+    --numjobs=1 \                  # 单线程简化测试
+    --runtime=10s \                # 缩短测试时间
+    --filename=/data/testfile \
+    --ioengine=libaio \
+    --group_reporting
+    ```
+      
+license: GPL-2.0 license
+similar_packages:
+  - sysbench: 综合测试工具（CPU/内存/磁盘/数据库）。
+dependency:
+  - zlib
+  - openssl
+  - libaio
+  - cairo
+  - gtk3
