@@ -1,0 +1,78 @@
+name: varnish
+category: others
+description: Varnish Cache 是一个高性能的 HTTP 反向代理缓存服务器，专门用来加速网站和 API 的静态和动态内容分发。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  varnish镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[7.7.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/varnish/7.7.1/24.03-lts-sp1/Dockerfile)| varnish 7.7.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/varnish:{Tag}
+  ```
+
+usage: |
+  - 以交互式Shell运行容器:
+
+    通过交互式 Shell 启动容器，使用varnish：
+    ```
+    docker run -it --rm openeuler/varnish:{Tag} bash
+    ```
+ 
+  - 创建 Varnish 配置文件
+
+    创建 Varnish 配置文件的目录
+    ```
+    mkdir -p /etc/varnish
+    ```
+    
+    创建 VCL 文件 /etc/varnish/default.vcl，示例内容如下：
+    ```
+    vcl 4.0;
+
+    backend default {
+        .host = "127.0.0.1"; 
+        .port = "8080";
+    }
+    ```
+  
+  - 启动简单的后端 HTTP 服务器
+  
+    使用 Python3 在 8080 端口启动基础 HTTP 服务器：
+    ```
+    nohup python3 -m http.server 8080 &
+    ```
+    该 Python HTTP 服务器作为 Varnish 缓存的后端。
+    
+  - 后台启动 Varnish
+  
+    ```
+    nohup varnishd -F -f /etc/varnish/default.vcl -a :6081 & 
+    ```
+    Varnish 监听 6081 端口，并将请求转发到后端 8080 端口。
+    
+  - 测试 Varnish HTTP 服务
+  
+    使用 curl 发送 HEAD 请求，检查 Varnish 是否响应：
+    ```
+    curl -I http://localhost:6081
+    ```
+
+license: BSD-2-Clause
+similar_packages:
+  - Squid: 经典的代理缓存服务器，支持 HTTP 和 FTP 缓存，常用于代理和内容加速。
+  - Nginx: 支持 HTTP 缓存和负载均衡，广泛用于加速网站和应用。
+dependency:
+  - ncurses
+  - pcre
+  - libtool
+  - jemalloc
+  - libunwind
