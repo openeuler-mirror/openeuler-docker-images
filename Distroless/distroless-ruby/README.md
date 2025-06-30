@@ -36,6 +36,7 @@ COPY . .
 
 CMD ["./your-daemon-or-script.rb"]
 ```
+
 Put this file in the root of your app, next to the Gemfile.
 
 You can then build and run the Ruby image:
@@ -43,6 +44,7 @@ You can then build and run the Ruby image:
 $ docker build -t my-ruby-app .
 $ docker run -it --name my-running-script my-ruby-app
 ```
+
 
 **Generate a Gemfile.lock**
 
@@ -54,8 +56,13 @@ $ docker run --rm -v "$PWD":/usr/src/app -w /usr/src/app openeuler/distroless-ru
 **Run a single Ruby script**
 
 For many simple, single file projects, you may find it inconvenient to write a complete Dockerfile. In such cases, you can run a Ruby script by using the Ruby Docker image directly, for [example](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Distroless/distroless-ruby/):
+
 ```
 $ docker run -it --rm $PWD/example:/usr/src/myapp -w /usr/src/myapp openeuler/distroless-ruby:3.2.2-oe2403lts ruby example.rb
-```	
+```
+
+# Run Applications as a Non-Root User
+For implementation details, refer to the [distroless-base-nonroot documentation](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Distroless/distroless-base-nonroot/README.md).
+
 # Question and answering
 If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
