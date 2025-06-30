@@ -1,0 +1,43 @@
+name: iperf
+category: others
+description: iperf 是一款网络性能测试工具，用于测量 带宽（Throughput） 和 延迟（Latency）。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  iperf镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[3.19-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/iperf/3.19/24.03-lts-sp1/Dockerfile)| iperf 3.19 on openEuler 24.03-LTS-SP1 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/iperf:{Tag}
+  ```
+
+usage: |
+  启动iperf3 (默认端口: 5201)
+  ```
+  iperf3 -s
+  ```
+
+  输出示例:
+  ```
+  Server is listening on 5201
+  ```
+
+  自定义端口运行
+  ```
+  iperf3 -s -p 9000
+  ```
+
+license: BSD 3-Clause License
+similar_packages:
+  - netperf: Netperf 是一款经典的 网络性能基准测试工具，由 Hewlett-Packard (HP) 开发，用于精确测量 TCP/UDP 的吞吐量、延迟和请求/响应性能。
+dependency:
+  - OpenSSL
+  - libc
