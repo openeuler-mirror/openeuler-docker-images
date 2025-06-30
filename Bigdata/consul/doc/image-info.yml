@@ -54,7 +54,7 @@ usage: |
   - 访问容器
 
     ```bash
-	  docker exec -it my-consul /bin/bash
+    docker exec -it my-consul /bin/bash
     ```
     进入容器即可修改相关配置，进行开发调试，参考[developer.hashicorp.com](https://developer.hashicorp.com/consul)
 
