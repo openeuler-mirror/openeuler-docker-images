@@ -1,0 +1,56 @@
+name: wrk
+category: others
+description: wrk 是一个开源的、现代化的 HTTP 压力测试工具，支持多线程、多连接。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  wrk镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[4.2.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/wrk/4.2.0/24.03-lts-sp1/Dockerfile)| wrk 4.2.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/wrk:{Tag}
+  ```
+
+usage: |
+  - 以交互式Shell运行容器:
+
+    通过交互式 Shell 启动容器，使用wrk：
+    ```
+    docker run -it --rm openeuler/wrk:{Tag} bash
+    ```
+ 
+  - 启动一个简单的HTTP服务
+
+    在有index.html文件(任意内容)的目录下执行:
+    ```
+    nohup python3 -m http.server 8080 &
+    ```
+    * 该命令会将当前目录作为文件根目录，通过端口 8080 提供 HTTP 服务。
+    * 使用 nohup 和 & 可以让服务器在后台持续运行，不会因关闭终端而中断。
+
+  - 使用 wrk 进行压力测试
+    
+    当服务器正常运行后，使用 wrk 来生成 HTTP 压力：
+    ```
+    wrk -t12 -c400 -d30s http://127.0.0.1:8080/index.html
+    ```
+    `参数说明:`
+    * `-t12:` 使用 12 个线程来产生负载。
+    * `-c400:` 使用 400 个并发 HTTP 连接。
+    * `-d30s:` 压测持续 30 秒。
+    * `http://127.0.0.1:8080/index.html:` 目标 URL。
+
+license: Apache-2.0 License
+similar_packages:
+  - JMeter: Apache JMeter 是一个开源的性能测试工具，主要用于对各种服务进行负载测试和功能测试。
+dependency:
+  - openssl
+  - pkgconf
