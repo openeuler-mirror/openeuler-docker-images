@@ -1,0 +1,92 @@
+name: accumulo
+category: bigdata
+description: Apache Accumulo 是一个排序的分布式键/值存储，提供强大且可扩展的数据存储和检索功能。借助 Apache Accumulo，用户可以跨集群存储和管理大型数据集。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  accumulo镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  | Tags | Currently |  Architectures|
+  |------|-----------|---------------|
+  |[2.1.3-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/accumulo/2.1.3/24.03-lts-sp1/Dockerfile)| Apache accumulo 2.1.3 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/accumulo:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+
+    `openeuler/accumulo`镜像预装了hadoop、zookeeper，用户可以无需依赖其他容器，直接启动accumulo实例：
+
+    ```bash
+    docker run -it \
+      --name accumulo \
+      openeuler/accumulo:{Tag}
+    ```
+
+    出现如下信息则说明accumulo已经部署成功：
+    ```
+    ************************************************************/
+    Starting Hadoop...
+    Starting namenodes on [localhost]
+    localhost: Warning: Permanently added 'localhost' (ED25519) to the list of known hosts.
+    Starting datanodes
+    Starting secondary namenodes [183cfa448d9e]
+    183cfa448d9e: Warning: Permanently added '183cfa448d9e' (ED25519) to the list of known hosts.
+    2025-06-27 09:44:28,879 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+    Starting resourcemanager
+    Starting nodemanagers
+    Start History Server
+    WARNING: Use of this script to start the MR JobHistory daemon is deprecated.
+    WARNING: Attempting to execute replacement "mapred --daemon start" instead.
+    2025-06-27T09:44:36,603 [conf.SiteConfiguration] INFO : Found Accumulo configuration on classpath at /usr/local/accumulo/conf/accumulo.properties
+    2025-06-27T09:44:36,758 [util.NativeCodeLoader] WARN : Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+    2025-06-27T09:44:37,033 [fs.VolumeManagerImpl] WARN : dfs.datanode.synconclose set to false in hdfs-site.xml: data loss is possible on hard system reset or power loss
+    2025-06-27T09:44:37,033 [init.Initialize] INFO : Hadoop Filesystem is hdfs://localhost:8020
+    2025-06-27T09:44:37,033 [init.Initialize] INFO : Accumulo data dirs are [[hdfs://localhost:8020/accumulo]]
+    2025-06-27T09:44:37,033 [init.Initialize] INFO : Zookeeper server is localhost:2181
+    2025-06-27T09:44:37,033 [init.Initialize] INFO : Checking if Zookeeper is available. If this hangs, then you need to make sure zookeeper is running
+
+
+    Warning!!! Your instance secret is still set to the default, this is not secure. We highly recommend you change it.
+
+
+    You can change the instance secret in accumulo by using:
+      bin/accumulo org.apache.accumulo.server.util.ChangeSecret
+    You will also need to edit your secret in your configuration file by adding the property instance.secret to your accumulo.properties. Without this accumulo will not operate correctly
+    Instance name : 
+
+    ```
+
+  - 容器交互
+
+    容器启动默认执行`accumulo init --upload-accumulo-props`, 用户可根据需求通过CMD改变执行的命令，或启动时重新设置entrypoint，进入容器后进行交互：
+    ```bash
+    docker run -it \
+      --name accumulo \
+      --entrypoint=bash \
+      openeuler/accumulo:{Tag}
+    ```
+  
+  - 停止服务
+
+    使用如下命令终止容器：
+    ```
+    docker stop accumulo
+    docker rm accumulo
+    ```
+
+license: Apache-2.0 license
+similar_packages:
+  - Apache HBase: 基于 Hadoop 的分布式、可扩展的 NoSQL 数据库，适合处理大规模、实时随机读写操作。
+  - Cassandra: 由 Apache 提供支持的分布式 NoSQL 数据库，用于处理大量数据，具有高可用性和无单点故障。
+dependency:
+  - openjdk
+  - hadoop
+  - zookeeper

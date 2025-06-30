@@ -1,0 +1,70 @@
+name: hadoop
+category: bigdata
+description: Apache Hadoop 软件库是一个框架，它允许使用简单的编程模型在计算机集群之间分布式处理大型数据集。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  hadoop镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  | Tags | Currently |  Architectures|
+  |------|-----------|---------------|
+  |[3.4.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/hadoop/3.4.1/24.03-lts-sp1/Dockerfile)| Apache hadoop 3.4.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/hadoop:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+
+    ```bash
+    docker run -d \
+      --name hadoop \
+      --hostname localhost \
+      -p 9870:9870 \
+      -p 8088:8088 \
+      -p 19888:19888 \
+      openeuler/hadoop:latest
+    ```
+
+  - 查看运行日志
+
+    ```
+    docker logs --follow hadoop
+    ```
+
+    出现如下信息则说明hadoop已经部署成功：
+    ```
+    Starting resourcemanager
+    Starting nodemanagers
+    ```
+  
+  - 访问服务
+
+    hadoop部署成功后，使用`Ctrl + C`退出容器的日志, 并使用如下链接访问hadoop web UI：
+
+    | Service Name   |   URL                   |
+    |----------------|-------------------------|
+    |NameNode        | http://localhost:9870⁠   |
+    |ResourceManager | http://localhost:8088⁠   |
+    |JobHistory      | http://localhost:19888⁠  |
+
+  - 停止服务
+
+    使用如下命令终止容器：
+    ```
+    docker stop hadoop
+    docker rm hadoop
+    ```
+
+license: Apache-2.0 license
+similar_packages:
+  - Apache Doris: 原名 Palo，MPP 架构的 OLAP 数据库，支持高并发点查询和实时分析。
+dependency:
+  - openjdk
+  - ssh

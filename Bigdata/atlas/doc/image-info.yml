@@ -1,0 +1,67 @@
+name: atlas
+category: bigdata
+description: Atlas 是一套可扩展且易于扩展的核心基础治理服务，使企业能够有效且高效地满足 Hadoop 内部的合规性要求，并允许与整个企业数据生态系统集成。Apache Atlas 为组织提供开放的元数据管理和治理功能，用于构建其数据资产目录、对这些资产进行分类和管理，并为数据科学家、分析师和数据治理团队提供围绕这些数据资产的协作能力。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  atlas镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  | Tags | Currently |  Architectures|
+  |------|-----------|---------------|
+  |[2.4.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/atlas/2.4.0/24.03-lts-sp1/Dockerfile)| Apache Atlas 2.4.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/atlas:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+
+    ```bash
+    docker run -it \
+      --name atlas \
+      -p 21000:21000 \
+      openeuler/atlas:{Tag}
+    ```
+
+    使用容器内的Apache HBase和Apache Solr运行Apache Atlas：
+    ```
+    export MANAGE_LOCAL_HBASE=true
+    export MANAGE_LOCAL_SOLR=true
+    bin/atlas_start.py
+    ```
+
+    使用如下命令验证Atlas是否已经正常运行:
+    ```
+    # 运行命令
+    curl -u {username}:{password} http://localhost:21000/api/atlas/admin/version
+
+    # 返回如下信息则正常
+    {"Description":"Metadata Management and Data Governance Platform over Hadoop","Version":"2.2.0","Name":"apache-atlas"}
+    ```
+    默认登录用户名`{username}:{password}`为：`admin:admin`
+
+  - webUI访问：
+
+    浏览器地址栏输入：`http://localhost:21000`来可视化管理Altas, 默认登录用户名/密码：`admin/admin`。
+
+  - 停止服务
+    
+    使用如下命令停止Atlas服务：
+    ```
+    bin/atlas_stop.py
+    ```
+
+license: Apache-2.0 license
+similar_packages:
+  - Apache HBase: 基于 Hadoop 的分布式、可扩展的 NoSQL 数据库，适合处理大规模、实时随机读写操作。
+  - Cassandra: 由 Apache 提供支持的分布式 NoSQL 数据库，用于处理大量数据，具有高可用性和无单点故障。
+dependency:
+  - openjdk
+  - hadoop
+  - zookeeper
