@@ -1,0 +1,35 @@
+name: hbase
+category: bigdata
+description: Apache HBase 是一个开源、分布式、版本化、面向列的存储系统，以 Google 的 Bigtable 为蓝本。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  hbase镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  | Tags | Currently |  Architectures|
+  |------|-----------|---------------|
+  |[2.6.2-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/hbase/2.6.2/24.03-lts-sp1/Dockerfile)| Apache HBase 2.6.2 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/hbase:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+
+    ```bash
+    docker run -it \
+      --name hbase \
+      openeuler/hbase:{Tag}
+    ```
+
+license: Apache-2.0 license
+similar_packages:
+  - Bigtable: A Distributed Storage System for Structured Data by Chang et al
+dependency:
+  - openjdk

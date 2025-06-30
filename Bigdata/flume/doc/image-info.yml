@@ -1,0 +1,35 @@
+name: flume
+category: bigdata
+description: Apache Flume 是一种分布式、可靠且可用的服务，用于高效收集、聚合和移动大量类似日志的数据。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  flume镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  | Tags | Currently |  Architectures|
+  |------|-----------|---------------|
+  |[1.11.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/flume/1.11.0/24.03-lts-sp1/Dockerfile)| Apache Flume 1.11.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/flume:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+
+    ```bash
+    docker run -it \
+      --name flume \
+      openeuler/flume:{Tag}
+    ```
+
+license: Apache-2.0 license
+similar_packages:
+  - N/A
+dependency:
+  - N/A

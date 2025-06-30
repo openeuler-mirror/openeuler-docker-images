@@ -1,0 +1,62 @@
+name: hive
+category: bigdata
+description: Apache Hive (TM) 数据仓库软件使用 SQL 方便读取、写入和管理驻留在分布式存储中的大型数据集。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  hive镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  | Tags | Currently |  Architectures|
+  |------|-----------|---------------|
+  |[4.0.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/hive/4.0.1/24.03-lts-sp1/Dockerfile)| Apache Hive 4.0.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/hive:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+
+    ```bash
+    docker run -it \
+        --name hive \
+        -p 10000:10000 \
+        -p 10002:10002 \
+        -p 9083:9083
+        openeuler/hive:{Tag}
+    ```
+
+    The following message indicates that the hive is ready :
+    ```
+    SLF4J: Class path contains multiple SLF4J bindings.
+    SLF4J: Found binding in [jar:file:/usr/local/hive/lib/log4j-slf4j-impl-2.18.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+    SLF4J: Found binding in [jar:file:/usr/local/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+    SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+    SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+    SLF4J: Class path contains multiple SLF4J bindings.
+    SLF4J: Found binding in [jar:file:/usr/local/hive/lib/log4j-slf4j-impl-2.18.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+    SLF4J: Found binding in [jar:file:/usr/local/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+    SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+    SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+    Beeline version 4.0.1 by Apache Hive
+    beeline>
+
+    ```
+    The default entrypoint is `hive`, users can use `--entrypoint` to change the entrypoint.
+
+  - 访问容器
+  
+  ```bash
+  docker exec -it hive /bin/bash
+  ```
+
+license: Apache-2.0 license
+similar_packages:
+  - Bigtable: A Distributed Storage System for Structured Data by Chang et al
+dependency:
+  - openjdk

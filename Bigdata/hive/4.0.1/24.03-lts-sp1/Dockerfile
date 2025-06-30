@@ -24,4 +24,6 @@ RUN curl -fSL -o hadoop.tar.gz https://dlcdn.apache.org/hadoop/common/hadoop-${H
 ENV PATH=$PATH:/usr/local/hadoop/bin
 ENV HADOOP_HOME=/usr/local/hadoop/
 
-ENTRYPOINT ["hive", "version"]
+WORKDIR /usr/local/hive/bin
+EXPOSE 10000 10002 9083
+CMD ["hive"]
