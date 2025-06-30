@@ -1,0 +1,80 @@
+name: traffic-server
+category: others
+description: Apache Traffic Server (ATS) 是一个高性能的 HTTP 缓存代理服务器，可以作为正向代理，也可以作为反向代理，常用于大规模网站的内容分发、边缘缓存和负载均衡。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  traffic-server镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[10.0.5-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/traffic-server/10.0.5/24.03-lts-sp1/Dockerfile)| Apache Traffic Server 10.0.5 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/traffic-server:{Tag}
+  ```
+
+usage: |
+  - 运行 Nginx 容器
+
+    启动一个监听在 `8080` 端口的 Nginx 容器：
+    ```
+    docker run -d --name nginx -p 8080:8080 openeuler/nginx:latest
+    ```
+
+  - 配置转发规则
+      
+    编辑默认的 [remap.config](https://github.com/apache/trafficserver/blob/10.0.5/configs/remap.config.default)，添加如下配置：
+    ```
+    # remap.config
+    map http://localhost/ http://127.0.0.1:8080/
+    ```
+    
+    **说明:**
+    * 这表示 ATS 会将访问 `http://localhost/` 的请求转发到本机上运行的 `Nginx` 容器（`127.0.0.1:8080`）。
+    * 请确保这里配置的端口 `8080` 与你在启动 `Nginx` 容器时映射出来的端口一致。
+    * 你也可以根据实际后端服务地址，修改 `remap.config` 中的目标地址。
+  
+  - 运行 Traffic Server 容器
+  
+    启动 Traffic Server 容器，并挂载你的 `remap.config` 文件来覆盖容器内部默认的配置：
+    ```
+    docker run -d \
+      --name traffic-server \
+      -p 8081:8080 \
+      -v $(pwd)/remap.config:/usr/local/trafficserver/etc/trafficserver/remap.config \
+      my-traffic-server-image
+    ```
+    **可选:**
+    * 如果你需要自定义 Traffic Server 的默认行为，可以修改默认的 [records.yaml](https://github.com/apache/trafficserver/blob/10.0.5/configs/records.yaml.default.in)，并在启动容器时挂载：
+      ```
+      -v $(pwd)/records.yaml:/usr/local/trafficserver/etc/trafficserver/records.yaml
+      ```
+    * 这样会将容器中的默认配置文件替换为你的自定义版本。
+    
+    **提示:**
+    * 容器内部监听的端口是通过 `records.yaml` 中的 `proxy.config.http.server_port` 定义的（默认通常是 `8080`）。
+    * 这里 `-p 8081:8080` 表示将宿主机的 `8081` 端口映射到容器内部的 `8080` 端口。
+      
+  - 测试流量转发
+  
+    通过 `curl` 向 Traffic Server 容器发送请求，验证转发是否生效：
+    ```
+    curl -v -H "Host: localhost" http://127.0.0.1:8081/
+    ```
+    你应该能看到来自 `Nginx` 容器的响应，通过 Traffic Server 成功转发。
+
+license: Apache-2.0 license
+similar_packages:
+  - Nginx: Nginx 是一个高性能的、轻量级的 Web 服务器和反向代理服务器。它以其出色的性能和可扩展性而闻名，并且在处理高并发请求时表现出色。
+dependency:
+  - openssl
+  - zlib
+  - pcre
+  - xz
+  - brotli

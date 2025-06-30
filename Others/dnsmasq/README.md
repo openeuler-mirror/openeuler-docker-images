@@ -52,7 +52,7 @@ In this usage, users can select the corresponding `{Tag}` based on their require
     ```
     nohup dnsmasq --no-daemon &
     ```
-    To make sure it`s running:
+    To make sure it's running:
     ```
     ps aux | grep dnsmasq
     ```

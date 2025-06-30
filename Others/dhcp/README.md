@@ -38,7 +38,7 @@ In this usage, users can select the corresponding `{Tag}` based on their require
   
 - Create the `dhcpd.conf` file
   
-    Add a subnet declaration matching the `eth0` interface`s IP. For example:
+    Add a subnet declaration matching the `eth0` interface's IP. For example:
     ```
     # Configure subnet based on eth0's IP (172.17.0.7)
     subnet 172.17.0.0 netmask 255.255.0.0 {
@@ -50,7 +50,7 @@ In this usage, users can select the corresponding `{Tag}` based on their require
     }
     ```
     **Key Points:**
-    * The subnet range and netmask must cover eth0`s IP(172.17.0.7).
+    * The subnet range and netmask must cover eth0's IP(172.17.0.7).
     * If your actual network is `172.17.0.0/24`, change the netmask to `255.255.255.0`.
 
 - Specify listening interface(Optional)
