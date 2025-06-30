@@ -1,0 +1,51 @@
+name: webbench
+category: others
+description: Webbench是一个在linux下使用的非常简单的网站压测工具。它使用fork()模拟多个客户端同时访问我们设定的URL，测试网站在压力下工作的性能，最多可以模拟3万个并发连接去测试网站的负载能力。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  webbench镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.5-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/webbench/1.5/24.03-lts-sp1/Dockerfile)| webbench 1.5 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/webbench:{Tag}
+  ```
+
+usage: |
+  - 以交互式Shell运行容器:
+
+    通过交互式 Shell 启动容器，使用webbench：
+    ```
+    docker run -it --rm openeuler/webbench:{Tag} bash
+    ```
+ 
+  - 启动一个简单的HTTP服务
+
+    在有index.html文件(任意内容)的目录下执行:
+    ```
+    nohup python3 -m http.server 8080 &
+    ```
+    * 该命令会将当前目录作为文件根目录，通过端口 8080 提供 HTTP 服务。
+    * 使用 nohup 和 & 可以让服务器在后台持续运行，不会因关闭终端而中断。
+
+  - 测试 GET 请求
+    
+    ```
+    webbench -c 100 -t 30 http://127.0.0.1:8080/index.html
+    ```
+    表示使用 100 个并发客户端，测试 30 秒访问 http://127.0.0.1:8080/index.html。
+
+license: GPL-3.0 license
+similar_packages:
+  - wrk: 高性能 HTTP 压力测试工具，支持多线程和长连接，适合更高并发场景。
+dependency:
+  - ctags
+  - libtirpc
