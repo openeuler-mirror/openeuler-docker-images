@@ -79,7 +79,7 @@ images:
   haproxy: haproxy
   jetty: jetty
   keepalived: keepalived
-  trafficserver: trafficserver
+  traffic-server: traffic-server
   uwsgi: uwsgi
   nagios: nagios
   libyuv: libyuv
