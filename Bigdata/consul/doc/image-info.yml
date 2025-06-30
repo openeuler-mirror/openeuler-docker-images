@@ -1,0 +1,65 @@
+name: consul
+category: bigdata
+description: Consul 是一种分布式、高可用性和数据中心感知的解决方案，用于跨动态分布式基础设施连接和配置应用程序。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  consul镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  | Tags | Currently |  Architectures|
+  |------|-----------|---------------|
+  |[1.20.5-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/consul/1.20.5/24.03-lts-sp1/Dockerfile)| Consul 1.20.5 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/consul:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+
+    ```bash
+    docker run -it \
+      --name my-consul \
+      -p 8500:8500 \
+      openeuler/consul:{Tag}
+      {command}
+    ```
+
+    用户可根据自身需求替换`{command}`，可选：
+    ```
+    Usage: consul [--version] [--help] <command> [<args>]
+
+    Available commands are:
+        acl             Interact with Consul's ACLs
+        agent           Runs a Consul agent
+        catalog         Interact with the catalog
+        config          Interact with Consul's Centralized Configurations
+        connect         Interact with Consul Connect
+        debug           Records a debugging archive for operators
+        event           Fire a new event
+        exec            Executes a command on Consul nodes
+        force-leave     Forces a member of the cluster to enter the "left" state
+        info            Provides debugging information for operators.
+        intention       Interact with Connect service intentions
+        join            Tell Consul agent to join cluster
+        keygen          Generates a new encryption key
+        ...
+    ```
+
+  - 访问容器
+
+    ```bash
+	  docker exec -it my-consul /bin/bash
+    ```
+    进入容器即可修改相关配置，进行开发调试，参考[developer.hashicorp.com](https://developer.hashicorp.com/consul)
+
+license: Business Source License 1.1
+similar_packages:
+  - N/A
+dependency:
+  - golang

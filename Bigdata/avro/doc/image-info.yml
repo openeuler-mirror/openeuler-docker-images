@@ -1,0 +1,37 @@
+name: avro
+category: bigdata
+description: Apache Avro 是记录数据的领先序列化格式，也是流数据管道的首选。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  avro镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  | Tags | Currently |  Architectures|
+  |------|-----------|---------------|
+  |[1.12.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/avro/1.12.0/24.03-lts-sp1/Dockerfile)| Apache Asvro 1.12.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/avro:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+
+    ```bash
+    docker run -it \
+        --name avro \
+        openeuler/avro:{Tag}
+    ```
+    用户可以`avro`容器为基础环境，开发基于Avro的项目。
+
+license: Apache-2.0 license
+similar_packages:
+  - Thrift: 由 Facebook 开发，是一个跨语言的服务框架，包含数据序列化和远程过程调用（RPC）功能。
+dependency:
+  - openjdk
+  - python
