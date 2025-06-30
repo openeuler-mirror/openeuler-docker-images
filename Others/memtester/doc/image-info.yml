@@ -1,0 +1,69 @@
+name: memtester
+category: others
+description: memtester 是一个开源的内存测试工具，用于检测物理内存（RAM）的稳定性，可发现硬件错误（如位翻转、写入失败等）。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  memtester镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  | [4.7.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/memtester/4.7.1/24.03-lts-sp1/Dockerfile) | memtester 4.7.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/memtester:{Tag}
+  ```
+
+usage: |
+  -  基本命令语法
+
+    ```
+    memtester <memory_size> <iterations>
+    ```
+    * memory_size：要测试的内存容量（例如：100M，1G）
+    * iterations：测试循环次数（默认：1）
+
+  - 示例：测试100MB内存
+   
+    运行以下命令对100MB内存进行完整测试（1次完整测试循环）：
+    ```
+    memtester 100M 1
+    ```
+    
+    输出内容:
+    ```
+    ......
+    Loop 1/1:
+      Stuck Address       : ok         
+      Random Value        : ok
+      Compare XOR         : ok
+      Compare SUB         : ok
+      Compare MUL         : ok
+      Compare DIV         : ok
+      Compare OR          : ok
+      Compare AND         : ok
+      Sequential Increment: ok
+      Solid Bits          : ok         
+      Block Sequential    : ok         
+      Checkerboard        : ok         
+      Bit Spread          : ok         
+      Bit Flip            : ok         
+      Walking Ones        : ok         
+      Walking Zeroes      : ok         
+      8-bit Writes        : ok
+      16-bit Writes       : ok
+
+    Done.
+    ```
+
+
+license: GPL-2.0 license
+similar_packages:
+  - Sysbench: Sysbench 是一个开源的、多线程的性能测试工具，主要用于对 CPU、内存、磁盘 I/O、线程、数据库（如 MySQL/PostgreSQL） 等系统资源进行基准测试（benchmark）。
+dependency:
+  - glibc

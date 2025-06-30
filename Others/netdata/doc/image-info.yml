@@ -1,0 +1,49 @@
+name: netdata
+category: others
+description: Netdata 是一个高性能、实时系统监控和性能分析工具。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  netdata镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  | [2.5.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/netdata/2.5.0/24.03-lts-sp1/Dockerfile) | Netdata 2.5.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/netdata:{Tag}
+  ```
+
+usage: |
+  - 运行 Netdata 进程
+
+    执行以下命令手动启动 Netdata：
+    ```
+    netdata/bin/netdata
+    ```
+    这会以前台方式启动 Netdata 监控代理进程。如果你希望它在后台运行，可以在命令后添加 &。
+
+  - 访问 Web UI
+     
+      Netdata 运行后，可以访问它的 Web UI：
+      ```
+      http://localhost:19999
+      ```
+      你将看到 Netdata 实时监控UI，可以查看 CPU、内存、磁盘 I/O、网络流量等系统指标。
+
+
+license: GPL-3.0 license
+similar_packages:
+  - Prometheus: Prometheus 是一个开源的系统监控和告警工具，采集和存储时间序列数据，支持强大的查询语言 PromQL，用于性能监控、系统分析和自动报警。
+dependency:
+  - libuuid
+  - libcurl
+  - libmnl
+  - libuv
+  - openssl
+  - node.js
