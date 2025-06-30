@@ -1,0 +1,52 @@
+name: tomcat
+category: others
+description: Apache Tomcat 是最流行的开源 Java Servlet 容器和 Web 服务器之一， 它实现了 Java Servlet、JSP（JavaServer Pages）、WebSocket 等 Java EE（现在叫 Jakarta EE）规范的核心部分。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  tomcat镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[9.0.10-oe2003sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/tomcat/9.0.10/20.03-lts-sp1/Dockerfile)| Tomcat 9.0.10 on openEuler 20.03-LTS-SP1 | amd64, arm64 |
+  |[11.0.7-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/tomcat/11.0.7/24.03-lts-sp1/Dockerfile)| Tomcat 11.0.7 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/tomcat:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+    ```
+    docker run -d --name my-tomcat -p 8080:8080 openeuler/tomcat:{Tag}
+    ```
+    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。`my-tomcat`启动之后，通过`http://localhost:8080`访问tomcat服务。
+  
+  - 启动参数
+
+    |    Parameter   |  Description  |
+    |----------------|---------------|
+    | -p 8080:8080	   | 暴露tomcat服务端口 |
+
+  - 容器测试
+
+    查看运行日志
+    ```
+    docker logs -f my-tomcat
+    ```
+
+    使用shell交互
+    ```
+    docker exec -it my-tomcat bash
+    ```
+
+license: Apache-2.0 license
+similar_packages:
+  - Jetty: 一个轻量级的 Java Servlet 容器，和 Tomcat 类似，但更灵活嵌入式。
+dependency:
+  - openjdk
