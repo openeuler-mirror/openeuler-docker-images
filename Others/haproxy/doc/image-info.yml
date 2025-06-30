@@ -1,0 +1,85 @@
+name: haproxy
+category: others
+description: HAProxy（High Availability Proxy）是一个开源的、高性能的 负载均衡器 和 代理服务器，主要用于 TCP（第4层）和 HTTP（第7层）应用。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  haproxy镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[3.1.7-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/haproxy/3.1.7/24.03-lts-sp1/Dockerfile)| HAProxy 3.1.7 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/haproxy:{Tag}
+  ```
+
+usage: |
+  - 以交互式Shell运行容器:
+
+    通过交互式 Shell 启动容器，使用haproxy：
+    ```
+    docker run -it --rm openeuler/haproxy:{Tag} bash
+    ```
+ 
+  - 创建haproxy配置文件
+      
+    创建的配置文件`haproxy.cfg`内容如下:
+    ```
+    global
+    daemon
+    maxconn 256
+
+    aults
+        mode http
+        timeout connect 5000ms
+        timeout client 50000ms
+        timeout server 50000ms
+
+    frontend http_in
+        bind *:8080
+        default_backend servers
+
+    backend servers
+        server local_srv 127.0.0.1:8000 maxconn 32
+    ```
+    * `frontend`: 监听端口 `8080`。
+    * `backend`: 将流量转发到 `127.0.0.1:8080`。
+    
+  - 启动一个简单的后端 HTTP 服务
+
+    使用 Python3 启动一个基础的 HTTP 服务，监听在 `8080` 端口：
+    ```
+    nohup python3 -m http.server 8080 &
+    ```
+    在后台启动一个最小的 HTTP 服务，默认会把当前工作目录暴露出来，监听在 `8080` 端口。
+    
+  - 在后台启动 HAProxy
+  
+    ```
+    nohup haproxy -f haproxy.cfg &
+    ```
+    HAProxy 会监听 `8080` 端口，把收到的请求转发到本地的 `127.0.0.1:8080`。
+    
+  - 测试 HAProxy HTTP 服务
+  
+    Access your service from your host machine:
+    ```
+    curl http://localhost:8080
+    ```
+    通过 HAProxy 转发后，后端 HTTP 服务返回的内容。
+
+license: GPL v2
+similar_packages:
+  - Nginx: 支持 HTTP 缓存和负载均衡，广泛用于加速网站和应用。
+dependency:
+  - systemd
+  - pcre
+  - zlib
+  - lua
+  - openssl
