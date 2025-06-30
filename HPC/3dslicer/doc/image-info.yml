@@ -7,7 +7,7 @@ environment: |
   yum install -y docker
   ```
 tags: |
-  lumpy-sv镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+  3dslicer镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
 
   | Tags | Currently |  Architectures|
   |------|-----------|---------------|
@@ -28,19 +28,21 @@ usage: |
   
   - 运行容器
 
+    **注意：** 不建议直接在linux终端运行该容器，当前容器在没有显示设备的机器上运行时存在显示错误问题，建议用户使用该容器镜像的构建方式直接在带有显示设备的宿主机上安装并使用3D Slicer。
     ```
     docker run -it --name my-3dslicer openeuler/3dslicer:{Tag}
     ```
+
     进入容器后, 可以按照3D Slicer的 [用户指南](https://slicer.readthedocs.io/en/latest/developer_guide/index.html) 运行程序：
     ```
     # 进入可执行目录
-    cd Slicer-install/
+    cd /opt/Slicer-Release/Slicer-build
+
+    # 强制使用软件渲染以避免图形化问题
+    export QT_XCB_FORCE_SOFTWARE_OPENGL=1
+    export LIBGL_ALWAYS_SOFTWARE=1
+    export QT_QPA_PLATFORM=xcb
     ./Slicer
-    ```
-    也可以运行简单的测试用例：
-    ```
-    cd Slicer-install/
-    ctest -j4
     ```
 
 license: Security policy

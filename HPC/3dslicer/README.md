@@ -32,13 +32,12 @@ The tag of each 3dslicer container image is consist of the version of 3dslicer a
 	```
 	Now, you can use 3dslicer according to [User Guide](https://slicer.readthedocs.io/en/latest/developer_guide/index.html) as
     ```
-    cd Slicer-install/
+    cd /opt/Slicer-Release/Slicer-build
+    # To avoid UI errors
+    export QT_XCB_FORCE_SOFTWARE_OPENGL=1
+    export LIBGL_ALWAYS_SOFTWARE=1
+    export QT_QPA_PLATFORM=xcb
     ./Slicer
-    ```
-    or run tests
-    ```
-    cd Slicer-install/
-    ctest -j4
     ```
 
 # Question and answering
