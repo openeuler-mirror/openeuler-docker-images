@@ -1,0 +1,39 @@
+name: jetty
+category: others
+description: Jetty 是一个开源的、轻量级的 Java Web 服务器 和 Servlet 容器，由 Eclipse 基金会维护。它被广泛用于嵌入式系统、微服务架构和云原生应用，特点是高性能、模块化设计，并且启动速度快。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  jetty镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[12.0.21-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/jetty/12.0.21/24.03-lts-sp1/Dockerfile)| Jetty 12.0.21 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/jetty:{Tag}
+  ```
+
+usage: |
+  - 添加maven依赖
+  
+    Maven: 在`pom.xml`文件中引入Jetty依赖
+    ```
+    <dependency>
+      <groupId>org.eclipse.jetty</groupId>
+      <artifactId>jetty-server</artifactId>
+      <version>${jetty.version}</version>
+    </dependency>
+    ```
+
+license: Apache-2.0 license
+similar_packages:
+  - Tomcat: Apache Tomcat（简称 Tomcat）是一个轻量级Web服务器和Servlet/JSP容器，它实现了Java Servlet、JSP（JavaServer Pages）和WebSocket规范，是运行Java Web应用的核心服务器之一。
+dependency:
+  - openjdk
+  - maven
