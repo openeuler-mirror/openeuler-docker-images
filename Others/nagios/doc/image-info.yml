@@ -1,0 +1,57 @@
+name: nagios
+category: others
+description: Nagios 是一款开源的 IT基础设施监控系统，用于检测网络、服务器、应用和服务的运行状态。当系统或服务出现故障时，Nagios 会通过邮件、短信等方式通知管理员，帮助快速响应问题，保障业务连续性。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  nagios镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  | [4.5.9-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/nagios/4.5.9/24.03-lts-sp1/Dockerfile) | Nagios 4.5.9 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/nagios:{Tag}
+  ```
+
+usage: |
+  - 以交互式Shell运行容器
+
+    通过交互式 Shell 启动容器，nagios：
+    ```
+    docker run -it --rm openeuler/nagios:{Tag} bash
+    ```
+  
+  - 交互式Shell运行
+
+    您可以通过交互式Shell启动容器来使用Nagios。
+    ```
+    docker run -it --rm openeuler/nagios:{Tag} bash
+    ```
+  
+  - 运行Nagios进程
+
+    该命令使用指定的配置文件（`nagios.cfg`）启动`Nagios Core`监控系统。它会初始化Nagios守护进程，加载已定义的主机、服务和检查项，并根据提供的配置开始监控。
+    ```
+    /usr/local/nagios/bin/nagios /opt/nagioscore-nagios/t/etc/nagios.cfg
+    ```
+    **参数说明：**
+    * `/usr/local/nagios/bin/nagios:` Nagios可执行文件路径。
+    * `/opt/nagioscore-nagios/t/etc/nagios.cfg:` Nagios配置文件路径，通常位于`/opt/nagioscore-nagios/t/etc/nagios.cfg`。
+
+
+license: GPL-2.0 license
+similar_packages:
+  - Prometheus: Prometheus 是一个开源的系统监控和告警工具，采集和存储时间序列数据，支持强大的查询语言 PromQL，用于性能监控、系统分析和自动报警。
+dependency:
+  - gd
+  - php
+  - httpd
+  - perl
+  - openssl
+  - glibc
