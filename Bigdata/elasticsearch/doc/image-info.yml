@@ -1,0 +1,33 @@
+name: elasticsearch
+category: bigdata
+description: Elasticsearch 是一个分布式搜索和分析引擎、可扩展数据存储和矢量数据库，针对生产级工作负载的速度和相关性进行了优化。Elasticsearch 是 Elastic 开放 Stack 平台的基础。它支持近乎实时地搜索海量数据集、执行矢量搜索、与生成式 AI 应用程序集成等等。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  elasticsearch镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  | Tags | Currently |  Architectures|
+  |------|-----------|---------------|
+  |[8.17.3-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/elasticsearch/8.17.3/24.03-lts-sp1/Dockerfile)| Elasticsearch 8.17.3 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/elasticsearch:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+
+    ```bash
+    docker run -d --name elasticsearch --net {somenetwork} -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" openeuler/elasticsearch:{Tag}
+    ```
+
+license: GNU Affero General Public License v3.0 only
+similar_packages:
+  - N/A
+dependency:
+  - N/A

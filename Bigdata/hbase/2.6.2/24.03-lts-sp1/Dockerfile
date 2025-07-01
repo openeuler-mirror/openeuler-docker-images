@@ -15,4 +15,5 @@ RUN yum install -y java-11-openjdk-devel findutils && \
 
 ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 
+EXPOSE 8080 8085 9090 9095 2181 16010
 ENTRYPOINT ["hbase", "version"]

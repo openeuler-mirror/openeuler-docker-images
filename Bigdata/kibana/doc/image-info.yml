@@ -1,0 +1,69 @@
+name: hive
+category: bigdata
+description: Apache Hive (TM) 数据仓库软件使用 SQL 方便读取、写入和管理驻留在分布式存储中的大型数据集。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  hive镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  | Tags | Currently |  Architectures|
+  |------|-----------|---------------|
+  |[4.0.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/hive/4.0.1/24.03-lts-sp1/Dockerfile)| Apache Hive 4.0.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/hive:{Tag}
+  ```
+
+usage: |
+
+  - 为 Elasticsearch 和 Kibana 创建一个新的docker网络
+
+    ```
+    docker network create elastic
+    ```
+
+  - 启动 Elasticsearch 容器
+
+    ```
+    docker run --name es01 --net elastic -p 9200:9200 -it -m 1GB openeuler/elasticsearch:latest
+    ```
+    复制生成的elastic密码和enrollment token. 这些认证信息只在启动Elasticsearch容器的时候显示一次，如下所示
+    ```
+    ℹ️  Password for the elastic user (reset with `bin/elasticsearch-reset-password -u elastic`):
+    gDBV6gZki-9-gZ1IzY5j
+
+    ℹ️  HTTP CA certificate SHA-256 fingerprint:
+    ec7a666172d4ae5537f0dc347a89860bcab6f159b82e6c982d747b0e0aec382c
+
+    ℹ️  Configure Kibana to use this cluster:
+    • Run Kibana and click the configuration link in the terminal when Kibana starts.
+    • Copy the following enrollment token and paste it into Kibana in your browser (valid for the next 30 minutes):
+    eyJ2ZXIiOiI4LjE0LjAiLCJhZHIiOlsiMTcyLjE4LjAuMjo5MjAwIl0sImZnciI6ImVjN2E2NjYxNzJkNGFlNTUzN2YwZGMzNDdhODk4NjBiY2FiNmYxNTliODJlNmM5ODJkNzQ3YjBlMGFlYzM4MmMiLCJrZXkiOiJoUjNUd0pjQkFIZDR5RzVZX0xKejpRRDQtd2MtWFNmRy01NGJCcnE5ZzRBIn0=
+    ``` 
+    也可以通过如下命令重新生成上述认证信息：
+    ```
+    docker exec -it es01 /usr/share/elasticsearch/bin/elasticsearch-reset-password -u elastic
+    docker exec -it es01 /usr/share/elasticsearch/bin/elasticsearch-create-enrollment-token -s kibana
+    ```
+
+  - 启动 kibana 实例
+
+    ```bash
+    docker run --name kib01 --net elastic -p 5601:5601 openeuler/kibana:latest
+    ```
+    Kibana启动以后, 会在终端输出一个唯一的链接用于在Web页面访问Kibana
+    ```
+    Go to http://0.0.0.0:5601/?code=798755 to get started.
+    ```
+
+
+license: GNU Affero General Public License v3.0 only
+similar_packages:
+  - N/A
+dependency:
+  - N/A
