@@ -1,0 +1,109 @@
+name: uwsgi
+category: others
+description: uWSGI 是一个高性能的 WSGI (Web Server Gateway Interface) 服务器，用于部署 Python Web 应用（如 Django、Flask、FastAPI）。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  uwsgi镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[2.0.29-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/uwsgi/2.0.29/24.03-lts-sp1/Dockerfile)| uWSGI 2.0.29 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/uwsgi:{Tag}
+  ```
+
+usage: |
+  - 以交互式Shell运行容器:
+
+    通过交互式 Shell 启动容器，使用uwsgi：
+    ```
+    docker run -it --rm openeuler/uwsgi:{Tag} bash
+    ```
+
+  - 准备应用
+
+    创建工作目录
+    ```
+    mkdir /app
+    ```
+
+    创建WSGI入口文件(`myapp.py`)
+    ```
+    # /app/myapp.py
+    def application(environ, start_response):
+        status = '200 OK'
+        headers = [('Content-type', 'text/plain; charset=utf-8')]
+        start_response(status, headers)
+        return [b"Hello World from uWSGI!"]
+    ```
+
+  - 设置非root用户和权限
+    
+    创建专用用户和组
+    ```
+    groupadd -r uwsgi_group
+    useradd -r -g uwsgi_group -d /app -s /bin/false uwsgi_user
+    ```
+  
+    设置适当权限
+    ```
+    chown -R uwsgi_user:uwsgi_group /app
+    chmod -R 755 /app
+    ```
+  
+  - 使用推荐参数启动uWSGI
+
+    基础命令
+    ```
+    ./uwsgi \
+      --http-socket :8000 \
+      --processes 4 \
+      --threads 2 \
+      --chdir /app \
+      --wsgi-file myapp.py \
+      --master \
+      --enable-threads \
+      --buffer-size 32768 \
+      --uid uwsgi_user \
+      --gid uwsgi_group
+    ```
+  
+    **参数说明**:
+
+    | 参数                     | 描述                   | 推荐值                              |
+    |------------------------|----------------------|----------------------------------|
+    | `--http-socket :8000`  | 绑定到TCP端口8000(HTTP模式) | `:8000` (或任何可用端口)                |
+    | `--processes 4`        | worker进程数            | `4`(根据CPU核心数调整)                  |
+    | `--threads 2`          | 每个worker的线程数         | `2`(用于并发请求)                      |
+    | `--chdir /app`         | 工作目录                 | `/app`(存放`myapp.py`的目录)          |
+    | `--wsgi-file myapp.py` | WSGI应用入口文件           | `myapp.py`(必须包含application可调用对象) |
+    | `--master`             | 启用主进程(管理workers)	    | 生产环境建议启用                         |
+    | `--enable-threads`     | 允许在workers中使用线程      | 线程化应用必须启用                        |
+    | `--buffer-size 32768`  | 请求缓冲区大小(字节)          | `32768`(32KB，可根据需要调整)            |
+    | `--uid uwsgi_user`     | 以非root用户运行           | 专用用户(如`uwsgi_user`)              |
+    | `--gid uwsgi_group`    | 以非root组运行            | 专用组(如`uwsgi_group`)              |
+    
+
+
+license: GPL-2.0 license
+similar_packages:
+  - Gunicorn: Gunicorn（Green Unicorn）是一个纯 Python 实现的 WSGI HTTP 服务器，专为部署 Python Web 应用（如 Django、Flask）设计。
+dependency:
+  - pcre
+  - systemd
+  - libuuid
+  - libcap
+  - libcap
+  - libxml2
+  - libyaml
+  - openssl
+  - zlib
+  - libffi
+  - python3
