@@ -12,9 +12,10 @@ WORKDIR /opt
 
 RUN wget https://github.com/unbit/uwsgi/archive/refs/tags/${VERSION}.tar.gz \
     && tar -zxvf ${VERSION}.tar.gz \
-    && rm -f ${VERSION}.tar.gz
+    && rm -f ${VERSION}.tar.gz \
+    && mv uwsgi-* uwsgi
 
-WORKDIR /opt/uwsgi-${VERSION}
+WORKDIR /opt/uwsgi
 
 RUN make -j
 
