@@ -1,0 +1,85 @@
+name: keepalived
+category: others
+description: Keepalived 是一个基于 VRRP（Virtual Router Redundancy Protocol） 协议的高可用性解决方案，主要用于实现 IP 故障转移（IP Failover） 和 负载均衡。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  keepalived镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[2.3.3-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/keepalived/2.3.3/24.03-lts-sp1/Dockerfile)| Keepalived 2.3.3 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/keepalived:{Tag}
+  ```
+
+usage: |
+  - 交互式 Shell 运行容器
+
+    R使用 `--privileged` 参数以特权模式运行容器， 这样Keepalived 才能管理网络接口并绑定虚拟 IP 地址：
+    ```
+    docker run -it --privileged --rm openeuler/keepalived:{Tag} bash
+    ```
+    这条命令会以交互式 Shell 启动容器，并且具备完整的权限。
+
+  -  检查实际网卡和子网信息
+
+    在 Keepalived 容器内部，如果没有安装 `iproute` 工具，可以先安装：
+    ```
+    dnf install -y iproute
+    ip addr show eth0
+    ```
+    然后查看 `eth0` 网卡的 IP 地址和子网掩码（如：`172.17.0.8/16`）。
+  
+  - 准备 Keepalived 配置文件
+
+    创建或编辑 `keepalived.conf` 文件，示例配置如下，假设你的网段是 `172.17.0.0/16`：
+    ```
+    global_defs {
+       router_id my_keepalived
+    }
+
+    vrrp_instance VI_1 {
+       state MASTER
+       interface eth0
+       virtual_router_id 51
+       priority 100
+       advert_int 1
+       authentication {
+           auth_type PASS
+           auth_pass 123456
+       }
+       virtual_ipaddress {
+           172.17.0.100/16
+       }
+    }
+    ```
+    请根据实际环境修改 `interface` 和 `virtual_ipaddress` 的值。
+  
+  - 启动 Keepalived
+
+    使用前台调试模式启动 Keepalived，并在终端输出详细日志，方便查看运行状态：
+    ```
+    keepalived -n -l -d -f keepalived.conf
+    ```
+    各参数含义：
+    * `-n`: 前台运行（不以守护进程方式）
+    * `-l`: 将日志输出到终端
+    * `-d`: 开启调试级别日志
+    * `-f`: 指定使用的配置文件
+
+license: GPL v2
+similar_packages:
+  - Pacemaker: Pacemaker 是一个高可用性（HA, High Availability）集群资源管理器，用于在 Linux 系统中确保关键服务在节点故障时自动迁移并持续运行。
+dependency:
+  - libtool
+  - pcre
+  - net-snmp
+  - libnl3
+  - openssl
