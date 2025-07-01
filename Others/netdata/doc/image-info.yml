@@ -20,6 +20,13 @@ download: |
   ```
 
 usage: |
+  - 以交互式Shell运行容器
+
+    通过交互式 Shell 启动容器，netdata：
+    ```
+    docker run -it --rm openeuler/netdata:{Tag} bash
+    ```
+
   - 运行 Netdata 进程
 
     执行以下命令手动启动 Netdata：

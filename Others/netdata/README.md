@@ -29,6 +29,13 @@ In this usage, users can select the corresponding `{Tag}`  based on their requir
 	docker pull openeuler/netdata:{Tag}
 	```
  
+- Run with an interactive shell
+
+    You can start the container with an interactive shell to use netdata.
+    ```
+    docker run -it --rm openeuler/netdata:{Tag} bash
+    ```
+    
 - Run the Netdata process
 
     Execute the following command to start Netdata manually.
