@@ -1,0 +1,36 @@
+name: oozie
+category: bigdata
+description: Oozie 是一个可扩展、可伸缩且可靠的系统，用于通过 Web 服务定义、管理、调度和执行复杂的 Hadoop 工作负载。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  oozie镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  | Tags | Currently |  Architectures|
+  |------|-----------|---------------|
+  |[5.2.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/oozie/5.2.1/24.03-lts-sp1/Dockerfile)| Apache Oozie 5.2.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/oozie:{Tag}
+  ```
+
+usage: |
+
+  oozie容器镜像仅用来验证其上游版本是否可以和openEuler成功集成，未安装hadoop，功能尚不完备。
+
+  用户可使用如下命令启动容器：
+  ```bash
+  docker run -it --name oozie openeuler/oozie:{Tag}
+  ```
+  参考[http://oozie.apache.org/](http://oozie.apache.org/)配置oozie以满足个人需求.
+
+license: Apache-2.0 license
+similar_packages:
+  - N/A
+dependency:
+  - N/A

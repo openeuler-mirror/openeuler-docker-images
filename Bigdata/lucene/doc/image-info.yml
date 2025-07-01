@@ -1,0 +1,42 @@
+name: lucene
+category: bigdata
+description: Apache Lucene 是一个用 Java 编写的高性能、功能齐全的文本搜索引擎库。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  lucene镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  | Tags | Currently |  Architectures|
+  |------|-----------|---------------|
+  |[10.2.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/lucene/10.2.1/24.03-lts-sp1/Dockerfile)| Apache Lucene 10.2.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/lucene:{Tag}
+  ```
+
+usage: |
+
+  - 运行容器
+
+    ```bash
+    docker run -it --name lucene openeuler/lucene:{Tag}
+    ```
+
+    容器运行后，用户直接进入`WORKDIR`目录
+    ```
+    [root@1c6b6f671ed5 bin]# ls
+    luke.cmd  luke.sh
+
+    ```
+    更多使用信息请访问 [https://lucene.apache.org/](https://lucene.apache.org/).
+
+license: Apache-2.0 license
+similar_packages:
+  - N/A
+dependency:
+  - N/A

@@ -1,22 +1,22 @@
-name: hive
+name: kibana
 category: bigdata
-description: Apache Hive (TM) 数据仓库软件使用 SQL 方便读取、写入和管理驻留在分布式存储中的大型数据集。
+description: Kibana 是 Elastic Stack 的窗口，更确切地说，它是一个基于浏览器的 Elasticsearch 分析和搜索仪表板。
 environment: |
   本应用在Docker环境中运行，安装Docker执行如下命令
   ```
   yum install -y docker
   ```
 tags: |
-  hive镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+  kibana镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
 
   | Tags | Currently |  Architectures|
   |------|-----------|---------------|
-  |[4.0.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/hive/4.0.1/24.03-lts-sp1/Dockerfile)| Apache Hive 4.0.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+  |[4.0.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kibana/4.0.1/24.03-lts-sp1/Dockerfile)| Apache kibana 4.0.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 download: |
   拉取镜像到本地
   ```
-  docker pull openeuler/hive:{Tag}
+  docker pull openeuler/kibana:{Tag}
   ```
 
 usage: |
@@ -54,7 +54,7 @@ usage: |
   - 启动 kibana 实例
 
     ```bash
-    docker run --name kib01 --net elastic -p 5601:5601 openeuler/kibana:latest
+    docker run --name kib01 --net elastic -p 5601:5601 openeuler/kibana:{Tag}
     ```
     Kibana启动以后, 会在终端输出一个唯一的链接用于在Web页面访问Kibana
     ```
