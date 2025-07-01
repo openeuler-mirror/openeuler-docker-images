@@ -27,7 +27,7 @@ usage: |
     docker run -it --rm openeuler/uwsgi:{Tag} bash
     ```
 
- - 准备应用
+  - 准备应用
 
     创建工作目录
     ```
@@ -44,7 +44,7 @@ usage: |
         return [b"Hello World from uWSGI!"]
     ```
 
- - 设置非root用户和权限
+  - 设置非root用户和权限
     
     创建专用用户和组
     ```
@@ -58,7 +58,7 @@ usage: |
     chmod -R 755 /app
     ```
   
- - 使用推荐参数启动uWSGI
+  - 使用推荐参数启动uWSGI
 
     基础命令
     ```
