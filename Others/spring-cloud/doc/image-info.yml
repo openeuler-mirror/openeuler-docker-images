@@ -1,0 +1,93 @@
+name: spring-cloud
+category: others
+description: Spring Cloud 是一套基于 Spring Boot 的分布式系统开发工具集，提供了一系列开箱即用的微服务架构解决方案。它整合了 Netflix、Consul、Zookeeper 等开源组件，简化了分布式系统基础设施的开发。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  spring-cloud镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[4.3.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/spring-cloud/4.3.0/24.03-lts-sp1/Dockerfile)| Spring Cloud 4.3.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/spring-cloud:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+    ```
+    docker run -d --name my-spring-cloud openeuler/spring-cloud:{Tag}
+    ```
+  
+  - Spring Cloud 组件: spring-cloud-starter-netflix-eureka-client简介
+
+    当你引入:
+    ```
+    <dependency>
+        <groupId>org.springcloud.cloud</groupId>
+        <atifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+    </dependency>
+    ```
+    这个 starter 会自动引入:
+    * `spring-cloud-commons`
+    * `spring-cloud-netflix-eureka-client`
+
+    Netflix Eureka Client 基于 spring-cloud-commons 中定义的接口，提供了具体的 Eureka 实现:
+
+    | Abstraction (`spring-cloud-commons`) | Eureka Implementation (`spring-cloud-netflix-eureka-client`) |
+    |--------------------------------------|--------------------------------------------------------------|
+    | `DiscoveryClient`                    | `EurekaDiscoveryClient`                                      |
+    | `ServiceInstance`                    | `EurekaServiceInstance`                                      |
+    | `ServiceRegistry`                    | `EurekaServiceRegistry`                                      |
+    | `AutoServiceRegistration`            | `EurekaAutoServiceRegistration`                              |
+    | `HealthIndicator`                    | `EurekaHealthIndicator`                                      |
+
+
+  - 代码示例
+
+    ```
+    @SpringBootApplication
+    @EnableDiscoveryClient  // enables DiscoveryClient from spring-cloud-commons
+    public class MyApp {
+      public static void main(String[] args) {
+        SpringApplication.run(MyApp.class, args);
+      }
+    }
+    
+    @RestController
+    public class HelloController {
+    
+      @Autowired
+      private DiscoveryClient discoveryClient; // spring-cloud-commons
+    
+      @Autowired
+      private RestTemplate restTemplate;
+    
+      @Bean
+      @LoadBalanced // spring-cloud-commons
+      public RestTemplate restTemplate() {
+        return new RestTemplate();
+      }
+    
+      @GetMapping("/call")
+      public String callUserService() {
+        // Uses EurekaDiscoveryClient under the hood
+        List<ServiceInstance> instances = discoveryClient.getInstances("user-service");
+        // Uses load balancer + Eureka for client-side discovery
+        return restTemplate.getForObject("http://user-service/hello", String.class);
+      }
+    }
+    ```
+
+license: Apache-2.0 license
+similar_packages:
+  - N/A
+dependency:
+  - java
+  - maven
