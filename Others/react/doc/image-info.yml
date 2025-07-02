@@ -1,0 +1,61 @@
+name: react
+category: others
+description: React 是由 Facebook 开发的 JavaScript UI 库，用于构建组件化用户界面。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  react镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[19.1.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/react/19.1.0/24.03-lts-sp1/Dockerfile)| React 19.1.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/react:{Tag}
+  ```
+
+usage: |
+  - 以交互式Shell运行容器:
+
+    通过交互式 Shell 启动容器，使用react命令：
+    ```
+    docker run -it --rm openeuler/react:{Tag} bash
+    ```
+ 
+  - 示例：一个简单的 React 计数器
+    
+    这段代码展示了一个基础的 React 计数器组件，具有以下功能：
+    * 记录数字计数状态
+    * 提供增加计数的按钮
+    * 显示当前计数值
+    ```
+    import { useState } from 'react';
+    import { createRoot } from 'react-dom/client';
+    
+    function Counter() {
+      const [count, setCount] = useState(0);
+      return (
+        <>
+          <h1>{count}</h1>
+          <button onClick={() => setCount(count + 1)}>
+            Increment
+          </button>
+        </>
+      );
+    }
+    
+    const root = createRoot(document.getElementById('root'));
+    root.render(<Counter />);
+    ```
+
+license: MIT license
+similar_packages:
+  - Vue: Vue.js (通常简称为 Vue) 是一个用于构建用户界面的渐进式 JavaScript 框架，由前 Google 工程师尤雨溪 (Evan You) 于 2014 年发布。
+dependency:
+  - react-dom
+  - webpack

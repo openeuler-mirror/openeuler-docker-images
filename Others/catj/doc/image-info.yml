@@ -1,0 +1,70 @@
+name: catj
+category: others
+description: catj可以把 JSON 文件/字符串格式化成更好读的格式（Pretty-print），可在 shell 中直接查看。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  catj镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.0.4-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/catj/1.0.4/24.03-lts-sp1/Dockerfile)| catj 1.0.4 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/catj:{Tag}
+  ```
+
+usage: |
+  - 以交互式Shell运行容器:
+
+    通过交互式 Shell 启动容器，使用catj命令：
+    ```
+    docker run -it --rm openeuler/catj:{Tag} bash
+    ```
+ 
+  - 使用catj示例
+
+    catj [file]
+    如果没有指定文件，catj 会从标准输入读取数据。
+
+    输入:
+    ```
+    {
+      "mappings": {
+        "templates": [
+          {
+            "fields": {
+              "mapping": {
+                "norms": false,
+                "type": "text",
+                "fields": {
+                  "keyword": {
+                    "ignore_above": 256,
+                    "type": "keyword"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    } 
+    ```
+    
+    输出:
+    ```
+    .mappings.templates[0].fields.mapping.norms = false
+    .mappings.templates[0].fields.mapping.type = "text"
+    .mappings.templates[0].fields.mapping.fields.keyword.ignore_above = 256
+    .mappings.templates[0].fields.mapping.fields.keyword.type = "keyword"
+    ```
+license: MIT license
+similar_packages:
+  - jq: jq 是一个命令行 JSON 处理器（lightweight and flexible JSON processor）。
+dependency:
+  - nodejs

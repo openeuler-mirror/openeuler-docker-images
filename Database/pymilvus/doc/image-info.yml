@@ -1,0 +1,50 @@
+name: pymilvus
+category: database
+description: Milvus 是一款开源的向量数据库，专为 AI 应用和向量相似度搜索设计。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  pymilvus镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[2.5.6-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/pymilvus/2.5.6/24.03-lts-sp1/Dockerfile)| pymilvus 2.5.6 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/pymilvus:{Tag}
+  ```
+
+usage: |
+  - 示例: 连接到 Milvus Lite
+
+    ```
+    from pymilvus import MilvusClient
+
+    client = MilvusClient(uri="./milvus_demo.db")
+    ```
+    运行上述代码段后，将在当前文件夹下生成名为milvus_demo.db 的数据库文件。
+
+  - 注意
+    * 同样的 API 也适用于 Milvus Standalone、Milvus Distributed 和 Zilliz Cloud。
+    * 唯一区别是 `uri` 的不同：:
+      * 对于 Milvus Lite，使用本地文件路径，例如 `./milvus_demo.db`
+      * 对于 `Milvus Standalone` 或 `Milvus Distributed`，使用服务器的端点地址和你的 token，例如：
+        ```
+        client = MilvusClient(
+            uri="http://localhost:19530",
+            token="username:password"
+        )
+        ```
+      * 本地的 `.db` 文件是可移植的，你可以将它复制到其他位置来持久化或备份你的数据。
+
+license:  Apache-2.0 license
+similar_packages:
+  - FAISS: FAISS（Facebook AI Similarity Search）是由 Meta（Facebook）AI 团队 开发的高性能向量相似度搜索库，专为大规模向量数据的快速检索而优化。
+dependency:
+  - python
+  - llvm
