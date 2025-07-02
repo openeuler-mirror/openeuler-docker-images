@@ -1,0 +1,98 @@
+name: swagger-ui
+category: others
+description: Swagger UI 是一个开源的、基于 HTML/JavaScript 的前端工具，可以把符合 OpenAPI (也叫 Swagger) 规范 的接口描述文件（JSON 或 YAML）渲染成一个可交互的 API 文档网页。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  swagger-ui镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[5.21.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/swagger-ui/5.21.0/24.03-lts-sp1/Dockerfile)| Swagger UI 5.21.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/swagger-ui:{Tag}
+  ```
+
+usage: |
+  - 以交互式Shell运行容器
+
+    通过交互式 Shell 启动容器，使用swagger-ui命令：
+    ```bash
+    docker run -it --rm openeuler/swagger-ui:{Tag} bash
+    ```
+
+  - 快速使用示例（HTML 本地版）
+    
+    1. 准备一个 swagger.json
+    ```json
+    {
+      "openapi": "3.0.0",
+      "info": {
+        "title": "Simple API",
+        "version": "1.0.0"
+      },
+      "paths": {
+        "/hello": {
+          "get": {
+            "summary": "Say hello",
+            "responses": {
+              "200": {
+                "description": "Successful response",
+                "content": {
+                  "application/json": {
+                    "example": {
+                      "message": "Hello, World!"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    ```
+  
+    2. 准备一个 index.html
+    ```html
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <title>Swagger UI Example</title>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swagger-ui-dist@5/swagger-ui.css" />
+    </head>
+    <body>
+      <div id="swagger-ui"></div>
+      <script src="https://cdn.jsdelivr.net/npm/swagger-ui-dist@5/swagger-ui-bundle.js"></script>
+      <script>
+        SwaggerUIBundle({
+          url: "./swagger.json", // 指向你的 OpenAPI 文件
+          dom_id: "#swagger-ui"
+        });
+      </script>
+    </body>
+    </html>
+    ```
+  
+    3. 启动一个静态服务器（可选）
+    ```bash
+    python3 -m http.server 8080
+    ```
+    然后访问：
+    ```
+    http://localhost:8080/
+    ```
+    就能看到可交互的 Swagger UI 页面，点击 /hello → GET → Try it out → Execute，它会给出示例响应。
+
+license:  Apache-2.0 license
+similar_packages:
+  - N/A
+dependency:
+  - N/A

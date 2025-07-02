@@ -1,0 +1,47 @@
+name: next
+category: others
+description: Next.js 是一个基于React 的开源框架，用于构建全栈Web 应用程序，它提供了服务端渲染（SSR）和静态站点生成（SSG）的能力，以优化性能和改善SEO。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  next镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[15.3.4-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/next/15.3.4/24.03-lts-sp1/Dockerfile)| Next.js 15.3.4 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/next:{Tag}
+  ```
+
+usage: |
+  - 以交互式Shell运行容器:
+
+    通过交互式 Shell 启动容器，使用next命令：
+    ```
+    docker run -it --rm openeuler/next:{Tag} bash
+    ```
+ 
+  - 创建一个 Next.js 项目
+    
+    运行以下命令来新建一个 Next.js 应用：
+    ```
+    npx create-next-app@lateste
+    ```
+    这个命令会：
+    * 提示你输入项目名称（或使用默认的 my-app）
+    * 自动安装所有必需的依赖项
+    * 建立基础的 Next.js 项目结构
+
+license: MIT license
+similar_packages:
+  - Gatsby: Gatsby 是一个基于 React 的开源静态站点生成器（SSG），专注于构建高性能的现代网站。
+dependency:
+  - react
+  - next
+  - react-dom
