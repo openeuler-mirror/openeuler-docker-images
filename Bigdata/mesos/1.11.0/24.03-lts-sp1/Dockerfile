@@ -45,7 +45,7 @@ COPY grpc-1.10.0.patch /mesos-${VERSION}/3rdparty/grpc-1.10.0.patch
 COPY entrypoint.sh /
 RUN cd /mesos-${VERSION} && \
     CXXFLAGS="-Wno-nonnull -Wno-deprecated-declarations -Wno-parentheses" ./configure && \
-    make -j $nproc && make install && \
+    make -j 2 && make install && \
     chmod +x /entrypoint.sh
 
 ENV PATH $PATH:/mesos/bin
