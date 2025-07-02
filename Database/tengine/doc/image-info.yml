@@ -20,7 +20,6 @@ download: |
   ```
 
 usage: |
-  
   启动tdengine实例：
   ```bash
   docker run -it --name tdengine openeuler/tdengine:{Tag}

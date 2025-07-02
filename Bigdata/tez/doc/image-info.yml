@@ -21,11 +21,11 @@ download: |
 
 usage: |
   
-    使用以下命令启动tez实例：
-    ```bash
-    docker run -it --name tez openeuler/tez:{Tag}
-    ```
-    `openeuler/tez`镜像用于验证上游tez版本和openEuler的集成, 使用前用户需要自行配置tez。
+  使用以下命令启动tez实例：
+  ```bash
+  docker run -it --name tez openeuler/tez:{Tag}
+  ```
+  `openeuler/tez`镜像用于验证上游tez版本和openEuler的集成, 使用前用户需要自行配置tez。
 
 license: Apache-2.0 license
 similar_packages:

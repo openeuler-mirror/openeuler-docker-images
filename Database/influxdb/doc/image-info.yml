@@ -20,12 +20,11 @@ download: |
   ```
 
 usage: |
-  
   启动mariadb实例：
-	```
-	docker network create some-network 
-	docker run --detach --network some-network --name some-mariadb --env MARIADB_USER=example-user --env MARIADB_PASSWORD=my_cool_secret --env MARIADB_ROOT_PASSWORD=my-secret-pw openeuler/mariadb:{Tag}
-	```
+  ```
+  docker network create some-network 
+  docker run --detach --network some-network --name some-mariadb --env MARIADB_USER=example-user --env MARIADB_PASSWORD=my_cool_secret --env MARIADB_ROOT_PASSWORD=my-secret-pw openeuler/mariadb:{Tag}
+  ```
 	启动后，用户可以从[MariaDB command line client](https://mariadb.com/kb/en/mariadb-command-line-client/)访问MariaDB。
   
 license: GPL-2.0 license

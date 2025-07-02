@@ -20,17 +20,15 @@ download: |
   ```
 
 usage: |
-  
   启动influxdb实例：
-
-	```
-	docker run -it -p 8086:8086 openeuler/influxdb:{Tag}
-	```
-	终端提示以下信息则表示influxdb已经ready：
-	```
-	2025-07-02T02:07:01.507857Z	info	Listening	{"log_id": "0xUE2JM0000", "service": "tcp-listener", "transport": "http", "addr": ":8086", "port": 8086}
-	2025-07-02T02:07:01.507881Z	info	Starting	{"log_id": "0xUE2JM0000", "service": "telemetry", "interval": "8h"}
-	```
+  ```
+  docker run -it -p 8086:8086 openeuler/influxdb:{Tag}
+  ```
+  终端提示以下信息则表示influxdb已经ready：
+  ```
+  2025-07-02T02:07:01.507857Z	info	Listening	{"log_id": "0xUE2JM0000", "service": "tcp-listener", "transport": "http", "addr": ":8086", "port": 8086}
+  2025-07-02T02:07:01.507881Z	info	Starting	{"log_id": "0xUE2JM0000", "service": "telemetry", "interval": "8h"}
+  ```
   
 license: Apache-2.0 license
 similar_packages:
