@@ -1,0 +1,35 @@
+name: orientdb
+category: database
+description: OrientDB 是最通用的数据库管理系统 (DBMS)，它在一个多模型产品中支持图形、文档、响应式、全文和地理空间模型。OrientDB 可以分布式运行（多主服务器），支持 SQL、ACID 事务、全文索引和响应式查询。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  orientdb镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[3.2.38-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/orientdb/3.2.38/24.03-lts-sp1/Dockerfile)| OrientDB 3.2.38 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/orientdb:{Tag}
+  ```
+
+usage: |
+  
+  启动orientdb实例:
+  ```bash
+  docker run -it --name orientdb openeuler/orientdb:{Tag}
+  ```
+  openeuler/orientdb主要用来验证上游版本与openEuler的集成, 进入容器后用户需要自己配置OrientDB。
+
+license: Apache-2.0 license
+similar_packages:
+  - N/A
+dependency:
+  - N/A
+  

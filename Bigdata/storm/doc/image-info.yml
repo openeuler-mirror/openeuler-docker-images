@@ -1,0 +1,58 @@
+name: storm
+category: bigdata
+description: Storm 是一个分布式实时计算系统。与 Hadoop 提供一组通用的批处理原语类似，Storm 也提供了一组通用的实时计算原语。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  storm镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[2.8.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/storm/2.8.0/24.03-lts-sp1/Dockerfile)| Storm 2.8.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/storm:{Tag}
+  ```
+
+usage: |
+  
+  - 启动storm实例：
+
+    ```bash
+    docker run -it --name storm openeuler/storm:{Tag} storm
+    ```
+
+  - 执行选项
+
+    ```
+    usage: storm [-h]
+                {jar,localconfvalue,remoteconfvalue,local,sql,kill,upload-credentials,blobstore,heartbeats,activate,set_log_level,list,deactivate,rebalance,get-errors,node-health-check,kill_workers,admin,shell,repl,nimbus,pacemaker,supervisor,ui,logviewer,drpc-client,drpc,dev-zookeeper,version,classpath,server_classpath,monitor}
+                ...
+
+    positional arguments:
+      {jar,localconfvalue,remoteconfvalue,local,sql,kill,upload-credentials,blobstore,heartbeats,activate,set_log_level,list,deactivate,rebalance,get-errors,node-health-check,kill_workers,admin,shell,repl,nimbus,pacemaker,supervisor,ui,logviewer,drpc-client,drpc,dev-zookeeper,version,classpath,server_classpath,monitor}
+        jar                 Runs the main method of class with the specified arguments. The storm worker dependencies and configs in
+                            ~/.storm are put on the classpath. The process is configured so that StormSubmitter
+                            (https://storm.apache.org/releases/current/javadocs/org/apache/storm/StormSubmitter.html) will upload
+                            the jar at topology-jar-path when the topology is submitted. When you pass jars and/or artifacts
+                            options, StormSubmitter will upload them when the topology is submitted, and they will be included to
+                            classpath of both the process which runs the class, and also workers for that topology.
+        localconfvalue      Prints out the value for conf-name in the local Storm configs. The local Storm configs are the ones in
+                            ~/.storm/storm.yaml merged in with the configs in defaults.yaml.
+        remoteconfvalue     Prints out the value for conf-name in the cluster's Storm configs. The cluster's Storm configs are the
+                            ones in $STORM-PATH/conf/storm.yaml merged in with the configs in defaults.yaml. This command must be
+                            run on a cluster machine.
+    ...
+    ```
+
+license: Apache-2.0 license
+similar_packages:
+  - N/A
+dependency:
+  - N/A
+  

@@ -1,0 +1,49 @@
+name: etcd
+category: database
+description: Etcd 是一个分布式键值存储，旨在跨集群安全地存储数据。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  etcd镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[3.6.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/etcd/3.6.0/24.03-lts-sp1/Dockerfile)| Etcd 3.6.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/etcd:{Tag}
+  ```
+
+usage: |
+  
+  - 创建docker网络
+
+    ```bash
+    docker network create app-tier --driver bridge
+    ```
+
+  - 启动Etcd server实例
+
+	  使用 `--network app-tier` 参数来执行 `docker run` 命令
+    ```
+    docker run -d --name Etcd-server \
+      --network app-tier \
+      --publish 2379:2379 \
+      --publish 2380:2380 \
+      --env ALLOW_NONE_AUTHENTICATION=yes \
+      --env ETCD_ADVERTISE_CLIENT_URLS=http://etcd-server:2379 \
+      openeuler/etcd:{Tag}
+    ```
+  
+license: Apache-2.0 license
+similar_packages:
+  - Apache Doris: 基于 MPP（大规模并行处理）架构，支持毫秒级查询响应。
+  - Greenplum: 基于 PostgreSQL 的 MPP 数据库，支持完整 SQL 和事务。
+dependency:
+  - N/A
+  

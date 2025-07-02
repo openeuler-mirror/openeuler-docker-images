@@ -22,4 +22,4 @@ COPY --from=builder /etcd/bin/etcdctl /usr/bin/etcdctl
 COPY --from=builder /etcd/bin/etcdutl /usr/bin/etcdutl
 
 EXPOSE 2379 2380
-ENTRYPOINT [ "etcd" ]
+CMD [ "etcd" ]

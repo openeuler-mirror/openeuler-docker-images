@@ -1,0 +1,61 @@
+name: thrift
+category: bigdata
+description: Thrift 是一种轻量级、跨语言的点对点 RPC（远程过程调用）实现软件框架。它提供了清晰的数据传输、数据序列化和应用层处理抽象与实现。其代码生成系统通过简单的接口定义语言作为输入，能自动生成多种编程语言的代码，这些生成的代码基于抽象化的通信栈构建可互操作的 RPC 客户端与服务端。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  thrift镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[0.22.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/thrift/0.22.0/24.03-lts-sp1/Dockerfile)| Thrift 0.22.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/thrift:{Tag}
+  ```
+
+usage: |
+  
+  - 启动thrift实例：
+
+    ```bash
+    docker run -it --name thrift openeuler/thrift:{Tag}
+    ```
+
+  - 执行选项
+
+    ```
+    Usage: thrift [options] file
+    Options:
+      -version    Print the compiler version
+      -o dir      Set the output directory for gen-* packages
+                  (default: current directory)
+      -out dir    Set the ouput location for generated files.
+                  (no gen-* folder will be created)
+      -I dir      Add a directory to the list of directories
+                    searched for include directives
+      -nowarn     Suppress all compiler warnings (BAD!)
+      -strict     Strict compiler warnings on
+      -v[erbose]  Verbose mode
+      -r[ecurse]  Also generate included files
+      -debug      Parse debug trace to stdout
+      --allow-neg-keys  Allow negative field keys (Used to preserve protocol
+                    compatibility with older .thrift files)
+      --allow-64bit-consts  Do not print warnings about using 64-bit constants
+      --gen STR   Generate code with a dynamically-registered generator.
+                    STR has the form language[:key1=val1[,key2[,key3=val3]]].
+                    Keys and values are options passed to the generator.
+                    Many options will not require values.
+    ```
+
+license: Apache-2.0 license
+similar_packages:
+  - N/A
+dependency:
+  - N/A
+  

@@ -1,0 +1,35 @@
+name: tengine
+category: database
+description: Tengine 是亚洲最大的电子商务网站淘宝推出的一款 Web 服务器，它基于 Nginx HTTP 服务器，拥有许多先进的功能。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  tengine镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[2.4.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/tengine/2.4.1/24.03-lts-sp1/Dockerfile)| tengine 2.4.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/tengine:{Tag}
+  ```
+
+usage: |
+  
+  启动tdengine实例：
+  ```bash
+  docker run -it --name tdengine openeuler/tdengine:{Tag}
+  ```
+  `openeuler/tdengine`镜像用于验证上游tdengine版本和openEuler的集成, 用户需要自行配置tdengine。
+
+license: BSD-2-Clause license
+similar_packages:
+  - Nginx
+dependency:
+  - N/A
+  

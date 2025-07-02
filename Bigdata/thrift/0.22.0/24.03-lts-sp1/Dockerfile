@@ -14,4 +14,4 @@ WORKDIR /thrift
 RUN ./bootstrap.sh && ./configure && \
     make -j$nproc && make install
 
-ENTRYPOINT ["thrift", "--version"]
+CMD ["thrift"]
