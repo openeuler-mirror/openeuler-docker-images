@@ -30,7 +30,7 @@ usage: |
     
     本示例演示了如何使用LibYUV将NV12(YUV420SP)格式的图像转换为RGB24格式，并保存为PPM文件。
     ```
-	#include <libyuv.h>
+    #include <libyuv.h>
     #include <iostream>
     #include <fstream>
     #include <cstring>
@@ -74,7 +74,7 @@ usage: |
 
     ```
     g++ example.cpp -o example -lyuv
-	```
+    ```
     
   - 运行程序
   
