@@ -26,7 +26,7 @@ usage: |
     ```bash
     docker run -d --name my-clickhouse-server --ulimit nofile=262144:262144 openeuler/clickhouse:{Tag}
     ```
-	  默认情况下，启动上述server实例后，使用`default`用户且无密码。
+    默认情况下，启动上述server实例后，使用`default`用户且无密码。
 
   - 使用原生client连接到server
 
@@ -35,7 +35,7 @@ usage: |
     # 或
     docker exec -it my-clickhouse-server clickhouse-client
     ```
-	  详情参考：[ClickHouse client](https://clickhouse.com/docs/interfaces/cli/)
+    详情参考：[ClickHouse client](https://clickhouse.com/docs/interfaces/cli/)
 
   - 使用curl连接到server
 
