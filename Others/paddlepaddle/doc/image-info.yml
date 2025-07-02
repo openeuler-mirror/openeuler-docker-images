@@ -1,0 +1,101 @@
+name: paddlepaddle
+category: others
+description: 飞桨(PaddlePaddle)以百度多年的深度学习技术研究和业务应用为基础，是中国首个自主研发、功能完备、 开源开放的产业级深度学习平台，集深度学习核心训练和推理框架、基础模型库、端到端开发套件和丰富的工具组件于一体。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  paddlepaddle镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[3.0.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/paddlepaddle/3.0.0/24.03-lts-sp1/Dockerfile)| PaddlePaddle 3.0.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/paddlepaddle:{Tag}
+  ```
+
+usage: |
+  - 以交互式Shell运行容器:
+
+    通过交互式 Shell 启动容器，使用paddlepaddle：
+    ```
+    docker run -it --rm openeuler/paddlepaddle:{Tag} bash
+    ```
+ 
+  - PaddlePaddle MNIST手写数字识别示例介绍
+
+    该示例是入门PaddlePaddle框架的典型实践，体现了其在深度学习任务中的易用性和完整性。通过这个基础示例，开发者可以快速掌握PaddlePaddle的核心API使用方法。
+  
+    * 完整的的代码示例如下:
+    ```
+    import paddle
+    import numpy as np
+    from paddle.vision.transforms import Normalize
+
+    # 1) Load and transform MNIST dataset
+    transform = Normalize(mean=[127.5], std=[127.5], data_format="CHW")
+    train_dataset = paddle.vision.datasets.MNIST(mode="train", transform=transform)
+    test_dataset = paddle.vision.datasets.MNIST(mode="test", transform=transform)
+
+    # 2) Define the model (LeNet)
+    lenet = paddle.vision.models.LeNet(num_classes=10)
+    model = paddle.Model(lenet)
+
+    # 3) Configure the training process
+    model.prepare(
+        paddle.optimizer.Adam(parameters=model.parameters()),
+        paddle.nn.CrossEntropyLoss(),
+        paddle.metric.Accuracy(),
+    )
+
+    # 4) Train the model
+    model.fit(train_dataset, epochs=5, batch_size=64, verbose=1)
+
+    # 5) Evaluate the model
+    model.evaluate(test_dataset, batch_size=64, verbose=1)
+
+    # 6) Save the trained model
+    model.save("./output/mnist")
+
+    # 7) Load the trained model
+    model.load("output/mnist")
+
+    # 8) Run inference on a single test image
+    img, label = test_dataset[0]
+    img_batch = np.expand_dims(img.astype("float32"), axis=0)
+    out = model.predict_batch(img_batch)[0]
+    pred_label = out.argmax()
+    print("True label: {}, Predicted label: {}".format(label[0], pred_label))
+    ```
+
+    * 期望输出:
+    ```
+    step 938/938 [==============================] - loss: 0.1575 - acc: 0.9275 - 31ms/step                            
+    Epoch 2/5
+    step 938/938 [==============================] - loss: 0.0990 - acc: 0.9740 - 32ms/step                            
+    Epoch 3/5
+    step 938/938 [==============================] - loss: 0.0196 - acc: 0.9792 - 32ms/step                           
+    Epoch 4/5
+    step 938/938 [==============================] - loss: 0.0052 - acc: 0.9804 - 31ms/step                           
+    Epoch 5/5
+    step 938/938 [==============================] - loss: 0.0253 - acc: 0.9831 - 32ms/step                               
+    Eval begin...
+    step 157/157 [==============================] - loss: 3.7890e-04 - acc: 0.9839 - 13ms/step                           
+    Eval samples: 10000
+    true label: 7, pred label: 7
+    ```
+
+license:  Apache-2.0 license
+similar_packages:
+  - PyTorch: PyTorch是由Meta AI(Facebook)人工智能研究小组开发的一种基于Lua编写的Torch库的Python实现的深度学习库。
+dependency:
+  - numpy
+  - scipy
+  - pyyaml
+  - matplotlib
+  - protobuf
