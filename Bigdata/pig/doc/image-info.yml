@@ -1,0 +1,33 @@
+name: pig
+category: bigdata
+description: Apache Pig 是一个用于分析大型数据集的平台。Pig 的语言 Pig Latin 允许您指定一系列数据转换，例如合并数据集、过滤数据集以及对记录或记录组应用函数。Pig 内置了许多函数，但您也可以创建自定义函数来执行特殊用途的处理。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  pig镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  | Tags | Currently |  Architectures|
+  |------|-----------|---------------|
+  |[0.17.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/pig/0.17.0/24.03-lts-sp1/Dockerfile)| Apache Pig 0.17.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/pig:{Tag}
+  ```
+
+usage: |
+  用户可使用如下命令启动容器：
+  ```bash
+  docker run -it --name pig openeuler/pig:{Tag}
+  ```
+  请参考[http://pig.apache.org/](http://pig.apache.org/)配置pig以满足个人需求.
+
+license: Apache-2.0 license
+similar_packages:
+  - N/A
+dependency:
+  - N/A

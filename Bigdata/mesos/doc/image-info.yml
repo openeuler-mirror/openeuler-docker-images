@@ -1,0 +1,55 @@
+name: mesos
+category: bigdata
+description: Apache Mesos 是一个集群管理器，可在分布式应用程序或框架之间提供高效的资源隔离和共享。它可以在动态共享的节点池上运行 Hadoop、Jenkins、Spark、Aurora 和其他框架。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  mesos镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  | Tags | Currently |  Architectures|
+  |------|-----------|---------------|
+  |[1.11.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/mesos/1.11.0/24.03-lts-sp1/Dockerfile)| Apache Mesos 1.11.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/mesos:{Tag}
+  ```
+
+usage: |
+
+  - 运行容器
+
+    ```bash
+    docker run -it -p 5050:5050 -p 5051:5051 --name mesos openeuler/mesos:{Tag}
+    ```
+
+    运行成功后显示如下信息：
+    ```
+    I0701 08:36:18.578015    78 slave.cpp:1473] New master detected at master@172.17.0.2:5050
+    I0701 08:36:18.578051    78 slave.cpp:1527] No credentials provided. Attempting to register without authentication
+    I0701 08:36:18.578105    78 slave.cpp:1538] Detecting new master
+    I0701 08:36:19.391682    81 slave.cpp:1698] Registered with master master@172.17.0.2:5050; given agent ID b441f369-5fbb-466b-947a-85de592b2ea8-S0
+    I0701 08:36:19.391881    77 task_status_update_manager.cpp:188] Resuming sending task status updates
+    I0701 08:36:19.392374    79 status_update_manager_process.hpp:385] Resuming operation status update manager
+    I0701 08:36:19.394169    81 slave.cpp:1793] Forwarding agent update {"operations":{},"resource_providers":{},"resource_version_uuid":{"value":"Au7VS/olSSyf9zUUcCNVTw=="},"slave_id":{"value":"b441f369-5fbb-466b-947a-85de592b2ea8-S0"},"update_oversubscribed_resources":false}
+    I0701 08:37:18.567739    80 slave.cpp:7657] Current disk usage 38.64%. Max allowed age: 3.594878272763982days
+    I0701 08:38:18.573164    77 slave.cpp:7657] Current disk usage 38.64%. Max allowed age: 3.594877815264410days
+    I0701 08:39:18.579586    82 slave.cpp:7657] Current disk usage 38.64%. Max allowed age: 3.594877357764850days
+
+    ```
+  
+  - Web访问
+    
+    通过浏览器访问地址：`http://localhost:5050`
+
+    更多使用信息请访问 [http://mesos.apache.org/](http://mesos.apache.org/).
+
+license: Apache-2.0 license
+similar_packages:
+  - N/A
+dependency:
+  - N/A

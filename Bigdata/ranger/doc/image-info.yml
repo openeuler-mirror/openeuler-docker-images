@@ -1,0 +1,34 @@
+name: ranger
+category: bigdata
+description: Ranger 是一款带有 VI 快捷键的控制台文件管理器。它提供了简洁美观的 Curses 界面，并可查看目录层次结构。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  ranger镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  | Tags | Currently |  Architectures|
+  |------|-----------|---------------|
+  |[1.9.4-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/ranger/1.9.4/24.03-lts-sp1/Dockerfile)| Apache ranger 1.9.4 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/ranger:{Tag}
+  ```
+
+usage: |
+  用户可使用如下命令启动容器：
+  ```bash
+  docker run -it --name ranger openeuler/ranger:{Tag}
+  ```
+  启动后，ranger运行,即在终端实现文件管理界面。
+
+
+license: Apache-2.0 license
+similar_packages:
+  - N/A
+dependency:
+  - N/A

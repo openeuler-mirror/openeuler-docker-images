@@ -1,0 +1,45 @@
+name: knox
+category: bigdata
+description: Apache Knox 是一个开源的API网关系统，专为与Apache Hadoop及其周边生态组件（如HDFS、YARN、Hive、HBase等）交互提供统一的、安全的访问入口。它通过代理和聚合REST API请求，简化了大数据集群的安全管理，支持身份认证、授权、SSL加密等企业级安全功能。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  knox镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  | Tags | Currently |  Architectures|
+  |------|-----------|---------------|
+  |[2.0.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/knox/2.0.0/24.03-lts-sp1/Dockerfile)| Apache knox 2.0.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/knox:{Tag}
+  ```
+
+usage: |
+
+  - 启动 Knox 容器
+
+    ```bash
+    docker run -it --name knox openeuler/knox:latest
+    ```
+    Knox 容器启动成功后会显示如下信息：
+    ```
+    Starting Gateway succeeded with PID xxx.
+    ```
+
+  - 访问容器
+
+    用户在启动容器时可以使用`--entrypoint`修改entrypoint。容器启动后通过如下命令交互式访问
+    ```bash
+    docker exec -it knox /bin/bash
+    ```
+
+license: Apache-2.0 license
+similar_packages:
+  - N/A
+dependency:
+  - N/A

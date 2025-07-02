@@ -8,13 +8,14 @@ ARG BUILDARCH
 WORKDIR /
 
 RUN yum install -y \
-    wget maven \
-    python-six python-virtualenv \
-    java-devel zlib-devel libcurl-devel \
-    cyrus-sasl-devel cyrus-sasl-md5 \
-    apr-devel subversion-devel apr-util-devel \
-    gcc make libtool libsysfs \
-    patch g++
+        wget maven \
+        python-six python-virtualenv \
+        java-devel zlib-devel libcurl-devel \
+        cyrus-sasl-devel cyrus-sasl-md5 \
+        apr-devel subversion-devel apr-util-devel \
+        gcc make libtool libsysfs \
+        patch g++ net-tools && \
+    yum clean all
 
 RUN wget https://www.openssl.org/source/old/1.0.2/openssl-1.0.2k.tar.gz && \
     tar -zxvf openssl-1.0.2k.tar.gz && \
@@ -41,13 +42,13 @@ ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/python-2.7/lib/:/usr/local/opens
 RUN wget https://downloads.apache.org/mesos/${VERSION}/mesos-${VERSION}.tar.gz && \
     tar -zxf mesos-${VERSION}.tar.gz
 COPY grpc-1.10.0.patch /mesos-${VERSION}/3rdparty/grpc-1.10.0.patch
+COPY entrypoint.sh /
 RUN cd /mesos-${VERSION} && \
     CXXFLAGS="-Wno-nonnull -Wno-deprecated-declarations -Wno-parentheses" ./configure && \
-    make -j 8 && make install
+    make -j 2 && make install && \
+    chmod +x /entrypoint.sh
 
 ENV PATH $PATH:/mesos/bin
-COPY entrypoint.sh /
 
 EXPOSE 5050 5051
-
 ENTRYPOINT ["/entrypoint.sh"]

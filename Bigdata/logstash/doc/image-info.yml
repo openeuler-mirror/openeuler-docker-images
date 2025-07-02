@@ -1,0 +1,49 @@
+name: logstash
+category: bigdata
+description: Logstash 是一款开源数据收集引擎，具备实时流水线功能。Logstash 可以动态地整合来自不同来源的数据，并将数据规范化到选定的目标位置。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  logstash镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  | Tags | Currently |  Architectures|
+  |------|-----------|---------------|
+  |[8.17.3-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/logstash/8.17.3/24.03-lts-sp1/Dockerfile)| Logstash 8.17.3 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/logstash:{Tag}
+  ```
+
+usage: |
+
+  - 运行容器
+
+    ```bash
+    docker run -it \
+      --name logstash \
+      -p 9600:9600 \
+      -p 5044:5044 \
+      openeuler/logstash:{Tag}
+    ```
+    终端输出以下信息证明logstash启动正常：
+    ```
+    Starting server on port: 5044
+    ``` 
+
+  - 访问容器
+
+    ```bash
+    docker exec -it logstash /bin/bash
+    ```
+    注意：用户需要根据需要配置被收集数据的来源。
+
+license: GNU Affero General Public License v3.0 only
+similar_packages:
+  - N/A
+dependency:
+  - N/A
