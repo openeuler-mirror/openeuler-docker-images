@@ -24,7 +24,7 @@ usage: |
   ```bash
   docker run -d --name my-neo4j -p 7474:7474 -p 7687:7687 openeuler/neo4j:{Tag}
   ```
-  这时，用户就可以通过在浏览器输入网址：`http://localhost:7474⁠`来访问徒刑管理界面。
+  这时，用户就可以通过在浏览器输入网址：`http://localhost:7474⁠`来访问图形管理界面。
 
   默认情况下，用户可以使用`用户/密码`：`neo4j/neo4j`来登陆，初次登陆后请修改密码。 在开发环境中，可以使用环境变量`--env=NEO4J_AUTH=none`来`docker run`取消密码认证。
   
