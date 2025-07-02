@@ -1,0 +1,93 @@
+name: libyuv
+category: others
+description: LibYUV 是 Google 开发的高性能 YUV 图像处理库。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  libyuv镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.0.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/libyuv/1.0.0/24.03-lts-sp1/Dockerfile)| LibYuv main on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/libyuv:{Tag}
+  ```
+
+usage: |
+  - 进入容器交互式终端
+    ```
+    docker run -it --rm openeuler/libyuv:{Tag} bash
+    ```
+    用户可根据自身需求选择对应版本的{Tag}。
+  
+  - 示例代码(example.cpp)
+    
+    本示例演示了如何使用LibYUV将NV12(YUV420SP)格式的图像转换为RGB24格式，并保存为PPM文件。
+    ```
+    #include <libyuv.h>
+    #include <iostream>
+    #include <fstream>
+    #include <cstring>
+    
+    int main() {
+        const int width = 640;
+        const int height = 480;
+        const int y_size = width * height;
+        const int uv_size = y_size / 2;
+        
+        uint8_t* src_y = new uint8_t[y_size];
+        uint8_t* src_uv = new uint8_t[uv_size];
+        uint8_t* dst_rgb = new uint8_t[width * height * 3]; // RGB24
+        
+        memset(src_y, 0x80, y_size);
+        memset(src_uv, 0x80, uv_size);
+        
+        // NV12 转 RGB24
+        libyuv::NV12ToRGB24(
+            src_y, width,
+            src_uv, width,
+            dst_rgb, width * 3,
+            width, height
+        );
+        
+        std::ofstream out("output.ppm", std::ios::binary);
+        out << "P6\n" << width << " " << height << "\n255\n";
+        out.write(reinterpret_cast<char*>(dst_rgb), width * height * 3);
+        out.close();
+  
+        delete[] src_y;
+        delete[] src_uv;
+        delete[] dst_rgb;
+        
+        std::cout << "YUV to RGB conversion completed!" << std::endl;
+        return 0;
+    }
+    ```
+  
+  - 编译命令
+
+    ```
+    g++ example.cpp -o example -lyuv
+    ```
+    
+  - 运行程序
+  
+    ```
+    ./example
+    ```
+    程序运行后将会：
+    * 创建一个测试用的灰度YUV图像
+    * 将其转换为RGB格式
+    * 在当前目录保存为`output.ppm`文件
+
+license: BSD 3-Clause License
+similar_packages:
+  - FFmpeg: FFmpeg 是一个跨平台的开源音视频处理工具链。
+dependency:
+  - N/A

@@ -16,4 +16,6 @@ RUN git clone https://chromium.googlesource.com/libyuv/libyuv \
     && make -j$(nproc) \
     && make install
 
+ENV LD_LIBRARY_PATH=/usr/local/lib:/libyuv/build:$LD_LIBRARY_PATH
+
 CMD ["bash"]
