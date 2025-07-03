@@ -1,0 +1,50 @@
+name: alluxio
+category: storage
+description: Alluxio是一个开源的虚拟分布式文件系统。 Alluxio最初起源于一个叫Tachyon的研究项目，它是加州大学伯克利分校AMPLab实验室由师从Scott Shenker教授和Ion Stoica教授的李浩源博士的博士论文课题 。Alluxio位于大数据栈中的计算和存储之间。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  dotnet-deps镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[2.9.4-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/alluxio/2.9.4/24.03-lts-sp1/Dockerfile)| Alluxio 2.9.4 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/alluxio:{Tag}
+  ```
+
+usage: |
+  - 为Alluxio容器创建docker network
+
+    ```
+    docker network create alluxio_nw
+    ```
+
+  - 创建volume用于存储ufs数据
+    ```
+    docker volume create ufs
+    ```
+
+  - 启动Alluxio master
+    ```
+    docker run -d --net=alluxio_nw \
+      -p 19999:19999 \
+      --name=alluxio-master \
+      -v ufs:/opt/alluxio/underFSStorage \
+      openeuler/alluxio:latest master
+    ```
+    通过浏览器访问`alluxio-master`: `http://localhost:19999`
+
+license: Apache-2.0 license
+
+similar_packages:
+  - N/A
+
+dependency:
+  - openjdk

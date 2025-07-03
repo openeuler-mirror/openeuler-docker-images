@@ -23,4 +23,4 @@ FROM ${BASE}
 COPY --from=builder /usr/local/go /usr/local/go
 COPY --from=builder /app/cubefs/build/bin/* /usr/local/bin/
 
-ENV PATH="/usr/local/go/bin:${PATH}"
+WORKDIR /usr/local/bin
