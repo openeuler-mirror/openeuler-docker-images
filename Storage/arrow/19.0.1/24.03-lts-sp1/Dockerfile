@@ -9,7 +9,7 @@ RUN yum install -y git gcc gcc-c++ make cmake wget && \
 RUN git clone -b maint-${VERSION} https://github.com/apache/arrow.git && \
     mkdir -p /arrow/cpp/release && \
     cd /arrow/cpp/release && \
-    camke .. && \
+    cmake .. && \
     make -j$(nproc) \
     && make install DESTDIR=/usr/local && \
     rm -rf /arrow
