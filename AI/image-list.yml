@@ -1,4 +1,5 @@
 images:
+  onnx: onnx
   cann: cann
   dlrm: dlrm
   euler-copilot-fast-inference-qwen: euler-copilot-fast-inference-qwen
