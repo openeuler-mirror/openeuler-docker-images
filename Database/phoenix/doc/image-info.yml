@@ -1,0 +1,35 @@
+name: phoenix
+category: database
+description: Apache Phoenix 是 HBase 上的 SQL 皮肤，以客户端嵌入式 JDBC 驱动程序的形式提供，旨在实现 HBase 数据的低延迟查询。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  phoenix镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[5.2.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/phoenix/5.2.1/24.03-lts-sp1/Dockerfile)| phoenix 5.2.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/phoenix:{Tag}
+  ```
+
+usage: |
+  
+  启动phoenix实例：
+  ```bash
+  docker run -it --name phoenix openeuler/phoenix:latest
+  ```
+  `openeuler/phoenix`镜像用于验证上游phoenix版本和openEuler的集成, 用户需要自行配置phoenix。
+
+license: Apache-2.0 license
+similar_packages:
+  - N/A
+dependency:
+  - N/A
+  

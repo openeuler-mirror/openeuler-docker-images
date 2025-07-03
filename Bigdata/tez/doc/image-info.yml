@@ -1,0 +1,35 @@
+name: tez
+category: bigdata
+description: Apache Tez 是一种通用数据处理管道引擎，被设想为 Apache Hadoop Map-Reduce、Apache Pig、Apache Hive 等更高抽象的低级引擎。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  tez镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[0.10.5-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/tez/0.10.5/24.03-lts-sp1/Dockerfile)| Apache Tez 0.10.5 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/tez:{Tag}
+  ```
+
+usage: |
+  
+  使用以下命令启动tez实例：
+  ```bash
+  docker run -it --name tez openeuler/tez:{Tag}
+  ```
+  `openeuler/tez`镜像用于验证上游tez版本和openEuler的集成, 使用前用户需要自行配置tez。
+
+license: Apache-2.0 license
+similar_packages:
+  - N/A
+dependency:
+  - N/A
+  

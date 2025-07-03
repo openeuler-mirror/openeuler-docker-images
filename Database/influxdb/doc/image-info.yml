@@ -1,0 +1,35 @@
+name: mariadb
+category: database
+description: MariaDB 服务器是社区开发的 MySQL 服务器分支。MariaDB 由原 MySQL 团队的核心成员创建，并积极与外部开发者合作，致力于提供业界功能最丰富、最稳定、许可最合理的开放 SQL 服务器。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  mariadb镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[11.7.2-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/mariadb/11.7.2/24.03-lts-sp1/Dockerfile)| mariadb 11.7.2 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/mariadb:{Tag}
+  ```
+
+usage: |
+  启动mariadb实例：
+  ```
+  docker network create some-network 
+  docker run --detach --network some-network --name some-mariadb --env MARIADB_USER=example-user --env MARIADB_PASSWORD=my_cool_secret --env MARIADB_ROOT_PASSWORD=my-secret-pw openeuler/mariadb:{Tag}
+  ```
+  启动后，用户可以从[MariaDB command line client](https://mariadb.com/kb/en/mariadb-command-line-client/)访问MariaDB。
+  
+license: GPL-2.0 license
+similar_packages:
+  - MySQL
+dependency:
+  - N/A
+  

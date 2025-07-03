@@ -1,0 +1,38 @@
+name: influxdb
+category: database
+description: InfluxDB Core 是一款用于收集、处理、转换和存储事件及时间序列数据的数据库，非常适合需要实时数据采集和快速查询响应时间的用例，用于构建用户界面、监控和自动化解决方案。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  influxdb镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[2.7.11-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/influxdb/2.7.11/24.03-lts-sp1/Dockerfile)| Influxdb 2.7.11 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/influxdb:{Tag}
+  ```
+
+usage: |
+  启动influxdb实例：
+  ```
+  docker run -it -p 8086:8086 openeuler/influxdb:{Tag}
+  ```
+  终端提示以下信息则表示influxdb已经ready：
+  ```
+  2025-07-02T02:07:01.507857Z	info	Listening	{"log_id": "0xUE2JM0000", "service": "tcp-listener", "transport": "http", "addr": ":8086", "port": 8086}
+  2025-07-02T02:07:01.507881Z	info	Starting	{"log_id": "0xUE2JM0000", "service": "telemetry", "interval": "8h"}
+  ```
+  
+license: Apache-2.0 license
+similar_packages:
+  - N/A
+dependency:
+  - N/A
+  

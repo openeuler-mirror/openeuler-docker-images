@@ -1,0 +1,59 @@
+name: clickhouse
+category: database
+description: ClickHouse 是一个开源的列式数据库管理系统，允许实时生成分析数据报告。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  clickhouse镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[25.3.1.2703-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/clickhouse/25.3.1.2703/24.03-lts-sp1/Dockerfile)| Clickhouse 25.3.1.2703 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/clickhouse:{Tag}
+  ```
+
+usage: |
+  
+  - 启动server实例
+
+    ```bash
+    docker run -d --name my-clickhouse-server --ulimit nofile=262144:262144 openeuler/clickhouse:{Tag}
+    ```
+    默认情况下，启动上述server实例后，使用`default`用户且无密码。
+
+  - 使用原生client连接到server
+
+    ```bash
+    docker run -it --rm --network=container:my-clickhouse-server --entrypoint clickhouse-client clickhouse
+    # 或
+    docker exec -it my-clickhouse-server clickhouse-client
+    ```
+    详情参考：[ClickHouse client](https://clickhouse.com/docs/interfaces/cli/)
+
+  - 使用curl连接到server
+
+    ```bash
+    echo "SELECT 'Hello, ClickHouse!'" | docker run -i --rm --network=container:my-clickhouse-server buildpack-deps:curl curl 'http://localhost:8123/?query=' -s --data-binary @-
+    ```
+
+  - 停止server实例
+
+    ```bash
+    docker stop my-clickhouse-server
+    docker rm my-clickhouse-server
+    ```
+  
+license: Apache-2.0 license
+similar_packages:
+  - Apache Doris: 基于 MPP（大规模并行处理）架构，支持毫秒级查询响应。
+  - Greenplum: 基于 PostgreSQL 的 MPP 数据库，支持完整 SQL 和事务。
+dependency:
+  - N/A
+  

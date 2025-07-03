@@ -1,0 +1,34 @@
+name: tdengine
+category: database
+description: Tdengine 是一个 MongoDB 对象建模工具，旨在在异步环境中工作。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  tdengine镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[3.3.6.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/tdengine/3.3.6.0/24.03-lts-sp1/Dockerfile)| tdengine 3.3.6.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/tdengine:{Tag}
+  ```
+
+usage: |
+  启动tdengine实例：
+  ```bash
+  docker run -it --name tdengine openeuler/tdengine:{Tag}
+  ```
+  `openeuler/tdengine`镜像用于验证上游tdengine版本和openEuler的集成, 用户需要自行配置tdengine。
+
+license: AGPL-3.0 license
+similar_packages:
+  - N/A
+dependency:
+  - N/A
+  

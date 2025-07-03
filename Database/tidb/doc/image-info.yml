@@ -1,0 +1,57 @@
+name: tidb
+category: database
+description: TiDB 是一个开源、云原生、分布式 SQL 数据库，旨在实现高可用性、水平和垂直可扩展性、强一致性和高性能。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  tidb镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[8.5.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/tidb/8.5.1/24.03-lts-sp1/Dockerfile)| TiDB 8.5.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/tidb:{Tag}
+  ```
+
+usage: |
+  - 启动tidb实例：
+    ```bash
+    docker run -it --name tidb openeuler/tidb:{Tag}
+    ```
+    `openeuler/tidb`镜像目前主要用于验证上游tidb版本和openEuler的集成, 具体功能实现需要用户自行配置。
+
+  - 测试连接
+    
+    在终端使用`mysql`客户端连接TiDB：
+    ```
+    ~$ mysql -h 127.0.0.1 -P 4000 -u root  
+    ```
+    输出以下信息则说明TiDB正常连接：
+    ```
+    Welcome to the MySQL monitor.  Commands end with ; or \g.
+    Your MySQL connection id is 2097154
+    Server version: 8.0.11-TiDB-v8.5.1 TiDB Server (Apache License 2.0) Community Edition, MySQL 8.0 compatible
+
+    Copyright (c) 2000, 2025, Oracle and/or its affiliates.
+
+    Oracle is a registered trademark of Oracle Corporation and/or its
+    affiliates. Other names may be trademarks of their respective
+    owners.
+
+    Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+    mysql>
+    ```
+
+license: Apache-2.0 license
+similar_packages:
+  - MySQL
+dependency:
+  - N/A
+  
