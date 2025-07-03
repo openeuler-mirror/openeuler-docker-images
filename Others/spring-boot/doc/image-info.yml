@@ -1,0 +1,104 @@
+name: spring-boot
+category: others
+description: Spring Boot 是 Spring 官方推出的一个开源框架，用于快速构建独立、生产级别的 Spring 应用，它对原生 Spring 做了自动化配置、内嵌服务器支持、约定优于配置，大大降低了使用 Spring 的复杂度。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  spring-boot镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[3.4.4-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/spring-boot/3.4.4/24.03-lts-sp1/Dockerfile)| Spring Boot 3.4.4 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/spring-boot:{Tag}
+  ```
+
+usage: |
+  - 添加sping boot依赖到项目中
+
+    **使用MAVEN:**
+    添加`spring-boot-starter-parent` 和 `starter dependency` 到 `pom.xml` 文件中:
+    ```
+    <parent>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-parent</artifactId>
+      <version>${Version}</version> <!-- 替换为新版本 -->
+    </parent>
+    
+    <dependencies>
+      <!-- Spring Boot Web Starter -->
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+      </dependency>
+    </dependencies>
+    ```
+    **使用 Gradle:**
+    ```
+    plugins {
+      id 'org.springframework.boot' version '${Version}'
+    }
+    
+    dependencies {
+      implementation 'org.springframework.boot:spring-boot-starter-web'
+    }
+    ```
+
+  - 创建一个应用类
+
+    创建一个简单通过main方法启动应用的类:
+    ```
+    package com.example;
+  
+    import org.spring-boot.*;
+    import org.spring-boot.impl.StdSchedulerFactory;
+    
+    package com.spring.boot;
+  
+    import org.springframework.boot.SpringApplication;
+    import org.springframework.boot.autoconfigure.SpringBootApplication;
+    import org.springframework.web.bind.annotation.*;
+    
+    @SpringBootApplication
+    @RestController
+    public class Application {
+    
+        @RequestMapping("/")
+        public String home() {
+            return "Hello World!";
+        }
+    
+        public static void main(String[] args) {
+            SpringApplication.run(Application.class, args);
+        }
+    }
+    ``` 
+
+  - 运行应用
+
+    在IDE或者MAVEN运行应用
+    ```
+    ./mvnw spring-boot:run
+    ```
+    
+    或者Gradle:
+    ```
+    ./gradlew bootRun
+    ```
+    
+    打开浏览器访问: http://localhost:8080/, 你会看到:
+    ```
+    Hello World!
+    ```
+
+license: Apache-2.0 license
+similar_packages:
+  - N/A
+dependency:
+  - openjdk
