@@ -14,9 +14,9 @@ oVirt Engine is the central management service of the oVirt virtualization platf
 # Supported tags and respective dockerfile links
 The tag of each `ovirt-engine` docker image is consist of the version of `ovirt-engine` and the version of basic image. The details are as follows
 
-| Tag                                                                                                                                              | Currently                                     | Architectures |
-|--------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------|---------------|
-| [4.5.6-oe2403sp1](https://gitee.com/openeuler/openeuler-ovirt-engine-images/blob/master/Cloud/ovirt-engine/4.5.6/24.03-lts-sp1/ovirt-enginefile) | oVirt Engine 4.5.6 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+| Tag                                                                                                                                  | Currently                                     | Architectures |
+|--------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------|---------------|
+| [4.5.6-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/ovirt-engine/4.5.6/24.03-lts-sp1/Dockerfile) | oVirt Engine 4.5.6 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.

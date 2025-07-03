@@ -1,0 +1,97 @@
+name: envoy
+category: cloud
+description: Envoy 是一个开源的 高性能边缘和服务代理，由 Lyft 开发并贡献给 CNCF（云原生计算基金会）。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  docker镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.34.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/envoy/1.34.1/24.03-lts-sp1/Dockerfile)| Envoy 1.34.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/envoy:{Tag}
+  ```
+
+usage: |
+  - 交互式shell启动进入容器中
+
+    交互式 shell 启动容器来操作 envoy：
+    ```
+    docker run -it --rm openeuler/envoy:{Tag} bash
+    ```
+  
+  - Envoy 代理 - 基础使用指南
+   
+    **配置文件 (envoy.yaml)**
+    参考 Envoy 代码库中的[配置文件示例](https://github.com/envoyproxy/envoy/blob/main/configs/envoy-demo.yaml) 获取可运行示例。
+    ```
+    static_resources:
+      listeners:
+      - name: listener_0
+        address:
+          socket_address:
+            address: 0.0.0.0
+            port_value: 10000
+        filter_chains:
+        - filters:
+          - name: envoy.filters.network.http_connection_manager
+            typed_config:
+              "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+              stat_prefix: ingress_http
+              route_config:
+                name: local_route
+                virtual_hosts:
+                - name: backend
+                  domains: ["*"]
+                  routes:
+                  - match:
+                      prefix: "/"
+                    route:
+                      cluster: some_service
+              http_filters:
+              - name: envoy.filters.http.router
+                typed_config:
+                  "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
+    
+      clusters:
+      - name: some_service
+        connect_timeout: 0.25s
+        type: LOGICAL_DNS
+        lb_policy: ROUND_ROBIN
+        load_assignment:
+          cluster_name: some_service
+          endpoints:
+          - lb_endpoints:
+            - endpoint:
+              address:
+                socket_address:
+                  address: 127.0.0.1
+                  port_value: 8080
+    ```
+  
+    **启动命令**
+    ```
+    ./envoy -c ./envoy.yaml [options]
+    ```
+    使用指定的配置文件启动 Envoy 代理服务。
+
+license: Apache-2.0 license
+similar_packages:
+  - HAProxy: HAProxy是一款高可用性的TCP/HTTP反向代理和负载均衡软件。它具有高性能和可靠性，并支持动态配置和健康检查。
+  - Nginx: Nginx 是一个高性能的、轻量级的 Web 服务器和反向代理服务器。它以其出色的性能和可扩展性而闻名，并且在处理高并发请求时表现出色。
+dependency:
+  - libevent
+  - libpthread
+  - libdl
+  - libz
+  - libm
+  - libssl
+  - libprotobuf
+  - libnghttp2
