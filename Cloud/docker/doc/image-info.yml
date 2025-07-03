@@ -1,0 +1,65 @@
+name: docker
+category: cloud
+description: Docker 是一个开源的容器化引擎，它通过将应用程序和运行所需的所有依赖打包到轻量级、可移植的容器中，实现了“一次构建，到处运行”。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  docker镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[28.2.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/docker/28.2.1/24.03-lts-sp1/Dockerfile)| Docker 28.2.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/docker:{Tag}
+  ```
+
+usage: |
+  - 交互式shell启动进入容器中
+
+    通过交互式 Shell 启动容器，使用docker：
+    ```
+    docker run -it --rm openeuler/docker:{Tag} bash
+    ```
+  
+  - 挂载 `Docker Socket` 启动你的容器
+  
+    运行容器时，确保挂载宿主机的 Docker Socket：
+    ```
+    docker run -it --rm \
+      -v /var/run/docker.sock:/var/run/docker.sock \
+      openeuler/docker:{Tag} bash
+    ```
+    **要点:**
+    * `-v /var/run/docker.sock:/var/run/docker.sock:` 这允许容器内的 Docker CLI 与宿主机上的 Docker 守护进程通信。
+    * 宿主机已安装docker
+
+  - 拉取 `openeuler/openeuler:latest` 镜像
+
+    进入容器后，使用 `./docker` CLI 从 Docker Hub 拉取镜像：
+    ```   
+    ./docker pull openeuler/openeuler:latest
+    ```
+  
+  - 运行 openEuler 容器
+
+    最后，使用交互式终端运行 openEuler 镜像：
+    ```   
+    ./docker run -it --rm openeuler/openeuler:latest
+    ```
+    * `-it:` 启动交互式终端。
+    * `--rm:` 容器退出后自动删除。
+
+license: Apache-2.0 license
+similar_packages:
+  - iSulad: iSulad 是 openEuler 社区自研的轻量级容器运行时，是一个面向 IoT 和云边端多场景的 轻量级 Daemonless 容器引擎。
+dependency:
+  - containerd
+  - runc
+  - iptables
+  - systemd

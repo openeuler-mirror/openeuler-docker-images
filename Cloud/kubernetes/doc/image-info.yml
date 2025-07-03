@@ -1,0 +1,36 @@
+name: kubernetes
+category: cloud
+description: Kubernetes（简称 K8s）是 Google 开源的容器编排（Orchestration）系统，用于自动化容器化应用的部署、扩缩容、调度、服务发现和运维。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  kubernetes镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.33.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/kubernetes/1.33.1/24.03-lts-sp1/Dockerfile)| kubernetes 1.33.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/kubernetes:{Tag}
+  ```
+
+usage: |
+  - 启动kubernetes实例
+
+    ```
+    docker run -it --name kubernetes openeuler/kubernetes:{Tag}
+    ```
+    `openeuler/使用kubernetes`镜像用于验证上游kubernetes版本和openEuler的集成。
+  
+
+license: Apache-2.0 license
+similar_packages:
+  - Docker Swarm: Docker 官方提供的轻量级容器编排工具。
+dependency:
+  - rsync
+  - golang
