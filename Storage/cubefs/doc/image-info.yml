@@ -1,0 +1,40 @@
+name: cubefs
+category: storage
+description: CubeFS（中文名为“储宝”）是一个开源的云原生分布式文件和对象存储系统，由云原生计算基金会（CNCF）作为毕业项目托管。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  dotnet-deps镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[3.5.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/cubefs/3.5.0/24.03-lts-sp1/Dockerfile)| Cubefs 3.5.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/cubefs:{Tag}
+  ```
+
+usage: |
+  启动cubefs容器：
+  ```
+  docker run -it --name my-cubefs openeuler/cubefs:{Tag}
+  ```
+  进入容器后，处于`WORKDIR`目录，会有如下多个二进制文件：
+  ```
+  [root@4d8f37230d55 /]#
+  access         cfs-authtool  cfs-client  cfs-preload  fdstore    libcubefs-1.0-SNAPSHOT-jar-with-dependencies.jar  scheduler
+  blobnode       cfs-bcache    cfs-deploy  cfs-server   libcfs.h   libcubefs-1.0-SNAPSHOT.jar
+  blobstore-cli  cfs-cli       cfs-fsck    clustermgr   libcfs.so  proxy
+  ```
+  请按需选择对应的可执行文件运行。
+
+license: Apache-2.0 license
+similar_packages:
+  - N/A
+dependency:
+  - N/A
