@@ -122,7 +122,10 @@ aarch64-host2   Ready    <none>                 104s    v1.20.2
 
 ## Supported tags and respective Dockerfile links
 
-- [v1.20.2-openEuler2109](./1.20.2/21.09/Dockerfile): kubernetes v1.20.2, openEuler 21.09
+  | Tag                                                                                                                                  | Currently                                    | Architectures |
+  |--------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------|---------------|
+  | [1.20.2-oe2109](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/kubernetes/1.20.2/21.09/Dockerfile)            | kubernetes 1.20.2 on openEuler 21.09         | amd64, arm64  |
+  | [1.33.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/kubernetes/1.33.1/24.03-lts-sp1/Dockerfile) | kubernetes 1.33.1 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 
 ## Operating System
 

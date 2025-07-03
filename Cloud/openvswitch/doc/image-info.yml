@@ -1,0 +1,104 @@
+name: openvswitch
+category: cloud
+description: Open vSwitch（简称 OVS） 是一个开源的多层虚拟交换机，用于为虚拟化环境（如 KVM、Xen、容器）提供灵活的网络转发和流表管理能力。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  docker镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[3.5.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/openvswitch/3.5.0/24.03-lts-sp1/Dockerfile)| Open vSwitch 3.5.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/openvswitch:{Tag}
+  ```
+
+usage: |
+  - 交互式shell启动进入容器中
+
+    交互式 shell 启动容器来操作 Open vSwitch：
+    ```
+    docker run -it --rm --privileged openeuler/openvswitch:{Tag} bash
+    ```
+    容器需要使用 `--privileged` 模式，或至少包含 `CAP_NET_ADMIN` 和 `CAP_SYS_MODULE` 权限。
+  
+  - 创建 OVS 数据库目录
+  
+    ```
+    mkdir -p /usr/local/etc/openvswitch
+    mkdir -p /usr/local/var/run/openvswitch
+    ```
+
+  - 初始化 OVS 配置数据库
+
+    使用指定的 schema 创建 `conf.db`：
+    ```   
+    ovsdb-tool create /usr/local/etc/openvswitch/conf.db /usr/local/share/openvswitch/vswitch.ovsschema
+    ```
+  
+  - 启动 `ovsdb-server` 进程
+
+    ```   
+    ovsdb-server \
+      --remote=punix:/usr/local/var/run/openvswitch/db.sock \
+      --remote=db:Open_vSwitch,Open_vSwitch,manager_options \
+      --pidfile --detach
+    ```
+    **说明：**
+    * `--remote=punix:...` 为 ovs-vswitchd 设置本地 UNIX socket。
+    * `--remote=db:...` 允许 ovs-vsctl 修改数据库。
+    * `--pidfile` 写入 PID 文件。
+    * `--detach` 后台运行。
+
+  - 初始化 OVS 数据库
+
+    为 Open vSwitch 创建默认数据库表（如果还没有创建）：
+    ```
+    ovs-vsctl --no-wait init
+    ```
+  
+  - 启动 `ovs-vswitchd` 进程
+
+    这会启动核心转发守护进程，与内核模块通信：
+    ```
+    ovs-vswitchd unix:/usr/local/var/run/openvswitch/db.sock --pidfile --detach
+    ```
+  
+  - 创建新网桥
+
+    创建名为 `br0` 的虚拟交换机：
+    ``` 
+    ovs-vsctl add-br br0
+    ```
+  
+  - 验证网桥
+
+    ```
+    ovs-vsctl show
+    ```
+  
+    示例输出：
+    ```
+    8d72419a-06d6-491b-aac0-85554e26dca0
+    Bridge br0
+        Port br0
+            Interface br0
+                type: internal
+    ```
+    这表明 `br0` 网桥已成功创建，并带有一个内部接口。
+
+license: Apache-2.0 license
+similar_packages:
+  - Linux Bridge: Linux 自带的简单二层网桥，最基础的虚拟交换方式，配置简单但功能有限。
+dependency:
+  - libcap
+  - unbound
+  - nmap
+  - python3
+  - openssl

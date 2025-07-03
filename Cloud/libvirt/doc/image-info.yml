@@ -1,0 +1,42 @@
+name: libvirt
+category: cloud
+description: libvirt 是一个开源的虚拟化管理工具和API框架，用于管理和控制各种虚拟化技术，包括 KVM、QEMU、Xen、LXC 等。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  libvirt镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[11.3.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/libvirt/11.3.0/24.03-lts-sp1/Dockerfile)| libvirt 11.3.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/libvirt:{Tag}
+  ```
+
+usage: |
+  - 启动libvirt实例
+
+    ```
+    docker run -it --name libvirt openeuler/libvirt:{Tag}
+    ```
+    `openeuler/使用libvirt`镜像用于验证上游libvirt版本和openEuler的集成。
+  
+
+license: GPL-2+
+similar_packages:
+  - oVirt：基于 libvirt 的企业级虚拟化管理平台，提供完整的虚拟机管理和自动化功能。
+dependency:
+  - libpcap
+  - fuse3
+  - libacl
+  - libtirpc
+  - libxslt
+  - libnl3
+  - libcap
+  - python
