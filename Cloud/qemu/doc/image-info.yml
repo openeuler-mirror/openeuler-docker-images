@@ -1,0 +1,71 @@
+name: qemu
+category: cloud
+description: QEMU（Quick Emulator） 是一个开源的通用虚拟化和硬件仿真器，最初由 Fabrice Bellard 开发并由社区持续维护。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  docker镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[10.0.2-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/qemu/10.0.2/24.03-lts-sp1/Dockerfile)| QEMU 10.0.2 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/qemu:{Tag}
+  ```
+
+usage: |
+  - 交互式shell启动进入容器中
+
+    交互式 shell 启动容器来操作 QEMU：
+    ```
+    docker run -it --rm openeuler/qemu:{Tag} bash
+    ```
+  
+  - 下载可引导的 ISO 镜像
+  
+    下载你需要的可引导操作系统 ISO 镜像，针对目标架构（例如 aarch64）
+    ```
+    wget https://example.com/path/to/your-os-image-aarch64.iso
+    ```
+    替换 URL 为自己的 ISO 镜像地址。
+
+  - 使用 ISO（aarch64）启动 QEMU
+
+    在容器中使用 `qemu-system-aarch64` 加载 ISO 镜像运行：
+    ```   
+    qemu-system-aarch64 \
+      -m 512M \
+      -machine virt \
+      -cpu cortex-a57 \
+      -cdrom ./your-os-image-aarch64.iso \
+      -boot d
+    ```
+    
+    **参数解释:**
+    * `-m 512M:` 分配 512M 内存。
+    * `-machine:` 指定通用的 ARM64 虚拟机类型。
+    * `-cpu cortex-a57:` 指定使用的 ARM CPU 类型。
+    * `-cdrom:` 指定 ISO 镜像文件的路径。
+    * `-boot d:` 从 CD-ROM 驱动器引导。
+
+license: GPL-2.0 license
+similar_packages:
+  - VirtualBox: Oracle 提供的开源桌面虚拟机软件，适合个人桌面环境。
+dependency:
+  - liburing
+  - fuse3
+  - libcurl
+  - libcap
+  - pulseaudio
+  - libiscsi
+  - libattr
+  - libselinux
+  - libzstd
+  - libusbx
+  - libseccomp

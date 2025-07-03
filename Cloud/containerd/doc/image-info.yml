@@ -1,0 +1,79 @@
+name: containerd
+category: cloud
+description: containerd 是一个高性能容器运行时（Container Runtime），提供容器的生命周期管理，包括镜像管理、容器执行、存储挂载、网络配置等底层功能，但并不包含编排能力（如 Kubernetes）。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  docker镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[2.1.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/containerd/2.1.1/24.03-lts-sp1/Dockerfile)| containerd 2.1.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/containerd:{Tag}
+  ```
+
+usage: |
+  - 交互式shell启动进入容器中
+
+    交互式 shell 启动容器来操作 containerd：
+    ```
+    docker run -it --rm openeuler/containerd:{Tag} bash
+    ```
+  
+  - 创建一个简单的 CNI 配置文件
+   
+    在 `/etc/cni/net.d/` 目录下创建一个基础的 CNI 配置文件（例如 `empty.conf`），以避免启动 containerd 时出现网络插件错误：
+    ```
+    mkdir -p /etc/cni/net.d/
+  
+    # vi /etc/cni/net.d/empty.conf
+    {
+      "cniVersion": "0.4.0",
+      "name": "empty-net",
+      "type": "bridge",
+      "bridge": "cni0",
+      "isGateway": true,
+      "ipMasq": true,
+      "ipam": {
+        "type": "host-local",
+        "subnet": "10.88.0.0/16",
+        "routes": [
+          { "dst": "0.0.0.0/0" }
+        ]
+      }
+    }
+    ```
+  
+  - 创建 containerd 配置目录
+
+    确保 containerd 配置目录存在：
+    ```
+    mkdir -p /etc/containerd
+    ```
+
+  - 生成默认的 containerd 配置文件
+   
+    生成默认配置并保存到 `/etc/containerd/config.toml` 文件：
+    ```   
+    ./containerd config default > /etc/containerd/config.toml
+    ```
+    
+  - 使用自定义配置启动 containerd
+
+    使用创建的配置文件后台启动 containerd 守护进程：
+    ```
+    ./containerd --config /etc/containerd/config.toml &
+    ```
+
+license: Apache-2.0 license
+similar_packages:
+  - CRI-O: Kubernetes 社区开发的轻量级容器运行时，只实现 Kubernetes CRI 接口。
+dependency:
+  - golang

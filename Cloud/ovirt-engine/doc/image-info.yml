@@ -1,0 +1,47 @@
+name: ovirt-engine
+category: cloud
+description: oVirt Engine 是 oVirt 虚拟化管理平台的核心组件，相当于虚拟化集群的大脑。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  docker镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[4.5.6-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/ovirt-engine/4.5.6/24.03-lts-sp1/Dockerfile)| oVirt Engine 4.5.6 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/ovirt-engine:{Tag}
+  ```
+
+usage: |
+  - 交互式shell启动进入容器中
+
+    交互式 shell 启动容器来操作 ovirt-engine：
+    ```
+    docker run -it --rm openeuler/ovirt-engine:{Tag} bash
+    ```
+  
+  - WildFly独立服务器启动命令
+  
+    启动命令:
+    ```
+    /usr/share/ovirt-engine-wildfly/bin/standalone.sh -b 0.0.0.0 -bmanagement 0.0.0.0
+    ```
+    **选项说明:**
+    * `-b 0.0.0.0:` 绑定到所有可用网络接口(0.0.0.0)。
+    * `-bmanagement 0.0.0.0:` 同时监听应用流量和管理流量。
+
+license: Apache-2.0 license
+similar_packages:
+  - N/A
+dependency:
+  - postgresql
+  - openssl
+  - wildfly
+  - python3

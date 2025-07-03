@@ -1,0 +1,67 @@
+name: coredns
+category: cloud
+description: CoreDNS 是一个可扩展、灵活的开源 DNS 服务器，最初是为替代 SkyDNS 开发的，现在已经成为 Kubernetes 默认的 DNS 插件之一。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  docker镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.12.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/coredns/1.12.1/24.03-lts-sp1/Dockerfile)| CoreDNS 1.12.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/coredns:{Tag}
+  ```
+
+usage: |
+  - 交互式shell启动进入容器中
+
+    交互式 shell 启动容器来操作 coredns：
+    ```
+    docker run -it --rm openeuler/coredns:{Tag} bash
+    ```
+  
+  - 创建文件 `Corefile`
+  
+    在当前工作目录下创建一个简单的 `Corefile` 文件， 内容如下：
+    ```
+    # Corefile
+    .:53 {
+        forward . 8.8.8.8
+        log
+    }
+    ```
+    What this means:
+    * `.:53`: 在 53 端口监听所有 DNS 查询请求。
+    * `forward . 8.8.8.8`: 将所有 DNS 查询转发到 Google 公共 DNS（可以把 `8.8.8.8` 替换成你自己的 DNS 服务器）。
+    * `log`: 记录每条 DNS 请求，方便调试。
+
+  - 启动 CoreDNS（以本地二进制方式运行）
+   
+    如果你已经有 `coredns` 可执行文件，用下面的命令启动：
+    ```   
+    ./coredns -conf Corefile
+    ```
+    启动后，CoreDNS 会监听 `0.0.0.0:53`，并按照你的配置把收到的 DNS 请求转发出去。
+    
+  - 测试 DNS 解析是否可用
+
+    使用 `dig` 来验证 CoreDNS 是否正常工作：
+    ```
+    # 使用 dig 命令前，需先安装 bind-utils 工具包。
+    dnf install -y bind-utils
+    dig @127.0.0.1 www.example.com
+    ```
+    执行后，你应该能在终端里看到 DNS 响应结果，同时 CoreDNS 会在输出里记录查询日志。
+
+license: Apache-2.0 license
+similar_packages:
+  - dnsmasq: 轻量级的 DNS 和 DHCP 转发器，适合本地网络、开发环境或小型集群。
+dependency:
+  - golang
