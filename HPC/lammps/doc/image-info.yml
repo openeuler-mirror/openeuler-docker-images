@@ -1,0 +1,36 @@
+name: lammps
+category: HPC
+description: LAMMPS（全称：Large-scale Atomic/Molecular Massively Parallel Simulator）是一款由美国桑迪亚国家实验室（Sandia National Laboratories）主导开发的开源分子动力学（MD）模拟软件。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  lammps镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[29Aug2024-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/lammps/29Aug2024/24.03-lts-sp1/Dockerfile)| lammps 29Aug2024 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/lammps:{Tag}
+  ```
+
+usage: |
+  - 启动lammps实例
+
+    ```
+    docker run -it --name lammps openeuler/lammps:{Tag}
+    ```
+    `openeuler/lammps`镜像用于验证上游lammps版本和openEuler的集成。
+  
+
+license: GPL-2.0 license
+similar_packages:
+  - GROMACS: 高性能分子动力学软件，起源于生物分子（如蛋白质、脂质膜）模拟。
+dependency:
+  - mpich
+  - openmpi
