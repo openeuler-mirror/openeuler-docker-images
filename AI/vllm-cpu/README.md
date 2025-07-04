@@ -16,7 +16,7 @@ Originally developed in the [Sky Computing Lab](https://sky.cs.berkeley.edu/) at
 
 vLLM is fast with:
 
-- State-of-the-art serving throughputV
+- State-of-the-art serving throughput
 - Efficient management of attention key and value memory with [PagedAttention](https://blog.vllm.ai/2023/06/20/vllm.html)
 - Continuous batching of incoming requests
 - Fast model execution with CUDA/HIP graph
@@ -33,15 +33,18 @@ The tag of each vLLM docker image is consist of the version of vLLM and the vers
 
 | Tags | Currently |  Architectures|
 |--|--|--|
-|[0.6.3-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.6.3/24.03-lts-sp4/Dockerfile)| vLLM 0.6.3 on openEuler 24.03-LTS | amd64 |
-|[0.8.3-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.8.3/22.03-lts-sp4/Dockerfile)| vLLM 0.8.3 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
-|[0.8.3-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.8.3/24.03-lts-sp4/Dockerfile)| vLLM 0.8.3 on openEuler 24.03-LTS | amd64, arm64 |
-|[0.8.4-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.8.4/22.03-lts-sp4/Dockerfile)| vLLM 0.8.4 on openEuler 22.03-LTS-SP4 | amd64 |
-|[0.8.4-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.8.4/24.03-lts-sp4/Dockerfile)| vLLM 0.8.4 on openEuler 24.03-LTS | amd64 |
-|[0.8.5-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.8.5/22.03-lts-sp4/Dockerfile)| vLLM 0.8.5 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
-|[0.8.5-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.8.5/24.03-lts-sp4/Dockerfile)| vLLM 0.8.5 on openEuler 24.03-LTS | amd64, arm64 |
-|[0.9.0-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.9.0/22.03-lts-sp4/Dockerfile)| vLLM 0.9.0 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
-|[0.9.0-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.9.0/24.03-lts-sp4/Dockerfile)| vLLM 0.9.0 on openEuler 24.03-LTS | amd64, arm64 |
+|[0.6.3-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm-cpu/0.6.3/24.03-lts/Dockerfile)| vLLM 0.6.3 on openEuler 24.03-LTS | amd64 |
+|[0.8.3-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm-cpu/0.8.3/22.03-lts-sp4/Dockerfile)| vLLM 0.8.3 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+|[0.8.3-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm-cpu/0.8.3/24.03-lts/Dockerfile)| vLLM 0.8.3 on openEuler 24.03-LTS | amd64, arm64 |
+|[0.8.4-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm-cpu/0.8.4/22.03-lts-sp4/Dockerfile)| vLLM 0.8.4 on openEuler 22.03-LTS-SP4 | amd64 |
+|[0.8.4-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm-cpu/0.8.4/24.03-lts/Dockerfile)| vLLM 0.8.4 on openEuler 24.03-LTS | amd64 |
+|[0.8.5-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm-cpu/0.8.5/22.03-lts-sp4/Dockerfile)| vLLM 0.8.5 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+|[0.8.5-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm-cpu/0.8.5/24.03-lts/Dockerfile)| vLLM 0.8.5 on openEuler 24.03-LTS | amd64, arm64 |
+|[0.9.0-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm-cpu/0.9.0/22.03-lts-sp4/Dockerfile)| vLLM 0.9.0 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+|[0.9.0-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm-cpu/0.9.0/24.03-lts/Dockerfile)| vLLM 0.9.0 on openEuler 24.03-LTS | amd64, arm64 |
+|[0.9.1-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm-cpu/0.9.1/22.03-lts-sp4/Dockerfile)| vLLM 0.9.1 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+|[0.9.1-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm-cpu/0.9.1/24.03-lts/Dockerfile)| vLLM 0.9.1 on openEuler 24.03-LTS | amd64, arm64 |
+
 
 # Usage
 
