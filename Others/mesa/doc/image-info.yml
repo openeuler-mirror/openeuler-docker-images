@@ -1,0 +1,35 @@
+name: mesa
+category: others
+description: Mesa 3D（简称 Mesa）是一个开源的 3D 图形库和驱动实现，提供了 OpenGL、Vulkan、OpenCL、OpenGL ES 和其他图形 API 的自由实现。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  mesa镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[25.1.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/mesa/25.1.1/24.03-lts-sp1/Dockerfile)| mesa 25.1.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/mesa:{Tag}
+  ```
+
+usage: |
+  - 启动mesa实例
+
+    ```
+    docker run -it --name mesa openeuler/mesa:{Tag}
+    ```
+    `openeuler/mesa`镜像用于验证上游mesa版本和openEuler的集成。
+  
+
+license: MIT License
+similar_packages:
+  - N/A
+dependency:
+  - N/A

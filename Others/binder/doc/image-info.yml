@@ -1,0 +1,98 @@
+name: binder
+category: others
+description: Keybinder 是一个轻量级的开源库，主要用于在 X11 环境下注册全局热键（快捷键），并在任何 GTK 应用程序中监听和响应这些快捷键事件。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+   keybinder镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[0.3.2-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/binder/0.3.2/24.03-lts-sp1/Dockerfile)| binder 0.3.2 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/binder:{Tag}
+  ```
+  
+usage: |
+  - 使用交互式Shell运行:
+
+    启动一个带交互式Shell的容器，使用 keybinder运行自己的代码。
+    ```
+    docker run -it --rm openeuler/binder:{Tag} bash  
+    ```
+  
+  - 安装 X 虚拟帧缓冲（Xvfb）
+
+    ``` 
+    dnf install xorg-x11-server-Xvfb
+    ```
+    这将安装一个虚拟的 X11 服务器，可以在没有物理显示器的环境下运行图形应用程序。
+
+  - 启动 Xvfb 服务器
+    
+    ```
+    Xvfb :99 -screen 0 1024x768x24 &
+    ```
+    这将在显示号 `:99` 上启动 Xvfb。
+
+  - 设置 DISPLAY 环境变量
+
+    ```
+    export DISPLAY=:99
+    ```
+    这会将图形应用程序指向虚拟的 Xvfb 显示。
+    
+  - 示例：一个最简的 keybinder 程序
+
+    创建一个名为 `test.c` 的文件，内容如下：
+    ```
+    #include <gtk/gtk.h>
+    #include <keybinder.h>
+    
+    void my_callback(const char *keystring, void *user_data) {
+        g_print("Hotkey '%s' activated!\n", keystring);
+    }
+    
+    int main(int argc, char *argv[]) {
+        gtk_init(&argc, &argv);
+     keybinder_init();
+     keybinder_bind("<Ctrl><Alt>t", my_callback, NULL);
+        g_print("Listening for Ctrl+Alt+T...\n");
+        gtk_main();
+        return 0;
+    }
+    ```
+    
+  - 编译程序
+
+    使用新版本的 Keybinder 编译程序：
+    ```
+     keybinder test.c \
+      -I/usr/include/gtk-3.0 \
+      -I/usr/local/include/keybinder-3.0 \
+      $(pkg-config --cflags --libs gtk+-3.0) \
+      -L/usr/local/lib -lkeybinder-3.0 \
+      -Wl,-rpath=/usr/local/lib \
+      -o keybinder
+    ```
+    该命令会将 `test.c` 使用 GTK3 和 Keybinder 的头文件及库进行编译，生成可执行文件 `keybinder`。
+  
+  - 运行程序
+
+    ```
+    ./keybinder
+    ```
+    程序将连接到虚拟的 X 服务器（Xvfb）并监听你代码中定义的快捷键。
+
+license: MIT license
+similar_packages:
+  - N/A
+dependency:
+  - gnome
+  - gtk

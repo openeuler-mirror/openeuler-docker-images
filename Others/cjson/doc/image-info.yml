@@ -1,0 +1,86 @@
+name: cjson
+category: others
+description: cJSON 是一个轻量级的 C 语言 JSON 解析/生成库，仅需单个头文件（cJSON.h），适合嵌入式系统和资源受限环境。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  cjson镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.7.18-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/cjson/1.7.18/24.03-lts-sp1/Dockerfile)| cJSON 1.7.18 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/cjson:{Tag}
+  ```
+
+usage: |
+  - 使用交互式Shell运行:
+
+    启动一个带交互式Shell的容器，使用cjson运行自己的代码。
+    ```
+    docker run -it --rm openeuler/cjson:{Tag} bash  
+    ```
+      
+  - 简单的测试代码
+
+    test.c
+    ```
+    #include <stdio.h>
+    #include <stdlib.h>
+    #include <cjson/cJSON.h>
+
+    int main() {
+        cJSON *root = cJSON_CreateObject();
+        cJSON_AddStringToObject(root, "name", "Alice");
+        cJSON_AddNumberToObject(root, "age", 25);
+
+        char *json_str = cJSON_Print(root);
+        printf("Generated JSON:\n%s\n", json_str);
+
+        cJSON *parsed = cJSON_Parse(json_str);
+        cJSON *name = cJSON_GetObjectItem(parsed, "name");
+        printf("Parsed name: %s\n", name->valuestring);
+
+        cJSON_Delete(root);
+        cJSON_Delete(parsed);
+        free(json_str);
+    
+        return 0;
+    }
+    ```
+
+  - 编译命令
+
+    用gcc编译代码:
+    ```
+    gcc test.c -lcjson -o test_json
+    ```
+
+  - 运行程序
+
+    ```
+    ./test_json
+    ```
+
+    预期输出:
+    ```
+    Generated JSON:
+    {
+        "name": "Alice",
+        "age": 25
+    }
+    Parsed name: Alice
+    ```
+ 
+license: MIT License
+similar_packages:
+  - GCC (GNU Compiler Collection): 传统的“单体式”编译器，包含前端（C/C++/Fortran/Go）和后端，优化器也内置；没有 cjson 的 IR 模块化设计。
+dependency:
+  - libc
+  - gcc

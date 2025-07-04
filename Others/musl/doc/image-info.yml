@@ -1,0 +1,83 @@
+name: musl
+category: others
+description: Musl 是一个轻量级、快速、符合标准的 C 标准库（libc） 实现，专为 Linux 系统设计。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  musl镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.2.5-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/musl/1.2.5/24.03-lts-sp1/Dockerfile)| musl 1.2.5 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/musl:{Tag}
+  ```
+
+usage: |
+  - 使用交互式Shell运行:
+
+    启动一个带交互式Shell的容器，使用musl运行自己的代码。
+    ```
+    docker run -it --rm openeuler/musl:{Tag} bash  
+    ```
+      
+  - 测试程序
+
+    `test.c`内容如下:
+    ```
+    #include <stdio.h>
+    #include <stdlib.h>
+    #include <unistd.h>
+    
+    int main() {
+        printf("Hello, musl! (PID: %d)\n", getpid());
+        
+        // Test memory allocation (musl's malloc implementation)
+        int *arr = malloc(10 * sizeof(int));
+        if (!arr) {
+            perror("malloc failed");
+            return 1;
+        }
+        free(arr);
+    
+        // Detect C library
+        #ifdef __GLIBC__
+            printf("C library: glibc\n");
+        #else
+            printf("C library: musl\n");
+        #endif
+    
+        return 0;
+    }
+    ```
+    
+  - 编译程序:
+
+    静态编译
+    ```
+    musl-gcc -static test.c -o static_app
+    ./static_app
+    ```
+
+    运行输出:
+    ```
+    Hello, musl! (PID: 147)
+    C library: musl
+    ```
+ 
+
+license: MIT License
+similar_packages:
+  - G++: G++是GNU C++编译器（GNU C++ Compiler），属于musl（GNU Compiler Collection）的一部分，专门用于编译C++代码。
+dependency:
+  - gmp
+  - mpfr
+  - mpc
+  - gettext
+  - isl
