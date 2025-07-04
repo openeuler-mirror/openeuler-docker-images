@@ -16,9 +16,9 @@ Read more on [CoreDNS Website](https://coredns.io/).
 # Supported tags and respective dockerfile links
 The tag of each `coredns` docker image is consist of the version of `coredns` and the version of basic image. The details are as follows
 
-| Tag                                                                                                                                 | Currently                                 | Architectures |
-|-------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------|---------------|
-| [1.12.1-oe2403sp1](https://gitee.com/openeuler/openeuler-coredns-images/blob/master/Cloud/coredns/1.12.1/24.03-lts-sp1/corednsfile) | CoreDNS 1.12.1 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+| Tag                                                                                                                               | Currently                                 | Architectures |
+|-----------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------|---------------|
+| [1.12.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/coredns/1.12.1/24.03-lts-sp1/Dockerfile) | CoreDNS 1.12.1 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.

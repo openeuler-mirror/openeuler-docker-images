@@ -1,0 +1,102 @@
+name: strongswan
+category: cloud
+description: strongSwan是一个开源的IPsec VPN解决方案，主要用于在Linux和其他UNIX-like操作系统上实现安全的虚拟专用网络（VPN）。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  docker镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[6.0.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/strongswan/6.0.1/24.03-lts-sp1/Dockerfile)| strongSwan 6.0.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/strongSwan:{Tag}
+  ```
+
+usage: |
+  - 交互式shell启动进入容器中
+
+    交互式 shell 启动容器来操作 strongSwan：
+    ```
+    docker run -it --rm --privileged openeuler/strongswan:{Tag} bash  
+    ```
+    **注意**： `--privileged` 参数是必须的，用于允许 strongSwan 在容器内创建和管理网络接口。
+  
+  - 创建 VPN 配置文件
+  
+    在容器内创建或编辑 `/usr/local/etc/swanctl/swanctl.conf`，内容如下（请根据实际情况替换 IP 和密钥）：
+    ```
+    connections {
+      myvpn {
+        local_addrs  = 192.0.2.1
+        remote_addrs = 198.51.100.1
+    
+        local {
+          auth = psk
+          id = 192.0.2.1
+        }
+        remote {
+          auth = psk
+          id = 198.51.100.1
+        }
+    
+        children {
+          net {
+            local_ts  = 0.0.0.0/0
+            remote_ts = 0.0.0.0/0
+          }
+        }
+    
+        version = 2
+        proposals = aes256-sha256-modp2048
+      }
+    }
+    
+    secrets {
+      ike-myvpn {
+        id-1 = 192.0.2.1
+        id-2 = 198.51.100.1
+        secret = "mysecret"
+      }
+    }
+    ```
+
+  - 启动 strongSwan IKEv2 守护进程（charon）
+   
+    在容器内后台启动 `charon`，并开启调试日志：
+    ```   
+    /usr/local/libexec/ipsec/charon --debug-dmn 2 --debug-ike 3 &
+    ```
+    * `--debug-dm 2`: 设置守护进程日志等级为信息级别。
+    * `--debug-ike 3`: 设置 IKE 协议日志等级为详细调试级别。
+
+  - 加载配置
+
+    执行：
+    ```
+    swanctl --load-all
+    ```
+    
+    预期输出：
+    ```
+    ......
+    successfully loaded 1 connections, 0 unloaded
+    ```
+
+license: GPL-2+
+similar_packages:
+  - OpenVPN: 一款流行的开源VPN解决方案，支持SSL/TLS协议，使用灵活，跨平台，适合远程访问和站点间连接。
+dependency:
+  - libtool
+  - openssl
+  - libcurl
+  - iptables
+  - iproute
+  - openldap
+  - libcap

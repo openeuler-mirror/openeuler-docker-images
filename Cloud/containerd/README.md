@@ -16,9 +16,9 @@ Read more on [containerd Website](https://containerd.io/).
 # Supported tags and respective dockerfile links
 The tag of each `containerd` docker image is consist of the version of `containerd` and the version of basic image. The details are as follows
 
-| Tag                                                                                                                                        | Currently                                   | Architectures |
-|--------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------|---------------|
-| [2.1.1-oe2403sp1](https://gitee.com/openeuler/openeuler-containerd-images/blob/master/Cloud/containerd/2.1.1/24.03-lts-sp1/containerdfile) | containerd 2.1.1 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+| Tag                                                                                                                                | Currently                                   | Architectures |
+|------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------|---------------|
+| [2.1.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/containerd/2.1.1/24.03-lts-sp1/Dockerfile) | containerd 2.1.1 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.

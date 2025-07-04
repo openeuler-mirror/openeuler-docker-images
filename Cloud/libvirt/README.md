@@ -20,9 +20,9 @@ Learn more about Libvirt on [libvirt Website](https://libvirt.org)⁠.
 # Supported tags and respective Dockerfile links
 The tag of each `libvirt` docker image is consist of the version of `libvirt` and the version of basic image. The details are as follows
 
-|    Tag   |  Currently  |   Architectures  |
-|----------|-------------|------------------|
-|[11.3.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/libvirt/11.3.0/24.03-lts-sp1/Dockerfile)| Libvirt 11.3.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+| Tag                                                                                                                               | Currently                                 | Architectures |
+|-----------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------|---------------|
+| [11.3.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/libvirt/11.3.0/24.03-lts-sp1/Dockerfile) | Libvirt 11.3.0 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.
