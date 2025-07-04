@@ -30,6 +30,7 @@ The tag of each vLLM Ascend docker image is consist of the version of vLLM Ascen
 |[0.8.5rc1-torch_npu2.5.1-cann8.1.rc1-python3.10-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm-ascend/0.8.5rc1-torch_npu2.5.1-cann8.1.rc1-python3.10/22.03-lts/Dockerfile)| vLLM Ascend 0.8.5rc1 on openEuler 22.03-LTS | amd64, arm64 |
 |[0.9.0rc1-torch_npu2.5.1-cann8.1.rc1-python3.10-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm-ascend/0.9.0rc1-torch_npu2.5.1-cann8.1.rc1-python3.10/22.03-lts/Dockerfile)| vLLM Ascend 0.9.0rc1 on openEuler 22.03-LTS | amd64, arm64 |
 |[0.9.0rc2-torch_npu2.5.1-cann8.1.rc1-python3.10-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm-ascend/0.9.0rc2-torch_npu2.5.1-cann8.1.rc1-python3.10/22.03-lts/Dockerfile)| vLLM Ascend 0.9.0rc2 on openEuler 22.03-LTS | amd64, arm64 |
+|[0.9.1rc1-torch_npu2.5.1-cann8.1.rc1-python3.10-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm-ascend/0.9.1rc1-torch_npu2.5.1-cann8.1.rc1-python3.10/22.03-lts/Dockerfile)| vLLM Ascend 0.9.1rc1 on openEuler 22.03-LTS | amd64, arm64 |
 
 # Usage
 
