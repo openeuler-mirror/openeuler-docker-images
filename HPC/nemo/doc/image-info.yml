@@ -1,0 +1,42 @@
+name: nemo
+category: HPC
+description: Nemo 是 Linux 系统上的一款 图形化文件管理器，由 Cinnamon 桌面环境 开发团队维护。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  nemo镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[6.4.5-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/nemo/6.4.5/24.03-lts-sp1/Dockerfile)| Nemo 6.4.5 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/nemo:{Tag}
+  ```
+
+usage: |
+  - 启动nemo实例
+
+    ```
+    docker run -it --name nemo openeuler/nemo:{Tag}
+    ```
+    `openeuler/nemo`镜像用于验证上游nemo版本和openEuler的集成。
+  
+
+license: GPL-2.0 license
+similar_packages:
+  - GNOME: GNOME（GNU Network Object Model Environment）是 Linux/Unix 系统上最流行的 开源桌面环境 之一，以 现代化设计、易用性和可访问性 著称。
+dependency:
+  - systemd
+  - pulseaudio
+  - libgnomekbd
+  - xkeyboard
+  - gtk3
+  - libnotify
+  - libnotify
+  - xapp
