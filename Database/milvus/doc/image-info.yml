@@ -1,0 +1,104 @@
+name: milvus
+category: database
+description: Milvus是业界领先的一种高性能、高扩展性的向量数据库，它提供强大的数据建模功能，使您能够将非结构化或多模式数据组织成结构化的Collections。它支持多种数据类型，适用于不同的属性模型。Milvus还支持业界多种先进的索引算法，用以提升在向量检索方面的查询效率。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  milvus镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[2.7.11-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/milvus/2.7.11/24.03-lts-sp1/Dockerfile)| milvus 2.7.11 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/milvus:{Tag}
+  ```
+
+usage: |
+  - Step 1: 启动Milvus实例
+    ```
+    docker run --name euler-milvus -it openeuler/milvus:latest
+    ```
+
+  - Step 2: 运行etcd
+    ```
+    etcd --data-dir=/data/milvus/data/etcd-data/ &
+    ```
+    以下终端输出的信息表示etcd运行正常
+    ```
+    {"level":"info","ts":"2025-07-07T03:01:42.568Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"8e9e05c52164694d received MsgPreVoteResp from 8e9e05c52164694d at term 1"}
+    {"level":"info","ts":"2025-07-07T03:01:42.568Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"8e9e05c52164694d became candidate at term 2"}
+    {"level":"info","ts":"2025-07-07T03:01:42.568Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"8e9e05c52164694d received MsgVoteResp from 8e9e05c52164694d at term 2"}
+    {"level":"info","ts":"2025-07-07T03:01:42.568Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"8e9e05c52164694d became leader at term 2"}
+    {"level":"info","ts":"2025-07-07T03:01:42.568Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"raft.node: 8e9e05c52164694d elected leader 8e9e05c52164694d at term 2"}
+    {"level":"info","ts":"2025-07-07T03:01:42.568Z","caller":"etcdserver/server.go:2476","msg":"setting up initial cluster version using v2 API","cluster-version":"3.5"}
+    {"level":"info","ts":"2025-07-07T03:01:42.570Z","caller":"membership/cluster.go:531","msg":"set initial cluster version","cluster-id":"cdf818194e3a8c32","local-member-id":"8e9e05c52164694d","cluster-version":"3.5"}
+    {"level":"info","ts":"2025-07-07T03:01:42.570Z","caller":"api/capability.go:75","msg":"enabled capabilities for version","cluster-version":"3.5"}
+    {"level":"info","ts":"2025-07-07T03:01:42.570Z","caller":"etcdserver/server.go:2500","msg":"cluster version is updated","cluster-version":"3.5"}
+    {"level":"info","ts":"2025-07-07T03:01:42.570Z","caller":"etcdserver/server.go:2027","msg":"published local member to cluster through raft","local-member-id":"8e9e05c52164694d","local-member-attributes":"{Name:default ClientURLs:[http://localhost:2379]}","request-path":"/0/members/8e9e05c52164694d/attributes","cluster-id":"cdf818194e3a8c32","publish-timeout":"7s"}
+    {"level":"info","ts":"2025-07-07T03:01:42.570Z","caller":"embed/serve.go:98","msg":"ready to serve client requests"}
+    {"level":"info","ts":"2025-07-07T03:01:42.570Z","caller":"etcdmain/main.go:47","msg":"notifying init daemon"}
+    {"level":"info","ts":"2025-07-07T03:01:42.570Z","caller":"etcdmain/main.go:53","msg":"successfully notified init daemon"}
+    {"level":"info","ts":"2025-07-07T03:01:42.570Z","caller":"embed/serve.go:140","msg":"serving client traffic insecurely; this is strongly discouraged!","address":"127.0.0.1:2379"}
+    ```
+  - Step 3: 运行MinIO
+      ```
+      minio server /data/milvus/data/minio-data/ &
+      ```
+      以下终端输出的信息表示MinIO运行正常
+      ```
+      Copyright: 2015-2025 MinIO, Inc.
+      License: GNU AGPLv3 - https://www.gnu.org/licenses/agpl-3.0.html
+      Version: RELEASE.2025-06-13T11-33-47Z (go1.24.4 linux/amd64)
+
+      API: http://172.17.0.4:9000  http://127.0.0.1:9000
+        RootUser: minioadmin
+        RootPass: minioadmin
+
+      WebUI: http://172.17.0.4:41483 http://127.0.0.1:41483
+        RootUser: minioadmin
+        RootPass: minioadmin
+
+      CLI: https://min.io/docs/minio/linux/reference/minio-mc.html#quickstart
+        $ mc alias set 'myminio' 'http://172.17.0.4:9000' 'minioadmin' 'minioadmin'
+
+      Docs: https://docs.min.io
+      WARN: Detected default credentials 'minioadmin:minioadmin', we recommend that you change these values with 'MINIO_ROOT_USER' and 'MINIO_ROOT_PASSWORD' environment variables
+      ```
+
+  - Step 4: 运行单机Milvus
+      ```
+      milvus run standalone
+      ```
+      以下终端输出的信息表示Milvus运行正常
+      ```
+      [2025/07/07 07:33:31.307 +00:00] [INFO] [distance/calc_distance_amd64.go:14] ["Hook avx for go simd distance computation"]
+      2025/07/07 07:33:31 maxprocs: Leaving GOMAXPROCS=16: CPU quota undefined
+
+          __  _________ _   ____  ______
+      /  |/  /  _/ /| | / / / / / __/
+      / /|_/ // // /_| |/ / /_/ /\ \
+      /_/  /_/___/____/___/\____/___/
+
+      Welcome to use Milvus!
+      Version:   2.5.14
+      Built:     Mon Jul  7 07:32:02 UTC 2025
+      GitCommit: 062fc368a5
+      GoVersion: go version go1.24.2 linux/amd64
+
+      TotalMem: 66068840448
+      UsedMem: 56733696
+      ```
+
+  
+license: Apache-2.0 license
+similar_packages:
+  - N/A
+dependency:
+  - N/A
+  

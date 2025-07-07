@@ -1,35 +1,38 @@
-name: mariadb
+name: influxdb
 category: database
-description: MariaDB 服务器是社区开发的 MySQL 服务器分支。MariaDB 由原 MySQL 团队的核心成员创建，并积极与外部开发者合作，致力于提供业界功能最丰富、最稳定、许可最合理的开放 SQL 服务器。
+description: InfluxDB Core 是一款用于收集、处理、转换和存储事件及时间序列数据的数据库，非常适合需要实时数据采集和快速查询响应时间的用例，用于构建用户界面、监控和自动化解决方案。
 environment: |
   本应用在Docker环境中运行，安装Docker执行如下命令
   ```
   yum install -y docker
   ```
 tags: |
-  mariadb镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+  influxdb镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
-  |[11.7.2-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/mariadb/11.7.2/24.03-lts-sp1/Dockerfile)| mariadb 11.7.2 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+  |[2.7.11-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/influxdb/2.7.11/24.03-lts-sp1/Dockerfile)| Influxdb 2.7.11 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 download: |
   拉取镜像到本地
   ```
-  docker pull openeuler/mariadb:{Tag}
+  docker pull openeuler/influxdb:{Tag}
   ```
 
 usage: |
-  启动mariadb实例：
+  启动influxdb实例：
   ```
-  docker network create some-network 
-  docker run --detach --network some-network --name some-mariadb --env MARIADB_USER=example-user --env MARIADB_PASSWORD=my_cool_secret --env MARIADB_ROOT_PASSWORD=my-secret-pw openeuler/mariadb:{Tag}
+  docker run -it -p 8086:8086 openeuler/influxdb:{Tag}
   ```
-  启动后，用户可以从[MariaDB command line client](https://mariadb.com/kb/en/mariadb-command-line-client/)访问MariaDB。
+  终端提示以下信息则表示influxdb已经ready：
+  ```
+  2025-07-02T02:07:01.507857Z	info	Listening	{"log_id": "0xUE2JM0000", "service": "tcp-listener", "transport": "http", "addr": ":8086", "port": 8086}
+  2025-07-02T02:07:01.507881Z	info	Starting	{"log_id": "0xUE2JM0000", "service": "telemetry", "interval": "8h"}
+  ```
   
-license: GPL-2.0 license
+license: Apache-2.0 license
 similar_packages:
-  - MySQL
+  - N/A
 dependency:
   - N/A
   
