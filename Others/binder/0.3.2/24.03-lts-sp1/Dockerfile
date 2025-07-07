@@ -29,4 +29,6 @@ RUN patch -p1 < /opt/keybinder-keybinder-3.0-v${VERSION}/Fix-gtk-doc-build-failu
     && make -j$(nproc) \
     && make install
 
+ENV LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+
 CMD ["bash"]

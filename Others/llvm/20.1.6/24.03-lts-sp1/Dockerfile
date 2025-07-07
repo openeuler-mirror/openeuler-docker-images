@@ -5,7 +5,7 @@ ARG BUILDARCH
 ARG VERSION=20.1.6
 
 RUN dnf update -y \
-    && dnf install -y wget xz \
+    && dnf install -y wget xz glibc-devel \
     && dnf clean all \
     && rm -rf /var/cache/dnf
 

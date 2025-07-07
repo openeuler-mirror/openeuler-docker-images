@@ -1,0 +1,57 @@
+name: llvm
+category: others
+description: LLVM（Low Level Virtual Machine）最初是一个编译器后端优化框架，如今已发展成一个通用的编译器基础设施项目。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  llvm镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[20.1.6-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/llvm/20.1.6/24.03-lts-sp1/Dockerfile)| LLVM 20.1.6 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/llvm:{Tag}
+  ```
+
+usage: |
+  - 使用交互式Shell运行:
+
+    启动一个带交互式Shell的容器，使用llvm运行自己的代码。
+    ```
+    docker run -it --rm openeuler/llvm:{Tag} bash  
+    ```
+    `openeuler/llvm`镜像用于验证上游llvm版本和openEuler的集成。
+      
+  - 创建简单的 C 代码文件 
+
+    ```
+    cat > /tmp/hello.c <<EOF
+    #include <stdio.h>
+    void hello() {
+      printf("Hello from Clang!\\n");
+    }
+    EOF
+    ```
+    
+  - 编译为目标文件（.o）
+    
+    使用 `clang` 编译但不链接：
+    ```
+    /usr/local/llvm/bin/clang -c /tmp/hello.c -o /tmp/hello.o
+    ```
+    选项 `-c` 表示 `clang` 编译后停止，生成目标文件。
+ 
+
+license: Apache-2.0 License
+similar_packages:
+  - GCC (GNU Compiler Collection): 传统的“单体式”编译器，包含前端（C/C++/Fortran/Go）和后端，优化器也内置；没有 LLVM 的 IR 模块化设计。
+dependency:
+  - libc
+  - glibc-devel
+  - libgcc
