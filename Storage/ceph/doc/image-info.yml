@@ -1,0 +1,40 @@
+name: ceph
+category: storage
+description: Ceph 是一个开源的、分布式存储系统，设计目标是高性能、高可用、无限扩展（scale-out）。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  ceph镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[20.3.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/ceph/20.3.0/24.03-lts-sp1/Dockerfile)| Ceph 20.3.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/ceph:{Tag}
+  ```
+
+usage: |
+  - 启动ceph实例
+
+    ```
+    docker run -it --name ceph openeuler/ceph:{Tag}
+    ```
+    `openeuler/ceph`镜像用于验证上游ceph版本和openEuler的集成。
+  
+license: GPL-2.0 License
+similar_packages:
+  - MinIO：面向云原生应用的高性能对象存储，兼容 Amazon S3 API，部署更轻量。
+  - GlusterFS：易于部署的分布式文件系统，适合海量小文件。
+dependency:
+  - python
+  - librbd
+  - librados
+  - openssl
+  - libcurl
+  - systemd

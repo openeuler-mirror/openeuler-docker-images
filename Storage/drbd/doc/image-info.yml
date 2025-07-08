@@ -1,0 +1,39 @@
+name: drbd-utils
+category: storage
+description: DRBD-utils 是 DRBD（Distributed Replicated Block Device） 的用户空间工具集，用于配置、管理和监控 DRBD 设备。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  drbd-utils镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[9.31.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/drbd-utils/9.31.0/24.03-lts-sp1/Dockerfile)| DRBD-utils 9.31.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/drbd-utils:{Tag}
+  ```
+
+usage: |
+  - 启动drbd-utils实例
+
+    ```
+    docker run -it --name drbd-utils openeuler/drbd-utils:{Tag}
+    ```
+    `openeuler/drbd-utils`镜像用于验证上游DRBD-utils版本和openEuler的集成。
+  
+license: GPL-2.0 license
+similar_packages:
+  - N/A
+dependency:
+  - udev
+  - libxslt
+  - keyutils
+  - rubygem
+  - libyaml
+  - libnl3

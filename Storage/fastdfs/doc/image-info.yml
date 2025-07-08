@@ -1,0 +1,80 @@
+name: fastdfs
+category: storage
+description: FastDFS（Fast Distributed File System） 是一个开源的轻量级分布式文件存储系统，由国内开发者余庆开发，主要用于解决大容量文件存储和高并发访问的问题。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  fastdfs镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[6.12.3-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/fastdfs/6.12.3/24.03-lts-sp1/Dockerfile)| FastDFS 6.12.3 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/fastdfs:{Tag}
+  ```
+
+usage: |
+  - 使用交互式 Shell 启动容器
+
+    交互式 shell 启动容器来运行 fastdfs：
+    ```
+    docker run -it --rm openeuler/fastdfs:{Tag} bash
+    ```
+
+  - 启动Tracker服务器
+
+    ```
+    fdfs_trackerd /etc/fdfs/tracker.conf start
+    ```
+    验证Tracker是否运行：
+    ```
+    ps aux | grep fdfs_trackerd
+    ```
+
+  - 启动Storage服务器
+
+    将配置文件`/etc/fdfs/storage.conf`中的`tracker_server`修改为本地容器IP。
+    ```
+    fdfs_storaged /etc/fdfs/storage.conf start
+    ```
+    验证Storage是否运行：
+    ```
+    ps aux | grep fdfs_storaged
+    ```
+  
+  - 监控集群状态
+   
+    将配置文件`/etc/fdfs/client.conf`中的`tracker_server`修改为本地容器IP。
+    ```
+    fdfs_monitor /etc/fdfs/client.conf
+    ```
+    预期输出应显示：
+    ```
+    Storage 1:
+        id = 172.17.0.2
+        ip_addr = 172.17.0.2  ACTIVE
+    ```
+  
+  - 测试文件上传
+
+    ```
+    # 创建测试文件
+    echo "Hello FastDFS" > test.txt
+  
+    # 上传文件
+    fdfs_test /etc/fdfs/client.conf upload test.txt
+    ```
+
+license: GPL-3.0 license
+similar_packages:
+  - GlusterFS: GlusterFS 是一个开源的分布式文件系统，可以将多个存储服务器的存储空间聚合成一个统一的虚拟存储池，提供高性能、高可扩展性和容错性。
+dependency:
+  - perl
+  - libserverframe
+  - libfastcommon
