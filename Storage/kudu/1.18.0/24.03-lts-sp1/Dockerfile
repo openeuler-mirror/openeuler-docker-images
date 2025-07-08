@@ -22,6 +22,7 @@ RUN mkdir -p /kudu/build/release && cd /kudu/build/release && \
     ../../thirdparty/installed/common/bin/cmake \
         -DNO_TESTS=1 \
         -DCMAKE_BUILD_TYPE=release ../.. && \
+    ln -s /usr/include/c++/12/cstdint /usr/include/cstdint && \
     make -j"$(nproc)" && \
     make DESTDIR=/opt/kudu install && \
     ln -s /kudu/build/release/bin/kudu /usr/bin/kudu
