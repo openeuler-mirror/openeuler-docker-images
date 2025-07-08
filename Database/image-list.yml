@@ -17,3 +17,4 @@ images:
   tidb: tidb
   neo4j: neo4j
   oceanbase: oceanbase
+  milvus: milvus
