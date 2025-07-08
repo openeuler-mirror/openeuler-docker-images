@@ -1,0 +1,94 @@
+name: glusterfs
+category: storage
+description: GlusterFS 是一个开源的分布式文件系统，基于用户空间的 FUSE 实现，专注于海量数据的横向扩展（scale-out）。它通过将多台服务器的存储资源聚合成一个统一的全局命名空间，为用户提供高性能、高可用的网络存储解决方案。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  glusterfs镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[11.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/glusterfs/11.1/24.03-lts-sp1/Dockerfile)| GlusterFS 11.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/glusterfs:{Tag}
+  ```
+
+usage: |
+  - 使用交互式 Shell 启动容器
+
+    你可以用交互式 shell 启动容器来运行 GlusterFS：
+    ```
+    docker run -it --rm --privileged openeuler/glusterfs:{Tag} bash
+    ```
+
+  - 启动 GlusterFS 管理守护进程
+
+    ```
+    glusterd
+    ```
+    这会启动 `glusterd` 服务，用于管理 GlusterFS 集群状态。
+
+  - 创建 Brick 目录和挂载点
+
+    GlusterFS 需要一个物理目录来存储数据（称为 brick），还需要一个本地目录用于挂载卷。
+    ```
+    mkdir -p /bricks/brick1 /mnt/glusterfs
+    ```
+  
+  - 获取容器的真实 IP 地址
+   
+    在创建卷时不能使用 `localhost` 或 `127.0.0.1`，必须使用实际 IP。
+    ```
+    dnf install -y hostname
+    export NODE_IP=$(hostname -i | awk '{print $1}')
+    echo "Node IP: ${NODE_IP}"
+    ```
+  
+  - Create the ClusterFS volume
+
+    使用实际的 IP 和 brick 路径。
+    `force` 参数用于允许创建单节点卷（仅用于测试）。
+    ```
+    gluster volume create testvol ${NODE_IP}:/bricks/brick1 force
+    ```
+  
+  - 启动卷
+
+    ```
+    gluster volume start testvol
+    ```
+  
+  - 挂载卷
+
+    使用 `mount -t glusterfs` 挂载。
+    **注意:** 容器必须使用 `--privileged` 或至少带 `--cap-add SYS_ADMIN`，这样内核才允许使用 FUSE 挂载。
+    ```
+    mount -t glusterfs ${NODE_IP}:/testvol /mnt/glusterfs
+    ```
+  
+  - 验证挂载是否成功
+
+    在挂载好的 GlusterFS 卷中写入一个文件，然后查看内容：
+    ```
+    echo "test file" > /mnt/glusterfs/test.txt
+    ls -l /mnt/glusterfs
+    ```
+    你应该能看到 `test.txt` 已经写入到挂载的卷里。
+
+  
+license: GPL-2.0, LGPL-3.0 licenses
+similar_packages:
+  - MinIO：面向云原生应用的高性能对象存储，兼容 Amazon S3 API，部署更轻量。
+  - Ceph：开源的、分布式存储系统，设计目标是高性能、高可用、无限扩展（scale-out）。
+dependency:
+  - FUSE
+  - protobuf
+  - attr
+  - openssl
+  - acl

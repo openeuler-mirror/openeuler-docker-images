@@ -1,0 +1,41 @@
+name: curve
+category: storage
+description: Curve 是网易主导自研的现代化存储系统, 目前支持文件存储(CurveFS)和块存储(CurveBS)。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  curve镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.0.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/curve/1.0.0/24.03-lts-sp1/Dockerfile)| Curve 1.0.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/curve:{Tag}
+  ```
+
+usage: |
+  - 启动curve实例
+
+    ```
+    docker run -it --name curve openeuler/curve:{Tag}
+    ```
+    `openeuler/curve`镜像用于验证上游curve版本和openEuler的集成。
+  
+license: Apache-2.0 license
+similar_packages:
+  - GlusterFS：易于部署的分布式文件系统，适合海量小文件。
+dependency:
+  - zlib
+  - openssl
+  - libuuid
+  - libunwind
+  - python3
+  - libnl3
+  - libcurl
+  - openjdk

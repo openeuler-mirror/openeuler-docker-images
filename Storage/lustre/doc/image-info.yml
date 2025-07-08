@@ -1,0 +1,40 @@
+name: lustre
+category: storage
+description: Lustre（LUxury + STORage）是一个面向大规模高性能计算（HPC）的开源并行分布式文件系统。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  lustre镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[2.16.55-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/lustre/2.16.55/24.03-lts-sp1/Dockerfile)| Lustre 2.16.55 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/lustre:{Tag}
+  ```
+
+usage: |
+  - 启动lustre实例
+
+    ```
+    docker run -it --name lustre openeuler/lustre:{Tag}
+    ```
+    `openeuler/lustre`镜像用于验证上游lustre版本和openEuler的集成。
+  
+license: GPL-2.0 License
+similar_packages:
+  - GlusterFS：易于部署的分布式文件系统，适合海量小文件。
+dependency:
+  - libnl3
+  - libyaml
+  - numactl
+  - libuuid
+  - keyutils
+  - bison
+  - flex
