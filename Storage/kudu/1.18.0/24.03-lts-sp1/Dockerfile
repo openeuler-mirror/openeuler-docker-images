@@ -4,7 +4,7 @@ FROM ${BASE} AS build
 ARG VERSION=1.18.0
 
 RUN yum install -y autoconf automake cyrus-sasl-devel cyrus-sasl-gssapi cyrus-sasl-plain \
-    flex gcc gcc-c++ gdb git java-1.8.0-openjdk-devel krb5-server krb5-workstation libtool \
+    flex gcc gcc-c++ gdb git java-1.8.0-openjdk-devel krb5-server krb5-workstation libtool krb5-devel \
     make openssl-devel patch pkgconfig rsync unzip vim-common which hostname memkind gem graphviz \
     ruby-devel zlib-devel openeuler-lsb && \
     ln -s /usr/bin/python3 /usr/bin/python
