@@ -1,0 +1,85 @@
+name: lizardfs
+category: storage
+description: LizardFS 是一个开源的分布式文件系统，具有高可用性、可扩展性和容错能力。它是 MooseFS 的一个分支，继承了 MooseFS 的整体架构和功能，提供了符合 POSIX 标准的网络文件系统。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  lizardfs镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[3.12.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/lizardfs/3.12.0/24.03-lts-sp1/Dockerfile)| LizardFS 3.12.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/lizardfs:{Tag}
+  ```
+
+usage: |
+  - 使用交互式 Shell 启动容器
+
+    你可以用交互式 shell 启动容器来运行 lizardfs：
+    ```
+    docker run -it --rm --privileged openeuler/lizardfs:{Tag} bash
+    ```
+
+  - 创建配置文件mfsmaster.cfg
+
+    创建目录：
+    ```
+    mkdir -p /etc/mfs
+    ```
+  
+    创建文件`/etc/mfs/mfsmaster.cfg`:
+    ```
+    DATA_PATH = /var/lib/mfs
+    EXPORTS_FILENAME = /etc/mfs/mfsexports.cfg
+
+    WORKING_USER = root
+    WORKING_GROUP = root
+    ```
+
+  -  创建配置文件mfsexports.cfg
+
+    `/etc/mfs/mfsexports.cfg`:
+    ```
+    * / rw,alldirs,maproot=0
+    ```
+  
+  - 创建空的可选配置文件
+
+    对于单节点测试，这两个文件可以为空（用于机架/主机拓扑映射，高可用时才需要）：
+    * `/etc/mfs/mfstopology.cfg`
+    * `/etc/mfs/mfsipmap.cfg`
+  
+  - 初始化元数据文件
+
+    进入数据目录（`/var/lib/mfs`）：
+    ```
+    mkdir -p /var/lib/mfs
+    cd /var/lib/mfs
+    echo -e "MFSM NEWMETADATA 1\nEMPTY METADATA FILE" > metadata.mfs.empty
+    ```
+    这一步会生成一个空的元数据文件，用于首次启动。
+  
+  - 启动 LizardFS Master
+
+    ```
+    mfsmaster start
+    ```
+
+license: GPL-3.0 license
+similar_packages:
+  - GlusterFS：易于部署的分布式文件系统，适合海量小文件。
+dependency:
+  - zlib
+  - fuse
+  - asciidoc
+  - Judy
+  - libdb
+  - spdlog
+  - pam

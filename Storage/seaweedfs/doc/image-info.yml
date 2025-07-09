@@ -1,0 +1,34 @@
+name: seaweedfs
+category: storage
+description: SeaweedFS 是一款开源的轻量级分布式文件系统，最初由 Chris Lu 开发，专门针对海量小文件和对象存储场景优化。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  seaweedfs镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[3.85-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/seaweedfs/3.85/24.03-lts-sp1/Dockerfile)| seaweedfs 3.85 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/seaweedfs:{Tag}
+  ```
+
+usage: |
+  - 启动seaweedfs实例
+
+    ```
+    docker run -it --name seaweedfs openeuler/seaweedfs:{Tag}
+    ```
+    `openeuler/seaweedfs`镜像用于验证上游seaweedfs版本和openEuler的集成。
+  
+license: Apache-2.0 license
+similar_packages:
+  - GlusterFS：易于部署的分布式文件系统，适合海量小文件。
+dependency:
+  - golang
