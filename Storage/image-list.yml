@@ -14,3 +14,4 @@ images:
   lustre: lustre
   curve: curve
   ceph: ceph
+  sheepdog: sheepdog

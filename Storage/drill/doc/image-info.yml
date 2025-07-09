@@ -1,0 +1,63 @@
+name: drill
+category: storage
+description: AApache Drill 是一个高性能、分布式 SQL 查询引擎。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  drill镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.21.2-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/drill/1.21.2/24.03-lts-sp1/Dockerfile)| Apache Drill 1.21.2 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/drill:{Tag}
+  ```
+
+usage: |
+  - 使用交互式 Shell 启动容器
+
+    运行以下命令，启动一个交互式的 Apache Drill 容器，并将 Web UI 的端口 `8047` 映射到你的主机：
+    ```
+    docker run -it --rm -p 8047:8047 openeuler/drill
+    ```
+  
+    当容器启动后，你会看到类似下面这样的 `sqlline Shell` 提示符：
+    ```
+    apache drill>
+    ```
+  
+    你可以直接在这个 Shell 中执行 SQL 查询，例如：
+    ```
+    apache drill> SELECT * FROM cp.`employee.json` LIMIT 5;
+    +-------------+-----------------+------------+-----------+-------------+------------------------+----------+---------------+------------+-----------------------+---------+---------------+------------------+----------------+--------+-------------------+----------+
+    | employee_id |    full_name    | first_name | last_name | position_id |     position_title     | store_id | department_id | birth_date |       hire_date       | salary  | supervisor_id | education_level  | marital_status | gender |  management_role  | end_date |
+    +-------------+-----------------+------------+-----------+-------------+------------------------+----------+---------------+------------+-----------------------+---------+---------------+------------------+----------------+--------+-------------------+----------+
+    | 1           | Sheri Nowmer    | Sheri      | Nowmer    | 1           | President              | 0        | 1             | 1961-08-26 | 1994-12-01 00:00:00.0 | 80000.0 | 0             | Graduate Degree  | S              | F      | Senior Management | null     |
+    | 2           | Derrick Whelply | Derrick    | Whelply   | 2           | VP Country Manager     | 0        | 1             | 1915-07-03 | 1994-12-01 00:00:00.0 | 40000.0 | 1             | Graduate Degree  | M              | M      | Senior Management | null     |
+    | 4           | Michael Spence  | Michael    | Spence    | 2           | VP Country Manager     | 0        | 1             | 1969-06-20 | 1998-01-01 00:00:00.0 | 40000.0 | 1             | Graduate Degree  | S              | M      | Senior Management | null     |
+    | 5           | Maya Gutierrez  | Maya       | Gutierrez | 2           | VP Country Manager     | 0        | 1             | 1951-05-10 | 1998-01-01 00:00:00.0 | 35000.0 | 1             | Bachelors Degree | M              | F      | Senior Management | null     |
+    | 6           | Roberta Damstra | Roberta    | Damstra   | 3           | VP Information Systems | 0        | 2             | 1942-10-08 | 1994-12-01 00:00:00.0 | 25000.0 | 1             | Bachelors Degree | M              | F      | Senior Management | null     |
+    +-------------+-----------------+------------+-----------+-------------+------------------------+----------+---------------+------------+-----------------------+---------+---------------+------------------+----------------+--------+-------------------+----------+
+    5 rows selected (3.456 seconds)
+    ```
+    这条查询会返回示例文件 employee.json 中的部分数据。
+
+  -  访问 Drill Web 控制台
+
+    默认情况下，Apache Drill 的 Web 控制台运行在：
+    ```
+    http://localhost:8047
+    ```
+
+license: Apache-2.0 license
+similar_packages:
+  - Presto：高性能分布式查询引擎，支持多数据源（Hive、S3、MySQL、Kafka 等），比 Drill 社区活跃度高，支持 ANSI SQL，主要用于交互式分析和联邦查询。
+  - Apache Hive: Hadoop 上经典的数据仓库，支持批处理和 HiveQL（类 SQL），但传统 Hive 使用 MapReduce 速度较慢，需与 Tez/Spark 集成加速。
+dependency:
+  - openjdk

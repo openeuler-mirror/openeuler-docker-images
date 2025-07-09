@@ -1,0 +1,72 @@
+name: sheepdog
+category: storage
+description: Sheepdog 是一个开源的分布式存储系统，专为 QEMU/KVM 虚拟化环境设计，提供块存储服务。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  sheepdog镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.0.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/sheepdog/1.0.1/24.03-lts-sp1/Dockerfile)| sheepdog 1.0.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/sheepdog:{Tag}
+  ```
+
+usage: |
+  - 使用交互式 Shell 启动容器
+
+    你可以用交互式 shell 启动容器来运行 sheepdog：
+    ```
+    docker run -it --rm --privileged openeuler/sheepdog:{Tag} bash
+    ```
+
+  - 设置存储环境
+
+    为sheepdog创建存储目录
+    ```
+    mkdir -p /home/storage
+    ```
+
+  - 启动sheepdog守护进程
+
+    `-c local`参数表示以单机模式运行(非集群模式)
+    ```
+    sheep /home/store/ -c local
+    ```
+  
+  - 初始化集群
+   
+    `--copies=2`参数存储两份副本
+    ```
+    collie cluster format --copies=2
+    ```
+  
+  - 创建虚拟磁盘镜像(VDI)
+
+    创建一个名为`myvolume`的10GB存储卷
+    ```
+    collie vdi create myvolume 10G
+    ```
+  
+  - 验证存储卷
+
+    列出所有可用存储卷
+    ```
+    collie vdi list
+    ```
+
+license: GPL-2.0 license
+similar_packages:
+  - Ceph：开源的、分布式存储系统，设计目标是高性能、高可用、无限扩展（scale-out）。
+dependency:
+  - yasm
+  - corosynclib
+  - corosync
+  - userspace-rcu
