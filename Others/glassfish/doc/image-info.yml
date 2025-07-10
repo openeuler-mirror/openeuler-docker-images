@@ -1,0 +1,50 @@
+name: glassfish
+category: others
+description: GlassFish 是由 Eclipse Foundation 维护的一款开源 Java EE（现 Jakarta EE）应用服务器，支持最新的企业级 Java 规范（如 Servlet、JPA、EJB、JAX-RS 等）。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  glassfish镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[7.0.23-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/glassfish/7.0.23/24.03-lts-sp1/Dockerfile)| GlassFish 7.0.23 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/glassfish:{Tag}
+  ```
+
+usage: |
+  - 交互式shell启动进入容器中
+
+    通过交互式 Shell 启动容器，使用glassfish：
+    ```
+    docker run -it --rm openeuler/glassfish:{Tag} bash
+    ```
+ 
+  - 启动 GlassFish 服务器
+  
+    要启动 Eclipse GlassFish 服务器，请运行以下命令：
+    ```
+    /glassfish/appserver/distributions/web/target/stage/glassfish7/bin/asadmin start-domai
+    ```
+    服务器启动后，您可以通过以下地址访问 管理控制台： ` http://localhost:4848`.
+
+  - 停止 GlassFish 服务器
+    
+    要安全关闭服务器，请运行：
+    ```   
+    /glassfish/appserver/distributions/web/target/stage/glassfish7/bin/asadmin stop-domain
+    ```
+
+license: EPL-2.0
+similar_packages:
+  - WildFly: WildFly（原名 JBoss Application Server）是一个开源的、轻量级、高性能的Java EE/Jakarta EE应用服务器，并提供模块化架构，适用于云原生和微服务环境。
+dependency:
+  - openjdk
+  - maven
