@@ -74,8 +74,6 @@ images:
   musl: musl
   mesa: mesa
   varnish: varnish
-  nemo: nemo
-  lammps: lammps
   haproxy: haproxy
   jetty: jetty
   keepalived: keepalived
