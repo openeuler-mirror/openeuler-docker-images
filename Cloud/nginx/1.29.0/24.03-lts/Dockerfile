@@ -1,4 +1,4 @@
-ARG BASE=openeuler/openeuler:24.03-lts-sp1
+ARG BASE=openeuler/openeuler:24.03-lts
 FROM ${BASE}
 
 ARG TARGETARCH

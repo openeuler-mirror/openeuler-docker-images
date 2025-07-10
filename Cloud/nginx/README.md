@@ -32,6 +32,7 @@ The tag of each `nginx` docker image is consist of the version of `nginx` and th
 |[1.27.2-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/nginx/1.27.2/22.03-lts-sp3/Dockerfile)| Nginx 1.27.2 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
 |[1.27.2-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/nginx/1.27.2/22.03-lts-sp4/Dockerfile)| Nginx 1.27.2 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
 |[1.27.2-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/nginx/1.27.2/24.03-lts/Dockerfile)| Nginx 1.27.2 on openEuler 24.03-LTS | amd64, arm64 |
+|[1.29.0-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/nginx/1.29.0/24.03-lts/Dockerfile)| Nginx 1.29.0 on openEuler 24.03-LTS | amd64, arm64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` and `container startup options` based on their requirements.
