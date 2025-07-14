@@ -15,15 +15,13 @@ RUN curl -fSL --output kudu.tar.gz https://github.com/apache/kudu/archive/refs/t
 
 RUN cd /kudu && \
     build-support/enable_devtoolset.sh && \
-    thirdparty/build-if-necessary.sh 
-    
-RUN mkdir -p /kudu/build/release && cd /kudu/build/release && \
+    thirdparty/build-if-necessary.sh && \
+    mkdir -p /kudu/build/release && cd /kudu/build/release && \
     ../../build-support/enable_devtoolset.sh && \
     ../../thirdparty/installed/common/bin/cmake \
         -DNO_TESTS=1 \
         -DCMAKE_BUILD_TYPE=release ../.. \
         -DCMAKE_CXX_FLAGS="-I/usr/include/c++/12" ../.. && \
-    ln -s /usr/include/c++/12/cstdint /usr/include/cstdint && \
     make -j"$(nproc)" && \
     make DESTDIR=/opt/kudu install && \
     ln -s /kudu/build/release/bin/kudu /usr/bin/kudu
