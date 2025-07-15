@@ -43,7 +43,6 @@ WORKDIR /home/dubbo-quickstart
 ENV DUBBO_VERSION=${VERSION}
 
 COPY pom.xml.template pom.xml.template
-
 COPY entrypoint.sh entrypoint.sh
 
 RUN chmod +x entrypoint.sh

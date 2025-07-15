@@ -8,6 +8,7 @@ RUN yum install -y gcc make zlib-devel pcre-devel openssl-devel jemalloc-devel c
     yum clean all
 
 WORKDIR /tengine
+
 RUN curl -fSL -o tengine.tar.gz ${TENGINE_URL} && \
     tar -xzf tengine.tar.gz --strip-components=1 && \
     rm tengine.tar.gz
