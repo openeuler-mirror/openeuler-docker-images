@@ -162,7 +162,6 @@ RUN if [ "$TARGETARCH" = "amd64" ]; then \
 
 COPY --from=builder /fakeroot /
 
-# Create the directories that didn't get copied from the previous stage.
 RUN mkdir -p /var/log/suricata /var/run/suricata /var/lib/suricata
 
 COPY /update.yaml /etc/suricata/update.yaml
