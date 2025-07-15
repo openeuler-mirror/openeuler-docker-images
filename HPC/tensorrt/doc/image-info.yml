@@ -1,0 +1,39 @@
+name: tensorrt
+category: hpc
+description: NVIDIA® TensorRT™ 是一个用于在 NVIDIA GPU 上进行高性能深度学习推理的 SDK。此存储库包含 TensorRT 的开源组件。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  dotnet-deps镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[10.9.0.34-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/tensorrt/10.9.0.34/24.03-lts/Dockerfile)| tensorrt 10.9.0.34 on openEuler 24.03-LTS | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/tensorrt:{Tag}
+  ```
+
+usage: |
+  - 启动tensorrt实例
+
+    ```
+    docker run -it --name tensorrt openeuler/tensorrt:{Tag}
+    ```
+    `openeuler/使用tensorrt`镜像用于验证上游tensorrt版本和openEuler的集成。
+
+license: Apache-2.0 license
+
+similar_packages:
+  - ONNX Runtime: ONNX Runtime 是由 微软（Microsoft）开发并开源 的高性能推理（Inference）引擎，用于运行符合 ONNX（Open Neural Network Exchange）格式 的深度学习模型。
+
+dependency:
+  - CUDA Toolkit
+  - cuDNN
+  - ONNX
+  - NVIDIA Driver

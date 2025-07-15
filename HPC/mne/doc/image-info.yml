@@ -1,0 +1,61 @@
+name: mne
+category: hpc
+description: MNE-Python是一个开源Python包，用于探索、可视化和分析人类神经生理数据，如MEG、EEG、sEEG、ECoG等。它包括数据输入/输出、预处理、可视化、源估计、时间-频率分析、连接性分析、机器学习、统计等模块。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  mne镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  | Tags | Currently |  Architectures|
+  |------|-----------|---------------|
+  |[1.9.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/mne/1.9.0/24.03-lts-sp1/Dockerfile)| MNE-Python 1.9.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/mne:{Tag}
+  ```
+
+usage: |
+  - 以交互式Shell运行容器:
+
+    通过交互式 Shell 启动容器，使用mne命令：
+    ```
+    docker run -it --rm openeuler/mne:{Tag} bash
+    ```
+  
+  - 加载 MNE 自带的示例 MEG 数据集
+
+    `test_mne.py` 脚本会加载原始的 MEG 文件 `sample_audvis_raw.fif`.
+    ```
+    import mne
+
+    # Set the sample data path (downloads it if not present)
+    data_path = mne.datasets.sample.data_path()
+    raw_fname = str(data_path) + '/MEG/sample/sample_audvis_raw.fif'
+
+    # Load the raw MEG data
+    raw = mne.io.read_raw_fif(raw_fname, preload=True)
+    ```
+
+  - 运行脚本
+
+    ```
+    python3 test_mne.py
+    ```
+    执行后，你会看到关于这段 MEG 记录的信息输出：包括通道数量、采样率、时长等基本数据。
+
+license: BSD-3-Clause license
+similar_packages:
+  - EEGLAB: EEGLAB 是一个基于 MATLAB 的开源工具箱，用于处理、分析和可视化 EEG（脑电）数据。
+dependency:
+  - python
+  - numpy
+  - scipy
+  - matplotlib
+  - nibabel
+  - h5py
+  - joblib

@@ -1,7 +1,13 @@
-ARG BASE=openeuler/pypi:latest
+ARG BASE=openeuler/openeuler:24.03-lts-sp1
 FROM ${BASE}
-
 ARG VERSION=0.28.1
+
+RUN dnf update -y \
+    && dnf install -y python3-pip \
+    && dnf clean all \
+    && rm -rf /tmp/* \
+    && rm -rf /var/cache/dnf
+
 
 # Dependencies required for installing horovod
 RUN dnf install -y openmpi openmpi-devel gcc gcc-c++ cmake make git && \
