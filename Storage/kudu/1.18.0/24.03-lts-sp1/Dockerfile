@@ -21,7 +21,7 @@ RUN cd /kudu && \
     ../../thirdparty/installed/common/bin/cmake \
         -DNO_TESTS=1 \
         -DCMAKE_BUILD_TYPE=release ../.. \
-        -DCMAKE_CXX_FLAGS="-I/usr/include/c++/12" ../.. && \
+        -DCMAKE_CXX_FLAGS="-I/usr/include/c++/12 -I/usr/include/c++/12/aarch64-openEuler-linux" ../.. && \
     make -j"$(nproc)" && \
     make DESTDIR=/opt/kudu install && \
     ln -s /kudu/build/release/bin/kudu /usr/bin/kudu
