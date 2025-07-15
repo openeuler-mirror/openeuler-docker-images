@@ -1,0 +1,34 @@
+name: flannel
+category: cloud
+description: flannel 是一个为容器设计的网络 fabric，专为 Kubernetes 而设计。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  docker镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[0.26.7-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/flannel/0.26.7/24.03-lts-sp1/Dockerfile)| flannel 0.26.7 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/flannel:{Tag}
+  ```
+
+usage: |
+  - 启动flannel实例
+
+    ```
+    docker run -it --name flannel openeuler/flannel:{Tag}
+    ```
+    `openeuler/flannel`镜像用于验证上游flannel版本和openEuler的集成。
+
+license: Apache-2.0 license
+similar_packages:
+  - N/A
+dependency:
+  - N/A

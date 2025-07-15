@@ -8,11 +8,14 @@ ARG GO_VERSION=1.23.7
 ARG FLANNEL_URL=https://github.com/flannel-io/flannel/archive/refs/tags/v${VERSION}.tar.gz
 
 WORKDIR /app
+
 RUN curl -fSL -o go.tar.gz https://golang.google.cn/dl/go${GO_VERSION}.linux-${TARGETARCH}.tar.gz && \
-    tar -xvf go.tar.gz -C /usr/local  
+    tar -xvf go.tar.gz -C /usr/local
+
 ENV PATH="/usr/local/go/bin:${PATH}"
 
 RUN yum install -y conntrack-tools ipset net-tools
+
 RUN if [ ${TARGETARCH} = "amd64" ]; then \
         CGOFLAG=1; \
         yum install -y gcc ; \
