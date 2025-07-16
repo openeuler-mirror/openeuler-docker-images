@@ -1,6 +1,7 @@
 ARG BASE=openeuler/openeuler:24.03-lts-sp1
 FROM ${BASE} AS build
-
+ARG TARGETARCH
+ARG BUILDARCH
 ARG VERSION=1.18.0
 
 RUN yum install -y autoconf automake cyrus-sasl-devel cyrus-sasl-gssapi cyrus-sasl-plain \
@@ -13,7 +14,13 @@ RUN curl -fSL --output kudu.tar.gz https://github.com/apache/kudu/archive/refs/t
     mkdir -p /kudu && tar -zvxf kudu.tar.gz -C /kudu --strip-components=1 && \
     rm -f kudu.tar.gz && yum clean all
 
-RUN cd /kudu && \
+RUN yum -y update && \
+    if [ "$TARGETARCH" = "amd64" ]; then \
+      BUILDARCH="x86_64"; \
+    elif [ "$TARGETARCH" = "arm64" ]; then \
+      BUILDARCH="aarch64"; \ 
+    fi && \
+    cd /kudu && \
     build-support/enable_devtoolset.sh && \
     thirdparty/build-if-necessary.sh && \
     mkdir -p /kudu/build/release && cd /kudu/build/release && \
@@ -21,7 +28,7 @@ RUN cd /kudu && \
     ../../thirdparty/installed/common/bin/cmake \
         -DNO_TESTS=1 \
         -DCMAKE_BUILD_TYPE=release ../.. \
-        -DCMAKE_CXX_FLAGS="-I/usr/include/c++/12 -I/usr/include/c++/12/aarch64-openEuler-linux" ../.. && \
+        -DCMAKE_CXX_FLAGS="-I/usr/include/c++/12 -I/usr/include/c++/12/${BUILDARCH}-openEuler-linux" ../.. && \
     make -j"$(nproc)" && \
     make DESTDIR=/opt/kudu install && \
     ln -s /kudu/build/release/bin/kudu /usr/bin/kudu
