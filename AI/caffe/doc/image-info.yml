@@ -32,9 +32,9 @@ usage: |
     - 手动下载 MNIST 数据集（镜像源）
   
         进入mnist目录：
-	    ```
-	    cd /opt/caffe/data/mnist
-	    ```
+        ```
+        cd /opt/caffe/data/mnist
+        ```
         
         从可靠的公开镜像下载文件：
         ```
