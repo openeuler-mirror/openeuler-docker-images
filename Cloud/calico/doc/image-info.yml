@@ -1,0 +1,34 @@
+name: calico
+category: cloud
+description: Calico 是一个开源的网络和网络安全解决方案，专为 Kubernetes、OpenShift 和裸机/虚拟机工作负载设计。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  docker镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[3.29.3-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/calico/3.29.3/24.03-lts-sp1/Dockerfile)| Calico 3.29.3 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/calico:{Tag}
+  ```
+
+usage: |
+  - 启动calico实例
+
+    ```
+    docker run -it --name calico openeuler/calico:{Tag}
+    ```
+    `openeuler/calico`镜像用于验证上游calico版本和openEuler的集成。
+
+license: Apache-2.0 license
+similar_packages:
+  - N/A
+dependency:
+  - openjdk
