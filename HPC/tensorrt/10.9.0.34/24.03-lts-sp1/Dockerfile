@@ -1,5 +1,11 @@
-ARG BASE=openeuler/pypi:latest
+ARG BASE=openeuler/openeuler:24.03-lts-sp1
 FROM ${BASE}
-
 ARG VERSION=10.9.0.34
+
+RUN dnf update -y \
+    && dnf install -y python3-pip \
+    && dnf clean all \
+    && rm -rf /tmp/* \
+    && rm -rf /var/cache/dnf \
+
 RUN pip3 install tensorrt==${VERSION}

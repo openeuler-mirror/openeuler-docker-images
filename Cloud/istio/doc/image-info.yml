@@ -1,0 +1,34 @@
+name: istio
+category: cloud
+description: Istio 是一个开源服务网格，能够透明地层叠在现有的分布式应用程序上。Istio 强大的功能提供了一种统一且更高效的方式来安全、连接和监控服务。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  docker镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.25.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/istio/1.25.1/24.03-lts-sp1/Dockerfile)| Istio 1.25.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/istio:{Tag}
+  ```
+
+usage: |
+  - 启动istio实例
+
+    ```
+    docker run -it --name istio openeuler/istio:{Tag}
+    ```
+    `openeuler/使用istio`镜像用于验证上游istio版本和openEuler的集成。
+
+license: Apache-2.0 license
+similar_packages:
+  - N/A
+dependency:
+  - N/A

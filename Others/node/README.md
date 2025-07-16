@@ -26,6 +26,17 @@ docker run -ti openeuler/node:10.21.0-20.03-lts-sp1
 
 - 10.21.0-20.03-lts-sp1: node v10.21.0, openEuler 20.03 LTS SP1
 
+# Supported tags and respective Dockerfile links
+The tag of each `next` docker image is consist of the version of `next` and the version of basic image. The details are as follows
+
+| Tag                                                                                                                                   | Currently                                 | Architectures |
+|---------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------|---------------|
+| [10.21.0-20.03-lts-sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/node/10.21.0/20.03-lts-sp1/Dockerfile) | Nodejs 10.21.0 on openEuler 20.03-LTS-SP1 | amd64, arm64  |
+| [20.11.1-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/node/20.11.1/24.03-lts/Dockerfile)         | Nodejs 20.11.1 on openEuler 24.03-LTS     | amd64, arm64  |
+| [20.18.2-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/node/20.18.2/24.03-lts-sp1/Dockerfile)     | Nodejs 20.18.2 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+| [24.4.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/node/24.4.0/24.03-lts-sp2/Dockerfile)       | Nodejs 24.4.0 on openEuler 24.03-LTS-SP2  | amd64, arm64  |
+
+
 ## Operating System
 Linux/Unix, ARM64 or x86-64 architecture.
 
