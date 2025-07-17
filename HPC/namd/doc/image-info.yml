@@ -1,0 +1,58 @@
+name: namd
+category: HPC
+description: NAMD（Nanoscale Molecular Dynamics）是一款高性能的并行分子动力学模拟软件，由伊利诺伊大学厄巴纳-香槟分校（UIUC）开发，主要用于生物大分子（如蛋白质、DNA、脂质膜等）和纳米材料的模拟计算。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  namd镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[3.0.1-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/namd/3.0.1/24.03-lts-sp2/Dockerfile)| namd 3.0.1 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/namd:{Tag}
+  ```
+
+usage: |
+  - 以交互式Shell运行容器:
+
+    通过交互式 Shell 启动容器，使用namd命令：
+    ```
+    docker run -it --rm openeuler/namd:{Tag} bash
+    ```
+  
+  - 单进程运行方式
+
+    ```
+    cd /opt/namd/Linux-ARM64-g++
+    /namd3 src/alanin
+    ```
+    这将:
+    * 使用单个CPU核心执行模拟计算
+    * 在终端显示运行进度信息
+
+  - 使用Charm++并行执行
+
+    ```
+    cd /opt/namd/Linux-ARM64-g++
+    ./charmrun ++local +p2 ./namd3 src/alanin
+    ```
+  
+    这将:
+    * 启动2个并行进程 (`+p2`)
+    * 在同一台机器上使用本地通信（`++local`）
+    * 将计算任务分配到可用的CPU核心上执行
+  
+
+license: NAMD License (https://www.ks.uiuc.edu/Research/namd/license.html)
+similar_packages:
+  - GROMACS: 高性能分子动力学软件，起源于生物分子（如蛋白质、脂质膜）模拟。
+dependency:
+  - tcl
+  - fftw
