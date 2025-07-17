@@ -1,0 +1,100 @@
+name: caffe
+category: ai
+description: Caffe（Convolutional Architecture for Fast Feature Embedding）是由伯克利视觉与学习中心（BVLC）和社区开发维护的一个 深度学习框架。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  caffe镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  | Tag                                                                                                                    | Currently                            | Architectures |
+  |------------------------------------------------------------------------------------------------------------------------|--------------------------------------|---------------|
+  | [1.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/caffe/1.0/24.03-lts-sp1/Dockerfile) | Caffe 1.0 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/caffe:{Tag}
+  ```
+
+usage: |
+  - 交互式shell启动进入容器中
+
+    交互式 shell 启动容器来操作 caffe：
+    ```
+    docker run -it --rm openeuler/caffe:{Tag} bash
+    ```
+
+  - 使用 BVLC Caffe（CPU/GPU）训练 MNIST 上的 LeNet
+
+    - 手动下载 MNIST 数据集（镜像源）
+  
+        进入mnist目录：
+        ```
+        cd /opt/caffe/data/mnist
+        ```
+        
+        从可靠的公开镜像下载文件：
+        ```
+        wget https://ossci-datasets.s3.amazonaws.com/mnist/train-images-idx3-ubyte.gz
+        wget https://ossci-datasets.s3.amazonaws.com/mnist/train-labels-idx1-ubyte.gz
+        wget https://ossci-datasets.s3.amazonaws.com/mnist/t10k-images-idx3-ubyte.gz
+        wget https://ossci-datasets.s3.amazonaws.com/mnist/t10k-labels-idx1-ubyte.gz
+        ```
+      
+        解压文件：
+        ```
+        gzip -d *.gz
+        ```
+    
+    - 转换数据集为 LMDB
+    
+        切换到 Caffe 根目录，然后运行
+        ```
+        cd /opt/caffe
+        ./examples/mnist/create_mnist.sh
+        ```
+        这个脚本会把原始的 MNIST 文件转换为 Caffe 训练所需的 LMDB 格式。
+  
+    - 检查 solver 配置
+        
+        打开 solver 配置文件：
+        ```
+        vi ./examples/mnist/lenet_solver.prototxt
+        ```
+  
+        确保最后一行与你的构建模式匹配：
+        ```
+        solver_mode: CPU   # For CPU-only Caffe builds
+        ```
+        或者:
+        ```
+        solver_mode: GPU   # For Caffe built with CUDA/cuDNN
+        ```
+      
+    - 训练模型
+    
+        执行训练命令：
+        ```
+        ./build/tools/caffe train --solver=examples/mnist/lenet_solver.prototxt
+        ```
+        Caffe 将开始在 MNIST 数据集上训练 LeNet 模型。
+
+license: BSD 2-Clause license
+similar_packages:
+  - TensorFlow: TensorFlow是一个基于数据流编程（dataflow programming）的符号数学系统，被广泛应用于各类机器学习（machine learning）算法的编程实现，其前身是谷歌的神经网络算法库DistBelief。
+  - MindSpore: 昇思MindSpore是由华为于2019年8月推出的新一代全场景AI框架，2020年3月28日，华为宣布昇思MindSpore正式开源。昇思MindSpore是一个全场景AI框架，旨在实现易开发、高效执行、全场景统一部署三大目标。
+dependency:
+  - ghostscript
+  - doxygen
+  - openblas
+  - opencv
+  - boost
+  - python
+  - protobuf
+  - snappy
+  - lmdb
+  - hdf5
+  - gflags
