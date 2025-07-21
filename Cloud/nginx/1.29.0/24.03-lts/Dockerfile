@@ -37,6 +37,8 @@ RUN yum -y install gcc openssl-devel make libxml2-devel libxslt-devel gd-devel p
     make && make install && \
     rm -rf /tmp/nginx.tar.gz /tmp/nginx-${VERSION}
 
+RUN mkdir -p /etc/nginx/conf.d
+
 ENV PATH /usr/local/nginx:$PATH
 WORKDIR /usr/local/nginx/html
 
