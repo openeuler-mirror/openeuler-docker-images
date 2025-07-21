@@ -12,7 +12,7 @@ RUN dnf update -y \
 
 WORKDIR /opt
 
-COPY NAMD_${VERSION}_Source.tar.gz .
+RUN wget https://www.ks.uiuc.edu/Research/namd/${VERSION}/download/453167/NAMD_${VERSION}_Source.tar.gz
 
 RUN if [ "$TARGETARCH" = "amd64" ]; then \
       BUILDARCH="x86_64"; \
