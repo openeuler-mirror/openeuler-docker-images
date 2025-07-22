@@ -12,8 +12,8 @@ RUN yum -y install gcc openssl-devel make libxml2-devel libxslt-devel gd-devel p
     cd /tmp/nginx-${VERSION} && \
     mkdir -p /var/tmp/nginx/ && \
     ./configure \
-    --prefix=/usr/local/nginx --sbin-path=/usr/sbin/nginx \
-    --modules-path=/usr/local/nginx/modules --conf-path=/etc/nginx/nginx.conf \
+    --prefix=/usr/share/nginx --sbin-path=/usr/sbin/nginx \
+    --modules-path=/etc/nginx/modules --conf-path=/etc/nginx/nginx.conf \
     --error-log-path=/var/log/nginx/error.log --http-log-path=/var/log/nginx/access.log \
     --http-client-body-temp-path=/var/tmp/nginx/client \
     --http-fastcgi-temp-path=/var/tmp/nginx/fcgi \
@@ -37,9 +37,24 @@ RUN yum -y install gcc openssl-devel make libxml2-devel libxslt-devel gd-devel p
     make && make install && \
     rm -rf /tmp/nginx.tar.gz /tmp/nginx-${VERSION}
 
-ENV PATH /usr/local/nginx:$PATH
-WORKDIR /usr/local/nginx/html
 
+ENV PATH /usr/share/nginx:$PATH
+WORKDIR /usr/share/nginx/html
+
+RUN mkdir /docker-entrypoint.d && \
+    mkdir /etc/nginx/conf.d
+
+RUN sed -i '/http {/a \    include /etc/nginx/conf.d/*.conf;' /etc/nginx/nginx.conf
+
+COPY docker-entrypoint.sh /
+COPY 10-listen-on-ipv6-by-default.sh /docker-entrypoint.d
+COPY 15-local-resolvers.envsh /docker-entrypoint.d
+COPY 20-envsubst-on-templates.sh /docker-entrypoint.d
+COPY 30-tune-worker-processes.sh /docker-entrypoint.d
+ENTRYPOINT ["/docker-entrypoint.sh"]
 
 EXPOSE 80
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+
+STOPSIGNAL SIGQUIT
+
+CMD ["nginx", "-g", "daemon off;"]
