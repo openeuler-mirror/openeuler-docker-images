@@ -26,13 +26,14 @@ RUN VLLM_TARGET_DEVICE="empty" python3 -m pip install -e /vllm-workspace/vllm/ -
     python3 -m pip uninstall -y triton && \
     python3 -m pip cache purge
 
-
 RUN git clone $VLLM_ASCEND_REPO --branch $VLLM_ASCEND_TAG /vllm-workspace/vllm-ascend
 # Install vllm-ascend
 RUN source /usr/local/Ascend/ascend-toolkit/set_env.sh && \
     source /usr/local/Ascend/nnal/atb/set_env.sh && \
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/Ascend/ascend-toolkit/latest/`uname -i`-linux/devlib && \
-    python3 -m pip install -e /vllm-workspace/vllm-ascend/ --extra-index https://download.pytorch.org/whl/cpu/ && \
+    python3 -m pip install -e /vllm-workspace/vllm-ascend/ \
+    --extra-index https://download.pytorch.org/whl/cpu/ \
+    --extra-index https://mirrors.huaweicloud.com/ascend/repos/pypi && \
     python3 -m pip cache purge
 
 # Install modelscope (for fast download) and ray (for multinode)
