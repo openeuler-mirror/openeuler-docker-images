@@ -1,0 +1,49 @@
+name: ambertools
+category: HPC
+description: AmberTools由多个独立开发的包组成，这些包可以单独运行，也可以与Amber24一起使用。该套件还可以用于进行完整的分子动力学模拟，使用显式水或广义Born溶剂模型。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  ambertools镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  | Tag                                                                                                                                | Currently                                    | Architectures |
+  |------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------|---------------|
+  | [24.8-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/ambertools/24.8/24.03-lts-sp2/Dockerfile) | AmberTools 24 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/ambertools:{Tag}
+  ```
+
+usage: |
+  - 启动ambertools容器实例
+
+    ```
+    docker run -it --rm openeuler/ambertools:{Tag}
+    ```
+
+    容器启动后会显示`tleap`初始化信息:
+    ```
+    -I: Adding /opt/amber24/dat/leap/prep to search path.
+    -I: Adding /opt/amber24/dat/leap/lib to search path. 
+    -I: Adding /opt/amber24/dat/leap/parm to search path.
+    -I: Adding /opt/amber24/dat/leap/cmd to search path.
+
+    Welcome to LEaP!
+    (no leaprc in search path)
+    >
+    ```
+
+license: GPLv3 license
+similar_packages:
+  - GROMACS: 高性能分子动力学软件，起源于生物分子（如蛋白质、脂质膜）模拟。
+dependency:
+  - flex
+  - bison
+  - libXext
+  - libXt
+  - zlib
