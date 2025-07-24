@@ -1,4 +1,4 @@
-name: busybox
+name: canal
 category: others
 description: canal主要用途是基于 MySQL 数据库增量日志解析，提供增量数据订阅和消费
 environment: |
@@ -7,7 +7,7 @@ environment: |
   yum install -y docker
   ```
 tags: |
-  busybox镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+  canal镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
@@ -18,7 +18,7 @@ tags: |
 download: |
   拉取镜像到本地
   ```
-  docker pull openeuler/busybox:{Tag}
+  docker pull openeuler/canal:{Tag}
   ```
 
 usage: |
