@@ -1,4 +1,6 @@
 images:
+  agent: opea/agent
+  agent-ui: opea/agent-ui
   onnx: onnx
   cann: cann
   dlrm: dlrm
