@@ -1,29 +1,26 @@
 # Copyright (C) 2024 Intel Corporation
 # SPDX-License-Identifier: Apache-2.0
 
+ARG BASE=openeuler/node:20.11.1-oe2403lts
+ARG VERSION=v1.2
+
 # Use node 20.11.1 as the base image
-FROM openeuler/openeuler:24.03-lts
+FROM $BASE
 
-# 安装依赖工具
-RUN yum update -y && \
-    yum install -y curl git xz
-
-# 下载并安装 Node.js 官方预编译包（不依赖 yum 或 dnf）
-RUN curl -fsSL https://nodejs.org/dist/v20.11.1/node-v20.11.1-linux-x64.tar.xz -o node.tar.xz && \
-    tar -xf node.tar.xz && \
-    mv node-v20.11.1-linux-x64 /usr/local/node && \
-    ln -s /usr/local/node/bin/* /usr/bin/ && \
-    rm -f node.tar.xz
+ARG VERSION
 
 # Update package manager and install Git
-RUN yum update -y && yum install -y git
+RUN yum update -y && \
+    yum install -y git && \
+    yum clean all && \
+    rm -rf /var/cache/yum
 
+WORKDIR /home/user
 # Copy the front-end code repository
-RUN git clone -b v1.2 https://github.com/opea-project/GenAIExamples.git && \
-    mkdir -p /home/user && \
-    cp -r ./GenAIExamples/ChatQnA/ui/svelte /home/user/svelte
-
-#COPY svelte /home/user/svelte
+ARG GENAIEXAMPLES_REPO=https://github.com/opea-project/GenAIExamples.git
+RUN git clone -b $VERSION $GENAIEXAMPLES_REPO && \
+    cp -r GenAIExamples/ChatQnA/ui/svelte /home/user/svelte && \
+    rm -rf GenAIExamples
 
 # Set the working directory
 WORKDIR /home/user/svelte

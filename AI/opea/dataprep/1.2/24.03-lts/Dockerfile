@@ -1,50 +1,55 @@
 # Copyright (C) 2024 Intel Corporation
 # SPDX-License-Identifier: Apache-2.0
 
-FROM openeuler/openeuler:24.03-lts
+ARG BASE=openeuler/python:3.11.13-oe2403lts
+ARG VERSION=v1.2
+
+FROM $BASE
+
+ARG VERSION
 
 ENV LANG=C.UTF-8
 
 ARG ARCH="cpu"
 
-RUN yum update -y && \
-    yum install -y \
-    python3.11 \
-    python3-devel \
-    python3-pip \
-    git \
-    wget \
-    gcc \
-    gcc-c++ \
+RUN yum update -y && yum install -y \
+    gcc g++ make cmake \
     java-1.8.0-openjdk \
     cairo \
+    libxslt \
     mesa-libGL \
     jemalloc-devel \
-    postgresql-devel \
+    mariadb-connector-c-devel-3.3.8 \
+    libpq-devel \
     poppler-utils \
-    tesseract \
-    curl && \
-    ln -s /usr/bin/python3.11 /usr/bin/python  && \
-    yum clean all
-    
-    
-RUN LIBREOFFICE_URL=https://mirrors.bfsu.edu.cn/libreoffice/libreoffice/stable/24.8.6/rpm/x86_64/LibreOffice_24.8.6_Linux_x86-64_rpm.tar.gz && \
-    wget $LIBREOFFICE_URL -O /tmp/LibreOffice_24.8.6_Linux_x86-64_rpm.tar.gz && \
-    tar -xvf /tmp/LibreOffice_24.8.6_Linux_x86-64_rpm.tar.gz -C /tmp && \
-    yum install -y /tmp/LibreOffice_24.8.6.2_Linux_x86-64_rpm/RPMS/*.rpm && \
-    rm -fr /tmp/LibreOffice*
+    tesseract-tools \
+    ffmpeg \
+    wget curl \
+    git \
+    shadow && \
+    yum clean all && \
+    rm -rf /var/cache/yum
+
+ENV TESSDATA_PREFIX=/usr/share/tesseract/tessdata
+
+RUN LIBREOFFICE_URL=https://mirrors.tuna.tsinghua.edu.cn/libreoffice/libreoffice/stable/25.2.4/rpm/x86_64/LibreOffice_25.2.4_Linux_x86-64_rpm.tar.gz && \
+    wget $LIBREOFFICE_URL -O /tmp/libreOffice.tar.gz && \
+    tar --strip-components=1 -xvf /tmp/libreOffice.tar.gz -C /tmp && \
+    yum install -y /tmp/RPMS/*.rpm && \
+    yum clean all && \
+    rm -fr /tmp/libreOffice.tar.gz /tmp/RPMS && \
+    ln -sf /usr/bin/libreoffice25.2 /usr/bin/libreoffice
 
 RUN useradd -m -s /bin/bash user && \
     mkdir -p /home/user && \
     chown -R user /home/user/
 
-USER user
 
 WORKDIR /home/user/
 
-RUN git clone https://github.com/opea-project/GenAIComps.git && cd GenAIComps && git checkout v1.2
-
-RUN cp -r GenAIComps/comps . && \
+ARG GENAICOMPS_REPO=https://github.com/opea-project/GenAIComps.git
+RUN git clone -b $VERSION $GENAICOMPS_REPO && \
+    cp -r GenAIComps/comps /home/user/comps && \
     rm -rf GenAIComps
 
 RUN pip install --no-cache-dir --upgrade pip setuptools && \

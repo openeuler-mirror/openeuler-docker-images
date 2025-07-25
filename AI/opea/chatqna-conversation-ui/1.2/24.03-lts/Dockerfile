@@ -1,29 +1,37 @@
 # Copyright (C) 2024 Intel Corporation
 # SPDX-License-Identifier: Apache-2.0
 
-# Use node 20.11.1 as the base image
-FROM openeuler/openeuler:24.03-lts as vite-app
- 
-RUN yum update -y && \
-    yum install -y --setopt=install_weak_deps=False \
-    git \
-    npm
+ARG BASE=openeuler/node:20.11.1-oe2403lts
+ARG VERSION=v1.2
 
-WORKDIR /home/user
+# Use node 20.11.1 as the base image
+FROM $BASE as vite-app
+
+ARG VERSION
+
+RUN yum update -y && \
+    yum install -y \
+    git && \
+    yum clean all && \
+    rm -rf /var/cache/yum
+
+WORKDIR /usr/app
 
 # Copy the front-end code repository
-RUN git clone https://github.com/opea-project/GenAIExamples.git && cd GenAIExamples && git checkout v1.2
+ARG GENAIEXAMPLES_REPO=https://github.com/opea-project/GenAIExamples.git
+RUN git clone -b $VERSION $GENAIEXAMPLES_REPO && \
+    cp -r GenAIExamples/ChatQnA/ui/react /usr/app/react && \
+    rm -rf GenAIExamples
 
-WORKDIR /home/user/GenAIExamples/ChatQnA/ui/react
+WORKDIR /usr/app/react
 
 RUN ["npm", "install"]
 RUN ["npm", "run", "build"]
 
-FROM openeuler/nginx:1.27.2-oe2403lts
+FROM openeuler/nginx:1.29.0-oe2403lts
 
-COPY --from=vite-app /home/user/GenAIExamples/ChatQnA/ui/react/dist /usr/local/nginx/html
+COPY --from=vite-app /usr/app/react/dist /usr/share/nginx/html
+COPY --from=vite-app /usr/app/react/env.sh /docker-entrypoint.d/env.sh
+COPY --from=vite-app /usr/app/react/nginx.conf /etc/nginx/conf.d/default.conf
 
-COPY env.sh /docker-entrypoint.d/env.sh
-
-COPY nginx.conf /etc/nginx/conf.d/default.conf
 RUN chmod +x /docker-entrypoint.d/env.sh
