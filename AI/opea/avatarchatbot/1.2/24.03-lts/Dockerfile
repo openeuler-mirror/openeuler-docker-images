@@ -11,7 +11,7 @@ ARG VERSION
 # get security updates
 RUN yum update -y && \
     yum install -y \
-    shadow \
+    shadow && \
     yum clean all && \
     rm -rf /var/cache/yum
 
