@@ -1,18 +1,18 @@
 # Copyright (C) 2024 Intel Corporation
 # SPDX-License-Identifier: Apache-2.0
 
+ARG BASE=openeuler/python:3.11.13-oe2403lts
+ARG VERSION=v1.2
 
 # Stage 1: base setup used by other stages
-FROM openeuler/openeuler:24.03-lts AS base
+FROM $BASE AS base
 
+# get security updates
 RUN yum update -y && \
-    yum install -y --setopt=install_weak_deps=False \
-    python-pip python \
-    shadow-utils \
-    mesa-libGL \
-    jemalloc-devel \
-    git
-
+    yum install -y \
+    shadow && \
+    yum clean all && \
+    rm -rf /var/cache/yum
 
 ENV HOME=/home/user
 
@@ -25,7 +25,19 @@ WORKDIR $HOME
 
 # Stage 2: latest GenAIComps sources
 FROM base AS git
-RUN git clone --depth=1 --branch v1.2 https://github.com/opea-project/GenAIComps.git
+
+ARG VERSION
+
+RUN yum update -y && \
+    yum install -y git && \
+    yum clean all && \
+    rm -rf /var/cache/yum
+
+ARG GENAICOMPS_REPO=https://github.com/opea-project/GenAIComps.git
+RUN git clone -b $VERSION $GENAICOMPS_REPO
+
+ARG GENAIEXAMPLES_REPO=https://github.com/opea-project/GenAIExamples.git
+RUN git clone -b $VERSION $GENAIEXAMPLES_REPO
 
 # Stage 3: common layer shared by services using GenAIComps
 FROM base AS comps-base
@@ -33,24 +45,15 @@ FROM base AS comps-base
 # copy just relevant parts
 COPY --from=git $HOME/GenAIComps/comps $HOME/GenAIComps/comps
 COPY --from=git $HOME/GenAIComps/*.* $HOME/GenAIComps/LICENSE $HOME/GenAIComps/
+COPY --from=git $HOME/GenAIExamples/DocIndexRetriever/retrieval_tool.py $HOME/retrieval_tool.py
 
 WORKDIR $HOME/GenAIComps
 RUN pip install --no-cache-dir --upgrade pip setuptools && \
     pip install --no-cache-dir -r $HOME/GenAIComps/requirements.txt
 WORKDIR $HOME
 
-ENV PYTHONPATH=$PYTHONPATH:/home/user/GenAIComps
-
+ENV PYTHONPATH=$PYTHONPATH:$HOME/GenAIComps
 
 USER user
-
-
-# Stage 4: unique part
-FROM comps-base
-
-RUN git clone --depth=1 --branch v1.2 https://github.com/opea-project/GenAIExamples.git && \
-    cp GenAIExamples/DocIndexRetriever/retrieval_tool.py .  && \
-    rm -rf GenAIExamples
-
 
 ENTRYPOINT ["python", "retrieval_tool.py"]
