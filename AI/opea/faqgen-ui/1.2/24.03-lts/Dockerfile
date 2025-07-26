@@ -1,22 +1,29 @@
 # Copyright (C) 2024 Intel Corporation
 # SPDX-License-Identifier: Apache-2.0
 
+ARG BASE=openeuler/node:20.11.1-oe2403lts
+ARG VERSION=v1.2
+
 # Use node 20.11.1 as the base image
-FROM openeuler/openeuler:24.03-lts
+FROM $BASE
+
+ARG VERSION
 
 # Update package manager and install Git
 RUN yum update -y && \
-    yum install -y \
-    git \
-    npm
+    yum install -y git && \
+    yum clean all && \
+    rm -rf /var/cache/yum
 
-WORKDIR /home/user/
+WORKDIR /home/user
 
-# Copy the front-end code repository
-RUN git clone -b v1.2 https://github.com/opea-project/GenAIExamples.git 
+ARG GENAIEXAMPLES_REPO=https://github.com/opea-project/GenAIExamples.git
+RUN git clone -b $VERSION $GENAIEXAMPLES_REPO && \
+    cp -r GenAIExamples/FaqGen/ui/svelte /home/user/svelte && \
+    rm -rf GenAIExamples
 
 # Set the working directory
-WORKDIR /home/user/GenAIExamples/FaqGen/ui/svelte
+WORKDIR /home/user/svelte
 
 # Install front-end dependencies
 RUN npm install
