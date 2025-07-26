@@ -2,12 +2,15 @@ images:
   onnx: onnx
   cann: cann
   dlrm: dlrm
+  avatarchatbot: opea/avatarchatbot
   euler-copilot-fast-inference-qwen: euler-copilot-fast-inference-qwen
   llm: llm
   llm-server: llm-server
   llvm-build-deps: llvm-build-deps
   mindspore: mindspore
   mlflow: mlflow
+  wav2lip: opea/wav2lip
+  animation: opea/animation
   oneapi-basekit: oneapi-basekit
   oneapi-runtime: oneapi-runtime
   asr: opea/asr
