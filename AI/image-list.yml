@@ -35,6 +35,7 @@ images:
   embedding: opea/embedding
   faqgen-ui: opea/faqgen-ui
   faqgen: opea/faqgen
+  faqgen-react-ui: opea/faqgen-react-ui
   llm-faqgen: opea/llm-faqgen
   llm-docsum-tgi: opea/llm-docsum-tgi
   llm-faqgen-tgi: opea/llm-faqgen-tgi

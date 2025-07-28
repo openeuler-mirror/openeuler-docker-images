@@ -1,18 +1,21 @@
 # Copyright (C) 2024 Intel Corporation
 # SPDX-License-Identifier: Apache-2.0
 
-# Use a base image
-FROM openeuler/openeuler:24.03-lts
+ARG BASE=openeuler/python:3.11.13-oe2403lts
+ARG VERSION=v1.2
 
-# Set this to "cpu" or "gpu" or etc
-ARG ARCH="cpu"
+FROM $BASE
+
+ARG VERSION
 
 RUN yum update -y && \
     yum install -y \
     mesa-libGL \
     jemalloc-devel \
-    python python-pip \
-    git
+    git \
+    shadow && \
+    yum clean all && \
+    rm -rf /var/cache/yum
 
 RUN useradd -m -s /bin/bash user && \
     mkdir -p /home/user && \
@@ -20,23 +23,17 @@ RUN useradd -m -s /bin/bash user && \
 
 USER user
 
-WORKDIR /home/user/
+WORKDIR /home/user
 
-RUN git clone -b v1.2 https://github.com/opea-project/GenAIComps.git
-
-RUN cp -r GenAIComps/comps . && \
+ARG GENAICOMPS_REPO=https://github.com/opea-project/GenAIComps.git
+RUN git clone -b $VERSION $GENAICOMPS_REPO && \
+    cp -r GenAIComps/comps /home/user/comps && \
     rm -rf GenAIComps
 
 RUN pip install --no-cache-dir --upgrade pip setuptools && \
-    if [ ${ARCH} = "cpu" ]; then \
-      pip install --no-cache-dir --extra-index-url https://download.pytorch.org/whl/cpu -r /home/user/comps/llms/src/faq-generation/requirements.txt; \
-    else \
-      pip install --no-cache-dir -r /home/user/comps/llms/src/faq-generation/requirements.txt; \
-    fi
+    pip install --no-cache-dir -r /home/user/comps/llms/src/faq-generation/requirements.txt
 
 ENV PYTHONPATH=$PYTHONPATH:/home/user
-
-USER user
 
 WORKDIR /home/user/comps/llms/src/faq-generation
 
