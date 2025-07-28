@@ -49,6 +49,7 @@ images:
   llm-docsum: opea/llm-docsum
   docsum-gradio-ui: opea/docsum-gradio-ui
   reranking-tei: opea/reranking-tei
+  retriever: opea/retriever
   retriever-redis: opea/retriever-redis
   searchqna: opea/searchqna
   searchqna-ui: opea/searchqna-ui
