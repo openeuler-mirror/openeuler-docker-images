@@ -27,6 +27,7 @@ images:
   doc-index-retriever: opea/doc-index-retriever
   docsum-ui: opea/docsum-ui
   docsum: opea/docsum
+  lvm: opea/lvm
   embedding-tei: opea/embedding-tei
   embedding: opea/embedding
   faqgen-ui: opea/faqgen-ui
