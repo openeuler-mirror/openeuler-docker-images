@@ -1,8 +1,13 @@
 # Copyright (C) 2024 Intel Corporation
 # SPDX-License-Identifier: Apache-2.0
 
+ARG BASE=openeuler/python:3.11.13-oe2403lts
+ARG VERSION=v1.2
+
 # Use the official Python 3.11 slim image as the base image
-FROM openeuler/openeuler:24.03-lts
+FROM $BASE
+
+ARG VERSION
 
 # Set the default language environment variable
 ENV LANG=C.UTF-8
@@ -13,17 +18,19 @@ ARG ARCH="cpu"
 # Update the package list and install necessary packages
 RUN yum update -y && \
     yum install -y \
-    python python-pip \
-    gcc gcc-c++ make cmake \
-    git
-    
-# Create a directory for the application
-RUN mkdir -p /home/user
+    gcc g++ make cmake \
+    git && \
+    yum clean all && \
+    rm -rf /var/cache/yum
 
-# Copy the application code and requirements file to the container
-RUN git clone -b v1.2 https://github.com/opea-project/GenAIExamples.git
+WORKDIR /home/user
 
-RUN cp -r GenAIExamples/DocSum/ui/gradio/* /home/user/
+ARG GENAIEXAMPLES_REPO=https://github.com/opea-project/GenAIExamples.git
+RUN git clone -b $VERSION $GENAIEXAMPLES_REPO && \
+    cp -r GenAIExamples/DocSum/ui/gradio/docsum_ui_gradio.py /home/user/docsum_ui_gradio.py && \
+    cp -r GenAIExamples/DocSum/ui/gradio/requirements.txt /home/user/requirements.txt && \
+    rm -rf GenAIExamples
+
 
 # Install Python dependencies
 RUN pip install --no-cache-dir --upgrade pip setuptools && \
