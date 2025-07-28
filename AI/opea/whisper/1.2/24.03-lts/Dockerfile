@@ -1,14 +1,21 @@
 # Copyright (C) 2024 Intel Corporation
 # SPDX-License-Identifier: Apache-2.0
 
-FROM openeuler/openeuler:24.03-lts
+ARG BASE=openeuler/python:3.11.13-oe2403lts
+ARG VERSION=v1.2
+
+FROM $BASE
+
+ARG VERSION
 
 RUN yum update -y && \
     yum install -y \
+    shadow \
     curl \
-    python python-pip \
     ffmpeg \
-    git
+    git && \
+    yum clean all && \
+    rm -rf /var/cache/yum
 
 RUN useradd -m -s /bin/bash user && \
     mkdir -p /home/user && \
@@ -18,14 +25,14 @@ RUN useradd -m -s /bin/bash user && \
 ENV LANG=en_US.UTF-8
 ARG ARCH=cpu
 
-USER user
 WORKDIR /home/user
 
-RUN git clone -b v1.2 https://github.com/opea-project/GenAIComps.git
-
-RUN cp -r GenAIComps/comps . && \
+ARG GENAICOMPS_REPO=https://github.com/opea-project/GenAIComps.git
+RUN git clone -b $VERSION $GENAICOMPS_REPO && \
+    cp -r GenAIComps/comps /home/user/comps && \
     rm -rf GenAIComps
 
+USER user
 
 RUN pip install --no-cache-dir --upgrade pip setuptools && \
     pip install --no-cache-dir -r /home/user/comps/asr/src/requirements.txt && \
