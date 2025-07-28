@@ -12,7 +12,7 @@ RUN yum update -y && \
     yum install -y \
     mesa-libGL \
     jemalloc-devel \
-    git 
+    git \
     shadow && \
     yum clean all && \
     rm -rf /var/cache/yum
