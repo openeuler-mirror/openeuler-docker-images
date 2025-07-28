@@ -22,6 +22,9 @@ images:
   codegen: opea/codegen
   codetrans-ui: opea/codetrans-ui
   codetrans: opea/codetrans
+  graphrag: opea/graphrag
+  graphrag-ui: opea/graphrag-ui
+  graphrag-react-ui: opea/graphrag-react-ui
   dataprep: opea/dataprep  
   dataprep-redis: opea/dataprep-redis
   doc-index-retriever: opea/doc-index-retriever
