@@ -1,31 +1,41 @@
 # Copyright (C) 2024 Intel Corporation
 # SPDX-License-Identifier: Apache-2.0
 
-FROM openeuler/openeuler:24.03-lts
+ARG BASE=openeuler/python:3.11.13-oe2403lts
+ARG VERSION=v1.2
 
+FROM $BASE
+
+ARG VERSION
+
+RUN yum update -y && \
+    yum install -y \
+    git && \
+    yum clean all && \
+    rm -rf /var/cache/yum
+
+# Set environment variables
 ENV LANG=en_US.UTF-8
-
-RUN dnf install -y python3-pip python3-wheel python3-setuptools git && \
-    dnf clean all
 
 ARG ARCH="cpu"
 
-RUN git clone https://github.com/opea-project/GenAIComps.git && \
-    cd GenAIComps && \
-    git checkout v1.2 && \
-    cp -r comps /home/comps && \
-    rm -rf /GenAIComps
+WORKDIR /home
 
-RUN pip3 install --upgrade pip setuptools && \
+ARG GENAICOMPS_REPO=https://github.com/opea-project/GenAIComps.git
+RUN git clone -b $VERSION $GENAICOMPS_REPO && \
+    cp -r GenAIComps/comps /home/comps && \
+    rm -rf GenAIComps
+
+
+RUN pip install --no-cache-dir --upgrade pip setuptools && \
     if [ ${ARCH} = "cpu" ]; then \
-      pip3 install --no-cache-dir torch torchvision --index-url https://download.pytorch.org/whl/cpu; fi && \
-    pip3 install --no-cache-dir -r /home/comps/text2image/src/requirements.txt
+      pip install --no-cache-dir torch torchvision --index-url https://download.pytorch.org/whl/cpu; fi && \
+    pip install --no-cache-dir -r /home/comps/text2image/src/requirements.txt
 
 ENV PYTHONPATH=$PYTHONPATH:/home
 
 WORKDIR /home/comps/text2image/src
 
-RUN echo "python3 opea_text2image_microservice.py --bf16" >> run.sh && \
-    chmod +x run.sh
+RUN echo python opea_text2image_microservice.py --bf16 >> run.sh
 
-CMD ["/bin/bash", "run.sh"]
+CMD bash run.sh
