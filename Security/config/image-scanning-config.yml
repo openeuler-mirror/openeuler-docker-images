@@ -27,10 +27,9 @@ repos:
     arches:
       -linux/arm64
 
-# 精准扫描扫描镜像
+# 精准扫描镜像
 images:
-
-  - name: "nginx"
+  - image: "nginx"
     tags:
       - tag: "docker.io/openeuler/nginx:latest"
         interval: "12h"       # 覆盖全局默认值
@@ -41,13 +40,13 @@ images:
         interval: "1d"
         active: true
          
-  - name: "redis"
+  - image: "redis"
     tags:        
       - tag: "docker.io/openeuler/redis:7.4.1-oe2203sp4"            # 示例: 不活跃的扫描项
         active: false                                               # 不会扫描此tag
         
   # 使用全局扫描周期
-  - name: "postgres"
+  - image: "postgres"
     tags:
       - tag: "hub.oepkgs.net/openeuler/postgres:17.5-oe2403sp1"
           
