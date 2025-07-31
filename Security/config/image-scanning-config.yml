@@ -9,8 +9,6 @@ scanner:
       - linux/arm64
     # 默认扫描周期，优先级低于具体tag设置的interval
     default_interval: "24h"  # 支持格式: 24h, 1d, 1w, 30m
-    # 默认开启扫描
-    default_active: true
     # 扫描结果输出位置
     output:
       format: "json"  # json/html/xml
@@ -38,12 +36,11 @@ images:
         
       - tag: "quay.io/openeuler/nginx:1.27.2-oe2203sp4"
         interval: "1d"
-        active: true
          
   - image: "redis"
     tags:        
       - tag: "docker.io/openeuler/redis:7.4.1-oe2203sp4"            # 示例: 不活跃的扫描项
-        active: false                                               # 不会扫描此tag
+        disable: true                                               # 仅在出现disable为true时不会扫描此tag
         
   # 使用全局扫描周期
   - image: "postgres"
