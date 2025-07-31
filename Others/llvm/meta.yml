@@ -1,2 +1,5 @@
 20.1.6-oe2403sp1:
   path: 20.1.6/24.03-lts-sp1/Dockerfile
+
+20.1.8-oe2403sp1:
+  path: 20.1.8/24.03-lts-sp1/Dockerfile
