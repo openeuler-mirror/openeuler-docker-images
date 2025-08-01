@@ -1,3 +1,4 @@
+
 ARG BASE=openeuler/openeuler:24.03-lts
 FROM ${BASE}
 
