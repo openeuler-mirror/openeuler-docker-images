@@ -1,4 +1,9 @@
 images:
+  kserve-huggingfaceserver: kserve/huggingfaceserver
+  kserve-controller: kserve/controller
+  kserve-agent: kserve/agent
+  kserve-router: kserve/router
+  kserve-storage-initializer: kserve/storage-initializer
   agent: opea/agent
   agent-ui: opea/agent-ui
   onnx: onnx
