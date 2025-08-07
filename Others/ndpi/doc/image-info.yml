@@ -1,4 +1,4 @@
-name: npdi
+name: ndpi
 category: others
 description: nDPI（ntop Deep Packet Inspection）是由 ntop 团队开源维护的一个 DPI（深度包检测）库。
 environment: |
