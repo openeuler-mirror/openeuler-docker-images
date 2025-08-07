@@ -7,6 +7,7 @@ images:
   agent: opea/agent
   agent-ui: opea/agent-ui
   onnx: onnx
+  onnxruntime: onnxruntime
   cann: cann
   dlrm: dlrm
   avatarchatbot: opea/avatarchatbot
