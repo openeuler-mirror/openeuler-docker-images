@@ -1,0 +1,63 @@
+name: snort3
+category: others
+description: Snort 3 是新一代的 Snort IPS（入侵防御系统）。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  snort3镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  | [3.7.2.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/snort3/3.7.2.0/24.03-lts-sp1/Dockerfile) | Snort3 3.7.2.0 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/snort3:{Tag}
+  ```
+
+usage: |
+  - 启动snort3实例
+
+    ```
+    docker run -it openeuler/snort3:{Tag}
+    ```
+    
+    请使用`snort3 --help`查看snort3使用方式:
+    ```
+    Snort has several options to get more help:
+
+    -? list command line options (same as --help)
+    --help this overview of help
+    --help-commands [<module prefix>] output matching commands
+    --help-config [<module prefix>] output matching config options
+    --help-counts [<module prefix>] output matching peg counts
+    --help-limits print the int upper bounds denoted by max*
+    --help-module <module> output description of given module
+    --help-modules list all available modules with brief help
+    --help-modules-json dump description of all available modules in JSON format
+    --help-plugins list all available plugins with brief help
+    --help-options [<option prefix>] output matching command line options
+    --help-signals dump available control signals
+    --list-buffers output available inspection buffers
+    --list-builtin [<module prefix>] output matching builtin rules
+    --list-gids [<module prefix>] output matching generators
+    --list-modules [<module type>] list all known modules
+    --list-plugins list all known modules
+    --show-plugins list module and plugin versions
+
+    --help* and --list* options preempt other processing so should be last on the
+    command line since any following options are ignored.  To ensure options like
+    --markup and --plugin-path take effect, place them ahead of the help or list
+    options.
+
+    ```  
+
+license: GPL-2.0 license
+similar_packages:
+  - N/A
+dependency:
+  - N/A

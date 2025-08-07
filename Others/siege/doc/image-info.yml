@@ -1,0 +1,69 @@
+name: siege
+category: others
+description: Siege 是一款开源回归测试和基准测试实用程序。它可以使用用户定义的模拟用户数量对单个 URL 进行压力测试，也可以将多个 URL 读入内存并同时对其进行压力测试。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  siege镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  | [4.1.7-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/siege/4.1.7/24.03-lts-sp1/Dockerfile) | Siege 4.1.7 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/siege:{Tag}
+  ```
+
+usage: |
+  - 启动siege实例
+
+    ```
+    docker run -it openeuler/siege:{Tag}
+    ```
+    
+    用户可以根据如下提示执行siege:
+    ```
+    Usage: siege [options]
+       siege [options] URL
+       siege -g URL
+    Options:
+    -V, --version             VERSION, prints the version number.
+    -h, --help                HELP, prints this section.
+    -C, --config              CONFIGURATION, show the current config.
+    -v, --verbose             VERBOSE, prints notification to screen.
+    -q, --quiet               QUIET turns verbose off and suppresses output.
+    -g, --get                 GET, pull down HTTP headers and display the
+                                transaction. Great for application debugging.
+    -p, --print               PRINT, like GET only it prints the entire page.
+    -c, --concurrent=NUM      CONCURRENT users, default is 10
+    -r, --reps=NUM            REPS, number of times to run the test.
+    -t, --time=NUMm           TIMED testing where "m" is modifier S, M, or H
+                                ex: --time=1H, one hour test.
+    -d, --delay=NUM           Time DELAY, random delay before each request
+    -b, --benchmark           BENCHMARK: no delays between requests.
+    -i, --internet            INTERNET user simulation, hits URLs randomly.
+    -f, --file=FILE           FILE, select a specific URLS FILE.
+    -R, --rc=FILE             RC, specify an siegerc file
+    -l, --log[=FILE]          LOG to FILE. If FILE is not specified, the
+                                default is used: PREFIX/var/siege.log
+    -m, --mark="text"         MARK, mark the log file with a string.
+                                between .001 and NUM. (NOT COUNTED IN STATS)
+    -H, --header="text"       Add a header to request (can be many)
+    -A, --user-agent="text"   Sets User-Agent in request
+    -T, --content-type="text" Sets Content-Type in request
+    -j, --json-output         JSON OUTPUT, print final stats to stdout as JSON
+        --no-parser           NO PARSER, turn off the HTML page parser
+        --no-follow           NO FOLLOW, do not follow HTTP redirects
+
+    ```  
+
+license: GPL-3.0 license
+similar_packages:
+  - N/A
+dependency:
+  - N/A
