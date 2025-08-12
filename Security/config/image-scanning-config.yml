@@ -11,8 +11,8 @@ scanner:
     default_interval: "24h"  # 支持格式: 24h, 1d, 1w, 30m
     # 扫描结果输出位置
     output:
-      format: "json"  # json/html/xml
-      path: "https://gitee.com/openeuler/openeuler-docker-images/tree/master/Security/reports"
+      repo: "https://gitee.com/openeuler/openeuler-docker-images"  # json/html/xml
+      path: "Security/reports"
 
 
 # 批量扫描仓库
@@ -23,7 +23,7 @@ repos:
       - redis                   # 批量扫描quay.io/openeuler/redis仓库下的所有tag
       - postgres                # 批量扫描quay.io/openeuler/postgres仓库下的所有tag
     arches:
-      -linux/arm64
+      - linux/arm64
 
 # 精准扫描镜像
 images:
