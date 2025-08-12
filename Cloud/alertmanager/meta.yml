@@ -8,11 +8,3 @@
   path: 0.27.0/22.03-lts-sp4/Dockerfile
 0.27.0-oe2403lts:
   path: 0.27.0/24.03-lts/Dockerfile
-0.28.0-rc.0-oe2003sp4:
-  path: 0.28.0-rc.0/20.03-lts-sp4/Dockerfile
-0.28.0-rc.0-oe2203sp3:
-  path: 0.28.0-rc.0/22.03-lts-sp3/Dockerfile
-0.28.0-rc.0-oe2203sp4:
-  path: 0.28.0-rc.0/22.03-lts-sp4/Dockerfile
-0.28.0-rc.0-oe2403lts:
-  path: 0.28.0-rc.0/24.03-lts/Dockerfile

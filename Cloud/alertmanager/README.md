@@ -20,10 +20,6 @@ The tag of each `alertmanager` docker image is consist of the version of `alertm
 |[0.27.0-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/alertmanager/0.27.0/22.03-lts-sp3/Dockerfile)| Alertmanager 0.27.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
 |[0.27.0-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/alertmanager/0.27.0/22.03-lts-sp4/Dockerfile)| Alertmanager 0.27.0 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
 |[0.27.0-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/alertmanager/0.27.0/24.03-lts/Dockerfile)| Alertmanager 0.27.0 on openEuler 24.03-LTS | amd64, arm64 |
-|[0.28.0-rc.0-oe2003sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/alertmanager/0.28.0-rc.0/20.03-lts-sp4/Dockerfile)| Alertmanager 0.28.0-rc.0 on openEuler 20.03-LTS-SP4 | amd64, arm64 |
-|[0.28.0-rc.0-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/alertmanager/0.28.0-rc.0/22.03-lts-sp3/Dockerfile)| Alertmanager 0.28.0-rc.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
-|[0.28.0-rc.0-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/alertmanager/0.28.0-rc.0/22.03-lts-sp4/Dockerfile)| Alertmanager 0.28.0-rc.0 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
-|[0.28.0-rc.0-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/alertmanager/0.28.0-rc.0/24.03-lts/Dockerfile)| Alertmanager 0.28.0-rc.0 on openEuler 24.03-LTS | amd64, arm64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` and `container startup options` based on their requirements.
