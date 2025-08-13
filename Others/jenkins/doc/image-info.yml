@@ -1,0 +1,39 @@
+name: jenkins
+category: others
+description: Jenkins 是一款开源的持续集成和持续交付(CI/CD) 工具，用Java 编写
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  jenkins镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[2.502-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.502/24.03-lts-sp1/Dockerfile)| Jenkins 2.502 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/jenkins:{Tag}
+  ```
+
+usage: |
+  - 添加maven依赖
+  
+    Maven: 在`pom.xml`文件中引入jenkins依赖
+    ```
+    <dependency>
+      <groupId>org.jenkins-ci</groupId>
+      <artifactId>jenkins</artifactId>
+      <version>${jenkins.version}</version>
+  </dependency>
+    ```
+
+license: MIT license
+similar_packages:
+  - GitHub Actions: 基于 YAML 工作流，云原生，和 GitHub 紧密集成。
+dependency:
+  - openjdk
+  - maven
