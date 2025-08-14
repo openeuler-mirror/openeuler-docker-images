@@ -1,0 +1,12 @@
+FROM openeuler/openeuler:latest AS build-env
+COPY . /app
+WORKDIR /app
+RUN yum install -y java-21-openjdk-devel
+RUN javac Hello.java
+
+FROM openeuler/distroless-jre:21.0.2.12-oe2403lts
+COPY --from=build-env /app /app
+WORKDIR /app
+ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk-21.0.2.12-2.oe2403.aarch64
+ENV PATH=$JAVA_HOME/bin:$PATH
+CMD ["java", "Hello"]
