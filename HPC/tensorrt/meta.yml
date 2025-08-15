@@ -1,2 +1,4 @@
 10.9.0.34-oe2403sp1:
   path: 10.9.0.34/24.03-lts-sp1/Dockerfile
+10.13.0.35-oe2403sp1:
+  path: 10.13.0.35/24.03-lts-sp1/Dockerfile
