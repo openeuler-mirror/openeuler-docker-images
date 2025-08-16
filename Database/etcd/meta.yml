@@ -1,2 +1,4 @@
 3.6.0-oe2403sp1:
   path: 3.6.0/24.03-lts-sp1/Dcokerfile
+3.6.4-oe2403sp1:
+  path: 3.6.4/24.03-lts-sp1/Dockerfile
