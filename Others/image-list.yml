@@ -83,3 +83,4 @@ images:
   libyuv: libyuv
   spring-cloud: spring-cloud
   llvm: llvm
+  splitter: splitter
