@@ -1,2 +1,4 @@
 8.5.1-oe2403sp1:
   path: 8.5.1/24.03-lts-sp1/Dcokerfile
+8.5.3-oe2403sp1:
+  path: 8.5.3/24.03-lts-sp1/Dockerfile
