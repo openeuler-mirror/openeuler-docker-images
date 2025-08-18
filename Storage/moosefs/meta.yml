@@ -1,2 +1,4 @@
 4.57.5-oe2403sp1:
   path: 4.57.5/24.03-lts-sp1/Dockerfile
+4.57.7-oe2403sp1:
+  path: 4.57.7/24.03-lts-sp1/Dockerfile
