@@ -1,2 +1,4 @@
 6.0.1-oe2403sp1:
   path: 6.0.1/24.03-lts-sp1/Dockerfile
+6.0.2-oe2403sp1:
+  path: 6.0.2/24.03-lts-sp1/Dockerfile
