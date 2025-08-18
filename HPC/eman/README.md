@@ -14,9 +14,10 @@ Learn more on [EMAN2 website](http://eman2.org).
 # Supported tags and respective Dockerfile links
 The tag of each eman container image is consist of the version of eman and the version of basic image. The details are as follows
 
-| Tags | Currently |  Architectures|
-|------|-----------|---------------|
-|[2.99.69-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/eman/2.99.69/24.03-lts-sp1/Dockerfile)| EMAN2 2.99.69 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+| Tags                                                                                                                           | Currently                                | Architectures |
+|--------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|---------------|
+| [2.99.69-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/eman/2.99.69/24.03-lts-sp1/Dockerfile) | EMAN2 2.99.69 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+| [2.99.70-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/eman/2.99.70/24.03-lts-sp2/Dockerfile) | EMAN2 2.99.70 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
 
 # Usage
 - Pull the `openeuler/eman` image from `hub.docker.com`

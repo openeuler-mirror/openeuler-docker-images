@@ -10,8 +10,9 @@ tags: |
   lumpy-sv镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
 
   | Tags | Currently |  Architectures|
-  |------|-----------|---------------|
-  |[2.99.69-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/eman/2.99.69/24.03-lts-sp1/Dockerfile)| EMAN2 2.99.69 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+  |--------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|---------------|
+  | [2.99.69-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/eman/2.99.69/24.03-lts-sp1/Dockerfile) | EMAN2 2.99.69 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+  | [2.99.70-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/eman/2.99.70/24.03-lts-sp2/Dockerfile) | EMAN2 2.99.70 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
 
 download: |
   拉取镜像到本地
