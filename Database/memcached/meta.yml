@@ -40,3 +40,5 @@
   path: 1.6.36/22.03-lts-sp1/Dockerfile
 1.6.38-oe2403lts:
   path: Database/memcached/1.6.38/24.03-lts/Dockerfile
+1.6.39-oe2403sp1:
+  path: 1.6.39/24.03-lts-sp1/Dockerfile
