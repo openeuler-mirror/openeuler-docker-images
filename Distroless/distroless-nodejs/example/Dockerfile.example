@@ -1,0 +1,3 @@
+FROM openeuler/distroless-nodejs:20.18.2-oe2403lts
+COPY hello.js /hello.js
+CMD ["/hello.js"]
