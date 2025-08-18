@@ -16,9 +16,10 @@ Learn more about Jetty on [Jetty documentation](https://jetty.org/docs/index.htm
 # Supported tags and respective Dockerfile links
 The tag of each `jetty` docker image is consist of the version of `jetty` and the version of basic image. The details are as follows
 
-| Tag                                                                                                                                | Currently                                |   Architectures  |
-|------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|------------------|
-| [12.0.21-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/jetty/12.0.21/24.03-lts-sp1/Dockerfile) | Jetty 12.0.21 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+| Tag                                                                                                                                | Currently                                | Architectures |
+|------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|---------------|
+| [12.0.21-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/jetty/12.0.21/24.03-lts-sp1/Dockerfile) | Jetty 12.0.21 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+| [12.1.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/jetty/12.1.0/24.03-lts-sp2/Dockerfile)   | Jetty 12.1.0 on openEuler 24.03-LTS-SP2  | amd64, arm64  |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.

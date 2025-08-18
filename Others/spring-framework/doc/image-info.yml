@@ -9,9 +9,10 @@ environment: |
 tags: |
   spring-framework镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
 
-  |    Tag   |  Currently  |   Architectures  |
-  |----------|-------------|------------------|
-  |[6.2.6-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/spring-framework/6.2.6/24.03-lts-sp1/Dockerfile)| Spring Framework 6.2.6 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+  | Tag                                                                                                                                         | Currently                                          | Architectures |
+  |---------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------|---------------|
+  | [6.2.6-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/spring-framework/6.2.6/24.03-lts-sp1/Dockerfile)   | Spring Framework 6.2.6 on openEuler 24.03-LTS-SP1  | amd64, arm64  |
+  | [6.2.10-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/spring-framework/6.2.10/24.03-lts-sp2/Dockerfile) | Spring Framework 6.2.10 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
 
 download: |
   拉取镜像到本地

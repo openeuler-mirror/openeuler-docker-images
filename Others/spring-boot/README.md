@@ -16,9 +16,10 @@ Learn more on [Spring Boot Website](https://spring.io/projects/spring-boot)⁠.
 # Supported tags and respective Dockerfile links
 The tag of each `spring-boot` docker image is consist of the version of `spring-boot` and the version of basic image. The details are as follows
 
-|    Tag   |  Currently  |   Architectures  |
-|----------|-------------|------------------|
-|[3.4.4-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/spring-boot/3.4.4/24.03-lts-sp1/Dockerfile)| Spring Boot 3.4.4 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+| Tag                                                                                                                                  | Currently                                    | Architectures |
+|--------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------|---------------|
+| [3.4.4-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/spring-boot/3.4.4/24.03-lts-sp1/Dockerfile) | Spring Boot 3.4.4 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+| [3.5.4-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/spring-boot/3.5.4/24.03-lts-sp2/Dockerfile) | Spring Boot 3.5.4 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
 
 # Usage
 In this usage, users can select the corresponding `{Version}` based on their requirements.
