@@ -9,9 +9,10 @@ environment: |
 tags: |
   mongoose镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
 
-  |    Tag   |  Currently  |   Architectures  |
-  |----------|-------------|------------------|
-  |[5.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/mongoose/5.1/24.03-lts-sp1/Dockerfile)| Mongoose 5.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+  | Tags                                                                                                                            | Currently                                | Architectures |
+  |---------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|---------------|
+  | [5.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/mongoose/5.1/24.03-lts-sp1/Dockerfile)   | Mongoose 5.1 on openEuler 24.03-LTS-SP1  | amd64, arm64  |
+  | [7.18-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/mongoose/7.18/24.03-lts-sp2/Dockerfile) | Mongoose 7.18 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
 
 download: |
   拉取镜像到本地
