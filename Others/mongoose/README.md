@@ -14,9 +14,11 @@ For more information about mongoose, please visit [https://mongoosejs.com/](http
 
 # Supported tags and respective Dockerfile links
 The tag of each mongoose docker image is consist of the version of mongoose and the version of basic image. The details are as follows
-| Tags | Currently |  Architectures|
-|--|--|--|
-|[5.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/mongoose/5.1/24.03-lts-sp1/Dockerfile)| Mongoose 5.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+| Tags                                                                                                                            | Currently                                | Architectures |
+|---------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|---------------|
+| [5.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/mongoose/5.1/24.03-lts-sp1/Dockerfile)   | Mongoose 5.1 on openEuler 24.03-LTS-SP1  | amd64, arm64  |
+| [7.18-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/mongoose/7.18/24.03-lts-sp2/Dockerfile) | Mongoose 7.18 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
 
 # Usage
 

@@ -84,3 +84,4 @@ images:
   spring-cloud: spring-cloud
   llvm: llvm
   splitter: splitter
+  mongoose: mongoose
