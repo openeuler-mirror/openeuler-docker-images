@@ -15,9 +15,11 @@ Learn more on [Kong Website](https://docs.konghq.com/)⁠.
 
 # Supported tags and respective Dockerfile links
 The tag of each `kong` docker image is consist of the version of `kong` and the version of basic image. The details are as follows
-|    Tag   |  Currently  |   Architectures  |
-|----------|-------------|------------------|
-|[3.4.0-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/kong/3.4.0/24.03-lts/Dockerfile)| Kong 3.4.0 on openEuler 24.03-LTS | amd64, arm64 |
+
+| Tag                                                                                                                          | Currently                             | Architectures |
+|------------------------------------------------------------------------------------------------------------------------------|---------------------------------------|---------------|
+| [3.9.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/kong/3.9.1/24.03-lts-sp1/Dockerfile) | Kong 3.9.1 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+| [3.9.1-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/kong/3.9.1/24.03-lts-sp2/Dockerfile) | Kong 3.9.1 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
 
 
 # Usage

@@ -6,7 +6,6 @@ images:
   redis: redis
   clickhouse: clickhouse
   influxdb: influxdb
-  mongoose: mongoose
   orientdb: orientdb
   phoenix: phoenix
   tdengine: tdengine

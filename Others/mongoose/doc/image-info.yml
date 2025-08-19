@@ -1,0 +1,44 @@
+name: mongoose
+category: database
+description: Mongoose 是一个 MongoDB 对象建模工具，旨在在异步环境中工作。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  mongoose镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  | Tags                                                                                                                            | Currently                                | Architectures |
+  |---------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|---------------|
+  | [5.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/mongoose/5.1/24.03-lts-sp1/Dockerfile)   | Mongoose 5.1 on openEuler 24.03-LTS-SP1  | amd64, arm64  |
+  | [7.18-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/mongoose/7.18/24.03-lts-sp2/Dockerfile) | Mongoose 7.18 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/mongoose:{Tag}
+  ```
+
+usage: |
+  
+  启动mongoose实例：
+  ```bash
+  docker run -it --name mongoose openeuler/mongoose:{Tag}
+  ```
+  容器启动后默认进入如下工作目录：
+  ```
+  [root@2bbedb9fea96 examples]# pwd
+  /mongoose/examples
+  [root@2bbedb9fea96 examples]# ls
+  Makefile  hello    lua_dll.c       multi_threaded.c  post.c   qcomm    upload.c
+  chat.c    hello.c  multi_threaded  post              proxy.c  qcomm.c  websocket.c
+  ```
+  `openeuler/mongoose`镜像用于验证上游mongoose版本和openEuler的集成, 用户需要自行配置mongoose。
+
+license:  MIT license
+similar_packages:
+  - MongoDB
+dependency:
+  - N/A
+  

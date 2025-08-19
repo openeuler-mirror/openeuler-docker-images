@@ -17,9 +17,11 @@ Learn more about Spring Framework on [Spring Framework Website](https://spring.i
 
 # Supported tags and respective Dockerfile links
 The tag of each `spring-framework` docker image is consist of the version of `spring-framework` and the version of basic image. The details are as follows
-|    Tag   |  Currently  |   Architectures  |
-|----------|-------------|------------------|
-|[6.2.6-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/spring-framework/6.2.6/24.03-lts-sp1/Dockerfile)| Spring Framework 6.2.6 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+| Tag                                                                                                                                         | Currently                                          | Architectures |
+|---------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------|---------------|
+| [6.2.6-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/spring-framework/6.2.6/24.03-lts-sp1/Dockerfile)   | Spring Framework 6.2.6 on openEuler 24.03-LTS-SP1  | amd64, arm64  |
+| [6.2.10-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/spring-framework/6.2.10/24.03-lts-sp2/Dockerfile) | Spring Framework 6.2.10 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.

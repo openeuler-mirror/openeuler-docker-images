@@ -24,6 +24,7 @@ The tag of each `postgres` docker image is consist of the version of `postgres` 
 |[17.0-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/postgres/17.0/22.03-lts-sp4/Dockerfile)| Postgres 17.0 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
 |[17.0-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/postgres/17.0/24.03-lts/Dockerfile)| Postgres 17.0 on openEuler 24.03-LTS | amd64, arm64 |
 |[17.5-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/postgres/17.5/24.03-lts-sp1/Dockerfile)| Postgres 17.5 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[17.6-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/postgres/17.6/24.03-lts-sp2/Dockerfile)| Postgres 17.6 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
   
 # Usage
 In this usage, users can select the corresponding `{Tag}` and `container startup options` based on their requirements.

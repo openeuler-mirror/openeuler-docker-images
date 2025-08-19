@@ -1,9 +1,8 @@
 ARG BASE=openeuler/openeuler:24.03-lts-sp1
-
 FROM ${BASE} as builder
+ARG VERSION=0.8.0
 
-ENV LIVY_VERSION=0.8.0 \
-    SCALA_VERSION=2.12 \
+ENV SCALA_VERSION=2.12 \
     SPARK_HOME=/usr/lib/spark \
     SPARK_VERSION=3.4.2 \
     LIVY_HOME=/opt/livy \
@@ -13,10 +12,10 @@ RUN dnf install -y wget unzip && \
     dnf clean all
 
 # Download livy
-RUN wget https://dlcdn.apache.org/incubator/livy/${LIVY_VERSION}-incubating/apache-livy-${LIVY_VERSION}-incubating_${SCALA_VERSION}-bin.zip \
-    && unzip apache-livy-${LIVY_VERSION}-incubating_${SCALA_VERSION}-bin.zip \
-    && mv apache-livy-${LIVY_VERSION}-incubating_${SCALA_VERSION}-bin ${LIVY_HOME} \
-    && rm -f apache-livy-${LIVY_VERSION}-incubating_${SCALA_VERSION}-bin.zip
+RUN wget https://dlcdn.apache.org/incubator/livy/${VERSION}-incubating/apache-livy-${VERSION}-incubating_${SCALA_VERSION}-bin.zip \
+    && unzip apache-livy-${VERSION}-incubating_${SCALA_VERSION}-bin.zip \
+    && mv apache-livy-${VERSION}-incubating_${SCALA_VERSION}-bin ${LIVY_HOME} \
+    && rm -f apache-livy-${VERSION}-incubating_${SCALA_VERSION}-bin.zip
 
 # Download Spark (as mentioned in quick start for Spark engine)
 RUN wget https://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop3.tgz \

@@ -13,9 +13,11 @@ FASTJSON2 is a Java JSON library with excellent performance.
 
 # Supported tags and respective Dockerfile links
 The tag of each `fastjson` docker image is consist of the version of `fastjson` and the version of basic image. The details are as follows
-|    Tag   |  Currently  |   Architectures  |
-|----------|-------------|------------------|
-|[2.0.57-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/fastjson/2.0.57/24.03-lts-sp1/Dockerfile)|  FASTJSON2 2.0.57 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+| Tag                                                                                                                                 | Currently                                   | Architectures |
+|-------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------|---------------|
+| [2.0.57-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/fastjson/2.0.57/24.03-lts-sp1/Dockerfile) | FASTJSON2 2.0.57 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+| [2.0.58-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/fastjson/2.0.58/24.03-lts-sp2/Dockerfile) | FASTJSON2 2.0.58 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.

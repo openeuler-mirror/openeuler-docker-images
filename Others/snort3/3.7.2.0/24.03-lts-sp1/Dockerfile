@@ -13,7 +13,7 @@ RUN git clone -b v3.0.19 https://github.com/snort3/libdaq.git && \
     ./bootstrap && ./configure && \
     make -j$nproc && make install
 
-ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/daq
+ENV LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 RUN git clone -b ${VERSION} https://github.com/snort3/snort3.git && \
     cd snort3 && \
     ./configure_cmake.sh --prefix=/usr/local && \

@@ -1,6 +1,6 @@
 # Quick reference
 
-- The official PyTorch docker image.
+- The official ONNX docker image.
 
 - Maintained by: [openEuler CloudNative SIG](https://gitee.com/openeuler/cloudnative).
 

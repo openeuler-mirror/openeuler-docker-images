@@ -9,9 +9,10 @@ environment: |
 tags: |
   spring-boot镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
 
-  |    Tag   |  Currently  |   Architectures  |
-  |----------|-------------|------------------|
-  |[3.4.4-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/spring-boot/3.4.4/24.03-lts-sp1/Dockerfile)| Spring Boot 3.4.4 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+  | Tag                                                                                                                                  | Currently                                    | Architectures |
+  |--------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------|---------------|
+  | [3.4.4-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/spring-boot/3.4.4/24.03-lts-sp1/Dockerfile) | Spring Boot 3.4.4 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+  | [3.5.4-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/spring-boot/3.5.4/24.03-lts-sp2/Dockerfile) | Spring Boot 3.5.4 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
 
 download: |
   拉取镜像到本地
@@ -102,3 +103,11 @@ similar_packages:
   - N/A
 dependency:
   - openjdk
+
+homepage: https://spring.io/projects/spring-boot
+upstream:
+  version_url: spring-projects/spring-boot
+  version_prefix: v
+  version_filter: M;RC;RELEASE
+  backend: GitHub
+  version_scheme: RPM
