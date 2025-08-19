@@ -18,6 +18,7 @@ The tag of each `influxdb` docker image is consist of the version of `influxdb` 
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
 |[2.7.11-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/influxdb/2.7.11/24.03-lts-sp1/Dockerfile)| Influxdb 2.7.11 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[3.3.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/influxdb/3.3.0/24.03-lts-sp2/Dockerfile)| Influxdb 3.3.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 
 # Usage
 
