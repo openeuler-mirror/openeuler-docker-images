@@ -16,9 +16,10 @@ Read more on [HAProxy Docs](http://docs.haproxy.org/).
 # Supported tags and respective Dockerfile links
 The tag of each `haproxy` docker image is consist of the version of `haproxy` and the version of basic image. The details are as follows
 
-| Tag                                                                                                                              | Currently                                     |   Architectures  |
-|----------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------|------------------|
-| [3.1.7-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/haproxy/3.1.7/24.03-lts-sp1/Dockerfile) | HAProxy 3.1.7 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+| Tag                                                                                                                              | Currently                                | Architectures |
+|----------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|---------------|
+| [3.1.7-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/haproxy/3.1.7/24.03-lts-sp1/Dockerfile) | HAProxy 3.1.7 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+| [3.2.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/haproxy/3.2.0/24.03-lts-sp2/Dockerfile) | HAProxy 3.2.0 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.
