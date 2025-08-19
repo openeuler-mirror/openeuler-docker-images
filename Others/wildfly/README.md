@@ -15,9 +15,11 @@ Learn more on [WildFly Website](https://wildfly.org)⁠.
 
 # Supported tags and respective Dockerfile links
 The tag of each `wildfly` docker image is consist of the version of `wildfly` and the version of basic image. The details are as follows
-|    Tag   |  Currently  |   Architectures  |
-|----------|-------------|------------------|
-|[36.0.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/wildfly/36.0.0/24.03-lts-sp1/Dockerfile)| WildFly 36.0.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+| Tag                                                                                                                                | Currently                                 | Architectures |
+|------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------|---------------|
+| [36.0.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/wildfly/36.0.0/24.03-lts-sp1/Dockerfile) | WildFly 36.0.0 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+| [37.0.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/wildfly/37.0.0/24.03-lts-sp2/Dockerfile) | WildFly 37.0.0 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` and `container startup options` based on their requirements.
