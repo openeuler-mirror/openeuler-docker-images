@@ -54,4 +54,3 @@ STOPSIGNAL SIGQUIT
 HEALTHCHECK --interval=60s --timeout=10s --retries=10 CMD kong-health
 
 CMD ["kong", "docker-start"]
-
