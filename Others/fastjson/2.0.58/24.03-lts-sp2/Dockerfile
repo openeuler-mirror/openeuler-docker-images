@@ -1,10 +1,8 @@
 ARG BASE=openeuler/openeuler:24.03-lts-sp2
-FROM ${BASE}
-ARG TARGETARCH
-ARG VERSION=6.2.6
+FROM ${BASE} as BUILDER
+ARG VERSION=2.0.58
 
-RUN dnf update -y \
-    && dnf install -y java-17-openjdk gettext wget \
+RUN dnf install -y java-17-openjdk java-17-openjdk-devel gettext wget \
     && dnf clean all \
     && rm -rf /var/cache/dnf/*
 
@@ -15,14 +13,15 @@ RUN wget https://dlcdn.apache.org/maven/maven-3/${MAVEN_VERSION}/binaries/apache
 
 ENV PATH=/usr/local/maven/bin:$PATH
 
-WORKDIR /home/spring-framework
-COPY example src/main/java/com/example
+ENV LANG="C.UTF-8"
+
+WORKDIR /home/fastjson
+COPY Fastjson2Demo.java src/main/java/com/example/Fastjson2Demo.java
 COPY pom.xml.template pom.xml.template
 
-ENV SPRING_VERSION=${VERSION}
+ENV FAST_JSON_VERSION=${VERSION}
 
 RUN envsubst < pom.xml.template > pom.xml \
-    && mvn clean compile dependency:build-classpath -Dmdep.outputFile=target/classpath.txt
+    && mvn clean compile -Dfile.encoding=UTF-8
 
-CMD CLASS_PATH="target/classes:$(cat target/classpath.txt)" && \
-    java -cp "$CLASS_PATH" com.example.MainApp
+CMD mvn exec:java -Dexec.mainClass="com.example.Fastjson2Demo"
