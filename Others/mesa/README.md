@@ -17,6 +17,7 @@ The tag of each `mesa` docker image is consist of the version of `mesa` and the 
 | Tag                                                                                                                             | Currently                              | Architectures |
 |---------------------------------------------------------------------------------------------------------------------------------|----------------------------------------|---------------|
 | [25.1.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/mesa/25.1.1/24.03-lts-sp1/Dockerfile) | mesa 25.1.1 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+| [25.2.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/mesa/25.2.0/24.03-lts-sp2/Dockerfile) | mesa 25.2.0 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.
