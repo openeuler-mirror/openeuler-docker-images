@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: GPL-1.0-or-later
+
 ARG BASE=openeuler/openeuler:24.03-lts-sp2
 FROM ${BASE}
 
