@@ -9,9 +9,11 @@ environment: |
 tags: |
   jenkins镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
 
-  |    Tag   |  Currently  |   Architectures  |
-  |----------|-------------|------------------|
-  |[2.502-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.502/24.03-lts-sp1/Dockerfile)| Jenkins 2.502 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+  | Tag                                                                                                                              | Currently                                | Architectures |
+  |----------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|---------------|
+  | [2.502-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.502/24.03-lts-sp1/Dockerfile) | Jenkins 2.502 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+  | [2.523-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.523/24.03-lts-sp1/Dockerfile) | Jenkins 2.523 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+  | [2.524-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.524/24.03-lts-sp2/Dockerfile) | Jenkins 2.524 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
 
 download: |
   拉取镜像到本地
@@ -20,15 +22,47 @@ download: |
   ```
 
 usage: |
-  - 添加maven依赖
-  
-    Maven: 在`pom.xml`文件中引入jenkins依赖
+  - 启动容器
     ```
-    <dependency>
-      <groupId>org.jenkins-ci</groupId>
-      <artifactId>jenkins</artifactId>
-      <version>${jenkins.version}</version>
-  </dependency>
+    docker run -d --name my-jenkins -p 8080:80 openeuler/jenkins:{Tag}
+    ```
+    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。`my-jenkins`启动之后，通过`http://localhost:8080`访问jenkins服务。
+
+    1. 访问 **http://localhost:8080**（或配置的端口），解锁 Jenkins。
+    2. 从 Jenkins 控制台日志输出中，复制自动生成的字母数字组合密码（位于两组星号之间）。
+        ```
+        ......
+        2025-08-20 01:40:48.403+0000 [id=45]    INFO    jenkins.install.SetupWizard#init: 
+    
+        *************************************************************
+        *************************************************************
+        *************************************************************
+        
+        Jenkins initial setup is required. An admin user has been created and a password generated.
+        Please use the following password to proceed to installation:
+        
+        be31b4b99afe42538822ffce31fa8103
+        
+        This may also be found at: /root/.jenkins/secrets/initialAdminPassword
+        
+        *************************************************************
+        *************************************************************
+        *************************************************************
+        
+        2025-08-20 01:40:53.216+0000 [id=45]    INFO    jenkins.InitReactorRunner$1#onAttained: Completed initialization
+        ......
+        ```
+
+  - 容器测试
+
+    查看运行日志
+    ```
+    docker logs -f my-jenkins
+    ```
+
+    使用shell交互
+    ```
+    docker exec -it my-jenkins bash
     ```
 
 license: MIT license

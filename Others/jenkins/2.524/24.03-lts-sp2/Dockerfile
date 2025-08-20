@@ -1,7 +1,7 @@
-ARG BASE=openeuler/openeuler:24.03-lts-sp1
+ARG BASE=openeuler/openeuler:24.03-lts-sp2
 FROM ${BASE} AS builder
 
-ARG VERSION=2.523
+ARG VERSION=2.524
 ARG MAVEN_VERSION=3.9.6
 ARG MAVEN_URL=https://repo.huaweicloud.com/apache/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz
 
