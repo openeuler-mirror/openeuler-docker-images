@@ -15,9 +15,10 @@ Learn more about Daos(DAOS Storage Stack) on [Daos Website](https://docs.daos.io
 
 # Supported tags and respective Dockerfile links
 The tag of each `daos` docker image is consist of the version of `daos` and the version of basic image. The details are as follows
-|    Tag   |  Currently  |   Architectures  |
-|----------|-------------|------------------|
-|[2.3.105-oe2203sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/daos/2.3.105/22.03-lts-sp1/Dockerfile)| Daos 2.3.105 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
+
+| Tag                                                                                                                            | Currently                             | Architectures |
+|--------------------------------------------------------------------------------------------------------------------------------|---------------------------------------|---------------|
+| [2.6.3-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/daos/2.6.3/24.03-lts-sp2/Dockerfile) | Daos 2.6.3 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.
