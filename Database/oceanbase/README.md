@@ -15,9 +15,11 @@ Learn more on [oceanbase website](https://www.oceanbase.com/).
 
 # Supported tags and respective Dockerfile links
 The tag of each oceanbase docker image is consist of the version of oceanbase and the version of basic image. The details are as follows
-| Tags | Currently |  Architectures|
-|------|-----------|---------------|
-|[4.3.5_CE_BP2_HF1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/oceanbase/4.3.5_CE_BP2_HF1/24.03-lts-sp1/Dockerfile)| oceanbase 4.3.5_CE_BP2_HF1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+| Tags                                                                                                                                                       | Currently                                             | Architectures |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------|---------------|
+| [4.3.5_CE_BP2_HF1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/oceanbase/4.3.5_CE_BP2_HF1/24.03-lts-sp1/Dockerfile) | oceanbase 4.3.5_CE_BP2_HF1 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+| [4.3.5_CE_BP3-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/oceanbase/4.3.5_CE_BP3/24.03-lts-sp2/Dockerfile)         | oceanbase 4.3.5_CE_BP3 on openEuler 24.03-LTS-SP2     | amd64, arm64  |
 
 # Usage
 Here, users can select `{Tag}` based on their requirements.
