@@ -1,2 +1,4 @@
 4.3.5_CE_BP2_HF1-oe2403sp1:
   path: 4.3.5_CE_BP2_HF1/24.03-lts-sp1/Dockerfile
+4.3.5_CE_BP3-oe2403sp1:
+  path: 4.3.5_CE_BP3/24.03-lts-sp2/Dockerfile

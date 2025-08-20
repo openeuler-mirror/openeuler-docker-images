@@ -9,9 +9,10 @@ environment: |
 tags: |
   oceanbase镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
 
-  | Tags | Currently |  Architectures|
-  |------|-----------|---------------|
-  |[4.3.5_CE_BP2_HF1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/oceanbase/4.3.5_CE_BP2_HF1/24.03-lts-sp1/Dockerfile)| oceanbase 4.3.5_CE_BP2_HF1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+  | Tags                                                                                                                                                       | Currently                                             | Architectures |
+  |------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------|---------------|
+  | [4.3.5_CE_BP2_HF1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/oceanbase/4.3.5_CE_BP2_HF1/24.03-lts-sp1/Dockerfile) | oceanbase 4.3.5_CE_BP2_HF1 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+  | [4.3.5_CE_BP3-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/oceanbase/4.3.5_CE_BP3/24.03-lts-sp2/Dockerfile)         | oceanbase 4.3.5_CE_BP3 on openEuler 24.03-LTS-SP2     | amd64, arm64  |
 
 download: |
   拉取镜像到本地
