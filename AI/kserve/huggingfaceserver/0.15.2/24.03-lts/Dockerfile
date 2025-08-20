@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: Apache-2.0
+
 ARG BASE_IMAGE=openeuler/openeuler:24.03-lts
 ARG VENV_PATH=/prod_venv
 ARG VERSION=v0.15.2
