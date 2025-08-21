@@ -9,9 +9,10 @@ environment: |
 tags: |
   presto镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
 
-  |    Tag   |  Currently  |   Architectures  |
-  |----------|-------------|------------------|
-  |[0.292-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/presto/0.292/24.03-lts-sp1/Dockerfile)| Presto 0.292 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+  | Tags                                                                                                                             | Currently                               | Architectures |
+  |----------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|---------------|
+  | [0.292-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/presto/0.292/24.03-lts-sp1/Dockerfile) | Presto 0.292 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+  | [0.293-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/presto/0.293/24.03-lts-sp2/Dockerfile) | Presto 0.293 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
 
 download: |
   拉取镜像到本地
