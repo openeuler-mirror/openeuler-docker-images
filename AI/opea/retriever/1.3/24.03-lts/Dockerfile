@@ -1,0 +1,50 @@
+ARG BASE=openeuler/python:3.11.13-oe2403lts
+ARG VERSION=v1.3
+
+FROM $BASE
+
+ARG VERSION
+
+ARG ARCH="cpu"
+
+RUN yum update -y && yum install -y \
+    cairo \
+    mesa-libGL \
+    glib2 \
+    jemalloc-devel \
+    mariadb-connector-c-devel-3.3.8 \
+    gcc g++ make cmake \
+    shadow \
+    git && \
+    yum clean all && \
+    rm -rf /var/cache/yum
+
+RUN useradd -m -s /bin/bash user && \
+    mkdir -p /home/user && \
+    chown -R user /home/user/
+
+ARG GENAICOMPS_REPO=https://github.com/opea-project/GenAIComps.git
+RUN git clone -b $VERSION $GENAICOMPS_REPO && \
+    cp -r GenAIComps/comps /home/user/comps && \
+    rm -rf GenAIComps
+
+ARG uvpip='uv pip install --system --no-cache-dir'
+RUN pip install --no-cache-dir --upgrade pip setuptools uv && \
+    if [ ${ARCH} = "cpu" ]; then \
+        PIP_EXTRA_INDEX_URL="--extra-index-url https://download.pytorch.org/whl/cpu"; \
+    else \
+        PIP_EXTRA_INDEX_URL=""; \
+    fi && \
+    $uvpip torch torchvision ${PIP_EXTRA_INDEX_URL} && \
+    $uvpip -r /home/user/comps/retrievers/src/requirements.txt
+
+ENV PYTHONPATH=$PYTHONPATH:/home/user
+
+USER user
+ENV NLTK_DATA=/home/user/nltk_data
+# air gapped support: predownload all needed nltk data
+RUN mkdir -p /home/user/nltk_data && python -m nltk.downloader -d /home/user/nltk_data punkt_tab stopwords
+
+WORKDIR /home/user/comps/retrievers/src
+
+ENTRYPOINT ["python", "opea_retrievers_microservice.py"]
