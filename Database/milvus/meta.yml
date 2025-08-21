@@ -1,2 +1,4 @@
 2.5.14-oe2403sp2:
-  path: 2.5.14/24.03-lts-sp2/Dcokerfile
+  path: 2.5.14/24.03-lts-sp2/Dockerfile
+2.6.0-oe2403sp2:
+  path: 2.6.0/24.03-lts-sp2/Dockerfile
