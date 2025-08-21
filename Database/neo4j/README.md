@@ -15,9 +15,11 @@ Learn more about neo4j at [http://neo4j.com/](http://neo4j.com/).
 
 # Supported tags and respective Dockerfile links
 The tag of each `neo4j` docker image is consist of the version of `neo4j` and the version of basic image. The details are as follows
-|    Tag   |  Currently  |   Architectures  |
-|----------|-------------|------------------|
-|[5.26.7-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/neo4j/5.26.7/24.03-lts-sp1/Dockerfile)| Neo4j 5.26.7 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+| Tag                                                                                                                                      | Currently                                  | Architectures |
+|------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------|---------------|
+| [5.26.7-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/neo4j/5.26.7/24.03-lts-sp1/Dockerfile)       | Neo4j 5.26.7 on openEuler 24.03-LTS-SP1    | amd64, arm64  |
+| [2025.07.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/neo4j/2025.07.0/24.03-lts-sp2/Dockerfile) | Neo4j 2025.07.0 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
 
 # Usage
 
