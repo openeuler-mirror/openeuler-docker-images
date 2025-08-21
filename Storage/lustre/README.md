@@ -19,6 +19,7 @@ The tag of each `lustre` docker image is consist of the version of `lustre` and 
 | Tag                                                                                                                                  | Currently                                 | Architectures |
 |--------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------|---------------|
 | [2.16.55-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/lustre/2.16.55/24.03-lts-sp1/Dockerfile) | Lustre 2.16.55 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+| [2.16.57-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/lustre/2.16.57/24.03-lts-sp2/Dockerfile) | Lustre 2.16.57 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.
