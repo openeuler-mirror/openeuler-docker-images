@@ -16,9 +16,11 @@ Learn more about Impala on [Impala Website](https://impala.apache.org/)⁠.
 
 # Supported tags and respective Dockerfile links
 The tag of each `impala` docker image is consist of the version of `impala` and the version of basic image. The details are as follows
-|    Tag   |  Currently  |   Architectures  |
-|----------|-------------|------------------|
-|[4.4.1-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/impala/4.4.1/24.03-lts/Dockerfile)| Apache impala 4.4.1 on openEuler 24.03-LTS | amd64, arm64 |
+
+| Tag                                                                                                                              | Currently                                      | Architectures |
+|----------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------|---------------|
+| [4.4.1-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/impala/4.4.1/24.03-lts/Dockerfile)     | Apache impala 4.4.1 on openEuler 24.03-LTS     | amd64, arm64  |
+| [4.5.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/impala/4.5.0/24.03-lts-sp2/Dockerfile) | Apache impala 4.5.0 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.
