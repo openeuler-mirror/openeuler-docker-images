@@ -15,9 +15,11 @@ Learn more about milvus at [https://milvus.io/](https://milvus.io/).
 
 # Supported tags and respective Dockerfile links
 The tag of each `milvus` docker image is consist of the version of `milvus` and the version of basic image. The details are as follows
-|    Tag   |  Currently  |   Architectures  |
-|----------|-------------|------------------|
-|[2.5.14-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/milvus/2.5.14/24.03-lts-sp2/Dockerfile)| Milvus 2.5.14 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+
+| Tag                                                                                                                                 | Currently                                | Architectures |
+|-------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|---------------|
+| [2.5.14-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/milvus/2.5.14/24.03-lts-sp2/Dockerfile) | Milvus 2.5.14 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
+| [2.6.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/milvus/2.6.0/24.03-lts-sp2/Dockerfile)   | Milvus 2.6.0 on openEuler 24.03-LTS-SP2  | amd64, arm64  |
 
 # Usage
 
