@@ -16,9 +16,10 @@ Learn more on [Presto website](https://prestodb.io).
 # Supported tags and respective Dockerfile links
 The tag of each presto docker image is consist of the version of presto and the version of basic image. The details are as follows
 
-| Tags                                                                                                                             | Currently |  Architectures|
-|----------------------------------------------------------------------------------------------------------------------------------|--|--|
-| [0.292-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/presto/0.292/24.03-lts-sp1/Dockerfile) | Presto 0.292 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+| Tags                                                                                                                             | Currently                               | Architectures |
+|----------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|---------------|
+| [0.292-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/presto/0.292/24.03-lts-sp1/Dockerfile) | Presto 0.292 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+| [0.293-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/presto/0.293/24.03-lts-sp2/Dockerfile) | Presto 0.293 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}`  based on their requirements.
