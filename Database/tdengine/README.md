@@ -14,9 +14,11 @@ For more information about tdengine, please visit [https://tdengine.com/](https:
 
 # Supported tags and respective Dockerfile links
 The tag of each tdengine docker image is consist of the version of tdengine and the version of basic image. The details are as follows
-| Tags | Currently |  Architectures|
-|--|--|--|
-|[3.3.6.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/tdengine/3.3.6.0/24.03-lts-sp1/Dockerfile)| tdengine 3.3.6.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+| Tags                                                                                                                                   | Currently                                   | Architectures |
+|----------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------|---------------|
+| [3.3.6.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/tdengine/3.3.6.0/24.03-lts-sp1/Dockerfile) | tdengine 3.3.6.0 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+| [3.3.7.3-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/tdengine/3.3.7.3/24.03-lts-sp2/Dockerfile) | tdengine 3.3.7.3 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
 
 # Usage
 
