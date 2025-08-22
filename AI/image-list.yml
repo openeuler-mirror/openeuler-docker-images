@@ -1,4 +1,5 @@
 images:
+  codegen-gradio-ui: opea/codegen-gradio-ui
   kserve-huggingfaceserver: kserve/huggingfaceserver
   kserve-controller: kserve/controller
   kserve-agent: kserve/agent
