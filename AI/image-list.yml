@@ -1,4 +1,5 @@
 images:
+  comps-base: opea/comps-base
   kserve-huggingfaceserver: kserve/huggingfaceserver
   kserve-controller: kserve/controller
   kserve-agent: kserve/agent
