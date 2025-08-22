@@ -45,6 +45,7 @@ RUN if [ "$TARGETARCH" = "amd64" ]; then \
 
 ARG PYTHON_VERSION=3.8.11
 COPY patches/build_impala.patch /opt/build_impala.patch
+ENV IMPALA_BUILD_THREADS=2
 RUN if [ "$TARGETARCH" = "amd64" ]; then \
         BUILDARCH="x86_64"; \
     elif [ "$TARGETARCH" = "arm64" ]; then \
