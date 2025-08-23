@@ -16,9 +16,12 @@ The tag of each `splitter` docker image is consist of the version of `splitter` 
 
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
-|[1.0.1-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/splitter/1.0.1/24.03-lts/Dockerfile)| Splitter on openEuler 24.03-LTS | amd64, arm64 |
-|[1.0.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/splitter/1.0.1/24.03-lts-sp1/Dockerfile)| Splitter on openEuler 24.03-LTS-sp1 | amd64, arm64 |
-|[1.0.1-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/splitter/1.0.1/24.03-lts-sp2/Dockerfile)| Splitter on openEuler 24.03-LTS-sp2 | amd64, arm64 |
+|[1.0.3-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/splitter/1.0.3/24.03-lts/Dockerfile)| Splitter 1.0.3 on openEuler 24.03-LTS | amd64, arm64 |
+|[1.0.3-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/splitter/1.0.3/24.03-lts-sp1/Dockerfile)| Splitter 1.0.3 on openEuler 24.03-LTS-sp1 | amd64, arm64 |
+|[1.0.3-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/splitter/1.0.3/24.03-lts-sp2/Dockerfile)| Splitter 1.0.3 on openEuler 24.03-LTS-sp2 | amd64, arm64 |
+|[1.0.1-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/splitter/1.0.1/24.03-lts/Dockerfile)| Splitter 1.0.1 on openEuler 24.03-LTS | amd64, arm64 |
+|[1.0.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/splitter/1.0.1/24.03-lts-sp1/Dockerfile)| Splitter 1.0.1 on openEuler 24.03-LTS-sp1 | amd64, arm64 |
+|[1.0.1-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/splitter/1.0.1/24.03-lts-sp2/Dockerfile)| Splitter 1.0.1 on openEuler 24.03-LTS-sp2 | amd64, arm64 |
 
 # Usage
 
