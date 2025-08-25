@@ -1,9 +1,5 @@
 images:
-  multimodalqna: opea/multimodalqna
-  multimodalqna-ui: opea/multimodalqna-ui
-  lvm-llava: opea/lvm-llava
-  embedding-multimodal-bridgetower: opea/embedding-multimodal-bridgetower
-  comps-base: opea/comps-base
+  codegen-gradio-ui: opea/codegen-gradio-ui
   kserve-huggingfaceserver: kserve/huggingfaceserver
   kserve-controller: kserve/controller
   kserve-agent: kserve/agent
