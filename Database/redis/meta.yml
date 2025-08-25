@@ -18,3 +18,5 @@
   path: Database/redis/8.0.2/24.03-lts-sp1/Dockerfile
 8.2.0-oe2403sp1:
   path: 8.2.0/24.03-lts-sp1/Dockerfile
+8.2.1-oe2403sp1:
+  path: 8.2.1/24.03-lts-sp1/Dockerfile

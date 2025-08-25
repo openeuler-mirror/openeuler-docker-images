@@ -37,6 +37,7 @@ Please also view the ⁠[Redis License Overview](https://redis.io/legal/licenses
 The tag of each redis docker image is consist of the version of redis and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[8.2.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/redis/8.2.1/24.03-lts-sp1/Dockerfile) | redis 8.2.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 |[6.2.7-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/redis/6.2.7/22.03-lts/Dockerfile)| Redis 6.2.7 on openEuler 22.03-LTS | amd64, arm64 |
 |[7.2.4-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/redis/7.2.4/22.03-lts-sp3/Dockerfile)| Redis 7.2.4 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
 |[7.2.5-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/redis/7.2.5/22.03-lts-sp3/Dockerfile)| Redis 7.2.5 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
