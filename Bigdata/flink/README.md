@@ -17,6 +17,7 @@ The tag of each flink docker image is consist of the version of flink and the ve
 
 | Tags                                                                                                                            | Currently                                     | Architectures |
 |---------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------|---------------|
+|[2.1.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/flink/2.1.0/24.03-lts-sp1/Dockerfile) | flink 2.1.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 | [1.16-22.03-lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/flink/1.16/22.03-lts/Dockerfile)       | Apache flink 1.16 on openEuler 22.03-LTS      | amd64, arm64  |
 | [2.1.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/flink/2.1.0/24.03-lts-sp2/Dockerfile) | Apache flink 2.1.0 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
 

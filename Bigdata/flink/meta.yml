@@ -2,3 +2,6 @@
   path: 1.16/22.03-lts/Dockerfile
 2.1.0-oe2403sp2:
   path: 2.1.0/24.03-lts-sp2/Dockerfile
+
+2.1.0-oe2403sp1:
+  path: 2.1.0/24.03-lts-sp1/Dockerfile
