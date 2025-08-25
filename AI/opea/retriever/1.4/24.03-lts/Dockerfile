@@ -11,6 +11,8 @@ RUN yum update -y && \
         mesa-libGL \
         glib2 \
         jemalloc-devel \
+        mariadb-connector-c-devel-3.3.8 \
+        gcc g++ make cmake \
         shadow \
         git && \
     yum clean all
