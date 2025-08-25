@@ -49,12 +49,11 @@ RUN git clone -b $VERSION $GENAICOMPS_REPO && \
 ARG uvpip='uv pip install --system --no-cache-dir'
 RUN pip install --no-cache-dir --upgrade pip setuptools uv && \
     if [ ${ARCH} = "cpu" ]; then \
-        PIP_EXTRA_INDEX_URL="--extra-index-url https://download.pytorch.org/whl/cpu"; \
+      $uvpip torch torchvision --index-url https://download.pytorch.org/whl/cpu; \
+      $uvpip -r /home/user/comps/dataprep/src/requirements-cpu.txt; \
     else \
-        PIP_EXTRA_INDEX_URL=""; \
-    fi && \
-    $uvpip torch torchvision ${PIP_EXTRA_INDEX_URL} && \
-    $uvpip -r /home/user/comps/dataprep/src/requirements.txt
+      $uvpip -r /home/user/comps/dataprep/src/requirements-gpu.txt; \
+    fi
 
 ENV PYTHONPATH=$PYTHONPATH:/home/user
 
