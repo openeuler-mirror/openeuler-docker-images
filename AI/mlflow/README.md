@@ -31,6 +31,7 @@ Learn more on [MLflow website](https://mlflow.org/docs/latest/introduction/index
 The tag of each mlflow docker image is consist of the version of mlflow and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[3.3.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/mlflow/3.3.1/24.03-lts-sp1/Dockerfile) | mlflow 3.3.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 |[2.11.1-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/mlflow/2.11.1/22.03-lts-sp3/Dockerfile)| MLflow 2.11.1 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
 |[2.13.1-oe2203sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/mlflow/2.13.1/22.03-lts-sp1/Dockerfile)| MLflow 2.13.1 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
 |[2.13.1-oe2203sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/mlflow/2.13.1/22.03-lts-sp2/Dockerfile)| MLflow 2.13.1 on openEuler 22.03-LTS-SP2 | amd64, arm64 |
