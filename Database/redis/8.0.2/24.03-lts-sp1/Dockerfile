@@ -1,8 +1,8 @@
-ARG BASE=openeuler/openeuler:24.03-lts
+ARG BASE=openeuler/openeuler:24.03-lts-sp1
 FROM ${BASE}
 
 ARG TARGETARCH
-ARG VERSION=7.4.1
+ARG VERSION=8.0.2
 
 RUN yum -y update; \
 	yum -y install findutils wget gcc make glibc-devel openssl-devel ca-certificates shadow-utils g++; \
