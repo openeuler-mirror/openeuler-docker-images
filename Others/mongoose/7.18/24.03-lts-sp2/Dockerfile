@@ -7,11 +7,11 @@ RUN yum install -y gcc-c++ wget  && \
 
 WORKDIR /mongoose
 
-COPY main.c .
+COPY example.c .
 
-RUN wget https://github.com/cesanta/mongoose/archive/refs/tags/7.18.tar.gz \
-    && tar -zxvf 7.18.tar.gz -C /mongoose --strip-components=1 \
-    && gcc main.c mongoose.c -o server -lpthread
+RUN wget https://github.com/cesanta/mongoose/archive/refs/tags/${VERSION}.tar.gz \
+    && tar -zxvf ${VERSION}.tar.gz -C /mongoose --strip-components=1 \
+    && gcc example.c mongoose.c -o server -lpthread
 
 FROM ${BASE}
 
