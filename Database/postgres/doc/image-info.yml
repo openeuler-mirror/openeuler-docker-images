@@ -81,3 +81,10 @@ dependency:
   - bison
   - m4
   - flex
+
+homepage: https://www.postgresql.org/
+upstream:
+  version_url: https://www.postgresql.org/ftp/source/
+  backend: custom
+  version_scheme: RPM
+  regex: v(\d+\.\d+(?:\.\d+)?)
