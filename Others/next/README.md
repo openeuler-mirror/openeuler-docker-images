@@ -18,6 +18,7 @@ The tag of each `next` docker image is consist of the version of `next` and the 
 
 |    Tag   | Currently                                 |   Architectures  |
 |----------|-------------------------------------------|------------------|
+|[15.5.2-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/next/15.5.2/24.03-lts-sp1/Dockerfile) | next 15.5.2 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 |[15.3.4-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/next/15.3.4/24.03-lts-sp1/Dockerfile)| Next.js 15.3.4 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
