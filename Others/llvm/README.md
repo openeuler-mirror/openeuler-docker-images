@@ -18,6 +18,7 @@ The tag of each `llvm` docker image is consist of the version of `llvm` and the 
 
 | Tag                                                                                                                             | Currently                              | Architectures |
 |---------------------------------------------------------------------------------------------------------------------------------|----------------------------------------|---------------|
+|[21.1.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/llvm/21.1.0/24.03-lts-sp1/Dockerfile) | llvm 21.1.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 | [20.1.6-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/llvm/20.1.6/24.03-lts-sp1/Dockerfile) | LLVM 20.1.6 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 
 # Usage
