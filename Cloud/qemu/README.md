@@ -18,6 +18,7 @@ The tag of each `qemu` docker image is consist of the version of `qemu` and the 
 
 | Tag                                                                                                                        | Currently                              | Architectures |
 |----------------------------------------------------------------------------------------------------------------------------|----------------------------------------|---------------|
+|[10.1.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/qemu/10.1.0/24.03-lts-sp1/Dockerfile) | qemu 10.1.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 | [10.0.2-oe2403sp1](https://gitee.com/openeuler/openeuler-qemu-images/blob/master/Cloud/qemu/10.0.2/24.03-lts-sp1/qemufile) | QEMU 10.0.2 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 
 # Usage
