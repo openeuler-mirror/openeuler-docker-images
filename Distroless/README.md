@@ -24,9 +24,38 @@ openEuler distroless镜像构建时，首先使用[splitter](https://gitee.com/o
 
 SDF ([slice definition files](https://gitee.com/openeuler/slice-releases))定义了openEuler软件包切分成不同slice的规则（如上图中的`A.yaml`）。
 
-目前，所有SDF均为手工生成，构建Distroless镜像之前，需要先在[slice-releases](https://gitee.com/openeuler/slice-releases)仓库的对应分支提交所有被用到的软件包的SDF文件。
+构建Distroless镜像的第一步，是准备好所有依赖软件包的SDF文件。
 
 <img src="./doc/package.png" width="360px" />
+
+过去，SDF文件主要依赖社区专家手工编写，这在面对大量软件包时成为了一个效率瓶頸。
+
+为解决此问题，`splitter`工具引入了`gen`命令，建立了一套“**自动生成为主，人工审核为辅**”的高效SDF创建流程：
+
+**第一步：使用`splitter gen`自动生成SDF草稿**
+
+`splitter gen`命令可以为任意RPM包自动生成一个高质量的SDF草稿。它的核心原理是通过**智能文件分类**和**精确依赖分析**（通过`readelf`, `ldconfig`, `rpm -qf`等工具链）来模拟专家的分析过程。
+
+推荐使用官方发布的`splitter`应用容器镜像来执行此命令，无需在本地安装任何依赖。
+
+```bash
+# 首先，克隆splitter仓库以获取运行脚本
+git clone https://gitee.com/openeuler/splitter.git
+cd splitter
+
+# 使用splitter-docker.sh为brotli包生成SDF
+# 脚本会自动拉取官方镜像并在容器中执行命令
+# 注意：如果检测到 Docker 未安装，脚本会提示并帮助你自动安装
+./bin/splitter-docker.sh gen -r 24.03-LTS -o /path/to/output -p brotli
+```
+
+该命令会自动在隔离的容器环境中分析`brotli`包，并在目录 `/path/to/output` 中生成一个技术上准确的`brotli.yaml`文件。
+
+**第二步：审查与提交**
+
+对于大多数软件包，自动生成的SDF文件可以直接使用。对于少数复杂的包，开发者可以在生成的草稿基础上进行功能性的调整。
+
+完成SDF文件后，将其提交至[slice-releases](https://gitee.com/openeuler/slice-releases)仓库对应的分支即可。
 
 **2. 使用EulerPublisher构建**
 
