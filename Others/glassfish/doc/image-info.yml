@@ -48,3 +48,10 @@ similar_packages:
 dependency:
   - openjdk
   - maven
+
+homepage: https://github.com/eclipse-ee4j/glassfish
+upstream:
+  version_url: eclipse-ee4j/glassfish
+  backend: GitHub
+  version_scheme: RPM
+  regex: (\d+\.\d+(?:\.\d+)?)
