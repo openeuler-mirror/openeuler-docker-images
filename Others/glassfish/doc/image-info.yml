@@ -54,4 +54,4 @@ upstream:
   version_url: eclipse-ee4j/glassfish
   backend: GitHub
   version_scheme: RPM
-  regex: (\d+\.\d+(?:\.\d+)?)
+  version_filter: M;JDK
