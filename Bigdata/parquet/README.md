@@ -16,6 +16,7 @@ For more information about parquet, please visit [https://parquet.apache.org/](h
 The tag of each parquet docker image is consist of the version of parquet and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[2.12.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/parquet/2.12.0/24.03-lts-sp1/Dockerfile) | parquet 2.12.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 |[2.11.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/parquet/2.11.0/24.03-lts-sp1/Dockerfile)| Apache Parquet 2.11.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
