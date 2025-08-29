@@ -11,6 +11,7 @@ tags: |
 
   | Tags | Currently |  Architectures|
   |------|-----------|---------------|
+  |[2.12.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/parquet/2.12.0/24.03-lts-sp1/Dockerfile) | parquet 2.12.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
   |[2.11.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/parquet/2.11.0/24.03-lts-sp1/Dockerfile)| Apache Parquet 2.11.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 download: |
