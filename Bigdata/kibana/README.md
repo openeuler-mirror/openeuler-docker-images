@@ -16,6 +16,7 @@ Learn more on [kibana website](https://www.elastic.co/products/kibana).
 The tag of each `kibana` docker image is consist of the version of Kibana and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[9.1.3-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kibana/9.1.3/24.03-lts-sp1/Dockerfile) | kibana 9.1.3 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 |[8.17.3-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kibana/8.17.3/24.03-lts-sp1/Dockerfile)| Kibana 8.17.3 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage

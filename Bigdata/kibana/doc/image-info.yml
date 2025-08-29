@@ -11,6 +11,7 @@ tags: |
 
   | Tags | Currently |  Architectures|
   |------|-----------|---------------|
+  |[9.1.3-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kibana/9.1.3/24.03-lts-sp1/Dockerfile) | kibana 9.1.3 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
   |[4.0.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kibana/4.0.1/24.03-lts-sp1/Dockerfile)| Apache kibana 4.0.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 download: |
