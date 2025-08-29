@@ -1,24 +1,8 @@
 ARG BASE=openeuler/openeuler:24.03-lts
 ARG VERSION=v1.7.0
 
-FROM $BASE AS chef
-
-RUN yum update -y && \
-    yum install -y \
-        unzip \
-        wget \
-        gcc \
-        git && \
-    yum clean all && \
-    rm -rf /var/cache/yum
-
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs -o rustup-init && \
-    chmod +x rustup-init && \
-    ./rustup-init -y && \
-    rm rustup-init
-ENV PATH="/root/.cargo/bin:$PATH"
-RUN cargo install cargo-chef --locked
-
+ARG PLATFORM=cpu
+FROM lukemathwalker/cargo-chef:latest-rust-1.85-bookworm AS chef
 WORKDIR /usr/src
 
 ENV SCCACHE=0.5.4
@@ -51,48 +35,29 @@ ARG DOCKER_LABEL
 # sccache specific variables
 ARG SCCACHE_GHA_ENABLED
 
-RUN yum update -y && \
-    yum install -y \
-        libnotify \
-        libxcb \
-        gtk3 \
-        libdrm \
-        nss \
-        at-spi2-core \
-        mesa-libgbm \
-        xdg-utils \
-        g++ && \
-    yum clean all && \
-    rm -rf /var/cache/yum
+RUN wget -O- https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB \
+| gpg --dearmor | tee /usr/share/keyrings/oneapi-archive-keyring.gpg > /dev/null && \
+  echo "deb [signed-by=/usr/share/keyrings/oneapi-archive-keyring.gpg] https://apt.repos.intel.com/oneapi all main" | \
+  tee /etc/apt/sources.list.d/oneAPI.list
 
-RUN wget -q https://registrationcenter-download.intel.com/akdlm/IRC_NAS/bd1d0273-a931-4f7e-ab76-6a2a67d646c7/intel-oneapi-base-toolkit-2025.2.0.592_offline.sh && \
-    chmod +x intel-oneapi-base-toolkit-2025.2.0.592_offline.sh && \
-    ./intel-oneapi-base-toolkit-2025.2.0.592_offline.sh -a -s --eula accept --install-dir /opt/intel/oneapi && \
-    rm intel-oneapi-base-toolkit-2025.2.0.592_offline.sh
-
-RUN yum update -y && \
-    yum install -y \
-        gcc g++ make cmake \
-        openssl-devel && \
-    rm -rf /var/yum/cache
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+    intel-oneapi-mkl-devel=2024.0.0-49656 \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
 
 RUN echo "int mkl_serv_intel_cpu_true() {return 1;}" > fakeintel.c && \
     gcc -shared -fPIC -o libfakeintel.so fakeintel.c
+
 
 COPY --from=planner /usr/src/recipe.json recipe.json
 
 RUN cargo chef cook --release --features ort,candle,mkl --no-default-features --recipe-path recipe.json && sccache -s
 
-# remember to clean up before copying the source code
-ARG VERSION
-ARG TEI_REPO=https://github.com/huggingface/text-embeddings-inference.git
-RUN git clone -b $VERSION $TEI_REPO && \
-    rm -fr backends && cp -r text-embeddings-inference/backends backends && \
-    rm -fr core && cp -r text-embeddings-inference/core core && \
-    rm -fr router && cp -r text-embeddings-inference/router router && \
-    cp -r text-embeddings-inference/Cargo.toml Cargo.toml && \
-    cp -r text-embeddings-inference/Cargo.lock Cargo.lock && \
-    rm -rf text-embeddings-inference
+COPY --from=planner /usr/src/backends backends
+COPY --from=planner /usr/src/core core
+COPY --from=planner /usr/src/router router
+COPY --from=planner /usr/src/Cargo.toml Cargo.toml
+COPY --from=planner /usr/src/Cargo.lock Cargo.lock
 
 FROM builder AS http-builder
 
@@ -143,7 +108,7 @@ COPY --from=builder /opt/intel/oneapi/mkl/latest/lib/intel64/libmkl_vml_avx512.s
 COPY --from=builder /opt/intel/oneapi/mkl/latest/lib/intel64/libmkl_avx2.so.2 /usr/local/lib/libmkl_avx2.so.2
 COPY --from=builder /opt/intel/oneapi/mkl/latest/lib/intel64/libmkl_avx512.so.2 /usr/local/lib/libmkl_avx512.so.2
 COPY --from=builder /usr/src/libfakeintel.so /usr/local/libfakeintel.so
-COPY --from=builder /opt/intel/oneapi/2025.2/lib/libiomp5.so /usr/lib64/libiomp5.so
+COPY --from=builder /opt/intel/oneapi/compiler/latest/lib/libiomp5.so /usr/lib64/libiomp5.so
 
 FROM base AS grpc
 
