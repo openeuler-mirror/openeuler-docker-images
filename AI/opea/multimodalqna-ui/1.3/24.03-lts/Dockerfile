@@ -1,3 +1,5 @@
+# Copyright (C) 2024 Intel Corporation
+# SPDX-License-Identifier: Apache-2.0
 ARG BASE=openeuler/python:3.11.13-oe2403lts
 ARG VERSION=v1.3
 
