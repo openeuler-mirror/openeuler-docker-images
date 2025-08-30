@@ -15,9 +15,13 @@ Learn more on [WRF website](https://www.mmm.ucar.edu/models/wrf).
 
 # Supported tags and respective Dockerfile links
 The tag of each `wrf` docker image is consist of the version of `wrf` and the version of basic image. The details are as follows
-|    Tag   |  Currently  |   Architectures  |
-|----------|-------------|------------------|
-|[4.6.1-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/wrf/4.6.1/24.03-lts/Dockerfile)| WRF 4.6.1 on openEuler 24.03-LTS | amd64, arm64 |
+
+| Tag                                                                                                                       | Currently                            | Architectures |
+|---------------------------------------------------------------------------------------------------------------------------|--------------------------------------|---------------|
+| [4.7.1-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/wrf/4.7.1/24.03-lts-sp2/Dockerfile) | WRF 4.7.1 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
+| [4.7.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/wrf/4.7.1/24.03-lts-sp1/Dockerfile) | WRF 4.7.1 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+| [4.7.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/wrf/4.7.0/24.03-lts-sp1/Dockerfile) | WRF 4.7.0 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+| [4.6.1-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/wrf/4.6.1/24.03-lts/Dockerfile)     | WRF 4.6.1 on openEuler 24.03-LTS     | amd64, arm64  |
 
 # Usage
 Here, users can select the corresponding `{Tag}` by requirements.
