@@ -1,3 +1,6 @@
+# Copyright (C) 2025 Neo Technology, Inc.
+# SPDX-License-Identifier: Apache-2.0
+
 ARG BASE=openeuler/openeuler:24.03-lts-sp2
 FROM $BASE
 ARG VERSION=2025.08.0
