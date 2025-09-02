@@ -54,3 +54,11 @@ similar_packages:
 dependency:
   - openssl
   - pkgconf
+
+homepage: https://github.com/wg/wrk
+upstream:
+  version_url: wg/wrk
+  backend: GitHub
+  version_scheme: RPM
+  version_prefix: 
+  version_filter:

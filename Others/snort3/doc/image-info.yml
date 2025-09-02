@@ -61,3 +61,11 @@ similar_packages:
   - N/A
 dependency:
   - N/A
+
+homepage: https://github.com/snort3/snort3
+upstream:
+  version_url: snort3/snort3
+  backend: GitHub
+  version_scheme: RPM
+  version_prefix:
+  version_filter: 

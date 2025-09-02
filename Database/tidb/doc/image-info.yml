@@ -55,3 +55,10 @@ similar_packages:
 dependency:
   - N/A
   
+homepage: https://github.com/pingcap/tidb
+upstream:
+  version_url: pingcap/tidb
+  backend: GitHub
+  version_scheme: RPM
+  version_prefix: v
+  version_filter: a;b;c;d;e;f;beta;pre;rc

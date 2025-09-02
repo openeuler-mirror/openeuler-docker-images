@@ -67,3 +67,11 @@ dependency:
   - coreutils
   - bash
   - shadow
+
+homepage: https://github.com/influxdata/telegraf
+upstream:
+  version_url: influxdata/telegraf
+  backend: GitHub
+  version_scheme: RPM
+  version_prefix: 
+  version_filter: 

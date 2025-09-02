@@ -80,3 +80,11 @@ dependency:
   - scipy
   - pandas
   - cudnn
+
+homepage: https://github.com/tensorflow/tensorflow
+upstream:
+  version_url: tensorflow/tensorflow
+  backend: GitHub
+  version_scheme: RPM
+  version_prefix: v
+  version_filter: rc

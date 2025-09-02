@@ -78,3 +78,11 @@ dependency:
   - glibc-devel
   - openssl-devel
   - gosu
+
+homepage: https://github.com/redis/redis
+upstream:
+  version_url: redis/redis
+  backend: GitHub
+  version_scheme: RPM
+  version_prefix:
+  version_filter: int;rc;m

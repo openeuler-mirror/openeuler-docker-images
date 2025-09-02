@@ -100,3 +100,11 @@ dependency:
   - iproute
   - openldap
   - libcap
+
+homepage: https://github.com/strongswan/strongswan
+upstream:
+  version_url: strongswan/strongswan
+  backend: GitHub
+  version_scheme: RPM
+  version_prefix:
+  version_filter: android;rc;RC;beta;dr

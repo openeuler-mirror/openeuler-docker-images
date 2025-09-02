@@ -42,3 +42,10 @@ similar_packages:
 dependency:
   - N/A
   
+homepage: https://github.com/cesanta/mongoose
+upstream:
+  version_url: cesanta/mongoose
+  backend: GitHub
+  version_scheme: RPM
+  version_prefix: 
+  version_filter: 

@@ -59,3 +59,11 @@ dependency:
   - nibabel
   - h5py
   - joblib
+
+homepage: https://github.com/mne-tools/mne-python
+upstream:
+  version_url: mne-tools/mne-python
+  backend: GitHub
+  version_scheme: RPM
+  version_prefix: v
+  version_filter:

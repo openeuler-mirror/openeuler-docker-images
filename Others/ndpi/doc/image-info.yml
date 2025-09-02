@@ -51,3 +51,11 @@ similar_packages:
 dependency:
   - libtool
   - libpcap
+
+homepage: https://github.com/ntop/nDPI
+upstream:
+  version_url: ntop/nDPI
+  backend: GitHub
+  version_scheme: RPM
+  version_prefix: 
+  version_filter: 

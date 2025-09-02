@@ -51,3 +51,11 @@ dependency:
   - libXrender-devel
   - libXrandr-devel
   - libXi-devel
+
+homepage: https://github.com/openjdk/jdk
+upstream:
+  version_url: openjdk/jdk
+  backend: GitHub
+  version_scheme: RPM
+  version_prefix: jdk-
+  version_filter: alpha;rc;candidate;weekly

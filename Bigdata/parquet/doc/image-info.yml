@@ -32,3 +32,11 @@ similar_packages:
   - N/A
 dependency:
   - N/A
+
+homepage: https://github.com/aphache/parquet-format
+upstream:
+  version_url: aphache/parquet-format
+  backend: GitHub
+  version_scheme: RPM
+  version_prefix: apache-parquet-format
+  version_filter: rc;incubating

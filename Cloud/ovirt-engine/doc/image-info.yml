@@ -45,3 +45,11 @@ dependency:
   - openssl
   - wildfly
   - python3
+
+homepage: https://github.com/oVirt/ovirt-engine
+upstream:
+  version_url: oVirt/ovirt-engine
+  backend: GitHub
+  version_scheme: RPM
+  version_prefix: ovirt-engine-
+  version_filter: 

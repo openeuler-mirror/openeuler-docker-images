@@ -101,4 +101,12 @@ similar_packages:
   - N/A
 dependency:
   - N/A
+
+homepage: https://github.com/milvus-io/milvus
+upstream:
+  version_url: milvus-io/milvus
+  backend: GitHub
+  version_scheme: RPM
+  version_prefix: v
+  version_filter: pkg;client;rc
   

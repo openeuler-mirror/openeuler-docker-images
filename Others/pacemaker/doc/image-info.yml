@@ -42,3 +42,11 @@ dependency:
   - corosync
   - libqb
   - sqlite
+
+homepage: https://github.com/ClusterLabs/pacemaker
+upstream:
+  version_url: ClusterLabs/pacemaker
+  backend: GitHub
+  version_scheme: RPM
+  version_prefix: Pacemaker-
+  version_filter: rc
