@@ -11,6 +11,7 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
+  |[3.97-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/seaweedfs/3.97/24.03-lts-sp1/Dockerfile) | seaweedfs 3.97 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
   |[3.85-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/seaweedfs/3.85/24.03-lts-sp1/Dockerfile)| seaweedfs 3.85 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 download: |
