@@ -16,6 +16,7 @@ The tag of each `flannel` docker image is consist of the version of `flannel` an
 
 | Tag                                                                                                                               | Currently                                 | Architectures |
 |-----------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------|---------------|
+|[0.27.3-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/flannel/0.27.3/24.03-lts-sp1/Dockerfile) | flannel 0.27.3 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 | [0.26.7-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/flannel/0.26.7/24.03-lts-sp1/Dockerfile) | flannel 0.26.7 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 
 # Usage
