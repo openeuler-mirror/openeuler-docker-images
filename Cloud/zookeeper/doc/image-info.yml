@@ -57,3 +57,11 @@ similar_packages:
   - Consul: 一个服务发现和配置管理工具。它提供了类似于ZooKeeper的功能，包括服务注册与发现、健康检查、键值存储和分布式锁等。
 dependency:
   - java
+
+homepage: https://zookeeper.apache.org
+upstream:
+  version_url: https://zookeeper.apache.org/documentation.html
+  backend: custom
+  version_scheme: RPM
+  version_filter: 
+  regex: ZooKeeper\s+(\d+\.\d+\.\d+)

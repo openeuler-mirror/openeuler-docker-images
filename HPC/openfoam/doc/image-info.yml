@@ -58,3 +58,11 @@ dependency:
   - ncurses-devel
   - mpfr-devel
   - gmp-devel
+
+homepage: https://sourceforge.net/projects/openfoam
+upstream:
+  version_url: https://sourceforge.net/projects/openfoam/files/
+  backend: custom
+  version_scheme: RPM
+  version_filter: 
+  regex: (?i)v\d{4}\b

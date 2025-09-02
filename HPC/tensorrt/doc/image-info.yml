@@ -38,3 +38,11 @@ dependency:
   - cuDNN
   - ONNX
   - NVIDIA Driver
+
+homepage: https://developer.nvidia.com/tensorrt
+upstream:
+  version_url: https://raw.githubusercontent.com/NVIDIA/TensorRT/refs/heads/main/VERSION
+  backend: custom
+  version_scheme: RPM
+  version_filter: 
+  regex: (\d+\.\d+\.\d+(?:\.\d+)?)

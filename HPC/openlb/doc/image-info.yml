@@ -69,3 +69,11 @@ dependency:
   - openmpi
   - findutils
   - gcc
+
+homepage: https://www.openlib.net
+upstream:
+  version_url: https://gitlab.com/openlb/release/-/tags
+  backend: custom
+  version_scheme: RPM
+  version_filter: 
+  regex: >(\d+\.\d+\.\d+)<
