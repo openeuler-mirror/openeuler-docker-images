@@ -66,3 +66,12 @@ similar_packages:
   - Redash: 一个开源的数据查询和可视化工具，支持多种数据源和查询语言，并提供共享查询和仪表盘的功能。
 dependency:
   - N/A
+
+
+homepage: https://github.com/grafana/grafana
+upstream:
+  version_url: grafana/grafana
+  version_prefix: v
+  version_filter: rc;security
+  backend: GitHub
+  version_scheme: RPM

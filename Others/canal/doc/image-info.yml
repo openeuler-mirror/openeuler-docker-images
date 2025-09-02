@@ -96,3 +96,11 @@ similar_packages:
 dependency:
   - openjdk
   - maven
+
+homepage: https://github.com/alibaba/canal
+upstream:
+  version_url: alibaba/canal
+  version_prefix: canal-
+  version_filter: alpha;fix
+  backend: GitHub
+  version_scheme: RPM

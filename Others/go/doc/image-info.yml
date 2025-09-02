@@ -117,3 +117,11 @@ similar_packages:
   - N/A
 dependency:
   - N/A
+
+homepage: https://github.com/golang/go
+upstream:
+  version_url: golang/go
+  version_prefix: go
+  version_filter: rc;m;int
+  backend: GitHub
+  version_scheme: RPM

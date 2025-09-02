@@ -69,3 +69,11 @@ dependency:
   - scala
   - gosu
   - jemalloc
+
+homepage: https://github.com/apache/flink
+upstream:
+  version_url: apache/flink
+  version_prefix: release-
+  version_filter: rc;preview;
+  backend: GitHub
+  version_scheme: RPM

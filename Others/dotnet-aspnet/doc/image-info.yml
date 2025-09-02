@@ -83,3 +83,11 @@ similar_packages:
   - Express.js: Express.js是一个使用JavaScript编程语言开发的Web应用程序框架，基于Node.js运行时。它提供了类似于ASP.NET的路由、中间件、模板引擎等功能，用于构建快速和可扩展的Web应用程序。
 dependency:
   - .NET Runtime
+
+homepage: https://github.com/dotnet/aspnetcore
+upstream:
+  version_url: dotnet/aspnetcore
+  version_prefix: v
+  version_filter: preview;rc
+  backend: GitHub
+  version_scheme: RPM

@@ -68,3 +68,10 @@ similar_packages:
   - jq: jq 是一个命令行 JSON 处理器（lightweight and flexible JSON processor）。
 dependency:
   - nodejs
+
+homepage: https://github.com/soheilpro/catj
+upstream:
+  version_url: https://raw.githubusercontent.com/soheilpro/catj/refs/heads/master/package.json
+  regex: '"version":\s*"(\d+\.\d+\.\d+)"'
+  backend: custom
+  version_scheme: RPM

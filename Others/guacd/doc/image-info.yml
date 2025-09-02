@@ -48,3 +48,12 @@ dependency:
   - libpng
   - OSSP UUID
   - nc
+
+
+homepage: https://github.com/apache/guacamole-server
+upstream:
+  version_url: apache/guacamole-server
+  version_prefix: v
+  version_filter: RC;incubating
+  backend: GitHub
+  version_scheme: RPM

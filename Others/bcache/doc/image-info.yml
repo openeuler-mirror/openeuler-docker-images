@@ -35,3 +35,10 @@ similar_packages:
 dependency:
   - libuuid
   - util-linux
+
+homepage: https://git.kernel.org/pub/scm/linux/kernel/git/colyli/bcache-tools.git/
+upstream:
+  version_url: https://git.kernel.org/pub/scm/linux/kernel/git/colyli/bcache-tools.git/
+  regex: bcache-tools-(\d+\.\d+)
+  backend: custom
+  version_scheme: RPM

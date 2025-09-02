@@ -37,3 +37,9 @@ similar_packages:
   - N/A
 dependency:
   - pandas
+homepage: https://gitlab.com/ezlab/busco.git
+upstream:
+  backend: custom
+  version_scheme: RPM
+  version_url: https://gitlab.com/ezlab/busco/-/tags
+  regex: ‘>(\d+\.\d+\.\d+)<'

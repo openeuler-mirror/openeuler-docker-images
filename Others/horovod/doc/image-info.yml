@@ -36,3 +36,11 @@ dependency:
   - tensorflow
   - pytorch
   - python
+
+homepage: https://github.com/horovod/horovod
+upstream:
+  version_url: horovod/horovod
+  version_prefix: v
+  version_filter: post
+  backend: GitHub
+  version_scheme: RPM

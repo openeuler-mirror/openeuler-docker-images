@@ -57,3 +57,11 @@ similar_packages:
   - Grafana Alerting: Grafana是一个流行的开源数据可视化和仪表盘工具，它的最新版本中引入了Alerting功能。Grafana Alerting可以与Prometheus集成，提供类似于Alertmanager的告警管理和通知功能。它支持灵活的告警规则配置和多种通知渠道。
 dependency:
   - N/A
+
+homepage: https://github.com/prometheus/alertmanager
+upstream:
+  version_url: prometheus/alertmanager
+  version_prefix: v
+  version_filter: rc;alpha;beta
+  backend: GitHub
+  version_scheme: RPM

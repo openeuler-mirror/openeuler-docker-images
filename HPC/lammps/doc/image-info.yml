@@ -34,3 +34,11 @@ similar_packages:
 dependency:
   - mpich
   - openmpi
+
+homepage: https://github.com/lammps/lammps
+upstream:
+  version_url: lammps/lammps
+  version_prefix: stable_
+  version_filter: patch;update
+  backend: GitHub
+  version_scheme: RPM

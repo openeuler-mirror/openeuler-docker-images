@@ -52,3 +52,11 @@ similar_packages:
   - N/A
 dependency:
   - N/A
+
+homepage: https://github.com/elastic/beats
+upstream:
+  version_url: elastic/beats
+  version_prefix: v
+  version_filter: rc;beta
+  backend: GitHub
+  version_scheme: RPM

@@ -59,3 +59,10 @@ dependency:
   - openjdk
   - zlib
   - python3
+
+homepage: https://github.com/apache/kudu
+upstream:
+  version_url: apache/kudu
+  version_filter: rc;RC
+  backend: GitHub
+  version_scheme: RPM

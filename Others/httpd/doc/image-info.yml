@@ -62,3 +62,10 @@ dependency:
   - apr-devel
   - apr-util-devel
   - pcre-devel
+
+homepage: https://github.com/apache/httpd
+upstream:
+  version_url: apache/httpd
+  version_filter: rc;candidate;alpha;test
+  backend: GitHub
+  version_scheme: RPM

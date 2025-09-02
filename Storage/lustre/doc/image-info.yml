@@ -39,3 +39,10 @@ dependency:
   - keyutils
   - bison
   - flex
+
+homepage: https://github.com/lustre/lustre-release
+upstream:
+  version_url: lustre/lustre-release
+  version_filter: _;rc;RC;
+  backend: GitHub
+  version_scheme: RPM

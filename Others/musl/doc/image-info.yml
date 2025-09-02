@@ -81,11 +81,9 @@ dependency:
   - mpc
   - gettext
   - isl
-
 homepage: https://musl.libc.org
 upstream:
-  version_url: https://musl.libc.org/releases.html
   backend: custom
   version_scheme: RPM
-  version_filter: latest
+  version_url: https://musl.libc.org/releases.html
   regex: musl-(\d+\.\d+\.\d+).tar.gz

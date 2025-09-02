@@ -64,3 +64,9 @@ dependency:
   - libnghttp2-devel
   - openssl-devel
   - perl
+
+homepage: https://github.com/isc-projects/bind9
+upstream:
+  version_url: isc-projects/bind9
+  backend: GitHub
+  version_scheme: RPM

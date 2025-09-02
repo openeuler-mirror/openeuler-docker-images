@@ -37,3 +37,11 @@ dependency:
   - rubygem
   - libyaml
   - libnl3
+
+homepage: https://github.com/LINBIT/drbd-utils
+upstream:
+  version_url: LINBIT/drbd-utils
+  version_prefix: v
+  version_filter: rc
+  backend: GitHub
+  version_scheme: RPM

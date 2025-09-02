@@ -65,3 +65,11 @@ dependency:
   - openjdk
   - hadoop
   - zookeeper
+
+homepage: https://github.com/apache/atlas
+upstream:
+  version_url: apache/atlas
+  version_prefix: v
+  version_filter: rc;alpha
+  backend: GitHub
+  version_scheme: RPM

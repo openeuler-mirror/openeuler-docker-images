@@ -57,3 +57,10 @@ similar_packages:
 dependency:
   - java
   - spark
+
+homepage: https://livy.apache.org
+upstream:
+  version_url: https://livy.apache.org/history/
+  regex: (\d+\.\d+\.\d+)-incubating
+  backend: custom
+  version_scheme: RPM

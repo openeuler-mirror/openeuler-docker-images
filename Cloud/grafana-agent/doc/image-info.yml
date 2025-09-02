@@ -59,3 +59,11 @@ similar_packages:
   - Prometheus Node Exporter: Prometheus Node Exporter是一个用于收集系统级别指标数据的开源软件。它可以收集CPU使用率、内存使用量、磁盘空间、网络流量等系统指标，并将其公开为Prometheus可以抓取的格式。
 dependency:
   - N/A
+
+homepage: https://github.com/grafana/agent
+upstream:
+  version_url: grafana/agent
+  version_prefix: v
+  version_filter: rc;build-image;helm-chart
+  backend: GitHub
+  version_scheme: RPM

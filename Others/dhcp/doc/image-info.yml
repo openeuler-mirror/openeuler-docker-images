@@ -60,3 +60,10 @@ similar_packages:
 dependency:
   - libcap
   - libc
+
+homepage: https://ftp.isc.org/isc/dhcp/
+upstream:
+  version_url: https://ftp.isc.org/isc/dhcp/
+  regex: (\d+\.\d+\.\d+)
+  backend: custom
+  version_scheme: RPM
