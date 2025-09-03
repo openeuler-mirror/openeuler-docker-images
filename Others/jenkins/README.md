@@ -18,6 +18,7 @@ The tag of each `jenkins` docker image is consist of the version of `jenkins` an
 
 | Tag                                                                                                                              | Currently                                | Architectures |
 |----------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|---------------|
+|[2.526-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.526/24.03-lts-sp1/Dockerfile) | jenkins 2.526 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 |[2.525-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.525/24.03-lts-sp1/Dockerfile) | jenkins 2.525 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 | [2.502-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.502/24.03-lts-sp1/Dockerfile) | Jenkins 2.502 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 | [2.523-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.523/24.03-lts-sp1/Dockerfile) | Jenkins 2.523 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
