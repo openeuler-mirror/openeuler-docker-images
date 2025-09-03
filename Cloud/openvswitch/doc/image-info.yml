@@ -102,3 +102,11 @@ dependency:
   - nmap
   - python3
   - openssl
+
+homepage: https://github.com/openvswitch/ovs
+upstream:
+  version_url: openvswitch/ovs
+  backend: GitHub
+  version_scheme: RPM
+  version_prefix: v
+  version_filter: 

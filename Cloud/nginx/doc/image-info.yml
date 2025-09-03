@@ -66,3 +66,11 @@ dependency:
   - gcc
   - make
   - openssl-devel
+
+homepage: https://github.com/nginx/nginx
+upstream:
+  version_url: nginx/nginx
+  backend: GitHub
+  version_scheme: RPM
+  version_prefix: release-
+  version_filter: 

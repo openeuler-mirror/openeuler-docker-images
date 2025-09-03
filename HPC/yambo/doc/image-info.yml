@@ -43,3 +43,11 @@ dependency:
   - netcdf
   - libxc
   - lapack
+
+homepage: https://github.com/yambo-code/yambo
+upstream:
+  version_url: yambo-code/yambo
+  backend: GitHub
+  version_scheme: RPM
+  version_prefix: 
+  version_filter: alpha

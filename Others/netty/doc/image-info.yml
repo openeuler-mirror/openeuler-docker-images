@@ -112,3 +112,11 @@ similar_packages:
 dependency:
   - openjdk
   - maven
+
+homepage: https://github.com/netty/netty
+upstream:
+  version_url: netty/netty
+  backend: GitHub
+  version_scheme: RPM
+  version_prefix: netty-
+  version_filter: RC;Beta;Alpha

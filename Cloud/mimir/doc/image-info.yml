@@ -63,3 +63,11 @@ similar_packages:
   - Cortex: Cortex由Grafana开源，Loki、Tempo、Grafana Cloud等产品或项目都采用了Cortex的技术。采用者包括AWS、Digital Ocean、Grafana Labs、MayaData、Weaveworks等。
 dependency:
   - N/A
+
+homepage: https://github.com/grafana/mimir
+upstream:
+  version_url: grafana/mimir
+  backend: GitHub
+  version_scheme: RPM
+  version_prefix: mimir-
+  version_filter: alpha;rc;candidate;weekly

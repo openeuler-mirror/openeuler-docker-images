@@ -54,3 +54,11 @@ similar_packages:
   - N/A
 dependency:
   - N/A
+
+homepage: https://github.com/prometheus/pushgateway
+upstream:
+  version_url: prometheus/pushgateway
+  backend: GitHub
+  version_scheme: RPM
+  version_prefix:
+  version_filter: 

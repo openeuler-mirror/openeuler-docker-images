@@ -46,3 +46,11 @@ dependency:
   - react
   - next
   - react-dom
+
+homepage: https://github.com/vercel/next.js
+upstream:
+  version_url: vercel/next.js
+  backend: GitHub
+  version_scheme: RPM
+  version_prefix: v
+  version_filter: canary

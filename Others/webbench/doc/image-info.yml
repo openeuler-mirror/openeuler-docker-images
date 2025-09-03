@@ -49,3 +49,11 @@ similar_packages:
 dependency:
   - ctags
   - libtirpc
+
+homepage: http://home.tiscali.cz/~cz210552/webbench.html
+upstream:
+  version_url: http://home.tiscali.cz/~cz210552/webbench.html
+  backend: custom
+  version_scheme: RPM
+  version_filter: 
+  regex: webbench-(\d+\.\d+)

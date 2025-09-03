@@ -57,3 +57,11 @@ dependency:
   - nodejs
   - openssl
   - ca-certificates
+
+homepage: https://github.com/npm/cli
+upstream:
+  version_url: npm/cli
+  backend: GitHub
+  version_scheme: RPM
+  version_prefix: v
+  version_filter: rc;RC;alpha

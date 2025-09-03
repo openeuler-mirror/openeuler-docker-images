@@ -58,3 +58,11 @@ similar_packages:
 dependency:
   - perl
   - openssl
+
+homepage: https://github.com/squid-cache/squid
+upstream:
+  version_url: squid-cache/squid
+  backend: GitHub
+  version_scheme: RPM
+  version_prefix: SQUID_
+  version_filter: alpha;rc;candidate;weekly;snapshot

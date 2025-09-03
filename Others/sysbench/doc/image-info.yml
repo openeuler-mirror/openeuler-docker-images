@@ -58,3 +58,11 @@ dependency:
   - libaio
   - pkgconfig
   - libtool
+
+homepage: https://github.com/akopytov/sysbench
+upstream:
+  version_url: akopytov/sysbench
+  backend: GitHub
+  version_scheme: RPM
+  version_prefix: 
+  version_filter:

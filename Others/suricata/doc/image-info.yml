@@ -88,3 +88,11 @@ dependency:
   - python3
   - tcpdump
   - zlib
+
+homepage: https://github.com/OISF/suricata
+upstream:
+  version_url: OISF/suricata
+  backend: GitHub
+  version_scheme: RPM
+  version_prefix: suricata-
+  version_filter: rc;beta;bak

@@ -70,3 +70,11 @@ similar_packages:
   - Elastic Stack: Elastic Stack（前身是ELK Stack）是一个集成了Elasticsearch、Logstash和Kibana的解决方案，能够处理和分析大量的日志和指标数据。Elasticsearch可以用于存储和查询数据，Logstash用于数据采集和清洗，Kibana则提供了数据可视化和仪表板功能。
 dependency:
   - Go
+
+homepage: https://github.com/prometheus/prometheus
+upstream:
+  version_url: prometheus/prometheus
+  backend: GitHub
+  version_scheme: RPM
+  version_prefix:
+  version_filter: 

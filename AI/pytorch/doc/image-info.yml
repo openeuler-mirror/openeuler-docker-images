@@ -91,3 +91,11 @@ dependency:
   - setuptools
   - packaging
   - optree
+
+homepage: https://github.com/pytorch/pytorch/releases
+upstream:
+  version_url: https://github.com/pytorch/pytorch/releases
+  backend: custom
+  version_scheme: Semantic
+  version_filter: 
+  regex: PyTorch\s+(\d+\.\d+\.\d+)

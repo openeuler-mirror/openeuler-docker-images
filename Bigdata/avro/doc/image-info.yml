@@ -35,3 +35,11 @@ similar_packages:
 dependency:
   - openjdk
   - python
+
+homepage: https://github.com/apache/arrow
+upstream:
+  version_url: apache/arrow
+  backend: GitHub
+  version_scheme: RPM
+  version_prefix: release-
+  version_filter: rc

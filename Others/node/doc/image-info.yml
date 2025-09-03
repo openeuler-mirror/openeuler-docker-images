@@ -54,3 +54,11 @@ similar_packages:
   - N/A
 dependency:
   - N/A
+
+homepage: https://github.com/nodejs/node
+upstream:
+  version_url: nodejs/node
+  backend: GitHub
+  version_scheme: RPM
+  version_prefix: v
+  version_filter: rc;temptable;hotfix

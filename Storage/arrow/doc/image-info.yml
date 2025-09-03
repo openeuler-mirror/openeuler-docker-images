@@ -31,3 +31,11 @@ similar_packages:
   - N/A
 dependency:
   - N/A
+
+homepage: https://github.com/apache/arrow
+upstream:
+  version_url: apache/arrow
+  backend: GitHub
+  version_scheme: RPM
+  version_prefix: apache-arrow-
+  version_filter: go/;r-universe-release;dev;r-

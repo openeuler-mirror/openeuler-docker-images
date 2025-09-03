@@ -99,3 +99,11 @@ dependency:
   - pyyaml
   - matplotlib
   - protobuf
+
+homepage: https://github.com/PaddlePaddle/Paddle
+upstream:
+  version_url: https://github.com/PaddlePaddle/Paddle/releases
+  backend: custom
+  version_scheme: RPM
+  version_filter: 
+  regex: PaddlePaddle\s+(\d+\.\d+\.\d+)

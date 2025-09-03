@@ -56,3 +56,11 @@ similar_packages:
   - SQLite: SQLite是一种嵌入式关系型数据库管理系统，它提供了轻量级的、零配置的数据库解决方案。SQLite具有小巧、高效、可嵌入的特点，适用于嵌入式设备和移动应用程序。
 dependency:
   - N/A
+
+homepage: https://github.com/oceanbase/oceanbase
+upstream:
+  version_url: oceanbase/oceanbase
+  backend: GitHub
+  version_scheme: RPM
+  version_prefix: v
+  version_filter: BETA
