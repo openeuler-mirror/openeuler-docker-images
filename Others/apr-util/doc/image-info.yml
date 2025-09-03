@@ -77,3 +77,11 @@ dependency:
   - apr
   - expat
   - openssl
+
+homepage: https://github.com/apache/apr-util
+upstream:
+  version_url: apache/apr-util
+  backend: GitHub
+  version_scheme: RPM
+  version_prefix: 
+  version_filter: rc;dev

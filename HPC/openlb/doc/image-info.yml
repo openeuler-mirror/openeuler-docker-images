@@ -76,4 +76,4 @@ upstream:
   backend: custom
   version_scheme: RPM
   version_filter: 
-  regex: >(\d+\.\d+\.\d+)<
+  regex: '>(\d+\.\d+\.\d+)<'

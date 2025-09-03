@@ -90,3 +90,11 @@ dependency:
   - openjdk
   - hadoop
   - zookeeper
+
+homepage: https://github.com/apache/accumulo
+upstream:
+  version_url: apache/accumulo
+  backend: GitHub
+  version_scheme: RPM
+  version_prefix: rel/
+  version_filter: 

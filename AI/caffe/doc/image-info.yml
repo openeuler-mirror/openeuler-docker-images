@@ -98,3 +98,11 @@ dependency:
   - lmdb
   - hdf5
   - gflags
+
+homepage: https://github.com/BVLC/caffe
+upstream:
+  version_url: BVLC/caffe
+  backend: GitHub
+  version_scheme: RPM
+  version_prefix: v
+  version_filter: rc
