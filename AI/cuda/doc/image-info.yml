@@ -12,6 +12,7 @@ tags: |
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
   |[cuda11.8.0-cudnn8.9.0-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/cuda/11.8.0-cudnn8.9.0/22.03-lts/Dockerfile)| CUDA 11.8.0 on openEuler 22.03-LTS | amd64, arm64 |
+  |[cuda13.0.0-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/cuda/13.0.0/24.03-lts/Dockerfile)| CUDA 13.0.0 on openEuler 24.03-LTS | amd64, arm64 |
 
 download: |
   拉取镜像到本地
