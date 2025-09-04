@@ -38,3 +38,11 @@ similar_packages:
   - N/A
 dependency:
   - N/A
+
+homepage: https://github.com/cubefs/cubefs
+upstream:
+  version_url: cubefs/cubefs
+  version_prefix: v
+  version_filter: beta;rc
+  backend: GitHub
+  version_scheme: RPM

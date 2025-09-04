@@ -44,3 +44,10 @@ similar_packages:
   - N/A
 dependency:
   - N/A
+
+homepage: https://busybox.net/
+upstream:
+  version_url: https://busybox.net/
+  regex: BusyBox\s+(\d+\.\d+\.\d+)
+  backend: custom
+  version_scheme: RPM

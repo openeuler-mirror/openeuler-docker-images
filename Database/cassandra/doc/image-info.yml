@@ -60,4 +60,10 @@ dependency:
   - gcc
   - make
   - libevent-devel
-  
+
+homepage: https://cassandra.apache.org/_/index.html
+upstream:
+  version_url: https://dlcdn.apache.org/cassandra/
+  regex: (\d+\.\d+\.\d+)/
+  backend: custom
+  version_scheme: RPM

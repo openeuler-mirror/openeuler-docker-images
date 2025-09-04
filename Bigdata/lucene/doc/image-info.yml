@@ -40,3 +40,11 @@ similar_packages:
   - N/A
 dependency:
   - N/A
+
+homepage: https://github.com/apache/lucene
+upstream:
+  version_url: apache/lucene
+  version_prefix: releases/lucene/
+  version_filter: history
+  backend: GitHub
+  version_scheme: RPM

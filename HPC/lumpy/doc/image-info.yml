@@ -1,4 +1,4 @@
-name: lumpy-sv
+name: lumpy
 category: hpc
 description: lumpy-sv是一个发现结构变异的概率框架。
 environment: |
@@ -73,3 +73,9 @@ similar_packages:
   - N/A
 dependency:
   - htslib
+
+homepage: https://github.com/arq5x/lumpy-sv
+upstream:
+  version_url: arq5x/lumpy-sv
+  backend: GitHub
+  version_scheme: RPM

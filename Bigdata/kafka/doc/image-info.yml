@@ -72,3 +72,10 @@ similar_packages:
   - Apache Samza: 一个分布式流处理框架，用于实时处理和分析数据流。它与Apache Kafka集成紧密，可以直接从Kafka获取数据进行处理。。
 dependency:
   - openjdk
+
+homepage: https://github.com/apache/kafka
+upstream:
+  version_url: apache/kafka
+  version_filter: alpha;rc;candidate
+  backend: GitHub
+  version_scheme: RPM

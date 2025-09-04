@@ -92,3 +92,11 @@ similar_packages:
   - Go Runtime: Go是一种编程语言，Go运行时用于执行基于Go语言编写的应用程序。它提供了垃圾回收、协程（goroutine）管理、并发编程等功能，使得Go语言应用程序能够高效地运行。
 dependency:
   - .NET Core
+
+homepage: https://github.com/dotnet/runtime
+upstream:
+  version_url: dotnet/runtime
+  version_prefix: v
+  version_filter: preview;rc
+  backend: GitHub
+  version_scheme: RPM

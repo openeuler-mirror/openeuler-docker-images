@@ -47,3 +47,11 @@ similar_packages:
   - N/A
 dependency:
   - N/A
+
+homepage: https://github.com/elastic/logstash
+upstream:
+  version_url: elastic/logstash
+  version_prefix: v
+  version_filter: rc;beta;alpha
+  backend: GitHub
+  version_scheme: RPM

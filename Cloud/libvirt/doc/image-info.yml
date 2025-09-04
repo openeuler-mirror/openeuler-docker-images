@@ -41,3 +41,11 @@ dependency:
   - libnl3
   - libcap
   - python
+
+homepage: https://github.com/libvirt/libvirt
+upstream:
+  version_url: libvirt/libvirt
+  version_prefix: v
+  version_filter: rc
+  backend: GitHub
+  version_scheme: RPM

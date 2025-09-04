@@ -61,3 +61,11 @@ dependency:
   - mpc
   - gettext
   - isl
+
+homepage: https://github.com/gcc-mirror/gcc
+upstream:
+  version_url: gcc-mirror/gcc
+  version_prefix: releases/gcc-
+  version_filter: rel1;bet1;basepoints;Thesis;vendors
+  backend: GitHub
+  version_scheme: RPM

@@ -63,3 +63,11 @@ similar_packages:
   - N/A
 dependency:
   - golang
+
+homepage: https://github.com/hashicorp/consul
+upstream:
+  version_url: hashicorp/consul
+  version_prefix: v
+  version_filter: ent;/;rc
+  backend: GitHub
+  version_scheme: RPM

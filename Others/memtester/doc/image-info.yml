@@ -67,3 +67,10 @@ similar_packages:
   - Sysbench: Sysbench 是一个开源的、多线程的性能测试工具，主要用于对 CPU、内存、磁盘 I/O、线程、数据库（如 MySQL/PostgreSQL） 等系统资源进行基准测试（benchmark）。
 dependency:
   - glibc
+
+homepage: https://pyropus.ca./software/memtester/
+upstream:
+  version_url: https://rpmfind.net/linux/rpm2html/search.php?query=memtester
+  regex: memtester-(\d+\.\d+\.\d+)
+  backend: custom
+  version_scheme: RPM

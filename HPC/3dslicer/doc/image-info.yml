@@ -50,3 +50,11 @@ similar_packages:
   - N/A
 dependency:
   - qt5
+
+homepage: https://github.com/Slicer/Slicer
+upstream:
+  version_url: Slicer/Slicer
+  version_prefix: v
+  version_filter: pw;-;docs;
+  backend: GitHub
+  version_scheme: RPM

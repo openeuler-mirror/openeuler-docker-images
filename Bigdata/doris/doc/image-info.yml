@@ -32,3 +32,10 @@ similar_packages:
   - N/A
 dependency:
   - N/A
+
+homepage: https://github.com/apache/doris
+upstream:
+  version_url: apache/doris
+  version_filter: rc;temptable;hotfix
+  backend: GitHub
+  version_scheme: RPM

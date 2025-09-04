@@ -96,3 +96,10 @@ similar_packages:
 dependency:
   - gnome
   - gtk
+
+homepage: https://github.com/kupferlauncher/keybinder
+upstream:
+  version_url: kupferlauncher/keybinder
+  version_prefix: keybinder-3.0-v
+  backend: GitHub
+  version_scheme: RPM

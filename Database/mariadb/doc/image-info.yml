@@ -32,4 +32,10 @@ similar_packages:
   - MySQL
 dependency:
   - N/A
-  
+
+homepage: https://github.com/MariaDB/server
+upstream:
+  version_url: MariaDB/server
+  version_prefix: mariadb-
+  backend: GitHub
+  version_scheme: RPM

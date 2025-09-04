@@ -33,3 +33,10 @@ similar_packages:
   - N/A
 dependency:
   - N/A
+
+homepage: https://flume.apache.org/
+upstream:
+  version_url: https://flume.apache.org/
+  regex: Flume\s+(\d+\.\d+\.\d+)
+  backend: custom
+  version_scheme: RPM

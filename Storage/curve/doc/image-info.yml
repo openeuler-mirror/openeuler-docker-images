@@ -39,3 +39,11 @@ dependency:
   - libnl3
   - libcurl
   - openjdk
+
+homepage: https://github.com/opencurve/curve
+upstream:
+  version_url: opencurve/curve
+  version_prefix: v
+  version_filter: rc;beta;hotfix;latest;
+  backend: GitHub
+  version_scheme: RPM

@@ -65,3 +65,10 @@ similar_packages:
 dependency:
   - conda
   - python
+
+homepage: https://github.com/cryoem/eman2
+upstream:
+  version_url: cryoem/eman2
+  version_prefix: v
+  backend: GitHub
+  version_scheme: RPM

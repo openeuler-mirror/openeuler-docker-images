@@ -91,3 +91,10 @@ similar_packages:
   - FFmpeg: FFmpeg 是一个跨平台的开源音视频处理工具链。
 dependency:
   - N/A
+
+homepage: https://chromium.googlesource.com/libyuv/libyuv
+upstream:
+  version_url: https://chromium.googlesource.com/libyuv/libyuv/+/refs/heads/main/include/libyuv/version.h
+  regex: '>(\d+)<'
+  backend: custom
+  version_scheme: RPM

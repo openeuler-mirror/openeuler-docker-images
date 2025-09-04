@@ -72,3 +72,9 @@ dependency:
   - gcc
   - make
   - libevent-devel
+
+homepage: https://github.com/memcached/memcached
+upstream:
+  version_url: memcached/memcached
+  backend: GitHub
+  version_scheme: RPM

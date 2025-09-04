@@ -41,3 +41,10 @@ similar_packages:
 dependency:
   - OpenSSL
   - libc
+
+homepage: https://github.com/esnet/iperf
+upstream:
+  version_url: esnet/iperf
+  version_filter: beta;mt
+  backend: GitHub
+  version_scheme: RPM

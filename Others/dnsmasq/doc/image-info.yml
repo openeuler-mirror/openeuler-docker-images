@@ -70,3 +70,10 @@ similar_packages:
 dependency:
   - libdbus
   - systemd
+
+homepage: https://thekelleys.org.uk/dnsmasq/doc.html
+upstream:
+  version_url: https://thekelleys.org.uk/dnsmasq/
+  regex: dnsmasq-(\d+\.\d+).tar.gz
+  backend: custom
+  version_scheme: RPM

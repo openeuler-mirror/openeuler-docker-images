@@ -64,3 +64,11 @@ dependency:
   - netcdf-c
   - netcdf-fortran
   - pnetcdf
+
+homepage: https://github.com/ESCOMP/CESM
+upstream:
+  version_url: ESCOMP/CESM
+  version_prefix: release-cesm;cesm
+  version_filter: alpha;rc;RC;beta
+  backend: GitHub
+  version_scheme: RPM

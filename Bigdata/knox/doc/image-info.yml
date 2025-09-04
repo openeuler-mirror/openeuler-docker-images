@@ -43,3 +43,10 @@ similar_packages:
   - N/A
 dependency:
   - N/A
+
+homepage: https://knox.apache.org/
+upstream:
+  version_url: https://cwiki.apache.org/confluence/display/KNOX/Apache+Knox+Releases
+  regex: knox-(\d+\.\d+\.\d+).zip
+  backend: custom
+  version_scheme: RPM

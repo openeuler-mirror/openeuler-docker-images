@@ -32,3 +32,10 @@ similar_packages:
   - N/A
 dependency:
   - N/A
+
+homepage: https://github.com/istio/istio
+upstream:
+  version_url: istio/istio
+  version_filter: rc;beta;alpha
+  backend: GitHub
+  version_scheme: RPM

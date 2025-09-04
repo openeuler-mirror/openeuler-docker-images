@@ -33,3 +33,11 @@ similar_packages:
   - N/A
 dependency:
   - N/A
+
+homepage: https://github.com/flannel-io/flannel
+upstream:
+  version_url: flannel-io/flannel
+  version_prefix: v
+  version_filter: k3s;rc;dual;stack
+  backend: GitHub
+  version_scheme: RPM

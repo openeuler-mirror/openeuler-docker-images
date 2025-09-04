@@ -115,3 +115,10 @@ dependency:
   - ragel
   - boost
   - libpcap
+
+homepage: https://github.com/intel/hyperscan
+upstream:
+  version_url: intel/hyperscan
+  version_prefix: v
+  backend: GitHub
+  version_scheme: RPM

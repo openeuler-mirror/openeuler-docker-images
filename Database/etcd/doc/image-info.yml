@@ -46,4 +46,11 @@ similar_packages:
   - Greenplum: 基于 PostgreSQL 的 MPP 数据库，支持完整 SQL 和事务。
 dependency:
   - N/A
-  
+
+homepage: https://github.com/etcd-io/etcd
+upstream:
+  version_url: etcd-io/etcd
+  version_prefix: v
+  version_filter: tests;server;raftpkg;etcdutl;client;api
+  backend: GitHub
+  version_scheme: RPM

@@ -35,3 +35,10 @@ similar_packages:
   - N/A
 dependency:
   - N/A
+
+homepage: http://www.mesa3d.org
+upstream:
+  version_url: https://archive.mesa3d.org/
+  regex: mesa-(\d+\.\d+\.\d)\.tar.xz
+  backend: custom
+  version_scheme: RPM
