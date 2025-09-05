@@ -11,6 +11,7 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
+  |[3.9.5.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/snort3/3.9.5.0/24.03-lts-sp1/Dockerfile) | snort3 3.9.5.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
   | [3.7.2.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/snort3/3.7.2.0/24.03-lts-sp1/Dockerfile) | Snort3 3.7.2.0 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 
 download: |
