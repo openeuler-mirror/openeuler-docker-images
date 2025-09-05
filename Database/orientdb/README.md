@@ -16,6 +16,7 @@ For more information about orientdb, please visit [https://orientdb.dev/](https:
 The tag of each orientdb docker image is consist of the version of orientdb and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[3.2.44-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/orientdb/3.2.44/24.03-lts-sp1/Dockerfile) | orientdb 3.2.44 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 |[3.2.38-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/orientdb/3.2.38/24.03-lts-sp1/Dockerfile)| OrientDB 3.2.38 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
