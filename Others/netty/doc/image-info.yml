@@ -13,7 +13,7 @@ tags: |
   |--------------------------------------------------------------------------------------------------------------------------------|----------------------------------------|---------------|
   | [4.2.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/netty/4.2.1/24.03-lts-sp1/Dockerfile) | Netty 4.2.1 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
   | [4.2.4-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/netty/4.2.4/24.03-lts-sp2/Dockerfile) | Netty 4.2.4 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
-
+  | [4.2.5-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/netty/4.2.5/24.03-lts-sp2/Dockerfile) | Netty 4.2.5 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
 download: |
   拉取镜像到本地
   ```
