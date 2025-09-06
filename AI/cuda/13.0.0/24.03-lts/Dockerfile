@@ -3,7 +3,7 @@ ARG VERSION=13.0.0
 ARG DRIVER_VERSION=580.65.06
 
 FROM $BASE
-ARG PLATFORM
+ARG TARGETPLATFORM
 
 ARG DRIVER_VERSION
 ARG VERSION
@@ -13,9 +13,9 @@ RUN yum update -y && \
     yum clean all
 
 RUN \
-    if [ "${PLATFORM}" = "linux/arm64" ]; then \
+    if [ "${TARGETPLATFORM}" = "linux/arm64" ]; then \
         CUDA_TOOLKIT_URL="https://developer.download.nvidia.com/compute/cuda/${VERSION}/local_installers/cuda_${VERSION}_${DRIVER_VERSION}_linux_sbsa.run"; \
-    elif [ "${PLATFORM}" = "linux/amd64" ]; then \
+    elif [ "${TARGETPLATFORM}" = "linux/amd64" ]; then \
         CUDA_TOOLKIT_URL="https://developer.download.nvidia.com/compute/cuda/${VERSION}/local_installers/cuda_${VERSION}_${DRIVER_VERSION}_linux.run"; \
     fi && \
     wget $CUDA_TOOLKIT_URL -O /tmp/cuda-toolkit.run && \
