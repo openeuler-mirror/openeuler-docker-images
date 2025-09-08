@@ -9,9 +9,10 @@ environment: |
 tags: |
   canal镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
 
-  |    Tag   |  Currently  |   Architectures  |
-  |----------|-------------|------------------|
-  | [1.1.8-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/canal/1.1.8/24.03-lts-sp1/Dockerfile) | canal 1.1.8 on openEuler 24.03-LTS-SP1 |  amd64, arm64 |
+  | Tags                                                                                                                           | Currently                              | Architectures |
+  |--------------------------------------------------------------------------------------------------------------------------------|----------------------------------------|---------------|
+  | [1.1.8-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/canal/1.1.8/24.03-lts-sp1/Dockerfile) | canal 1.1.8 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+  | [1.1.8-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/canal/1.1.8/24.03-lts-sp2/Dockerfile) | canal 1.1.8 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
 
   注意，以下`{Tag}`的值按照需求，替换为上述表格中的tag内容。
 
@@ -22,73 +23,34 @@ download: |
   ```
 
 usage: |
-  - 添加 canal 客户端依赖
-    在你的 pom.xml 中添加以下依赖项，以引入 Canal Java 客户端：
-    ```
-    <dependency>
-      <groupId>com.alibaba.otter</groupId>
-      <artifactId>canal.client</artifactId>
-      <version>1.1.0</version>
-    </dependency>
-    ```
-    
-  - 创建标准 Maven 工程
-    
-    你可以使用 Maven Archetype 插件来创建一个标准的 Maven 工程。
-
-    **旧版本 Maven:**
-    ```
-    mvn archetype:create -DgroupId=com.alibaba.otter -DartifactId=canal.sample
-    ```
-    **Maven 3.0.5 及以上（推荐）:**
-    ```
-    mvn archetype:generate -DgroupId=com.alibaba.otter -DartifactId=canal.sample
-    ```
-    这将生成一个基础的 Maven 项目结构。
   
-  - 编写 ClientSample 类
-    以下是一个 Java 客户端连接 `Canal Server` 的基本示例：
-    ```
-    package com.alibaba.otter;
+  - 准备
   
-    import com.alibaba.otter.canal.client.CanalConnector;
-    import com.alibaba.otter.canal.client.CanalConnectors;
-    import com.alibaba.otter.canal.protocol.Message;
-    
-    import java.net.InetSocketAddress;
-    
-    public class ClientSample {
-        public static void main(String[] args) {
-            CanalConnector connector = CanalConnectors.newSingleConnector(
-                new InetSocketAddress("127.0.0.1", 11111),
-                "example",
-                "",
-                ""
-            );
-            try {
-                connector.connect();
-                connector.subscribe(".*\\..*");
-                connector.rollback();
-                while (true) {
-                    Message message = connector.getWithoutAck(100);
-                    long batchId = message.getId();
-                    int size = message.getEntries().size();
-                    if (batchId != -1 && size > 0) {
-                        System.out.printf("Received batchId: %d, entry size: %d%n", batchId, size);
-                    }
-                    connector.ack(batchId);
-                }
-            } finally {
-                connector.disconnect();
-            }
-        }
-    }
+    对于自建 MySQL , 需要先开启 Binlog 写入功能，配置 binlog-format 为 ROW 模式，my.cnf 中配置如下：
     ```
-    
-    **注意事项：**
-    * 请确保 `Canal Server` 已启动并正确配置(参考 [QuickStart](https://github.com/alibaba/canal/wiki/QuickStart))。
-    * 上述代码连接的是 `127.0.0.1:11111`，这是 Canal Server 的默认 TCP 端口。
-    * `subscribe(".*\\..*")` 表示订阅所有数据库的所有表。
+    [mysqld]
+    log-bin=mysql-bin # 开启 binlog
+    binlog-format=ROW # 选择 ROW 模式
+    server_id=1 # 配置 MySQL replaction 需要定义，不要和 canal 的 slaveId 重复
+    ```
+  
+    **注意：** 针对阿里云 RDS for MySQL , 默认打开了 binlog , 并且账号默认具有 binlog dump 权限 , 不需要任何权限或者 binlog 设置,可以直接跳过这一步
+    授权 canal 链接 MySQL 账号具有作为 MySQL slave 的权限, 如果已有账户可直接 grant
+  
+    ```
+    CREATE USER canal IDENTIFIED BY 'canal';  
+    GRANT SELECT, REPLICATION SLAVE, REPLICATION CLIENT ON *.* TO 'canal'@'%';
+    -- GRANT ALL PRIVILEGES ON *.* TO 'canal'@'%' ;
+    FLUSH PRIVILEGES;
+    ```
+  
+  - 启动
+  
+    ```
+    docker run -d --name my-canal -p 30306:3306 openeuler/canal:{Tag}
+    ```
+    当 `my-canal` 实例启动后，你可以使用 `docker logs` 查看其运行日志。
+  
 
 license: Apache-2.0 license
 similar_packages:
