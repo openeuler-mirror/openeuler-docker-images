@@ -40,13 +40,8 @@ images:
   - image: "redis"
     tags:        
       - tag: "docker.io/openeuler/redis:7.4.1-oe2203sp4"            # 示例: 不活跃的扫描项
-        disable: true                                               # 仅在出现disable为true时不会扫描此tag
-        
-  # 使用全局扫描周期
-  - image: "postgres"
-    tags:
-      - tag: "hub.oepkgs.net/openeuler/postgres:17.5-oe2403sp1"
-          
+        disable: true                                               # 仅在出现disable为true时不会扫描此tag 
+   
 # 通知配置（可选）
 notifications:
   email:
