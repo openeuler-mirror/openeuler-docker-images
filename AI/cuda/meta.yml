@@ -1,2 +1,5 @@
 11.8.0-cudnn8.9.0-oe2203lts:
   path: 11.8.0-cudnn8.9.0/22.03-lts/Dockerfile
+
+13.0.0-oe2403lts:
+  path: 13.0.0/24.03-lts/Dockerfile
