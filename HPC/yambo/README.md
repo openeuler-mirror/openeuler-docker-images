@@ -17,6 +17,7 @@ Learn more on [Yambo](https://www.yambo-code.eu/).
 The tag of each `Yambo` docker image is consist of the version of `Yambo` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[5.3.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/yambo/5.3.0/24.03-lts-sp2/Dockerfile) | yambo 5.3.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[5.3.0-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/Yambo/5.3.0/24.03-lts/Dockerfile)| Yambo 5.3.0 on openEuler 24.03-LTS | amd64, arm64 |
 
 # Usage
