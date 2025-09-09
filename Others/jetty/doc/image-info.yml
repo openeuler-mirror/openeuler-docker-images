@@ -9,10 +9,11 @@ environment: |
 tags: |
   jetty镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
 
-  |    Tag   |  Currently  |   Architectures  |
+  | Tag                                                                                                                                | Currently                                | Architectures |
   |------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|---------------|
-  | [12.0.21-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/jetty/12.0.21/24.03-lts-sp1/Dockerfile) | Jetty 12.0.21 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+  | [12.1.1-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/jetty/12.1.1/24.03-lts-sp2/Dockerfile)   | Jetty 12.1.1 on openEuler 24.03-LTS-SP2  | amd64, arm64  |
   | [12.1.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/jetty/12.1.0/24.03-lts-sp2/Dockerfile)   | Jetty 12.1.0 on openEuler 24.03-LTS-SP2  | amd64, arm64  |
+  | [12.0.21-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/jetty/12.0.21/24.03-lts-sp1/Dockerfile) | Jetty 12.0.21 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 
 download: |
   拉取镜像到本地
@@ -21,16 +22,18 @@ download: |
   ```
 
 usage: |
-  - 添加maven依赖
   
-    Maven: 在`pom.xml`文件中引入Jetty依赖
+  - 启动一个 Jetty 实例
+
+    ```bash
+    docker run -d --name my-jetty -p 8080:8080 openeuler/jetty:{Tag}
     ```
-    <dependency>
-      <groupId>org.eclipse.jetty</groupId>
-      <artifactId>jetty-server</artifactId>
-      <version>${jetty.version}</version>
-    </dependency>
-    ```
+    当实例 `my-jetty` 启动后，可以通过 `http://host-ip:8080` 访问 Jetty 服务。 
+
+  - 部署
+
+    - 可以像常规方式一样，将 Web 应用部署到 /var/lib/jetty/webapps 下（支持 WAR 包、解压后的 WAR 目录或上下文 XML 文件。
+    - 这里有一个 [示例集合]((https://github.com/jetty/jetty-examples))，展示了如何使用 Eclipse Jetty 服务器和 Eclipse Jetty 客户端中提供的各种功能。
 
 license: Apache-2.0 license
 similar_packages:
