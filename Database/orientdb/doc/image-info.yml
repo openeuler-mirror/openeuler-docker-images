@@ -9,10 +9,12 @@ environment: |
 tags: |
   orientdb镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
 
-  |    Tag   |  Currently  |   Architectures  |
-  |----------|-------------|------------------|
-  |[3.2.44-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/orientdb/3.2.44/24.03-lts-sp1/Dockerfile) | orientdb 3.2.44 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
-  |[3.2.38-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/orientdb/3.2.38/24.03-lts-sp1/Dockerfile)| OrientDB 3.2.38 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+  | Tags                                                                                                                                  | Currently                                  | Architectures |
+  |---------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------|---------------|
+  | [3.2.44-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/orientdb/3.2.44/24.03-lts-sp2/Dockerfile) | OrientDB 3.2.44 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
+  | [3.2.44-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/orientdb/3.2.44/24.03-lts-sp1/Dockerfile) | OrientDB 3.2.44 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+  | [3.2.43-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/orientdb/3.2.43/24.03-lts-sp1/Dockerfile) | OrientDB 3.2.43 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+  | [3.2.38-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/orientdb/3.2.38/24.03-lts-sp1/Dockerfile)  | OrientDB 3.2.38 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 
 download: |
   拉取镜像到本地
@@ -22,11 +24,22 @@ download: |
 
 usage: |
   
-  启动orientdb实例:
-  ```bash
-  docker run -it --name orientdb openeuler/orientdb:{Tag}
-  ```
-  openeuler/orientdb主要用来验证上游版本与openEuler的集成, 进入容器后用户需要自己配置OrientDB。
+  - 启动orientdb实例
+  
+    ```bash
+    docker run -d --name my-orientdb -p 2480:2480 -e ORIENTDB_ROOT_PASSWORD=openEuler:S3cr3t/ openeuler/orientdb:{Tag}
+    ```
+    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。`my-orientdb`启动之后，通过`http://{host_ip}:2480/studio/index.html`访问OrientDB服务。
+  
+  - 启动参数
+
+    |    Parameter   |  Description  |
+    |----------------|---------------|
+    | -p 2480:2480	 | 暴露OrientDB server端口 |
+    | -e ORIENTDB_ROOT_PASSWORD | 设置OrientDB用户密码 |
+    | -v /path/to/backup:/orientdb/backup | OrientDB 存储 `数据库备份文件` 的位置 |
+    | -v /path/to/databases:/orientdb/databases | OrientDB 的主要 `数据存储目录` |
+    | -v /path/to/config:/orientdb/config | 加载本地配置文件 |
 
 license: Apache-2.0 license
 similar_packages:
