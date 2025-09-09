@@ -17,6 +17,7 @@ Learn more on [Apache Guacamole-server Website](https://guacamole.apache.org/doc
 The tag of each `guacd` docker image is consist of the version of `guacd` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[1.6.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/guacd/1.6.0/24.03-lts-sp2/Dockerfile) | guacd 1.6.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[1.5.5-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/guacd/1.5.5/24.03-lts/Dockerfile)| Apache guacamole-server 1.5.5 on openEuler 24.03-LTS | amd64, arm64 |
 
 # Usage
