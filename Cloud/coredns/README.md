@@ -18,6 +18,7 @@ The tag of each `coredns` docker image is consist of the version of `coredns` an
 
 | Tag                                                                                                                               | Currently                                 | Architectures |
 |-----------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------|---------------|
+|[1.12.4-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/coredns/1.12.4/24.03-lts-sp2/Dockerfile) | coredns 1.12.4 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 | [1.12.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/coredns/1.12.1/24.03-lts-sp1/Dockerfile) | CoreDNS 1.12.1 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 
 # Usage
