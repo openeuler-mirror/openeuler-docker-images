@@ -3,3 +3,6 @@
 
 13.0.0-oe2403lts:
   path: 13.0.0/24.03-lts/Dockerfile
+
+13.0.0-python3.10-oe2403lts:
+  path: 13.0.0-python3.10/24.03-lts/Dockerfile
