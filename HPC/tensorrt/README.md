@@ -18,6 +18,7 @@ The tag of each `tensorrt` docker image is consist of the version of `tensorrt` 
 
 | Tag                                                                                                                                | Currently                                 | Architectures |
 |------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------|---------------|
+|[10.13.3.9-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/tensorrt/10.13.3.9/24.03-lts-sp2/Dockerfile) | tensorrt 10.13.3.9 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[10.13.2.6-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/tensorrt/10.13.2.6/24.03-lts-sp1/Dockerfile) | tensorrt 10.13.2.6 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 | [10.9.0.34-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/tensorrt/10.9.0.34/24.03-lts/Dockerfile) | TensorRT 10.9.0.34 on openEuler 24.03-LTS | amd64, arm64  |
 
