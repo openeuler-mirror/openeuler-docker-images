@@ -11,6 +11,7 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
+  |[19.1.1-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/react/19.1.1/24.03-lts-sp2/Dockerfile) | react 19.1.1 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
   |[19.1.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/react/19.1.0/24.03-lts-sp1/Dockerfile)| React 19.1.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 download: |
