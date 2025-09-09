@@ -54,3 +54,5 @@
   path: 1.35.3/24.03-lts-sp1/Dockerfile
 1.35.4-oe2403sp1:
   path: 1.35.4/24.03-lts-sp1/Dockerfile
+1.36.1-oe2403sp2:
+  path: 1.36.1/24.03-lts-sp2/Dockerfile
