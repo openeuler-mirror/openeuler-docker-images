@@ -17,6 +17,7 @@ Learn more on [OpenFOAM Web Site](https://www.openfoam.com/).
 The tag of each `openfoam` docker image is consist of the version of OpenFOAM and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[2506-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/openfoam/2506/24.03-lts-sp2/Dockerfile) | openfoam 2506 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[2412-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/openfoam/2412/24.03-lts-sp1/Dockerfile)| OpenFOAM 2412 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
