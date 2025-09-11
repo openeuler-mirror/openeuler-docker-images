@@ -18,6 +18,7 @@ The tag of each npdi docker image is consist of the version of npdi and the vers
 
 | Tags                                                                                                                          | Currently                             | Architectures |
 |-------------------------------------------------------------------------------------------------------------------------------|---------------------------------------|---------------|
+|[4.14-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/ndpi/4.14/24.03-lts-sp2/Dockerfile) | ndpi 4.14 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 | [4.1.2-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/npdi/4.1.2/24.03-lts-sp1/Dockerfile) | nDPI 4.1.2 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 
 # Usage
