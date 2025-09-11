@@ -16,6 +16,7 @@ The tag of each `uwsgi` docker image is consist of the version of `uwsgi` and th
 
 | Tag                                                                                                                              | Currently                               | Architectures |
 |----------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|---------------|
+|[2.0.30-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/uwsgi/2.0.30/24.03-lts-sp2/Dockerfile) | uwsgi 2.0.30 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 | [2.0.29-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/uwsgi/2.0.29/24.03-lts-sp1/Dockerfile) | uWSGI 2.0.29 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 
 # Usage
