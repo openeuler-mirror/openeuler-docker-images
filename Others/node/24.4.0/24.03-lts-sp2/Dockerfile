@@ -1,4 +1,4 @@
-ARG BASE=openeuler/openeuler:24.03-lts
+ARG BASE=openeuler/openeuler:24.03-lts-sp2
 ARG VERSION=24.4.0
 
 FROM $BASE
