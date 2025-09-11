@@ -4,3 +4,5 @@
   path: 15.4.6/24.03-lts-sp1/Dockerfile
 15.5.2-oe2403sp1:
   path: 15.5.2/24.03-lts-sp1/Dockerfile
+15.5.3-oe2403sp2:
+  path: 15.5.3/24.03-lts-sp2/Dockerfile
