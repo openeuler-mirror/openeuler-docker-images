@@ -29,3 +29,9 @@
 
 0.9.1-oe2403lts:
   path: 0.9.1/24.03-lts/Dockerfile
+
+0.10.1-oe2203sp4:
+  path: 0.10.1/22.03-lts-sp4/Dockerfile
+
+0.10.1-oe2403lts:
+  path: 0.10.1/24.03-lts/Dockerfile
