@@ -20,6 +20,10 @@ WORKDIR /workspace/vllm
 
 RUN pip install "cmake>=3.26" wheel packaging ninja "setuptools-scm>=8" numpy
 
+RUN sed -i 's/torch==2.6.0+cpu/torch==2.7.0/g' requirements/cpu.txt && \
+    sed -i 's/torch==2.6.0+cpu/torch==2.7.0/g' requirements/cpu-build.txt && \
+    sed -i 's/intel_extension_for_pytorch==2.6.0/intel_extension_for_pytorch==2.7.0/g' requirements/cpu.txt
+
 RUN VLLM_TARGET_DEVICE="cpu" pip install -e . --extra-index-url https://download.pytorch.org/whl/cpu
 
 ENTRYPOINT ["python", "-m", "vllm.entrypoints.openai.api_server"]
