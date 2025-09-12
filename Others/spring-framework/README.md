@@ -20,6 +20,7 @@ The tag of each `spring-framework` docker image is consist of the version of `sp
 
 | Tag                                                                                                                                         | Currently                                          | Architectures |
 |---------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------|---------------|
+|[6.2.11-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/spring-framework/6.2.11/24.03-lts-sp2/Dockerfile) | spring 6.2.11 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 | [6.2.6-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/spring-framework/6.2.6/24.03-lts-sp1/Dockerfile)   | Spring Framework 6.2.6 on openEuler 24.03-LTS-SP1  | amd64, arm64  |
 | [6.2.10-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/spring-framework/6.2.10/24.03-lts-sp2/Dockerfile) | Spring Framework 6.2.10 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
 
