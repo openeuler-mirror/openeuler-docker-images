@@ -1,0 +1,85 @@
+name: vllm-cpu
+category: ai
+description: vLLM是一个高性能的、可扩展的、易于使用的用于大语言模型（LLM）推理的库。它支持CPU和GPU推理，并且可以与流行的深度学习框架（如PyTorch和TensorFlow）无缝集成。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  vLLM镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  | Tags | Currently |  Architectures|
+  |--|--|--|
+  |[0.6.3-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm-cpu/0.6.3/24.03-lts/Dockerfile)| vLLM 0.6.3 on openEuler 24.03-LTS | amd64 |
+  |[0.8.3-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm-cpu/0.8.3/22.03-lts-sp4/Dockerfile)| vLLM 0.8.3 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+  |[0.8.3-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm-cpu/0.8.3/24.03-lts/Dockerfile)| vLLM 0.8.3 on openEuler 24.03-LTS | amd64, arm64 |
+  |[0.8.4-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm-cpu/0.8.4/22.03-lts-sp4/Dockerfile)| vLLM 0.8.4 on openEuler 22.03-LTS-SP4 | amd64 |
+  |[0.8.4-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm-cpu/0.8.4/24.03-lts/Dockerfile)| vLLM 0.8.4 on openEuler 24.03-LTS | amd64 |
+  |[0.8.5-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm-cpu/0.8.5/22.03-lts-sp4/Dockerfile)| vLLM 0.8.5 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+  |[0.8.5-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm-cpu/0.8.5/24.03-lts/Dockerfile)| vLLM 0.8.5 on openEuler 24.03-LTS | amd64, arm64 |
+  |[0.9.0-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm-cpu/0.9.0/22.03-lts-sp4/Dockerfile)| vLLM 0.9.0 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+  |[0.9.0-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm-cpu/0.9.0/24.03-lts/Dockerfile)| vLLM 0.9.0 on openEuler 24.03-LTS | amd64, arm64 |
+  |[0.9.1-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm-cpu/0.9.1/22.03-lts-sp4/Dockerfile)| vLLM 0.9.1 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+  |[0.9.1-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm-cpu/0.9.1/24.03-lts/Dockerfile)| vLLM 0.9.1 on openEuler 24.03-LTS | amd64, arm64 |
+  |[0.10.1-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm-cpu/0.10.1/22.03-lts-sp4/Dockerfile)| vLLM 0.10.1 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+  |[0.10.1-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm-cpu/0.10.1/24.03-lts/Dockerfile)| vLLM 0.10.1 on openEuler 24.03-LTS | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/vllm-cpu:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+    ```
+    docker run \
+        --name my-vllm \
+        -it openeuler/vllm-cpu:{Tag} bash
+    ```
+    用户可根据自身需求选择对应的硬件设备{device}、对应版本的{Tag}以及容器启动的选项。
+
+  - 参数说明
+    | 配置项 | 描述 |
+    |--|--|
+    | `--name my-vllm` | 容器名称。|
+    | `-it` | 以交互模式启动容器。 |
+    | `openeuler/vllm-cpu:{Tag}` | 指定要运行的镜像为 `openeuler/vllm-cpu`，其中` {Tag}` 是需要替换的镜像标签。 |
+
+  - 容器测试
+
+    查看运行日志
+    ```
+    docker logs -f my-vllm
+    ```
+
+    使用shell交互
+    ```
+    docker exec -it my-vllm /bin/bash
+    ```
+
+license: BSD 3-Clause license
+similar_packages:
+  - Ollama: Ollama是一个用于在本地运行大型语言模型（LLM）的工具，旨在简化模型的部署和管理。它支持多种LLM，并提供了一个统一的接口来与这些模型进行交互。
+  - ONNX Runtime: ONNX Runtime是一个高性能的推理引擎，用于运行ONNX（Open Neural Network Exchange）格式的机器学习模型。ONNX是一个开放的生态系统，旨在促进不同深度学习框架之间的互操作性。
+dependency:
+  - transformers
+  - datasets
+  - torch
+  - sentencepiece
+  - protobuf
+  - numpy
+  - psutil
+  - aiohttp
+  - aiofiles
+  - fastapi
+  - uvicorn
+
+homepage: https://github.com/vllm-project/vllm
+upstream:
+  version_url: vllm-project/vllm
+  backend: GitHub
+  version_scheme: RPM
+  version_filter: rc
+  version_prefix: v
