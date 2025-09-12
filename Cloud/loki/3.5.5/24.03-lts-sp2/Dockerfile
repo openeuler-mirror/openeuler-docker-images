@@ -5,14 +5,14 @@ ARG TARGETARCH
 ARG BUILDARCH
 ARG VERSION=3.5.5
 
-RUN dnf install -y shadow-utils && dnf clean all
+RUN dnf install -y unzip shadow-utils && dnf clean all
 
 RUN curl -fSL --output logcli-linux.zip https://github.com/grafana/loki/releases/download/v${VERSION}/logcli-linux-${TARGETARCH}.zip && \
-    curl -fSL --output loki-linux.rpm https://github.com/grafana/loki/releases/download/v${VERSION}/loki-linux-${TARGETARCH}.zip && \
+    curl -fSL --output loki-linux.zip https://github.com/grafana/loki/releases/download/v${VERSION}/loki-linux-${TARGETARCH}.zip && \
     curl -fSL --output promtail-linux.zip https://github.com/grafana/loki/releases/download/v${VERSION}/promtail-linux-${TARGETARCH}.zip && \
-    mv logcli-linux-${TARGETARCH} /usr/local/bin/logcli && \
-    mv loki-linux-${TARGETARCH} /usr/local/bin/loki && \
-    mv promtail-linux-${TARGETARCH} /usr/local/bin/promtail && \
+    unzip logcli-linux.zip && mv logcli-linux-${TARGETARCH} /usr/local/bin/logcli && \
+    unzip loki-linux.zip && mv loki-linux-${TARGETARCH} /usr/local/bin/loki && \
+    unzip promtail-linux.zip && mv promtail-linux-${TARGETARCH} /usr/local/bin/promtail && \
     rm -rf loki-linux.zip promtail-linux.zip logcli-linux.zip
 
 COPY local-config.yaml /etc/loki/local-config.yaml
