@@ -11,6 +11,7 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
+  |[1917-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/libyuv/1917/24.03-lts-sp2/Dockerfile) | libyuv 1917 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
   |[1915-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/libyuv/1915/24.03-lts-sp1/Dockerfile)| LibYuv 1915 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 download: |
