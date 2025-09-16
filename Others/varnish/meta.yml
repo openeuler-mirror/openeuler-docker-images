@@ -3,3 +3,5 @@
 
 7.7.2-oe2403sp1:
   path: 7.7.2/24.03-lts-sp1/Dockerfile
+8.0.0-oe2403sp2:
+  path: 8.0.0/24.03-lts-sp2/Dockerfile
