@@ -19,6 +19,7 @@ The tag of each `moosefs` docker image is consist of the version of `moosefs` an
 | Tag                                                                                                                                 | Currently                                 | Architectures |
 |-------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------|---------------|
 | [4.57.5-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/moosefs/4.57.5/24.03-lts-sp1/Dockerfile) | MooseFS 4.57.5 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+| [4.58.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/moosefs/4.58.0/24.03-lts-sp2/Dockerfile) | MooseFS 4.58.0 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.
