@@ -18,6 +18,7 @@ The tag of each `activemq` docker image is consist of the version of `activemq` 
 
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[6.1.7-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/activemq/6.1.7/24.03-lts-sp2/Dockerfile) | activemq 6.1.7 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[6.1.6-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/activemq/6.1.6/24.03-lts-sp1/Dockerfile)| ActiveMQ 6.1.6 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
