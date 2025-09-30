@@ -5,3 +5,5 @@
   path: 1917/24.03-lts-sp2/Dockerfile
 1918-oe2403sp2:
   path: 1918/24.03-lts-sp2/Dockerfile
+1920-oe2403sp2:
+  path: 1920/24.03-lts-sp2/Dockerfile
