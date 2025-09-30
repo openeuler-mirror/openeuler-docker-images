@@ -11,6 +11,7 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
+  |[5.29.1-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/swagger-ui/5.29.1/24.03-lts-sp2/Dockerfile) | swagger 5.29.1 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
   |[5.21.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/swagger-ui/5.21.0/24.03-lts-sp1/Dockerfile)| Swagger UI 5.21.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 download: |
