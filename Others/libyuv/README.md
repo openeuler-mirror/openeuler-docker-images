@@ -15,6 +15,7 @@ LibYuv is an open source project that includes YUV scaling and conversion functi
 The tag of each `libyuv` docker image is consist of the version of `libyuv` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[1920-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/libyuv/1920/24.03-lts-sp2/Dockerfile) | libyuv 1920 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[1918-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/libyuv/1918/24.03-lts-sp2/Dockerfile) | libyuv 1918 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[1917-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/libyuv/1917/24.03-lts-sp2/Dockerfile) | libyuv 1917 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[1915-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/libyuv/1915/24.03-lts-sp1/Dockerfile)| LibYuv 1915 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
