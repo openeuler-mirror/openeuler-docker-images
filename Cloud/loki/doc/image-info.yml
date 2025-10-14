@@ -11,6 +11,7 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
+  |[3.5.7-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/loki/3.5.7/24.03-lts-sp2/Dockerfile) | loki 3.5.7 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
   |[2.9.5-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/loki/2.9.5/22.03-lts-sp3/Dockerfile)| Grafana Loki 2.9.5 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
   |[3.2.1-oe2203sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/loki/3.2.1/22.03-lts-sp1/Dockerfile)| Grafana Loki 3.2.1 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
   |[3.2.1-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/loki/3.2.1/22.03-lts-sp3/Dockerfile)| Grafana Loki 3.2.1 on openEuler 22.03-LTS-SP3 | amd64, arm64 |

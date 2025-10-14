@@ -30,3 +30,5 @@
   path: 3.5.3/24.03-lts-sp1/Dockerfile
 3.5.5-oe2403sp2:
   path: 3.5.5/24.03-lts-sp2/Dockerfile
+3.5.7-oe2403sp2:
+  path: 3.5.7/24.03-lts-sp2/Dockerfile
