@@ -17,6 +17,7 @@ Learn more about Traefik on the [Traefik Website](https://doc.traefik.io/).
 The tag of each `traefik` docker image is consist of the version of `traefik` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[3.5.4-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/traefik/3.5.4/24.03-lts-sp2/Dockerfile) | traefik 3.5.4 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[2.11.0-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/traefik/2.11.0/22.03-lts-sp3/Dockerfile)| Traefik 2.11.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
 |[3.1.4-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/traefik/3.1.4/22.03-lts-sp3/Dockerfile)| Traefik 3.1.4 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
 |[3.1.5-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/traefik/3.1.5/22.03-lts-sp3/Dockerfile)| Traefik 3.1.5 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
