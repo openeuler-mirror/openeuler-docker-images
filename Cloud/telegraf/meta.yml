@@ -58,3 +58,5 @@
   path: 1.36.1/24.03-lts-sp2/Dockerfile
 1.36.2-oe2403sp2:
   path: 1.36.2/24.03-lts-sp2/Dockerfile
+1.36.3-oe2403sp2:
+  path: 1.36.3/24.03-lts-sp2/Dockerfile
