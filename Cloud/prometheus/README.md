@@ -17,6 +17,7 @@ Learn more about Prometheus on the [Prometheus Website](https://prometheus.io/do
 The tag of each `prometheus` docker image is consist of the version of `prometheus` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[3.7.2-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/prometheus/3.7.2/24.03-lts-sp2/Dockerfile) | prometheus 3.7.2 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[2.20.0-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/prometheus/2.20.0/22.03-lts/Dockerfile)| Prometheus server 2.20.0 on openEuler 22.03-LTS | amd64, arm64 |
 |[2.50.1-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/prometheus/2.50.1/22.03-lts-sp3/Dockerfile)| Prometheus server 2.50.1 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
 |[2.54.1-oe2003sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/prometheus/2.54.1/20.03-lts-sp4/Dockerfile)| Prometheus server 2.54.1 on openEuler 20.03-LTS-SP4 | amd64, arm64 |
