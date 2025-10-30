@@ -18,6 +18,7 @@ The tag of each `calico` docker image is consist of the version of `calico` and 
 
 | Tag                                                                                                                              | Currently                                | Architectures |
 |----------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|---------------|
+|[3.31.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/calico/3.31.0/24.03-lts-sp2/Dockerfile) | calico 3.31.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[3.30.3-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/calico/3.30.3/24.03-lts-sp1/Dockerfile) | calico 3.30.3 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 | [3.29.3-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/calico/3.29.3/24.03-lts-sp1/Dockerfile) | Calico 3.29.3 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 
