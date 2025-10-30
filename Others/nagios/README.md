@@ -18,6 +18,7 @@ The tag of each nagios docker image is consist of the version of nagios and the 
 
 | Tags                                                                                                                             | Currently                                |  Architectures|
 |----------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|--|
+|[4.5.10-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/nagios/4.5.10/24.03-lts-sp2/Dockerfile) | nagios 4.5.10 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 | [4.5.9-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/nagios/4.5.9/24.03-lts-sp1/Dockerfile) | Nagios 4.5.9 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
