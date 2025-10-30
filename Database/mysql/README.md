@@ -15,6 +15,7 @@ Learn more on [MySQL website]().
 The tag of each mysql docker image is consist of the version of mysql and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[9.5.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/mysql/9.5.0/24.03-lts-sp2/Dockerfile) | mysql 9.5.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[8.3.0-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/mysql/8.3.0/22.03-lts-sp3/Dockerfile)| MySQL server 8.3.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
 |[9.1.0-oe2203sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/mysql/9.1.0/22.03-lts-sp1/Dockerfile)| MySQL server 9.1.0 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
 |[9.1.0-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/mysql/9.1.0/22.03-lts-sp3/Dockerfile)| MySQL server 9.1.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
