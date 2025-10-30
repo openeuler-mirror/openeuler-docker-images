@@ -9,3 +9,5 @@
   path: 21.1.1/24.03-lts-sp2/Dockerfile
 21.1.2-oe2403sp2:
   path: 21.1.2/24.03-lts-sp2/Dockerfile
+21.1.4-oe2403sp2:
+  path: 21.1.4/24.03-lts-sp2/Dockerfile
