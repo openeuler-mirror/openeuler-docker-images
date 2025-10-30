@@ -18,6 +18,7 @@ The tag of each `quartz` docker image is consist of the version of `quartz` and 
 
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[2.5.1-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/quartz/2.5.1/24.03-lts-sp2/Dockerfile) | quartz 2.5.1 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[2.5.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/quartz/2.5.0/24.03-lts-sp1/Dockerfile)| quartz 2.5.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
