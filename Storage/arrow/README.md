@@ -17,6 +17,7 @@ Learn more about arrow, please visit [https://arrow.apache.org/](https://arrow.a
 The tag of each `arrow` docker image is consist of the version of `arrow` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[22.0.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/arrow/22.0.0/24.03-lts-sp2/Dockerfile) | arrow 22.0.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[19.0.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/arrow/19.0.1/24.03-lts-sp1/Dockerfile)| arrow 19.0.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
