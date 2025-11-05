@@ -16,6 +16,7 @@ The tag of each `fio` docker image is consist of the version of `fio` and the ve
 
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[3.41-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/fio/3.41/24.03-lts-sp2/Dockerfile) | fio 3.41 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[3.40-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/fio/3.40/24.03-lts-sp1/Dockerfile)| FIO 3.40 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
