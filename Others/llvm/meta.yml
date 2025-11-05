@@ -11,3 +11,5 @@
   path: 21.1.2/24.03-lts-sp2/Dockerfile
 21.1.4-oe2403sp2:
   path: 21.1.4/24.03-lts-sp2/Dockerfile
+21.1.5-oe2403sp2:
+  path: 21.1.5/24.03-lts-sp2/Dockerfile
