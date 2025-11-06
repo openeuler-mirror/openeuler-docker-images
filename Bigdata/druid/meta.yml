@@ -2,3 +2,5 @@
   path: 32.0.1/24.03-lts-sp1/Dockerfile
 34.0.0-oe2403sp1:
   path: 34.0.0/24.03-lts-sp1/Dockerfile
+35.0.0-oe2403sp2:
+  path: 35.0.0/24.03-lts-sp2/Dockerfile

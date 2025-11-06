@@ -18,6 +18,7 @@ The tag of each `druid` docker image is consist of the version of `druid` and th
 
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[35.0.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/druid/35.0.0/24.03-lts-sp2/Dockerfile) | druid 35.0.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[32.0.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/druid/32.0.1/24.03-lts-sp1/Dockerfile)| Apache druid 32.0.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
