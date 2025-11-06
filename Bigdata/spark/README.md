@@ -17,6 +17,7 @@ Learn more on [Spark website](https://spark.apache.org/).
 The tag of each spark docker image is consist of the version of spark and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[4.0.1-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/4.0.1/24.03-lts-sp2/Dockerfile) | spark 4.0.1 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[3.3.1-22.03-lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.3.1/22.03-lts/Dockerfile)| spark 3.3.1 on openEuler 22.03-LTS | amd64, arm64 |
 |[3.3.2-22.03-lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.3.2/22.03-lts/Dockerfile)| spark 3.3.2 on openEuler 22.03-LTS | amd64, arm64 |
 |[3.4.0-22.03-lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.4.0/22.03-lts/Dockerfile)| spark 3.4.0 on openEuler 22.03-LTS | amd64, arm64 |
