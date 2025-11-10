@@ -16,6 +16,7 @@ The tag of each `unixbench` docker image is consist of the version of `unixbench
 
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[6.0.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/unixbench/6.0.0/24.03-lts-sp2/Dockerfile) | unixbench 6.0.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[6.0.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/unixbench/6.0.0/24.03-lts-sp1/Dockerfile)| UnixBench  6.0.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
