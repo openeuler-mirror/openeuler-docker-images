@@ -16,6 +16,7 @@ The tag of each `catj` docker image is consist of the version of `catj` and the 
 
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[1.0.4-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/catj/1.0.4/24.03-lts-sp2/Dockerfile) | catj 1.0.4 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[1.0.4-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/catj/1.0.4/24.03-lts-sp1/Dockerfile)| catj 1.0.4 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
