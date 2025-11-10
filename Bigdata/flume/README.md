@@ -16,6 +16,7 @@ Learn more on [flume website](https://flume.apache.org/).
 The tag of each flume docker image is consist of the version of flume and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[1.11.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/flume/1.11.0/24.03-lts-sp2/Dockerfile) | flume 1.11.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[1.11.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/flume/1.11.0/24.03-lts-sp1/Dockerfile)| flume 1.11.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
