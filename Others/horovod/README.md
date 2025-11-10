@@ -17,6 +17,7 @@ Learn more on [Horovod Website](https://horovod.readthedocs.io/en/stable/)⁠.
 The tag of each `horovod` docker image is consist of the version of `horovod` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[0.28.1-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/horovod/0.28.1/24.03-lts-sp2/Dockerfile) | horovod 0.28.1 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[0.28.1-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/horovod/0.28.1/24.03-lts/Dockerfile)| Horovod 0.28.1 on openEuler 24.03-LTS | amd64, arm64 |
 
 # Usage
