@@ -17,6 +17,7 @@ Learn more about alluxio, please visit [https://www.alluxio.io/](https://www.all
 The tag of each `alluxio` docker image is consist of the version of `alluxio` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[2.9.4-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/alluxio/2.9.4/24.03-lts-sp2/Dockerfile) | alluxio 2.9.4 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[2.9.4-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/alluxio/2.9.4/24.03-lts-sp1/Dockerfile)| Alluxio 2.9.4 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
