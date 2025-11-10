@@ -17,6 +17,7 @@ For more information about pig, please visit [https://pig.apache.org/](https://p
 The tag of each pig docker image is consist of the version of pig and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[0.17.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/pig/0.17.0/24.03-lts-sp2/Dockerfile) | pig 0.17.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[0.17.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/pig/0.17.0/24.03-lts-sp1/Dockerfile)| Apache Pig 0.17.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
