@@ -1,4 +1,5 @@
 images:
+  sglang: sglang
   codegen-gradio-ui: opea/codegen-gradio-ui
   multimodalqna: opea/multimodalqna
   multimodalqna-ui: opea/multimodalqna-ui
