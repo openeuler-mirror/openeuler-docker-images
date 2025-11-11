@@ -29,10 +29,7 @@ RUN conda tos accept --override-channels --channel https://repo.anaconda.com/pkg
     conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r
 
 RUN conda create -n sglang_env python=3.11 -y
-
-RUN conda run -n sglang_env pip config set global.index-url http://mirrors.aliyun.com/pypi/simple && \
-    conda run -n sglang_env pip config set install.trusted-host mirrors.aliyun.com && \
-    conda run -n sglang_env pip install --no-cache-dir sglang[all]==0.5.5
+RUN conda run -n sglang_env pip install --no-cache-dir sglang[all]==0.5.5
 
 COPY entrypoint.sh /root/entrypoint.sh
 RUN chmod +x /root/entrypoint.sh
