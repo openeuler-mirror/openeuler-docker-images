@@ -18,6 +18,7 @@ The tag of each `ceph` docker image is consist of the version of `ceph` and the 
 
 | Tag                                                                                                                              | Currently                              | Architectures |
 |----------------------------------------------------------------------------------------------------------------------------------|----------------------------------------|---------------|
+|[20.3.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/ceph/20.3.0/24.03-lts-sp2/Dockerfile) | ceph 20.3.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 | [20.3.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/ceph/20.3.0/24.03-lts-sp1/Dockerfile) | Ceph 20.3.0 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 
 # Usage
