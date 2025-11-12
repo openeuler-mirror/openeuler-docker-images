@@ -31,6 +31,7 @@ The tag of each `next` docker image is consist of the version of `next` and the 
 
 | Tag                                                                                                                                   | Currently                                 | Architectures |
 |---------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------|---------------|
+|[25.2.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/node/25.2.0/24.03-lts-sp2/Dockerfile) | node 25.2.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[25.1.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/node/25.1.0/24.03-lts-sp2/Dockerfile) | node 25.1.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[24.10.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/node/24.10.0/24.03-lts-sp2/Dockerfile) | node 24.10.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[24.9.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/node/24.9.0/24.03-lts-sp2/Dockerfile) | node 24.9.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
