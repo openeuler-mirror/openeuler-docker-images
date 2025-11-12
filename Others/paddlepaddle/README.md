@@ -18,6 +18,7 @@ The tag of each `paddlepaddle` docker image is consist of the version of `paddle
 
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[3.2.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/paddlepaddle/3.2.0/24.03-lts-sp2/Dockerfile) | paddlepaddle 3.2.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[3.0.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/paddlepaddle/3.0.0/24.03-lts-sp1/Dockerfile)| PaddlePaddle 3.0.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
