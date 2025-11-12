@@ -1,4 +1,5 @@
 images:
+  executorch: executorch
   sglang: sglang
   codegen-gradio-ui: opea/codegen-gradio-ui
   multimodalqna: opea/multimodalqna
