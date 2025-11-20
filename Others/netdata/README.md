@@ -18,6 +18,7 @@ The tag of each netdata docker image is consist of the version of netdata and th
 
 | Tags                                                                                                                             | Currently                                |  Architectures|
 |----------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|--|
+|[2.8.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/netdata/2.8.0/24.03-lts-sp2/Dockerfile) | netdata 2.8.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[2.7.3-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/netdata/2.7.3/24.03-lts-sp2/Dockerfile) | netdata 2.7.3 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[2.7.1-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/netdata/2.7.1/24.03-lts-sp2/Dockerfile) | netdata 2.7.1 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[2.7.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/netdata/2.7.0/24.03-lts-sp2/Dockerfile) | netdata 2.7.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
