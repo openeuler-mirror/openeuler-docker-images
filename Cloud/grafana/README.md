@@ -17,6 +17,7 @@ Learn more on [Grafana website](https://grafana.com/docs/grafana/latest/introduc
 The tag of each grafana docker image is consist of the version of grafana and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[12.3.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/12.3.0/24.03-lts-sp2/Dockerfile) | grafana 12.3.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[12.2.1-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/12.2.1/24.03-lts-sp2/Dockerfile) | grafana 12.2.1 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[12.2.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/12.2.0/24.03-lts-sp2/Dockerfile) | grafana 12.2.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[12.1.1-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/12.1.1/24.03-lts-sp2/Dockerfile) | grafana 12.1.1 on openEuler 24.03-LTS-SP2 | amd64, arm64 |

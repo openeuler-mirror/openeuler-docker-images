@@ -50,3 +50,5 @@
   path: 12.2.0/24.03-lts-sp2/Dockerfile
 12.2.1-oe2403sp2:
   path: 12.2.1/24.03-lts-sp2/Dockerfile
+12.3.0-oe2403sp2:
+  path: 12.3.0/24.03-lts-sp2/Dockerfile
