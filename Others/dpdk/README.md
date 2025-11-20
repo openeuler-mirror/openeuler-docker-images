@@ -19,6 +19,7 @@ The tag of each `dpdk` docker image is consist of the version of `dpdk` and the 
 
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[25.07-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/dpdk/25.07/24.03-lts-sp2/Dockerfile) | dpdk 25.07 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[25.03-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/dpdk/25.03/24.03-lts-sp1/Dockerfile)| DPDK 25.03 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
