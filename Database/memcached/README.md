@@ -17,6 +17,7 @@ Learn more about Memcached on the [https://memcached.org/).
 The tag of each `memcached` docker image is consist of the version of `memcached` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[1.6.39-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/memcached/1.6.39/24.03-lts-sp2/Dockerfile) | memcached 1.6.39 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[1.6.12-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/memcached/1.6.12/22.03-lts-sp3/Dockerfile)| Memcached 1.6.12 on openEuler 22.03-LTS | amd64, arm64 |
 |[1.6.24-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/memcached/1.6.24/22.03-lts-sp3/Dockerfile)| Memcached 1.6.24 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
 |[1.6.29-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/memcached/1.6.29/22.03-lts-sp3/Dockerfile)| Memcached 1.6.29 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
