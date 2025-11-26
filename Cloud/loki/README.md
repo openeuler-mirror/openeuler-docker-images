@@ -17,6 +17,7 @@ Learn more on [Loki Website](https://grafana.com/oss/loki/)⁠.
 The tag of each `loki` docker image is consist of the version of `loki` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[3.6.2-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/loki/3.6.2/24.03-lts-sp2/Dockerfile) | loki 3.6.2 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[3.5.8-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/loki/3.5.8/24.03-lts-sp2/Dockerfile) | loki 3.5.8 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[3.5.7-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/loki/3.5.7/24.03-lts-sp2/Dockerfile) | loki 3.5.7 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[2.9.5-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/loki/2.9.5/22.03-lts-sp3/Dockerfile)| Grafana Loki 2.9.5 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
