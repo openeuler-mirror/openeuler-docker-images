@@ -20,6 +20,7 @@ Learn more about SPDK on [SPDK Website](https://spdk.io/doc/)⁠.
 The tag of each `spdk` docker image is consist of the version of `spdk` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[25.09-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/spdk/25.09/24.03-lts-sp2/Dockerfile) | spdk 25.09 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[24.09-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/spdk/24.09/24.03-lts-sp1/Dockerfile)| SPDK 24.09 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
