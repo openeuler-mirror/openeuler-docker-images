@@ -16,6 +16,7 @@ Learn more on [knox website](http://knox.apache.org/).
 The tag of each knox docker image is consist of the version of knox and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[2.1.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/knox/2.1.0/24.03-lts-sp2/Dockerfile) | knox 2.1.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[2.0.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/knox/2.0.0/24.03-lts-sp1/Dockerfile)| Apache knox 2.0.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
