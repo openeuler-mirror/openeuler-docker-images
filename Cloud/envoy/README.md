@@ -18,6 +18,7 @@ The tag of each `envoy` docker image is consist of the version of `envoy` and th
 
 | Tag                                                                                                                             | Currently                               | Architectures |
 |---------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|---------------|
+|[1.36.4-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/envoy/1.36.4/24.03-lts-sp2/Dockerfile) | envoy 1.36.4 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[1.36.3-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/envoy/1.36.3/24.03-lts-sp2/Dockerfile) | envoy 1.36.3 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 | [1.34.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/envoy/1.34.1/24.03-lts-sp1/Dockerfile) | Envoy 1.34.1 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 
