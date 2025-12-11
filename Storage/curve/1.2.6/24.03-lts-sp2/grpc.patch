@@ -1,0 +1,20 @@
+--- a/third_party/grpc/src/core/support/log_linux.c	2025-06-05 07:09:16.478614005 +0000
++++ b/third_party/grpc/src/core/support/log_linux.c	2025-06-05 04:49:16.119702009 +0000
+@@ -54,7 +54,7 @@
+ #include <sys/syscall.h>
+ #include <unistd.h>
+
+-static long gettid(void) { return syscall(__NR_gettid); }
++static long local_gettid(void) { return syscall(__NR_gettid); }
+
+ void gpr_log(const char *file, int line, gpr_log_severity severity,
+              const char *format, ...) {
+@@ -95,7 +95,7 @@
+
+   gpr_asprintf(&prefix, "%s%s.%09d %7tu %s:%d]",
+                gpr_log_severity_string(args->severity), time_buffer,
+-               (int)(now.tv_nsec), gettid(), display_file, args->line);
++               (int)(now.tv_nsec), local_gettid(), display_file, args->line);
+
+   fprintf(stderr, "%-60s %s\n", prefix, args->message);
+   gpr_free(prefix);

@@ -1,0 +1,10 @@
+--- a/third_party/ijar/zlib_client.cc	2025-06-05 07:36:32.094735012 +0000
++++ b/third_party/ijar/zlib_client.cc	2025-06-05 04:46:25.602169014 +0000
+@@ -15,6 +15,7 @@
+ #include <stdlib.h>
+ #include <algorithm>
+ #include <cstdio>
++#include <limits>
+
+ #include "third_party/ijar/common.h"
+ #include "third_party/ijar/zlib_client.h"
