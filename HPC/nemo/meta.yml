@@ -5,3 +5,5 @@
   path: 6.4.5/24.03-lts-sp2/Dockerfile
 6.6.0-oe2403sp2:
   path: 6.6.0/24.03-lts-sp2/Dockerfile
+6.6.1-oe2403sp2:
+  path: 6.6.1/24.03-lts-sp2/Dockerfile
