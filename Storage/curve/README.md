@@ -16,6 +16,7 @@ The tag of each `curve` docker image is consist of the version of `curve` and th
 
 | Tag                                                                                                                             | Currently                              | Architectures |
 |---------------------------------------------------------------------------------------------------------------------------------|----------------------------------------|---------------|
+|[1.2.6-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/curve/1.2.6/24.03-lts-sp2/Dockerfile) | curve 1.2.6 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 | [1.0.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/curve/1.0.0/24.03-lts-sp1/Dockerfile) | Curve 1.0.0 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 
 # Usage

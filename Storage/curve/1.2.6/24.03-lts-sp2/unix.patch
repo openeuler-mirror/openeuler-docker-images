@@ -1,0 +1,9 @@
+--- a/third_party/ijar/mapped_file_unix.cc	2025-06-05 07:50:45.762845004 +0000
++++ a/third_party/ijar/mapped_file_unix.cc	2025-06-05 04:47:36.196325004 +0000
+@@ -17,6 +17,7 @@
+ #include <stdio.h>
+ #include <unistd.h>
+ #include <sys/mman.h>
++#include <limits>
+
+ #include <algorithm>
