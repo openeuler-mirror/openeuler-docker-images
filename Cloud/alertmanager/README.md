@@ -15,6 +15,7 @@ The Alertmanager handles alerts sent by client applications (such as a Prometheu
 The tag of each `alertmanager` docker image is consist of the version of `alertmanager` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[0.30.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/alertmanager/0.30.0/24.03-lts-sp2/Dockerfile) | alertmanager 0.30.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[0.27.0-oe2003sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/alertmanager/0.27.0/20.03-lts-sp4/Dockerfile)| Alertmanager 0.27.0 on openEuler 20.03-LTS-SP4 | amd64, arm64 |
 |[0.27.0-oe2203sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/alertmanager/0.27.0/22.03-lts-sp1/Dockerfile)| Alertmanager 0.27.0 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
 |[0.27.0-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/alertmanager/0.27.0/22.03-lts-sp3/Dockerfile)| Alertmanager 0.27.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
