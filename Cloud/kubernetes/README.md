@@ -33,6 +33,7 @@ We are using `buildx` in here to generate multi-arch images, see more in [Docker
 
 |       Arch     |  Hostname  | Specification |      EIP       |  Private IP   |
 |      :----:    |   :----:   |    :----:     |     :----:     |    :----:     |
+|[1.35.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/kubernetes/1.35.0/24.03-lts-sp2/Dockerfile) | kubernetes 1.35.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[1.34.3-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/kubernetes/1.34.3/24.03-lts-sp2/Dockerfile) | kubernetes 1.34.3 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 | x86_64(amd64)  | amd64-k8s0 |  c6s.large.2  | 116.63.177.179 | 192.168.0.47  |
 | x86_64(amd64)  | amd64-k8s1 |  c6s.large.2  | 122.9.153.240  | 192.168.0.28  |
