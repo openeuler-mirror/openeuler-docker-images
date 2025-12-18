@@ -17,6 +17,7 @@ Learn more about influxdb at [https://influxdb.io/](https://influxdb.io/).
 The tag of each `influxdb` docker image is consist of the version of `influxdb` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[3.8.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/influxdb/3.8.0/24.03-lts-sp2/Dockerfile) | influxdb 3.8.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[3.7.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/influxdb/3.7.0/24.03-lts-sp2/Dockerfile) | influxdb 3.7.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[3.5.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/influxdb/3.5.0/24.03-lts-sp2/Dockerfile) | influxdb 3.5.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[3.4.2-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/influxdb/3.4.2/24.03-lts-sp2/Dockerfile) | influxdb 3.4.2 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
