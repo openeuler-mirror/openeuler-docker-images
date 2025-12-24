@@ -6,3 +6,5 @@
   path: 1.8.1/24.03-lts-sp2/Dockerfile
 1.8.1-oe2403sp1:
   path: 1.8.1/24.03-lts-sp1/Dockerfile
+1.9.0-oe2403sp1:
+  path: HPC/openlb/1.9.0/24.03-lts-sp1/Dockerfile
