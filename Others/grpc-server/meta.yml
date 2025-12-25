@@ -3,3 +3,5 @@
 
 1.74.0-oe2403sp1:
   path: 1.74.0/24.03-lts-sp1/Dockerfile
+1.78.0-oe2403sp1:
+  path: Others/grpc-server/1.78.0/24.03-lts-sp1/Dockerfile
