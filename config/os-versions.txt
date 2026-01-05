@@ -1,1 +1,1 @@
-openEuler-24.03-LTS-SP2
+openEuler-24.03-LTS-SP3
