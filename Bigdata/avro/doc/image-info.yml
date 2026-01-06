@@ -11,6 +11,7 @@ tags: |
 
   | Tags | Currently |  Architectures|
   |------|-----------|---------------|
+  |[1.12.1-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/avro/1.12.1/24.03-lts-sp2/Dockerfile) | avro 1.12.1 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
   |[1.12.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/avro/1.12.0/24.03-lts-sp1/Dockerfile)| Apache Asvro 1.12.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 download: |

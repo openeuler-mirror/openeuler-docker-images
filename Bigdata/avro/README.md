@@ -16,6 +16,7 @@ Learn more on [avro website](https://avro.apache.org/).
 The tag of each avro docker image is consist of the version of avro and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[1.12.1-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/avro/1.12.1/24.03-lts-sp2/Dockerfile) | avro 1.12.1 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[1.12.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/avro/1.12.0/24.03-lts-sp1/Dockerfile)| Apache Avro 1.12.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
