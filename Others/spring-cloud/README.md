@@ -18,6 +18,7 @@ The tag of each `spring-cloud` docker image is consist of the version of `spring
 
 | Tag                                                                                                                                   | Currently                                     | Architectures |
 |---------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------|---------------|
+|[5.0.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/spring-cloud/5.0.0/24.03-lts-sp3/Dockerfile) | spring 5.0.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 | [4.3.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/spring-cloud/4.3.0/24.03-lts-sp1/Dockerfile) | Spring Cloud 4.3.0 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 
 # Usage
