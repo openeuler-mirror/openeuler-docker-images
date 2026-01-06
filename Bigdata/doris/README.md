@@ -16,6 +16,7 @@ Learn more on [doris website](https://doris.apache.org/).
 The tag of each doris docker image is consist of the version of doris and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[3.0.6.2-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/doris/3.0.6.2/24.03-lts-sp3/Dockerfile) | doris 3.0.6.2 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 |[2.1.9-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/doris/2.1.9/24.03-lts-sp1/Dockerfile)| doris 2.1.9 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
