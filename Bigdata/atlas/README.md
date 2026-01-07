@@ -18,6 +18,7 @@ Learn more on [atlas website](https://atlas.apache.org/).
 The tag of each atlas docker image is consist of the version of atlas and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[2.4.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/atlas/24.03-lts-sp3/24.03-lts-sp3/Dockerfile) | atlas 2.4.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 |[2.4.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/atlas/2.4.0/24.03-lts-sp1/Dockerfile)| Apache Atlas 2.4.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
