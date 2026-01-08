@@ -21,7 +21,7 @@ RUN if [ "$TARGETARCH" = "amd64" ]; then \
     && tar -zxvf OpenJDK17U-jdk_${BUILDARCH}_linux_hotspot_${JDK_VERSION}.tar.gz \
     && rm -f OpenJDK17U-jdk_${BUILDARCH}_linux_hotspot_${JDK_VERSION}.tar.gz
 
-ENV JAVA_HOME=/jdk-17.0.15+6
+ENV JAVA_HOME=/jdk-17.0.17+10
 ENV PATH=${JAVA_HOME}/bin:$PATH
 
 RUN git clone -b v${VERSION} --depth 1 https://github.com/spring-cloud/spring-cloud-commons \
