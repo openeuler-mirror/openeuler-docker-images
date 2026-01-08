@@ -3,7 +3,7 @@ FROM ${BASE} as BUILDER
 ARG VERSION=5.0.0
 ARG TARGETARCH
 ARG BUILDARCH
-ARG JDK_VERSION=17.0.15_6
+ARG JDK_VERSION=17.0.17_10
 
 RUN dnf update -y \
     && dnf install -y git maven \
