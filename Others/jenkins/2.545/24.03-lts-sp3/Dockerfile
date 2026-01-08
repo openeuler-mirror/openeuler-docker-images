@@ -16,6 +16,7 @@ ENV PATH=$PATH:/usr/local/maven/bin
 
 RUN git clone -b jenkins-${VERSION} https://github.com/jenkinsci/jenkins.git && \
     cd jenkins && \
+    mvn spotless:apply && \
     mvn clean install -Dmaven.test.skip=true
 
 FROM ${BASE}
