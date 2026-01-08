@@ -5,7 +5,7 @@ ARG VERSION=2.545
 ARG MAVEN_VERSION=3.9.6
 ARG MAVEN_URL=https://repo.huaweicloud.com/apache/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz
 
-RUN yum install -y java-17-openjdk-devel git && \
+RUN yum install -y java-21-openjdk-devel git && \
     yum clean all && \
     curl -fSL -o apache-maven.tar.gz ${MAVEN_URL} && \
     mkdir -p /usr/local/maven && \
@@ -22,7 +22,7 @@ FROM ${BASE}
 COPY --from=builder /jenkins/war/target/jenkins.war /jenkins/jenkins.war
 
 RUN dnf update -y \
-    && dnf install -y java-17-openjdk \
+    && dnf install -y java-21-openjdk \
     && dnf clean all \
     && rm -rf /var/run/dnf/*
 
