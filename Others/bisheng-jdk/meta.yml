@@ -4,3 +4,5 @@
   path: 1.8.0/22.03-lts-sp3/Dockerfile
 17.0.10-oe2203sp3:
   path: 17.0.10/22.03-lts-sp3/Dockerfile
+21.0.5-oe2203sp3:
+  path: 21.0.5/22.03-lts-sp3/Dockerfile  

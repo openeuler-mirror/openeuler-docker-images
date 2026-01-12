@@ -3,9 +3,9 @@
 
 - The official BiSheng JDK docker image.
 
-- Maintained by: [openEuler CloudNative SIG](https://gitee.com/openeuler/cloudnative).
+- Maintained by: [openEuler CloudNative SIG](https://atomgit.com/openeuler/cloudnative).
 
-- Where to get help: [openEuler CloudNative SIG](https://gitee.com/openeuler/cloudnative), [openEuler](https://gitee.com/openeuler/community).
+- Where to get help: [openEuler CloudNative SIG](https://atomgit.com/openeuler/cloudnative), [openEuler](https://atomgit.com/openeuler/community).
 # BiSheng JDK | openEuler
 Current BiSheng JDK docker images are built on the [openEuler](https://repo.openeuler.org/). This repository is free to use and exempted from per-user rate limits.
 
@@ -21,9 +21,10 @@ Key Features:
 The tag of each BiSheng JDK docker image is consist of the version of BiSheng JDK and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
-| [1.8.0-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/bisheng-jdk/1.8.0/22.03-lts/Dockerfile) | BiSheng JDK 1.8.0 on openEuler 22.03-LTS |  amd64, arm64 |
-| [1.8.0-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/bisheng-jdk/1.8.0/22.03-lts-sp3/Dockerfile) | BiSheng JDK 1.8.0 on openEuler 22.03-LTS-SP3 |  amd64, arm64 |
-| [17.0.10-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/bisheng-jdk/17.0.10/22.03-lts-sp3/Dockerfile) | BiSheng JDK 17.0.10 on openEuler 22.03-LTS-SP3 |  amd64, arm64 |
+| [1.8.0-oe2203lts](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/bisheng-jdk/1.8.0/22.03-lts/Dockerfile) | BiSheng JDK 1.8.0 on openEuler 22.03-LTS |  amd64, arm64 |
+| [1.8.0-oe2203sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/bisheng-jdk/1.8.0/22.03-lts-sp3/Dockerfile) | BiSheng JDK 1.8.0 on openEuler 22.03-LTS-SP3 |  amd64, arm64 |
+| [17.0.10-oe2203sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/bisheng-jdk/17.0.10/22.03-lts-sp3/Dockerfile) | BiSheng JDK 17.0.10 on openEuler 22.03-LTS-SP3 |  amd64, arm64 |
+| [21.0.5-oe2203sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/bisheng-jdk/21.0.5/22.03-lts-sp3/Dockerfile) | BiSheng JDK 21.0.5 on openEuler 22.03-LTS-SP3 |  amd64, arm64 |
 
 # Usage
   
@@ -88,4 +89,4 @@ The tag of each BiSheng JDK docker image is consist of the version of BiSheng JD
 - Environment variables with periods in their names
 	Some shells (notably, [the BusyBox /bin/sh included in Alpine Linux](https://github.com/docker-library/openjdk/issues/135)) do not support environment variables with periods in the names (which are technically not POSIX compliant), and thus strip them instead of passing them through (as Bash does). If your application requires environment variables of this form, either use CMD ["java", ...] directly (no shell), or (install and) use Bash explicitly instead of /bin/sh.
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://atomgit.com/openeuler/openeuler-docker-images).
