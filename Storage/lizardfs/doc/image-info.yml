@@ -11,6 +11,7 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
+  |[3.12.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/lizardfs/3.12.0/24.03-lts-sp3/Dockerfile) | lizardfs 3.12.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
   |[3.12.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/lizardfs/3.12.0/24.03-lts-sp1/Dockerfile)| LizardFS 3.12.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 download: |
