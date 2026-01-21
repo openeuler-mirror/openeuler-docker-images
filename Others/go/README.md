@@ -19,6 +19,7 @@ Learn more on [Go website](https://go.dev/doc/).
 The tag of each Go docker image is consist of the version of Go and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[1.25.6-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/go/1.25.6/24.03-lts-sp3/Dockerfile) | go 1.25.6 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 |[1.25.4-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/go/1.25.4/24.03-lts-sp2/Dockerfile) | go 1.25.4 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[1.17.3-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/go/1.17.3/22.03-lts/Dockerfile)| go 1.17.3 on openEuler 22.03-LTS | amd64, arm64 |
 |[1.21.1-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/go/1.21.1/22.03-lts/Dockerfile)| go 1.21.1 on openEuler 22.03-LTS | amd64, arm64 |
