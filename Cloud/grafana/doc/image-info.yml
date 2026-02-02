@@ -11,6 +11,7 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
+  |[12.3.2-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/12.3.2/24.03-lts-sp3/Dockerfile) | grafana 12.3.2 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
   |[12.3.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/12.3.0/24.03-lts-sp2/Dockerfile) | grafana 12.3.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
   |[12.2.1-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/12.2.1/24.03-lts-sp2/Dockerfile) | grafana 12.2.1 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
   |[12.2.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/12.2.0/24.03-lts-sp2/Dockerfile) | grafana 12.2.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
