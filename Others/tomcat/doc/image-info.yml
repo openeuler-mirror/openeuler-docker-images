@@ -11,6 +11,7 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
+  |[11.0.18-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/tomcat/11.0.18/24.03-lts-sp3/Dockerfile) | tomcat 11.0.18 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
   |[11.0.14-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/tomcat/11.0.14/24.03-lts-sp2/Dockerfile) | tomcat 11.0.14 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
   |[11.0.11-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/tomcat/11.0.11/24.03-lts-sp1/Dockerfile) | tomcat 11.0.11 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
   |[11.0.10-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/tomcat/11.0.10/24.03-lts-sp1/Dockerfile) | tomcat 11.0.10 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
