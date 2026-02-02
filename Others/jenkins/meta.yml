@@ -18,3 +18,5 @@
   path: 2.536/24.03-lts-sp2/Dockerfile
 2.545-oe2403sp3:
   path: 2.545/24.03-lts-sp3/Dockerfile
+2.548-oe2403sp3:
+  path: 2.548/24.03-lts-sp3/Dockerfile
