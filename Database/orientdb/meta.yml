@@ -10,3 +10,5 @@
   path: 3.2.45/24.03-lts-sp2/Dockerfile
 3.2.48-oe2403sp1:
   path: Database/orientdb/3.2.48/24.03-lts-sp1/Dockerfile
+3.2.49-oe2403sp3:
+  path: 3.2.49/24.03-lts-sp3/Dockerfile
