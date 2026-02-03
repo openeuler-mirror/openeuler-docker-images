@@ -16,6 +16,7 @@ The tag of each `solr` docker image is consist of the version of `solr` and the 
 
 | Tag                                                                                                                             | Currently                              | Architectures |
 |---------------------------------------------------------------------------------------------------------------------------------|----------------------------------------|---------------|
+|[9.10.1-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/solr/9.10.1/24.03-lts-sp3/Dockerfile) | solr 9.10.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 | [9.8.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/solr/9.8.1/24.03-lts-sp1/Dockerfile) | Apache Solr 9.8.1 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 
 # Usage
