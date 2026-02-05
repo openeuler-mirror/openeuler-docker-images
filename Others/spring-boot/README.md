@@ -18,7 +18,8 @@ The tag of each `spring-boot` docker image is consist of the version of `spring-
 
 | Tag                                                                                                                                  | Currently                                    | Architectures |
 |--------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------|---------------|
-|[3.5.7-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/spring-boot/3.5.7/24.03-lts-sp2/Dockerfile) | spring 3.5.7 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+| [4.0.2-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/spring-boot/4.0.2/24.03-lts-sp3/Dockerfile) | spring 4.0.2 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+| [3.5.7-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/spring-boot/3.5.7/24.03-lts-sp2/Dockerfile) | spring 3.5.7 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 | [3.4.4-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/spring-boot/3.4.4/24.03-lts-sp1/Dockerfile) | Spring Boot 3.4.4 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 | [3.5.4-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/spring-boot/3.5.4/24.03-lts-sp2/Dockerfile) | Spring Boot 3.5.4 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
 
