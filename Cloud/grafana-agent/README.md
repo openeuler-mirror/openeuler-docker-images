@@ -24,6 +24,7 @@ Learn more on [Grafana-agent website](https://grafana.com/docs/agent/latest/).
 The tag of each grafana-agent docker image is consist of the version of grafana-agent and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[0.44.7-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana-agent/0.44.7/24.03-lts-sp3/Dockerfile) | Grafana-agent 0.44.7 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 |[0.40.2-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana-agent/0.40.2/22.03-lts-sp3/Dockerfile)| Grafana-agent 0.40.2 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
 |[0.41.1-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana-agent/0.41.1/22.03-lts-sp3/Dockerfile)| Grafana-agent 0.41.1 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
 |[0.43.3-oe2003sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana-agent/0.43.3/20.03-lts-sp4/Dockerfile)| Grafana-agent 0.43.3 on openEuler 20.03-LTS-SP4 | amd64, arm64 |
