@@ -18,6 +18,7 @@ The tag of each `netty` docker image is consist of the version of `netty` and th
 
 | Tag                                                                                                                            | Currently                              | Architectures |
 |--------------------------------------------------------------------------------------------------------------------------------|----------------------------------------|---------------|
+|[4.2.10-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/netty/4.2.10/24.03-lts-sp3/Dockerfile) | netty 4.2.10 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 |[4.2.9-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/netty/4.2.9/24.03-lts-sp2/Dockerfile) | netty 4.2.9 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 | [4.2.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/netty/4.2.1/24.03-lts-sp1/Dockerfile) | Netty 4.2.1 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 | [4.2.4-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/netty/4.2.4/24.03-lts-sp2/Dockerfile) | Netty 4.2.4 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
