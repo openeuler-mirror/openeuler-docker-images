@@ -18,6 +18,7 @@ The tag of each `rsyslog` docker image is consist of the version of `rsyslog` an
 
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[8.2602.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/rsyslog/8.2602.0/24.03-lts-sp3/Dockerfile) | rsyslog 8.2602.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 |[8.2504.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/rsyslog/8.2504.0/24.03-lts-sp1/Dockerfile)| rsyslog 8.2504.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
