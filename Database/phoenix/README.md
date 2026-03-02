@@ -16,6 +16,7 @@ For more information about phoenix, please visit [https://phoenix.apache.org/](h
 The tag of each phoenix docker image is consist of the version of phoenix and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[5.3.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/phoenix/5.3.0/24.03-lts-sp3/Dockerfile) | phoenix 5.3.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 |[5.2.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/phoenix/5.2.1/24.03-lts-sp1/Dockerfile)| phoenix 5.2.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
