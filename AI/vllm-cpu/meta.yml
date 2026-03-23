@@ -41,3 +41,5 @@
 
 0.16.0-oe2403sp3:
   path: 0.16.0/24.03-lts-sp3/Dockerfile
+0.18.0-oe2403sp3:
+  path: 0.18.0/24.03-lts-sp3/Dockerfile
