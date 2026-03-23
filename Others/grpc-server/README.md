@@ -19,6 +19,7 @@ Learn more about Grpc Server on [Grpc Website](https://grpc.io/)⁠.
 The tag of each `grpc-server` docker image is consist of the version of `grpc-server` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[1.80.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/grpc-server/1.80.0/24.03-lts-sp3/Dockerfile) | grpc 1.80.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 |[1.72.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/grpc-server/1.72.0/24.03-lts-sp1/Dockerfile)| Grpc Server 1.72.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
