@@ -17,6 +17,7 @@ Learn more about cubefs, please visit [https://www.cubefs.io/](https://www.cubef
 The tag of each `cubefs` docker image is consist of the version of `cubefs` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[3.5.3-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/cubefs/3.5.3/24.03-lts-sp3/Dockerfile) | cubefs 3.5.3 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 |[3.5.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/cubefs/3.5.0/24.03-lts-sp1/Dockerfile)| Cubefs 3.5.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
