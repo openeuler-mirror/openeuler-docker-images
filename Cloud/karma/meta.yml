@@ -8,3 +8,5 @@
   path: 0.120/22.03-lts-sp1/Dockerfile
 0.121-oe2403lts:
   path: Cloud/karma/0.121/24.03-lts/Dockerfile
+0.128-oe2403sp3:
+  path: 0.128/24.03-lts-sp3/Dockerfile
