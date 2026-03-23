@@ -18,6 +18,7 @@ The tag of each `keepalived` docker image is consist of the version of `keepaliv
 
 | Tag                                                                                                                              | Currently                                     |   Architectures  |
 |----------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------|------------------|
+|[2.3.4-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/keepalived/2.3.4/24.03-lts-sp3/Dockerfile) | keepalived 2.3.4 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 | [2.3.3-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/keepalived/2.3.3/24.03-lts-sp1/Dockerfile) | Keepalived 2.3.3 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
