@@ -12,3 +12,5 @@
   path: Others/next/16.1.1/24.03-lts-sp1/Dockerfile
 16.1.6-oe2403sp3:
   path: 16.1.6/24.03-lts-sp3/Dockerfile
+16.2.1-oe2403sp3:
+  path: 16.2.1/24.03-lts-sp3/Dockerfile
