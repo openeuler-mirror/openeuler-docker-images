@@ -17,6 +17,7 @@ Learn more about etcd at [https://etcd.io/](https://etcd.io/).
 The tag of each `etcd` docker image is consist of the version of `etcd` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[3.6.9-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/etcd/3.6.9/24.03-lts-sp3/Dockerfile) | etcd 3.6.9 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 |[3.6.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/etcd/3.6.0/24.03-lts-sp1/Dockerfile)| Etcd 3.6.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
