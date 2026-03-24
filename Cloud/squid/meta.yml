@@ -10,3 +10,5 @@
   path: 7.3/24.03-lts-sp3/Dockerfile
 7.4-oe2403sp3:
   path: 7.4/24.03-lts-sp3/Dockerfile
+7.5-oe2403sp3:
+  path: 7.5/24.03-lts-sp3/Dockerfile
