@@ -18,6 +18,7 @@ The tag of each `containerd` docker image is consist of the version of `containe
 
 | Tag                                                                                                                                | Currently                                   | Architectures |
 |------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------|---------------|
+|[2.2.2-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/containerd/2.2.2/24.03-lts-sp3/Dockerfile) | containerd 2.2.2 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 | [2.1.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/containerd/2.1.1/24.03-lts-sp1/Dockerfile) | containerd 2.1.1 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 
 # Usage
