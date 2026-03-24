@@ -18,6 +18,7 @@ Learn more on [karma website](https://karma-dashboard.io).
 The tag of each karma docker image is consist of the version of karma and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[0.128-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/karma/0.128/24.03-lts-sp3/Dockerfile) | karma 0.128 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 |[0.120-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/karma/0.120/24.03-lts/Dockerfile)| Karma 0.120 on openEuler 24.03-LTS | amd64, arm64 |
 
 
