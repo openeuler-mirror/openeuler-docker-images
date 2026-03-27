@@ -26,3 +26,5 @@
   path: Cloud/mimir/2.16.0/24.03-lts-sp1/Dockerfile
 2.17.0-oe2403sp1:
   path: 2.17.0/24.03-lts-sp1/Dockerfile
+3.0.4-oe2403sp3:
+  path: 3.0.4/24.03-lts-sp3/Dockerfile
