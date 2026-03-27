@@ -17,6 +17,7 @@ Learn more about Hyperscan on [Hyperscan Website](https://intel.github.io/hypers
 The tag of each `hyperscan` docker image is consist of the version of `hyperscan` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[5.4.2-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/hyperscan/5.4.2/24.03-lts-sp3/Dockerfile) | hyperscan 5.4.2 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 |[5.4.2-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/hyperscan/5.4.2/24.03-lts-sp1/Dockerfile)| Hyperscan 5.4.2 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
