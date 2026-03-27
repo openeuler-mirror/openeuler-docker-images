@@ -18,6 +18,7 @@ The tag of each `apr-util` docker image is consist of the version of `apr-util` 
 
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[1.6.3-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/apr-util/1.6.3/24.03-lts-sp3/Dockerfile) | apr 1.6.3 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 |[1.6.3-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/apr-util/1.6.3/24.03-lts-sp1/Dockerfile)| APR-util 1.6.3 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
