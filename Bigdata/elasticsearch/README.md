@@ -16,6 +16,7 @@ Learn more on [elasticsearch website](https://www.elastic.co/products/elasticsea
 The tag of each elasticsearch docker image is consist of the version of elasticsearch and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[9.3.2-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/elasticsearch/9.3.2/24.03-lts-sp3/Dockerfile) | elasticsearch 9.3.2 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 |[9.2.1-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/elasticsearch/9.2.1/24.03-lts-sp2/Dockerfile) | elasticsearch 9.2.1 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[9.2.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/elasticsearch/9.2.0/24.03-lts-sp2/Dockerfile) | elasticsearch 9.2.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[9.1.3-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/elasticsearch/9.1.3/24.03-lts-sp1/Dockerfile) | elasticsearch 9.1.3 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
