@@ -8,7 +8,7 @@ RUN dnf update -y \
     && dnf clean all \
     && rm -rf /var/cache/dnf/*
 
-ARG MAVEN_VERSION=3.9.12
+ARG MAVEN_VERSION=3.9.14
 RUN wget https://dlcdn.apache.org/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz \
     && mkdir -p /usr/local/maven \
     && tar -zxvf apache-maven-${MAVEN_VERSION}-bin.tar.gz -C /usr/local/maven --strip-components=1
