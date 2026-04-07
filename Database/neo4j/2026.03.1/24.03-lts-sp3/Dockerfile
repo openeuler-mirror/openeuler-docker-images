@@ -4,7 +4,7 @@
 ARG BASE=openeuler/openeuler:24.03-lts-sp3
 FROM $BASE
 ARG VERSION=2026.03.1
-ARG MAVEN_VERSION=3.9.1
+ARG MAVEN_VERSION=3.9.14
 
 RUN yum install -y java-21-openjdk java-21-openjdk-devel git && \
     curl -fSL -o apache-maven.tar.gz https://repo.huaweicloud.com/apache/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz && \
