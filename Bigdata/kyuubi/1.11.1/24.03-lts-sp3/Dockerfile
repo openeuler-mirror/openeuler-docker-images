@@ -4,11 +4,11 @@ FROM ${BASE} as builder
 ARG TARGETARCH
 ARG BUILDARCH
 
-ENV JDK_VERSION=11.0.28_6
+ENV JDK_VERSION=11.0.30_7
+ENV JAVA_HOME=/usr/local/11.0.30_7
 ENV KYUUBI_VERSION=1.11.1
 ENV KYUUBI_HOME=/opt/kyuubi
 ENV SPARK_VERSION=3.4.2
-ENV JAVA_HOME=/usr/local/jdk-11.0.28+6
 
 RUN dnf install -y wget procps && \
     dnf clean all
