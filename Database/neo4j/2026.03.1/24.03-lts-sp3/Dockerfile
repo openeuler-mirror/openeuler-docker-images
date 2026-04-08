@@ -17,6 +17,7 @@ RUN git clone -b ${VERSION} https://github.com/neo4j/neo4j.git && \
     cd neo4j && \
     mvn clean install -T4C -DskipTests && \
     cd /neo4j/packaging/standalone/target/ && \
+    ls -la && \
     tar -xvf neo4j-community-${VERSION}-unix.tar.gz
 ENV NEO4J_HOME=/neo4j/packaging/standalone/target/neo4j-community-${VERSION}
 
