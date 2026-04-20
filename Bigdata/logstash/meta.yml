@@ -6,3 +6,5 @@
   path: 9.2.0/24.03-lts-sp2/Dockerfile
 9.2.1-oe2403sp2:
   path: 9.2.1/24.03-lts-sp2/Dockerfile
+9.3.3-oe2403sp3:
+  path: 9.3.3/24.03-lts-sp3/Dockerfile
