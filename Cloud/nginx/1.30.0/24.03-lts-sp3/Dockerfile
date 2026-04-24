@@ -6,6 +6,7 @@ ARG VERSION=1.30.0
 
 RUN yum -y install gcc openssl-devel make libxml2-devel libxslt-devel gd-devel perl-devel\
     GeoIP-devel gperftools-devel && \
+    pcre pcre-devel && \
     yum clean all && \
     curl -o /tmp/nginx.tar.gz https://nginx.org/download/nginx-${VERSION}.tar.gz && \
     tar -zxvf /tmp/nginx.tar.gz -C /tmp && \
