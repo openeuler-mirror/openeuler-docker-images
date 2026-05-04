@@ -16,6 +16,7 @@ Learn more on [hbase website](https://hbase.apache.org/).
 The tag of each hbase docker image is consist of the version of hbase and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[2.6.5-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/hbase/2.6.5/24.03-lts-sp3/Dockerfile) | hbase 2.6.5 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 |[2.6.2-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/hbase/2.6.2/24.03-lts-sp1/Dockerfile)| Apache HBase 2.6.2 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
