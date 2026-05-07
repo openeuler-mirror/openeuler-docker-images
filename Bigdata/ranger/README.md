@@ -17,6 +17,7 @@ For more information about ranger, please visit [https://ranger.fm/](https://ran
 The tag of each ranger docker image is consist of the version of ranger and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[1.9.4-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/ranger/1.9.4/24.03-lts-sp3/Dockerfile) | ranger 1.9.4 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 |[1.9.4-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/ranger/1.9.4/24.03-lts-sp1/Dockerfile)| Apache ranger 1.9.4 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
