@@ -16,6 +16,7 @@ For more information about thrift, please visit [https://github.com/apache/thrif
 The tag of each thrift docker image is consist of the version of thrift and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[0.23.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/thrift/0.23.0/24.03-lts-sp3/Dockerfile) | thrift 0.23.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 |[0.22.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/thrift/0.22.0/24.03-lts-sp1/Dockerfile)| Thrift 0.22.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
