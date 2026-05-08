@@ -12,7 +12,7 @@ RUN dnf update -y \
 
 WORKDIR /opt
 
-RUN wget https://mirrors.ustc.edu.cn/gnu/gcc/gcc-${VERSION}/gcc-${VERSION}.tar.gz \
+RUN wget https://mirrors.tuna.tsinghua.edu.cn/gnu/gcc/gcc-${VERSION}/gcc-${VERSION}.tar.gz \
     && tar -zxvf gcc-${VERSION}.tar.gz \
     && rm -f gcc-${VERSION}.tar.gz
 
