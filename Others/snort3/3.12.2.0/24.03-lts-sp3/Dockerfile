@@ -8,7 +8,7 @@ RUN yum install -y git gcc cmake g++ libtool pkgconfig autoconf automake \
         luajit-devel openssl-devel xz-devel && \
     yum clean all
 
-RUN git clone -b v3.0.21 https://github.com/snort3/libdaq.git && \
+RUN git clone -b v3.0.27 https://github.com/snort3/libdaq.git && \
     cd libdaq && \
     ./bootstrap && ./configure && \
     make -j $(nproc) && make install
