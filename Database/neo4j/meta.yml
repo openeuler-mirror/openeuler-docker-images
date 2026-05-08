@@ -4,3 +4,5 @@
   path: 2025.07.0/24.03-lts-sp2/Dockerfile
 2025.08.0-oe2403sp2:
   path: 2025.08.0/24.03-lts-sp2/Dockerfile
+2026.03.1-oe2403sp3:
+  path: 2026.03.1/24.03-lts-sp3/Dockerfile

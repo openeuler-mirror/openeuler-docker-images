@@ -6,3 +6,5 @@
   path: Cloud/containerd/2.2.1/24.03-lts-sp1/Dockerfile
 2.2.2-oe2403sp3:
   path: 2.2.2/24.03-lts-sp3/Dockerfile
+2.3.0-oe2403sp3:
+  path: 2.3.0/24.03-lts-sp3/Dockerfile
