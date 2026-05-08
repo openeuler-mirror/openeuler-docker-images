@@ -2,7 +2,7 @@ ARG BASE=openeuler/openeuler:24.03-lts-sp3
 FROM ${BASE} as BUILDER
 ARG VERSION=5.0.1
 ARG TARGETARCH
-ARG JDK_VERSION=17.0.17_10
+ARG JDK_VERSION=17.0.19_10
 
 RUN dnf update -y \
     && dnf install -y git maven \
