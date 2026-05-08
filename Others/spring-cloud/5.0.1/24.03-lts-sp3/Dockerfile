@@ -23,7 +23,8 @@ RUN if [ "$TARGETARCH" = "amd64" ]; then \
 ENV JAVA_HOME=/jdk-17.0.19+10
 ENV PATH=${JAVA_HOME}/bin:$PATH
 
-RUN git clone -b v${VERSION} --depth 1 https://github.com/spring-cloud/spring-cloud-commons \
+RUN echo $PATH \
+    && git clone -b v${VERSION} --depth 1 https://github.com/spring-cloud/spring-cloud-commons \
     && cd spring-cloud-commons \
     && ./mvnw clean install -Dgpg.skip=true
 
