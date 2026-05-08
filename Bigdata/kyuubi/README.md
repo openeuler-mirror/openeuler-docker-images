@@ -17,6 +17,7 @@ Learn more on [Kyuubi website](https://kyuubi.apache.org/).
 The tag of each kyuubi docker image is consist of the version of kyuubi and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[1.11.1-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kyuubi/1.11.1/24.03-lts-sp3/Dockerfile) | kyuubi 1.11.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 |[1.10.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kyuubi/1.10.0/24.03-lts-sp1/Dockerfile)| kyuubi 1.10.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 |[1.10.2-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kyuubi/1.10.2/24.03-lts-sp2/Dockerfile)| kyuubi 1.10.2 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 

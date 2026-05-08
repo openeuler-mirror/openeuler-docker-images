@@ -24,6 +24,7 @@ Learn more about Grafana Mimir on the [https://grafana.com/docs/mimir/latest/).
 The tag of each `mimir` docker image is consist of the version of `mimir` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[3.0.6-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/mimir/3.0.6/24.03-lts-sp3/Dockerfile) | mimir 3.0.6 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 |[3.0.4-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/mimir/3.0.4/24.03-lts-sp3/Dockerfile) | mimir 3.0.4 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 |[2.11.0-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/mimir/2.11.0/22.03-lts-sp3/Dockerfile)| Grafana mimir 2.11.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
 |[2.13.0-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/mimir/2.13.0/22.03-lts-sp3/Dockerfile)| Grafana mimir 2.13.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
