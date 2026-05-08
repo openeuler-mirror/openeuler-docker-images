@@ -20,10 +20,10 @@ WORKDIR /opt/gcc-${VERSION}
 
 RUN mkdir -p gcc-deps \
     && cd gcc-deps \
-    && wget https://mirrors.ustc.edu.cn/gnu/gmp/gmp-6.2.1.tar.bz2 \
-    && wget https://mirrors.ustc.edu.cn/gnu/mpfr/mpfr-4.1.0.tar.bz2 \
-    && wget https://mirrors.ustc.edu.cn/gnu/mpc/mpc-1.2.1.tar.gz \
-    && wget https://mirrors.ustc.edu.cn/gnu/gettext/gettext-0.22.tar.gz \
+    && wget https://mirrors.tuna.tsinghua.edu.cn/gnu/gmp/gmp-6.2.1.tar.bz2 \
+    && wget https://mirrors.tuna.tsinghua.edu.cn/gnu/mpfr/mpfr-4.1.0.tar.bz2 \
+    && wget https://mirrors.tuna.tsinghua.edu.cn/gnu/mpc/mpc-1.2.1.tar.gz \
+    && wget https://mirrors.tuna.tsinghua.edu.cn/gnu/gettext/gettext-0.22.tar.gz \
     && wget https://libisl.sourceforge.io/isl-0.24.tar.bz2 \
     && ln -s gmp-6.2.1 ../gmp \
     && ln -s mpfr-4.1.0 ../mpfr \
