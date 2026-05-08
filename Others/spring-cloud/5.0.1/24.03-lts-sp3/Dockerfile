@@ -2,7 +2,6 @@ ARG BASE=openeuler/openeuler:24.03-lts-sp3
 FROM ${BASE} as BUILDER
 ARG VERSION=5.0.1
 ARG TARGETARCH
-ARG BUILDARCH
 ARG JDK_VERSION=17.0.17_10
 
 RUN dnf update -y \
@@ -12,14 +11,14 @@ RUN dnf update -y \
 
 RUN dnf install -y wget
 RUN if [ "$TARGETARCH" = "amd64" ]; then \
-      BUILDARCH="x64"; \
+      JDKARCH="x64"; \
     elif [ "$TARGETARCH" = "arm64" ]; then \
-      BUILDARCH="aarch64"; \
+      JDKARCH="aarch64"; \
     fi \
     && cd / \
-    && wget https://mirrors.tuna.tsinghua.edu.cn/Adoptium/17/jdk/${BUILDARCH}/linux/OpenJDK17U-jdk_${BUILDARCH}_linux_hotspot_${JDK_VERSION}.tar.gz \
-    && tar -zxvf OpenJDK17U-jdk_${BUILDARCH}_linux_hotspot_${JDK_VERSION}.tar.gz \
-    && rm -f OpenJDK17U-jdk_${BUILDARCH}_linux_hotspot_${JDK_VERSION}.tar.gz
+    && wget https://mirrors.tuna.tsinghua.edu.cn/Adoptium/17/jdk/${JDKARCH}/linux/OpenJDK17U-jdk_${JDKARCH}_linux_hotspot_${JDK_VERSION}.tar.gz \
+    && tar -zxvf OpenJDK17U-jdk_${JDKARCH}_linux_hotspot_${JDK_VERSION}.tar.gz \
+    && rm -f OpenJDK17U-jdk_${JDKARCH}_linux_hotspot_${JDK_VERSION}.tar.gz
 
 ENV JAVA_HOME=/jdk-17.0.17+10
 ENV PATH=${JAVA_HOME}/bin:$PATH
