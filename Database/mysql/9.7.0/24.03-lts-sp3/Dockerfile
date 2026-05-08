@@ -6,7 +6,7 @@ ARG VERSION=9.7.0
 ARG GOSU_VERSION=1.17
 
 RUN yum update -y && \
-    yum install -y git wget g++ make ncurses-devel cmake openssl openssl-devel libtirpc-devel rpcgen bison m4 && \
+    yum install -y git wget g++ make ncurses-devel cmake openssl openssl-devel libtirpc-devel rpcgen bison m4 libcurl-devel && \
     mkdir -p /docker-entrypoint-initdb.d && \
     wget -O /usr/local/bin/gosu.asc "https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-${TARGETARCH}.asc" && \
 	wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-${TARGETARCH}" && \
