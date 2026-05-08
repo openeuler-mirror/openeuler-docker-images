@@ -15,6 +15,8 @@ ENV PATH=$PATH:/usr/local/maven/bin
 
 RUN git clone -b ${VERSION} https://github.com/neo4j/neo4j.git && \
     cd neo4j && \
+    sed -i 's|public/build-resources/scalafmt3.conf|build-resources/scalafmt3.conf|g' \
+        community/cypher/front-end/cypher-macros-scala3/pom.xml && \
     mvn versions:set -DnewVersion=${VERSION} -DgenerateBackupPoms=false && \
     mvn clean install -T4C -DskipTests && \
     cd /neo4j/packaging/standalone/target/ && \
