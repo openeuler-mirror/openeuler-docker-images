@@ -6,6 +6,7 @@ RUN dnf update -y \
     && dnf install -y wget maven gcc-c++ cmake glib2-devel c-ares-devel libgcrypt-devel  \
     qt6-qtbase-devel qt6-qtdeclarative-devel qt6-qttools-devel  \
     qt6-qt5compat-devel speexdsp-devel xz flex libpcap-devel libcap \
+    libxml2-devel \
     && dnf clean all \
     && rm -rf /var/cache/dnf
 
