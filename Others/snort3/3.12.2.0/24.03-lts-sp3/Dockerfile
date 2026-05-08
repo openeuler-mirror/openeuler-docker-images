@@ -11,7 +11,7 @@ RUN yum install -y git gcc cmake g++ libtool pkgconfig autoconf automake \
 RUN git clone -b v3.0.21 https://github.com/snort3/libdaq.git && \
     cd libdaq && \
     ./bootstrap && ./configure && \
-    make -j$nproc && make install
+    make -j $(nproc) && make install
 
 ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/daq
 RUN git clone -b ${VERSION} https://github.com/snort3/snort3.git && \
