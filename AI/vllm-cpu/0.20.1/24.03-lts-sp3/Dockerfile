@@ -36,7 +36,7 @@ RUN pip install --extra-index https://download.pytorch.org/whl/cpu/ -r requireme
 
 FROM base AS build 
 
-RUN pip install -r requirements/cpu-build.txt
+RUN pip install -r requirements/build/cpu.txt
 
 RUN VLLM_TARGET_DEVICE=cpu python3 setup.py bdist_wheel 
 
