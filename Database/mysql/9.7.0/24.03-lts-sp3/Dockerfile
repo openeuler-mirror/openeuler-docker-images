@@ -21,7 +21,8 @@ RUN yum update -y && \
         -DCMAKE_INSTALL_PREFIX=/usr/local/mysql/server \
         -DMYSQL_DATADIR=/usr/local/mysql/data \
         -DMYSQL_TCP_PORT=3306 \
-        -DDOWNLOAD_BOOST=0 && \
+        -DDOWNLOAD_BOOST=1 \
+        -DWITH_BOOST=/tmp/boost && \
     make -j "$(nproc)" && make install && \
     rm -f mysql.tar.gz && \
     rm -rf /mysql && \
