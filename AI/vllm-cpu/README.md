@@ -33,6 +33,7 @@ The tag of each vLLM docker image is consist of the version of vLLM and the vers
 
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[0.20.1-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm-cpu/0.20.1/24.03-lts-sp3/Dockerfile) | vllm 0.20.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 |[0.18.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm-cpu/0.18.0/24.03-lts-sp3/Dockerfile) | vllm 0.18.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 |[0.16.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm-cpu/0.16.0/24.03-lts-sp3/Dockerfile) | vllm 0.16.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 |[0.6.3-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm-cpu/0.6.3/24.03-lts/Dockerfile)| vLLM 0.6.3 on openEuler 24.03-LTS | amd64 |
