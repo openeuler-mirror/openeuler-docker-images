@@ -1,0 +1,112 @@
+name: Gluten
+category: bigdata
+description: Gluten是一个基于Apache Arrow的开源大数据加速引擎，提供了高性能的SQL查询和数据处理能力，适用于大规模数据分析和处理场景。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  Gluten镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.6.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/gluten/1.6.0/24.03-lts-sp3/Dockerfile) | Gluten 1.6.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+  
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/gluten:{Tag}
+  ```
+
+usage: |
+  镜像内的构建产物位于 `/opt/gluten/dist`：
+
+  - JAR 文件：/opt/gluten/dist/jars
+  - 原生库：/opt/gluten/dist/lib
+
+  拉取镜像（示例）：
+  ```
+  docker pull my-registry/gluten:1.6.0
+  ```
+
+  列出镜像内的产物：
+  ```
+  docker run --rm my-registry/gluten:1.6.0 bash -c "find /opt/gluten/dist -type f -maxdepth 3 -print"
+  ```
+
+  将产物提取到宿主机：
+  ```
+  docker create --name tmp my-registry/gluten:1.6.0
+  docker cp tmp:/opt/gluten/dist ./gluten-dist
+  docker rm -v tmp
+  ```
+
+  在 Spark 集群上的使用（生产环境建议）：
+
+  1. 节点部署（将产物分发到每个节点）
+     - 将 JAR 复制到 `$SPARK_HOME/jars`
+     - 将原生库放置到例如 `/opt/gluten/lib`，并在运行时设置：
+       ```
+       export LD_LIBRARY_PATH=/opt/gluten/lib:$LD_LIBRARY_PATH
+       ```
+
+  2. 提交作业时指定 JAR（示例）：
+  ```
+  spark-submit \
+    --class <MainClass> \
+    --master yarn \
+    --deploy-mode cluster \
+    --jars /opt/gluten/dist/jars/gluten.jar,/opt/gluten/dist/jars/velox-native.jar \
+    --conf spark.driver.extraClassPath=/opt/gluten/dist/jars/gluten.jar \
+    --conf spark.executor.extraClassPath=/opt/gluten/dist/jars/gluten.jar \
+    --conf spark.gluten.sql.columnar.enable=true \
+    your-app.jar
+  ```
+
+  在 Kubernetes 上的使用（推荐：initContainer + 共享卷）：
+
+  使用 `initContainer` 将产物从本镜像拷贝到共享卷，主容器挂载该卷并设置 `LD_LIBRARY_PATH`。示例片段：
+  ```yaml
+  initContainers:
+    - name: copy-gluten
+      image: my-registry/gluten:1.6.0
+      command: ["sh","-c","cp -r /opt/gluten/dist /artifacts && chown -R 1000:1000 /artifacts"]
+      volumeMounts:
+        - name: artifacts
+          mountPath: /artifacts
+
+  containers:
+    - name: app
+      image: my-registry/your-app:latest
+      volumeMounts:
+        - name: artifacts
+          mountPath: /opt/gluten
+      env:
+        - name: LD_LIBRARY_PATH
+          value: /opt/gluten/dist/lib:$LD_LIBRARY_PATH
+
+  volumes:
+    - name: artifacts
+      emptyDir: {}
+  ```
+
+license: Apache-2.0 license
+similar_packages:
+  - name: hadoop
+    description: Hadoop是一个开源的分布式计算平台，提供了分布式存储和分布式计算的能力，适用于大规模数据处理和分析。
+    homepage: https://hadoop.apache.org/
+  - name: spark
+    description: Spark是一个快速、通用的大数据处理引擎，提供了内存计算和分布式计算的能力，适用于大规模数据处理和分析。
+    homepage: https://spark.apache.org/
+dependency:
+  - openjdk
+
+homepage: https://github.com/apache/gluten
+upstream:
+  backend: GitHub
+  version_url: apache/gluten
+  version_prefix: v
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM
