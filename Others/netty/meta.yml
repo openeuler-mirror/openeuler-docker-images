@@ -10,3 +10,5 @@
   path: 4.2.10/24.03-lts-sp3/Dockerfile
 4.2.12-oe2403sp3:
   path: 4.2.12/24.03-lts-sp3/Dockerfile
+4.2.13-oe2403sp3:
+  path: 4.2.13/24.03-lts-sp3/Dockerfile
