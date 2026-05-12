@@ -30,7 +30,8 @@ RUN mvn -B -T 2C clean install package \
     -DskipTests \
     -Dmaven.test.skip=true \
     -Dfindbugs.skip=true \
-    -Dcheckstyle.skip=true
+    -Dcheckstyle.skip=true \
+    -Dmaven.repo.local=/tmp/maven-repo
 
 FROM ${BASE}
 
