@@ -48,3 +48,19 @@ usage: |
     docker exec -it my-ambari /bin/bash
     ```
 
+license: Apache-2.0
+ 	 similar_packages:
+ 	   - Apache Hudi: 开源数据湖平台，提供事务性数据湖功能，支持增量数据处理、近实时分析和流式摄取。
+ 	   - Delta Lake: 开源存储层，为数据湖带来 ACID 事务、可扩展的元数据处理和统一的批流处理能力。
+ 	   - Apache Paimon: 流式数据湖平台，提供高性能的流式数据摄取和查询能力，支持 Flink、Spark 等引擎。
+ 	 
+ 	 dependency:
+ 	   - openjdk
+ 	 
+ 	 homepage: https://github.com/apache/ambari
+ 	 upstream:
+ 	   backend: GitHub
+ 	   version_url: apache/ambari
+ 	   version_suffix: release-
+ 	   version_filter: alpha;rc;candidate
+ 	   version_scheme: RPM
