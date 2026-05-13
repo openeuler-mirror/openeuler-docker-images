@@ -1,0 +1,44 @@
+name: specfem3d
+category: HPC
+description: SPECFEM3D是一款模拟地震波传播的开源软件，能够模拟声学（流体）、弹性（固体）、声学/弹性耦合或孔隙弹性地震波在任何类型的六面体网格（结构化或非结构化）中的传播。它可以模拟地震波在沉积盆地或其他区域地质模型中的传播，也可用于无损检测或海洋声学研究。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  specfem3d镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[4.1.1-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/specfem3d/4.1.1/24.03-lts-sp3/Dockerfile)| specfem3d 4.1.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/specfem3d:{Tag}
+  ```
+
+usage: |
+  - 启动specfem3d实例
+
+    ```
+    docker run -it --name specfem3d openeuler/specfem3d:{Tag}
+    ```
+    `openeuler/specfem3d`镜像用于验证上游specfem3d版本和openEuler的集成。
+  
+
+license: GPL-3.0 license
+similar_packages:
+  - SW4: 另一款三维地震波模拟软件
+dependency:
+  - openmpi
+  - gfortran
+
+homepage: https://github.com/SPECFEM/specfem3d
+upstream:
+  version_url: SPECFEM/specfem3d
+  version_prefix: v
+  version_filter: null
+  backend: GitHub
+  version_scheme: semantic
