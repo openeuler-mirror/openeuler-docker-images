@@ -1,0 +1,62 @@
+name: auron
+category: Bigdata
+description: Auron 是大数据引擎（如 Spark、Flink）的加速器，利用基于 Rust 的原生向量化执行来加速查询处理。它将分布式计算框架的优化物理计划映射到 Apache DataFusion 的执行计划中，进行原生计算，消除 JVM 开销，实现可预测的高性能。支持 TPC-DS/TPC-H 全部查询场景，相比原生 Spark 可提升约 2 倍性能并节省约 50% 集群资源。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  auron镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[7.0.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/auron/7.0.0/24.03-lts-sp3/Dockerfile) | auron 7.0.0 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/auron:{Tag}
+  ```
+
+usage: |
+  将 Auron 与 Apache Spark 配合使用：
+
+  1. 从镜像中提取 Auron JAR 到 Spark 的 classpath：
+  ```
+  docker run --rm openeuler/auron:7.0.0-oe2403sp3 cat /opt/auron/auron-spark_2.12-release-linux-x86_64-7.0.0-incubating.jar > $SPARK_HOME/jars/auron-spark.jar
+  ```
+
+  2. 在 `$SPARK_HOME/conf/spark-defaults.conf` 中添加以下配置：
+  ```properties
+  spark.auron.enable true
+  spark.sql.extensions org.apache.spark.sql.auron.AuronSparkSessionExtension
+  spark.shuffle.manager org.apache.spark.sql.execution.auron.shuffle.AuronShuffleManager
+  spark.memory.offHeap.enabled false
+
+  spark.executor.memory 4g
+  spark.executor.memoryOverhead 4096
+  ```
+
+  3. 使用 spark-sql 提交查询：
+  ```
+  spark-sql -f query.sql
+  ```
+
+  更多信息请访问 [Apache Auron 官方网站](https://auron.apache.org/)。
+
+license: Apache-2.0
+similar_packages:
+  - gluten: 基于 Velox 的 Spark 原生执行引擎加速器
+  - datafusion: Apache Arrow 生态的查询执行引擎
+
+dependency:
+  - openjdk
+
+homepage: https://github.com/apache/auron
+upstream:
+  backend: GitHub
+  version_url: apache/auron
+  version_suffix: v
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM
