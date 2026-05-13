@@ -1,0 +1,57 @@
+name: hudi
+category: Bigdata
+description: Apache Hudi 是一个开放的数据湖仓平台，基于高性能开放表格式构建，用于在多云数据环境中摄取、索引、存储、服务、转换和管理数据。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  hudi镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.1.1-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/hudi/1.1.1/24.03-lts-sp3/Dockerfile) | hudi 1.1.1 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```bash
+  docker pull openeuler/hudi:{Tag}
+  ```
+
+usage: |
+  启动 Hudi CLI 交互式命令行：
+
+  ```bash
+  docker run -it openeuler/hudi:1.1.1-oe2403sp3
+  ```
+
+  进入 CLI 后，连接到 Hudi 表：
+
+  ```
+  connect --path /path/to/hudi/table
+  ```
+
+  如需进入 bash 而非直接启动 CLI：
+
+  ```bash
+  docker run -it --entrypoint /bin/bash openeuler/hudi:1.1.1-oe2403sp3
+  ```
+
+  更多用法请参考 Hudi CLI 官方文档：https://hudi.apache.org/docs/cli/。
+
+license: Apache-2.0
+similar_packages:
+  - Apache Iceberg: 开放表格式的数据湖方案，支持 ACID 事务和快照隔离
+  - Delta Lake: 基于 Parquet 的开放格式存储层，提供 ACID 事务和版本控制
+
+dependency:
+  - Spark 3.5.5
+
+homepage: https://github.com/apache/hudi
+upstream:
+  backend: GitHub
+  version_url: apache/hudi
+  version_suffix: release-
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM
