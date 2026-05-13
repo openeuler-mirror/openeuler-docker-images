@@ -17,7 +17,7 @@ Learn more on [LanceDB website](https://lancedb.com/).
 The tag of each lancedb docker image is consist of the version of lancedb and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
-|[0.27.2-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/lancedb/0.27.2/24.03-lts-sp3/Dockerfile) | lancedb 0.27.2 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+|[0.30.2-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/lancedb/0.30.2/24.03-lts-sp3/Dockerfile) | lancedb 0.30.2 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 
 # Usage

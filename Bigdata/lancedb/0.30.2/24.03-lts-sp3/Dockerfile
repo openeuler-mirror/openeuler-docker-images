@@ -2,12 +2,12 @@ ARG BASE=openeuler/openeuler:24.03-lts-sp3
 FROM ${BASE}
 
 ARG TARGETARCH
-ARG LANCEDB_VERSION=0.27.2
+ARG LANCEDB_VERSION=0.30.2
 
 RUN yum install -y python3 python3-pip && \
     yum clean all
 
-RUN pip3 install --no-cache-dir lancedb==${LANCEDB_VERSION}
+RUN pip3 install --no-cache-dir -i https://pypi.tuna.tsinghua.edu.cn/simple lancedb==${LANCEDB_VERSION}
     
 WORKDIR /workspace
 
