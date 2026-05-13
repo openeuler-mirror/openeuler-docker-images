@@ -17,4 +17,4 @@ WORKDIR /home/ray
 EXPOSE 8265 6379 10001 8000
 
 ENTRYPOINT ["ray"]
-CMD ["start", "--head", "--dashboard-host", "0.0.0.0"]
+CMD ["start", "--head", "--dashboard-host", "0.0.0.0", "--block"]
