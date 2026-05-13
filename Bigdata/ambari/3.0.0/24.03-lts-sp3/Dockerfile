@@ -25,7 +25,7 @@ RUN wget -O /tmp/ambari.tar.gz "${AMBARI_URL}" && \
 RUN echo '{"registry":"https://registry.bower.io","strict-ssl":false}' > /opt/ambari-src/ambari-admin/src/main/resources/ui/admin-web/.bowerrc
 
 WORKDIR /opt/ambari-src
-RUN mvn -B -T 2C clean install package \
+RUN mvn -B clean install package \
     -Drat.skip=true \
     -DskipTests \
     -Dmaven.test.skip=true \
