@@ -8,7 +8,7 @@ RUN dnf install -y java-17-openjdk-devel git curl gcc-c++ make && \
 
 ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
 
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain stable
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain nightly
 ENV PATH="/root/.cargo/bin:${PATH}"
 
 RUN curl -fSL -o apache-maven.tar.gz https://repo.huaweicloud.com/apache/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz && \
@@ -20,6 +20,7 @@ ENV PATH="/usr/local/maven/bin:${PATH}"
 WORKDIR /build
 RUN git clone --depth 1 --branch v${AURON_VERSION} https://github.com/apache/auron.git .
 
+ENV CI=true
 RUN ./auron-build.sh --release --sparkver 3.5 --scalaver 2.12
 
 FROM openeuler/openeuler:24.03-lts-sp3
