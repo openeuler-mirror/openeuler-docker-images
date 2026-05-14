@@ -85,3 +85,4 @@ images:
   llvm: llvm
   splitter: splitter
   mongoose: mongoose
+  libwebp: libwebp
