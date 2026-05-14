@@ -1,0 +1,69 @@
+name: lancedb
+category: Bigdata
+description: LanceDB 是一个开源的无服务器向量数据库，专为快速、可扩展的生产级 AI/ML 应用设计。它基于 Lance 列式格式构建，支持多模态数据存储、向量相似性搜索、全文搜索和 SQL 查询。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  lancedb镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[0.30.2-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/lancedb/0.30.2/24.03-lts-sp3/Dockerfile) | lancedb 0.30.2 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/lancedb:{Tag}
+  ```
+
+usage: |
+  - 启动容器交互式 Python 环境
+    ```
+    docker run -it --name my-lancedb openeuler/lancedb:{Tag}
+    ```
+
+  - 在 Python 脚本中使用 lancedb
+    ```
+    docker run --rm -v $(pwd):/workspace openeuler/lancedb:{Tag} python3 your_script.py
+    ```
+    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。
+
+  - 启动参数
+
+    |    Parameter   |  Description  |
+    |----------------|---------------|
+    | -v /path/to/data:/workspace | 挂载本地数据目录持久化存储 |
+    | -v /path/to/scripts:/workspace | 挂载本地 Python 脚本目录 |
+
+  - 容器测试
+
+    查看运行日志
+    ```
+    docker logs -f my-lancedb
+    ```
+
+    使用shell交互
+    ```
+    docker exec -it my-lancedb /bin/bash
+    ```
+
+license: Apache-2.0
+similar_packages:
+  - Milvus: 开源分布式向量数据库，支持多种索引类型和混合搜索。
+  - Qdrant: 高性能向量数据库和搜索引擎，支持丰富的过滤和推荐功能。
+  - Weaviate: 开源向量数据库，内置向量化和 AI 能力。
+  - Chroma: AI 原生的开源嵌入数据库，提供简洁的 Python API。
+
+dependency:
+  - python3
+
+homepage: https://github.com/lancedb/lancedb
+upstream:
+  backend: GitHub
+  version_url: lancedb/lancedb
+  version_suffix: v
+  version_filter: alpha;rc;candidate;beta
+  version_scheme: RPM
