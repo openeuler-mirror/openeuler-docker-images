@@ -99,3 +99,4 @@ images:
   cuda: cuda
   claude-code: claude-code
   opencode: opencode
+  torchvision: torchvision

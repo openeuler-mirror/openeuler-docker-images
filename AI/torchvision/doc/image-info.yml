@@ -1,0 +1,59 @@
+name: torchvision
+category: AI
+description: torchvision 是 PyTorch 的计算机视觉工具库，包含常用数据集、模型架构和常见图像变换功能。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  torchvision镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[0.27.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/torchvision/0.27.0/24.03-lts-sp3/Dockerfile) | torchvision 0.27.0 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/torchvision:{Tag}
+  ```
+
+usage: |
+  - 拉取镜像
+    ```bash
+    docker pull openeuler/torchvision:0.27.0-oe2403sp3
+    ```
+
+  - 启动容器并运行 Python
+    ```bash
+    docker run -it openeuler/torchvision:0.27.0-oe2403sp3 python3
+    ```
+
+  - 在 Python 中使用 torchvision
+    ```python
+    import torch
+    import torchvision
+
+    print(torch.__version__)
+    print(torchvision.__version__)
+    ```
+
+license: BSD-3-Clause
+similar_packages:
+  - OpenCV: 开源计算机视觉库，提供图像处理、视频分析等丰富的视觉算法
+  - TensorFlow: Google 开源的端到端机器学习平台
+  - Pillow: Python 图像处理库，torchvision 的图像后端之一
+
+dependency:
+  - numpy
+  - pillow
+  - torch
+
+homepage: https://github.com/pytorch/vision
+upstream:
+  backend: GitHub
+  version_url: pytorch/vision
+  version_suffix: v
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM
