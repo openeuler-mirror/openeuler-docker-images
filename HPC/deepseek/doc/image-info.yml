@@ -1,0 +1,83 @@
+name: deepseek
+category: hpc
+description: DeepSeek LLM是一个高级语言模型，包含67亿参数，在2万亿token的数据集上从头训练，支持中英文。开源了7B/67B Base和Chat模型供研究社区使用。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  deepseek镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[6712a86bfb7dd25c73383c5ad2eb7a8db540258b-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/deepseek/6712a86bfb7dd25c73383c5ad2eb7a8db540258b/24.03-lts-sp3/Dockerfile) | DeepSeek-LLM 6712a86bfb7dd25c73383c5ad2eb7a8db540258b on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/deepseek:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+    ```
+    docker run -it --rm openeuler/deepseek:{Tag}
+    ```
+    
+  - 文本补全示例
+    ```python
+    import torch
+    from transformers import AutoTokenizer, AutoModelForCausalLM, GenerationConfig
+
+    model_name = "deepseek-ai/deepseek-llm-7b-base"
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
+    model = AutoModelForCausalLM.from_pretrained(model_name, torch_dtype=torch.bfloat16, device_map="auto")
+    model.generation_config = GenerationConfig.from_pretrained(model_name)
+    model.generation_config.pad_token_id = model.generation_config.eos_token_id
+
+    text = "An attention function can be described as mapping a query"
+    inputs = tokenizer(text, return_tensors="pt")
+    outputs = model.generate(**inputs.to(model.device), max_new_tokens=100)
+
+    result = tokenizer.decode(outputs[0], skip_special_tokens=True)
+    print(result)
+    ```
+
+  - 对话补全示例
+    ```python
+    import torch
+    from transformers import AutoTokenizer, AutoModelForCausalLM, GenerationConfig
+
+    model_name = "deepseek-ai/deepseek-llm-7b-chat"
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
+    model = AutoModelForCausalLM.from_pretrained(model_name, torch_dtype=torch.bfloat16, device_map="auto")
+    model.generation_config = GenerationConfig.from_pretrained(model_name)
+    model.generation_config.pad_token_id = model.generation_config.eos_token_id
+
+    messages = [{"role": "user", "content": "Who are you?"}]
+    input_tensor = tokenizer.apply_chat_template(messages, add_generation_prompt=True, return_tensors="pt")
+    outputs = model.generate(input_tensor.to(model.device), max_new_tokens=100)
+
+    result = tokenizer.decode(outputs[0][input_tensor.shape[1]:], skip_special_tokens=True)
+    print(result)
+    ```
+
+license: MIT license (Code), Model License (Model)
+
+similar_packages:
+  - LLaMA: Meta开发的大型语言模型，提供多种规模的预训练模型。
+  - Qwen: 阿里云开发的大型语言模型，支持中英文多任务。
+
+dependency:
+  - python3
+  - pytorch
+  - transformers
+
+homepage: https://github.com/deepseek-ai/DeepSeek-LLM
+upstream:
+  version_url: deepseek-ai/DeepSeek-LLM
+  backend: GitHub
+  version_scheme: RPM
+  version_prefix: 
+  version_filter:
