@@ -1,0 +1,60 @@
+name: rfdiffusion
+category: hpc
+description: RFdiffusion是一种开源的蛋白质结构生成方法，支持基于功能位点（motif）、目标蛋白等条件信息的蛋白质设计。可用于Motif Scaffolding、无条件蛋白生成、对称寡聚体设计、Binder设计等任务。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  rfdiffusion镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.1.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/rfdiffusion/1.1.0/24.03-lts-sp3/Dockerfile) | RFdiffusion 1.1.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/rfdiffusion:{Tag}
+  ```
+
+usage: |
+  **注意：本镜像不包含模型权重文件，需用户自行下载。**
+  
+  下载模型权重：
+  ```bash
+  cd /opt/RFdiffusion/models
+  wget http://files.ipd.uw.edu/pub/RFdiffusion/6f5902ac237024bdd0c176cb93063dc4/Base_ckpt.pt
+  wget http://files.ipd.uw.edu/pub/RFdiffusion/e29311f6f1bf1af907f9ef9f44b8328b/Complex_base_ckpt.pt
+  ```
+
+  - 启动容器
+    ```
+    docker run -it --rm openeuler/rfdiffusion:{Tag}
+    ```
+
+  - 无条件蛋白生成示例
+    ```bash
+    cd /opt/RFdiffusion
+    ./scripts/run_inference.py 'contigmap.contigs=[150-150]' inference.output_prefix=test_outputs/test inference.num_designs=10
+    ```
+
+license: BSD License
+
+similar_packages:
+  - Rosetta: 经典的蛋白质设计与建模软件套件，提供丰富的蛋白质结构和功能预测工具。
+  - AlphaFold: DeepMind开发的蛋白质结构预测工具，主要用于蛋白质三维结构预测。
+
+dependency:
+  - python3
+  - pytorch
+  - se3-transformer
+  - dgl
+
+homepage: https://github.com/RosettaCommons/RFdiffusion
+upstream:
+  version_url: RosettaCommons/RFdiffusion
+  backend: GitHub
+  version_prefix: v
+  version_scheme: RPM
