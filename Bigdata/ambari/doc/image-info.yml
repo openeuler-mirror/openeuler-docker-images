@@ -1,0 +1,66 @@
+name: ambari
+category: bigdata
+description: Apache Ambari 是一个用于部署、管理和监控 Apache Hadoop 集群的工具，提供 RESTful API 和基于浏览器的管理界面，简化集群的配置、管理与监控。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  ambari镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[3.0.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/ambari/3.0.0/24.03-lts-sp3/Dockerfile) | Apache Ambari 3.0.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/ambari:{Tag}
+  ```
+
+usage: |
+  - 启动 Ambari Server 容器
+    ```
+    docker run -d --name my-ambari -p 8080:8080 openeuler/ambari:{Tag}
+    ```
+    容器启动后，通过 `http://localhost:8080` 访问 Ambari Web 管理界面，默认账号 `admin` / `admin`。REST API 在同一端口 `/api/v1/` 路径下。
+
+  - 首次运行需初始化数据库
+    ```
+    docker exec -it my-ambari python3 ambari-server/src/main/python/ambari-server.py setup -s
+    ```
+
+  - 启动参数
+
+    |    Parameter   |  Description  |
+    |----------------|---------------|
+    | -p 8080:8080	 | Ambari Web UI 和 REST API 通过`localhost:8080`访问 |
+    | -v /path/to/config:/etc/ambari-server/conf | 使用本地 Ambari Server 配置文件目录 |
+
+  - 查看运行日志
+    ```
+    docker logs -f my-ambari
+    ```
+
+  - 使用shell交互
+    ```
+    docker exec -it my-ambari /bin/bash
+    ```
+
+license: Apache-2.0
+similar_packages:
+  - Apache Hudi: 开源数据湖平台，提供事务性数据湖功能，支持增量数据处理、近实时分析和流式摄取。
+  - Delta Lake: 开源存储层，为数据湖带来 ACID 事务、可扩展的元数据处理和统一的批流处理能力。
+  - Apache Paimon: 流式数据湖平台，提供高性能的流式数据摄取和查询能力，支持 Flink、Spark 等引擎。
+
+dependency:
+  - openjdk
+
+homepage: https://github.com/apache/ambari
+upstream:
+  backend: GitHub
+  version_url: apache/ambari
+  version_suffix: release-
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM
