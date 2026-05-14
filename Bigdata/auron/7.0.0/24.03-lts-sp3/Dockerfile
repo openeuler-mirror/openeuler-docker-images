@@ -20,7 +20,9 @@ ENV PATH="/usr/local/maven/bin:${PATH}"
 WORKDIR /build
 RUN git clone --depth 1 --branch v${AURON_VERSION} https://github.com/apache/auron.git .
 
-ENV CI=true
+ENV CARGO_PROFILE_RELEASE_LTO=thin \
+    CARGO_PROFILE_RELEASE_CODEGEN_UNITS=4 \
+    CI=true
 RUN ./auron-build.sh --release --sparkver 3.5 --scalaver 2.12
 
 FROM openeuler/openeuler:24.03-lts-sp3
