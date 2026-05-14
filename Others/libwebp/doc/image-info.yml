@@ -1,0 +1,71 @@
+name: libwebp
+category: others
+description: WebP Codec 是一个编解码 WebP 格式图像的库。该软件包包含可供其他程序使用的库以增加 WebP 支持，以及命令行工具 cwebp 和 dwebp 分别用于压缩和解压缩图像。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  libwebp镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.6.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/libwebp/1.6.0/24.03-lts-sp3/Dockerfile) | libwebp 1.6.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/libwebp:{Tag}
+  ```
+
+usage: |
+  - 使用 cwebp 将图像编码为 WebP 格式：
+
+    ```
+    docker run --rm -v $(pwd):/work openeuler/libwebp:{Tag} cwebp -q 80 /work/input.png -o /work/output.webp
+    ```
+
+  - 使用 dwebp 将 WebP 图像解码为 PNG 格式：
+
+    ```
+    docker run --rm -v $(pwd):/work openeuler/libwebp:{Tag} dwebp /work/input.webp -o /work/output.png
+    ```
+
+  - 查看 WebP 文件信息：
+
+    ```
+    docker run --rm -v $(pwd):/work openeuler/libwebp:{Tag} webpinfo /work/input.webp
+    ```
+
+  - 从图像序列创建动态 WebP：
+
+    ```
+    docker run --rm -v $(pwd):/work openeuler/libwebp:{Tag} img2webp /work/frame1.png /work/frame2.png -o /work/output.webp
+    ```
+
+  - 将 GIF 动画转换为 WebP：
+
+    ```
+    docker run --rm -v $(pwd):/work openeuler/libwebp:{Tag} gif2webp /work/input.gif -o /work/output.webp
+    ```
+
+license: BSD-3-Clause
+similar_packages:
+  - libpng: libpng 是 PNG 图像格式的官方参考编解码库，广泛应用于各类图像处理软件。
+  - libjpeg-turbo: libjpeg-turbo 是高性能 JPEG 图像编解码库，通过 SIMD 指令加速编解码过程。
+  - libavif: libavif 是 AV1 图像文件格式（AVIF）的参考实现库，支持新一代高效图像压缩。
+
+dependency:
+  - libpng
+  - libjpeg-turbo
+  - libtiff
+  - giflib
+
+homepage: https://github.com/webmproject/libwebp
+upstream:
+  backend: GitHub
+  version_url: webmproject/libwebp
+  version_suffix: v
+  version_filter: rc;webp
+  version_scheme: RPM
