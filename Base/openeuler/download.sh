@@ -43,8 +43,12 @@ for ARCH in $archs; do
         # Extract rootfs
         if [ ! -f "openEuler-docker-rootfs.$DOCKER_ARCH.tar.xz" ]; then
             tar -xf openEuler-docker.$ARCH.tar.xz --wildcards "*.tar" --exclude "layer.tar"
-            ROOT_FS=`ls | xargs -n1 | grep -v openEuler |grep *.tar`
-            mv $ROOT_FS openEuler-docker-rootfs.$DOCKER_ARCH.tar
+            mapfile -t rootfs_list < <(find . -maxdepth 1 -type f -name "*.tar" ! -name "openEuler*" -printf "%f\n")
+            if [ "${#rootfs_list[@]}" -ne 1 ]; then
+                echo "Expected one rootfs tar, found ${#rootfs_list[@]}"
+                exit 1
+            fi
+            mv "${rootfs_list[0]}" "openEuler-docker-rootfs.$DOCKER_ARCH.tar"
             xz -z openEuler-docker-rootfs.$DOCKER_ARCH.tar
         fi
         cp -f ../Dockerfile ./
