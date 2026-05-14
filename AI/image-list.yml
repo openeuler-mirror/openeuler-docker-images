@@ -100,3 +100,4 @@ images:
   claude-code: claude-code
   opencode: opencode
   torchvision: torchvision
+  faiss: faiss

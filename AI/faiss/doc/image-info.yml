@@ -1,0 +1,62 @@
+name: faiss
+category: ai
+description: Faiss 是一个用于密集向量高效相似性搜索和聚类的库。它包含可在任意规模的向量集合中进行搜索的算法，包括可能无法完全装入 RAM 的规模。Faiss 由 C++ 编写，并提供了完整的 Python/numpy 封装。它主要由 Meta 的基础人工智能研究 (FAIR) 团队开发。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  faiss镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.14.1-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/faiss/1.14.1/24.03-lts-sp3/Dockerfile) | faiss 1.14.1 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/faiss:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+    ```
+    docker run -it --name my-faiss openeuler/faiss:{Tag}
+    ```
+
+  - 参数说明
+    | 配置项 | 描述 |
+    |--|--|
+    | `--name my-faiss` | 容器名称。|
+    | `-it` | 以交互模式启动容器。 |
+    | `openeuler/faiss:{Tag}` | 指定要运行的镜像为 `openeuler/faiss`，其中 `{Tag}` 是需要替换的镜像标签。 |
+
+  - 验证 faiss 安装
+    ```
+    docker run --rm openeuler/faiss:{Tag} -c "import faiss; print(faiss.__version__)"
+    ```
+
+  - 使用 shell 交互
+    ```
+    docker exec -it my-faiss /bin/bash
+    ```
+
+license: MIT
+similar_packages:
+  - Annoy: Spotify 开源的近似最近邻搜索库，使用随机投影树进行向量索引。
+  - ScaNN: Google 开源的向量相似性搜索库，针对最大内积搜索进行了优化。
+  - NMSLIB: 非度量空间库，是一个高效的可扩展的相似性搜索库。
+
+dependency:
+  - openblas
+  - python3
+  - python3-numpy
+
+homepage: https://github.com/facebookresearch/faiss
+upstream:
+  backend: GitHub
+  version_url: facebookresearch/faiss
+  version_suffix: v
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM
