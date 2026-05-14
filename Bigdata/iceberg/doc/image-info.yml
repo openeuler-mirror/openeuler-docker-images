@@ -1,0 +1,74 @@
+name: iceberg
+category: bigdata
+description: Apache Iceberg 是一个用于大型分析型数据表的高性能表格式，它将 SQL 表的可靠性与简洁性带到了大数据领域，支持 Spark、Trino、Flink、Presto、Hive、Impala 等计算引擎同时安全地操作同一张表。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  iceberg镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.10.1-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/iceberg/1.10.1/24.03-lts-sp3/Dockerfile) | Apache Iceberg 1.10.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/iceberg:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+    ```
+    docker run -it --name my-iceberg openeuler/iceberg:{Tag}
+    ```
+    该命令启动一个交互式 Shell。Iceberg 源码和编译产物位于容器内 `/opt/iceberg` 目录，开箱即用，无需配置 JDK、Gradle 或解析构建依赖。
+
+  - 启动参数
+
+    |    Parameter   |  Description  |
+    |----------------|---------------|
+    | -v /path/to/project:/workspace	 | 挂载本地项目目录到容器 |
+    | -v /path/to/config:/opt/iceberg/conf | 使用本地配置文件目录 |
+    | -v icebergData:/var/lib/iceberg | 保存数据 |
+
+  - 开发 Iceberg 本身 — 修改源码 → `./gradlew build -x test` 重新编译 → 验证改动或向上游提交补丁。
+
+  - 构建衍生镜像 — 以此镜像为基础叠加计算引擎（Spark/Flink/Trino），直接引用 `/opt/iceberg` 下已编好的 JAR，无需从头编译 Iceberg：
+    ```dockerfile
+    FROM openeuler/iceberg:1.10.1-oe2403sp3
+    RUN yum install -y ... && wget https://.../spark-3.5.0.tgz ...
+    ```
+
+  - 开发基于 Iceberg API 的应用 — 在容器内编写 Java/Scala 程序，直接依赖已编译的 Iceberg JAR。
+
+  - 学习与调试 — 阅读源码、断点调试、运行 benchmark 做版本间性能对比。
+
+  - 查看运行日志
+    ```
+    docker logs -f my-iceberg
+    ```
+
+  - 使用shell交互
+    ```
+    docker exec -it my-iceberg /bin/bash
+    ```
+
+license: Apache-2.0
+similar_packages:
+  - Apache Hudi: 开源数据湖平台，提供事务性数据湖功能，支持增量数据处理、近实时分析和流式摄取。
+  - Delta Lake: 开源存储层，为数据湖带来 ACID 事务、可扩展的元数据处理和统一的批流处理能力。
+  - Apache Paimon: 流式数据湖平台，提供高性能的流式数据摄取和查询能力，支持 Flink、Spark 等引擎。
+
+dependency:
+  - openjdk-17
+
+homepage: https://github.com/apache/iceberg
+upstream:
+  backend: GitHub
+  version_url: apache/iceberg
+  version_suffix: apache-iceberg-
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM
