@@ -1,0 +1,46 @@
+name: cpmd
+category: hpc
+description: CPMD是一个并行化的平面波/赝势密度泛函理论实现，专门用于从头分子动力学模拟。CPMD可以进行第一性原理量子力学计算，包括分子动力学模拟、几何优化、振动分析和电子结构计算。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  cpmd镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[4.3-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/cpmd/4.3/24.03-lts-sp3/Dockerfile)| CPMD 4.3 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/cpmd:{Tag}
+  ```
+
+usage: |
+  以下命令验证容器内软件版本是否和`{Tag}`指示一致:
+  ```
+  docker run openeuler/cpmd:{Tag} cpmd.x --version
+  ```
+  
+  以下示例使用MPI运行CPMD计算:
+  ```
+  mkdir playground
+  cd playground
+  wget https://www.cpmd.org/htdocs/examples/example1.tar.gz
+  tar xzf example1.tar.gz
+  docker run -v $PWD:/mnt --shm-size=1g -e OMP_NUM_THREADS=2 -it --rm openeuler/cpmd:{Tag} mpiexec -np 4 cpmd.x input.inp > output.out
+  ```
+
+license: MIT license
+similar_packages:
+  - cp2k
+  - quantum espresso
+dependency:
+  - openmpi
+  - mpich
+  - fftw
+  - blas
+  - lapack
