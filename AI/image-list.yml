@@ -101,3 +101,4 @@ images:
   opencode: opencode
   torchvision: torchvision
   faiss: faiss
+  diskann: diskann

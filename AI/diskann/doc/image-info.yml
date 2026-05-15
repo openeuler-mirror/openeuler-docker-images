@@ -1,0 +1,64 @@
+name: diskann
+category: AI
+description: DiskANN 是一套可扩展、高精度且经济高效的近似最近邻搜索算法，用于大规模向量搜索，支持实时更新和简单过滤。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  diskann镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[0.52.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/diskann/0.52.0/24.03-lts-sp3/Dockerfile) | diskann 0.52.0 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/diskann:{Tag}
+  ```
+
+usage: |
+  本镜像提供 DiskANN 命令行工具，用于构建、搜索和评测近似最近邻索引。
+
+  启动 DiskANN benchmark 工具：
+  ```
+  docker run openeuler/diskann:0.52.0-oe2403sp3 diskann-benchmark --help
+  ```
+
+  镜像内包含以下命令行工具：
+  - `diskann-benchmark` — 主 benchmark 与搜索工具
+  - `compute_groundtruth` — 计算 ground truth 用于精度评估
+  - `compute_multivec_groundtruth` — 多向量数据集 ground truth 计算
+  - `gen_associated_data_from_range` — 基于范围生成关联数据
+  - `generate_minmax` — 生成 minmax 量化表
+  - `generate_pq` — 生成乘积量化表
+  - `generate_synthetic_labels` — 生成合成标签数据
+  - `random_data_generator` — 生成随机向量数据集
+  - `relative_contrast` — 计算数据集的相对对比度
+  - `subsample_bin` — 对二进制向量文件进行子采样
+
+  运行指定工具：
+  ```
+  docker run openeuler/diskann:0.52.0-oe2403sp3 <tool-name> --help
+  ```
+
+license: MIT
+similar_packages:
+  - faiss: Facebook AI Similarity Search，高效的相似性搜索与向量聚类库
+  - annoy: Spotify 开发的近似最近邻搜索库，针对内存使用优化
+  - hnswlib: 基于分层可导航小世界图的快速近似最近邻搜索库
+  - scann: Google Research 开发的近似最近邻搜索库
+  - nmslib: 非度量空间库，提供高效的相似性搜索实现
+
+dependency:
+  -
+
+homepage: https://github.com/microsoft/DiskANN
+upstream:
+  backend: GitHub
+  version_url: microsoft/DiskANN
+  version_suffix: v
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM
