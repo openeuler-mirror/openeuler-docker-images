@@ -13,7 +13,7 @@ ENV PATH=/opt/conda/bin:$PATH
 
 RUN conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main && \
     conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r && \
-    conda install -y python=3.12 pytorch::faiss-cpu=${FAISS_VERSION} && \
+    conda install -y -c pytorch -c conda-forge python=3.12 faiss-cpu=${FAISS_VERSION} && \
     conda clean -afy
 
 WORKDIR /workspace
