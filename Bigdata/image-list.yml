@@ -32,3 +32,10 @@ images:
   kylin: kylin
   gluten: gluten
   auron: auron
+  ray: ray
+  lancedb: lancedb
+  data-juicer: data-juicer
+  daft: daft
+  hudi: hudi
+  ambari: ambaria
+  iceberg: iceberg
