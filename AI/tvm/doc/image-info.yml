@@ -1,0 +1,64 @@
+name: tvm
+category: AI
+description: Apache TVM 是一个开源的端到端机器学习编译框架，支持从主流深度学习框架（PyTorch、TensorFlow、ONNX 等）导入模型，并将其编译为可在多种硬件后端上高效运行的最小可部署模块。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  tvm镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[0.24.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/tvm/0.24.0/24.03-lts-sp3/Dockerfile) | tvm 0.24.0 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/tvm:{Tag}
+  ```
+
+usage: |
+  1. 确保已安装 Docker 环境。
+
+  2. 获取 TVM 镜像（二选一）：
+
+  - 从 DockerHub 拉取预构建镜像
+    ```
+    docker pull openeuler/tvm:0.24.0-oe2403sp3
+    ```
+
+  - 或从源码构建镜像
+    ```
+    docker build -t openeuler/tvm:0.24.0-oe2403sp3 0.24.0/24.03-lts-sp3/
+    ```
+
+  3. 启动容器进入 TVM 开发环境
+    ```
+    docker run -it openeuler/tvm:0.24.0-oe2403sp3
+    ```
+
+  4. 在容器内验证安装
+    ```
+    python3 -c "import tvm; print(tvm.__file__)"
+    ```
+
+license: Apache-2.0
+similar_packages:
+  - Halide: 图像处理和计算加速的编译器框架，TVM 的 TIR 模块和算术简化源于 Halide
+  - Loopy: 整数集合分析和循环变换原语工具
+  - Theano: 深度学习框架，其符号化扫描算子的设计启发了 TVM
+  - MLIR: 可重用的编译器基础设施，TVM 通过 USE_MLIR 选项集成
+  - ONNX Runtime: 跨平台机器学习推理加速器
+
+dependency:
+  -
+
+homepage: https://github.com/apache/tvm
+upstream:
+  backend: GitHub
+  version_url: apache/tvm
+  version_suffix: v
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM

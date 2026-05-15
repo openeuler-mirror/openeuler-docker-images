@@ -102,3 +102,4 @@ images:
   torchvision: torchvision
   faiss: faiss
   diskann: diskann
+  tvm: tvm
