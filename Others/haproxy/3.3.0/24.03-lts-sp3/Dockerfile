@@ -8,7 +8,7 @@ RUN dnf update -y \
 
 WORKDIR /opt
 
-RUN wget https://www.haproxy.org/download/3.2/src/haproxy-${VERSION}.tar.gz \
+RUN wget https://www.haproxy.org/download/${VERSION%.*}/src/haproxy-${VERSION}.tar.gz \
     && tar -zxvf haproxy-${VERSION}.tar.gz \
     && rm -f haproxy-${VERSION}.tar.gz
 
