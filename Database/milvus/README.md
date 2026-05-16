@@ -18,7 +18,6 @@ The tag of each `milvus` docker image is consist of the version of `milvus` and 
 
 | Tag                                                                                                                                 | Currently                                | Architectures |
 |-------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|---------------|
-|[3.0-beta-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/milvus/3.0-beta/24.03-lts-sp3/Dockerfile) | milvus 3.0-beta on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 | [2.5.14-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/milvus/2.5.14/24.03-lts-sp2/Dockerfile) | Milvus 2.5.14 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
 | [2.6.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/milvus/2.6.0/24.03-lts-sp2/Dockerfile)   | Milvus 2.6.0 on openEuler 24.03-LTS-SP2  | amd64, arm64  |
 
