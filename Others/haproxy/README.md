@@ -18,6 +18,7 @@ The tag of each `haproxy` docker image is consist of the version of `haproxy` an
 
 | Tag                                                                                                                              | Currently                                | Architectures |
 |----------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|---------------|
+|[3.3.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/haproxy/3.3.0/24.03-lts-sp3/Dockerfile) | haproxy 3.3.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 | [3.1.7-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/haproxy/3.1.7/24.03-lts-sp1/Dockerfile) | HAProxy 3.1.7 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 | [3.2.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/haproxy/3.2.0/24.03-lts-sp2/Dockerfile) | HAProxy 3.2.0 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
 
