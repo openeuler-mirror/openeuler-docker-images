@@ -52,6 +52,6 @@ homepage: https://github.com/apache/hudi
 upstream:
   backend: GitHub
   version_url: apache/hudi
-  version_suffix: release-
+  version_prefix: release-
   version_filter: alpha;rc;candidate
   version_scheme: RPM

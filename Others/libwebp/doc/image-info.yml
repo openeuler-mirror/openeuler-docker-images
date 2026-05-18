@@ -66,6 +66,6 @@ homepage: https://github.com/webmproject/libwebp
 upstream:
   backend: GitHub
   version_url: webmproject/libwebp
-  version_suffix: v
+  version_prefix: v
   version_filter: rc;webp
   version_scheme: RPM

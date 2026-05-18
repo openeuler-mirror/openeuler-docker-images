@@ -64,6 +64,6 @@ homepage: https://github.com/lancedb/lancedb
 upstream:
   backend: GitHub
   version_url: lancedb/lancedb
-  version_suffix: v
+  version_prefix: v
   version_filter: alpha;rc;candidate;beta
   version_scheme: RPM

@@ -54,6 +54,6 @@ homepage: https://github.com/datajuicer/data-juicer
 upstream:
   backend: GitHub
   version_url: datajuicer/data-juicer
-  version_suffix: v
+  version_prefix: v
   version_filter: alpha;rc;candidate
   version_scheme: RPM

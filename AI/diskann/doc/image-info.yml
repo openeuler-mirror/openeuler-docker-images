@@ -59,6 +59,6 @@ homepage: https://github.com/microsoft/DiskANN
 upstream:
   backend: GitHub
   version_url: microsoft/DiskANN
-  version_suffix: v
+  version_prefix: v
   version_filter: alpha;rc;candidate
   version_scheme: RPM

@@ -71,6 +71,6 @@ homepage: https://github.com/ray-project/ray
 upstream:
   backend: GitHub
   version_url: ray-project/ray
-  version_suffix: v
+  version_prefix: v
   version_filter: alpha;rc;candidate
   version_scheme: RPM
