@@ -1,0 +1,51 @@
+name: specfem3d_globe
+category: hpc
+description: SPECFEM3D_GLOBE模拟全球和区域（大陆尺度）地震波传播，支持地球、火星和月球的3D谱元法求解器。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  specfem3d_globe镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[8.1.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/specfem3d_globe/8.1.0/24.03-lts-sp3/Dockerfile)| SPECFEM3D_GLOBE 8.1.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/specfem3d_globe:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+    ```
+    docker run -it --rm openeuler/specfem3d_globe:{Tag}
+    ```
+    
+  - 运行示例
+    ```
+    cd EXAMPLES/regional_Greece_small/
+    ./run_this_example.sh
+    ```
+    
+    查看输出文件:
+    ```
+    ls OUTPUT_FILES/
+    ```
+
+license: GPL-3.0 license
+similar_packages:
+  - SPECFEM3D: 3D谱元法地震波传播模拟器，用于局部和区域尺度模拟。
+dependency:
+  - gfortran
+  - openmpi
+
+homepage: https://github.com/SPECFEM/specfem3d_globe
+upstream:
+  version_url: SPECFEM/specfem3d_globe
+  backend: GitHub
+  version_scheme: RPM
+  version_prefix: v
