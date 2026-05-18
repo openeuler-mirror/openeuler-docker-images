@@ -83,6 +83,6 @@ homepage: https://github.com/Eventual-Inc/daft
 upstream:
   backend: GitHub
   version_url: Eventual-Inc/daft
-  version_suffix: v
+  version_prefix: v
   version_filter: alpha;rc;candidate
   version_scheme: RPM

@@ -69,6 +69,6 @@ homepage: https://github.com/apache/iceberg
 upstream:
   backend: GitHub
   version_url: apache/iceberg
-  version_suffix: apache-iceberg-
+  version_prefix: apache-iceberg-
   version_filter: alpha;rc;candidate
   version_scheme: RPM

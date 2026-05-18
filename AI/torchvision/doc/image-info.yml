@@ -54,6 +54,6 @@ homepage: https://github.com/pytorch/vision
 upstream:
   backend: GitHub
   version_url: pytorch/vision
-  version_suffix: v
+  version_prefix: v
   version_filter: alpha;rc;candidate
   version_scheme: RPM
