@@ -1,5 +1,6 @@
 images:
   bwa: bwa
+  pwdft: pwdft
   cesm: cesm
   cp2k: cp2k
   cubep3m: cubep3m
