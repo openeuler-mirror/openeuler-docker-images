@@ -1,0 +1,62 @@
+name: espresso
+category: HPC
+description: ESPResSo是一个高度通用的分子动力学模拟软件包，用于软物质研究中的粗粒化珠-弹簧模型的科学多粒子模拟分析和执行。可用于模拟聚合物、液晶、胶体、铁流体以及DNA和脂质膜等生物系统。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  espresso镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  | Tag                                                                                                                        | Currently                                 | Architectures |
+  |----------------------------------------------------------------------------------------------------------------------------|-------------------------------------------|---------------|
+  | [5.0.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/espresso/5.0.0/24.03-lts-sp3/Dockerfile) | ESPResSo 5.0.0 on openEuler 24.03-LTS-SP3 | amd64, arm64  |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/espresso:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+    ```
+    docker run -it --rm openeuler/espresso:{Tag}
+    ```
+    用户可根据自身需求选择对应版本的{Tag}。
+
+  - 运行Python脚本
+    ESPResSo通过Python脚本控制。可以按如下方式运行模拟脚本：
+    ```bash
+    docker run -it --rm -v /path/to/your/script.py:/script.py openeuler/espresso:{Tag} ./pypresso /script.py
+    ```
+
+  - 并行计算（MPI）
+    使用MPI进行并行模拟，执行以下命令：
+    ```bash
+    docker run -it --rm openeuler/espresso:{Tag} mpirun --allow-run-as-root -np 4 ./pypresso script.py
+    ```
+    其中`4`为使用的CPU核心数。
+
+license: GNU General Public License Version 3 (GPLv3)
+
+similar_packages:
+  - LAMMPS: LAMMPS是一款经典的分子动力学模拟软件，广泛应用于材料科学、化学和生物学领域。
+  - GROMACS: GROMACS是一款主要用于生物分子模拟的分子动力学软件包。
+
+dependency:
+  - cmake
+  - gcc-c++
+  - openmpi
+  - boost
+  - fftw
+  - hdf5
+  - gsl
+  - python3
+
+homepage: https://github.com/espressomd/espresso
+upstream:
+  version_url: espressomd/espresso
+  backend: GitHub
+  version_scheme: semver

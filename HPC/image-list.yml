@@ -3,6 +3,7 @@ images:
   cesm: cesm
   cp2k: cp2k
   cubep3m: cubep3m
+  espresso: espresso
   openfoam: openfoam
   openlb: openlb
   swan: swan
