@@ -1,0 +1,78 @@
+name: hefei-namd
+category: HPC
+description: Hefei-NAMD是一款从头算非绝热分子动力学程序，用于模拟分子系统中的非绝热过程。它实现了表面跳跃方法，用于研究激发态动力学和电子转移过程。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  hefei-namd镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.0.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/hefei-namd/1.0.0/24.03-lts-sp3/Dockerfile)| hefei-namd 1.0.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/hefei-namd:{Tag}
+  ```
+
+usage: |
+  - 以交互式Shell运行容器:
+
+    通过交互式 Shell 启动容器，使用Hefei-NAMD命令：
+    ```
+    docker run -it --rm openeuler/hefei-namd:{Tag} bash
+    ```
+
+  - 运行Hefei-NAMD程序
+
+    Hefei-NAMD提供三个主要可执行程序：
+    - `namd`: 非绝热分子动力学程序
+    - `namdk`: 周期性系统的K点版本
+    - `dish`: 数据处理辅助工具
+
+    ```
+    namd <input_file>
+    namdk <input_file>
+    dish <input_file>
+    ```
+
+  - 使用vaspwfc工具
+
+    vaspwfc工具用于处理VASP的WAVECAR文件：
+    - `vaspwfc`: 标准版本
+    - `vaspwfc_gam`: Gamma点版本
+
+    ```
+    vaspwfc WAVECAR
+    vaspwfc_gam WAVECAR
+    ```
+
+  - 使用Python脚本
+
+    用于非绝热耦合计算的Python脚本位于`/opt/Hefei-NAMD/scripts`：
+    ```
+    cd /opt/Hefei-NAMD/scripts
+    python3 nac.py
+    python3 Dephase.py
+    ```
+
+license: MIT License (https://github.com/QijingZheng/Hefei-NAMD)
+similar_packages:
+  - NAMD: 高性能并行分子动力学模拟软件，主要用于生物大分子系统。
+  - SHARC: 表面跳跃非绝热动力学计算程序。
+dependency:
+  - gcc-gfortran
+  - fftw
+  - python3
+  - numpy
+  - scipy
+
+homepage: https://github.com/QijingZheng/Hefei-NAMD
+upstream:
+  version_url: QijingZheng/Hefei-NAMD
+  backend: GitHub
+  version_scheme: custom

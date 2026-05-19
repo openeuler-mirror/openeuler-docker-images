@@ -17,4 +17,5 @@ images:
   eman: eman
   3dslicer: 3dslicer
   namd: namd
+  hefei-namd: hefei-namd
   ambertools: ambertools
