@@ -1,0 +1,61 @@
+name: dl-poly
+category: HPC
+description: DL_POLY是一款由英国Daresbury实验室开发的通用经典分子动力学（MD）模拟软件，自1992年以来持续发展。支持串行和MPI并行两种模式，特别适合大规模材料模拟计算。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  dl-poly镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[5.1.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/dl-poly/5.1.0/24.03-lts-sp3/Dockerfile)| dl-poly 5.1.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/dl-poly:{Tag}
+  ```
+
+usage: |
+  - 以交互式Shell运行容器
+
+    ```
+    docker run -it --rm openeuler/dl-poly:{Tag} bash
+    ```
+    `openeuler/dl-poly`镜像用于验证上游dl-poly版本和openEuler的集成。
+  
+  - 使用自己的输入文件运行模拟
+
+    DL_POLY需要三个输入文件：CONTROL、CONFIG和FIELD。
+    ```
+    docker run -it --rm -v /path/to/your/data:/data openeuler/dl-poly:{Tag} \
+        mpirun -np 4 ./DLPOLY.Z -c /data/CONTROL -f /data/FIELD
+    ```
+
+  - 使用MPI并行运行模拟
+
+    ```
+    docker run -it --rm openeuler/dl-poly:{Tag} mpirun -np 4 ./DLPOLY.Z
+    ```
+
+note: DL_POLY测试数据不包含在镜像中，用户需要自行准备输入文件或从CCP5 FTP服务器下载测试数据。
+
+license: LGPL-3.0 license
+similar_packages:
+  - LAMMPS: 大规模原子/分子并行模拟器，侧重材料建模。
+  - GROMACS: 高性能分子动力学软件，起源于生物分子模拟。
+  - NAMD: 并行分子动力学软件，专注于生物大分子系统。
+dependency:
+  - openmpi
+  - gcc-gfortran
+  - cmake
+
+homepage: https://github.com/ccp5UK/dl-poly
+upstream:
+  version_url: ccp5UK/dl-poly
+  version_filter: pre;rc;alpha
+  backend: GitHub
+  version_scheme: Semantic
