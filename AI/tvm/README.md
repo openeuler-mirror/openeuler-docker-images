@@ -17,7 +17,7 @@ Learn more on [Apache TVM](https://tvm.apache.org/).
 The tag of each tvm docker image is consist of the version of tvm and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
-|[0.24.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/tvm/0.24.0/24.03-lts-sp3/Dockerfile) | tvm 0.24.0 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+|[0.24.0-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/tvm/0.24.0/24.03-lts-sp3/Dockerfile) | tvm 0.24.0 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 
 # Usage

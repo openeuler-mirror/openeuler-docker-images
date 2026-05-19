@@ -13,7 +13,7 @@ Daft is a high-performance distributed query engine for large-scale data process
 The tag of each daft docker image is consist of the version of daft and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
-|[0.7.11-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/daft/0.7.11/24.03-lts-sp3/Dockerfile) | daft 0.7.11 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+|[0.7.11-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Bigdata/daft/0.7.11/24.03-lts-sp3/Dockerfile) | daft 0.7.11 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 
 # Usage

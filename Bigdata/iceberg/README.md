@@ -2,9 +2,9 @@
 
 - The official Iceberg docker image.
 
-- Maintained by: [openEuler CloudNative SIG](https://gitee.com/openeuler/cloudnative).
+- Maintained by: [openEuler CloudNative SIG](https://atomgit.com/openeuler/cloudnative).
 
-- Where to get help: [openEuler CloudNative SIG](https://gitee.com/openeuler/cloudnative), [openEuler](https://gitee.com/openeuler/community).
+- Where to get help: [openEuler CloudNative SIG](https://atomgit.com/openeuler/cloudnative), [openEuler](https://atomgit.com/openeuler/community).
 # Iceberg | openEuler
 Current Iceberg docker images are built on the [openEuler](https://repo.openeuler.org/). This repository is free to use and exempted from per-user rate limits.
 
@@ -17,7 +17,7 @@ Learn more on [Iceberg website](https://iceberg.apache.org/).
 The tag of each iceberg docker image is consist of the version of iceberg and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
-|[1.10.1-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/iceberg/1.10.1/24.03-lts-sp3/Dockerfile) | Apache Iceberg 1.10.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[1.10.1-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Bigdata/iceberg/1.10.1/24.03-lts-sp3/Dockerfile) | Apache Iceberg 1.10.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 
 # Usage
@@ -74,4 +74,4 @@ In this usage, users can select the corresponding `{Tag}` and `container startup
 - Learn and benchmark — read the source, step through code with a debugger, or run the built-in benchmarks for performance comparisons between Iceberg versions.
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://atomgit.com/openeuler/openeuler-docker-images).

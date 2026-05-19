@@ -19,7 +19,7 @@ Auron takes a fully optimized physical plan from a distributed computing framewo
 The tag of each auron docker image is consist of the version of auron and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
-|[7.0.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/auron/7.0.0/24.03-lts-sp3/Dockerfile) | auron 7.0.0 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+|[7.0.0-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Bigdata/auron/7.0.0/24.03-lts-sp3/Dockerfile) | auron 7.0.0 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 
 # Usage

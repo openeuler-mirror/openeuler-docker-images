@@ -11,7 +11,7 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
-  |[3.0.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/ambari/3.0.0/24.03-lts-sp3/Dockerfile) | Apache Ambari 3.0.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+  |[3.0.0-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Bigdata/ambari/3.0.0/24.03-lts-sp3/Dockerfile) | Apache Ambari 3.0.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 download: |
   拉取镜像到本地

@@ -11,7 +11,7 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
-  |[1.10.1-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/iceberg/1.10.1/24.03-lts-sp3/Dockerfile) | Apache Iceberg 1.10.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+  |[1.10.1-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Bigdata/iceberg/1.10.1/24.03-lts-sp3/Dockerfile) | Apache Iceberg 1.10.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 download: |
   拉取镜像到本地

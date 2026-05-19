@@ -11,7 +11,7 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
-  |[1.6.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/gluten/1.6.0/24.03-lts-sp3/Dockerfile) | Gluten 1.6.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+  |[1.6.0-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Bigdata/gluten/1.6.0/24.03-lts-sp3/Dockerfile) | Gluten 1.6.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
   
 
 download: |
@@ -28,17 +28,17 @@ usage: |
 
   拉取镜像（示例）：
   ```
-  docker pull my-registry/gluten:1.6.0
+  docker pull openeuler/gluten:1.6.0
   ```
 
   列出镜像内的产物：
   ```
-  docker run --rm my-registry/gluten:1.6.0 bash -c "find /opt/gluten/dist -type f -maxdepth 3 -print"
+  docker run --rm openeuler/gluten:1.6.0 bash -c "find /opt/gluten/dist -type f -maxdepth 3 -print"
   ```
 
   将产物提取到宿主机：
   ```
-  docker create --name tmp my-registry/gluten:1.6.0
+  docker create --name tmp openeuler/gluten:1.6.0
   docker cp tmp:/opt/gluten/dist ./gluten-dist
   docker rm -v tmp
   ```
@@ -71,7 +71,7 @@ usage: |
   ```yaml
   initContainers:
     - name: copy-gluten
-      image: my-registry/gluten:1.6.0
+      image: openeuler/gluten:1.6.0
       command: ["sh","-c","cp -r /opt/gluten/dist /artifacts && chown -R 1000:1000 /artifacts"]
       volumeMounts:
         - name: artifacts
@@ -79,7 +79,7 @@ usage: |
 
   containers:
     - name: app
-      image: my-registry/your-app:latest
+      image: openeuler/your-app:latest
       volumeMounts:
         - name: artifacts
           mountPath: /opt/gluten

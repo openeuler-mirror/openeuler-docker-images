@@ -13,7 +13,7 @@ Gluten is a native acceleration plugin for Apache Spark and Flink that provides 
 The tag of each gluten docker image is consist of the version of gluten and the version of basic image. The details are as follows
 | Tags | Currently | Architectures |
 |--|--|--|
-|[1.6.0-24.03-lts-sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/gluten/1.6.0/24.03-lts-sp3/Dockerfile)| gluten 1.6.0 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+|[1.6.0-24.03-lts-sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Bigdata/gluten/1.6.0/24.03-lts-sp3/Dockerfile)| gluten 1.6.0 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements. Build artifacts are placed under `/opt/gluten/dist` inside the image:
@@ -24,19 +24,19 @@ In this usage, users can select the corresponding `{Tag}` based on their require
 Pull the image (example):
 
 ```bash
-docker pull my-registry/gluten:1.6.0
+docker pull openeuler/gluten:1.6.0
 ```
 
 List artifacts inside image:
 
 ```bash
-docker run --rm my-registry/gluten:1.6.0 bash -c "find /opt/gluten/dist -type f -maxdepth 3 -print"
+docker run --rm openeuler/gluten:1.6.0 bash -c "find /opt/gluten/dist -type f -maxdepth 3 -print"
 ```
 
 Extract artifacts to host:
 
 ```bash
-docker create --name tmp my-registry/gluten:1.6.0
+docker create --name tmp openeuler/gluten:1.6.0
 docker cp tmp:/opt/gluten/dist ./gluten-dist
 docker rm -v tmp
 ```
@@ -72,7 +72,7 @@ Use an `initContainer` to copy artifacts from the artifact image into a shared v
 ```yaml
 initContainers:
   - name: copy-gluten
-    image: my-registry/gluten:1.6.0
+    image: openeuler/gluten:1.6.0
     command: ["sh","-c","cp -r /opt/gluten/dist /artifacts && chown -R 1000:1000 /artifacts"]
     volumeMounts:
       - name: artifacts
@@ -80,7 +80,7 @@ initContainers:
 
 containers:
   - name: app
-    image: my-registry/your-app:latest
+    image: openeuler/your-app:latest
     volumeMounts:
       - name: artifacts
         mountPath: /opt/gluten

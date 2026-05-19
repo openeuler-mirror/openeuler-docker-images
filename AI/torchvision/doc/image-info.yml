@@ -11,7 +11,7 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
-  |[0.27.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/torchvision/0.27.0/24.03-lts-sp3/Dockerfile) | torchvision 0.27.0 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+  |[0.27.0-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/torchvision/0.27.0/24.03-lts-sp3/Dockerfile) | torchvision 0.27.0 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 download: |
   拉取镜像到本地
