@@ -18,7 +18,7 @@ The tag of each `DeepSeek-LLM` docker image is consist of the version of `DeepSe
 
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
-|[6712a86bfb7dd25c73383c5ad2eb7a8db540258b-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/deepseek/6712a86bfb7dd25c73383c5ad2eb7a8db540258b/24.03-lts-sp3/Dockerfile) | DeepSeek-LLM 6712a86bfb7dd25c73383c5ad2eb7a8db540258b on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[1.0.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/deepseek/1.0.0/24.03-lts-sp3/Dockerfile) | DeepSeek-LLM 1.0.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 # Usage
 Here, users can select the corresponding `{Tag}` by their requirements.
