@@ -103,3 +103,4 @@ images:
   faiss: faiss
   diskann: diskann
   tvm: tvm
+  towhee: towhee
