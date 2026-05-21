@@ -1,5 +1,5 @@
 name: tensorrt
-category: AI
+category: ai
 description: NVIDIA TensorRT 是一个用于高性能深度学习推理的 SDK 生态系统，包含推理编译器、运行时和模型优化工具，可在 NVIDIA GPU 上实现低延迟、高吞吐量的推理部署。TensorRT 通过量化、层融合和内核调优等技术优化训练好的神经网络模型，支持所有主流框架训练的模型。
 environment: |
   本应用在Docker环境中运行，安装Docker执行如下命令
