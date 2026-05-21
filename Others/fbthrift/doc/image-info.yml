@@ -1,0 +1,95 @@
+name: fbthrift
+category: Others
+description: Facebook 开发的高性能跨语言序列化框架和RPC框架，是 Apache Thrift 的分支版本，提供优化的 C++ 服务器实现和增强的跨语言数据交换能力
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  fbthrift镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[2026.05.18.00-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/fbthrift/2026.05.18.00/24.03-lts-sp3/Dockerfile) | fbthrift 2026.05.18.00 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+  
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/fbthrift:{Tag}
+  ```
+
+usage: |
+  ## 快速使用
+  
+  ### 运行容器
+  
+  ```bash
+  docker run -d --name fbthrift openeuler/fbthrift:{Tag}
+  ```
+  
+  ### 使用 thrift 编译器
+  
+  ```bash
+  # 进入容器
+  docker exec -it fbthrift /bin/bash
+  
+  # 使用 thrift1 编译 IDL 文件
+  thrift1 --gen cpp2 example.thrift
+  thrift1 --gen java example.thrift
+  thrift1 --gen py example.thrift
+  ```
+  
+  ### 开发环境
+  
+  fbthrift 提供完整的开发工具链，包括：
+  - **thrift1**: Thrift 编译器，用于将 .thrift IDL 文件编译为目标语言代码
+  - **库文件**: C++ 客户端和服务端库（libthriftcpp2 等）
+  - **头文件**: 用于 C++ 开发的完整头文件集合
+  
+  支持的语言包括：C++、Python、Java、Hack 等
+  
+  ### 示例：创建 Thrift 服务
+  
+  1. 在 `.thrift` 文件中定义服务接口：
+  
+  ```thrift
+  namespace cpp tutorial
+  
+  service Calculator {
+      i32 add(1: i32 num1, 2: i32 num2),
+      i32 subtract(1: i32 num1, 2: i32 num2),
+  }
+  ```
+  
+  2. 生成代码：
+  
+  ```bash
+  thrift1 --gen cpp2 calculator.thrift
+  ```
+  
+  3. 在您选择的编程语言中实现生成的接口
+  
+  更多详细文档和示例，请访问 [fbthrift GitHub 仓库](https://github.com/facebook/fbthrift)
+
+license: Apache-2.0
+similar_packages:
+  - apache-thrift: Apache官方Thrift序列化框架
+  - grpc: Google的高性能RPC框架
+  - protobuf: Google的协议缓冲区序列化格式
+  
+dependency:
+  - folly
+  - fizz
+  - wangle
+  - fmt
+  - gflags
+  - glog
+
+homepage: https://github.com/facebook/fbthrift
+upstream:
+  backend: GitHub
+  version_url: facebook/fbthrift
+  version_prefix: v
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM
