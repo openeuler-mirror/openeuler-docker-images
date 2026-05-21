@@ -1,5 +1,5 @@
 name: AMG
-category: Others
+category: others
 description: AMG是一个用于求解非结构化网格问题产生的线性系统的并行代数多重网格求解器。AMG附带的驱动程序可以构建各种三维问题的线性系统。AMG使用ISO-C编写，是一个SPMD代码，在MPI任务中使用MPI和OpenMP线程。通过数据分解实现并行，将网格简单地细分为P×Q×R（3D）等大小的块。
 environment: |
   本应用在Docker环境中运行，安装Docker执行如下命令
