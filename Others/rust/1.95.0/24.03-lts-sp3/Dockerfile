@@ -3,8 +3,6 @@ FROM ${BASE}
 
 ARG RUST_VERSION=1.95.0
 
-ARG RUST_VERSION
-
 RUN dnf install -y \
         gcc gcc-c++ \
         make cmake \
