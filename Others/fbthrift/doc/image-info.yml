@@ -1,5 +1,5 @@
 name: fbthrift
-category: Others
+category: others
 description: Facebook 开发的高性能跨语言序列化框架和RPC框架，是 Apache Thrift 的分支版本，提供优化的 C++ 服务器实现和增强的跨语言数据交换能力
 environment: |
   本应用在Docker环境中运行，安装Docker执行如下命令
