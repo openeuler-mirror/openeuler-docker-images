@@ -1,5 +1,5 @@
 name: rust
-category: Others
+category: others
 description: Rust 是一种系统编程语言，运行速度极快，可防止段错误，并保证线程安全。它包含编译器、标准库和文档。  # 中文描述
 environment: |
   本应用在Docker环境中运行，安装Docker执行如下命令
