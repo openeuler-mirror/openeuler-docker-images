@@ -1,0 +1,45 @@
+name: chroma
+category: HPC
+description: Chroma是Jefferson Lab开发的格点量子色动力学(QCD)软件系统，用于在离散时空格点上模拟夸克和胶子的相互作用。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  chroma镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[chroma-3-44-0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/chroma/chroma-3-44-0/24.03-lts-sp3/Dockerfile)| chroma 3.44.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/chroma:{Tag}
+  ```
+
+usage: |
+  - 启动chroma实例
+
+    ```
+    docker run -it --name chroma openeuler/chroma:{Tag}
+    ```
+    `openeuler/chroma`镜像用于验证上游chroma版本和openEuler的集成。
+  
+
+license: BSD-like license
+similar_packages:
+  - MILC: 另一个格点QCD代码集合
+dependency:
+  - QMP (QCD Message Passing)
+  - QDP++ (QCD Data Parallel)
+  - OpenMPI
+
+homepage: https://github.com/JeffersonLab/chroma
+upstream:
+  version_url: JeffersonLab/chroma
+  version_prefix: chroma
+  version_filter: ^chroma(-[0-9]+|[0-9]+)-[0-9]+-[0-9]+$
+  backend: GitHub
+  version_scheme: RPM
