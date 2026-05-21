@@ -1,0 +1,62 @@
+name: AMG
+category: Others
+description: AMG是一个用于求解非结构化网格问题产生的线性系统的并行代数多重网格求解器。AMG附带的驱动程序可以构建各种三维问题的线性系统。AMG使用ISO-C编写，是一个SPMD代码，在MPI任务中使用MPI和OpenMP线程。通过数据分解实现并行，将网格简单地细分为P×Q×R（3D）等大小的块。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  AMG镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.2-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/AMG/1.2/24.03-lts-sp3/Dockerfile) | AMG 1.2 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+  
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/amg:{Tag}
+  ```
+
+usage: |
+  运行AMG基准测试（默认，单进程）：
+
+  ```bash
+  docker run --rm openeuler/amg:{Tag}
+  ```
+
+  使用MPI运行（4个进程）：
+
+  ```bash
+  docker run --rm openeuler/amg:{Tag} mpirun --allow-run-as-root -np 4 amg
+  ```
+
+  使用自定义问题规模运行：
+
+  ```bash
+  docker run --rm openeuler/amg:{Tag} mpirun --allow-run-as-root -np 4 amg -problem 1 -n 100 100 100 -P 2 2 1
+  ```
+
+  进入容器：
+
+  ```bash
+  docker run -it --rm openeuler/amg:{Tag} /bin/bash
+  ```
+
+license: LGPL-2.1
+similar_packages:
+  - hypre: LLNL开发的可扩展线性求解器和多重网格方法库
+  - PETSc: 便携可扩展的科学计算工具包
+  - MueLu: Trilinos多重网格预处理包
+  
+dependency:
+  - openmpi
+
+homepage: https://github.com/llnl/AMG
+upstream:
+  backend: GitHub
+  version_url: llnl/AMG
+  version_prefix: 
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM
