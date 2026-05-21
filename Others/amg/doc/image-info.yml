@@ -11,7 +11,7 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
-  |[1.2-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/AMG/1.2/24.03-lts-sp3/Dockerfile) | AMG 1.2 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+   |[1.2-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/amg/1.2/24.03-lts-sp3/Dockerfile) | AMG 1.2 on openEuler 24.03-lts-sp3 | amd64, arm64 |
   
 download: |
   拉取镜像到本地
