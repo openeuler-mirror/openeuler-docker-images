@@ -1,5 +1,5 @@
 name: lancedb
-category: Bigdata
+category: bigdata
 description: LanceDB 是一个开源的无服务器向量数据库，专为快速、可扩展的生产级 AI/ML 应用设计。它基于 Lance 列式格式构建，支持多模态数据存储、向量相似性搜索、全文搜索和 SQL 查询。
 environment: |
   本应用在Docker环境中运行，安装Docker执行如下命令
@@ -29,7 +29,6 @@ usage: |
     ```
     docker run --rm -v $(pwd):/workspace openeuler/lancedb:{Tag} python3 your_script.py
     ```
-    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。
 
   - 启动参数
 

@@ -19,7 +19,6 @@ The tag of each `libwebp` docker image is consist of the version of `libwebp` an
 |[1.6.0-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/libwebp/1.6.0/24.03-lts-sp3/Dockerfile) | libwebp 1.6.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 # Usage
-In this usage, users can select the corresponding `{Tag}` based on their requirements.
 
 - Pull the `openeuler/libwebp` image from docker
 

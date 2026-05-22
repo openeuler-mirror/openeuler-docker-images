@@ -23,28 +23,18 @@ The tag of each data-juicer docker image is consist of the version of data-juice
 
 
 # Usage
-Start a container and run a data processing pipeline:
-
+- Start a container and run a data processing pipeline:
 ```
-docker run -it --rm openeuler/data-juicer:1.5.1-oe2403sp3 bash
+docker run -it --rm openeuler/data-juicer:{Tag} bash
 ```
 
-Inside the container, use the CLI tools:
-
+- Inside the container, use the CLI tools:
 ```
 # Run a data processing pipeline
 dj-process --config demos/process_simple/process.yaml
 
 # Analyze a dataset
 dj-analyze --config demos/analyze/analyze.yaml
-```
-
-Use in a Dockerfile:
-
-```
-FROM openeuler/data-juicer:1.5.1-oe2403sp3
-COPY my-pipeline.yaml /home/datajuicer/
-CMD ["dj-process", "--config", "/home/datajuicer/my-pipeline.yaml"]
 ```
 
 # Question and answering

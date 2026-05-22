@@ -17,27 +17,27 @@ The tag of each torchvision docker image is consist of the version of torchvisio
 
 
 # Usage
-- Pull the `openeuler/torchvision` image from docker
+Pull the `openeuler/torchvision` image from docker
 
-    ```bash
-    docker pull openeuler/torchvision:0.27.0-oe2403sp3
-    ```
+```bash
+docker pull openeuler/torchvision:{Tag}
+```
 
-- Start a container and run Python
+Start a container and run Python
 
-    ```bash
-    docker run -it openeuler/torchvision:0.27.0-oe2403sp3 python3
-    ```
+```bash
+docker run -it openeuler/torchvision:{Tag} python3
+```
 
-- Use torchvision in Python
+Use torchvision in Python
 
-    ```python
-    import torch
-    import torchvision
+```python
+import torch
+import torchvision
 
-    print(torch.__version__)
-    print(torchvision.__version__)
-    ```
+print(torch.__version__)
+print(torchvision.__version__)
+```
 
 # Question and answering
 If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://atomgit.com/openeuler/openeuler-docker-images).

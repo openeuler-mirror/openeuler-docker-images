@@ -50,28 +50,5 @@ In this usage, users can select the corresponding `{Tag}` and `container startup
 	docker exec -it my-iceberg /bin/bash
 	```
 
-- Develop Iceberg itself — modify the source and rebuild inside the container:
-	```bash
-	docker exec -it my-iceberg bash
-	cd /opt/iceberg
-	# ... make changes ...
-	./gradlew build -x test -x integrationTest
-	```
-
-- Build derived images — use this image as a base to stack Spark, Flink, or Trino on top. The pre-built Iceberg JARs at `/opt/iceberg` are ready to be referenced by connector classpaths, so you don't rebuild Iceberg from scratch:
-	```dockerfile
-	FROM openeuler/iceberg:1.10.1-oe2403sp3
-	RUN yum install -y ... && wget https://.../spark-3.5.0.tgz ...
-	```
-
-- Develop Iceberg-based applications — write Java or Scala programs that depend on the compiled Iceberg JARs:
-	```bash
-	docker exec -it my-iceberg bash
-	javac -cp "/opt/iceberg/core/build/libs/*" MyIcebergApp.java
-	java -cp ".:/opt/iceberg/core/build/libs/*" MyIcebergApp
-	```
-
-- Learn and benchmark — read the source, step through code with a debugger, or run the built-in benchmarks for performance comparisons between Iceberg versions.
-
 # Question and answering
 If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://atomgit.com/openeuler/openeuler-docker-images).

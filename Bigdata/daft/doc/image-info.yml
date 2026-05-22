@@ -1,5 +1,5 @@
 name: daft
-category: Bigdata
+category: bigdata
 description: Daft 是一个高性能分布式查询引擎，使用 Python 或 SQL 进行大规模数据处理，采用 Rust 实现。它从底层设计之初就支持传统结构化数据和多模态数据（图像、音频、视频、嵌入向量）的统一处理。Daft 提供 Python 原生的 DataFrame API，由 Rust 驱动的矢量化执行引擎提供动力，具备 SIMD 加速、高性能异步 I/O、基于代价的查询优化，并原生集成 Ray 实现跨 CPU/GPU 集群的分布式扩展。基于 Apache Arrow 构建，支持 S3、GCS、Iceberg、Delta Lake、Hugging Face、Unity Catalog 等多种数据源。
 environment: |
   本应用在Docker环境中运行，安装Docker执行如下命令
@@ -20,53 +20,33 @@ download: |
   ```
 
 usage: |
-  拉取镜像并启动交互式容器：
-  ```
-  docker pull openeuler/daft:0.7.11-oe2403sp3
-  docker run -it --name daft-container openeuler/daft:0.7.11-oe2403sp3
-  ```
+  - 拉取镜像并启动交互式容器：
+    ```
+    docker pull openeuler/daft:{Tag}
+    docker run -it --name daft-container openeuler/daft:{Tag}
+    ```
+  - daft 已预装在镜像中，进入容器后可直接使用 python3：
+    ```python
+    import daft
 
-  daft 已预装在镜像中，进入容器后可直接使用 python3：
+    # 延迟读取 parquet 文件
+    df = daft.read_parquet("/path/to/data/*.parquet")
 
-  ```python
-  import daft
+    # 应用数据转换
+    df = df.where(df["column_name"] > 100)
+    df = df.with_column("new_col", df["existing_col"] * 2)
 
-  # 延迟读取 parquet 文件
-  df = daft.read_parquet("/path/to/data/*.parquet")
+    # 查看查询计划
+    df.explain(show_all=True)
 
-  # 应用数据转换
-  df = df.where(df["column_name"] > 100)
-  df = df.with_column("new_col", df["existing_col"] * 2)
-
-  # 查看查询计划
-  df.explain(show_all=True)
-
-  # 物化结果
-  result = df.collect()
-  result.show(10)
-  ```
-
-  也可以直接运行 Python 脚本：
-  ```
-  docker run --rm -v $(pwd):/workspace openeuler/daft:0.7.11-oe2403sp3 python3 /workspace/your_script.py
-  ```
-
-  处理多模态数据（图像、音频、视频）：
-  ```python
-  import daft
-
-  # 从 S3 加载图像文件路径
-  df = daft.from_glob_path("s3://bucket/images/*")
-
-  # 下载并解码图像
-  df = df.with_column("image", df["path"].url.download().image.decode())
-
-  # 缩放并查看图像
-  df = df.with_column("resized", df["image"].image.resize(32, 32))
-  df.show(3)
-  ```
-
-  更多信息请参考 [Daft 快速入门指南](https://www.getdaft.io/projects/docs/en/latest/learn/10-min.html)。
+    # 物化结果
+    result = df.collect()
+    result.show(10)
+    ```
+  - 也可以直接运行 Python 脚本：
+    ```
+    docker run --rm -v $(pwd):/workspace openeuler/daft:0.7.11-oe2403sp3 python3 /workspace/your_script.py
+    ```
 
 license: Apache-2.0
 similar_packages:

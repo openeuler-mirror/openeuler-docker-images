@@ -22,7 +22,7 @@ This image provides the DiskANN command-line tools for building, searching, and 
 ## Running DiskANN benchmark
 
 ```shell
-docker run openeuler/diskann:0.52.0-oe2403sp3 diskann-benchmark --help
+docker run openeuler/diskann:{Tag} diskann-benchmark --help
 ```
 
 ## Available tools
@@ -43,7 +43,7 @@ The following CLI tools are included in the image:
 ## Running a specific tool
 
 ```shell
-docker run openeuler/diskann:0.52.0-oe2403sp3 <tool-name> --help
+docker run openeuler/diskann:{Tag} <tool-name> --help
 ```
 
 # Question and answering
