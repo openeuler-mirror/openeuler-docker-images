@@ -1,0 +1,51 @@
+name: NCEPLIBS
+category: hpc
+description: NCEPLIBS 是美国国家环境预报中心（NCEP）维护的一系列库集合，被多个 NCEP 应用程序使用，包括 UFS（统一预报系统）、GSI（网格点统计插值）、UPP（统一后处理器）等。该项目提供了气象数据处理所需的各类库，涵盖 GRIB 格式编解码、二进制 I/O、频谱变换、插值等功能。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  NCEPLIBS镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.4.0-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/NCEPLIBS/1.4.0/24.03-lts-sp3/Dockerfile) | NCEPLIBS 1.4.0 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+  
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/NCEPLIBS:{Tag}
+  ```
+
+usage: |
+  - 本镜像中，NCEPLIBS 安装在 `/opt/nceplibs` 目录下。您可以使用此镜像作为基础镜像，构建依赖 NCEPLIBS 的 HPC 应用程序。
+    ```
+    docker run -it openeuler/NCEPLIBS:{Tag} bash
+    ```
+
+  - 在 CMake 项目中使用 NCEPLIBS：
+    ```
+    cmake -DCMAKE_PREFIX_PATH=/opt/nceplibs <your-project-source>
+    make -j$(nproc)
+    ```
+
+license: LGPL-3.0
+similar_packages:
+  - spack-stack: NCEP 科学应用的软件栈管理框架
+  - WRF: 天气研究和预报模型系统
+  - NCEPLIBS-external: NCEPLIBS 所需的第三方库集合
+
+dependency:
+  - openmpi
+  - hdf5
+  - netcdf
+
+homepage: https://github.com/NOAA-EMC/NCEPLIBS
+upstream:
+  backend: GitHub
+  version_url: NOAA-EMC/NCEPLIBS
+  version_prefix: v
+  version_filter: alpha;rc;candidate;beta;pre
+  version_scheme: RPM
