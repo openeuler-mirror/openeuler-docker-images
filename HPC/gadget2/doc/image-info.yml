@@ -1,0 +1,70 @@
+name: gadget2
+category: hpc
+description: Gadget 是 Globally applicable Area Disaggregated General Ecosystem Toolbox（全球适用的区域分解通用生态系统工具箱）的缩写，是一种用于海洋生态系统的统计建模工具。Gadget 模型既需要大量数据，也需要较高的计算资源。Gadget 可以运行复杂的统计生态系统模型，将生态系统的多种特征纳入考虑：它基于众多参数运行内部模型，然后将模型输出与真实数据进行比较以获得拟合优度似然分数；通过调整参数并反复运行模型，直至找到使似然分数最低的最优解。Gadget 支持在模型中纳入多种特征：一种或多种物种（每种可拆分为多个种群）、多区域之间的迁移、物种间和物种内的捕食、性成熟、繁殖与补充，以及多个商业和调查渔船对种群的捕捞。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  gadget2镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[2.3.5-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/gadget2/2.3.5/24.03-lts-sp3/Dockerfile) | gadget2 2.3.5 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/gadget2:{Tag}
+  ```
+
+usage: |
+  - 查看 gadget 帮助信息：
+    ```
+    docker run --rm openeuler/gadget2:{Tag} gadget -h
+    ```
+
+  - 运行 Gadget 模型，将本地模型目录挂载到容器内（请将 `/path/to/your/model` 替换为包含 `main` 文件及参数输入的本地目录）：
+    ```
+    docker run --rm \
+        -v /path/to/your/model:/workspace \
+        -w /workspace \
+        openeuler/gadget2:{Tag} \
+        gadget -main main -i params.in -p params.out
+    ```
+
+  - 执行单次（模拟）模型运行：
+    ```
+    docker run --rm \
+        -v /path/to/your/model:/workspace \
+        -w /workspace \
+        openeuler/gadget2:{Tag} \
+        gadget -s -main main -i params.in
+    ```
+
+  - 执行似然（优化）模型运行：
+    ```
+    docker run --rm \
+        -v /path/to/your/model:/workspace \
+        -w /workspace \
+        openeuler/gadget2:{Tag} \
+        gadget -l -main main -i params.in -p params.out -o likelihood.out
+    ```
+
+license: GPL-2.0
+similar_packages:
+  - mfdb: 用于从数据仓库中提取 Gadget 所需数据的专用 R 软件包
+  - Paramin: 为加快 Gadget 处理速度而开发的并行处理优化器
+  - Rgadget: 用于辅助构建 Gadget 模型的 R 软件包，提供估计似然权重、定义模型骨架以及模型诊断与预测等工具
+
+dependency:
+  -
+
+homepage: https://github.com/gadget-framework/gadget2
+upstream:
+  backend: GitHub
+  version_url: gadget-framework/gadget2
+  version_prefix: v
+  version_filter: alpha;rc;candidate;beta;pre
+  version_scheme: RPM
