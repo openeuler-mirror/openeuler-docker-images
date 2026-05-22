@@ -1,0 +1,56 @@
+name: UDUNITS-2
+category: others
+description: UDUNITS 包提供对物理量单位的支持。其 C 语言库可用于对单位进行算术运算以及在兼容单位之间转换数值。该包包含一个基于 XML 格式且用户可扩展的大型单位数据库，还提供了一个用于查询单位和转换数值的命令行工具。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  UDUNITS-2镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[2.2.28-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/udunits-2/2.2.28/24.03-lts-sp3/Dockerfile) | UDUNITS-2 2.2.28 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+  
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/udunits-2:{Tag}
+  ```
+
+usage: |
+  - 启动容器进行交互式单位转换
+
+    ```
+    docker run -it --rm openeuler/udunits-2:{Tag} udunits2
+    ```
+
+  - 转换特定单位的值
+
+    ```
+    docker run --rm openeuler/udunits-2:{Tag} udunits2 -H km -W m
+    ```
+
+  - 查询单位的定义
+
+    ```
+    docker run --rm openeuler/udunits-2:{Tag} udunits2 -A -H meter
+    ```
+
+license: BSD 4-Clause
+similar_packages:
+  - GNU Units: 一个单位转换命令行工具，用于在不同单位之间进行数值转换
+  - Pint: 一个 Python 库，用于定义、操作和转换物理量单位
+  - cf_units: 基于 UDUNITS-2 的 Python 接口，用于气候和预报领域的单位处理
+
+dependency:
+  - expat
+
+homepage: https://github.com/Unidata/UDUNITS-2
+upstream:
+  backend: GitHub
+  version_url: Unidata/UDUNITS-2
+  version_prefix: v
+  version_filter: alpha;rc;candidate;beta;pre
+  version_scheme: RPM
