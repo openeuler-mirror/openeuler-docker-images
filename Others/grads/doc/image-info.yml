@@ -1,7 +1,7 @@
 name: GrADS
 category: others
 description: |
-  GrADS（The Grid Analysis and Display System）是一个用于快速便捷地访问、操作、分析和可视化地球科学数据的工具。GrADS 拥有两种数据模型，可处理网格数据和站点数据，并支持所有标准数据文件格式。GrADS 使用五维数据环境：四个常规维度（经度、纬度、垂直高度和时间）外加一个可选的第五维度（通常用于集合预报）。分析操作通过代数表达式执行，表达式可递归求值以支持嵌套。GrADS 提供丰富的内置函数集，同时用户也可以使用任何编程语言编写外部插件来添加自定义函数。GrADS 具有可编程接口（脚本语言），支持复杂的分析和显示应用，可在交互模式或批处理模式下运行。
+  GrADS（The Grid Analysis and Display System）是一个用于快速便捷地访问、操作、分析和可视化地球科学数据的工具
 environment: |
   本应用在Docker环境中运行，安装Docker执行如下命令
   ```
