@@ -1,0 +1,43 @@
+name: jax
+category: hpc
+description: JAX 是一个面向加速器的数组计算和程序变换 Python 库，专为高性能数值计算和大规模机器学习设计。JAX 能够自动微分原生 Python 和 NumPy 函数，支持反向模式微分（jax.grad）和正向模式微分，两者可任意组合。JAX 使用 XLA 在 TPU、GPU 等硬件加速器上编译和运行 NumPy 程序。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  jax镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[0.10.1-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/hpc/jax/0.10.1/24.03-lts-sp3/Dockerfile) | jax 0.10.1 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+  
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/jax:{Tag}
+  ```
+
+usage: |
+  启动容器：
+  ```
+  docker run -it --rm openeuler/jax:{Tag} python3 -c "import jax; import jax.numpy as jnp; print(jnp.ones((3, 4)))"
+  ```
+
+license: Apache-2.0
+similar_packages:
+  - NumPy: 高性能数值计算基础库
+  - TensorFlow: 端到端机器学习平台
+  - PyTorch: 灵活的深度学习框架
+  
+dependency:
+  - 
+
+homepage: https://github.com/jax-ml/jax
+upstream:
+  backend: GitHub
+  version_url: jax-ml/jax
+  version_prefix: jax-
+  version_filter: alpha;rc;candidate;beta;pre
+  version_scheme: RPM
