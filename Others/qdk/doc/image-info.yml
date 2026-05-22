@@ -1,0 +1,47 @@
+name: QDK
+category: others
+description: QDK 是用于构建 QNAP Turbo NAS QPKG 文件/应用程序的开发工具包。QPKG 文件让用户可以轻松安装和卸载软件包，同时为包维护者提供对 NAS 上软件包安装过程的全面控制。QDK 支持架构检查、数字签名、多种压缩算法，以及依赖和冲突检查功能。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  QDK镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[2.5.0-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/qdk/2.5.0/24.03-lts-sp3/Dockerfile) | QDK 2.5.0 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+  
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/qdk:{Tag}
+  ```
+
+usage: |
+  - 启动容器并使用 qbuild 构建 QPKG 包
+    ```
+    docker run --rm -v $(pwd):/workspace openeuler/qdk:{Tag} qbuild
+    ```
+  
+  - 查看 qbuild 帮助信息
+    ```
+    docker run --rm openeuler/qdk:{Tag} qbuild --help
+    ```
+
+license: GPL
+similar_packages:
+  - RPM build: RPM 包构建工具
+  - dpkg: Debian 包构建工具
+
+dependency:
+  - 
+
+homepage: https://github.com/qnap-dev/QDK
+upstream:
+  backend: GitHub
+  version_url: qnap-dev/QDK
+  version_prefix: v
+  version_filter: alpha;rc;candidate;beta;pre
+  version_scheme: RPM
