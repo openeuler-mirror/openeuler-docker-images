@@ -1,7 +1,6 @@
 name: GrADS
 category: others
-description: |
-  GrADS（The Grid Analysis and Display System）是一个用于快速便捷地访问、操作、分析和可视化地球科学数据的工具
+description: GrADS（The Grid Analysis and Display System）是一个用于快速便捷地访问、操作、分析和可视化地球科学数据的工具。
 environment: |
   本应用在Docker环境中运行，安装Docker执行如下命令
   ```
