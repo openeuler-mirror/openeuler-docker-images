@@ -1,0 +1,43 @@
+name: foldseek
+category: hpc
+description: Foldseek 能够对大规模蛋白质结构集进行快速且灵敏的比较，支持单体和多聚体搜索以及聚类。可在 CPU 上运行，支持 GPU 加速搜索，也可选择利用语言模型直接从蛋白质序列输入进行超快速且灵敏的比较，无需结构文件。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  foldseek镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[10-941cd33-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/foldseek/10-941cd33/24.03-lts-sp3/Dockerfile) | foldseek 10-941cd33 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+  
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/foldseek:{Tag}
+  ```
+
+usage: |
+  将查询结构文件与目标数据库进行搜索比对：
+  ```
+  docker run --rm -v /path/to/data:/data openeuler/foldseek:{Tag} foldseek easy-search /data/query.pdb /data/target_db /data/result tmp
+  ```
+
+license: GPL-3.0
+similar_packages:
+  - MMseqs2: 超快速蛋白质序列搜索与聚类工具
+  - TM-align: 蛋白质结构比对与TM-score计算工具
+  - DALI: 蛋白质三维结构比对工具
+
+dependency:
+  - 
+
+homepage: https://github.com/steineggerlab/foldseek
+upstream:
+  backend: GitHub
+  version_url: steineggerlab/foldseek
+  version_prefix: 
+  version_filter: alpha;rc;candidate;beta;pre;v
+  version_scheme: RPM
