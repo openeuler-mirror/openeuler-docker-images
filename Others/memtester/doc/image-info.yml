@@ -11,6 +11,7 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
+  |[4.7.1-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/memtester/4.7.1/24.03-lts-sp3/Dockerfile) | memtester 4.7.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
   | [4.7.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/memtester/4.7.1/24.03-lts-sp1/Dockerfile) | memtester 4.7.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 download: |
