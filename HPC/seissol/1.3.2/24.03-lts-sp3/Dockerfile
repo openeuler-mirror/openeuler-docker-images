@@ -8,7 +8,7 @@ ARG SEISSOL_VERSION=1.3.2
 
 RUN dnf install -y \
       gcc gcc-c++ gcc-gfortran make cmake git \
-      openmpi-devel hdf5-openmpi-devel netcdf-openmpi-devel \
+      openmpi-devel hdf5-devel netcdf-devel hdf5-openmpi-devel netcdf-openmpi-devel \
       lua-devel yaml-cpp-devel numactl-devel \
       python3-pip python3-numpy && \
     dnf clean all
