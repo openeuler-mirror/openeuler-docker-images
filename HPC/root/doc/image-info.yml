@@ -1,0 +1,53 @@
+name: root
+category: hpc
+description: ROOT 是一个统一的科学数据存储、处理和分析软件包，从数据采集到以高度可定制的出版级图形进行最终可视化。它在大型强子对撞机实验中得到验证，超过 2 EB 的科学数据以 ROOT 列式格式存储。ROOT 具备任意维度的直方图统计、曲线拟合、统计建模和最小化功能，支持通过 RDataFrame 并行处理框架充分利用多核和分布式系统加速分析。ROOT 使用 C++ 编写，内置 C++ 解释器 Cling，并通过 cppyy 技术提供高效的 Python 动态绑定。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  root镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[6-40-00-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/root/6-40-00/24.03-lts-sp3/Dockerfile) | root 6-40-00 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+  
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/root:{Tag}
+  ```
+
+usage: |
+  - 启动 ROOT 交互式会话（批处理模式，无图形界面）
+    ```
+    docker run -it --rm openeuler/root:{Tag} root -b
+    ```
+
+  - 运行 ROOT 宏
+    ```
+    docker run -it --rm openeuler/root:{Tag} root -b -q 'TMath::Pi()'
+    ```
+
+  - 进入容器使用 ROOT 工具
+    ```
+    docker run -it --rm openeuler/root:{Tag} bash
+    ```
+
+license: LGPL-2.1
+similar_packages:
+  - Geant4: 高能物理蒙特卡洛粒子模拟工具包
+  - R: 统计计算与数据分析编程语言
+  - Gnuplot: 科学数据可视化绘图工具
+  
+dependency:
+  - 
+
+homepage: https://github.com/root-project/root
+upstream:
+  backend: GitHub
+  version_url: root-project/root
+  version_prefix: v
+  version_filter: alpha;rc;candidate;beta;pre
+  version_scheme: RPM
