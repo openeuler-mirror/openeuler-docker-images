@@ -1,0 +1,52 @@
+name: SeisSol
+category: hpc
+description: SeisSol 是一款用于地震波现象和地震动力学数值模拟的科学软件。它基于间断 Galerkin 方法结合 ADER 时间离散，支持弹性、各向异性弹性、声学、粘弹性和多孔弹性等多种本构模型，可在非结构化自适应四面体网格上进行高精度地震场景模拟。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  SeisSol镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.3.2-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/seissol/1.3.2/24.03-lts-sp3/Dockerfile) | SeisSol 1.3.2 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+  
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/seissol:{Tag}
+  ```
+
+usage: |
+  - 使用 mpirun 运行 SeisSol 模拟
+    ```
+    docker run --rm -v /path/to/input:/data openeuler/seissol:{Tag} SeisSol input.par
+    ```
+
+  - 指定 MPI 进程数运行
+    ```
+    docker run --rm -v /path/to/input:/data openeuler/seissol:{Tag} -np 4 SeisSol input.par
+    ```
+
+
+license: BSD-3-Clause
+similar_packages:
+  - SPECFEM3D: 基于谱元法的三维地震波传播模拟软件
+  - SW4: 基于有限差分法的四阶精度地震波模拟工具
+  - OpenSees: 开源地震工程模拟系统
+
+dependency:
+  - openmpi
+  - hdf5-openmpi
+  - netcdf-openmpi
+  - easi
+
+homepage: https://github.com/SeisSol/SeisSol
+upstream:
+  backend: GitHub
+  version_url: SeisSol/SeisSol
+  version_prefix: v
+  version_filter: alpha;rc;candidate;beta;pre
+  version_scheme: RPM
