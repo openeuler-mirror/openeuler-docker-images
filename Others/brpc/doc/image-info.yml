@@ -1,0 +1,52 @@
+name: brpc
+category: Others
+description: Apache brpc是一款工业级C++ RPC框架，常用于搜索、存储、机器学习、广告推荐等高性能系统。"brpc"意为"better RPC"，支持在同一端口上提供多种协议服务，包括HTTP/HTTPS、gRPC、Redis、Memcached、Thrift等，并提供内置的调试服务和性能分析工具。
+environment: |
+  本应用在Docker环境中运行,安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  brpc镜像的Tag由其版本信息和基础镜像版本信息组成,详细内容如下
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.16.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/brpc/1.16.0/24.03-lts-sp3/Dockerfile) | brpc 1.16.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/brpc:{Tag}
+  ```
+usage: |
+  1. 确保已安装 Docker 环境。
+  2. 获取 brpc 镜像（二选一）：
+  - 从 DockerHub 拉取预构建镜像
+    ```
+    docker pull openeuler/brpc:1.16.0-oe2403sp3
+    ```
+  - 或从源码构建镜像
+    ```
+    docker build -t openeuler/brpc:1.16.0-oe2403sp3 1.16.0/24.03-lts-sp3/
+    ```
+  3. 启动容器进入 brpc 开发环境
+    ```
+    docker run -it openeuler/brpc:1.16.0-oe2403sp3
+    ```
+  4. 在容器内验证安装
+    ```
+    ls /brpc/output/include/brpc
+    ```
+license: Apache-2.0 license
+similar_packages:
+  - gRPC: Google开源的高性能通用RPC框架,基于HTTP/2和Protocol Buffers,支持多语言
+  - Apache Thrift: Apache开源的跨语言RPC框架,支持多种传输协议和序列化格式
+  - Cap'n Proto: 高效的零拷贝序列化框架,直接从内存读取数据无需解码
+dependency:
+  - protobuf
+  - gflags
+  - openssl
+homepage: https://brpc.apache.org/
+upstream:
+  backend: GitHub
+  version_url: apache/brpc
+  version_filter: pre;rc;alpha;beta;candidate
+  version_scheme: RPM
