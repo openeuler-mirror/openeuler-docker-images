@@ -1,0 +1,109 @@
+name: SGLang
+category: AI
+description: SGLang是一个面向大型语言模型和多模态模型的高性能服务框架。其设计旨在实现从单块GPU到大规模分布式集群的广泛部署环境中的低延迟、高吞吐量推理。
+environment: |
+  本应用在Docker环境中运行,安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  SGLang镜像的Tag由其版本信息和基础镜像版本信息组成,详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[0.5.11-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/sglang/0.5.11/24.03-lts-sp3/Dockerfile) | sglang 0.5.11 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+  
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/sglang:{Tag}
+  ```
+
+usage: |
+  镜像内的构建产物位于 `/opt/sglang/dist`;
+
+  - JAR 文件：/opt/sglang/dist/jars
+  - 原生库：/opt/sglang/dist/lib
+
+  拉取镜像（示例）：
+  ```
+  docker pull my-registry/sglang:0.5.11
+  ```
+
+  列出镜像内的产物：
+  ```
+  docker run --rm my-registry/sglang:0.5.11 bash -c "find /opt/sglang/dist -type f -maxdepth 3 -print"
+  ```
+
+  将产物提取到宿主机：
+  ```
+  docker create --name tmp my-registry/sglang:0.5.11
+  docker cp tmp:/opt/sglang/dist ./sglang-dist
+  docker rm -v tmp
+  ```
+
+  在 Spark 集群上的使用（生产环境建议）：
+
+  1. 节点部署（将产物分发到每个节点）
+     - 将 JAR 复制到 `$SPARK_HOME/jars`
+     - 将原生库放置到例如 `/opt/sglang/lib`，并在运行时设置：
+       ```
+       export LD_LIBRARY_PATH=/opt/sglang/lib:$LD_LIBRARY_PATH
+       ```
+
+  2. 提交作业时指定 JAR（示例）：
+  ```
+  spark-submit \
+    --class <MainClass> \
+    --master yarn \
+    --deploy-mode cluster \
+    --jars /opt/sglang/dist/jars/sglang.jar,/opt/sglang/dist/jars/velox-native.jar \
+    --conf spark.driver.extraClassPath=/opt/sglang/dist/jars/sglang.jar \
+    --conf spark.executor.extraClassPath=/opt/sglang/dist/jars/sglang.jar \
+    --conf spark.sglang.sql.columnar.enable=true \
+    your-app.jar
+  ```
+
+  在 Kubernetes 上的使用（推荐：initContainer + 共享卷）：
+
+  使用 `initContainer` 将产物从本镜像拷贝到共享卷，主容器挂载该卷并设置 `LD_LIBRARY_PATH`。示例片段：
+  ```yaml
+  initContainers:
+    - name: copy-sglang
+      image: my-registry/sglang:0.5.11
+      command: ["sh","-c","cp -r /opt/sglang/dist /artifacts && chown -R 1000:1000 /artifacts"]
+      volumeMounts:
+        - name: artifacts
+          mountPath: /artifacts
+
+  containers:
+    - name: app
+      image: my-registry/your-app:latest
+      volumeMounts:
+        - name: artifacts
+          mountPath: /opt/sglang
+      env:
+        - name: LD_LIBRARY_PATH
+          value: /opt/sglang/dist/lib:$LD_LIBRARY_PATH
+
+  volumes:
+    - name: artifacts
+      emptyDir: {}
+  ```
+
+license: Apache-2.0 license
+similar_packages:
+  - name: vLLM
+    description: vLLM是一种高性能大语言模型推理框架,专为提升 LLaMA、ChatGLM、Phi-3 等主流开源模型的推理效率而设计。
+    homepage: https://vllm.ai/
+dependency:
+  - openjdk
+
+homepage: https://github.com/sgl-project/sglang
+upstream:
+  backend: GitHub
+  version_url: sgl-project/sglang
+  version_prefix: v
+  version_filter: post;rc;gateway
+  version_scheme: RPM
