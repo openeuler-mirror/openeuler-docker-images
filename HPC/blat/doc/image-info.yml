@@ -1,0 +1,51 @@
+name: pblat
+category: HPC
+description: pblat是BLAT序列比对工具的集群并行版本，支持MPI和多线程混合并行计算模式，能够在集群环境中高效执行大规模基因组序列比对任务。pblat继承了BLAT的高速比对特性，同时通过并行化显著提升了处理吞吐量，广泛应用于基因组学、生物信息学和计算生物学领域的序列映射与比对研究。
+environment: |
+  本应用在Docker环境中运行,安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  pblat镜像的Tag由其版本信息和基础镜像版本信息组成,详细内容如下
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.1-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/pblat/1.1/24.03-lts-sp3/Dockerfile) | pblat 1.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/pblat:{Tag}
+  ```
+usage: |
+  1. 确保已安装 Docker 环境。
+  2. 获取 pblat 镜像（二选一）：
+  - 从 DockerHub 拉取预构建镜像
+    ```
+    docker pull openeuler/pblat:1.1-oe2403sp3
+    ```
+  - 或从源码构建镜像
+    ```
+    docker build -t openeuler/pblat:1.1-oe2403sp3 1.1/24.03-lts-sp3/
+    ```
+  3. 启动容器进入 pblat 环境
+    ```
+    docker run -it openeuler/pblat:1.1-oe2403sp3
+    ```
+  4. 在容器内验证安装
+    ```
+    pblat -version
+    ```
+license: BLAT license
+similar_packages:
+  - BLAST: NCBI开发的基本局部比对搜索工具,广泛用于序列相似性搜索
+  - BWA: Burrows-Wheeler Aligner,用于短读段基因组序列比对的流行工具
+  - Bowtie2: 高速且内存高效的短读段比对工具,适用于大规模测序数据
+dependency:
+  - MPI
+homepage: http://icebert.github.io/pblat-cluster/
+upstream:
+  backend: GitHub
+  version_url: icebert/pblat-cluster
+  version_prefix: 
+  version_filter: 
+  version_scheme: RPM
