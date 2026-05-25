@@ -16,6 +16,7 @@ The tag of each `siege` docker image is consist of the version of `siege` and th
 
 | Tag                                                                                                                             | Currently                              | Architectures |
 |---------------------------------------------------------------------------------------------------------------------------------|----------------------------------------|---------------|
+|[4.1.7-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/siege/4.1.7/24.03-lts-sp3/Dockerfile) | siege 4.1.7 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 | [4.1.7-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/siege/4.1.7/24.03-lts-sp1/Dockerfile) | Siege 4.1.7 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 
 # Usage
