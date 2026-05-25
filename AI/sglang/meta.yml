@@ -1,3 +1,2 @@
-0.5.5-torch2.8.0-cuda12.4-python3.11-oe2403sp2:
-  path: 0.5.5-torch2.8.0-cuda12.4-python3.11/24.03-lts-sp2/Dockerfile
-  arch: x86_64
+0.5.11-oe2403sp3:
+  path: 0.5.11/24.03-lts-sp3/Dockerfile

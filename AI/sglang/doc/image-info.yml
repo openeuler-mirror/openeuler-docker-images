@@ -1,5 +1,5 @@
 name: SGLang
-category: HPC
+category: AI
 description: SGLang是一个面向大型语言模型和多模态模型的高性能服务框架。其设计旨在实现从单块GPU到大规模分布式集群的广泛部署环境中的低延迟、高吞吐量推理。
 environment: |
   本应用在Docker环境中运行,安装Docker执行如下命令

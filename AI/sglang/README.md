@@ -1,54 +1,146 @@
 # Quick reference
 
-- The offical SGLang docker images
+- The official SGLang artifact docker image.
 
-- Maintained by: [openEuler CloudNative SIG](https://gitee.com/openeuler/cloudnative)
+- Maintained by: [openEuler CloudNative SIG](https://atomgit.com/openeuler/cloudnative).
 
-- Where to get help: [openEuler CloudNative SIG](https://gitee.com/openeuler/cloudnative), [openEuler](https://gitee.com/openeuler/community)
+- Where to get help: [openEuler CloudNative SIG](https://atomgit.com/openeuler/cloudnative), [openEuler](https://atomgit.com/openeuler/community).
 
 # SGLang | openEuler
 
-Current SGLang docker images are built on the [openEuler](https://repo.openeuler.org/)⁠. This repository is free to use and exempted from per-user rate limits.
-
-## About
-SGLang is a high-performance serving framework for large language models and vision-language models.
-It is designed to deliver low-latency and high-throughput inference across a wide range of setups, from a single GPU to large distributed clusters.
-Its core features include:
-
-- **Fast Backend Runtime**: Provides efficient serving with RadixAttention for prefix caching, a zero-overhead CPU scheduler, prefill-decode disaggregation, speculative decoding, continuous batching, paged attention, tensor/pipeline/expert/data parallelism, structured outputs, chunked prefill, quantization (FP4/FP8/INT4/AWQ/GPTQ), and multi-LoRA batching.
-- **Extensive Model Support**: Supports a wide range of generative models (Llama, Qwen, DeepSeek, Kimi, GLM, GPT, Gemma, Mistral, etc.), embedding models (e5-mistral, gte, mcdse), and reward models (Skywork), with easy extensibility for integrating new models. Compatible with most Hugging Face models and OpenAI APIs.
-- **Extensive Hardware Support**: Runs on NVIDIA GPUs (GB200/B300/H100/A100/Spark), AMD GPUs (MI355/MI300), Intel Xeon CPUs, Google TPUs, Ascend NPUs, and more.
-- **Flexible Frontend Language**: Offers an intuitive interface for programming LLM applications, supporting chained generation calls, advanced prompting, control flow, multi-modal inputs, parallelism, and external interactions.
-- **Active Community**: SGLang is open-source and supported by a vibrant community with widespread industry adoption, powering over 300,000 GPUs worldwide.
+SGLang is a fast serving framework for large language models (LLMs) and vision language models. It provides high-performance inference capabilities through co-designed backend runtime and frontend language. Learn more at https://github.com/sgl-project/sglang.
 
 # Supported tags and respective Dockerfile links
 
-The tag of each vLLM docker image is consist of the version of vLLM and the version of basic image. The details are as follows
+The tag of each SGLang docker image is consist of the version of SGLang and the version of basic image. The details are as follows:
 
-| Tags | Currently |  Architectures|
-|--|--|--|
-|[0.5.5-torch2.8.0-cuda12.4-python3.11-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/sglang/0.5.5-torch2.8.0-cuda12.4-python3.11/24.03-lts-sp2/Dockerfile)| SGLang 0.5.5 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+| Tags | Currently | Architectures |
+|------|-----------|---------------|
+|[0.5.11-24.03-lts-sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/sglang/0.5.11/24.03-lts-sp3/Dockerfile)| sglang 0.5.11 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 # Usage
 
-## Quick start 1: supported devices
+In this usage, users can select the corresponding `{Tag}` based on their requirements. Build artifacts are placed under `/opt/sglang` inside the image.
 
-- Intel/AMD x86
-- ARM AArch64
-
-## Quick start 2: pull the SGLang image
+Pull the image (example):
 
 ```bash
-docker pull openeuler:sglang:{TAG}
+docker pull my-registry/sglang:0.5.11
 ```
-## Quick start 3: offline inference
 
-You can use Modelscope mirror to speed up download:
+Check SGLang installation:
 
 ```bash
-docker run --rm --name sglang -p 8000:8000 --gpus all openeuler/sglang:{TAG} python3 -m sglang.launch_server --model-path {MODEL_PATH} --host 0.0.0.0 -port 8000
+docker run --rm my-registry/sglang:0.5.11 python3 -c "import sglang; print(sglang.__version__)"
+```
+
+View available parameters:
+
+```bash
+docker run --rm my-registry/sglang:0.5.11 python3 -m sglang.launch_server --help
+```
+
+## Starting SGLang Server
+
+Start the SGLang inference server (example):
+
+```bash
+docker run --gpus all \
+  -p 30000:30000 \
+  -v ~/.cache/huggingface:/root/.cache/huggingface \
+  my-registry/sglang:0.5.11 \
+  python3 -m sglang.launch_server \
+    --model-path meta-llama/Llama-3.1-8B-Instruct \
+    --host 0.0.0.0 \
+    --port 30000
+```
+
+## Using on Kubernetes (recommended: Deployment)
+
+Deploy SGLang as a Kubernetes Deployment with GPU support. Example:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sglang-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sglang-server
+  template:
+    metadata:
+      labels:
+        app: sglang-server
+    spec:
+      containers:
+        - name: sglang
+          image: my-registry/sglang:0.5.11
+          ports:
+            - containerPort: 30000
+          args:
+            - python3
+            - -m
+            - sglang.launch_server
+            - --model-path
+            - meta-llama/Llama-3.1-8B-Instruct
+            - --host
+            - "0.0.0.0"
+            - --port
+            - "30000"
+          resources:
+            requests:
+              nvidia.com/gpu: 1
+            limits:
+              nvidia.com/gpu: 1
+          volumeMounts:
+            - name: huggingface-cache
+              mountPath: /root/.cache/huggingface
+      volumes:
+        - name: huggingface-cache
+          persistentVolumeClaim:
+            claimName: huggingface-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sglang-service
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 30000
+      targetPort: 30000
+  selector:
+    app: sglang-server
+```
+
+## Using with OpenAI-Compatible API
+
+After starting the server, you can interact with SGLang using the OpenAI-compatible API:
+
+```bash
+# Chat completions API
+curl http://localhost:30000/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "meta-llama/Llama-3.1-8B-Instruct",
+    "messages": [
+      {"role": "user", "content": "Hello, how are you?"}
+    ],
+    "max_tokens": 256
+  }'
+
+# Completions API
+curl http://localhost:30000/v1/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "meta-llama/Llama-3.1-8B-Instruct",
+    "prompt": "The capital of France is",
+    "max_tokens": 32
+  }'
 ```
 
 # Question and answering
 
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use special features, please submit an issue or a pull request on `https://atomgit.com/openeuler/openeuler-docker-images`.
