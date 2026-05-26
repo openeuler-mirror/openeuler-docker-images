@@ -1,0 +1,54 @@
+name: openmolcas
+category: HPC
+description: OpenMolcas是一个量子化学软件包，核心特色是多组态方法处理电子结构问题，提供CASSCF（完全活性空间自洽场）和CASPT2（完全活性空间二阶微扰理论）等关键方法。OpenMolcas支持多参考态电子结构计算、几何优化与能量计算、光谱性质计算、响应性质计算等功能，广泛应用于量子化学、计算化学和分子物理研究。
+environment: |
+  本应用在Docker环境中运行,安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  openmolcas镜像的Tag由其版本信息和基础镜像版本信息组成,详细内容如下
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[26.02-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/openmolcas/26.02/24.03-lts-sp3/Dockerfile) | OpenMolcas 26.02 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/openmolcas:{Tag}
+  ```
+usage: |
+  1. 确保已安装 Docker 环境。
+  2. 获取 OpenMolcas 镜像（二选一）：
+  - 从 DockerHub 拉取预构建镜像
+    ```
+    docker pull openeuler/openmolcas:26.02-oe2403sp3
+    ```
+  - 或从源码构建镜像
+    ```
+    docker build -t openeuler/openmolcas:26.02-oe2403sp3 26.02/24.03-lts-sp3/
+    ```
+  3. 启动容器进入 OpenMolcas 环境
+    ```
+    docker run -it openeuler/openmolcas:26.02-oe2403sp3
+    ```
+  4. 在容器内验证安装
+    ```
+    pymolcas --help
+    ```
+license: LGPL-2.1
+similar_packages:
+  - ORCA: 免费的量子化学计算程序，支持多种电子结构方法
+  - PSI4: 开源量子化学软件包，侧重于高效电子结构计算
+  - NWChem: 开源计算化学软件，支持大规模并行计算
+dependency:
+  - gfortran
+  - cmake
+  - LAPACK/BLAS
+  - Python
+homepage: https://gitlab.com/Molcas/OpenMolcas
+upstream:
+  backend: GitHub
+  version_url: Molcas/OpenMolcas
+  version_prefix: v
+  version_filter: 
+  version_scheme: RPM
