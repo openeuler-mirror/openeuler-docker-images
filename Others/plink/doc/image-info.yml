@@ -1,4 +1,4 @@
-name: PLINK
+name: plink
 category: Others
 description: PLINK是一款免费开源的全基因组关联分析工具集，旨在以计算高效的方式执行大规模基本基因组分析。PLINK 2.0支持VCF文件和剂量数据处理，提供关联分析、LD计算、主成分分析、聚合测试等多种功能，广泛应用于基因组学和生物信息学研究。
 environment: |
@@ -10,7 +10,7 @@ tags: |
   PLINK镜像的Tag由其版本信息和基础镜像版本信息组成,详细内容如下
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
-  |[2.0.0-a7.1-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/plink/2.0.0-a7.1/24.03-lts-sp3/Dockerfile) | plink 2.0.0-a7.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+  |[2.0.0-a.7.1-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/plink/2.0.0-a.7.1/24.03-lts-sp3/Dockerfile) | plink 2.0.0-a.7.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 download: |
   拉取镜像到本地
   ```
@@ -21,15 +21,15 @@ usage: |
   2. 获取 PLINK 镜像（二选一）：
   - 从 DockerHub 拉取预构建镜像
     ```
-    docker pull openeuler/plink:2.0.0-a7.1-oe2403sp3
+    docker pull openeuler/plink:2.0.0-a.7.1-oe2403sp3
     ```
   - 或从源码构建镜像
     ```
-    docker build -t openeuler/plink:2.0.0-a7.1-oe2403sp3 2.0.0-a7.1/24.03-lts-sp3/
+    docker build -t openeuler/plink:2.0.0-a.7.1-oe2403sp3 2.0.0-a.7.1/24.03-lts-sp3/
     ```
   3. 启动容器进入 PLINK 环境
     ```
-    docker run -it openeuler/plink:2.0.0-a7.1-oe2403sp3
+    docker run -it openeuler/plink:2.0.0-a.7.1-oe2403sp3
     ```
   4. 在容器内验证安装
     ```
