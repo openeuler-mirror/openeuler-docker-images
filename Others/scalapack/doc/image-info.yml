@@ -1,0 +1,45 @@
+name: scalapack
+category: others
+description: ScaLAPACK（Scalable LAPACK）是一个用于分布式内存计算机的高性能线性代数例程库，支持 MPI，提供稠密、带状和三对角线性方程组求解、LU 与 Cholesky 分解、矩阵求逆、最小二乘问题、特征值问题以及奇异值分解等全面功能。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  scalapack镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[2.2.3-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/scalapack/2.2.3/24.03-lts-sp3/Dockerfile) | scalapack 2.2.3 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+  
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/scalapack:{Tag}
+  ```
+
+usage: |
+  启动容器并运行 MPI 程序
+  ```
+  docker run --rm openeuler/scalapack:{Tag} mpirun --allow-run-as-root -np 4 /path/to/your_mpi_program
+  ```
+
+license: BSD-3-Clause
+similar_packages:
+  - LAPACK: 标准顺序线性代数库，ScaLAPACK 的串行对应版本
+  - PLAPACK: 并行线性代数库，提供分布式矩阵运算
+  - Elemental: 分布式内存稠密线性代数库
+
+dependency:
+  - BLAS
+  - LAPACK
+  - MPI
+
+homepage: https://github.com/Reference-ScaLAPACK/scalapack
+upstream:
+  backend: GitHub
+  version_url: Reference-ScaLAPACK/scalapack
+  version_prefix: v
+  version_filter: alpha;rc;candidate;beta;pre
+  version_scheme: RPM

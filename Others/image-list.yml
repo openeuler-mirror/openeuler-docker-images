@@ -89,3 +89,4 @@ images:
   wgcna: wgcna
   brpc: brpc
   plink: plink
+  scalapack: scalapack
