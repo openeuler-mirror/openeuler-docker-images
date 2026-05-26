@@ -1,0 +1,44 @@
+name: gsl
+category: hpc
+description: GSL - GNU Scientific Library，一套科学计算数值例程库，支持 CMake 构建和 AMPL 绑定
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  gsl镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[20211111-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/gsl/20211111/24.03-lts-sp3/Dockerfile) | gsl 20211111 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+  
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/gsl:{Tag}
+  ```
+
+usage: |
+  验证 gsl 安装：
+
+  ```
+  docker run --rm openeuler/gsl:{Tag} gsl-config --version
+  ```
+
+license: GPL-3.0
+similar_packages:
+  - NumPy: Python 科学计算库
+  - Eigen: C++ 模板线性代数库
+  - Armadillo: C++ 线性代数库
+  
+dependency:
+  - 
+
+homepage: https://github.com/ampl/gsl
+upstream:
+  backend: GitHub
+  version_url: ampl/gsl
+  version_prefix: 
+  version_filter: alpha;rc;candidate;beta;pre
+  version_scheme: RPM
