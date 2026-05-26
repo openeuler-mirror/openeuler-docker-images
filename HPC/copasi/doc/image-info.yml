@@ -1,0 +1,54 @@
+name: copasi
+category: HPC
+description: COPASI是一个生化网络模拟与分析软件，支持SBML标准的模型导入，提供ODE数值模拟和Gillespie随机模拟算法，具备稳态分析、代谢控制分析、参数估计与优化、敏感性分析、时间序列扫描等功能，广泛应用于系统生物学、生物化学和计算生物学研究。
+environment: |
+  本应用在Docker环境中运行,安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  copasi镜像的Tag由其版本信息和基础镜像版本信息组成,详细内容如下
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[4.46.300-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/copasi/4.46.300/24.03-lts-sp3/Dockerfile) | COPASI 4.46 (Build 300) on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/copasi:{Tag}
+  ```
+usage: |
+  1. 确保已安装 Docker 环境。
+  2. 获取 COPASI 镜像（二选一）：
+  - 从 DockerHub 拉取预构建镜像
+    ```
+    docker pull openeuler/copasi:4.46.300-oe2403sp3
+    ```
+  - 或从源码构建镜像
+    ```
+    docker build -t openeuler/copasi:4.46.300-oe2403sp3 4.46.300/24.03-lts-sp3/
+    ```
+  3. 启动容器进入 COPASI 环境
+    ```
+    docker run -it openeuler/copasi:4.46.300-oe2403sp3
+    ```
+  4. 在容器内验证安装
+    ```
+    CopasiSE --help
+    ```
+license: Artistic-2.0
+similar_packages:
+  - CellDesigner: 可视化生化网络建模工具，侧重SBML图形编辑
+  - BioNetGen: 基于规则的生化网络建模与模拟软件
+  - PySB: Python框架，用于基于规则的生化网络模型构建
+dependency:
+  - cmake
+  - gcc/g++
+  - copasi-dependencies (clapack, expat, raptor, libSBML, libSEDML)
+  - Python
+homepage: https://copasi.org
+upstream:
+  backend: GitHub
+  version_url: copasi/COPASI
+  version_prefix: Build-
+  version_filter: 
+  version_scheme: custom
