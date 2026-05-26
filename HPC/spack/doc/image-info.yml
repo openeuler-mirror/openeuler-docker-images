@@ -1,0 +1,52 @@
+name: Spack
+category: HPC
+description: Spack是一款多平台包管理器，支持构建和安装多种版本和配置的软件。它可在Linux、macOS、Windows及众多超级计算机上运行。Spack采用非破坏性安装方式，新版本不会破坏已有安装，因此同一软件的多种配置可以共存。
+environment: |
+  本应用在Docker环境中运行,安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  Spack镜像的Tag由其版本信息和基础镜像版本信息组成,详细内容如下
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.1.1-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/spack/1.1.1/24.03-lts-sp3/Dockerfile) | spack 1.1.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/spack:{Tag}
+  ```
+usage: |
+  1. 确保已安装 Docker 环境。
+  2. 获取 Spack 镜像（二选一）：
+  - 从 DockerHub 拉取预构建镜像
+    ```
+    docker pull openeuler/spack:1.1.1-oe2403sp3
+    ```
+  - 或从源码构建镜像
+    ```
+    docker build -t openeuler/spack:1.1.1-oe2403sp3 1.1.1/24.03-lts-sp3/
+    ```
+  3. 启动容器进入 Spack 环境
+    ```
+    docker run -it openeuler/spack:1.1.1-oe2403sp3
+    ```
+  4. 在容器内验证安装
+    ```
+    spack --version
+    ```
+license: Apache-2.0 OR MIT license
+similar_packages:
+  - Conda: 跨平台包管理器,主要用于Python数据科学和机器学习环境管理
+  - Homebrew: macOS和Linux上的包管理器,侧重于提供预编译的二进制包
+  - Nix: 磁盘占用极小的纯函数式包管理器,支持可重现的构建和部署
+dependency:
+  - python3
+  - git
+homepage: https://spack.io/
+upstream:
+  backend: GitHub
+  version_url: spack/spack
+  version_prefix: v
+  version_filter: pre;rc;alpha;beta;candidate
+  version_scheme: RPM
