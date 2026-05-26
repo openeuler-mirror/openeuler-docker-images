@@ -1,0 +1,54 @@
+name: wavewatch
+category: hpc
+description: WAVEWATCH III（WW3）是由NOAA/NCEP开发的全谱第三方海浪数值模式，基于WAM模式框架，求解海浪能量谱的传输方程。WW3在物理过程方面包含风输入、非线性波-波相互作用、白浪耗散、底摩擦等源/汇项，支持网格嵌套、海冰遮蔽、波-流相互作用、源项偏移等高级功能。WW3支持MPI并行计算和NetCDF4/HDF5数据I/O，提供多种预处理和后处理工具，广泛应用于全球和区域海浪预报、海浪气候分析及波-流耦合研究。
+environment: |
+  本应用在Docker环境中运行,安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  wavewatch镜像的Tag由其版本信息和基础镜像版本信息组成,详细内容如下
+  |    Tag   |  Currently  |  Architectures  |
+  |----------|-------------|------------------|
+  |[6.07.1-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/wavewatch/6.07.1/24.03-lts-sp3/Dockerfile) | WAVEWATCH III 6.07.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/wavewatch:{Tag}
+  ```
+usage: |
+  1. 确保已安装 Docker 环境。
+  2. 获取 WAVEWATCH III 镜像（二选一）：
+  - 从 DockerHub 拉取预构建镜像
+    ```
+    docker pull openeuler/wavewatch:6.07.1-oe2403sp3
+    ```
+  - 或从源码构建镜像
+    ```
+    docker build -t openeuler/wavewatch:6.07.1-oe2403sp3 6.07.1/24.03-lts-sp3/
+    ```
+  3. 启动容器进入 WW3 环境
+    ```
+    docker run -it openeuler/wavewatch:6.07.1-oe2403sp3
+    ```
+  4. 在容器内验证安装
+    ```
+    which ww3_shel
+    ```
+license: MIT
+similar_packages:
+  - SWAN: Delft理工大学开发的第三方浅水海浪模式，适用于沿岸和近海波浪模拟
+  - SWASH: Delft理工大学开发的非静压多相流模式，适用于波浪破碎和近岸波浪变形模拟
+  - MITgcm: MIT开发的通用环流模式，支持海洋和大气模拟并可耦合海浪模块
+dependency:
+  - Fortran compiler (gfortran)
+  - NetCDF-Fortran
+  - HDF5
+  - CMake
+homepage: https://github.com/NOAA-EMC/WW3
+upstream:
+  backend: GitHub
+  version_url: NOAA-EMC/WW3
+  version_prefix: 
+  version_filter: 
+  version_scheme: RPM
