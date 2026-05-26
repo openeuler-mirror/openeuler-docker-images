@@ -1,4 +1,4 @@
-name: Slurm
+name: slurm
 category: HPC
 description: Slurm是一款免费开源的集群资源管理和作业调度系统，被全球众多超级计算机和计算集群广泛使用。它提供资源分配、作业执行监控和调度冲突仲裁三大核心功能。
 environment: |
@@ -59,6 +59,6 @@ homepage: https://slurm.schedmd.com/
 upstream:
   backend: GitHub
   version_url: SchedMD/slurm
-  version_prefix: v
+  version_prefix: slurm
   version_filter: pre;rc
   version_scheme: RPM
