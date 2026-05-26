@@ -1,8 +1,6 @@
 ARG BASE=openeuler/openeuler:24.03-lts-sp3
 FROM ${BASE}
 
-ARG TARGETARCH
-
 ARG GSL_VERSION=20211111
 
 RUN dnf install -y \
