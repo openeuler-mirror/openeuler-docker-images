@@ -1,0 +1,51 @@
+name: autodock
+category: HPC
+description: AutoDock Vina是最快且最广泛使用的开源分子对接引擎之一，基于简单评分函数和快速梯度优化构象搜索的即时计算对接程序。它支持AutoDock4.2和Vina评分函数、多配体同时对接、大环分子对接、水合对接协议以及Python绑定，广泛应用于药物发现和计算化学领域的虚拟筛选和分子对接研究。
+environment: |
+  本应用在Docker环境中运行,安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  AutoDock-Vina镜像的Tag由其版本信息和基础镜像版本信息组成,详细内容如下
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.2.7-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/autodock-vina/1.2.7/24.03-lts-sp3/Dockerfile) | AutoDock Vina 1.2.7 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/autodock-vina:{Tag}
+  ```
+usage: |
+  1. 确保已安装 Docker 环境。
+  2. 获取 AutoDock-Vina 镜像（二选一）：
+  - 从 DockerHub 拉取预构建镜像
+    ```
+    docker pull openeuler/autodock-vina:1.2.7-oe2403sp3
+    ```
+  - 或从源码构建镜像
+    ```
+    docker build -t openeuler/autodock-vina:1.2.7-oe2403sp3 1.2.7/24.03-lts-sp3/
+    ```
+  3. 启动容器进入 AutoDock-Vina 环境
+    ```
+    docker run -it openeuler/autodock-vina:1.2.7-oe2403sp3
+    ```
+  4. 在容器内验证安装
+    ```
+    vina --version
+    ```
+license: Apache-2.0 license
+similar_packages:
+  - AutoDock-GPU: AutoDock的GPU加速版本,利用GPU进行大规模虚拟筛选
+  - rDock: 开源分子对接平台,适用于高通量虚拟筛选
+  - Glide: Schrödinger公司开发的商业分子对接工具,精度较高
+dependency:
+  - boost
+homepage: https://autodock.scripps.edu/
+upstream:
+  backend: GitHub
+  version_url: ccsb-scripps/AutoDock-Vina
+  version_prefix: v
+  version_filter: dev
+  version_scheme: RPM
