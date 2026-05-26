@@ -35,3 +35,4 @@ images:
   root: root
   foldseek: foldseek
   seissol: seissol
+  grib_api: grib_api
