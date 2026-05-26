@@ -87,3 +87,4 @@ images:
   mongoose: mongoose
   libwebp: libwebp
   wgcna: wgcna
+  brpc: brpc
