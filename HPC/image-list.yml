@@ -26,3 +26,4 @@ images:
   spack: spack
   blat: blat
   jellyfish: jellyfish
+  interproscan: interproscan
