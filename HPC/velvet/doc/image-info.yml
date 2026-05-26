@@ -1,0 +1,53 @@
+name: velvet
+category: HPC
+description: Velvet是一个基于de Bruijn图的短读段从头基因组组装工具，由D.R. Zerbino和E. Birney开发并发表于Genome Research (2008, 18: 821-829)。Velvet通过构建和简化de Bruijn图将短读段组装为contigs，支持多种哈希长度和读段类型（包括colorspace数据），提供velveth（哈希构建）和velvetg（图组装）两个核心命令，广泛用于细菌和小型真核生物基因组de novo组装以及转录组组装。
+environment: |
+  本应用在Docker环境中运行,安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  velvet镜像的Tag由其版本信息和基础镜像版本信息组成,详细内容如下
+  |    Tag   |  Currently  |  Architectures  |
+  |----------|-------------|------------------|
+  |[1.2.10-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/velvet/1.2.10/24.03-lts-sp3/Dockerfile) | Velvet 1.2.10 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/velvet:{Tag}
+  ```
+usage: |
+  1. 确保已安装 Docker 环境。
+  2. 获取 Velvet 镜像（二选一）：
+  - 从 DockerHub 拉取预构建镜像
+    ```
+    docker pull openeuler/velvet:1.2.10-oe2403sp3
+    ```
+  - 或从源码构建镜像
+    ```
+    docker build -t openeuler/velvet:1.2.10-oe2403sp3 1.2.10/24.03-lts-sp3/
+    ```
+  3. 启动容器进入 Velvet 环境
+    ```
+    docker run -it openeuler/velvet:1.2.10-oe2403sp3
+    ```
+  4. 在容器内验证安装
+    ```
+    which velveth && which velvetg
+    ```
+license: GPL-2.0
+similar_packages:
+  - SPAdes: 基于de Bruijn图的多k值迭代基因组组装工具，适用于细菌和单细胞基因组
+  - SOAPdenovo: 华大基因开发的短读段de novo组装工具，适用于大型基因组
+  - ABySS: 基于de Bruijn图的并行分布式基因组组装工具，适用于大规模数据集
+dependency:
+  - C compiler (GCC)
+  - zlib
+  - make
+homepage: https://github.com/dzerbino/velvet
+upstream:
+  backend: GitHub
+  version_url: dzerbino/velvet
+  version_prefix: v
+  version_filter: 
+  version_scheme: RPM
