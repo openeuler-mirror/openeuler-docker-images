@@ -1,0 +1,50 @@
+name: GrADS
+category: others
+description: GrADS（The Grid Analysis and Display System）是一个用于快速便捷地访问、操作、分析和可视化地球科学数据的工具。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  GrADS镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[2.2.3-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/grads/2.2.3/24.03-lts-sp3/Dockerfile) | GrADS 2.2.3 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+  
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/grads:{Tag}
+  ```
+
+usage: |
+  - 启动 GrADS 交互式会话：
+  
+    ```
+    docker run -it openeuler/grads:{Tag}
+    ```
+  
+  - 在批处理模式下运行 GrADS 脚本：
+  
+    ```
+    docker run --rm -v $(pwd):/data openeuler/grads:{Tag} grads -blc "run /data/script.gs"
+    ```
+
+license: GPL-2.0
+similar_packages:
+  - NCL: NCAR Command Language，用于地球科学数据分析与可视化的解释型语言
+  - NCO: NetCDF Operators，用于操作和分析 netCDF 格式数据的命令行工具
+  - CDO: Climate Data Operators，用于处理气候和天气预报模型数据的命令行工具集
+  
+dependency:
+  - 
+
+homepage: https://github.com/j-m-adams/GrADS
+upstream:
+  backend: GitHub
+  version_url: j-m-adams/GrADS
+  version_prefix: v
+  version_filter: alpha;rc;candidate;beta;pre
+  version_scheme: RPM
