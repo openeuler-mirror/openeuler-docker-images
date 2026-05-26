@@ -1,0 +1,52 @@
+name: seurat
+category: HPC
+description: Seurat是一个R语言单细胞基因组学分析工具包，由Satija Lab开发和维护。Seurat提供了单细胞RNA测序数据的完整分析流程，包括数据质量控制、归一化、特征选择、降维（PCA/UMAP）、聚类分析、差异表达分析等功能。Seurat v5引入了空间转录组学、多模态分析和可扩展单细胞分析的新功能，广泛应用于基因组学、生物信息学和计算生物学领域的单细胞数据挖掘与可视化研究。
+environment: |
+  本应用在Docker环境中运行,安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  seurat镜像的Tag由其版本信息和基础镜像版本信息组成,详细内容如下
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[5.5.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/seurat/5.5.0/24.03-lts-sp3/Dockerfile) | Seurat 5.5.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/seurat:{Tag}
+  ```
+usage: |
+  1. 确保已安装 Docker 环境。
+  2. 获取 Seurat 镜像（二选一）：
+  - 从 DockerHub 拉取预构建镜像
+    ```
+    docker pull openeuler/seurat:5.5.0-oe2403sp3
+    ```
+  - 或从源码构建镜像
+    ```
+    docker build -t openeuler/seurat:5.5.0-oe2403sp3 5.5.0/24.03-lts-sp3/
+    ```
+  3. 启动容器进入 Seurat 环境
+    ```
+    docker run -it openeuler/seurat:5.5.0-oe2403sp3
+    ```
+  4. 在容器内验证安装
+    ```
+    R -e "library(Seurat); packageVersion('Seurat')"
+    ```
+license: MIT License
+similar_packages:
+  - Scanpy: Python单细胞基因组学分析工具包,提供与Seurat类似的单细胞数据分析流程
+  - Monocle3: 用于单细胞轨迹推断和差异分析的R包
+  - Bioconductor: R语言生物信息学软件包集合,包含多种单细胞分析工具
+dependency:
+  - R (>=4.3.0)
+  - R包: SeuratObject, sctransform, patchwork, ggplot2等
+homepage: https://satijalab.org/seurat/
+upstream:
+  backend: GitHub
+  version_url: satijalab/seurat
+  version_prefix: v
+  version_filter: 
+  version_scheme: RPM
