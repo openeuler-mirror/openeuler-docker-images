@@ -16,6 +16,7 @@ The tag of each `binder` docker image is consist of the version of `binder` and 
 
 | Tag                                                                                                                             | Currently                                  | Architectures |
 |---------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------|---------------|
+|[0.3.2-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/binder/0.3.2/24.03-lts-sp3/Dockerfile) | binder 0.3.2 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 | [0.3.2-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/binder/0.3.2/24.03-lts-sp1/Dockerfile) | keybinder 0.3.2 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 
 # Usage
