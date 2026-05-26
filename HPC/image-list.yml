@@ -33,3 +33,4 @@ images:
   gsl: gsl
   autodock: autodock
   root: root
+  foldseek: foldseek
