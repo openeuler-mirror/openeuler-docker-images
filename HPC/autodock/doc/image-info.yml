@@ -1,4 +1,4 @@
-name: AutoDock-Vina
+name: autodock
 category: HPC
 description: AutoDock Vina是最快且最广泛使用的开源分子对接引擎之一，基于简单评分函数和快速梯度优化构象搜索的即时计算对接程序。它支持AutoDock4.2和Vina评分函数、多配体同时对接、大环分子对接、水合对接协议以及Python绑定，广泛应用于药物发现和计算化学领域的虚拟筛选和分子对接研究。
 environment: |
