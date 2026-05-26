@@ -1,0 +1,52 @@
+name: jellyfish
+category: HPC
+description: Jellyfish是一个快速、内存高效的多线程k-mer计数工具，用于DNA序列中k-mer（长度为k的子串）的计数。Jellyfish通过高效的哈希表编码和利用CPU的"compare-and-swap"指令实现高并行度，在内存使用和速度上比其他k-mer计数工具低一个数量级。Jellyfish支持FASTA和多FASTA格式输入，提供k-mer计数、查询、转储等功能，并提供Ruby、Python和Perl的绑定接口，广泛应用于基因组分析、序列组装和生物信息学研究。
+environment: |
+  本应用在Docker环境中运行,安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  jellyfish镜像的Tag由其版本信息和基础镜像版本信息组成,详细内容如下
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[2.3.1-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/jellyfish/2.3.1/24.03-lts-sp3/Dockerfile) | Jellyfish 2.3.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/jellyfish:{Tag}
+  ```
+usage: |
+  1. 确保已安装 Docker 环境。
+  2. 获取 Jellyfish 镜像（二选一）：
+  - 从 DockerHub 拉取预构建镜像
+    ```
+    docker pull openeuler/jellyfish:2.3.1-oe2403sp3
+    ```
+  - 或从源码构建镜像
+    ```
+    docker build -t openeuler/jellyfish:2.3.1-oe2403sp3 2.3.1/24.03-lts-sp3/
+    ```
+  3. 启动容器进入 Jellyfish 环境
+    ```
+    docker run -it openeuler/jellyfish:2.3.1-oe2403sp3
+    ```
+  4. 在容器内验证安装
+    ```
+    jellyfish --version
+    ```
+license: GPL-3.0 & BSD-3-Clause
+similar_packages:
+  - KMC: 另一个快速的k-mer计数工具，基于磁盘存储实现超大规模k-mer计数
+  - DSK: 基于磁盘的k-mer计数算法，适用于内存受限的大规模数据场景
+  - BFCounter: 基于Bloom过滤器的k-mer计数工具，适用于低内存场景
+dependency:
+  - g++
+  - make
+homepage: https://github.com/gmarcais/Jellyfish
+upstream:
+  backend: GitHub
+  version_url: gmarcais/Jellyfish
+  version_prefix: v
+  version_filter: 
+  version_scheme: RPM
