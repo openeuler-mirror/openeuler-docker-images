@@ -32,3 +32,4 @@ images:
   seurat: seurat
   gsl: gsl
   autodock: autodock
+  root: root
