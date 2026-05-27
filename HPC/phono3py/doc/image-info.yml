@@ -1,0 +1,56 @@
+name: phono3py
+category: hpc
+description: Phono3py是一款开源的声子-声子交互计算软件，由Atsushi Togo开发和维护。Phono3py提供声子非谐性质计算、晶格热导率预测、声子寿命分析、碰撞矩阵求解等核心功能，支持多线程OpenMP并行计算、MPI分布式并行计算、多种第一性计算软件接口(VASP、QE、CRYSTAL等)、HDF5数据格式读写及自动力常数生成。Phono3py广泛应用于晶格热导率预测、声子非谐效应研究、热电材料筛选、声子散射机制分析及凝聚态物理热性质计算等科学研究与工程计算领域。
+environment: |
+  本应用在Docker环境中运行,安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  phono3py镜像的Tag由其版本信息和基础镜像版本信息组成,详细内容如下
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[4.1.0-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/phono3py/4.1.0/24.03-lts-sp3/Dockerfile) | Phono3py 4.1.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/phono3py:{Tag}
+  ```
+usage: |
+  1. 确保已安装 Docker 环境。
+  2. 获取 Phono3py 镜像（二选一）：
+  - 从 DockerHub 拉取预构建镜像
+    ```
+    docker pull openeuler/phono3py:4.1.0-oe2403sp3
+    ```
+  - 或从源码构建镜像
+    ```
+    docker build -t openeuler/phono3py:4.1.0-oe2403sp3 4.1.0/24.03-lts-sp3/
+    ```
+  3. 启动容器进入 Phono3py 环境
+    ```
+    docker run -it openeuler/phono3py:4.1.0-oe2403sp3
+    ```
+  4. 在容器内验证安装
+    ```
+    phono3py --version
+    ```
+license: BSD-3-Clause
+similar_packages:
+  - Phonopy: 声子计算软件，phono3py的基础依赖
+  - ShengBTE: 声子玻尔兹曼输运方程求解器
+  - ALAMODE: 声子非谐性质与热导率计算软件
+dependency:
+  - Python >=3.10
+  - Phonopy >=4.1.0
+  - NumPy/SciPy
+  - OpenBLAS
+  - CMake >=3.10
+  - C/C++ compiler (gcc, gcc-c++)
+homepage: https://github.com/phonopy/phono3py
+upstream:
+  backend: GitHub
+  version_url: phonopy/phono3py
+  version_prefix: v
+  version_filter:
+  version_scheme: RPM
