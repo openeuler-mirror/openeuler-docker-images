@@ -104,3 +104,4 @@ images:
   diskann: diskann
   tvm: tvm
   tensorrt: tensorrt
+  towhee: towhee
