@@ -15,7 +15,7 @@ Learn more at [ROMS](https://github.com/myroms/roms).
 The tag of each ROMS docker image is consist of the version of ROMS and the version of basic image. The details are as follows:
 | Tags | Currently | Architectures |
 |------|-----------|---------------|
-|[4.2-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/roms/4.2/24.03-lts-sp3/Dockerfile) | ROMS 4.2 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[4.2-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/roms/4.2/24.03-lts-sp3/Dockerfile) | ROMS 4.2 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 # Usage
 1. Ensure that you have Docker installed, or are using Docker for Linux containers if on Windows.
 2. Obtain the ROMS docker image (choose one):
