@@ -1,0 +1,59 @@
+name: palabos
+category: hpc
+description: Palabos是一款开源的格子玻尔兹曼方法(LBM)计算流体力学(CFD)求解器，由日内瓦大学(UNIGE)团队开发和维护。Palabos提供MPI分布式并行计算、自由面流动模拟、多相流与气泡粒子建模、多孔介质渗流模拟、自适应网格细化等核心功能，并提供C++原生编程接口以及Python和Java脚本接口。Palabos广泛应用于计算流体力学、生物医学血流模拟、多相流与自由面流动、热对流与Rayleigh-Benard对流、多孔介质渗流及偏微分方程数值求解等科学研究与工程计算领域。
+environment: |
+  本应用在Docker环境中运行,安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  palabos镜像的Tag由其版本信息和基础镜像版本信息组成,详细内容如下
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[v2.3.0-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/palabos/v2.3.0/24.03-lts-sp3/Dockerfile) | Palabos v2.3.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/palabos:{Tag}
+  ```
+usage: |
+  1. 确保已安装 Docker 环境。
+  2. 获取 Palabos 镜像（二选一）：
+  - 从 DockerHub 拉取预构建镜像
+    ```
+    docker pull openeuler/palabos:v2.3.0-oe2403sp3
+    ```
+  - 或从源码构建镜像
+    ```
+    docker build -t openeuler/palabos:v2.3.0-oe2403sp3 v2.3.0/24.03-lts-sp3/
+    ```
+  3. 启动容器进入 Palabos 环境
+    ```
+    docker run -it openeuler/palabos:v2.3.0-oe2403sp3
+    ```
+  4. 在容器内验证安装
+    - 编译并运行cavity2d示例
+    ```
+    cd /opt/palabos/examples/showCases/cavity2d/build && cmake .. && make && cd .. && ./cavity2d
+    ```
+    - MPI并行运行示例
+    ```
+    mpirun -np 4 ./cavity2d
+    ```
+license: AGPL-3.0
+similar_packages:
+  - OpenLB: 开源的格子玻尔兹曼方法CFD求解器
+  - lbmpy: 基于Python的格子玻尔兹曼代码生成框架
+  - SU2: 开源的CFD求解与优化套件
+dependency:
+  - C++ compiler (gcc-c++)
+  - CMake
+  - OpenMPI
+  - HDF5
+homepage: https://gitlab.com/unigespc/palabos
+upstream:
+  backend: GitLab
+  version_url: unigespc/palabos
+  version_prefix: v
+  version_filter: 
+  version_scheme: RPM
