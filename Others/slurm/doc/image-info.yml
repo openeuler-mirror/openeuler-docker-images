@@ -1,0 +1,64 @@
+name: slurm
+category: HPC
+description: Slurm是一款免费开源的集群资源管理和作业调度系统，被全球众多超级计算机和计算集群广泛使用。它提供资源分配、作业执行监控和调度冲突仲裁三大核心功能。
+environment: |
+  本应用在Docker环境中运行,安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  Slurm镜像的Tag由其版本信息和基础镜像版本信息组成,详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[25.11.6-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/slurm/25.11.6/24.03-lts-sp3/Dockerfile) | slurm 25.11.6 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/slurm:{Tag}
+  ```
+
+usage: |
+  1. 确保已安装 Docker 环境。
+
+  2. 获取 Slurm 镜像（二选一）：
+
+  - 从 DockerHub 拉取预构建镜像
+    ```
+    docker pull openeuler/slurm:25.11.6-oe2403sp3
+    ```
+
+  - 或从源码构建镜像
+    ```
+    docker build -t openeuler/slurm:25.11.6-oe2403sp3 25.11.6/24.03-lts-sp3/
+    ```
+
+  3. 启动容器进入 Slurm 环境
+    ```
+    docker run -it openeuler/slurm:25.11.6-oe2403sp3
+    ```
+
+  4. 在容器内验证安装
+    ```
+    slurm --version
+    ```
+
+license: GPL-2.0 license
+similar_packages:
+  - name: PBS Pro
+    description: PBS Pro是一款开源的高性能作业调度和集群管理系统，广泛应用于HPC领域。
+    homepage: https://pbspro.org/
+  - name: HTCondor
+    description: HTCondor是一款开源的高吞吐量计算系统，专为大规模分布式计算任务而设计。
+    homepage: https://htcondor.org/
+dependency:
+  - munge
+
+homepage: https://slurm.schedmd.com/
+upstream:
+  backend: GitHub
+  version_url: SchedMD/slurm
+  version_prefix: slurm
+  version_filter: pre;rc
+  version_scheme: RPM
