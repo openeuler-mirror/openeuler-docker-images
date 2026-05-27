@@ -39,3 +39,4 @@ images:
   grib_api: grib_api
   gadget2: gadget2
   nceplibs: nceplibs
+  jax: jax
