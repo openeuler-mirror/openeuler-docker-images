@@ -23,7 +23,7 @@ RUN git clone --branch ${TAG} --depth=1 https://github.com/dealii/dealii.git /de
         -DDEAL_II_COMPONENT_EXAMPLES=OFF \
         -DDEAL_II_COMPONENT_DOCUMENTATION=OFF \
         -DDEAL_II_ALLOW_AUTODETECTION=ON && \
-    make -j$(nproc) && \
+    make -j2 && \
     make install && \
     cd / && rm -rf /dealii-src
 FROM $BASE
