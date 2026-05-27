@@ -1,0 +1,43 @@
+name: geant4
+category: HPC
+description: Geant4是一套用于模拟粒子在物质中传输的工具包，广泛应用于高能物理、核物理、加速器物理以及医学和空间科学等领域。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  geant4镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[11.4.1-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/geant4/11.4.1/24.03-lts-sp3/Dockerfile)| geant4 11.4.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/geant4:{Tag}
+  ```
+
+usage: |
+  - 启动geant4实例
+
+    ```
+    docker run -it --name geant4 openeuler/geant4:{Tag}
+    ```
+    `openeuler/geant4`镜像用于验证上游geant4版本和openEuler的集成。
+
+license: Geant4 Software License
+similar_packages:
+  - FLUKA: 粒子输运模拟软件
+dependency:
+  - cmake
+  - gcc
+
+homepage: https://geant4.web.cern.ch/
+upstream:
+  version_url: Geant4/geant4
+  version_prefix: v
+  version_filter: beta
+  backend: GitHub
+  version_scheme: RPM
