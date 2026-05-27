@@ -16,6 +16,7 @@ Learn more on [hadoop website](https://hadoop.apache.org/).
 The tag of each hadoop docker image is consist of the version of hadoop and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[3.5.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/hadoop/3.5.0/24.03-lts-sp3/Dockerfile) | hadoop 3.5.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 |[3.4.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/hadoop/3.4.1/24.03-lts-sp1/Dockerfile)| Apache hadoop 3.4.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
