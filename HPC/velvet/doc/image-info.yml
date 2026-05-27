@@ -1,6 +1,6 @@
 name: velvet
 category: HPC
-description: Velvet是一个基于de Bruijn图的短读段从头基因组组装工具，由D.R. Zerbino和E. Birney开发并发表于Genome Research (2008, 18: 821-829)。Velvet通过构建和简化de Bruijn图将短读段组装为contigs，支持多种哈希长度和读段类型（包括colorspace数据），提供velveth（哈希构建）和velvetg（图组装）两个核心命令，广泛用于细菌和小型真核生物基因组de novo组装以及转录组组装。
+description: Velvet是一个基于de Bruijn图的短读段从头基因组组装工具，由D.R. Zerbino和E. Birney开发并发表于Genome Research (2008)。Velvet通过构建和简化de Bruijn图将短读段组装为contigs，支持多种哈希长度和读段类型（包括colorspace数据），提供velveth（哈希构建）和velvetg（图组装）两个核心命令，广泛用于细菌和小型真核生物基因组de novo组装以及转录组组装。
 environment: |
   本应用在Docker环境中运行,安装Docker执行如下命令
   ```
