@@ -1,6 +1,6 @@
 name: novoplasty
 category: HPC
-description: NOVOPlasty是一个基于de Bruijn图的细胞器基因组de novo组装和异质性检测工具，由N. Dierckxsens、P. Mardulyn和G. Smits开发并发表于Nucleic Acids Research (2016, doi: 10.1093/nar/gkw955)。NOVOPlasty专门用于从全基因组测序数据中组装线粒体和叶绿体等短环形基因组，支持种子序列延伸组装策略、异质性/变异检测（含AF和DP指标）、多种K-mer设置、批量组装模式以及本地哈希存储加速，广泛应用于植物线粒体、叶绿体及动物线粒体基因组组装。
+description: NOVOPlasty是一个基于de Bruijn图的细胞器基因组de novo组装和异质性检测工具，由N. Dierckxsens、P. Mardulyn和G. Smits开发并发表于Nucleic Acids Research (2016)。NOVOPlasty专门用于从全基因组测序数据中组装线粒体和叶绿体等短环形基因组，支持种子序列延伸组装策略、异质性/变异检测（含AF和DP指标）、多种K-mer设置、批量组装模式以及本地哈希存储加速，广泛应用于植物线粒体、叶绿体及动物线粒体基因组组装。
 environment: |
   本应用在Docker环境中运行,安装Docker执行如下命令
   ```
