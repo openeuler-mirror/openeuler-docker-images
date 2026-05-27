@@ -96,3 +96,4 @@ images:
   fbthrift: fbthrift
   slurm: slurm
   amg: amg
+  want: want

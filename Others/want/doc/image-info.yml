@@ -1,0 +1,60 @@
+name: want
+category: others
+description: WanT是一个开源的GNU通用公共许可证代码套件，提供了一种集成方法来研究纳米结构中的相干电子输运。其核心方法将最先进的密度泛函理论（DFT）、平面波、模守恒赝势计算与基于Landauer形式的格林函数方法相结合，以描述量子电导。两者之间的关键联系，也是计算中的关键步骤，是使用最大局域化Wannier函数表示，将基态电子结构自然地引入到量子电导评估所基于的晶格格林函数方法中。此外，对系统Wannier函数的了解允许将器件的电子输运性质与化学键的性质直接联系起来，从而深入理解纳米尺度上电子流动的机制。  # 中文描述
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  want镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[2.6.1-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/want/2.6.1/24.03-lts-sp3/Dockerfile) | want 2.6.1 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+  
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/want:{Tag}
+  ```
+
+usage: |
+  可以直接运行任何WanT可执行文件。例如，运行Wannier函数计算：
+
+  ```bash
+  docker run --rm openeuler/want:{Tag} wannier.x < wannier.in
+  ```
+
+  可用可执行文件：
+  - `wannier.x` - Wannier函数计算
+  - `disentangle.x` - 解纠缠步骤
+  - `bands.x` - 能带结构计算
+  - `plot.x` - 绘制Wannier函数
+  - `blc2wan.x` - 将Bloch态转换为Wannier函数
+  - `conductor.x` - 量子输运计算
+  - `kgrid.x` - K点网格生成
+  - `midpoint.x` - 中点计算
+
+  使用宿主机的输入文件运行：
+
+  ```bash
+  docker run --rm -v $(pwd):/workdir -w /workdir openeuler/want:{Tag} wannier.x < wannier.in
+  ```
+
+license: GPL-2.0
+similar_packages:
+  - Wannier90: 最大局域化Wannier函数计算
+  - Quantum ESPRESSO: 密度泛函理论计算
+  - ABINIT: 材料性质的第一性原理计算
+  
+dependency:
+  - 
+
+homepage: https://github.com/QEF/want
+upstream:
+  backend: GitHub
+  version_url: QEF/want
+  version_prefix: want-
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM
