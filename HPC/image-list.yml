@@ -42,3 +42,5 @@ images:
   jax: jax
   milc: milc
   geant4: geant4
+  hefei-namd: hefei-namd
+  ambertools: ambertools
