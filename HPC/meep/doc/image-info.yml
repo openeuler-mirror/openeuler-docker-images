@@ -1,0 +1,68 @@
+name: meep
+category: hpc
+description: Meep是一款开源的有限元时域差分(FDTD)电磁仿真软件，由NanoComp团队开发和维护。Meep支持1D/2D/3D及圆柱坐标下的电磁场仿真，提供MPI分布式并行计算、完美匹配层(PML)吸收边界、色散/非线性/各向异性材料建模、子像素平滑、频域求解器及伴随优化求解器等核心功能，并提供Python、Scheme及C++三种编程接口。Meep广泛应用于光子晶体、波导器件、天线设计、散射分析、超材料及纳米光子学等电磁仿真与光学设计领域。
+environment: |
+  本应用在Docker环境中运行,安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  meep镜像的Tag由其版本信息和基础镜像版本信息组成,详细内容如下
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.33.0-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/meep/1.33.0/24.03-lts-sp3/Dockerfile) | Meep 1.33.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/meep:{Tag}
+  ```
+usage: |
+  1. 确保已安装 Docker 环境。
+  2. 获取 Meep 镜像（二选一）：
+  - 从 DockerHub 拉取预构建镜像
+    ```
+    docker pull openeuler/meep:1.33.0-oe2403sp3
+    ```
+  - 或从源码构建镜像
+    ```
+    docker build -t openeuler/meep:1.33.0-oe2403sp3 1.33.0/24.03-lts-sp3/
+    ```
+  3. 启动容器进入 Meep 环境
+    ```
+    docker run -it openeuler/meep:1.33.0-oe2403sp3
+    ```
+  4. 在容器内验证安装
+    - 验证Python接口
+    ```
+    python3 -c 'import meep; print(meep.__version__)'
+    ```
+    - 验证MPI并行执行
+    ```
+    mpirun -np 2 python3 -c 'import meep; print(meep.__version__)'
+    ```
+    - 验证Scheme接口（仅源码编译版本）
+    ```
+    meep --version
+    ```
+license: GPL-2.0
+similar_packages:
+  - openEMS: 开源的3D电磁场时域仿真软件
+  - gprMax: 开源的地面穿透雷达FDTD仿真工具
+  - CST Studio Suite: 商业3D电磁仿真软件
+dependency:
+  - C++ compiler (gcc-c++)
+  - OpenMPI
+  - FFTW
+  - OpenBLAS/LAPACK
+  - HDF5
+  - Guile
+  - SWIG
+  - GSL
+  - Python3
+homepage: https://github.com/NanoComp/meep
+upstream:
+  backend: GitHub
+  version_url: NanoComp/meep
+  version_prefix: v
+  version_filter: 
+  version_scheme: RPM
