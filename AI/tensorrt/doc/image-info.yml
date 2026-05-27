@@ -1,0 +1,59 @@
+name: tensorrt
+category: ai
+description: NVIDIA TensorRT 是一个用于高性能深度学习推理的 SDK 生态系统，包含推理编译器、运行时和模型优化工具，可在 NVIDIA GPU 上实现低延迟、高吞吐量的推理部署。TensorRT 通过量化、层融合和内核调优等技术优化训练好的神经网络模型，支持所有主流框架训练的模型。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  TensorRT镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[10.16-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/tensorrt/10.16/24.03-lts-sp3/Dockerfile) | TensorRT 10.16 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+  
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/tensorrt:{Tag}
+  ```
+
+usage: |
+  本镜像安装 TensorRT Python 包，提供 Python API 和 trtexec 命令行工具。实际 GPU 推理需配合 NVIDIA 驱动和 CUDA 运行时使用。
+
+  - 以交互方式启动容器
+    ```
+    docker run -it --gpus all openeuler/tensorrt:{Tag} /bin/bash
+    ```
+  
+  - 使用 trtexec 工具优化 ONNX 模型
+    ```
+    trtexec --onnx=model.onnx --saveEngine=model.engine
+    ```
+
+  - 在 Python 中使用 TensorRT
+    ```python
+    import tensorrt as trt
+    logger = trt.Logger(trt.Logger.WARNING)
+    builder = trt.Builder(logger)
+    ```
+
+license: Apache-2.0
+similar_packages:
+  - ONNX Runtime: 跨平台的高性能推理引擎，支持多种硬件后端
+  - PyTorch: 开源深度学习框架，通过 Torch-TensorRT 集成 TensorRT 加速
+  - Triton Inference Server: NVIDIA 推理服务框架，支持多模型管理和 TensorRT 后端
+  - OpenVINO: Intel 开源推理优化工具包，支持多种硬件加速
+
+dependency:
+  - python3
+  - python3-pip
+
+homepage: https://github.com/NVIDIA/TensorRT
+upstream:
+  backend: GitHub
+  version_url: NVIDIA/TensorRT
+  version_prefix: v
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM
