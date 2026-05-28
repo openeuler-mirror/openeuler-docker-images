@@ -1,0 +1,62 @@
+name: meryl
+category: hpc
+description: Meryl是一款开源的基因组k-mer计数与序列分析工具，由MARBL团队开发和维护。Meryl提供高效k-mer计数、k-mer数据库构建与查询、序列过滤与提取等核心功能。Meryl广泛应用于基因组组装质量评估（配合Merqury）、k-mer频谱分析、重复序列识别及基因组完整性验证等生物信息学研究领域。
+environment: |
+  本应用在Docker环境中运行,安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  meryl镜像的Tag由其版本信息和基础镜像版本信息组成,详细内容如下
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.4.1-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/meryl/1.4.1/24.03-lts-sp3/Dockerfile) | Meryl 1.4.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/meryl:{Tag}
+  ```
+usage: |
+  1. 确保已安装 Docker 环境。
+  2. 获取 Meryl 镜像（二选一）：
+  - 从 DockerHub 拉取预构建镜像
+    ```
+    docker pull openeuler/meryl:1.4.1-oe2403sp3
+    ```
+  - 或从源码构建镜像
+    ```
+    docker build -t openeuler/meryl:1.4.1-oe2403sp3 1.4.1/24.03-lts-sp3/
+    ```
+  3. 启动容器进入 Meryl 环境
+    ```
+    docker run -it openeuler/meryl:1.4.1-oe2403sp3
+    ```
+  4. 在容器内验证安装
+    - 查看meryl版本信息
+    ```
+    meryl -version
+    ```
+    - 对FASTA序列进行k-mer计数
+    ```
+    meryl count k=21 input.fasta output merylDB
+    ```
+    - 查看k-mer统计信息
+    ```
+    meryl statistics merylDB
+    ```
+license: MIT
+similar_packages:
+  - KMC: 高性能k-mer计数工具
+  - Jellyfish: 快速k-mer计数与查询工具
+  - DSK: 低内存k-mer计数器
+dependency:
+  - C++ compiler (gcc-c++ >= 10.2.0)
+  - GNU Make
+  - Git (with submodule support)
+homepage: https://github.com/marbl/meryl
+upstream:
+  backend: GitHub
+  version_url: marbl/meryl
+  version_prefix: v
+  version_filter: 
+  version_scheme: RPM
