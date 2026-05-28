@@ -1,0 +1,53 @@
+name: wannier_tools
+category: hpc
+description: WannierTools是一个开源的新型拓扑材料研究软件包，基于紧束缚框架工作，其输入可由Wannier90软件生成。WannierTools通过计算Wilson环来分类材料的拓扑相，获取可被ARPES和STM实验探测的表面态谱，识别Weyl/Dirac点和节线结构，计算Berry相位和Berry曲率。WannierTools还支持基于Boltzmann传输理论的磁阻计算、给定磁场方向和强度下的Landau能级谱计算，以及超胞计算中的能带展开等功能，广泛应用于凝聚态物理和拓扑材料研究。
+environment: |
+  本应用在Docker环境中运行,安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  wannier_tools镜像的Tag由其版本信息和基础镜像版本信息组成,详细内容如下
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[2.6.2-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/wannier_tools/2.6.2/24.03-lts-sp3/Dockerfile) | WannierTools 2.6.2 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/wannier_tools:{Tag}
+  ```
+usage: |
+  1. 确保已安装 Docker 环境。
+  2. 获取 WannierTools 镜像（二选一）：
+  - 从 DockerHub 拉取预构建镜像
+    ```
+    docker pull openeuler/wannier_tools:2.6.2-oe2403sp3
+    ```
+  - 或从源码构建镜像
+    ```
+    docker build -t openeuler/wannier_tools:2.6.2-oe2403sp3 2.6.2/24.03-lts-sp3/
+    ```
+  3. 启动容器进入 WannierTools 环境
+    ```
+    docker run -it openeuler/wannier_tools:2.6.2-oe2403sp3
+    ```
+  4. 在容器内验证安装
+    ```
+    which wt.x
+    ```
+license: GPL-3.0
+similar_packages:
+  - Wannier90: 生成紧束缚哈密顿量的软件包，是WannierTools的输入来源
+  - Z2Pack: 基于DFT的拓扑不变量计算工具
+  - VASP: 第一性原理DFT计算软件，用于生成WannierTools所需的初始数据
+dependency:
+  - gfortran
+  - LAPACK/BLAS
+  - Python
+homepage: https://github.com/quanshengwu/wannier_tools
+upstream:
+  backend: GitHub
+  version_url: quanshengwu/wannier_tools
+  version_prefix: v
+  version_filter: 
+  version_scheme: RPM
