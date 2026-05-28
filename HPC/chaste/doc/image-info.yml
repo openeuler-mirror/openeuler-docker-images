@@ -1,0 +1,62 @@
+name: chaste
+category: hpc
+description: Chaste（Cancer Heart And Soft Tissue Environment）是面向癌症、心脏及软组织模拟的开源计算生物学平台，由牛津大学等机构开发维护。Chaste提供细胞级模拟（cell-based）、心脏电生理建模（electrophysiology）、连续力学求解（continuum_mechanics）、偏微分方程求解（PDE）、网格生成与处理等核心功能，支持PETSc并行线性代数、VTK可视化输出、MPI分布式计算、PyChaste Python接口。Chaste广泛应用于癌症研究、心脏建模、肺部模拟、发育生物学等计算生物学与生物医学工程领域。
+environment: |
+  本应用在Docker环境中运行,安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  chaste镜像的Tag由其版本信息和基础镜像版本信息组成,详细内容如下
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[2026.1-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/chaste/2026.1/24.03-lts-sp3/Dockerfile) | Chaste 2026.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/chaste:{Tag}
+  ```
+usage: |
+  1. 确保已安装 Docker 环境。
+  2. 获取 Chaste 镜像（二选一）：
+  - 从 DockerHub 拉取预构建镜像
+    ```
+    docker pull openeuler/chaste:2026.1-oe2403sp3
+    ```
+  - 或从源码构建镜像
+    ```
+    docker build -t openeuler/chaste:2026.1-oe2403sp3 2026.1/24.03-lts-sp3/
+    ```
+  3. 启动容器进入 Chaste 环境
+    ```
+    docker run -it openeuler/chaste:2026.1-oe2403sp3
+    ```
+  4. 在容器内验证安装
+    ```
+    ls /opt/chaste/bin/ && ls /opt/chaste/lib/
+    ```
+license: BSD-3-Clause
+similar_packages:
+  - OpenCMISS: 心脏与软组织连续力学建模平台
+  - FEBio: 生物力学有限元求解器
+  - CompuCell3D: 细胞级模拟与形态发生建模工具
+dependency:
+  - CMake >=3.22.1
+  - GCC >=9 (preferred 13-15) or Clang >=11 (preferred 18)
+  - Boost >=1.74 (preferred 1.83)
+  - PETSc >=3.15 (preferred 3.19)
+  - HDF5 >=1.10.7
+  - ParMETIS >=4.0
+  - PT-Scotch >=7.0
+  - SUNDIALS >=5.8 (preferred 6.4)
+  - VTK >=7.1 (preferred 9.1)
+  - Xerces-C >=3.2
+  - XSD >=4.0
+  - Python3 >=3.10 (with python3-venv, python3-dev)
+homepage: https://chaste.github.io
+upstream:
+  backend: GitHub
+  version_url: Chaste/Chaste
+  version_prefix:
+  version_filter:
+  version_scheme: year
