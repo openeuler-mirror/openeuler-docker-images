@@ -1,0 +1,54 @@
+name: petsc
+category: hpc
+description: PETSc（Portable, Extensible Toolkit for Scientific Computation）是Argonne国家实验室开发的高性能科学计算开源库，提供线性方程求解器、非线性方程求解器、时间步进器、微分方程积分器及数据结构等核心功能。PETSc支持MPI并行计算、多种预条件器和求解器（Krylov方法、Newton方法等），兼容Intel/AMD/ARM架构，广泛应用于流体力学、结构力学、地球科学、量子化学等大规模科学计算领域。
+environment: |
+  本应用在Docker环境中运行,安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  petsc镜像的Tag由其版本信息和基础镜像版本信息组成,详细内容如下
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[3.22.4-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/petsc/3.22.4/24.03-lts-sp3/Dockerfile) | PETSc 3.22.4 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/petsc:{Tag}
+  ```
+usage: |
+  1. 确保已安装 Docker 环境。
+  2. 获取 PETSc 镜像（二选一）：
+  - 从 DockerHub 拉取预构建镜像
+    ```
+    docker pull openeuler/petsc:3.22.4-oe2403sp3
+    ```
+  - 或从源码构建镜像
+    ```
+    docker build -t openeuler/petsc:3.22.4-oe2403sp3 3.22.4/24.03-lts-sp3/
+    ```
+  3. 启动容器进入 PETSc 环境
+    ```
+    docker run -it openeuler/petsc:3.22.4-oe2403sp3
+    ```
+  4. 在容器内验证安装
+    ```
+    echo $PETSC_DIR && ls $PETSC_DIR/lib/
+    ```
+license: BSD-2-Clause
+similar_packages:
+  - Trilinos: Sandia国家实验室开发的大规模科学计算框架
+  - deal.II: 开源有限元计算库
+  - SUNDIALS: SU非线性与微分/代数方程求解器套件
+dependency:
+  - OpenMPI
+  - C/C++/Fortran compiler (gcc, gcc-c++, gcc-gfortran)
+  - Python3
+  - BLAS/LAPACK
+homepage: https://github.com/petsc/petsc
+upstream:
+  backend: GitHub
+  version_url: petsc/petsc
+  version_prefix: v
+  version_filter: dev
+  version_scheme: semantic
