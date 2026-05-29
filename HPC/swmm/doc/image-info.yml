@@ -1,0 +1,53 @@
+name: swmm
+category: hpc
+description: SWMM（Stormwater Management Model）是美国环保署（EPA）开发维护的动态水文-水力水质模拟模型。SWMM提供降雨径流模拟、管网水力计算、水质传输模拟等核心功能，支持单事件与长期连续模拟、动态波流路由、LID低影响开发设施模拟、街道入流捕获分析。SWMM广泛应用于城市暴雨管理、合流管网溢流控制、排水系统规划设计、雨水水质模拟等水文水利科学研究与工程应用领域。
+environment: |
+  本应用在Docker环境中运行,安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  swmm镜像的Tag由其版本信息和基础镜像版本信息组成,详细内容如下
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[5.2.4-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/swmm/5.2.4/24.03-lts-sp3/Dockerfile) | SWMM 5.2.4 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/swmm:{Tag}
+  ```
+usage: |
+  1. 确保已安装 Docker 环境。
+  2. 获取 SWMM 镜像（二选一）：
+  - 从 DockerHub 拉取预构建镜像
+    ```
+    docker pull openeuler/swmm:5.2.4-oe2403sp3
+    ```
+  - 或从源码构建镜像
+    ```
+    docker build -t openeuler/swmm:5.2.4-oe2403sp3 5.2.4/24.03-lts-sp3/
+    ```
+  3. 启动容器进入 SWMM 环境
+    ```
+    docker run -it openeuler/swmm:5.2.4-oe2403sp3
+    ```
+  4. 在容器内验证安装
+    ```
+    ls /opt/swmm/build/install/bin/
+    ```
+license: Public-Domain
+similar_packages:
+  - MOUSE: DHI城市排水模拟系统
+  - InfoWorks ICM: Innovyze综合管网模型
+  - EPA SWMM5-GUI: SWMM图形界面版本
+dependency:
+  - C compiler (gcc)
+  - C++ compiler (gcc-c++)
+  - CMake >=3.13
+homepage: https://github.com/USEPA/Stormwater-Management-Model
+upstream:
+  backend: GitHub
+  version_url: USEPA/Stormwater-Management-Model
+  version_prefix: v
+  version_filter:
+  version_scheme: RPM
