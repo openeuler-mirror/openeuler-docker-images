@@ -1,0 +1,55 @@
+name: dealii
+category: hpc
+description: deal.II是一款开源的C++有限元计算库，由学术界和工业界共同开发维护。deal.II提供自适应网格细化、hp有限元方法、MPI并行计算等核心功能，支持LAPACK线性代数求解、zlib数据压缩及多种第三方库集成。deal.II广泛应用于计算流体力学、结构力学、电磁仿真、多物理场耦合及偏微分方程数值求解等科学研究与工程计算领域。
+environment: |
+  本应用在Docker环境中运行,安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  dealii镜像的Tag由其版本信息和基础镜像版本信息组成,详细内容如下
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[9.7.1-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/dealii/9.7.1/24.03-lts-sp3/Dockerfile) | deal.II 9.7.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/dealii:{Tag}
+  ```
+usage: |
+  1. 确保已安装 Docker 环境。
+  2. 获取 deal.II 镜像（二选一）：
+  - 从 DockerHub 拉取预构建镜像
+    ```
+    docker pull openeuler/dealii:9.7.1-oe2403sp3
+    ```
+  - 或从源码构建镜像
+    ```
+    docker build -t openeuler/dealii:9.7.1-oe2403sp3 9.7.1/24.03-lts-sp3/
+    ```
+  3. 启动容器进入 deal.II 环境
+    ```
+    docker run -it openeuler/dealii:9.7.1-oe2403sp3
+    ```
+  4. 在容器内验证安装
+    ```
+    ls /opt/dealii/bin/ && ls /opt/dealii/lib/
+    ```
+license: Apache-2.0
+similar_packages:
+  - FEniCS: 基于Python的开源有限元计算平台
+  - MOOSE: 基于libMesh的多物理场有限元模拟框架
+  - MFEM: 开源的高阶有限元离散化库
+dependency:
+  - C++ compiler (gcc-c++)
+  - OpenMPI
+  - OpenBLAS/LAPACK
+  - CMake >=3.10
+  - zlib
+homepage: https://github.com/dealii/dealii
+upstream:
+  backend: GitHub
+  version_url: dealii/dealii
+  version_prefix: v
+  version_filter: 
+  version_scheme: RPM
