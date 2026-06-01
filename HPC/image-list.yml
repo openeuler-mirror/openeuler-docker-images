@@ -5,6 +5,7 @@ images:
   cp2k: cp2k
   cpmd: cpmd
   cubep3m: cubep3m
+  espresso: espresso
   openfoam: openfoam
   openlb: openlb
   swan: swan
