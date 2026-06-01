@@ -51,3 +51,4 @@ images:
   code-saturne: code-saturne
   dealii: dealii
   swmm: swmm
+  kalign: kalign

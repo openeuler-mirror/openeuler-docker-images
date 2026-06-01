@@ -1,0 +1,53 @@
+name: kalign
+category: hpc
+description: Kalign是一个快速多序列比对程序，由Timo Lassmann开发维护。Kalign采用渐进式比对方法，支持蛋白质、DNA和RNA序列的快速比对，提供内置线程池并行计算和OpenMP多线程加速。Kalign提供四种模式预设（fast、default、recall、accurate），优化不同精度需求，广泛应用于生物信息学序列分析、多序列比对基准评测等科学研究与工程应用领域。
+environment: |
+  本应用在Docker环境中运行,安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  kalign镜像的Tag由其版本信息和基础镜像版本信息组成,详细内容如下
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[3.5.1-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/kalign/3.5.1/24.03-lts-sp3/Dockerfile) | Kalign 3.5.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/kalign:{Tag}
+  ```
+usage: |
+  1. 确保已安装 Docker 环境。
+  2. 获取 Kalign 镜像（二选一）：
+  - 从 DockerHub 拉取预构建镜像
+    ```
+    docker pull openeuler/kalign:3.5.1-oe2403sp3
+    ```
+  - 或从源码构建镜像
+    ```
+    docker build -t openeuler/kalign:3.5.1-oe2403sp3 3.5.1/24.03-lts-sp3/
+    ```
+  3. 启动容器进入 Kalign 环境
+    ```
+    docker run -it openeuler/kalign:3.5.1-oe2403sp3
+    ```
+  4. 在容器内验证安装
+    ```
+    kalign --version
+    ```
+license: Apache-2.0
+similar_packages:
+  - Clustal Omega: 多序列比对工具
+  - MAFFT: 快速多序列比对程序
+  - MUSCLE: 多序列比对软件
+dependency:
+  - GCC or Clang (C compiler)
+  - CMake >=3.18
+  - pthreads (POSIX threads)
+homepage: https://github.com/TimoLassmann/kalign
+upstream:
+  backend: GitHub
+  version_url: TimoLassmann/kalign
+  version_prefix: v
+  version_filter:
+  version_scheme: RPM
