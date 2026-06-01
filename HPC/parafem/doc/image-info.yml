@@ -1,0 +1,47 @@
+name: parafem
+category: hpc
+description: ParaFEM 是一个开源的并行有限元分析库，配套教材《Programming the Finite Element Method》（提供英文和简体中文版本）
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  parafem镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[5.0.3-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/parafem/5.0.3/24.03-lts-sp3/Dockerfile) | parafem 5.0.3 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+  
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/parafem:{Tag}
+  ```
+
+usage: |
+  - 启动交互式容器进入 parafem 环境：
+    ```
+    docker run -it --rm openeuler/parafem:{Tag} /bin/bash
+    ```
+
+  - 使用 MPI 运行 ParaFEM 程序：
+    ```
+    docker run --rm openeuler/parafem:{Tag} mpirun --allow-run-as-root -np 2 p121 p121_demo
+    ```
+
+license: BSD 3-Clause
+similar_packages:
+  - MFEM: 轻量级、可扩展的 C++ 并行有限元方法库
+  - deal.II: C++ 自适应有限元分析库
+  
+dependency:
+  - 
+
+homepage: https://github.com/parafem/parafem
+upstream:
+  backend: GitHub
+  version_url: parafem/parafem
+  version_prefix: 
+  version_filter: alpha;rc;candidate;beta;pre
+  version_scheme: RPM
