@@ -1,0 +1,57 @@
+name: qmcpack
+category: HPC
+description: QMCPACK（Quantum Monte Carlo Package）是一款开源的生产级多体从头算量子蒙特卡罗代码，用于计算原子、分子和固体的电子结构，支持GPU加速和大规模并行计算。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  qmcpack镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[4.2.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/qmcpack/4.2.0/24.03-lts-sp3/Dockerfile)| QMCPACK 4.2.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/qmcpack:{Tag}
+  ```
+
+usage: |
+  - 启动qmcpack实例
+
+    ```
+    docker run -it --name qmcpack openeuler/qmcpack:{Tag}
+    ```
+    
+  - 使用自定义资源运行模拟
+
+    ```
+    docker run -it --rm openeuler/qmcpack:{Tag} mpirun -np <N> bin/qmcpack <input_file.xml>
+    ```
+    
+    `openeuler/qmcpack`镜像用于验证上游qmcpack版本和openEuler的集成。
+  
+
+license: UIUC/NCSA
+similar_packages:
+  - VASP: 商业化的电子结构计算软件包
+  - Quantum ESPRESSO: 开源的电子结构计算代码
+dependency:
+  - openmpi
+  - hdf5
+  - fftw
+  - boost
+  - libxml2
+  - blas
+  - lapack
+
+homepage: https://www.qmcpack.org
+upstream:
+  version_url: QMCPACK/qmcpack
+  backend: GitHub
+  version_scheme: RPM
+  version_prefix: v
+  version_filter:
