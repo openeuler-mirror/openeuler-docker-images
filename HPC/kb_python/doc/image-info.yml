@@ -1,0 +1,53 @@
+name: kb-python
+category: hpc
+description: kb-python是Pachterlab开发的kallisto|bustools单细胞RNA-seq预处理流程的Python封装工具。kb-python提供转录组索引构建（kb ref）、伪对齐与计数矩阵生成（kb count）、基因/转录本提取（kb extract）等核心功能，支持kallisto伪对齐引擎与bustools条码处理，内置10xv2/10xv3/Drop-seq/SMART-seq等多种测序技术预设，kallisto和bustools二进制随包附带无需单独安装。kb-python统一多种单细胞数据处理工作流，广泛应用于单细胞转录组测序数据分析、RNA速度估计、基因表达定量等生物信息学科学研究与工程应用领域。
+environment: |
+  本应用在Docker环境中运行,安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  kb-python镜像的Tag由其版本信息和基础镜像版本信息组成,详细内容如下
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[0.30.2-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/kb-python/0.30.2/24.03-lts-sp3/Dockerfile) | kb-python 0.30.2 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/kb-python:{Tag}
+  ```
+usage: |
+  1. 确保已安装 Docker 环境。
+  2. 获取 kb-python 镜像（二选一）：
+  - 从 DockerHub 拉取预构建镜像
+    ```
+    docker pull openeuler/kb-python:0.30.2-oe2403sp3
+    ```
+  - 或从源码构建镜像
+    ```
+    docker build -t openeuler/kb-python:0.30.2-oe2403sp3 0.30.2/24.03-lts-sp3/
+    ```
+  3. 启动容器进入 kb-python 环境
+    ```
+    docker run -it openeuler/kb-python:0.30.2-oe2403sp3
+    ```
+  4. 在容器内验证安装
+    ```
+    kb info
+    ```
+license: BSD-2-Clause
+similar_packages:
+  - STARsolo: STAR比对器的单细胞模式
+  - Cell Ranger: 10x Genomics官方处理流程
+  - Salmon alevin: Salmon单细胞定量模式
+dependency:
+  - Python >=3.10
+  - kallisto (binary included)
+  - bustools (binary included)
+homepage: https://github.com/pachterlab/kb_python
+upstream:
+  backend: GitHub
+  version_url: pachterlab/kb_python
+  version_prefix: v
+  version_filter:
+  version_scheme: RPM
