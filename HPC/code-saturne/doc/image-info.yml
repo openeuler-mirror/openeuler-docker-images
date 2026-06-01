@@ -1,0 +1,61 @@
+name: code-saturne
+category: hpc
+description: code_saturne是EDF研发中心开发维护的通用计算流体力学（CFD）软件。code_saturne提供不可压缩/可膨胀流动求解、传热与湍流模拟等核心功能，支持MPI并行计算、多种网格格式导入（CGNS/MED/GMSH）、辐射传热、燃烧（气体/煤/重燃油）、磁流体力学、可压缩流、两相流（Euler-Lagrange）、大气流动等专用物理模块。code_saturne基于同位有限体积法，支持任意类型网格单元（四面体/六面体/多面体等），可通过PLE库或MEDCoupling与其他工具耦合，广泛应用于能源、核工业、环境工程等CFD科学研究与工程应用领域。
+environment: |
+  本应用在Docker环境中运行,安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  code-saturne镜像的Tag由其版本信息和基础镜像版本信息组成,详细内容如下
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[8.2-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/code-saturne/8.2/24.03-lts-sp3/Dockerfile) | code_saturne 8.2 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/code-saturne:{Tag}
+  ```
+usage: |
+  1. 确保已安装 Docker 环境。
+  2. 获取 code_saturne 镜像（二选一）：
+  - 从 DockerHub 拉取预构建镜像
+    ```
+    docker pull openeuler/code-saturne:8.2-oe2403sp3
+    ```
+  - 或从源码构建镜像
+    ```
+    docker build -t openeuler/code-saturne:8.2-oe2403sp3 8.2/24.03-lts-sp3/
+    ```
+  3. 启动容器进入 code_saturne 环境
+    ```
+    docker run -it openeuler/code-saturne:8.2-oe2403sp3
+    ```
+  4. 在容器内验证安装
+    ```
+    code_saturne --version
+    ```
+license: GPL-2.0
+similar_packages:
+  - OpenFOAM: 开源CFD工具箱
+  - SU2: 斯坦福大学多学科CFD求解器
+  - Nektar++: 高阶CFD框架
+dependency:
+  - C/C++/Fortran compiler (gcc, gcc-gfortran)
+  - MPI (OpenMPI or MPICH)
+  - Python 3 + PyQt (GUI)
+  - CGNS library
+  - MED library (optional)
+  - HDF5 (optional)
+  - ParMETIS/METIS (partitioning)
+  - Scotch (partitioning, optional)
+  - BLAS/LAPACK
+  - libxml2
+  - autotools (autoconf, automake, libtool)
+homepage: https://github.com/code-saturne/code_saturne
+upstream:
+  backend: GitHub
+  version_url: code-saturne/code_saturne
+  version_prefix: v
+  version_filter:
+  version_scheme: RPM
