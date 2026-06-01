@@ -1,5 +1,5 @@
 name: tvm
-category: AI
+category: ai
 description: Apache TVM 是一个开源的端到端机器学习编译框架，支持从主流深度学习框架（PyTorch、TensorFlow、ONNX 等）导入模型，并将其编译为可在多种硬件后端上高效运行的最小可部署模块。
 environment: |
   本应用在Docker环境中运行，安装Docker执行如下命令
@@ -11,7 +11,7 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
-  |[0.24.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/tvm/0.24.0/24.03-lts-sp3/Dockerfile) | tvm 0.24.0 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+  |[0.24.0-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/tvm/0.24.0/24.03-lts-sp3/Dockerfile) | tvm 0.24.0 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 download: |
   拉取镜像到本地
@@ -20,26 +20,12 @@ download: |
   ```
 
 usage: |
-  1. 确保已安装 Docker 环境。
-
-  2. 获取 TVM 镜像（二选一）：
-
-  - 从 DockerHub 拉取预构建镜像
+  - 启动容器进入 TVM 开发环境
     ```
-    docker pull openeuler/tvm:0.24.0-oe2403sp3
+    docker run -it openeuler/tvm:{Tag}
     ```
 
-  - 或从源码构建镜像
-    ```
-    docker build -t openeuler/tvm:0.24.0-oe2403sp3 0.24.0/24.03-lts-sp3/
-    ```
-
-  3. 启动容器进入 TVM 开发环境
-    ```
-    docker run -it openeuler/tvm:0.24.0-oe2403sp3
-    ```
-
-  4. 在容器内验证安装
+  - 在容器内验证安装
     ```
     python3 -c "import tvm; print(tvm.__file__)"
     ```

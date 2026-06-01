@@ -2,9 +2,9 @@
 
 - The official Iceberg docker image.
 
-- Maintained by: [openEuler CloudNative SIG](https://gitee.com/openeuler/cloudnative).
+- Maintained by: [openEuler CloudNative SIG](https://atomgit.com/openeuler/cloudnative).
 
-- Where to get help: [openEuler CloudNative SIG](https://gitee.com/openeuler/cloudnative), [openEuler](https://gitee.com/openeuler/community).
+- Where to get help: [openEuler CloudNative SIG](https://atomgit.com/openeuler/cloudnative), [openEuler](https://atomgit.com/openeuler/community).
 # Iceberg | openEuler
 Current Iceberg docker images are built on the [openEuler](https://repo.openeuler.org/). This repository is free to use and exempted from per-user rate limits.
 
@@ -17,7 +17,7 @@ Learn more on [Iceberg website](https://iceberg.apache.org/).
 The tag of each iceberg docker image is consist of the version of iceberg and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
-|[1.10.1-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/iceberg/1.10.1/24.03-lts-sp3/Dockerfile) | Apache Iceberg 1.10.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[1.10.1-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Bigdata/iceberg/1.10.1/24.03-lts-sp3/Dockerfile) | Apache Iceberg 1.10.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 
 # Usage
@@ -50,28 +50,5 @@ In this usage, users can select the corresponding `{Tag}` and `container startup
 	docker exec -it my-iceberg /bin/bash
 	```
 
-- Develop Iceberg itself — modify the source and rebuild inside the container:
-	```bash
-	docker exec -it my-iceberg bash
-	cd /opt/iceberg
-	# ... make changes ...
-	./gradlew build -x test -x integrationTest
-	```
-
-- Build derived images — use this image as a base to stack Spark, Flink, or Trino on top. The pre-built Iceberg JARs at `/opt/iceberg` are ready to be referenced by connector classpaths, so you don't rebuild Iceberg from scratch:
-	```dockerfile
-	FROM openeuler/iceberg:1.10.1-oe2403sp3
-	RUN yum install -y ... && wget https://.../spark-3.5.0.tgz ...
-	```
-
-- Develop Iceberg-based applications — write Java or Scala programs that depend on the compiled Iceberg JARs:
-	```bash
-	docker exec -it my-iceberg bash
-	javac -cp "/opt/iceberg/core/build/libs/*" MyIcebergApp.java
-	java -cp ".:/opt/iceberg/core/build/libs/*" MyIcebergApp
-	```
-
-- Learn and benchmark — read the source, step through code with a debugger, or run the built-in benchmarks for performance comparisons between Iceberg versions.
-
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://atomgit.com/openeuler/openeuler-docker-images).

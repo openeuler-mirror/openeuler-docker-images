@@ -1,5 +1,5 @@
 name: ray
-category: Bigdata
+category: bigdata
 description: Ray 是一个统一的框架，用于扩展 AI 和 Python 应用程序。Ray 包含一个核心分布式运行时和一组 AI 库，用于简化机器学习计算。提供可扩展的数据集（Data）、分布式训练（Train）、超参数调优（Tune）、强化学习（RLlib）和可编程模型服务（Serve）。
 environment: |
   本应用在Docker环境中运行，安装Docker执行如下命令
@@ -11,7 +11,7 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
-  |[2.55.1-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/ray/2.55.1/24.03-lts-sp3/Dockerfile) | ray 2.55.1 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+  |[2.55.1-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Bigdata/ray/2.55.1/24.03-lts-sp3/Dockerfile) | ray 2.55.1 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 download: |
   拉取镜像到本地
@@ -24,7 +24,6 @@ usage: |
     ```
     docker run -d --name ray-head -p 8265:8265 -p 6379:6379 openeuler/ray:{Tag}
     ```
-    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。`ray-head`启动之后，通过`http://localhost:8265`访问 Ray Dashboard。
 
   - 启动 Ray 工作节点连接到头节点
     ```

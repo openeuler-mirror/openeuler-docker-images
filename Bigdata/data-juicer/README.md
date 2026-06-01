@@ -19,32 +19,22 @@ Learn more on [Data-Juicer: The Data Operating System for the Foundation Model E
 The tag of each data-juicer docker image is consist of the version of data-juicer and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
-|[1.5.1-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/data-juicer/1.5.1/24.03-lts-sp3/Dockerfile) | data-juicer 1.5.1 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+|[1.5.1-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Bigdata/data-juicer/1.5.1/24.03-lts-sp3/Dockerfile) | data-juicer 1.5.1 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 
 # Usage
-Start a container and run a data processing pipeline:
-
+- Start a container and run a data processing pipeline:
 ```
-docker run -it --rm openeuler/data-juicer:1.5.1-oe2403sp3 bash
+docker run -it --rm openeuler/data-juicer:{Tag} bash
 ```
 
-Inside the container, use the CLI tools:
-
+- Inside the container, use the CLI tools:
 ```
 # Run a data processing pipeline
 dj-process --config demos/process_simple/process.yaml
 
 # Analyze a dataset
 dj-analyze --config demos/analyze/analyze.yaml
-```
-
-Use in a Dockerfile:
-
-```
-FROM openeuler/data-juicer:1.5.1-oe2403sp3
-COPY my-pipeline.yaml /home/datajuicer/
-CMD ["dj-process", "--config", "/home/datajuicer/my-pipeline.yaml"]
 ```
 
 # Question and answering

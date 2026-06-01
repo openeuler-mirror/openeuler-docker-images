@@ -11,7 +11,7 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
-  |[1.10.1-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/iceberg/1.10.1/24.03-lts-sp3/Dockerfile) | Apache Iceberg 1.10.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+  |[1.10.1-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Bigdata/iceberg/1.10.1/24.03-lts-sp3/Dockerfile) | Apache Iceberg 1.10.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 download: |
   拉取镜像到本地
@@ -33,18 +33,6 @@ usage: |
     | -v /path/to/project:/workspace	 | 挂载本地项目目录到容器 |
     | -v /path/to/config:/opt/iceberg/conf | 使用本地配置文件目录 |
     | -v icebergData:/var/lib/iceberg | 保存数据 |
-
-  - 开发 Iceberg 本身 — 修改源码 → `./gradlew build -x test` 重新编译 → 验证改动或向上游提交补丁。
-
-  - 构建衍生镜像 — 以此镜像为基础叠加计算引擎（Spark/Flink/Trino），直接引用 `/opt/iceberg` 下已编好的 JAR，无需从头编译 Iceberg：
-    ```dockerfile
-    FROM openeuler/iceberg:1.10.1-oe2403sp3
-    RUN yum install -y ... && wget https://.../spark-3.5.0.tgz ...
-    ```
-
-  - 开发基于 Iceberg API 的应用 — 在容器内编写 Java/Scala 程序，直接依赖已编译的 Iceberg JAR。
-
-  - 学习与调试 — 阅读源码、断点调试、运行 benchmark 做版本间性能对比。
 
   - 查看运行日志
     ```

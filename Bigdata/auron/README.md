@@ -19,18 +19,16 @@ Auron takes a fully optimized physical plan from a distributed computing framewo
 The tag of each auron docker image is consist of the version of auron and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
-|[7.0.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/auron/7.0.0/24.03-lts-sp3/Dockerfile) | auron 7.0.0 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+|[7.0.0-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Bigdata/auron/7.0.0/24.03-lts-sp3/Dockerfile) | auron 7.0.0 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 
 # Usage
-To use Auron with Apache Spark:
-
-1. Copy the Auron JAR from the image to your Spark classpath:
+Copy the Auron JAR from the image to your Spark classpath:
 ```
-docker run --rm openeuler/auron:7.0.0-oe2403sp3 cat /opt/auron/auron-spark_2.12-release-linux-x86_64-7.0.0-incubating.jar > $SPARK_HOME/jars/auron-spark.jar
+docker run --rm openeuler/auron:{Tag} cat /opt/auron/auron-spark_2.12-release-linux-x86_64-7.0.0-incubating.jar > $SPARK_HOME/jars/auron-spark.jar
 ```
 
-2. Add the following configurations to `$SPARK_HOME/conf/spark-defaults.conf`:
+Add the following configurations to `$SPARK_HOME/conf/spark-defaults.conf`:
 ```properties
 spark.auron.enable true
 spark.sql.extensions org.apache.spark.sql.auron.AuronSparkSessionExtension
@@ -41,12 +39,10 @@ spark.executor.memory 4g
 spark.executor.memoryOverhead 4096
 ```
 
-3. Submit a query with spark-sql:
+Submit a query with spark-sql:
 ```
 spark-sql -f query.sql
 ```
-
-Learn more on [Apache Auron official site](https://auron.apache.org/).
 
 # Question and answering
 If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://atomgit.com/openeuler/openeuler-docker-images).

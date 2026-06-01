@@ -1,5 +1,5 @@
 name: data-juicer
-category: Bigdata
+category: bigdata
 description: Data-Juicer (DJ) 将原始数据转化为 AI 可用的高质量数据。它将数据处理视为可组合基础设施，提供模块化构建块来清洗、合成和分析覆盖整个 AI 生命周期的数据，挖掘每个字节的潜在价值。  # 中文描述
 environment: |
   本应用在Docker环境中运行，安装Docker执行如下命令
@@ -11,7 +11,7 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
-  |[1.5.1-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/data-juicer/1.5.1/24.03-lts-sp3/Dockerfile) | data-juicer 1.5.1 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+  |[1.5.1-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Bigdata/data-juicer/1.5.1/24.03-lts-sp3/Dockerfile) | data-juicer 1.5.1 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 download: |
   拉取镜像到本地
@@ -20,26 +20,18 @@ download: |
   ```
 
 usage: |
-  启动容器并运行数据处理流水线：
-  ```
-  docker run -it --rm openeuler/data-juicer:1.5.1-oe2403sp3 bash
-  ```
+  - 启动容器并运行数据处理流水线：
+    ```
+    docker run -it --rm openeuler/data-juicer:{Tag} bash
+    ```
+  - 进入容器后，使用以下命令行工具：
+    ```
+    # 运行数据处理流水线
+    dj-process --config demos/process_simple/process.yaml
 
-  进入容器后，使用以下命令行工具：
-  ```
-  # 运行数据处理流水线
-  dj-process --config demos/process_simple/process.yaml
-
-  # 分析数据集
-  dj-analyze --config demos/analyze/analyze.yaml
-  ```
-
-  在 Dockerfile 中使用：
-  ```
-  FROM openeuler/data-juicer:1.5.1-oe2403sp3
-  COPY my-pipeline.yaml /home/datajuicer/
-  CMD ["dj-process", "--config", "/home/datajuicer/my-pipeline.yaml"]
-  ```
+    # 分析数据集
+    dj-analyze --config demos/analyze/analyze.yaml
+    ```
 
 license: Apache-2.0
 similar_packages:

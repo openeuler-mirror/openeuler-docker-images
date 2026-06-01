@@ -13,7 +13,7 @@ DiskANN is a suite of scalable, accurate and cost-effective approximate nearest 
 The tag of each diskann docker image is consist of the version of diskann and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
-|[0.52.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/diskann/0.52.0/24.03-lts-sp3/Dockerfile) | diskann 0.52.0 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+|[0.52.0-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/diskann/0.52.0/24.03-lts-sp3/Dockerfile) | diskann 0.52.0 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 
 # Usage
@@ -22,7 +22,7 @@ This image provides the DiskANN command-line tools for building, searching, and 
 ## Running DiskANN benchmark
 
 ```shell
-docker run openeuler/diskann:0.52.0-oe2403sp3 diskann-benchmark --help
+docker run openeuler/diskann:{Tag} diskann-benchmark --help
 ```
 
 ## Available tools
@@ -43,7 +43,7 @@ The following CLI tools are included in the image:
 ## Running a specific tool
 
 ```shell
-docker run openeuler/diskann:0.52.0-oe2403sp3 <tool-name> --help
+docker run openeuler/diskann:{Tag} <tool-name> --help
 ```
 
 # Question and answering

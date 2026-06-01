@@ -2,9 +2,9 @@
 
 - The official Ambari docker image.
 
-- Maintained by: [openEuler CloudNative SIG](https://gitee.com/openeuler/cloudnative).
+- Maintained by: [openEuler CloudNative SIG](https://atomgit.com/openeuler/cloudnative).
 
-- Where to get help: [openEuler CloudNative SIG](https://gitee.com/openeuler/cloudnative), [openEuler](https://gitee.com/openeuler/community).
+- Where to get help: [openEuler CloudNative SIG](https://atomgit.com/openeuler/cloudnative), [openEuler](https://atomgit.com/openeuler/community).
 # Ambari | openEuler
 Current Ambari docker images are built on the [openEuler](https://repo.openeuler.org/). This repository is free to use and exempted from per-user rate limits.
 
@@ -17,7 +17,7 @@ Learn more on [Ambari website](https://ambari.apache.org/).
 The tag of each ambari docker image is consist of the version of ambari and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
-|[3.0.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/ambari/3.0.0/24.03-lts-sp3/Dockerfile) | Apache Ambari 3.0.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[3.0.0-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Bigdata/ambari/3.0.0/24.03-lts-sp3/Dockerfile) | Apache Ambari 3.0.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 
 # Usage
@@ -56,4 +56,4 @@ In this usage, users can select the corresponding `{Tag}` and `container startup
 - Build Ambari derived images — use this image as a base to include pre-configured Hadoop stack components. The compiled Ambari artifacts at `/opt/ambari` are ready to use.
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://atomgit.com/openeuler/openeuler-docker-images).
