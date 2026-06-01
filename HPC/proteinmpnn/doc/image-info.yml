@@ -1,0 +1,81 @@
+name: proteinmpnn
+category: HPC
+description: ProteinMPNN是一种基于深度学习的蛋白质序列设计方法，能够根据给定的蛋白质骨架结构生成高精度的蛋白质序列。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  proteinmpnn镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  | Tag                                                                                                                                  | Currently                                  | Architectures |
+  |--------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------|---------------|
+  | [1.0.1-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/proteinmpnn/1.0.1/24.03-lts-sp3/Dockerfile)   | ProteinMPNN 1.0.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/proteinmpnn:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+    ```
+    docker run -it --rm openeuler/proteinmpnn:{Tag} bash
+    ```
+    用户可根据自身需求选择对应版本的{Tag}。
+
+  - 运行示例
+    ```bash
+    # 进入容器后
+    cd /opt/ProteinMPNN
+
+    # 步骤1: 将PDB文件解析为jsonl格式
+    python3 helper_scripts/parse_multiple_chains.py \
+      --input_path inputs/PDB_monomers/pdbs/ \
+      --output_path parsed_pdbs.jsonl
+
+    # 步骤2: 运行蛋白质序列设计
+    python3 protein_mpnn_run.py \
+      --jsonl_path parsed_pdbs.jsonl \
+      --out_folder outputs/ \
+      --num_seq_per_target 2 \
+      --sampling_temp "0.1"
+    ```
+
+  - 使用自定义PDB文件
+    ```bash
+    # 挂载本地目录并运行
+    docker run -it --rm -v /path/to/pdbs:/pdbs openeuler/proteinmpnn:{Tag} bash
+
+    # 进入容器后，解析并设计
+    cd /opt/ProteinMPNN
+    python3 helper_scripts/parse_multiple_chains.py \
+      --input_path /pdbs/ \
+      --output_path /pdbs/parsed_pdbs.jsonl
+
+    python3 protein_mpnn_run.py \
+      --jsonl_path /pdbs/parsed_pdbs.jsonl \
+      --out_folder /pdbs/outputs/ \
+      --num_seq_per_target 10
+    ```
+
+license: MIT License
+
+similar_packages:
+  - Rosetta: Rosetta是一套用于蛋白质结构预测和设计的综合软件套件，包含多种蛋白质设计算法。
+  - EvoEF2: 一种用于蛋白质设计和稳定性预测的计算方法。
+
+dependency:
+  - python3
+  - pytorch
+  - numpy
+
+homepage: https://github.com/dauparas/ProteinMPNN
+upstream:
+  version_url: https://github.com/dauparas/ProteinMPNN/releases
+  backend: github
+  version_scheme: Semantic
+  version_filter:
+  regex: 'v(\d+\.\d+\.\d+)'
