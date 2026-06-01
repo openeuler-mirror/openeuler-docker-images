@@ -1,0 +1,60 @@
+name: PWDFT
+category: hpc
+description: PWDFT（平面波密度泛函理论）是一个面向百亿亿次材料发现的自主平面波DFT引擎，为NWChemEx电子结构软件提供密度泛函理论计算功能，可用于材料科学和电子结构计算。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  PWDFT镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.0.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/pwdft/1.0.0/24.03-lts-sp3/Dockerfile)| PWDFT 1.0.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/pwdft:{Tag}
+  ```
+
+usage: |
+  拉取镜像（示例）：
+  ```
+  docker pull openeuler/pwdft:1.0.0-oe2403sp3
+  ```
+
+  运行容器并验证版本：
+  ```
+  docker run -it --rm openeuler/pwdft:1.0.0-oe2403sp3 pwdft --help
+  ```
+
+  运行DFT计算（示例）：
+  ```
+  docker run -it --rm -v /path/to/input:/data openeuler/pwdft:1.0.0-oe2403sp3 pwdft /data/input.nw
+  ```
+
+license: GPL-3.0 license
+similar_packages:
+  - name: cp2k
+    description: CP2K是一款开源的量子化学和固态物理计算软件，支持多种DFT方法。
+    homepage: https://www.cp2k.org/
+  - name: nwchem
+    description: NWChem是一款开源的计算化学软件，支持多种量子化学方法。
+    homepage: https://nwchemgit.github.io/
+
+dependency:
+  - cmake
+  - openmpi
+  - blas
+  - lapack
+  - gfortran
+
+homepage: https://github.com/ebylaska/PWDFT
+upstream:
+  backend: GitHub
+  version_url: ebylaska/PWDFT
+  version_prefix:
+  version_filter:
+  version_scheme: RPM
