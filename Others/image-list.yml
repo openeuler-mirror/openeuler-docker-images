@@ -97,3 +97,4 @@ images:
   slurm: slurm
   amg: amg
   want: want
+  rust: rust

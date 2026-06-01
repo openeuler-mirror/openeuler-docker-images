@@ -1,0 +1,64 @@
+name: rust
+category: others
+description: Rust 是一种系统编程语言，运行速度极快，可防止段错误，并保证线程安全。它包含编译器、标准库和文档。  # 中文描述
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  rust镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.95.0-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/rust/1.95.0/24.03-lts-sp3/Dockerfile) | rust 1.95.0 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+  
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/rust:{Tag}
+  ```
+
+usage: |
+  启动 Rust 开发环境
+
+  ```bash
+  docker run -it openeuler/rust:{Tag} bash
+  ```
+
+  编译并运行 Rust 项目
+
+  ```bash
+  docker run -it -v $(pwd):/workspace -w /workspace openeuler/rust:{Tag} cargo run
+  ```
+
+  创建新的 Rust 项目
+
+  ```bash
+  docker run -it -v $(pwd):/workspace -w /workspace openeuler/rust:{Tag} cargo new my-project
+  ```
+
+  构建 Rust 项目
+
+  ```bash
+  docker run -it -v $(pwd):/workspace -w /workspace openeuler/rust:{Tag} cargo build --release
+  ```
+
+license: Apache-2.0
+similar_packages:
+  - Go: 静态类型编译型编程语言，专注于简洁和高效
+  - C: 通用编程语言，提供底层系统访问能力
+  - C++: 高性能通用编程语言，支持面向对象和泛型编程
+  - Zig: 现代系统编程语言，旨在替代 C 语言
+  
+dependency:
+  - gcc
+  - glibc
+
+homepage: https://github.com/rust-lang/rust
+upstream:
+  backend: GitHub
+  version_url: rust-lang/rust
+  version_prefix: 
+  version_filter: alpha;rc;candidate;beta;nightly
+  version_scheme: RPM
