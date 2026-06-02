@@ -1,0 +1,54 @@
+name: hh-suite
+category: hpc
+description: HH-suite3是用于敏感蛋白质序列搜索的开源软件包，基于隐马尔可夫模型（HMM）的成对对齐技术。HH-suite提供HHblits、HHsearch等核心工具，支持远程蛋白质同源性检测、深度蛋白质注释、HMM-HMM比对等功能，广泛应用于蛋白质结构预测、序列分析、进化研究等生物信息学领域。HH-suite3支持SSE2/AVX2（x86）和NEON（ARM64）SIMD加速，以及MPI并行计算。
+environment: |
+  本应用在Docker环境中运行,安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  hh-suite镜像的Tag由其版本信息和基础镜像版本信息组成,详细内容如下
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[3.3.0-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/hh-suite/3.3.0/24.03-lts-sp3/Dockerfile) | HH-suite 3.3.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/hh-suite:{Tag}
+  ```
+usage: |
+  1. 确保已安装 Docker 环境。
+  2. 获取 HH-suite 镜像（二选一）：
+  - 从 DockerHub 拉取预构建镜像
+    ```
+    docker pull openeuler/hh-suite:3.3.0-oe2403sp3
+    ```
+  - 或从源码构建镜像
+    ```
+    docker build -t openeuler/hh-suite:3.3.0-oe2403sp3 3.3.0/24.03-lts-sp3/
+    ```
+  3. 启动容器进入 HH-suite 环境
+    ```
+    docker run -it openeuler/hh-suite:3.3.0-oe2403sp3
+    ```
+  4. 在容器内验证安装
+    ```
+    hhblits -h && hhsearch -h
+    ```
+license: GPL-3.0
+similar_packages:
+  - MMseqs2: 快速敏感序列搜索工具
+  - HMMER: 基于HMM的序列搜索工具
+  - DIAMOND: 快速蛋白质序列比对工具
+dependency:
+  - C/C++编译器 (gcc >=4.8, clang >=3.6)
+  - CMake >=2.8.12
+  - libgomp (OpenMP支持)
+  - MPI库 (可选,用于并行计算)
+homepage: https://github.com/soedinglab/hh-suite
+upstream:
+  backend: GitHub
+  version_url: soedinglab/hh-suite
+  version_prefix: v
+  version_filter:
+  version_scheme: semantic
