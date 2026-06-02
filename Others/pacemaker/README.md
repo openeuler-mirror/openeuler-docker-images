@@ -18,6 +18,7 @@ The tag of each `pacemaker` docker image is consist of the version of `pacemaker
 
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[3.0.2-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/pacemaker/3.0.2/24.03-lts-sp3/Dockerfile) | pacemaker 3.0.2 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 |[3.0.1-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/pacemaker/3.0.1/24.03-lts-sp3/Dockerfile) | pacemaker 3.0.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 |[3.0.1-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/pacemaker/3.0.1/24.03-lts-sp2/Dockerfile) | pacemaker 3.0.1 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[3.0.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/pacemaker/3.0.0/24.03-lts-sp1/Dockerfile)| Pacemaker 3.0.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
