@@ -1,0 +1,56 @@
+name: elmer
+category: hpc
+description: Elmer是一款开源的多物理场有限元模拟软件，由CSC - IT Center for Science开发并维护。Elmer包含结构力学、流体动力学、热传导、电磁场、声学等多种物理求解器，支持MPI并行计算和OpenMP多线程加速。Elmer内置UMFPACK直接求解器和ARPACK迭代求解器，可选集成MUMPS、Hypre、Trilinos等第三方线性求解器库，ElmerGrid工具提供网格生成、转换与分区功能，ElmerIce模块提供冰盖与冰川动力学模拟能力。Elmer广泛应用于计算流体力学、结构力学、电磁仿真、冰盖模拟及多物理场耦合仿真研究。
+environment: |
+  本应用在Docker环境中运行,安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  elmer镜像的Tag由其版本信息和基础镜像版本信息组成,详细内容如下
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[26.2.1-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/elmer/26.2.1/24.03-lts-sp3/Dockerfile) | Elmer 26.2.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/elmer:{Tag}
+  ```
+usage: |
+  1. 确保已安装 Docker 环境。
+  2. 获取 Elmer 镜像（二选一）：
+  - 从 DockerHub 拉取预构建镜像
+    ```
+    docker pull openeuler/elmer:26.2.1-oe2403sp3
+    ```
+  - 或从源码构建镜像
+    ```
+    docker build -t openeuler/elmer:26.2.1-oe2403sp3 26.2.1/24.03-lts-sp3/
+    ```
+  3. 启动容器进入 Elmer 环境
+    ```
+    docker run -it openeuler/elmer:26.2.1-oe2403sp3
+    ```
+  4. 在容器内验证安装
+    ```
+    which ElmerSolver && which ElmerGrid
+    ```
+license: GPL-2.0
+similar_packages:
+  - OpenFOAM: 开源通用CFD平台,支持多物理场仿真
+  - FEniCS: 基于Python的开源有限元计算平台
+  - COMSOL: 商业多物理场仿真软件,涵盖结构、流体、电磁等多种物理场
+dependency:
+  - Fortran compiler (gfortran >=7)
+  - C compiler (gcc)
+  - OpenMPI
+  - OpenBLAS/LAPACK
+  - CMake >=3.10
+  - UMFPACK (bundled)
+homepage: https://github.com/ElmerCSC/elmerfem
+upstream:
+  backend: GitHub
+  version_url: ElmerCSC/elmerfem
+  version_prefix: release-
+  version_filter: 
+  version_scheme: RPM
