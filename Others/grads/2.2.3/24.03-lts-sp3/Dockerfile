@@ -1,7 +1,7 @@
 ARG BASE=openeuler/openeuler:24.03-lts-sp3
 FROM ${BASE}
 
-ARG GRADS_VERSION=2.2.3
+ARG VERSION=2.2.3
 
 RUN dnf install -y \
       gcc gcc-c++ make cmake autoconf automake libtool pkgconf-devel \
@@ -19,7 +19,7 @@ ENV GADDIR=/usr/local/lib/grads/data
 
 RUN mkdir -p /tmp/build && \
     cd /tmp/build && \
-    git clone --depth 1 --branch v${GRADS_VERSION} https://github.com/j-m-adams/GrADS.git . && \
+    git clone --depth 1 --branch v${VERSION} https://github.com/j-m-adams/GrADS.git . && \
     mkdir -p supplibs/lib supplibs/include && \
     autoreconf -fi && \
     CAIRO_CFLAGS="-I/usr/include/cairo -I/usr/include/freetype2" CAIRO_LIBS="-lcairo" ./configure --prefix=/usr/local && \

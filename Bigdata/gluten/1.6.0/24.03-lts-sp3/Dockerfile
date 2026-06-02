@@ -1,7 +1,6 @@
 ARG BASE=openeuler/openeuler:24.03-lts-sp3
 FROM ${BASE} AS base
 
-ARG TARGETARCH
 ARG VERSION=1.6.0
 ARG GLU_REPO="https://github.com/apache/gluten.git"
 

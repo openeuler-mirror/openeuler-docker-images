@@ -1,7 +1,7 @@
 ARG BASE=openeuler/openeuler:24.03-lts-sp3
 FROM ${BASE}
 
-ARG WANT_VERSION=2.6.1
+ARG VERSION=2.6.1
 
 RUN dnf install -y \
         gcc gcc-gfortran gcc-c++ make \
@@ -9,7 +9,7 @@ RUN dnf install -y \
         git \
     && dnf clean all
 
-RUN git clone --depth 1 --branch want-${WANT_VERSION} https://github.com/QEF/want.git /tmp/want && \
+RUN git clone --depth 1 --branch want-${VERSION} https://github.com/QEF/want.git /tmp/want && \
     cd /tmp/want && \
     ./configure --build=$(uname -m)-unknown-linux-gnu --with-internal-libs --disable-parallel && \
     sed -i '/^F90FLAGS/s/$/ -fallow-argument-mismatch/' make.sys && \

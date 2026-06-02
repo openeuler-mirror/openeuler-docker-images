@@ -1,7 +1,7 @@
 ARG BASE=openeuler/openeuler:24.03-lts-sp3
 FROM ${BASE}
 
-ARG ROOT_VERSION=6-40-00
+ARG VERSION=6-40-00
 
 RUN dnf install -y \
       git make cmake gcc gcc-c++ binutils \
@@ -12,7 +12,7 @@ RUN dnf install -y \
       zstd-devel giflib-devel libjpeg-turbo-devel lz4-devel && \
     dnf clean all
 
-RUN git clone --branch v${ROOT_VERSION} --depth=1 https://github.com/root-project/root.git /root-src && \
+RUN git clone --branch v${VERSION} --depth=1 https://github.com/root-project/root.git /root-src && \
     mkdir /root-build && cd /root-build && \
     cmake -DCMAKE_INSTALL_PREFIX=/opt/root \
           -DCMAKE_BUILD_TYPE=Release \

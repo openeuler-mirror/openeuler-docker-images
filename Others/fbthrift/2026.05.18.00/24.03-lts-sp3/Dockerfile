@@ -1,8 +1,7 @@
 ARG BASE=openeuler/openeuler:24.03-lts-sp3
 FROM ${BASE}
 
-ARG TARGETARCH
-ARG FBTHRIFT_VERSION=v2026.05.18.00
+ARG VERSION=v2026.05.18.00
 
 RUN dnf install -y \
         git gcc gcc-c++ make cmake \
@@ -16,7 +15,7 @@ RUN dnf install -y \
 COPY libaio-libaio-0.3.113.tar.gz /tmp/libaio.tar.gz
 COPY fix_getdeps.py /tmp/fix_getdeps.py
 
-RUN git clone -b ${FBTHRIFT_VERSION} --depth 1 https://github.com/facebook/fbthrift.git /build && \
+RUN git clone -b ${VERSION} --depth 1 https://github.com/facebook/fbthrift.git /build && \
     cd /build && \
     mkdir -p /tmp/fbcode_builder_getdeps-ZbuildZbuildZfbcode_builder-root/downloads && \
     cp /tmp/libaio.tar.gz /tmp/fbcode_builder_getdeps-ZbuildZbuildZfbcode_builder-root/downloads/libaio-libaio-libaio-0.3.113.tar.gz && \

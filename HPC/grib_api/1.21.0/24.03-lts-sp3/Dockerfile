@@ -1,14 +1,14 @@
 ARG BASE=openeuler/openeuler:24.03-lts-sp3
 FROM ${BASE}
 
-ARG GRIB_API_VERSION=1.21.0
+ARG VERSION=1.21.0
 
 RUN dnf install -y \
       git gcc gcc-c++ cmake make \
       openjpeg2-devel && \
     dnf clean all
 
-RUN git clone --branch v${GRIB_API_VERSION} --depth 1 https://github.com/weathersource/grib_api.git /tmp/grib_api && \
+RUN git clone --branch v${VERSION} --depth 1 https://github.com/weathersource/grib_api.git /tmp/grib_api && \
     mkdir /tmp/grib_api/build && \
     cd /tmp/grib_api/build && \
     cmake .. \

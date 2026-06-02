@@ -1,8 +1,7 @@
 ARG BASE=openeuler/openeuler:24.03-lts-sp3
 FROM ${BASE}
 
-ARG TARGETARCH
-ARG NCEPLIBS_VERSION=1.4.0
+ARG VERSION=1.4.0
 
 RUN dnf install -y \
       git gcc gcc-c++ gcc-gfortran make cmake \
@@ -21,7 +20,7 @@ RUN git clone --branch v${NETCDF_FORTRAN_VERSION} https://github.com/Unidata/net
     make -j$(nproc) && make install && \
     rm -rf /tmp/netcdf-fortran
 
-RUN git clone --branch v${NCEPLIBS_VERSION} --recursive https://github.com/NOAA-EMC/NCEPLIBS.git /tmp/NCEPLIBS && \
+RUN git clone --branch v${VERSION} --recursive https://github.com/NOAA-EMC/NCEPLIBS.git /tmp/NCEPLIBS && \
     sed -i 's/ wgrib2//' /tmp/NCEPLIBS/CMakeLists.txt && \
     mkdir -p /tmp/NCEPLIBS/build && cd /tmp/NCEPLIBS/build && \
     cmake -DCMAKE_INSTALL_PREFIX=/opt/nceplibs \

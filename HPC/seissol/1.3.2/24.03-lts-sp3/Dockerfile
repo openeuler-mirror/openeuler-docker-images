@@ -1,10 +1,9 @@
 ARG BASE=openeuler/openeuler:24.03-lts-sp3
 FROM ${BASE} AS builder
 
-ARG TARGETARCH
 ARG EASI_VERSION=1.6.2
 ARG EIGEN_VERSION=3.4.0
-ARG SEISSOL_VERSION=1.3.2
+ARG VERSION=1.3.2
 
 RUN dnf install -y \
       gcc gcc-c++ gcc-gfortran make cmake git \
@@ -57,7 +56,7 @@ RUN git clone --depth 1 https://github.com/KarypisLab/ParMETIS.git /tmp/parmetis
     make install && \
     rm -rf /tmp/parmetis
 
-RUN git clone --recursive --depth 1 --branch v${SEISSOL_VERSION} https://github.com/SeisSol/SeisSol.git /tmp/seissol && \
+RUN git clone --recursive --depth 1 --branch v${VERSION} https://github.com/SeisSol/SeisSol.git /tmp/seissol && \
     cd /tmp/seissol && \
     cmake -B build \
       -DCMAKE_BUILD_TYPE=Release \
