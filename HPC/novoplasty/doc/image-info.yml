@@ -1,0 +1,51 @@
+name: novoplasty
+category: HPC
+description: NOVOPlasty是一个基于de Bruijn图的细胞器基因组de novo组装和异质性检测工具，由N. Dierckxsens、P. Mardulyn和G. Smits开发并发表于Nucleic Acids Research (2016)。NOVOPlasty专门用于从全基因组测序数据中组装线粒体和叶绿体等短环形基因组，支持种子序列延伸组装策略、异质性/变异检测（含AF和DP指标）、多种K-mer设置、批量组装模式以及本地哈希存储加速，广泛应用于植物线粒体、叶绿体及动物线粒体基因组组装。
+environment: |
+  本应用在Docker环境中运行,安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  NOVOPlasty镜像的Tag由其版本信息和基础镜像版本信息组成,详细内容如下
+  |    Tag   |  Currently  |  Architectures  |
+  |----------|-------------|------------------|
+  |[4.3.5-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/NOVOPlasty/4.3.5/24.03-lts-sp3/Dockerfile) | NOVOPlasty 4.3.5 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/NOVOPlasty:{Tag}
+  ```
+usage: |
+  1. 确保已安装 Docker 环境。
+  2. 获取 NOVOPlasty 镜像（二选一）：
+  - 从 DockerHub 拉取预构建镜像
+    ```
+    docker pull openeuler/NOVOPlasty:4.3.5-oe2403sp3
+    ```
+  - 或从源码构建镜像
+    ```
+    docker build -t openeuler/NOVOPlasty:4.3.5-oe2403sp3 4.3.5/24.03-lts-sp3/
+    ```
+  3. 启动容器进入 NOVOPlasty 环境
+    ```
+    docker run -it openeuler/NOVOPlasty:4.3.5-oe2403sp3
+    ```
+  4. 在容器内验证安装
+    ```
+    which NOVOPlasty.pl && which filter_reads.pl
+    ```
+license: AGPL-3.0
+similar_packages:
+  - SPAdes: 基于de Bruijn图的多k值迭代基因组组装工具，也支持细胞器基因组组装
+  - GetOrganelle: 专门用于细胞器基因组组装的读段筛选与组装管道工具
+  - MitoZ: 集细胞器基因组组装、注释和异质性检测于一体的工具
+dependency:
+  - Perl
+homepage: https://github.com/ndierckx/NOVOPlasty
+upstream:
+  backend: GitHub
+  version_url: ndierckx/NOVOPlasty
+  version_prefix: NOVOPlasty
+  version_filter: 
+  version_scheme: RPM
