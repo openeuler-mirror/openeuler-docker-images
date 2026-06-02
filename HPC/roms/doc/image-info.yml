@@ -1,0 +1,54 @@
+name: roms
+category: HPC
+description: ROMS（Regional Ocean Modeling System）是一个求解自由表面、静压、通量形式原始方程的区域海洋数值模式，由The ROMS Group开发维护。ROMS在垂直方向采用拉伸地形跟随坐标，水平方向采用正交曲线坐标，基于Arakawa C-grid交错网格的有限体积离散。ROMS内核包含非线性模型（NLM）、扰动切线性模型（TLM）、有限振幅切线性模型（RPM）和伴随模型（ADM）四个独立动力内核，支持MPI并行计算、NetCDF4/HDF5数据I/O、海冰动力学、沉积物输运、植被生态等多种物理过程模块，广泛应用于沿岸海洋动力学、潮汐、环流、生态系统及海洋预报研究。
+environment: |
+  本应用在Docker环境中运行,安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  roms镜像的Tag由其版本信息和基础镜像版本信息组成,详细内容如下
+  |    Tag   |  Currently  |  Architectures  |
+  |----------|-------------|------------------|
+  |[4.2-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/roms/4.2/24.03-lts-sp3/Dockerfile) | ROMS 4.2 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/roms:{Tag}
+  ```
+usage: |
+  1. 确保已安装 Docker 环境。
+  2. 获取 ROMS 镜像（二选一）：
+  - 从 DockerHub 拉取预构建镜像
+    ```
+    docker pull openeuler/roms:4.2-oe2403sp3
+    ```
+  - 或从源码构建镜像
+    ```
+    docker build -t openeuler/roms:4.2-oe2403sp3 4.2/24.03-lts-sp3/
+    ```
+  3. 启动容器进入 ROMS 环境
+    ```
+    docker run -it openeuler/roms:4.2-oe2403sp3
+    ```
+  4. 在容器内验证安装
+    ```
+    which roms
+    ```
+license: MIT
+similar_packages:
+  - MOM6: NOAA开发的海洋通用模式，适用于全球和区域海洋模拟
+  - NEMO: 欧洲开发的海洋核心模式，支持海洋、海冰和生物地球化学耦合
+  - HYCOM: 混合坐标海洋模式，适用于全球海洋预报和数据同化
+dependency:
+  - Fortran compiler (gfortran)
+  - NetCDF-Fortran
+  - HDF5
+  - CMake or GNU Make
+homepage: https://github.com/myroms/roms
+upstream:
+  backend: GitHub
+  version_url: myroms/roms
+  version_prefix: roms-
+  version_filter: 
+  version_scheme: RPM
