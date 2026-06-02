@@ -1,0 +1,55 @@
+name: fds
+category: hpc
+description: FDS（Fire Dynamics Simulator）是由NIST开发的计算流体动力学（CFD）火灾模拟软件，求解低速热驱动流动的Navier-Stokes方程，采用大涡模拟（LES）方法处理湍流。FDS核心求解器包含热传导、辐射传热、固体燃料热解、燃烧反应、烟尘生成与输运、喷淋与探测器激活等多种物理模型，支持MPI并行计算和OpenMP多线程。FDS集成HYPRE线性求解器库和SUNDIALS ODE/DAE求解器库，广泛应用于建筑火灾安全工程、隧道火灾模拟、森林火灾蔓延预测及工业消防安全评估。
+environment: |
+  本应用在Docker环境中运行,安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  fds镜像的Tag由其版本信息和基础镜像版本信息组成,详细内容如下
+  |    Tag   |  Currently  |  Architectures  |
+  |----------|-------------|------------------|
+  |[6.11.0-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/fds/6.11.0/24.03-lts-sp3/Dockerfile) | FDS 6.11.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/fds:{Tag}
+  ```
+usage: |
+  1. 确保已安装 Docker 环境。
+  2. 获取 FDS 镜像（二选一）：
+  - 从 DockerHub 拉取预构建镜像
+    ```
+    docker pull openeuler/fds:6.11.0-oe2403sp3
+    ```
+  - 或从源码构建镜像
+    ```
+    docker build -t openeuler/fds:6.11.0-oe2403sp3 6.11.0/24.03-lts-sp3/
+    ```
+  3. 启动容器进入 FDS 环境
+    ```
+    docker run -it openeuler/fds:6.11.0-oe2403sp3
+    ```
+  4. 在容器内验证安装
+    ```
+    which fds
+    ```
+license: NIST Public Domain
+similar_packages:
+  - OpenFOAM: 开源通用CFD平台，支持火灾模拟扩展（fireFOAM）
+  - ANSYS Fluent: 商业CFD软件，含燃烧与辐射模型
+  - CFAST: NIST开发的区域火灾模型，适用于多房间火灾蔓延模拟
+dependency:
+  - Fortran compiler (gfortran)
+  - OpenMPI
+  - CMake >= 3.24
+  - HYPRE (linear solver, auto-built by CMake FetchContent)
+  - SUNDIALS (ODE/DAE solver, auto-built by CMake FetchContent)
+homepage: https://github.com/firemodels/fds
+upstream:
+  backend: GitHub
+  version_url: firemodels/fds
+  version_prefix: FDS-
+  version_filter: 
+  version_scheme: RPM
