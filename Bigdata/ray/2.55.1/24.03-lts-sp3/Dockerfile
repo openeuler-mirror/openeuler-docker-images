@@ -1,13 +1,12 @@
 ARG BASE=openeuler/openeuler:24.03-lts-sp3
 FROM ${BASE}
 
-ARG TARGETARCH
-ARG RAY_VERSION=2.55.1
+ARG VERSION=2.55.1
 
 RUN dnf install -y python3-pip shadow && \
     dnf clean all
 
-RUN  pip install --no-cache-dir -i https://pypi.tuna.tsinghua.edu.cn/simple ray[default]==${RAY_VERSION}
+RUN  pip install --no-cache-dir -i https://pypi.tuna.tsinghua.edu.cn/simple ray[default]==${VERSION}
     
 RUN groupadd -r ray && useradd -r -m -g ray ray
 

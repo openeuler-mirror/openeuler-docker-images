@@ -1,6 +1,7 @@
-FROM openeuler/openeuler:24.03-lts-sp3
+ARG BASE=openeuler/openeuler:24.03-lts-sp3
+FROM ${BASE}
 
-ARG AMG_VERSION=1.2
+ARG VERSION=1.2
 
 RUN dnf install -y \
       git gcc make \
@@ -9,7 +10,7 @@ RUN dnf install -y \
 
 ENV PATH=$PATH:/usr/lib64/openmpi/bin
 
-RUN git clone --depth 1 --branch ${AMG_VERSION} https://github.com/llnl/AMG.git /tmp/AMG && \
+RUN git clone --depth 1 --branch ${VERSION} https://github.com/llnl/AMG.git /tmp/AMG && \
     cd /tmp/AMG && \
     sed -i 's|^MPICC *=.*|MPICC = mpicc|' Makefile.include && \
     sed -i 's|^INCLUDE_CFLAGS *=.*|INCLUDE_CFLAGS = -DHYPRE_BIGINT -DTIMER_USE_MPI|' Makefile.include && \

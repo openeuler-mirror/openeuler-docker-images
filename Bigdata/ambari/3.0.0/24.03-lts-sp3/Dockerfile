@@ -1,8 +1,6 @@
 ARG BASE=openeuler/openeuler:24.03-lts-sp3
 FROM ${BASE} AS builder
 
-ARG TARGETARCH
-
 ARG VERSION=3.0.0
 ARG MAVEN_VERSION=3.9.9
 
@@ -34,8 +32,6 @@ RUN mvn -B clean install package \
     -Dmaven.repo.local=/tmp/maven-repo
 
 FROM ${BASE}
-
-ARG TARGETARCH
 
 RUN yum install -y java-17-openjdk java-17-openjdk-devel python3 && \
     yum clean all

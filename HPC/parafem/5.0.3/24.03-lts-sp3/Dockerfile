@@ -1,7 +1,7 @@
 ARG BASE=openeuler/openeuler:24.03-lts-sp3
 FROM ${BASE}
 
-ARG PARAFEM_VERSION=5.0.3
+ARG VERSION=5.0.3
 
 RUN dnf install -y \
       git make \
@@ -12,7 +12,7 @@ RUN dnf install -y \
 
 ENV PATH=/usr/lib64/openmpi/bin:$PATH
 
-RUN git clone --depth 1 --branch ${PARAFEM_VERSION} https://github.com/ParaFEM/ParaFEM.git /tmp/parafem-src && \
+RUN git clone --depth 1 --branch ${VERSION} https://github.com/ParaFEM/ParaFEM.git /tmp/parafem-src && \
     cd /tmp/parafem-src/parafem && \
     sed -i 's|^FC=/usr/bin/mpif90|FC=mpif90|' build/linuxdesktop.inc && \
     ./make-parafem MACHINE=linuxdesktop && \

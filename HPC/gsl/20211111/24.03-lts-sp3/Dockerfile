@@ -1,14 +1,14 @@
 ARG BASE=openeuler/openeuler:24.03-lts-sp3
 FROM ${BASE}
 
-ARG GSL_VERSION=20211111
+ARG VERSION=20211111
 
 RUN dnf install -y \
       git cmake make \
       gcc gcc-c++ gcc-gfortran && \
     dnf clean all
 
-RUN git clone --branch ${GSL_VERSION} --depth 1 https://github.com/ampl/gsl.git /tmp/gsl-src && \
+RUN git clone --branch ${VERSION} --depth 1 https://github.com/ampl/gsl.git /tmp/gsl-src && \
     mkdir /tmp/gsl-src/build && cd /tmp/gsl-src/build && \
     cmake .. \
       -DCMAKE_BUILD_TYPE=Release \

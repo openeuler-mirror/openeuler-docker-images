@@ -1,7 +1,8 @@
-FROM openeuler/openeuler:24.03-lts-sp3 AS builder
+ARG BASE=openeuler/openeuler:24.03-lts-sp3
+FROM ${BASE} AS builder
 
 ARG MAVEN_VERSION=3.9.12
-ARG AURON_VERSION=7.0.0
+ARG VERSION=7.0.0
 
 RUN dnf install -y java-17-openjdk-devel git curl gcc-c++ make && \
     dnf clean all
@@ -18,14 +19,14 @@ RUN curl -fSL -o apache-maven.tar.gz https://repo.huaweicloud.com/apache/maven/m
 ENV PATH="/usr/local/maven/bin:${PATH}"
 
 WORKDIR /build
-RUN git clone --depth 1 --branch v${AURON_VERSION} https://github.com/apache/auron.git .
+RUN git clone --depth 1 --branch v${VERSION} https://github.com/apache/auron.git .
 
 ENV CARGO_PROFILE_RELEASE_LTO=thin \
     CARGO_PROFILE_RELEASE_CODEGEN_UNITS=4 \
     CI=true
 RUN ./auron-build.sh --release --sparkver 3.5 --scalaver 2.12
 
-FROM openeuler/openeuler:24.03-lts-sp3
+FROM ${BASE}
 
 RUN dnf install -y java-17-openjdk-devel && \
     dnf clean all

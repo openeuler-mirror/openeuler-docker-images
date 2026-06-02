@@ -1,7 +1,7 @@
 ARG BASE=openeuler/openeuler:24.03-lts-sp3
 FROM ${BASE}
 
-ARG QDK_VERSION=2.5.0
+ARG VERSION=2.5.0
 
 RUN dnf install -y \
       git gcc make \
@@ -11,7 +11,7 @@ RUN dnf install -y \
 
 WORKDIR /build
 
-RUN git clone --depth 1 --branch v${QDK_VERSION} https://github.com/qnap-dev/QDK.git . && \
+RUN git clone --depth 1 --branch v${VERSION} https://github.com/qnap-dev/QDK.git . && \
     cd src && make && \
     cp -rf /build/shared /usr/share/QDK && \
     mkdir -p /usr/share/QDK/bin && \

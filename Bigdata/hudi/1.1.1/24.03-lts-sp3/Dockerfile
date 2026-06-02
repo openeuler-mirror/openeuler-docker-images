@@ -1,11 +1,8 @@
 ARG BASE=openeuler/openeuler:24.03-lts-sp3
-
-# Builder stage - compile Hudi from source
 FROM ${BASE} AS builder
 
-ARG TARGETARCH
 ARG MAVEN_VERSION=3.9.9
-ARG HUDI_VERSION=1.1.1
+ARG VERSION=1.1.1
 
 RUN dnf install -y git java-11-openjdk-devel && \
     dnf clean all
@@ -19,15 +16,14 @@ ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 ENV PATH=$PATH:/usr/local/maven/bin
 
 WORKDIR /build
-RUN git clone --branch release-${HUDI_VERSION} --depth 1 https://github.com/apache/hudi.git .
+RUN git clone --branch release-${VERSION} --depth 1 https://github.com/apache/hudi.git .
 
 RUN mvn clean package -DskipTests -Dspark3.5 -Dscala-2.12
 
-# Runtime stage
+
 FROM ${BASE}
 
-ARG TARGETARCH
-ARG HUDI_VERSION=1.1.1
+ARG VERSION=1.1.1
 ARG SPARK_VERSION=3.5.5
 ARG HADOOP_VERSION=3
 
@@ -44,13 +40,13 @@ RUN curl -fSL -o spark.tgz https://archive.apache.org/dist/spark/spark-${SPARK_V
     rm -f spark.tgz
 
 WORKDIR ${HUDI_HOME}
-COPY --from=builder /build/packaging/hudi-cli-bundle/target/hudi-cli-bundle_2.12-${HUDI_VERSION}.jar ${HUDI_HOME}/
-COPY --from=builder /build/packaging/hudi-spark-bundle/target/hudi-spark3.5-bundle_2.12-${HUDI_VERSION}.jar ${HUDI_HOME}/
+COPY --from=builder /build/packaging/hudi-cli-bundle/target/hudi-cli-bundle_2.12-${VERSION}.jar ${HUDI_HOME}/
+COPY --from=builder /build/packaging/hudi-spark-bundle/target/hudi-spark3.5-bundle_2.12-${VERSION}.jar ${HUDI_HOME}/
 COPY --from=builder /build/packaging/hudi-cli-bundle/hudi-cli-with-bundle.sh ${HUDI_HOME}/
 COPY --from=builder /build/packaging/hudi-cli-bundle/conf ${HUDI_HOME}/conf
 
-ENV CLI_BUNDLE_JAR=${HUDI_HOME}/hudi-cli-bundle_2.12-${HUDI_VERSION}.jar
-ENV SPARK_BUNDLE_JAR=${HUDI_HOME}/hudi-spark3.5-bundle_2.12-${HUDI_VERSION}.jar
+ENV CLI_BUNDLE_JAR=${HUDI_HOME}/hudi-cli-bundle_2.12-${VERSION}.jar
+ENV SPARK_BUNDLE_JAR=${HUDI_HOME}/hudi-spark3.5-bundle_2.12-${VERSION}.jar
 
 RUN useradd -m -s /bin/bash hudi && \
     chown -R hudi:hudi ${HUDI_HOME} ${SPARK_HOME}
