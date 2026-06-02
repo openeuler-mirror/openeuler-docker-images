@@ -58,3 +58,4 @@ images:
   qmcpack: qmcpack
   proteinmpnn: proteinmpnn
   parafem: parafem
+  fasta: fasta

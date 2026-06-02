@@ -1,0 +1,59 @@
+name: fasta
+category: hpc
+description: FASTA是面向生物信息学序列处理的Python工具包，由Lucas Sinclair开发维护。FASTA提供FASTA/FASTQ序列文件的读写与解析、序列过滤与转换、BioPython集成接口、序列图形化可视化、引物解析等核心功能，支持自动路径管理、命令行管道操作、批量序列处理。FASTA与BioPython紧密集成，提供简洁的Python API用于基因组序列数据的预处理与分析，广泛应用于基因组学、转录组学、蛋白质组学等生物信息学研究与数据处理领域。
+environment: |
+  本应用在Docker环境中运行,安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  fasta镜像的Tag由其版本信息和基础镜像版本信息组成,详细内容如下
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[2.3.6-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/fasta/2.3.6/24.03-lts-sp3/Dockerfile) | FASTA 2.3.6 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/fasta:{Tag}
+  ```
+usage: |
+  1. 确保已安装 Docker 环境。
+  2. 获取 FASTA 镜像（二选一）：
+  - 从 DockerHub 拉取预构建镜像
+    ```
+    docker pull openeuler/fasta:2.3.6-oe2403sp3
+    ```
+  - 或从源码构建镜像
+    ```
+    docker build -t openeuler/fasta:2.3.6-oe2403sp3 2.3.6/24.03-lts-sp3/
+    ```
+  3. 启动容器进入 FASTA 环境
+    ```
+    docker run -it openeuler/fasta:2.3.6-oe2403sp3
+    ```
+  4. 在容器内验证安装
+    ```
+    python3 -c "import fasta; print(fasta.__version__)"
+    ```
+license: MIT
+similar_packages:
+  - BioPython: 生物信息学序列处理与数据库访问工具包
+  - SeqIO: 序列文件I/O处理模块
+  - pyfaidx: FASTA索引与随机访问工具
+dependency:
+  - Python >=3.8
+  - autopaths >=1.6.2
+  - plumbing >=2.11.4
+  - runps >=4.1.1
+  - biopython
+  - tqdm
+  - numpy (可选,图形可视化)
+  - matplotlib (可选,图形可视化)
+  - regex (可选,引物解析)
+homepage: https://github.com/xapple/fasta
+upstream:
+  backend: GitHub
+  version_url: xapple/fasta
+  version_prefix:
+  version_filter:
+  version_scheme: semantic
