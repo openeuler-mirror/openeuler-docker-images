@@ -1,0 +1,47 @@
+name: CPS_public
+category: hpc
+description: CPS (Columbia Physics System) 是一个用于格点量子色动力学（Lattice QCD）计算的 C++ 软件框架。它提供可静态链接的库，支持在标量机器、QCDOC 和 IBM Blue Gene 等并行架构上运行，并可通过 QMP 实现 MPI 并行通信，也可与 QIO、GMP 等 SciDAC 软件包集成。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  CPS_public镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[5_2_5-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/cps_public/5_2_5/24.03-lts-sp3/Dockerfile) | CPS_public 5_2_5 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/cps_public:{Tag}
+  ```
+
+usage: |
+  - 启动容器并挂载工作目录
+    ```
+    docker run -it --rm -v $(pwd):/workspace openeuler/cps_public:{Tag} bash
+    ```
+
+  - 在容器内，编译应用程序并链接 CPS 库：
+    ```
+    g++ -I/usr/local/include/cps -L/usr/local/lib -lcps your_app.cpp -o your_app
+    ```
+
+license: BSD-3-Clause
+similar_packages:
+  - QMP: SciDAC 通信库，用于 QCD 应用的 MPI 消息传递
+  - QIO: SciDAC I/O 库，用于 QCD 应用的科学数据读写
+
+dependency:
+  -
+
+homepage: https://github.com/RBC-UKQCD/CPS_public
+upstream:
+  backend: GitHub
+  version_url: RBC-UKQCD/CPS_public
+  version_prefix: v
+  version_filter: alpha;rc;candidate;beta;pre
+  version_scheme: RPM
