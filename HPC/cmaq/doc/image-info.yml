@@ -1,0 +1,59 @@
+name: cmaq
+category: hpc
+description: CMAQ（社区多尺度空气质量模型）是美国EPA研究与发展办公室开发的开源空气质量建模系统，将大气科学与多处理器计算技术相结合，提供对臭氧、颗粒物、有毒物质和酸沉降的快速、科学可靠估计。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  cmaq镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[5.5-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/cmaq/5.5/24.03-lts-sp3/Dockerfile) | cmaq 5.5 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/cmaq:{Tag}
+  ```
+
+usage: |
+  - 启动 CMAQ 环境的交互式会话：
+    ```
+    docker run -it --rm openeuler/cmaq:{Tag} bash
+    ```
+
+  - CMAQ 源代码位于 `/opt/cmaq`。编译特定 CCTM 配置（例如使用 CB6r5 机制和气溶胶模块）：
+    ```
+    cd /opt/cmaq/CCTM/scripts
+    ./bldit_cctm.csh gcc cb6r5_ae7_aq
+    ```
+
+  - 编译后运行 CMAQ 模拟，挂载输入数据目录并执行 CCTM 二进制文件：
+    ```
+    docker run --rm \
+      -v /path/to/input/data:/data \
+      openeuler/cmaq:{Tag} \
+      mpirun -np 4 /opt/cmaq/CCTM/scripts/BLD_CCTM_v55_gcc_cb6r5_ae7_aq/CCTM_v55.cmaq
+    ```
+
+license: MIT
+similar_packages:
+  - WRF: Weather Research and Forecasting model，为 CMAQ 提供气象驱动场的数值天气预报模式
+  - SMOKE: Sparse Matrix Operator Kernel Emissions，CMAQs排放源预处理系统
+  - CAMx: Comprehensive Air Quality Model with Extensions，同类开源多尺度空气质量模型
+
+dependency:
+  - openmpi
+  - netcdf
+  - hdf5
+
+homepage: https://github.com/USEPA/CMAQ
+upstream:
+  backend: GitHub
+  version_url: USEPA/CMAQ
+  version_prefix: CMAQv
+  version_filter: alpha;rc;candidate;beta;pre
+  version_scheme: RPM
