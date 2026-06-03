@@ -39,3 +39,4 @@ images:
   hudi: hudi
   ambari: ambari
   iceberg: iceberg
+  celeborn: celeborn
