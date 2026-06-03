@@ -19,7 +19,7 @@ RUN git clone --depth 1 --branch v${VERSION} https://github.com/apache/celeborn.
 
 WORKDIR /opt/celeborn-src
 RUN ./build/make-distribution.sh -DskipTests \
-      -Pspark-3.5 \
+      -Pspark-3.5 && \
     tar -xzf apache-celeborn-${VERSION}-bin.tgz -C /opt/ && \
     ln -s /opt/apache-celeborn-${VERSION}-bin /opt/celeborn
 
