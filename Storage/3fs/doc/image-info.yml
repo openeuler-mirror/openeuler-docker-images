@@ -1,0 +1,55 @@
+name: 3fs
+category: storage
+description: Fire-Flyer File System (3FS) 是 DeepSeek 开源的高性能分布式文件系统，专为 AI 训练和推理工作负载设计。它利用现代 SSD 和 RDMA 网络提供共享存储层，支持大规模 AI 集群中的数据存储与共享。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  3fs镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+  
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[22fca04-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/3fs/22fca04/24.03-lts-sp3/Dockerfile) | 3fs 22fca04 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/3fs:{Tag}
+  ```
+usage: |
+  - 启动3fs管理服务
+  
+    ```
+    docker run -d --name 3fs-mgmtd -p 8000:8000 -v /path/to/config:/opt/3fs/etc openeuler/3fs:{Tag}
+    ```
+  
+  - 启动3fs元数据服务
+  
+    ```
+    docker run -d --name 3fs-meta -v /path/to/config:/opt/3fs/etc openeuler/3fs:{Tag} /opt/3fs/bin/meta_main --cfg /opt/3fs/etc/meta_main_launcher.toml
+    ```
+  
+  - 启动3fs存储服务
+  
+    ```
+    docker run -d --name 3fs-storage -v /path/to/config:/opt/3fs/etc -v /path/to/data:/opt/3fs/data openeuler/3fs:{Tag} /opt/3fs/bin/storage_main --cfg /opt/3fs/etc/storage_main_launcher.toml
+    ```
+license: MIT
+similar_packages:
+  - MinIO：面向云原生应用的高性能对象存储，兼容 Amazon S3 API，部署更轻量。
+  - Ceph：统一的分布式存储系统，支持块、对象和文件存储。
+  - GlusterFS：易于部署的分布式文件系统，适合海量小文件。
+dependency:
+  - FoundationDB
+  - fuse3
+  - openssl
+  - libcurl
+  - libaio
+homepage: https://github.com/deepseek-ai/3FS
+upstream:
+  version_url: 
+  backend: 
+  version_scheme: 
+  version_prefix: 
+  version_filter: 
