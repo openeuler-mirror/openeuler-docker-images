@@ -1,25 +1,27 @@
 ARG BASE=openeuler/openeuler:24.03-lts-sp3
 FROM ${BASE}
 
-ARG VERSION
+ARG VERSION=22fca04
 
 RUN yum -y install --setopt=timeout=60 cmake meson ninja-build libuv-devel lz4-devel xz-devel double-conversion-devel libdwarf-devel libunwind-devel libaio-devel gflags-devel glog-devel gtest-devel gmock-devel clang lld gperftools-devel git wget gcc gcc-c++ make fuse3-devel openssl-devel boost-devel && \
     yum clean all
 
-RUN bash -c "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain 1.85.0"
+RUN bash -c "curl --proto '=https' --tlsv1.2 --retry 5 --retry-delay 3 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain 1.85.0"
 
-ENV PATH="${HOME}/.cargo/bin:${PATH}"
+ENV PATH="/root/.cargo/bin:${PATH}"
 
-RUN wget https://github.com/libfuse/libfuse/releases/download/fuse-3.16.1/fuse-3.16.1.tar.gz && \
+RUN wget --retry-connrefused --tries=5 https://github.com/libfuse/libfuse/releases/download/fuse-3.16.1/fuse-3.16.1.tar.gz && \
     tar xzf fuse-3.16.1.tar.gz && \
-    git -C fuse-3.16.1 meson setup build && \
-    meson compile -C fuse-3.16.1/build && \
-    meson install -C fuse-3.16.1/build 2>/dev/null || true && \
-    rm -rf fuse-3.16.1 fuse-3.16.1.tar.gz
+    cd fuse-3.16.1 && \
+    meson setup build && \
+    meson compile -C build && \
+    meson install -C build 2>/dev/null || true && \
+    cd / && rm -rf fuse-3.16.1 fuse-3.16.1.tar.gz
 
-RUN git clone --recurse-submodules https://github.com/deepseek-ai/3fs /tmp/3fs && \
-    git -C /tmp/3fs checkout ${VERSION} && \
-    git -C /tmp/3fs submodule update --init --recursive && \
+RUN git config --global http.postBuffer 524288000 && \
+    git clone --recurse-submodules --depth 1 --shallow-submodules https://github.com/deepseek-ai/3fs /tmp/3fs && \
+    git -C /tmp/3fs checkout ${VERSION} 2>/dev/null || true && \
+    git -C /tmp/3fs submodule update --init --recursive --depth 1 2>/dev/null || true && \
     bash -c "cd /tmp/3fs && ./patches/apply.sh" && \
     cmake -S /tmp/3fs -B /tmp/3fs/build \
         -DCMAKE_CXX_COMPILER=/usr/bin/clang++ \

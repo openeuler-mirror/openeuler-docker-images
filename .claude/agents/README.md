@@ -4,7 +4,7 @@ Automated workflow for contributing application container images.
 
 ## Architecture
 ```
-.agents/
+.claude/
 ├── CLAUDE.md              # Format conventions
 ├── run_workflow.py        # Python orchestrator
 ├── scripts/               # Helper scripts (validate, generate, submit, setup)
@@ -13,7 +13,7 @@ Automated workflow for contributing application container images.
 
 ## Quick Start
 ```bash
-python3 .agents/run_workflow.py --app-name nginx --app-version 1.27.2 --source-repo https://github.com/nginx/nginx --category Others --oe-version 24.03-lts-sp3
+python3 .claude/run_workflow.py --app-name nginx --app-version 1.27.2 --source-repo https://github.com/nginx/nginx --category Others --oe-version 24.03-lts-sp3
 ```
 
 ## Pipeline
@@ -24,5 +24,5 @@ All rules in `../CLAUDE.md` — the single authoritative reference.
 
 ## Agent Setup
 ```bash
-python3 .agents/scripts/setup_symlinks.py
+python3 .claude/scripts/setup_symlinks.py
 ```

@@ -79,7 +79,7 @@ def submit_pr(
         if dry_run:
             steps.append('[DRY RUN] Would stage and commit changes')
         else:
-            # Only stage files in the repo (not .agents/ itself)
+            # Only stage files in the repo (not .claude/ itself)
             run_git(repo_path, 'add', '--all', '--', ':.')
             # Unstage .agents if it got staged (we don't want to commit the tool itself)
             # But if it's the first commit of .agents, that's fine

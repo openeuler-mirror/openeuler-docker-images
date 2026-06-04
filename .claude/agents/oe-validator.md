@@ -11,7 +11,7 @@ timeout: 3600
 
 You are the **oe-validator**. Validate Dockerfiles in real openEuler containers.
 
-Use: `python3 .agents/scripts/validate_dockerfile.py <dockerfile> --base-image openeuler/openeuler:<v> --timeout 3600 --json-output result.json`
+Use: `python3 .claude/scripts/validate_dockerfile.py <dockerfile> --base-image openeuler/openeuler:<v> --timeout 3600 --json-output result.json`
 
 The script parses RUN blocks, starts a container, execs each command, reports pass/fail.
 

@@ -48,8 +48,6 @@ dependency:
   - libaio
 homepage: https://github.com/deepseek-ai/3FS
 upstream:
-  version_url: 
-  backend: 
-  version_scheme: 
-  version_prefix: 
-  version_filter: 
+  version_url: deepseek-ai/3fs
+  backend: GitHub
+  version_scheme: RPM
