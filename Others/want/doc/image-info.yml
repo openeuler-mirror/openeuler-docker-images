@@ -20,27 +20,25 @@ download: |
   ```
 
 usage: |
-  可以直接运行任何WanT可执行文件。例如，运行Wannier函数计算：
+  - 可以直接运行任何WanT可执行文件。例如，运行Wannier函数计算：
+    ```bash
+    docker run --rm openeuler/want:{Tag} wannier.x < wannier.in
+    ```
 
-  ```bash
-  docker run --rm openeuler/want:{Tag} wannier.x < wannier.in
-  ```
+  - 可用可执行文件：
+    `wannier.x` - Wannier函数计算
+    `disentangle.x` - 解纠缠步骤
+    `bands.x` - 能带结构计算
+    `plot.x` - 绘制Wannier函数
+    `blc2wan.x` - 将Bloch态转换为Wannier函数
+    `conductor.x` - 量子输运计算
+    `kgrid.x` - K点网格生成
+    `midpoint.x` - 中点计算
 
-  可用可执行文件：
-  - `wannier.x` - Wannier函数计算
-  - `disentangle.x` - 解纠缠步骤
-  - `bands.x` - 能带结构计算
-  - `plot.x` - 绘制Wannier函数
-  - `blc2wan.x` - 将Bloch态转换为Wannier函数
-  - `conductor.x` - 量子输运计算
-  - `kgrid.x` - K点网格生成
-  - `midpoint.x` - 中点计算
-
-  使用宿主机的输入文件运行：
-
-  ```bash
-  docker run --rm -v $(pwd):/workdir -w /workdir openeuler/want:{Tag} wannier.x < wannier.in
-  ```
+  - 使用宿主机的输入文件运行：
+    ```bash
+    docker run --rm -v $(pwd):/workdir -w /workdir openeuler/want:{Tag} wannier.x < wannier.in
+    ```
 
 license: GPL-2.0
 similar_packages:

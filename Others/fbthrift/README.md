@@ -37,38 +37,5 @@ thrift1 --gen java example.thrift
 thrift1 --gen py example.thrift
 ```
 
-### Development Environment
-
-This image provides a complete development toolchain for fbthrift:
-
-- **thrift1**: The Thrift compiler for compiling .thrift IDL files into target language code
-- **Library files**: C++ client and server libraries (libthriftcpp2, etc.)
-- **Header files**: Complete set of header files for C++ development
-
-Supported languages include: C++, Python, Java, Hack, and more.
-
-## Example: Creating a Thrift Service
-
-1. Define your service in a `.thrift` file:
-
-```thrift
-namespace cpp tutorial
-
-service Calculator {
-    i32 add(1: i32 num1, 2: i32 num2),
-    i32 subtract(1: i32 num1, 2: i32 num2),
-}
-```
-
-2. Generate code:
-
-```bash
-thrift1 --gen cpp2 calculator.thrift
-```
-
-3. Implement the generated interfaces in your chosen programming language
-
-For more detailed documentation and examples, visit the [fbthrift GitHub repository](https://github.com/facebook/fbthrift).
-
 # Question and answering
 If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://atomgit.com/openeuler/openeuler-docker-images).

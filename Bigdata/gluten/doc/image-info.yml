@@ -37,7 +37,7 @@ usage: |
     docker rm -v tmp
     ```
 
-license: Apache-2.0 license
+license: Apache-2.0
 similar_packages:
   - Hadoop: Hadoop是一个开源的分布式计算平台，提供了分布式存储和分布式计算的能力，适用于大规模数据处理和分析。
   - Spark: Spark是一个快速、通用的大数据处理引擎，提供了内存计算和分布式计算的能力，适用于大规模数据处理和分析。
