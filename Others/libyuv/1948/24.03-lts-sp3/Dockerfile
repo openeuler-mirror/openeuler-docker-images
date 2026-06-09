@@ -10,12 +10,13 @@ RUN dnf update -y \
 
 RUN git clone https://chromium.googlesource.com/libyuv/libyuv \
     && cd libyuv \
+    && sed -i 's/^#define HAS_RGBTOUVMATRIXROW_NEON$/\/\/ #define HAS_RGBTOUVMATRIXROW_NEON/' include/libyuv/row.h \
     && mkdir build \
     && cd build \
     && cmake -DBUILD_SHARED_LIBS=ON .. \
     && make -j$(nproc) \
     && make install
 
-ENV LD_LIBRARY_PATH=/usr/local/lib:/libyuv/build:$LD_LIBRARY_PATH
+ENV LD_LIBRARY_PATH=/usr/local/lib:/libyuv/build:${LD_LIBRARY_PATH:-}
 
 CMD ["bash"]
