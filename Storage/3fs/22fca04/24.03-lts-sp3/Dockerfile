@@ -3,7 +3,7 @@ FROM ${BASE}
 
 ARG VERSION=22fca04
 
-RUN yum -y install --setopt=timeout=60 cmake meson ninja-build libuv-devel lz4-devel xz-devel double-conversion-devel libdwarf-devel libunwind-devel libaio-devel gflags-devel glog-devel gtest-devel gmock-devel clang lld gperftools-devel git wget gcc gcc-c++ make fuse3-devel openssl-devel boost-devel && \
+RUN yum -y install --setopt=timeout=60 cmake meson ninja-build libuv-devel lz4-devel xz-devel double-conversion-devel libdwarf-devel libunwind-devel libaio-devel gflags-devel glog-devel gtest-devel gmock-devel clang lld gperftools-devel libevent-devel git wget gcc gcc-c++ make fuse3-devel openssl-devel boost-devel && \
     yum clean all
 
 RUN bash -c "curl --proto '=https' --tlsv1.2 --retry 5 --retry-delay 3 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain 1.85.0"
@@ -19,9 +19,9 @@ RUN wget --retry-connrefused --tries=5 https://github.com/libfuse/libfuse/releas
     cd / && rm -rf fuse-3.16.1 fuse-3.16.1.tar.gz
 
 RUN git config --global http.postBuffer 524288000 && \
-    git clone --recurse-submodules --depth 1 --shallow-submodules https://github.com/deepseek-ai/3fs /tmp/3fs && \
-    git -C /tmp/3fs checkout ${VERSION} 2>/dev/null || true && \
-    git -C /tmp/3fs submodule update --init --recursive --depth 1 2>/dev/null || true && \
+    git clone --recurse-submodules https://github.com/deepseek-ai/3fs /tmp/3fs && \
+    git -C /tmp/3fs checkout ${VERSION} && \
+    git -C /tmp/3fs submodule update --init --recursive && \
     bash -c "cd /tmp/3fs && ./patches/apply.sh" && \
     cmake -S /tmp/3fs -B /tmp/3fs/build \
         -DCMAKE_CXX_COMPILER=/usr/bin/clang++ \
@@ -38,7 +38,7 @@ RUN git config --global http.postBuffer 524288000 && \
 RUN yum -y remove wget gcc make && \
     yum clean all
 
-RUN yum -y install fuse3-libs openssl-libs lz4 xz-libs double-conversion libdwarf libunwind libaio gflags glog gperftools boost-foundation boost-filesystem boost-system boost-program-options libuv && \
+RUN yum -y install fuse3-libs openssl-libs lz4 xz-libs double-conversion libdwarf libunwind libaio gflags glog gperftools boost-filesystem boost-system boost-program-options libuv && \
     yum clean all
 
 ENV LD_LIBRARY_PATH=/opt/3fs/lib:/usr/local/lib
