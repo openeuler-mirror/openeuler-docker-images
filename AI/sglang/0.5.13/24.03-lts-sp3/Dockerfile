@@ -53,7 +53,7 @@ RUN pip3 install --no-cache-dir --break-system-packages \
 
 # 收集原生库产物
 RUN mkdir -p ${SGL_HOME}/dist/lib && \
-    find ${SGL_HOME} -type f $ -name "*.so" -o -name "*.a" $ \
+    find ${SGL_HOME} -type f \( -name "*.so" -o -name "*.a" \) \
         -exec cp -u {} ${SGL_HOME}/dist/lib/ \; 2>/dev/null || true
 
 # ---- 运行时阶段 ----
