@@ -38,7 +38,7 @@ FROM base AS build
 
 RUN pip install -r requirements/build/cpu.txt
 
-RUN VLLM_TARGET_DEVICE=cpu python3 setup.py bdist_wheel 
+RUN MAX_JOBS=4 VLLM_TARGET_DEVICE=cpu python3 setup.py bdist_wheel 
 
 FROM base AS release
 
