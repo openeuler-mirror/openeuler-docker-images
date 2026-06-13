@@ -1,20 +1,25 @@
 ARG BASE=openeuler/openeuler:24.03-lts-sp3
 FROM ${BASE}
 
-ARG TARGETARCH
 ARG VERSION=20180223
 
-RUN if [ "${TARGETARCH}" = "arm64" ]; then ARCH=aarch64; elif [ "${TARGETARCH}" = "amd64" ]; then ARCH=x86_64; else ARCH=${TARGETARCH}; fi && \
-    curl -fSL -o /tmp/miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-${ARCH}.sh && \
-    bash /tmp/miniconda.sh -b -p /opt/conda && \
-    rm /tmp/miniconda.sh
-
-ENV PATH=/opt/conda/bin:$PATH
-
-RUN conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main && \
-    conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r && \
-    conda install -y -c pytorch -c conda-forge python=3.12 faiss-cpu=${VERSION} && \
-    conda clean -afy
+RUN yum -y update && \
+    yum -y install gcc-c++ make openblas-devel python3 python3-devel python3-numpy swig git && \
+    git clone --branch v${VERSION} --depth 1 https://github.com/facebookresearch/faiss.git /tmp/faiss && \
+    cp /tmp/faiss/example_makefiles/makefile.inc.Linux /tmp/faiss/makefile.inc && \
+    echo "SWIG = swig" >> /tmp/faiss/makefile.inc && \
+    echo "SWIGFLAGS = -c++ -Doverride=" >> /tmp/faiss/makefile.inc && \
+    PYTHON_INCLUDE=$(python3 -c "import numpy; print(numpy.get_include())") && \
+    PYTHON_CONFIG_INCLUDES=$(python3-config --includes) && \
+    echo "PYTHONCFLAGS = -I\${PYTHON_INCLUDE} \${PYTHON_CONFIG_INCLUDES}" >> /tmp/faiss/makefile.inc && \
+    make -C /tmp/faiss -j$(nproc) && \
+    make -C /tmp/faiss py && \
+    SITE_PKGS=$(python3 -c "import site; print(site.getsitepackages()[0])") && \
+    cp /tmp/faiss/python/_swigfaiss.so \${SITE_PKGS}/ && \
+    cp /tmp/faiss/python/swigfaiss.py \${SITE_PKGS}/ && \
+    rm -rf /tmp/faiss && \
+    yum -y remove gcc make 2>/dev/null || true && \
+    yum clean all
 
 WORKDIR /workspace
 
