@@ -2,7 +2,7 @@ ARG BASE=openeuler/openeuler:24.03-lts-sp3
 FROM ${BASE}
 
 ARG TARGETARCH
-ARG VERSION=710-20250515-before-cpenv
+ARG VERSION=7.1.0
 
 RUN yum install -y java-17-openjdk-devel git && \
     yum clean all && \
