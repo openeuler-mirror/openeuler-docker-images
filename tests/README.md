@@ -63,58 +63,7 @@
 
 ## 2. 整体流程图
 
-```mermaid
-flowchart TD
-    START([./flink_test.sh]) --> CLI{解析 CLI 参数<br/>-p / -s / -v / -i / --check / --flink-home}
-
-    CLI -->|--check| CHECK_ONLY[仅检查前置条件<br/>Java / Python / 软件]
-    CLI -->|正常运行| PREREQ
-
-    subgraph PREREQ["前置条件检查 + 下载 shUnit2"]
-        CHK_J[检查 Java] --> CHK_P[检查 Python3]
-        CHK_P --> CHK_S[检查目标软件安装路径]
-        CHK_S --> CHK_JH[检查 json_helper.py]
-        CHK_JH --> CHK_RESULT{所有依赖满足?}
-        CHK_RESULT -->|否| FATAL[FATAL: 报错提示 + 退出]
-        CHK_RESULT -->|是| DL_SH[download_shunit2<br/>多镜像自动下载 shUnit2]
-    end
-
-    DL_SH --> P2
-
-    subgraph P2["Phase 2: 验证与版本信息"]
-        P2_1[收集软硬件信息] --> P2_2[json_helper.py write_version_info<br/>→ results.json version_info 部分]
-    end
-
-    P2 --> P3_DISPATCH{Phase 3 子阶段<br/>基于软件类别选择}
-
-    P3_DISPATCH --> P3A[Phase 3a: 行业标准基准]
-    P3_DISPATCH --> P3B[Phase 3b: 吞吐量/负载基准]
-    P3_DISPATCH --> P3C[Phase 3c: 微基准]
-
-    P3A --> P4
-    P3B --> P4
-    P3C --> P4
-
-    subgraph P4["Phase 4: 结果收集与展示"]
-        P4_1[results.json 已含 Phase 2-3 所有数据] --> P4_2[生成文本摘要<br/>generate_summary.py<br/>→ results.txt]
-        P4_2 --> P4_3[生成 HTML 报告<br/>generate_html_report.py<br/>→ results.html]
-    end
-
-    P4 --> SHUNIT2
-
-    subgraph SHUNIT2["shUnit2 自动化测试验证"]
-        OTSU[oneTimeSetUp<br/>check_prerequisites + write_version_info → results.json + run_benchmarks → results.json] --> LOOP{"for each test*()"}
-        LOOP --> SU[setUp: 清理临时文件]
-        SU --> EXEC[执行断言 (检查 results.json)]
-        EXEC --> TD[tearDown: 清理临时文件]
-        TD --> LOOP
-        LOOP -->|全部完成| OTSD[oneTimeTearDown<br/>generate_summary + generate_html_report]
-    end
-
-    OTSD --> END([完成])
-    CHECK_ONLY --> END2([检查完成])
-    FATAL --> END3([退出 1])
-```
+![流程图](workflow.png)
 
 ---
 
