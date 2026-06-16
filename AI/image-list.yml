@@ -105,3 +105,4 @@ images:
   tvm: tvm
   tensorrt: tensorrt
   towhee: towhee
+  langgraph: langgraph

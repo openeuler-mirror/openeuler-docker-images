@@ -1,0 +1,43 @@
+name: langgraph
+category: ai
+description: LangGraph 是一个用于构建有状态、多参与者 LLM 应用的框架，构建于 LangChain 之上。它支持创建具有循环计算、持久化和人在回路功能的代理和多代理工作流。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  langgraph镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.2.5-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/langgraph/1.2.5/24.03-lts-sp3/Dockerfile) | langgraph 1.2.5 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/langgraph:{Tag}
+  ```
+
+usage: |
+  验证安装
+  ```
+  docker run --rm openeuler/langgraph:{Tag} python3 -c "import langgraph; print(langgraph.__version__)"
+  ```
+
+
+license: MIT
+similar_packages:
+  - langchain: LangChain 框架，LangGraph 构建于其上
+  - crewai: 多代理 AI 协作框架
+
+dependency:
+  -
+
+homepage: https://github.com/langchain-ai/langgraph
+upstream:
+  backend: GitHub
+  version_url: langchain-ai/langgraph
+  version_prefix:
+  version_filter: cli;sdk
+  version_scheme: RPM
