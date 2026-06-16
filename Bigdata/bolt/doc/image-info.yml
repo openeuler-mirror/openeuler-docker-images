@@ -1,0 +1,44 @@
+name: bolt
+category: bigdata
+description: Bolt 是一个 C++ 加速库，提供可组合、可扩展且高性能的数据处理工具集。它旨在提供通用且统一的接口，可插入到任何框架中，运行在任何硬件上，消费任何数据源。Bolt 最初源自 Velox 项目，由字节跳动创建，旨在拥抱并统一社区的贡献。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  bolt镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[6b54e46-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Bigdata/bolt/6b54e46/24.03-lts-sp3/Dockerfile) | bolt 6b54e46 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/bolt:{Tag}
+  ```
+
+usage: |
+  启动容器
+  ```
+  docker run -it --rm openeuler/bolt:{Tag} /bin/bash
+  ```
+
+  在容器中使用 bolt 库进行开发，bolt 已编译安装至 /workspace/bolt，可通过 conan 引用 bolt 作为第三方依赖。
+
+license: Apache-2.0
+similar_packages:
+  - velox: Facebook 的向量化执行引擎，bolt 最初衍生自该项目
+  - arrow: Apache Arrow，跨语言的内存列式数据格式和计算库
+
+dependency:
+  -
+
+homepage: https://github.com/bytedance/bolt
+upstream:
+  backend: GitHub
+  version_url: bytedance/bolt
+  version_prefix:
+  version_filter: 
+  version_scheme: RPM
