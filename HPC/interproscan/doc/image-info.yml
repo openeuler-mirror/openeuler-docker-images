@@ -17,21 +17,16 @@ download: |
   docker pull openeuler/interproscan:{Tag}
   ```
 usage: |
-  1. 确保已安装 Docker 环境。
-  2. 获取 InterProScan 镜像（二选一）：
-  - 从 DockerHub 拉取预构建镜像
+  - 确保已安装 Docker 环境。
+  - 从 DockerHub 获取 InterProScan 镜像:
     ```
-    docker pull openeuler/interproscan:5.77-108.0-oe2403sp3
+    docker pull openeuler/interproscan:{Tag}
     ```
-  - 或从源码构建镜像
+  - 启动容器进入 InterProScan 环境
     ```
-    docker build -t openeuler/interproscan:5.77-108.0-oe2403sp3 5.77-108.0/24.03-lts-sp3/
+    docker run -it openeuler/interproscan:{Tag}
     ```
-  3. 启动容器进入 InterProScan 环境
-    ```
-    docker run -it openeuler/interproscan:5.77-108.0-oe2403sp3
-    ```
-  4. 在容器内验证安装
+  - 在容器内验证安装
     ```
     interproscan.sh --version
     ```

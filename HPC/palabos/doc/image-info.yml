@@ -17,28 +17,18 @@ download: |
   docker pull openeuler/palabos:{Tag}
   ```
 usage: |
-  1. 确保已安装 Docker 环境。
-  2. 获取 Palabos 镜像（二选一）：
-  - 从 DockerHub 拉取预构建镜像
+  - 确保已安装 Docker 环境。
+  - 从 DockerHub 获取 Palabos 镜像:
     ```
-    docker pull openeuler/palabos:v2.3.0-oe2403sp3
+    docker pull openeuler/palabos:{Tag}
     ```
-  - 或从源码构建镜像
+  - 启动容器进入 Palabos 环境
     ```
-    docker build -t openeuler/palabos:v2.3.0-oe2403sp3 v2.3.0/24.03-lts-sp3/
+    docker run -it openeuler/palabos:{Tag}
     ```
-  3. 启动容器进入 Palabos 环境
-    ```
-    docker run -it openeuler/palabos:v2.3.0-oe2403sp3
-    ```
-  4. 在容器内验证安装
-    - 编译并运行cavity2d示例
+  - 在容器内验证安装,编译并运行cavity2d示例
     ```
     cd /opt/palabos/examples/showCases/cavity2d/build && cmake .. && make && cd .. && ./cavity2d
-    ```
-    - MPI并行运行示例
-    ```
-    mpirun -np 4 ./cavity2d
     ```
 license: AGPL-3.0
 similar_packages:

@@ -17,30 +17,16 @@ download: |
   docker pull openeuler/meep:{Tag}
   ```
 usage: |
-  1. 确保已安装 Docker 环境。
-  2. 获取 Meep 镜像（二选一）：
-  - 从 DockerHub 拉取预构建镜像
+  - 确保已安装 Docker 环境。
+  - 从 DockerHub 获取 Meep 镜像:
     ```
-    docker pull openeuler/meep:1.33.0-oe2403sp3
+    docker pull openeuler/meep:{Tag}
     ```
-  - 或从源码构建镜像
+  - 启动容器进入 Meep 环境
     ```
-    docker build -t openeuler/meep:1.33.0-oe2403sp3 1.33.0/24.03-lts-sp3/
+    docker run -it openeuler/meep:{Tag}
     ```
-  3. 启动容器进入 Meep 环境
-    ```
-    docker run -it openeuler/meep:1.33.0-oe2403sp3
-    ```
-  4. 在容器内验证安装
-    - 验证Python接口
-    ```
-    python3 -c 'import meep; print(meep.__version__)'
-    ```
-    - 验证MPI并行执行
-    ```
-    mpirun -np 2 python3 -c 'import meep; print(meep.__version__)'
-    ```
-    - 验证Scheme接口（仅源码编译版本）
+   -在容器内验证安装
     ```
     meep --version
     ```
