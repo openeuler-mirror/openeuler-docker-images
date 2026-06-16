@@ -385,33 +385,9 @@ testSoftwareIsInstalled() {
 
 ---
 
-## 8. JSON 数据流与文件结构
+## 8. CLI 参数与使用方式
 
-```mermaid
-flowchart LR
-    subgraph 生成方["Phase 2-3 直接写入 results.json"]
-        P2[json_helper.py<br/>write_version_info] --> RJ[results.json<br/>version_info 部分]
-        P3A[benchmark_<primary>.py] --> RJ2[results.json<br/>benchmark 部分]
-        P3B[benchmark_<secondary>.py] --> RJ2
-        P3C[micro_benchmark.py] --> RJ2
-    end
-
-    subgraph 展示方["Phase 4 生成展示文件"]
-        RJ --> SUM[generate_summary.py<br/>→ results.txt]
-        RJ --> HTML[generate_html_report.py<br/>→ results.html]
-    end
-
-    subgraph 测试方["shUnit2 断言"]
-        JH[json_helper.py CLI]
-        RJ --> JH
-    end
-```
-
----
-
-## 9. CLI 参数与使用方式
-
-### 9.1 通用 CLI 参数
+### 8.1 通用 CLI 参数
 
 | 参数 | 长选项 | 默认值 | 说明 |
 |------|--------|--------|------|
@@ -424,7 +400,7 @@ flowchart LR
 | `--check` | — | (flag) | 仅检查前置条件 |
 | `-h` | `--help` | (flag) | 显示帮助 |
 
-### 9.2 使用示例
+### 8.2 使用示例
 
 ```bash
 # 检查前置条件
@@ -446,7 +422,7 @@ flowchart LR
 ./flink_test.sh -s 1.20.0
 ```
 
-### 9.3 环境变量
+### 8.3 环境变量
 
 | 变量 | 说明 | 示例 |
 |------|------|------|
@@ -459,7 +435,7 @@ flowchart LR
 
 ---
 
-## 10. 关键编码规则
+## 9. 关键编码规则
 
 违反这些规则会导致已知 bug 模式：
 
@@ -552,9 +528,9 @@ SHUNIT_PARENT="${SCRIPT_DIR}/${SOFTWARE_NAME}_test.sh"
 
 ---
 
-## 11. 各软件实例对照
+## 10. 各软件实例对照
 
-### 11.1 测试项数量对照
+### 10.1 测试项数量对照
 
 | 软件 | Phase 2 测试 | Phase 3a 测试 | Phase 3b 测试 | Phase 3c 测试 | Phase 4 测试 | 总计 |
 |------|-------------|-------------|-------------|-------------|-------------|------|
@@ -562,7 +538,7 @@ SHUNIT_PARENT="${SCRIPT_DIR}/${SOFTWARE_NAME}_test.sh"
 | Redis | 5 | 3 | 3 | 2 | 4 | 17 |
 | RocksDB | 5 | 3 | 3 | 3 | 4 | 18 |
 
-### 11.2 Phase 3 子阶段对照
+### 10.2 Phase 3 子阶段对照
 
 | 软件 | 3a | 3b | 3c |
 |------|----|----|----|
@@ -570,7 +546,7 @@ SHUNIT_PARENT="${SCRIPT_DIR}/${SOFTWARE_NAME}_test.sh"
 | Redis | YCSB | Throughput | Micro |
 | RocksDB | YCSB | db_bench | Micro |
 
-### 11.3 运行时依赖对照
+### 10.3 运行时依赖对照
 
 | 软件 | 运行时 | 特殊配置 |
 |------|--------|---------|
@@ -578,7 +554,7 @@ SHUNIT_PARENT="${SCRIPT_DIR}/${SOFTWARE_NAME}_test.sh"
 | Redis | 无 (C 编译) | 需预先编译 |
 | RocksDB | 无 (C++ 编译) | USE_JEMALLOC=1, ARM64 优化编译 |
 
-### 11.4 阈值默认值参考
+### 10.4 阈值默认值参考
 
 | 软件 | 吞吐量阈值 | 延迟阈值 |
 |------|-----------|---------|
