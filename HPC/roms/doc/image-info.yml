@@ -17,21 +17,16 @@ download: |
   docker pull openeuler/roms:{Tag}
   ```
 usage: |
-  1. 确保已安装 Docker 环境。
-  2. 获取 ROMS 镜像（二选一）：
-  - 从 DockerHub 拉取预构建镜像
+  - 确保已安装 Docker 环境。
+  - 从 DockerHub 获取 ROMS 镜像:
     ```
-    docker pull openeuler/roms:4.2-oe2403sp3
+    docker pull openeuler/roms:{Tag}
     ```
-  - 或从源码构建镜像
+  - 启动容器进入 ROMS 环境
     ```
-    docker build -t openeuler/roms:4.2-oe2403sp3 4.2/24.03-lts-sp3/
+    docker run -it openeuler/roms:{Tag}
     ```
-  3. 启动容器进入 ROMS 环境
-    ```
-    docker run -it openeuler/roms:4.2-oe2403sp3
-    ```
-  4. 在容器内验证安装
+  - 在容器内验证安装
     ```
     which roms
     ```

@@ -17,32 +17,19 @@ download: |
   docker pull openeuler/meryl:{Tag}
   ```
 usage: |
-  1. 确保已安装 Docker 环境。
-  2. 获取 Meryl 镜像（二选一）：
-  - 从 DockerHub 拉取预构建镜像
+  - 确保已安装 Docker 环境。
+  - 从 DockerHub 获取 Meryl 镜像:
     ```
-    docker pull openeuler/meryl:1.4.1-oe2403sp3
+    docker pull openeuler/meryl:{Tag}
     ```
-  - 或从源码构建镜像
+  - 启动容器进入 Meryl 环境
     ```
-    docker build -t openeuler/meryl:1.4.1-oe2403sp3 1.4.1/24.03-lts-sp3/
+    docker run -it openeuler/meryl:{Tag}
     ```
-  3. 启动容器进入 Meryl 环境
-    ```
-    docker run -it openeuler/meryl:1.4.1-oe2403sp3
-    ```
-  4. 在容器内验证安装
+  - 在容器内验证安装
     - 查看meryl版本信息
     ```
     meryl -version
-    ```
-    - 对FASTA序列进行k-mer计数
-    ```
-    meryl count k=21 input.fasta output merylDB
-    ```
-    - 查看k-mer统计信息
-    ```
-    meryl statistics merylDB
     ```
 license: MIT
 similar_packages:

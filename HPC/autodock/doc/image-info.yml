@@ -17,21 +17,16 @@ download: |
   docker pull openeuler/autodock-vina:{Tag}
   ```
 usage: |
-  1. 确保已安装 Docker 环境。
-  2. 获取 AutoDock-Vina 镜像（二选一）：
-  - 从 DockerHub 拉取预构建镜像
+  - 确保已安装 Docker 环境。
+  - 获取 AutoDock-Vina 镜像:
     ```
-    docker pull openeuler/autodock-vina:1.2.7-oe2403sp3
+    docker pull openeuler/autodock-vina:{Tag}
     ```
-  - 或从源码构建镜像
+  - 启动容器进入 AutoDock-Vina 环境
     ```
-    docker build -t openeuler/autodock-vina:1.2.7-oe2403sp3 1.2.7/24.03-lts-sp3/
+    docker run -it openeuler/autodock-vina:{Tag}
     ```
-  3. 启动容器进入 AutoDock-Vina 环境
-    ```
-    docker run -it openeuler/autodock-vina:1.2.7-oe2403sp3
-    ```
-  4. 在容器内验证安装
+  - 在容器内验证安装
     ```
     vina --version
     ```

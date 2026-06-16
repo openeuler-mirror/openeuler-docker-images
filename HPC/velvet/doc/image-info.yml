@@ -17,21 +17,16 @@ download: |
   docker pull openeuler/velvet:{Tag}
   ```
 usage: |
-  1. 确保已安装 Docker 环境。
-  2. 获取 Velvet 镜像（二选一）：
-  - 从 DockerHub 拉取预构建镜像
+  - 确保已安装 Docker 环境。
+  - 从 DockerHub 获取 Velvet镜像:
     ```
-    docker pull openeuler/velvet:1.2.10-oe2403sp3
+    docker pull openeuler/velvet:{Tag}
     ```
-  - 或从源码构建镜像
+  - 启动容器进入 Velvet 环境
     ```
-    docker build -t openeuler/velvet:1.2.10-oe2403sp3 1.2.10/24.03-lts-sp3/
+    docker run -it openeuler/velvet:{Tag}
     ```
-  3. 启动容器进入 Velvet 环境
-    ```
-    docker run -it openeuler/velvet:1.2.10-oe2403sp3
-    ```
-  4. 在容器内验证安装
+  - 在容器内验证安装
     ```
     which velveth && which velvetg
     ```
