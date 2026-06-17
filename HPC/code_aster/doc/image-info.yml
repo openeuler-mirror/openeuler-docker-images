@@ -1,0 +1,44 @@
+name: code_aster
+category: hpc
+description: Code_Aster 是一个用于结构和热机械分析的有限元求解器，提供静态和动态分析、非线性力学、热分析及耦合问题的求解能力。其源代码包含 C、Fortran 和 Python 组件。官方网站为 http://www.code-aster.org/。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  code_aster镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[f603c14-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/code_aster/f603c14/24.03-lts-sp3/Dockerfile) | code_aster f603c14 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/code_aster:{Tag}
+  ```
+
+usage: |
+  启动交互式环境
+  ```
+  docker run -it --rm openeuler/code_aster:{Tag} /bin/bash
+  ```
+
+  源代码位于 /workspace/Code_Aster，可在容器内进行开发和运行。
+
+license: GPL-3.0
+similar_packages:
+  - calculix: 开源有限元分析求解器
+  - openfoam: 开源计算流体力学框架
+
+dependency:
+  -
+
+homepage: https://github.com/ralic/Code_Aster
+upstream:
+  backend: GitHub
+  version_url: ralic/Code_Aster
+  version_prefix:
+  version_filter: alpha;rc;candidate;beta;pre
+  version_scheme: RPM
