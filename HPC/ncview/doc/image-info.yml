@@ -1,0 +1,47 @@
+name: ncview
+category: hpc
+description: Ncview 是一个 NetCDF 格式文件的视觉浏览器。它可以快速、简单地浏览 NetCDF 文件，支持数据动画查看、多维度浏览、实际数据值查看、颜色映射切换、数据反转等功能。原始主页为 http://meteora.ucsd.edu/~pierce/ncview_home_page.html。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  ncview镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[fbf1aec-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/ncview/fbf1aec/24.03-lts-sp3/Dockerfile) | ncview fbf1aec on openEuler 24.03-lts-sp3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/ncview:{Tag}
+  ```
+
+usage: |
+  - 查看帮助
+    ```
+    docker run --rm openeuler/ncview:{Tag} --help
+    ```
+
+  - 浏览 NetCDF 文件
+    ```
+    docker run --rm -v $(pwd):/data openeuler/ncview:{Tag} /data/sample.nc
+    ```
+
+license: GPL-1.0
+similar_packages:
+  - ncl: NCAR Command Language，科学数据处理和可视化工具
+  - panoply: NASA 的 NetCDF/HDF/GRIB 数据查看器
+
+dependency:
+  -
+
+homepage: https://github.com/iem-projects/ncview
+upstream:
+  backend: GitHub
+  version_url: iem-projects/ncview
+  version_prefix:
+  version_filter: alpha;rc;candidate;beta;pre
+  version_scheme: RPM
