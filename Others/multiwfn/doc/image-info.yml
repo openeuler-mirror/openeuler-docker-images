@@ -1,0 +1,42 @@
+name: multiwfn
+category: others
+description: Multiwfn 是一个功能极其强大的电子波函数分析程序，是量子化学的关键工具。由卢天等人开发，免费开源、高效、用户友好且灵活，能够执行非常广泛的基于波函数的分析。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  multiwfn镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[cb37c53-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/multiwfn/cb37c53/24.03-lts-sp3/Dockerfile) | multiwfn cb37c53 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/multiwfn:{Tag}
+  ```
+
+usage: |
+  启动 Multiwfn（无 GUI 版本）
+  ```
+  docker run --rm openeuler/multiwfn:{Tag} Multiwfn_noGUI
+  ```
+
+license: MIT
+similar_packages:
+  - orca: 量子化学计算程序包
+  - gaussian: 量子化学计算软件
+
+dependency:
+  -
+
+homepage: https://github.com/foxtran/MultiWFN
+upstream:
+  backend: GitHub
+  version_url: foxtran/MultiWFN
+  version_prefix:
+  version_filter: alpha;rc;candidate;beta;pre
+  version_scheme: RPM
