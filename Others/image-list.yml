@@ -99,3 +99,4 @@ images:
   want: want
   rust: rust
   tongsuo: tongsuo
+  rabitq-library: rabitq-library
