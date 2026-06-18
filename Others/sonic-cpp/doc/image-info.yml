@@ -1,0 +1,42 @@
+name: sonic-cpp
+category: others
+description: Sonic-Cpp 是一个由 SIMD 加速的快速 JSON 序列化和反序列化库。它提供完整的 JSON 值操作 API，支持快速的 JSON 序列化和解析，并支持按需解析。该库为头文件库，需要 C++11 及以上版本和 x86 AVX2 指令支持。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  sonic-cpp镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.0.2-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/sonic-cpp/1.0.2/24.03-lts-sp3/Dockerfile) | sonic-cpp 1.0.2 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/sonic-cpp:{Tag}
+  ```
+
+usage: |
+  编译使用 sonic-cpp 的项目
+  ```
+  docker run --rm -v $(pwd):/workspace openeuler/sonic-cpp:{Tag} g++ -I/usr/local/include -march=haswell --std=c++11 -O3 /workspace/example.cpp -o /workspace/example
+  ```
+
+license: Apache-2.0
+similar_packages:
+  - rapidjson: 腾讯的快速 JSON 解析库
+  - simdjson: Intel 的 SIMD 加速 JSON 解析库
+
+dependency:
+  -
+
+homepage: https://github.com/bytedance/sonic-cpp
+upstream:
+  backend: GitHub
+  version_url: bytedance/sonic-cpp
+  version_prefix: v
+  version_filter: alpha;rc;candidate;beta;pre
+  version_scheme: RPM
