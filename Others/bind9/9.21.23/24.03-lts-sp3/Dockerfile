@@ -20,7 +20,6 @@ RUN curl -fSL --output bind9.tar.xz https://downloads.isc.org/isc/bind9/${VERSIO
         -Dgssapi=enabled \
         -Didn=enabled \
         -Dstats-json=enabled \
-        -Dlmdb=enabled \
         -Dgeoip=enabled \
         -Ddnstap=enabled \
         build && \
