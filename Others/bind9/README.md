@@ -17,6 +17,7 @@ Read more on the [BIND 9 website](https://www.isc.org/bind/)⁠.
 The tag of each `bind9` docker image is consist of the version of `bind9` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[9.21.23-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/bind9/9.21.23/24.03-lts-sp3/Dockerfile) | bind9 9.21.23 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 |[9.18.24-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/bind9/9.18.24/22.03-lts-sp3/Dockerfile)| Bind9 9.18.24 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
 |[9.21.4-oe2203sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/bind9/9.21.4/22.03-lts-sp1/Dockerfile)| Bind9 9.21.4 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
 |[9.21.4-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/bind9/9.21.4/22.03-lts-sp3/Dockerfile)| Bind9 9.21.4 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
