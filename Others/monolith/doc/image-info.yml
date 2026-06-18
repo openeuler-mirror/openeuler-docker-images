@@ -1,0 +1,42 @@
+name: monolith
+category: others
+description: Monolith 是一个面向大规模推荐建模的深度学习框架，构建于 TensorFlow 之上。它引入了两个对高级推荐系统至关重要的特性：无冲突嵌入表保证不同 ID 特征的唯一表示，以及实时训练捕获最新热点并帮助用户快速发现新兴趣。Monolith 支持批量/实时训练和推理。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  monolith镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[135c491-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/monolith/135c491/24.03-lts-sp3/Dockerfile) | monolith 135c491 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/monolith:{Tag}
+  ```
+
+usage: |
+  启动交互式环境进行开发
+  ```
+  docker run -it --rm openeuler/monolith:{Tag} /bin/bash
+  ```
+
+license: Apache-2.0
+similar_packages:
+  - tensorflow: Google 的深度学习框架，Monolith 构建于其上
+  - pytorch: Facebook 的深度学习框架
+
+dependency:
+  -
+
+homepage: https://github.com/bytedance/monolith
+upstream:
+  backend: GitHub
+  version_url: bytedance/monolith
+  version_prefix:
+  version_filter: alpha;rc;candidate;beta;pre
+  version_scheme: RPM
