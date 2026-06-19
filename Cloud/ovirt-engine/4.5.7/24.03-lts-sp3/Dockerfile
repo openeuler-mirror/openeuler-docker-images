@@ -32,14 +32,7 @@ ENV PATH=${JAVA_HOME}/bin:$PATH
 
 RUN git clone -b ovirt-engine-${VERSION} --recursive --depth 1 https://github.com/oVirt/ovirt-engine \
     && cd ovirt-engine \
-    && python3 -c '
-import re
-fp = "backend/manager/tools/src/test/java/org/ovirt/engine/core/notifier/transport/smtp/LocalizedMessageHelperTest.java"
-c = open(fp).read()
-for m in ["testForEnglish","testForNonTranslatedLanguage","testForNotDefaultLanguage"]:
-    c = re.sub(r"(    @Test\n    public void " + m + r"\(\) \{.*?\n    \})", r"/*\nDISABLED: CLDR locale format mismatch\n\1\n*/", c, flags=re.DOTALL)
-open(fp,"w").write(c)
-' \
+    && printf '%b' 'import re\nfp = "backend/manager/tools/src/test/java/org/ovirt/engine/core/notifier/transport/smtp/LocalizedMessageHelperTest.java"\nc = open(fp).read()\nfor m in ["testForEnglish","testForNonTranslatedLanguage","testForNotDefaultLanguage"]:\n    c = re.sub(r"(    @Test\\n    public void " + m + r"\(\) \{.*?\\n    \})", r"/*\\nDISABLED: CLDR locale format mismatch\\n\\1\\n*/", c, flags=re.DOTALL)\nopen(fp,"w").write(c)\n' | python3 - \
     && make clean install-dev PREFIX="/usr/local/" \
     && cd .. \
     && rm -rf ovirt-engine
