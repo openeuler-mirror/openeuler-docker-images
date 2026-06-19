@@ -57,7 +57,7 @@ RUN curl -fSL -o ioapi.tar.gz \
     cp ioapi/*.EXT /usr/local/ioapi/include/ && \
     rm -rf /tmp/ioapi
 
-RUN git clone -b CMAQv${VERSION}_2Oct2024 --depth 1 https://github.com/USEPA/CMAQ.git /opt/cmaq
+RUN git clone -b CMAQv5.5_2Oct2024 --depth 1 https://github.com/USEPA/CMAQ.git /opt/cmaq
 
 FROM ${BASE}
 
