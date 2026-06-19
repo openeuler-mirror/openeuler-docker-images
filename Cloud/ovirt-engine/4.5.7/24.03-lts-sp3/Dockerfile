@@ -2,8 +2,7 @@ ARG BASE=openeuler/openeuler:24.03-lts-sp3
 FROM ${BASE}
 ARG VERSION=4.5.7
 ARG TARGETARCH
-ARG BUILDARCH
-ARG JDK_VERSION=11.0.27_6
+ARG JDK_VERSION=11.0.31_11
 
 RUN dnf update -y \
     && dnf install -y git wget make java-11-openjdk-devel mailcap maven \
@@ -16,16 +15,16 @@ RUN dnf update -y \
 WORKDIR /usr/local
 
 RUN if [ "$TARGETARCH" = "amd64" ]; then \
-      BUILDARCH="x64"; \
+      JDK_ARCH="x64"; \
     elif [ "$TARGETARCH" = "arm64" ]; then \
-      BUILDARCH="aarch64"; \
+      JDK_ARCH="aarch64"; \
     fi \
     && cd / \
-    && wget https://mirrors.tuna.tsinghua.edu.cn/Adoptium/11/jdk/${BUILDARCH}/linux/OpenJDK11U-jdk_${BUILDARCH}_linux_hotspot_${JDK_VERSION}.tar.gz \
-    && tar -zxvf OpenJDK11U-jdk_${BUILDARCH}_linux_hotspot_${JDK_VERSION}.tar.gz \
-    && rm -f OpenJDK11U-jdk_${BUILDARCH}_linux_hotspot_${JDK_VERSION}.tar.gz
+    && wget https://mirrors.tuna.tsinghua.edu.cn/Adoptium/11/jdk/${JDK_ARCH}/linux/OpenJDK11U-jdk_${JDK_ARCH}_linux_hotspot_${JDK_VERSION}.tar.gz \
+    && tar -zxvf OpenJDK11U-jdk_${JDK_ARCH}_linux_hotspot_${JDK_VERSION}.tar.gz \
+    && rm -f OpenJDK11U-jdk_${JDK_ARCH}_linux_hotspot_${JDK_VERSION}.tar.gz
 
-ENV JAVA_HOME=/jdk-11.0.27+6
+ENV JAVA_HOME=/jdk-11.0.31+11
 ENV PATH=${JAVA_HOME}/bin:$PATH
 
 RUN git clone -b ovirt-engine-${VERSION} --recursive --depth 1 https://github.com/oVirt/ovirt-engine \
