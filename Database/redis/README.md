@@ -38,6 +38,7 @@ The tag of each redis docker image is consist of the version of redis and the ve
 
 | Tags                                                                                                                             | Currently                              | Architectures |
 |----------------------------------------------------------------------------------------------------------------------------------|----------------------------------------|---------------|
+|[5.4.1-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/redis/5.4.1/24.03-lts-sp3/Dockerfile) | redis 5.4.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 | [8.2.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/redis/8.2.1/24.03-lts-sp1/Dockerfile) | redis 8.2.1 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 | [8.2.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/redis/8.2.0/24.03-lts-sp1/Dockerfile) | redis 8.2.0 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 | [8.0.2-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/redis/8.0.2/24.03-lts-sp1/Dockerfile) | redis 8.0.2 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
