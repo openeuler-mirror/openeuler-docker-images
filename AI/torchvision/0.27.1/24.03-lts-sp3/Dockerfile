@@ -1,7 +1,7 @@
 ARG BASE=openeuler/openeuler:24.03-lts-sp3
 FROM ${BASE}
 
-ARG TORCH_VERSION=2.12.0
+ARG TORCH_VERSION=2.12.1
 ARG VERSION=0.27.1
 
 RUN dnf install -y libpng libjpeg-turbo python3-pip && \
