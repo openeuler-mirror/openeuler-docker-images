@@ -10,7 +10,10 @@ RUN dnf update -y \
     ovirt-engine-wildfly ovirt-engine-wildfly-overlay python3-daemon \
     python3-dateutil python3-cryptography python3-m2crypto \
     python3-psycopg2 python3-jinja2 python3-libxml2 python3-distro \
+    glibc-langpack-en \
     && dnf clean all
+
+ENV LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
 
 WORKDIR /usr/local
 
