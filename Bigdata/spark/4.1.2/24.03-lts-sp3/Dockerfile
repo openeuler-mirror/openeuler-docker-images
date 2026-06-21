@@ -84,3 +84,4 @@ RUN chmod a+x /opt/decom.sh
 RUN chmod a+x /opt/entrypoint.sh
 
 ENTRYPOINT [ "/opt/entrypoint.sh" ]
+CMD ["driver"]
