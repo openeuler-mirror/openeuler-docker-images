@@ -22,7 +22,7 @@ ARG spark_uid=185
 RUN set -ex && \
     dnf update -y && \
     ln -s /lib /lib64 && \
-    dnf install -y gnupg2 wget bash krb5 procps net-tools shadow dpkg java-11-openjdk && \
+    dnf install -y gnupg2 wget bash krb5 procps net-tools shadow dpkg java-11-openjdk tini && \
     groupadd --system --gid=${spark_uid} spark && \
     useradd --system --uid=${spark_uid} --gid=spark spark && \
     dnf install -y python3 python3-pip && \
