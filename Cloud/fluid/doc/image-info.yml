@@ -1,0 +1,62 @@
+name: fluid
+category: cloud
+description: Fluid 是一个开源的 Kubernetes 原生分布式数据集编排与加速框架，专为大数据和 AI 等数据密集型应用而设计，是 CNCF 孵化项目。它通过统一数据抽象、自动化数据缓存和数据亲和性调度，弥合了存储系统与计算框架之间的鸿沟，支持原生、边缘、Serverless 及多集群 Kubernetes 环境。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  docker镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.0.8-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/fluid/1.0.8/24.03-lts-sp3/Dockerfile) | Fluid 1.0.8 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/fluid:{Tag}
+  ```
+
+usage: |
+  - 启动 dataset-controller
+
+    ```
+    docker run -it --rm openeuler/fluid:{Tag} dataset-controller start
+    ```
+
+  - 启动 fluid-webhook
+
+    ```
+    docker run -it --rm openeuler/fluid:{Tag} fluid-webhook
+    ```
+
+  - 启动 fluid-csi 驱动
+
+    ```
+    docker run -it --rm --privileged openeuler/fluid:{Tag} fluid-csi
+    ```
+
+  - 交互式 shell 启动进入容器
+
+    ```
+    docker run -it --rm openeuler/fluid:{Tag} bash
+    ```
+    `openeuler/fluid` 镜像用于验证上游 Fluid 版本和 openEuler 的集成。
+
+license: Apache-2.0 license
+similar_packages:
+  - JuiceFS: 面向云原生环境的分布式 POSIX 文件系统，支持多种存储后端。
+  - Alluxio: 开源的数据编排系统，为计算与存储之间提供统一的数据访问层。
+dependency:
+  - golang
+  - kubernetes
+
+homepage: https://github.com/fluid-cloudnative/fluid
+upstream:
+  version_url: fluid-cloudnative/fluid
+  version_prefix: v
+  version_filter: rc;alpha;beta
+  backend: GitHub
+  version_scheme: RPM
