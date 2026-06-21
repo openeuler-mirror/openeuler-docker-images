@@ -22,7 +22,7 @@ ARG spark_uid=185
 RUN set -ex && \
     dnf update -y && \
     ln -s /lib /lib64 && \
-    dnf install -y gnupg2 wget bash krb5 procps net-tools shadow dpkg java-11-openjdk tini && \
+    dnf install -y gnupg2 wget bash krb5 procps net-tools shadow dpkg java-11-openjdk && \
     groupadd --system --gid=${spark_uid} spark && \
     useradd --system --uid=${spark_uid} --gid=spark spark && \
     dnf install -y python3 python3-pip && \
@@ -44,6 +44,12 @@ RUN set -ex; \
   wget -nv -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$(dpkg --print-architecture)"; \
   chmod +x /usr/local/bin/gosu; \
   gosu nobody true
+# Grab tini for init process
+ENV TINI_VERSION v0.19.0
+RUN set -ex; \
+  wget -nv -O /usr/bin/tini "https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini-$(dpkg --print-architecture)"; \
+  chmod +x /usr/bin/tini; \
+  /usr/bin/tini --version
 # Install Apache Spark
 # https://downloads.apache.org/spark/KEYS
 ENV SPARK_TGZ_URL=https://archive.apache.org/dist/spark/spark-4.1.2/spark-4.1.2-bin-hadoop3.tgz \
