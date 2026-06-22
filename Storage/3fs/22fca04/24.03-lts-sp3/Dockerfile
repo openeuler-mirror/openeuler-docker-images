@@ -4,7 +4,7 @@ FROM ${BASE}
 ARG VERSION=22fca04
 ARG FDB_VERSION=7.3.77
 
-RUN yum -y install --setopt=timeout=60 cmake meson ninja-build libuv-devel lz4-devel xz-devel double-conversion-devel libdwarf-devel libunwind-devel libaio-devel gflags-devel glog-devel gtest-devel gmock-devel clang lld gperftools-devel libevent-devel git wget gcc gcc-c++ make fuse3-devel openssl-devel boost-devel && \
+RUN yum -y install --setopt=timeout=60 cmake meson ninja-build libuv-devel lz4-devel xz-devel double-conversion-devel libdwarf-devel libunwind-devel libaio-devel gflags-devel glog-devel gtest-devel gmock-devel clang lld gperftools-devel libevent-devel git wget gcc gcc-c++ make fuse3-devel openssl-devel boost-devel cpio && \
     yum clean all
 
 RUN bash -c "curl --proto '=https' --tlsv1.2 --retry 5 --retry-delay 3 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain 1.85.0"
