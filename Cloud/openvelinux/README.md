@@ -47,4 +47,4 @@ In this usage, users can select the corresponding `{Tag}` based on their require
     ```
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://atomgit.com/openeuler/openeuler-docker-images).
