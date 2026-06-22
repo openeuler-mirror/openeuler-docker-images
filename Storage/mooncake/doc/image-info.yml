@@ -1,0 +1,67 @@
+name: mooncake
+category: storage
+description: Mooncake 是 KVCache.AI 开发的面向分布式 AI 推理的高性能传输引擎，基于 RDMA/TCP 提供高效的 KV 缓存传输能力，支持大语言模型（LLM）服务中 Prefill 与 Decode 实例的解耦部署，适用于云原生 AI 基础设施中的分布式存储与高速数据移动场景。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  mooncake镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[0.3.11.post1-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Storage/mooncake/0.3.11.post1/24.03-lts-sp3/Dockerfile) | Mooncake 0.3.11.post1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/mooncake:{Tag}
+  ```
+
+usage: |
+  - 运行传输引擎基准测试（发起端）
+
+    ```bash
+    docker run --rm --network host openeuler/mooncake:{Tag} \
+        transfer_engine_bench --mode=initiator \
+        --metadata_server=<metadata-ip>:2379 \
+        --local_server_name=<local-ip>:12345
+    ```
+
+  - 运行传输引擎基准测试（接收端）
+
+    ```bash
+    docker run --rm --network host openeuler/mooncake:{Tag} \
+        transfer_engine_bench --mode=target \
+        --metadata_server=<metadata-ip>:2379 \
+        --local_server_name=<local-ip>:12346
+    ```
+
+  - 验证传输引擎正确性
+
+    ```bash
+    docker run --rm --network host openeuler/mooncake:{Tag} \
+        transfer_engine_validator --metadata_server=<metadata-ip>:2379
+    ```
+
+license: Apache-2.0
+similar_packages:
+  - UCX：通用通信框架，支持 RDMA、TCP、共享内存等多种传输方式。
+  - NCCL：NVIDIA 集合通信库，用于 GPU 间高速数据传输。
+  - oneCCL：Intel 集合通信库，面向 AI 训练工作负载。
+dependency:
+  - rdma-core
+  - glog
+  - gflags
+  - jsoncpp
+  - numactl-libs
+  - yaml-cpp
+
+homepage: https://github.com/kvcache-ai/Mooncake
+upstream:
+  version_url: kvcache-ai/Mooncake
+  version_prefix: v
+  version_filter: ""
+  backend: GitHub
+  version_scheme: SemVer
