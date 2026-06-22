@@ -1,30 +1,30 @@
-name: hdWGCNA
+name: wgcna
 category: Others
-description: hdWGCNA（High Dimensional Weighted Gene Co-expression Network Analysis）是WGCNA方法在高维单细胞转录组数据上的扩展，专为单细胞RNA测序和空间转录组学数据设计。hdWGCNA提供基因共表达网络构建、模块识别与注释、跨细胞类型的网络比较、空间模式分析等功能，广泛应用于基因调控网络分析、单细胞生物学和空间转录组学研究。
+description: wgcna（High Dimensional Weighted Gene Co-expression Network Analysis）是WGCNA方法在高维单细胞转录组数据上的扩展，专为单细胞RNA测序和空间转录组学数据设计。wgcna提供基因共表达网络构建、模块识别与注释、跨细胞类型的网络比较、空间模式分析等功能，广泛应用于基因调控网络分析、单细胞生物学和空间转录组学研究。
 environment: |
   本应用在Docker环境中运行,安装Docker执行如下命令
   ```
   yum install -y docker
   ```
 tags: |
-  hdWGCNA镜像的Tag由其版本信息和基础镜像版本信息组成,详细内容如下
+  wgcna镜像的Tag由其版本信息和基础镜像版本信息组成,详细内容如下
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
-  |[0.4.09-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/hdwgcna/0.4.09/24.03-lts-sp3/Dockerfile) | hdWGCNA 0.4.09 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+  |[0.4.09-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/wgcna/0.4.09/24.03-lts-sp3/Dockerfile) | wgcna 0.4.09 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 download: |
   拉取镜像到本地
   ```
-  docker pull openeuler/hdwgcna:{Tag}
+  docker pull openeuler/wgcna:{Tag}
   ```
 usage: |
   - 确保已安装 Docker 环境。
-  - 从 DockerHub 获取 hdWGCNA 镜像:
+  - 从 DockerHub 获取 wgcna 镜像:
     ```
-    docker pull openeuler/hdwgcna:{Tag}
+    docker pull openeuler/wgcna:{Tag}
     ```
-  - 启动容器进入 hdWGCNA 环境
+  - 启动容器进入 wgcna 环境
     ```
-    docker run -it openeuler/hdwgcna:{Tag}
+    docker run -it openeuler/wgcna:{Tag}
     ```
   - 在容器内验证安装
     ```
@@ -39,7 +39,7 @@ dependency:
   - R
   - WGCNA
   - Seurat
-homepage: https://smorabit.github.io/hdWGCNA/
+homepage: https://github.com/smorabit/hdWGCNA/
 upstream:
   backend: GitHub
   version_url: smorabit/hdWGCNA
