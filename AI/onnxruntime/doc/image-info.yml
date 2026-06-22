@@ -1,0 +1,66 @@
+name: onnxruntime
+category: ai
+description: ONNX Runtime 是一个跨平台的推理和训练机器学习加速器。ONNX Runtime 推理可以支持更快的用户体验和更低的成本，支持来自 PyTorch 和 TensorFlow/Keras 等深度学习框架的模型，以及 scikit-learn、LightGBM、XGBoost 等经典机器学习库。ONNX Runtime 兼容不同的硬件、驱动和操作系统，并通过硬件加速器以及图优化和变换提供最佳性能。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  onnxruntime镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.22.1-oe2403sp2](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/onnxruntime/1.22.1/24.03-lts-sp2/Dockerfile)| ONNX Runtime 1.22.1 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/onnxruntime:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+    ```
+    docker run -it --name my-onnxruntime openeuler/onnxruntime:{Tag}
+    ```
+
+  - 参数说明
+    | 配置项 | 描述 |
+    |--|--|
+    | `--name my-onnxruntime` | 容器名称。|
+    | `-it` | 以交互模式启动容器。 |
+    | `openeuler/onnxruntime:{Tag}` | 指定要运行的镜像为 `openeuler/onnxruntime`，其中 `{Tag}` 是需要替换的镜像标签。 |
+
+  - 验证 ONNX Runtime 安装
+    ```
+    docker run --rm openeuler/onnxruntime:{Tag} python3 -c "import onnxruntime; print(onnxruntime.__version__)"
+    ```
+
+  - 使用 shell 交互
+    ```
+    docker exec -it my-onnxruntime /bin/bash
+    ```
+
+license: MIT
+similar_packages:
+  - onnx: Open Neural Network Exchange，开放神经网络交换格式，提供模型定义、转换和优化工具。
+  - TensorFlow: Google 开源的端到端机器学习平台，内置模型推理功能。
+  - PyTorch: Facebook 开源的深度学习框架，提供 torch.jit 和 torch.compile 用于模型推理。
+  - OpenVINO: Intel 开源的深度学习推理工具套件，针对 Intel 硬件进行了优化。
+  - TensorRT: NVIDIA 的高性能深度学习推理优化器和运行时。
+
+dependency:
+  - python3
+  - python3-numpy
+  - python3-flatbuffers
+  - python3-packaging
+  - python3-protobuf
+
+homepage: https://github.com/microsoft/onnxruntime
+upstream:
+  backend: GitHub
+  version_url: microsoft/onnxruntime
+  version_prefix: v
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM
