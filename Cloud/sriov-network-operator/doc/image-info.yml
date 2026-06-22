@@ -1,0 +1,61 @@
+name: sriov-network-operator
+category: cloud
+description: SR-IOV Network Operator 是一个基于 Kubernetes Operator 模式的开源项目，用于在 Kubernetes 集群中自动化配置和管理 SR-IOV（Single Root I/O Virtualization）网络设备，实现网络功能虚拟化（NFV）场景下的高性能网络直通能力。本镜像包含 sriov-network-operator（主控制器）、sriov-network-config-daemon（节点配置守护进程）、sriov-network-webhook（准入控制 Webhook）和 sriov-network-operator-config-cleanup（配置清理工具）四个核心组件。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  docker镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.6.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/sriov-network-operator/1.6.0/24.03-lts-sp3/Dockerfile) | SR-IOV Network Operator 1.6.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/sriov-network-operator:{Tag}
+  ```
+
+usage: |
+  - 启动 sriov-network-operator 主控制器
+
+    ```
+    docker run -it --rm openeuler/sriov-network-operator:{Tag} sriov-network-operator
+    ```
+
+  - 启动 sriov-network-config-daemon
+
+    ```
+    docker run -it --rm --privileged openeuler/sriov-network-operator:{Tag} sriov-network-config-daemon
+    ```
+
+  - 启动 sriov-network-webhook
+
+    ```
+    docker run -it --rm openeuler/sriov-network-operator:{Tag} sriov-network-webhook
+    ```
+
+  - 交互式 shell 启动进入容器
+
+    ```
+    docker run -it --rm openeuler/sriov-network-operator:{Tag} bash
+    ```
+    `openeuler/sriov-network-operator` 镜像用于验证上游 SR-IOV Network Operator 版本和 openEuler 的集成。
+
+license: Apache-2.0 license
+similar_packages:
+  - Multus CNI: 支持多网络接口的 Kubernetes CNI 插件。
+  - DPDK: 用于高性能数据包处理的数据平面开发套件。
+dependency:
+  - golang
+
+homepage: https://github.com/k8snetworkplumbingwg/sriov-network-operator
+upstream:
+  version_url: k8snetworkplumbingwg/sriov-network-operator
+  version_prefix: v
+  version_filter: rc;alpha;beta
+  backend: GitHub
+  version_scheme: RPM
