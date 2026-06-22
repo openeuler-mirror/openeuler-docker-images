@@ -18,7 +18,7 @@ The tag of each `deathstarbench` docker image is consist of the version of `deat
 
 | Tag | Currently | Architectures |
 |-----|-----------|---------------|
-|[0.4.1-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/deathstarbench/0.4.1/24.03-lts-sp3/Dockerfile) | DeathStarBench 0.4.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[0.4.1-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/deathstarbench/0.4.1/24.03-lts-sp3/Dockerfile) | DeathStarBench 0.4.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.
@@ -37,4 +37,4 @@ In this usage, users can select the corresponding `{Tag}` based on their require
     The `openeuler/deathstarbench` image builds the hotelReservation microservice benchmark and installs all service binaries (frontend, geo, profile, rate, recommendation, reservation, search, user, etc.).
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://atomgit.com/openeuler/openeuler-docker-images).
