@@ -1,0 +1,56 @@
+name: kubeflow
+category: cloud
+description: Kubeflow 是一个基于 Kubernetes 的开源机器学习平台，提供端到端的机器学习工作流管理能力，涵盖 Notebook 管理、模型训练、超参调优、模型部署与推理服务，是 CNCF 毕业项目。本镜像包含 notebook-controller 和 profile-controller 两个核心组件。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  docker镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.10.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/kubeflow/1.10.0/24.03-lts-sp3/Dockerfile) | Kubeflow 1.10.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/kubeflow:{Tag}
+  ```
+
+usage: |
+  - 启动 notebook-controller
+
+    ```
+    docker run -it --rm openeuler/kubeflow:{Tag} notebook-controller
+    ```
+
+  - 启动 profile-controller
+
+    ```
+    docker run -it --rm openeuler/kubeflow:{Tag} profile-controller
+    ```
+
+  - 交互式 shell 启动进入容器
+
+    ```
+    docker run -it --rm openeuler/kubeflow:{Tag} bash
+    ```
+    `openeuler/kubeflow` 镜像用于验证上游 Kubeflow 版本和 openEuler 的集成。
+
+license: Apache-2.0 license
+similar_packages:
+  - MLflow: 开源的机器学习生命周期管理平台，支持实验追踪、模型注册和部署。
+  - Seldon Core: 面向 Kubernetes 的开源机器学习模型部署框架。
+dependency:
+  - golang
+  - kubernetes
+
+homepage: https://github.com/kubeflow/kubeflow
+upstream:
+  version_url: kubeflow/kubeflow
+  version_prefix: v
+  version_filter: rc;alpha;beta
+  backend: GitHub
+  version_scheme: RPM

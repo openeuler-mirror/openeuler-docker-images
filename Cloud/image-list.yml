@@ -31,3 +31,4 @@ images:
   qemu: qemu
   o3de: o3de
   ovirt-engine: ovirt-engine
+  kubeflow: kubeflow
