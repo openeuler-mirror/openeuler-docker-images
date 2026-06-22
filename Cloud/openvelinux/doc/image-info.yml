@@ -1,0 +1,51 @@
+name: openvelinux
+category: cloud
+description: OpenVeLinux 是字节跳动面向云场景的Linux发行版，包含定制内核及相关工具链。本镜像打包了flamegraph——基于Perl的火焰图可视化工具，支持perf、SystemTap、eBPF等多种性能数据来源，用于Linux系统性能分析与优化。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  docker镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.0-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/openvelinux/1.0/24.03-lts-sp3/Dockerfile) | OpenVeLinux flamegraph 1.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/openvelinux:{Tag}
+  ```
+
+usage: |
+  - 从perf数据生成火焰图
+
+    ```
+    perf record -g -p <pid> -- sleep 30
+    perf script | docker run --rm -i openeuler/openvelinux:{Tag} \
+        stackcollapse-perf.pl | \
+        docker run --rm -i openeuler/openvelinux:{Tag} \
+        flamegraph.pl > flamegraph.svg
+    ```
+
+  - 交互式运行
+
+    ```
+    docker run -it --rm openeuler/openvelinux:{Tag}
+    ```
+
+license: CDDL-1.0 license
+similar_packages:
+  - brendangregg/FlameGraph: 原版火焰图工具
+  - perf: Linux性能分析工具
+dependency:
+  - perl
+
+homepage: https://github.com/openvelinux/flamegraph
+upstream:
+  version_url: openvelinux/flamegraph
+  version_filter: rc;beta;alpha
+  backend: GitHub
+  version_scheme: RPM
