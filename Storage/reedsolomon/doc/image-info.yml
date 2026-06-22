@@ -1,0 +1,51 @@
+name: reedsolomon
+category: storage
+description: Reed-Solomon 是一个用 Go 实现的高性能纠删码库，提供 Reed-Solomon 前向纠错功能。即使部分分片丢失或损坏，也能从剩余分片中恢复原始数据，广泛应用于分布式存储系统中实现数据持久化。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  reedsolomon镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.14.1-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Storage/reedsolomon/1.14.1/24.03-lts-sp3/Dockerfile) | Reed-Solomon 1.14.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/reedsolomon:{Tag}
+  ```
+
+usage: |
+  - 对文件进行纠删码编码
+
+    ```bash
+    docker run --rm -v $(pwd):/data openeuler/reedsolomon:{Tag} \
+        simple-encoder -data 4 -par 2 /data/myfile.dat
+    ```
+
+  - 从分片恢复原始文件
+
+    ```bash
+    docker run --rm -v $(pwd):/data openeuler/reedsolomon:{Tag} \
+        simple-decoder -data 4 -par 2 /data/myfile.dat
+    ```
+
+license: MIT
+similar_packages:
+  - Ceph Erasure Code：Ceph 内置的纠删码插件，支持多种纠删码算法。
+  - ISA-L：Intel 存储加速库，提供高性能纠删码实现。
+  - Jerasure：通用纠删码库，支持多种有限域。
+dependency:
+  - go >= 1.24
+
+homepage: https://github.com/klauspost/reedsolomon
+upstream:
+  version_url: klauspost/reedsolomon
+  version_prefix: v
+  version_filter: ""
+  backend: GitHub
+  version_scheme: SemVer
