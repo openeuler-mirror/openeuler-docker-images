@@ -16,7 +16,7 @@ Learn more at [wgcna](https://github.com/smorabit/hdWGCNA/).
 The tag of each wgcna docker image is consist of the version of wgcna and the version of basic image. The details are as follows:
 | Tags | Currently | Architectures |
 |------|-----------|---------------|
-|[0.4.09-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/wgcna/0.4.09/24.03-lts-sp3/Dockerfile) | wgcna 0.4.09 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[0.4.09-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/wgcna/0.4.09/24.03-lts-sp3/Dockerfile) | wgcna 0.4.09 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 # Usage
 - Ensure that you have Docker installed, or are using Docker for Linux containers if on Windows.
@@ -25,7 +25,7 @@ The tag of each wgcna docker image is consist of the version of wgcna and the ve
 - Run the Docker container to launch the wgcna environment.
 ```docker run -it openeuler/wgcna:{Tag}```
 - Verify the installation inside the container:
-```R -e "library(wgcna); packageVersion('wgcna')"```
+```R -e "library(hdWGCNA); packageVersion('hdWGCNA')"```
 
 # Question and answering
 If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://atomgit.com/openeuler/openeuler-docker-images).
