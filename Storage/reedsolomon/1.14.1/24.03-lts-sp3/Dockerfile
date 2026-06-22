@@ -27,6 +27,6 @@ RUN curl -fSL https://github.com/klauspost/reedsolomon/archive/refs/tags/v${VERS
     GOARCH=${TARGETARCH} go build -ldflags="-s -w" \
         -o /usr/local/bin/stream-decoder ./examples/stream-decoder.go && \
     cd /app && rm -rf reedsolomon-${VERSION} reedsolomon.tar.gz && \
-    dnf -y remove curl && dnf clean all
+    dnf clean all
 
 CMD ["simple-encoder", "--help"]
