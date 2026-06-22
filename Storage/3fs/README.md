@@ -2,9 +2,9 @@
 
 - The official Fire-Flyer File System (3FS) docker image.
 
-- Maintained by: [openEuler CloudNative SIG](https://gitee.com/openeuler/cloudnative).
+- Maintained by: [openEuler CloudNative SIG](https://atomgit.com/openeuler/cloudnative).
 
-- Where to get help: [openEuler CloudNative SIG](https://gitee.com/openeuler/cloudnative), [openEuler](https://gitee.com/openeuler/community).
+- Where to get help: [openEuler CloudNative SIG](https://atomgit.com/openeuler/cloudnative), [openEuler](https://atomgit.com/openeuler/community).
 
 # Fire-Flyer File System (3FS) | openEuler
 Current 3FS docker images are built on the [openEuler](https://repo.openeuler.org/). This repository is free to use and exempted from per-user rate limits.
@@ -18,7 +18,7 @@ The tag of each `3fs` docker image is consist of the version of `3fs` and the ve
 
 | Tag                                                                                                                      | Currently                                | Architectures |
 |--------------------------------------------------------------------------------------------------------------------------|------------------------------------------|---------------|
-|[22fca04-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/3fs/22fca04/24.03-lts-sp3/Dockerfile) | 3fs 22fca04 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[22fca04-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Storage/3fs/22fca04/24.03-lts-sp3/Dockerfile) | 3fs 22fca04 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.
@@ -82,4 +82,4 @@ In this usage, users can select the corresponding `{Tag}` based on their require
 The configuration files (`mgmtd_main_launcher.toml`, `meta_main_launcher.toml`, `storage_main_launcher.toml`, `fdb.cluster`) must be prepared and mounted to `/opt/3fs/etc` before starting the services.
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://atomgit.com/openeuler/openeuler-docker-images).
