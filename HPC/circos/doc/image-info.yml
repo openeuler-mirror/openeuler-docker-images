@@ -1,0 +1,56 @@
+name: circos
+category: hpc
+description: Circos 是一个用于数据和信息可视化的软件包。它以圆形布局可视化数据，非常适合探索对象或位置之间的关系，广泛应用于基因组学数据可视化领域。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  circos镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[0.52-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/circos/0.52/24.03-lts-sp3/Dockerfile) | circos 0.52 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/circos:{Tag}
+  ```
+
+usage: |
+  本镜像提供 Circos 可视化环境，用于创建圆形数据可视化图表。
+
+  - 使用挂载目录中的配置文件运行 Circos：
+    ```
+    docker run -it --rm -v $(pwd):/data -w /data openeuler/circos:{Tag} circos -conf your_circos.conf
+    ```
+
+  - 显示 Circos 版本信息：
+    ```
+    docker run -it --rm openeuler/circos:{Tag} circos -help
+    ```
+
+  - 生成 Circos 图表，需准备数据文件和配置文件，然后挂载所在目录运行：
+    ```
+    docker run -it --rm -v $(pwd):/data -w /data openeuler/circos:{Tag} circos -conf circos.conf
+    ```
+
+license: GPL-2.0
+similar_packages:
+  - Circos: 圆形基因组数据可视化工具
+  - karyoploteR: R语言基因组数据可视化包
+  - ggbio: ggplot2扩展，用于基因组数据可视化
+  - IdeoViz: R语言染色体表意图谱可视化
+
+dependency:
+  -
+
+homepage: https://github.com/vigsterkr/circos
+upstream:
+  backend: GitHub
+  version_url: vigsterkr/circos
+  version_prefix:
+  version_filter: alpha;rc;candidate;beta;pre
+  version_scheme: RPM
