@@ -1,0 +1,64 @@
+name: kata-containers
+category: cloud
+description: Kata Containers 是一个开源的安全容器运行时，通过轻量级虚拟机将每个容器运行在独立的硬件虚拟化环境中，在保留容器速度与灵活性的同时提供虚拟机级别的安全隔离，是 CNCF 孵化项目。本镜像包含 kata-runtime（OCI 运行时）、containerd-shim-kata-v2（containerd 集成层）和 kata-monitor（监控组件）三个核心组件。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  docker镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[3.31.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/kata-containers/3.31.0/24.03-lts-sp3/Dockerfile) | Kata Containers 3.31.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/kata-containers:{Tag}
+  ```
+
+usage: |
+  - 查看 kata-runtime 版本信息
+
+    ```
+    docker run --rm openeuler/kata-containers:{Tag} kata-runtime --version
+    ```
+
+  - 查看 kata-runtime 运行环境检测
+
+    ```
+    docker run --rm --privileged openeuler/kata-containers:{Tag} kata-runtime kata-check
+    ```
+
+  - 启动 kata-monitor
+
+    ```
+    docker run --rm openeuler/kata-containers:{Tag} kata-monitor --help
+    ```
+
+  - 交互式 shell 启动进入容器
+
+    ```
+    docker run -it --rm openeuler/kata-containers:{Tag} bash
+    ```
+    `openeuler/kata-containers` 镜像用于验证上游 Kata Containers 版本和 openEuler 的集成。
+
+license: Apache-2.0 license
+similar_packages:
+  - gVisor: Google 开源的基于用户空间内核的容器安全沙箱运行时。
+  - Firecracker: Amazon 开源的轻量级 VMM，专为安全快速的微虚拟机而设计。
+dependency:
+  - golang
+  - git
+  - make
+  - gcc
+
+homepage: https://github.com/kata-containers/kata-containers
+upstream:
+  version_url: kata-containers/kata-containers
+  version_prefix: ""
+  version_filter: rc;alpha;beta
+  backend: GitHub
+  version_scheme: RPM
