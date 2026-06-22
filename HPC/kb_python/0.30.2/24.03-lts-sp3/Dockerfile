@@ -6,7 +6,7 @@ RUN yum install -y \
         gcc gcc-c++ cmake make git \
         hdf5-devel zlib-devel && \
     yum clean all && rm -rf /var/cache/yum
-RUN pip3 install --no-cache-dir kb-python==${VERSION}
+RUN pip3 install --no-cache-dir kb_python==${VERSION}
 RUN kb compile all --overwrite --tmp /tmp/kb_compile
 WORKDIR /workspace
 CMD ["/bin/bash"]
