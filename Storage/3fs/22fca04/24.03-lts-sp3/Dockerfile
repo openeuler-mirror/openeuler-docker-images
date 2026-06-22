@@ -2,6 +2,7 @@ ARG BASE=openeuler/openeuler:24.03-lts-sp3
 FROM ${BASE}
 
 ARG VERSION=22fca04
+ARG FDB_VERSION=7.3.77
 
 RUN yum -y install --setopt=timeout=60 cmake meson ninja-build libuv-devel lz4-devel xz-devel double-conversion-devel libdwarf-devel libunwind-devel libaio-devel gflags-devel glog-devel gtest-devel gmock-devel clang lld gperftools-devel libevent-devel git wget gcc gcc-c++ make fuse3-devel openssl-devel boost-devel && \
     yum clean all
@@ -17,6 +18,13 @@ RUN wget --retry-connrefused --tries=5 https://github.com/libfuse/libfuse/releas
     meson compile -C build && \
     meson install -C build 2>/dev/null || true && \
     cd / && rm -rf fuse-3.16.1 fuse-3.16.1.tar.gz
+
+RUN ARCH=$(uname -m) && \
+    if [ "$ARCH" = "x86_64" ]; then ELVER=el7; else ELVER=el9; fi && \
+    curl -sL --retry 5 -o /tmp/fdb-clients.rpm https://github.com/apple/foundationdb/releases/download/${FDB_VERSION}/foundationdb-clients-${FDB_VERSION}-1.${ELVER}.${ARCH}.rpm && \
+    rpm2cpio /tmp/fdb-clients.rpm | cpio -idm && \
+    cp -r usr/* /usr/ && \
+    rm -rf usr /tmp/fdb-clients.rpm
 
 RUN git config --global http.postBuffer 524288000 && \
     git clone --recurse-submodules https://github.com/deepseek-ai/3fs /tmp/3fs && \
