@@ -31,6 +31,12 @@ RUN git config --global http.postBuffer 524288000 && \
     git -C /tmp/3fs checkout ${VERSION} && \
     git -C /tmp/3fs submodule update --init --recursive && \
     bash -c "cd /tmp/3fs && ./patches/apply.sh" && \
+    ARCH=$(uname -m) && \
+    mkdir -p /usr/lib64/clang/17/lib/linux && \
+    for f in /usr/lib/clang/17/lib/${ARCH}-openEuler-linux-gnu/*.a /usr/lib/clang/17/lib/${ARCH}-openEuler-linux-gnu/*.o; do \
+        ln -sf "$f" "/usr/lib64/clang/17/lib/linux/$(basename $f)" 2>/dev/null || true; \
+    done && \
+    ln -sf /usr/lib/clang/17/lib/${ARCH}-openEuler-linux-gnu/libclang_rt.builtins.a /usr/lib64/clang/17/lib/linux/libclang_rt.builtins-${ARCH}.a && \
     cmake -S /tmp/3fs -B /tmp/3fs/build \
         -DCMAKE_CXX_COMPILER=/usr/bin/clang++ \
         -DCMAKE_C_COMPILER=/usr/bin/clang \
