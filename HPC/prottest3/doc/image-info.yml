@@ -1,0 +1,51 @@
+name: prottest3
+category: hpc
+description: ProtTest 3 是一个用于选择蛋白质序列最佳氨基酸替换模型的生物信息学工具。它提供统计方法来比较不同的蛋白质进化模型，并为系统发育分析选择最合适的模型。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  prottest3镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[3.4.2-release-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/prottest3/3.4.2-release/24.03-lts-sp3/Dockerfile) | prottest3 3.4.2-release on openEuler 24.03-lts-sp3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/prottest3:{Tag}
+  ```
+
+usage: |
+  本镜像提供 ProtTest 3 工具，用于蛋白质进化模型选择。
+
+  - 使用 PHYLIP 或 FASTA 格式的比对文件运行 ProtTest 3
+    ```
+    docker run -it --rm -v $(pwd):/data -w /data openeuler/prottest3:{Tag} prottest3 -i alignment_file.phy
+    ```
+
+  - 使用特定选项运行 ProtTest 3
+    ```
+    docker run -it --rm -v $(pwd):/data -w /data openeuler/prottest3:{Tag} prottest3 -i alignment_file.phy -o output_file -all-distributions
+    ```
+
+license: GPL-2.0
+similar_packages:
+  - ModelTest-NG: 现代系统发育模型选择工具
+  - jModelTest2: 核酸序列进化模型选择工具
+  - PhyML: 系统发育最大似然法推断工具
+  - IQ-TREE: 高效系统发育树推断工具
+
+dependency:
+  -
+
+homepage: https://github.com/ddarriba/prottest3
+upstream:
+  backend: GitHub
+  version_url: ddarriba/prottest3
+  version_prefix:
+  version_filter: alpha;rc;candidate;beta;pre
+  version_scheme: RPM
