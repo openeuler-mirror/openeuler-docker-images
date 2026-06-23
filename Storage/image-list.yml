@@ -16,3 +16,4 @@ images:
   ceph: ceph
   sheepdog: sheepdog
   mooncake: mooncake
+  juicefs: juicefs
