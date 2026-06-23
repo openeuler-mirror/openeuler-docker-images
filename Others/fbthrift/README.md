@@ -13,6 +13,7 @@ fbthrift is Facebook's branch of Apache Thrift, including a new C++ server. It i
 The tag of each fbthrift docker image is consist of the version of fbthrift and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[2026.06.22.00-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/fbthrift/2026.06.22.00/24.03-lts-sp3/Dockerfile) | fbthrift 2026.06.22.00 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 |[2026.05.18.00-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/fbthrift/2026.05.18.00/24.03-lts-sp3/Dockerfile) | fbthrift 2026.05.18.00 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 
