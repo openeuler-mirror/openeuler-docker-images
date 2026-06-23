@@ -26,6 +26,11 @@ RUN wget --retry-connrefused --tries=5 https://github.com/libfuse/libfuse/releas
 COPY --from=fdb /usr/bin/fdbcli /usr/bin/fdbcli
 COPY --from=fdb /usr/lib/libfdb_c.so /usr/lib64/libfdb_c.so
 
+RUN curl -sL --retry 5 -o /tmp/fdb-headers.tar.gz https://github.com/apple/foundationdb/releases/download/${FDB_VERSION}/fdb-headers-${FDB_VERSION}.tar.gz && \
+    mkdir -p /usr/include/foundationdb && \
+    tar xzf /tmp/fdb-headers.tar.gz -C /usr/include/foundationdb/ && \
+    rm -f /tmp/fdb-headers.tar.gz
+
 RUN git config --global http.postBuffer 524288000 && \
     git clone --recurse-submodules https://github.com/deepseek-ai/3fs /tmp/3fs && \
     git -C /tmp/3fs checkout ${VERSION} && \
