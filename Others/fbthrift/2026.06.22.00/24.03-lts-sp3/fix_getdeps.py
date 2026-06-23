@@ -19,3 +19,9 @@ open(f2, 'w').write(re.sub(
     c2,
     flags=re.DOTALL
 ))
+
+# 3. 修复 libaio manifest subdir 以匹配预置 tarball 内部目录结构
+f3 = 'build/fbcode_builder/manifests/libaio'
+c3 = open(f3).read()
+c3 = c3.replace('subdir = libaio-libaio-0.3.113', 'subdir = libaio-0.3.113')
+open(f3, 'w').write(c3)
