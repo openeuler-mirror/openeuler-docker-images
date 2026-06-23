@@ -58,7 +58,7 @@ RUN cp /opt/mysql-connector-java-8.0.28.jar $HIVE_HOME/lib/
 
 # install apache kylin
 RUN mkdir -p /home/kylin/apache-kylin-${VERSION}-bin && \
-    curl -fSL -o apache-kylin.tar.gz https://github.com/apache/kylin/releases/download/kylin-${VERSION}/apache-kylin-${VERSION}-bin.tar.gz && \
+    curl -fSL -o apache-kylin.tar.gz https://archive.apache.org/dist/kylin/apache-kylin-${VERSION}/apache-kylin-${VERSION}-bin.tar.gz && \
     tar -zxf apache-kylin.tar.gz -C /home/kylin/apache-kylin-${VERSION}-bin --strip-components=1 && \
     rm -rf apache-kylin.tar.gz
 ENV KYLIN_HOME=/home/kylin/apache-kylin-${VERSION}-bin
