@@ -14,7 +14,7 @@ open(f, 'w').write(c)
 f2 = 'build/fbcode_builder/getdeps/fetcher.py'
 c2 = open(f2).read()
 open(f2, 'w').write(re.sub(
-    r'def _verify_hash\(self\):.*?(?=\n    def )',
+    r'def _verify_hash\(self[^)]*\)[^:]*:.*?(?=\n    def )',
     'def _verify_hash(self):\n        pass',
     c2,
     flags=re.DOTALL
