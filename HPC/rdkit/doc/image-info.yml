@@ -1,0 +1,60 @@
+name: rdkit
+category: hpc
+description: RDKit 是一个用 C++ 和 Python 编写的化学信息学和机器学习软件集合。提供 C++ 核心数据结构和算法、Python 封装、2D/3D 分子操作、描述符和指纹生成以及 PostgreSQL 分子数据库扩展等功能。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  rdkit镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[2026_03_3-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/rdkit/2026_03_3/24.03-lts-sp3/Dockerfile) | rdkit 2026_03_3 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/rdkit:{Tag}
+  ```
+
+usage: |
+  本镜像提供 RDKit 化学信息学环境，可用于分子分析、描述符计算和机器学习任务。
+
+  - 启动 Python 会话使用 RDKit：
+    ```
+    docker run -it --name rdkit-dev openeuler/rdkit:{Tag} python3
+    ```
+
+  - 从挂载目录运行 Python 脚本：
+  ```
+  docker run -it --rm -v $(pwd):/data -w /data openeuler/rdkit:{Tag} python3 your_script.py
+  ```
+
+  - RDKit 基本用法示例：
+    ```python
+    from rdkit import Chem
+    from rdkit.Chem import AllChem, Descriptors
+
+    mol = Chem.MolFromSmiles('CCO')
+    print('Molecular weight:', Descriptors.MolWt(mol))
+    ```
+
+license: BSD-3-Clause
+similar_packages:
+  - OpenBabel: 开源化学信息学工具包
+  - CDK: Java 化学开发工具包
+  - OEChem: 商用化学信息学工具包
+  - ChemAxon: 商用化学信息学平台
+
+dependency:
+  -
+
+homepage: https://github.com/rdkit/rdkit
+upstream:
+  backend: GitHub
+  version_url: rdkit/rdkit
+  version_prefix: Release_
+  version_filter: alpha;rc;candidate;beta;pre
+  version_scheme: RPM
