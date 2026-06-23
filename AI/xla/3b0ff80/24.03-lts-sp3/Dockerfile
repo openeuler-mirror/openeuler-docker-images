@@ -18,8 +18,10 @@ RUN curl -fSL -o /usr/local/bin/bazelisk https://github.com/bazelbuild/bazelisk/
     ln -s /usr/local/bin/bazelisk /usr/local/bin/bazel
 
 WORKDIR /xla
-RUN git clone --depth 1 https://github.com/openxla/xla.git . && \
-    git checkout ${VERSION}
+RUN git init . && \
+    git remote add origin https://github.com/openxla/xla.git && \
+    git fetch --depth 1 origin ${VERSION} && \
+    git checkout FETCH_HEAD
 
 RUN python3 ./configure.py --backend=CPU
 
