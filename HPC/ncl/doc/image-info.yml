@@ -1,0 +1,56 @@
+name: ncl
+category: hpc
+description: NCL（NCAR Command Language）是一种用于气候和天气数据分析和可视化的脚本语言。支持 NetCDF、GRIB、HDF、HDF-EOS 和 shapefile 等数据格式，内置数百个计算例程，可生成高质量的图形。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  ncl镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[6.6.2-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/ncl/6.6.2/24.03-lts-sp3/Dockerfile) | ncl 6.6.2 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/ncl:{Tag}
+  ```
+
+usage: |
+  本镜像提供 NCAR Graphics 及相关工具，用于气候和天气数据处理。
+
+  - 查看可用工具：
+    ```
+    docker run -it --rm openeuler/ncl:{Tag} ls /usr/local/ncarg/bin/
+    ```
+
+  - GRIB 转 netCDF：
+    ```
+    docker run -it --rm -v $(pwd):/data -w /data openeuler/ncl:{Tag} ncl_convert2nc input.grb
+    ```
+
+  - 查看 NCAR Graphics 示例：
+    ```
+    docker run -it --rm openeuler/ncl:{Tag} ng4ex gsun01n
+    ```
+
+license: Apache-2.0
+similar_packages:
+  - GrADS: 气象网格分析和显示系统
+  - CDO: 气候数据操作工具
+  - NCO: 网络通用数据格式操作工具
+  - netCDF: 科学数据格式库和工具集
+
+dependency:
+  -
+
+homepage: https://github.com/NCAR/ncl
+upstream:
+  backend: GitHub
+  version_url: NCAR/ncl
+  version_prefix:
+  version_filter: alpha;rc;candidate;beta;pre
+  version_scheme: RPM
