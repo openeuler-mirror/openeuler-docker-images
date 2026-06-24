@@ -1,6 +1,6 @@
 ARG BASE=openeuler/openeuler:24.03-lts-sp3
 FROM ${BASE} as builder
-ARG VERSION=7.22
+ARG VERSION=7.21
 
 RUN yum install -y gcc-c++ wget  && \
     yum clean all
