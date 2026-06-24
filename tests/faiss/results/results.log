@@ -1,0 +1,36 @@
+[CHECK] Python3 OK: Python 3.12.3
+[CHECK] Faiss OK: 1.14.3
+[SETUP] shUnit2 already present
+[START] faiss ARM64 Performance Benchmark - v1.14.2
+[CHECK] Python3 OK: Python 3.12.3
+[CHECK] Faiss OK: 1.14.3
+[PHASE2] === Phase 2: Collect Version Info ===
+[PHASE2] Version info saved.
+[PHASE3] === Phase 3: Run Benchmarks ===
+[PHASE3A] Running ANN benchmark...
+[ANN] Generating 100000 vectors of dimension 128...
+[ANN] Computing ground truth with IndexFlatL2...
+[ANN] Benchmarking FlatL2: Exact brute-force L2 search
+[ANN] FlatL2 iteration 1/1
+[ANN] Benchmarking IVFFlat: Inverted file with flat L2 quantizer, 100 lists
+[ANN] IVFFlat iteration 1/1
+[ANN] Benchmarking HNSWFlat: HNSW graph-based index, M=32
+[ANN] HNSWFlat iteration 1/1
+[ANN] Results saved to: /root/tantian/Tian/test/faiss/results/benchmark_primary.json
+[ANN] Benchmark complete
+[PHASE3B] Running micro benchmarks
+[MICRO] Generating 100000 vectors of dimension 128...
+[MICRO] Running kmeans_clustering...
+[MICRO] Running add_vectors_flat...
+[MICRO] Running search_single_flat...
+[MICRO] Running search_batch_flat...
+[MICRO] Running range_search_flat...
+[MICRO] Running pq_encoding...
+[MICRO] Results saved to: /root/tantian/Tian/test/faiss/results/micro_benchmark.json
+[MICRO] Benchmark complete
+[PHASE4] === Phase 4: Aggregate & Report ===
+[PHASE4] Reports generated:
+[PHASE4]   JSON: /root/tantian/Tian/test/faiss/results/results.json
+[PHASE4]   TXT:  /root/tantian/Tian/test/faiss/results/results.txt
+[PHASE4]   HTML: /root/tantian/Tian/test/faiss/results/results.html
+[PHASE4]   LOG:  /root/tantian/Tian/test/faiss/results/results.log

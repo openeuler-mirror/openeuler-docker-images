@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faiss ARM64 Benchmark Report</title>
+    
+<style>
+    body { font-family: 'Segoe UI', Arial, sans-serif; max-width: 1200px; margin: 20px auto; background: #f5f5f5; }
+    .header { background: linear-gradient(135deg, #2c3e50, #3498db); color: #fff; padding: 20px; border-radius: 8px; text-align: center; }
+    .header h1 { margin: 0; font-size: 24px; }
+    .header h2 { margin: 5px 0 0; font-size: 16px; color: #ecf0f1; }
+    .section { background: #fff; border-radius: 8px; padding: 20px; margin: 15px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    .section h2 { color: #333; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+    .metric-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+    .metric-box { background: #ecf0f1; padding: 12px; border-radius: 6px; text-align: center; }
+    .metric-box .label { font-size: 12px; color: #7f8c8d; }
+    .metric-box .value { font-size: 20px; font-weight: bold; color: #2c3e50; }
+    .metric-box .unit { font-size: 12px; color: #7f8c8d; }
+    .metric-box.pass { border: 2px solid #27ae60; background: #eafaf1; }
+    .metric-box.fail { border: 2px solid #e74c3c; background: #fdedec; }
+    .chart-container { margin: 20px 0; }
+    .chart-title { font-size: 14px; color: #555; margin-bottom: 5px; }
+    table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+    th { background: #34495e; color: white; padding: 8px 12px; text-align: left; font-size: 13px; }
+    td { padding: 6px 12px; border-bottom: 1px solid #ddd; font-size: 13px; }
+    tr:hover td { background: #f0f0f0; }
+    .success { color: #27ae60; }
+    .failed { color: #e74c3c; }
+    .bar-chart { margin: 15px 0; }
+    .bar-row { display: flex; align-items: center; margin: 6px 0; }
+    .bar-label { width: 150px; font-size: 13px; text-align: right; padding-right: 10px; }
+    .bar-container { flex: 1; background: #ecf0f1; border-radius: 4px; height: 22px; }
+    .bar-fill { height: 100%; border-radius: 4px; transition: width 0.3s; }
+    .bar-value { font-size: 12px; color: #2c3e50; margin-left: 8px; white-space: nowrap; }
+    .env-table td:nth-child(1) { font-weight: bold; color: #2c3e50; width: 40%; }
+    .test-results { background: #fafafa; border: 1px solid #ddd; padding: 15px; border-radius: 4px; }
+    .test-row { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px solid #eee; }
+    .test-name { color: #2c3e50; }
+    .test-pass { color: #27ae60; }
+</style>
+
+</head>
+<body>
+    
+    <div class="header">
+        <h1>Faiss ARM64 Performance Benchmark Report</h1>
+        <h2>Generated: 2026-06-23 10:35:01 UTC | Version: 1.14.2</h2>
+    </div>
+    
+        <div class="section"><h2>Environment Information</h2>
+        <table class="env-table"><tr><td>Architecture</td><td>aarch64</td></tr><tr><td>CPU Model</td><td>ARM64 CPU (32 cores)</td></tr><tr><td>CPU Cores</td><td>32</td></tr><tr><td>Memory (MB)</td><td>63876</td></tr><tr><td>Faiss Version</td><td>1.14.2</td></tr><tr><td>Python Version</td><td>Python 3.12.3</td></tr><tr><td>NumPy Version</td><td>2.5.0</td></tr><tr><td>Operating System</td><td>Ubuntu 24.04.3 LTS</td></tr><tr><td>Kernel</td><td>6.8.0-87-generic</td></tr><tr><td>Faiss Runtime Version</td><td>1.14.3</td></tr></table></div>
+        
+        <div class="section"><h2>ANN Search Benchmark (Primary)</h2>
+        <p><strong>Description:</strong> Approximate Nearest Neighbor search benchmark following ann-benchmarks methodology</p>
+        <p><strong>Reference:</strong> https://github.com/erikbern/ann-benchmarks</p>
+        <p>Dataset: 100000 vectors, 128 dims, k=10</p>
+        <div class="metric-grid">
+            <div class="metric-box"><div class="label">qps</div><div class="value">queries/sec</div></div>
+            
+            <div class="metric-box"><div class="label">recall_at_k</div><div class="value">ratio (0-1)</div></div>
+            
+            <div class="metric-box"><div class="label">build_time</div><div class="value">seconds</div></div>
+            
+            <div class="metric-box"><div class="label">latency_per_query</div><div class="value">microseconds</div></div>
+            </div>
+        <h3>QPS (Queries Per Second)</h3><div class="bar-chart"><div class="bar-row">
+            <div class="bar-label">FlatL2</div>
+            <div class="bar-container"><div class="bar-fill" style="width:1.6%;background:#3498db"></div></div>
+            <div class="bar-value">1295.59</div>
+        </div><div class="bar-row">
+            <div class="bar-label">IVFFlat</div>
+            <div class="bar-container"><div class="bar-fill" style="width:77.6%;background:#3498db"></div></div>
+            <div class="bar-value">64761.89</div>
+        </div><div class="bar-row">
+            <div class="bar-label">HNSWFlat</div>
+            <div class="bar-container"><div class="bar-fill" style="width:100.0%;background:#3498db"></div></div>
+            <div class="bar-value">83488.67</div>
+        </div></div>
+        <h3>Recall@10 (%)</h3><div class="bar-chart"><div class="bar-row">
+            <div class="bar-label">FlatL2</div>
+            <div class="bar-container"><div class="bar-fill" style="width:100.0%;background:#27ae60"></div></div>
+            <div class="bar-value">100.00</div>
+        </div><div class="bar-row">
+            <div class="bar-label">IVFFlat</div>
+            <div class="bar-container"><div class="bar-fill" style="width:5.6%;background:#27ae60"></div></div>
+            <div class="bar-value">5.62</div>
+        </div><div class="bar-row">
+            <div class="bar-label">HNSWFlat</div>
+            <div class="bar-container"><div class="bar-fill" style="width:20.1%;background:#27ae60"></div></div>
+            <div class="bar-value">20.09</div>
+        </div></div>
+        <h3>Build Time (seconds)</h3><div class="bar-chart"><div class="bar-row">
+            <div class="bar-label">FlatL2</div>
+            <div class="bar-container"><div class="bar-fill" style="width:1.5%;background:#e67e22"></div></div>
+            <div class="bar-value">0.03</div>
+        </div><div class="bar-row">
+            <div class="bar-label">IVFFlat</div>
+            <div class="bar-container"><div class="bar-fill" style="width:31.3%;background:#e67e22"></div></div>
+            <div class="bar-value">0.66</div>
+        </div><div class="bar-row">
+            <div class="bar-label">HNSWFlat</div>
+            <div class="bar-container"><div class="bar-fill" style="width:100.0%;background:#e67e22"></div></div>
+            <div class="bar-value">2.11</div>
+        </div></div>
+        <table><tr><th>Index</th><th>QPS</th><th>Recall@10</th><th>Build (s)</th><th>Latency (us)</th><th>Status</th></tr>
+        <tr><td>FlatL2</td><td>1295.59</td><td>1.0</td><td>0.0314</td><td>771.85</td><td class="success">OK</td></tr><tr><td>IVFFlat</td><td>64761.89</td><td>0.0562</td><td>0.6609</td><td>15.44</td><td class="success">OK</td></tr><tr><td>HNSWFlat</td><td>83488.67</td><td>0.2009</td><td>2.1128</td><td>11.98</td><td class="success">OK</td></tr>
+        </table></div>
+        
+        <div class="section"><h2>Micro Benchmarks</h2>
+        <p><strong>Description:</strong> Micro-level benchmarks for core Faiss operations on ARM64</p>
+        <p><strong>Reference:</strong> Faiss library built-in operations (https://github.com/facebookresearch/faiss)</p>
+        <p>Dataset: 100000 vectors, 128 dims</p>
+        <div class="metric-grid">
+            <div class="metric-box"><div class="label">Avg Latency</div><div class="value">412.21</div><div class="unit">ms</div></div>
+        </div>
+        <table><tr><th>Operation</th><th>Avg Time (s)</th><th>Avg Latency (ms)</th><th>Description</th></tr>
+        <tr><td>kmeans_clustering</td><td>1.2775</td><td>1277.5</td><td>K-means clustering on random vectors (100 centroids, 20 iters)</td></tr><tr><td>add_vectors_flat</td><td>0.0411</td><td>41.1</td><td>Add vectors to IndexFlatL2 (bulk insertion throughput)</td></tr><tr><td>search_single_flat</td><td>N/A</td><td>2.8822</td><td>Single query search on IndexFlatL2 (per-query latency)</td></tr><tr><td>search_batch_flat</td><td>0.7695</td><td>769.5</td><td>Batch query search on IndexFlatL2 (batch throughput)</td></tr><tr><td>range_search_flat</td><td>0.0565</td><td>56.5</td><td>Range search on IndexFlatL2 (radius-based search)</td></tr><tr><td>pq_encoding</td><td>0.3258</td><td>325.8</td><td>Product Quantization encoding throughput</td></tr>
+        </table></div>
+        
+    <div class="section"><h2>shUnit2 Test Results</h2>
+    <div class="test-results"><div class="test-row"><span class="test-name">testArchitectureIsARM64</span><span class="test-pass">PASS</span></div>
+<div class="test-row"><span class="test-name">testSoftwareIsInstalled</span><span class="test-pass">PASS</span></div>
+<div class="test-row"><span class="test-name">testSoftwareVersionMatches</span><span class="test-pass">PASS</span></div>
+<div class="test-row"><span class="test-name">testSoftwareRunsBasicCommand</span><span class="test-pass">PASS</span></div>
+<div class="test-row"><span class="test-name">testVersionInfoExists</span><span class="test-pass">PASS</span></div>
+<div class="test-row"><span class="test-name">testVersionInfoHasArchitecture</span><span class="test-pass">PASS</span></div>
+<div class="test-row"><span class="test-name">testVersionInfoHasSoftwareVersion</span><span class="test-pass">PASS</span></div>
+<div class="test-row"><span class="test-name">testBenchmarkPrimaryProducesResults</span><span class="test-pass">PASS</span></div>
+<div class="test-row"><span class="test-name">testBenchmarkPrimaryHasRequiredFields</span><span class="test-pass">PASS</span></div>
+<div class="test-row"><span class="test-name">testBenchmarkPrimaryThroughputAboveThreshold</span><span class="test-pass">PASS</span></div>
+<div class="test-row"><span class="test-name">testBenchmarkMicroProducesResults</span><span class="test-pass">PASS</span></div>
+<div class="test-row"><span class="test-name">testBenchmarkMicroAllOperationsCompleted</span><span class="test-pass">PASS</span></div>
+<div class="test-row"><span class="test-name">testBenchmarkMicroSearchLatencyBelowThreshold</span><span class="test-pass">PASS</span></div>
+<div class="test-row"><span class="test-name">testAggregatedResultsExist</span><span class="test-pass">PASS</span></div>
+<div class="test-row"><span class="test-name">testHtmlReportGenerated</span><span class="test-pass">PASS</span></div>
+<div class="test-row"><span class="test-name">testSummaryReportGenerated</span><span class="test-pass">PASS</span></div>
+</div>
+    <p style="text-align: center; color: #888; font-size: 12px;">
+        16 tests defined | Powered by shUnit2
+    </p></div>
+    
+    <div class="section">
+        <p style="text-align: center; color: #888; font-size: 12px;">
+            Faiss ARM64 Performance Benchmark | Powered by shUnit2 | 2026-06-23
+        </p>
+    </div>
+</body>
+</html>
+    

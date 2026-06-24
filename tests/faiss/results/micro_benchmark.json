@@ -1,0 +1,76 @@
+{
+  "benchmark": "micro_operations",
+  "description": "Micro-level benchmarks for core Faiss operations on ARM64",
+  "reference": "Faiss library built-in operations (https://github.com/facebookresearch/faiss)",
+  "software": "faiss",
+  "version": "1.14.3",
+  "architecture": "arm64",
+  "timestamp": "2026-06-23T10:35:01Z",
+  "performance_metrics": {
+    "avg_latency_ms": {
+      "unit": "ms",
+      "description": "Average latency per micro operation"
+    },
+    "search_latency_us": {
+      "unit": "microseconds",
+      "description": "Per-query latency for single vector search"
+    },
+    "add_rate": {
+      "unit": "vectors/sec",
+      "description": "Vector addition rate to IndexFlatL2"
+    }
+  },
+  "dataset_info": {
+    "name": "synthetic_random_float32",
+    "size": "100K vectors x 128 dimensions",
+    "source": "numpy random uniform distribution"
+  },
+  "parameters": {
+    "num_vectors": 100000,
+    "dimension": 128,
+    "iterations": 1
+  },
+  "avg_latency_ms": 412.21,
+  "results": [
+    {
+      "test": "kmeans_clustering",
+      "description": "K-means clustering on random vectors (100 centroids, 20 iters)",
+      "avg_time_s": 1.2775,
+      "avg_latency_ms": 1277.5
+    },
+    {
+      "test": "add_vectors_flat",
+      "description": "Add vectors to IndexFlatL2 (bulk insertion throughput)",
+      "avg_time_s": 0.0411,
+      "add_rate_per_sec": 2431255.07,
+      "avg_latency_ms": 41.1
+    },
+    {
+      "test": "search_single_flat",
+      "description": "Single query search on IndexFlatL2 (per-query latency)",
+      "avg_latency_us": 2882.25,
+      "avg_latency_ms": 2.8822
+    },
+    {
+      "test": "search_batch_flat",
+      "description": "Batch query search on IndexFlatL2 (batch throughput)",
+      "avg_time_s": 0.7695,
+      "avg_qps": 1299.62,
+      "avg_latency_ms": 769.5
+    },
+    {
+      "test": "range_search_flat",
+      "description": "Range search on IndexFlatL2 (radius-based search)",
+      "avg_time_s": 0.0565,
+      "avg_qps": 1770.48,
+      "avg_latency_ms": 56.5
+    },
+    {
+      "test": "pq_encoding",
+      "description": "Product Quantization encoding throughput",
+      "avg_time_s": 0.3258,
+      "encode_rate_per_sec": 306975.46,
+      "avg_latency_ms": 325.8
+    }
+  ]
+}
