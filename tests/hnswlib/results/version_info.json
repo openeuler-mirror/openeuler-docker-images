@@ -1,0 +1,20 @@
+{
+  "timestamp": "2026-06-23T10:52:53Z",
+  "architecture": "aarch64",
+  "kernel": "6.8.0-87-generic",
+  "os": "Ubuntu 24.04.3 LTS",
+  "cpu_model": "0xd01",
+  "cores": 32,
+  "memory_mb": 63876,
+  "software_name": "hnswlib",
+  "software_version": "0.8.0",
+  "runtime_version": "Python 3.12.3",
+  "install_method": "pip",
+  "installed": 1,
+  "parallelism": 32,
+  "numpy_version": "2.5.0",
+  "hnswlib_version": "",
+  "index_M": 16,
+  "index_ef_construction": 200,
+  "neon_asimd_available": 32
+}
