@@ -2,4 +2,4 @@
   path: 1.0/24.03-lts-sp3/Dockerfile
 
 velinux/1.0+velinux2-oe2403sp3:
-  path: velinux/1.0+velinux2/24.03-lts-sp3/Dockerfile
+  path: velinux-1.0+velinux2/24.03-lts-sp3/Dockerfile
