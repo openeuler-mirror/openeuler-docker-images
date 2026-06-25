@@ -3,7 +3,7 @@ FROM ${BASE} AS builder
 
 ARG EASI_VERSION=1.6.2
 ARG EIGEN_VERSION=3.4.0
-ARG VERSION=202103.Sumatra
+ARG VERSION=202103_Sumatra
 
 RUN dnf install -y \
       gcc gcc-c++ gcc-gfortran make cmake git \
@@ -56,7 +56,7 @@ RUN git clone --depth 1 https://github.com/KarypisLab/ParMETIS.git /tmp/parmetis
     make install && \
     rm -rf /tmp/parmetis
 
-RUN git clone --recursive --depth 1 --branch v${VERSION} https://github.com/SeisSol/SeisSol.git /tmp/seissol && \
+RUN git clone --recursive --depth 1 --branch ${VERSION} https://github.com/SeisSol/SeisSol.git /tmp/seissol && \
     cd /tmp/seissol && \
     cmake -B build \
       -DCMAKE_BUILD_TYPE=Release \
@@ -93,7 +93,7 @@ COPY --from=builder /usr/local/include /usr/local/include
 RUN ldconfig
 
 ENV PATH=/usr/lib64/openmpi/bin:$PATH
-ENV LD_LIBRARY_PATH=/usr/lib64/openmpi/lib:/usr/local/lib64:/usr/local/lib:$LD_LIBRARY_PATH
+ENV LD_LIBRARY_PATH=/usr/lib64/openmpi/lib:/usr/local/lib64:/usr/local/lib:${LD_LIBRARY_PATH:-}
 
 WORKDIR /data
 CMD ["mpirun", "--allow-run-as-root", "/usr/local/bin/SeisSol"]
