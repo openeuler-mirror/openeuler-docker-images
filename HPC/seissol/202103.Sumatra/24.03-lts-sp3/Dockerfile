@@ -76,7 +76,7 @@ RUN git clone --recursive --depth 1 --branch ${VERSION} https://github.com/SeisS
       -DHDF5_ROOT=/usr/lib64/openmpi \
       -DCMAKE_INSTALL_PREFIX=/usr/local && \
     cmake --build build --parallel $(nproc) && \
-    cmake --install build && \
+    cp build/SeisSol_Release_*_4_elastic build/SeisSol_proxy_Release_*_4_elastic /usr/local/bin/ && \
     ln -sf /usr/local/bin/SeisSol_Release_*_4_elastic /usr/local/bin/SeisSol && \
     rm -rf /tmp/seissol
 
