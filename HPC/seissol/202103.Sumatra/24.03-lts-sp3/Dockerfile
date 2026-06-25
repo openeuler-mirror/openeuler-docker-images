@@ -57,6 +57,7 @@ RUN git clone --depth 1 https://github.com/KarypisLab/ParMETIS.git /tmp/parmetis
     rm -rf /tmp/parmetis
 
 RUN git clone --recursive --depth 1 --branch ${VERSION} https://github.com/SeisSol/SeisSol.git /tmp/seissol && \
+    sed -i '/#include <string>/a #include <sched.h>' /tmp/seissol/src/Parallel/Pin.h && \
     cd /tmp/seissol && \
     cmake -B build \
       -DCMAKE_BUILD_TYPE=Release \
