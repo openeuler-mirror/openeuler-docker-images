@@ -1,2 +1,5 @@
 1.3.2-oe2403sp3:
   path: 1.3.2/24.03-lts-sp3/Dockerfile
+
+202103.Sumatra-oe2403sp3:
+  path: 202103.Sumatra/24.03-lts-sp3/Dockerfile
