@@ -60,6 +60,7 @@ RUN git clone --recursive --depth 1 --branch ${VERSION} https://github.com/SeisS
     cd /tmp/seissol && \
     cmake -B build \
       -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_CXX_FLAGS="-D_GNU_SOURCE" \
       -DHOST_ARCH=noarch \
       -DORDER=4 \
       -DEQUATIONS=elastic \
