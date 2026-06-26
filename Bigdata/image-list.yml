@@ -40,3 +40,4 @@ images:
   ambari: ambari
   iceberg: iceberg
   celeborn: celeborn
+  bolt: bolt
