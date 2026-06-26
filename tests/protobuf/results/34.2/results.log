@@ -1,0 +1,88 @@
+[START] protobuf Performance Benchmark v34.2
+[CHECK] Python3 OK: Python 3.12.3
+[CHECK] json_helper.py OK
+[CHECK] OS: openEuler 24.03 SP3 (ubuntu)
+[CHECK] Architecture: aarch64
+[CHECK] Build method: source_build
+[SETUP] Downloading shUnit2 to /tmp/shunit2_CaYIot...
+[SETUP] shUnit2 downloaded successfully
+[START] protobuf Performance Benchmark - v34.2 (source_build)
+[START] OS: openEuler 24.03 SP3 (ubuntu), Build: source_build
+[CHECK] Python3 OK: Python 3.12.3
+[CHECK] json_helper.py OK
+[CHECK] OS: openEuler 24.03 SP3 (ubuntu)
+[CHECK] Architecture: aarch64
+[CHECK] Build method: source_build
+[PHASE1] === Phase 1: Install protobuf v34.2 (source_build) ===
+[PHASE1] protobuf already importable, skipping install
+[PHASE2] === Phase 2: Collect Version Info ===
+[PHASE2] Version info saved (OS: openEuler 24.03 SP3)
+[PHASE3] === Phase 3: Run Benchmarks ===
+[PHASE3A] Running serialization benchmark...
+[ANN] Compiling proto definitions in /tmp/protobuf_bench_32u6bp6t...
+[ANN] Benchmarking SimpleMessage: Simple message with 4 scalar fields (int32, string, float, bool)
+[ANN] SimpleMessage size=100 iteration 1/1
+[ANN] Benchmarking RepeatedInt32: Message with repeated int32 field
+[ANN] RepeatedInt32 size=100 iteration 1/1
+[ANN] Benchmarking RepeatedString: Message with repeated string field
+[ANN] RepeatedString size=100 iteration 1/1
+[ANN] Benchmarking NestedMessage: Message with nested sub-message and repeated nested fields
+[ANN] NestedMessage size=100 iteration 1/1
+[ANN] Benchmarking LargeMessage: Large message with mixed scalar, repeated, and nested fields
+[ANN] LargeMessage size=100 iteration 1/1
+[ANN] Results saved to: /root/tantian/Tian/test/protobuf/results/34.2/benchmark_ann.json
+[ANN] SimpleMessage: SerQPS=0.00061s, Size=28B
+[ANN]   size=10: SerQPS=1880853.81, DeserQPS=873813.33, Fidelity=1.0
+[ANN]   size=50: SerQPS=1959955.14, DeserQPS=834189.34, Fidelity=1.0
+[ANN]   size=100: SerQPS=1967309.57, DeserQPS=840710.36, Fidelity=1.0
+[ANN]   size=500: SerQPS=1857530.56, DeserQPS=879677.85, Fidelity=1.0
+[ANN]   size=1000: SerQPS=1903905.58, DeserQPS=850771.6, Fidelity=1.0
+[ANN] RepeatedInt32: SerQPS=0.00075s, Size=102B
+[ANN]   size=10: SerQPS=1916957.95, DeserQPS=855282.22, Fidelity=1.0
+[ANN]   size=50: SerQPS=1774240.27, DeserQPS=641821.58, Fidelity=1.0
+[ANN]   size=100: SerQPS=1530767.88, DeserQPS=533083.88, Fidelity=1.0
+[ANN]   size=500: SerQPS=323235.51, DeserQPS=188567.37, Fidelity=1.0
+[ANN]   size=1000: SerQPS=167277.02, DeserQPS=105647.31, Fidelity=1.0
+[ANN] RepeatedString: SerQPS=0.002461s, Size=890B
+[ANN]   size=10: SerQPS=1753471.57, DeserQPS=718448.78, Fidelity=1.0
+[ANN]   size=50: SerQPS=988290.29, DeserQPS=359101.37, Fidelity=1.0
+[ANN]   size=100: SerQPS=586780.08, DeserQPS=237907.2, Fidelity=1.0
+[ANN]   size=500: SerQPS=183141.39, DeserQPS=81209.42, Fidelity=1.0
+[ANN]   size=1000: SerQPS=102185.45, DeserQPS=45267.48, Fidelity=1.0
+[ANN] NestedMessage: SerQPS=0.006252s, Size=2204B
+[ANN]   size=10: SerQPS=987824.78, DeserQPS=526790.25, Fidelity=1.0
+[ANN]   size=50: SerQPS=314368.46, DeserQPS=216335.05, Fidelity=1.0
+[ANN]   size=100: SerQPS=189573.06, DeserQPS=129186.68, Fidelity=1.0
+[ANN]   size=500: SerQPS=43011.89, DeserQPS=30907.28, Fidelity=1.0
+[ANN]   size=1000: SerQPS=21543.17, DeserQPS=15963.4, Fidelity=1.0
+[ANN] LargeMessage: SerQPS=0.001547s, Size=304B
+[ANN]   size=10: SerQPS=935393.4, DeserQPS=502492.39, Fidelity=1.0
+[ANN]   size=50: SerQPS=874359.81, DeserQPS=378513.13, Fidelity=1.0
+[ANN]   size=100: SerQPS=812219.98, DeserQPS=354998.22, Fidelity=1.0
+[ANN]   size=500: SerQPS=259275.76, DeserQPS=164611.62, Fidelity=1.0
+[ANN]   size=1000: SerQPS=146772.02, DeserQPS=96819.19, Fidelity=1.0
+[ANN] Benchmark complete
+[PHASE3B] Running micro benchmark...
+[MICRO] Compiling proto definitions in /tmp/protobuf_micro_4mqsdqiy...
+[MICRO] Using protobuf module (fallback=False), num_messages=1000
+[MICRO] Running single_serialize...
+[MICRO] Running single_deserialize...
+[MICRO] Running multithread_serialize...
+[MICRO] Running multithread_deserialize...
+[MICRO] Running json_serialization...
+[MICRO] Running large_message...
+[MICRO] Running size_parameter_sweep...
+[MICRO] Results saved to: /root/tantian/Tian/test/protobuf/results/34.2/micro_benchmark.json
+[MICRO] single_serialize: {'avg_time_s': 0.000546, 'serialize_qps': 1830774.33, 'avg_latency_us': 0.5462}
+[MICRO] single_deserialize: {'avg_time_s': 0.001135, 'deserialize_qps': 880786.22, 'avg_latency_us': 1.1353}
+[MICRO] multithread_serialize: {'threads_1': {'avg_time_s': 0.001179, 'avg_qps': 848362.46}, 'threads_2': {'avg_time_s': 0.001085, 'avg_qps': 922027.7}, 'threads_4': {'avg_time_s': 0.001348, 'avg_qps': 741698.32}, 'threads_8': {'avg_time_s': 0.002108, 'avg_qps': 474468.78}, 'threads_all': {'avg_time_s': 0.006296, 'avg_qps': 508265.72}}
+[MICRO] multithread_deserialize: {'threads_1': {'avg_time_s': 0.002139, 'avg_qps': 467436.09}, 'threads_2': {'avg_time_s': 0.002267, 'avg_qps': 441180.6}, 'threads_4': {'avg_time_s': 0.002532, 'avg_qps': 394906.69}, 'threads_8': {'avg_time_s': 0.003744, 'avg_qps': 267102.08}, 'threads_all': {'avg_time_s': 0.010719, 'avg_qps': 298533.62}}
+[MICRO] json_serialization: {'binary_serialize': {'avg_time_s': 0.000541, 'avg_qps': 1846897.4}, 'json_serialize': {'avg_time_s': 0.033413, 'avg_qps': 29928.32}, 'binary_size_bytes': 23, 'json_size_bytes': 73, 'size_ratio': 3.17}
+[MICRO] large_message: {'avg_serialize_time_s': 1.1e-05, 'avg_deserialize_time_s': 1.5e-05, 'serialize_qps': 198716.26, 'avg_message_size_bytes': 1799}
+[MICRO] size_parameter_sweep: {'size_10': {'avg_serialize_qps': 1984060.55, 'avg_deserialize_qps': 822251.32}, 'size_50': {'avg_serialize_qps': 1782534.64, 'avg_deserialize_qps': 634251.32}, 'size_100': {'avg_serialize_qps': 1544863.35, 'avg_deserialize_qps': 514322.99}, 'size_500': {'avg_serialize_qps': 324385.46, 'avg_deserialize_qps': 187212.28}, 'size_1000': {'avg_serialize_qps': 167070.46, 'avg_deserialize_qps': 105970.29}}
+[MICRO] Benchmark complete
+[PHASE4] === Phase 4: Aggregate & Report ===
+[PHASE4] Reports generated:
+[PHASE4]   JSON: /root/tantian/Tian/test/protobuf/results/34.2/results.json
+[PHASE4]   TXT:  /root/tantian/Tian/test/protobuf/results/34.2/results.txt
+[PHASE4]   LOG:  /root/tantian/Tian/test/protobuf/results/34.2/results.log
