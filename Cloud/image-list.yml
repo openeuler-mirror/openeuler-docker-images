@@ -35,3 +35,4 @@ images:
   cloudwego: cloudwego
   kata-containers: kata-containers
   kuberay: kuberay
+  kubeflow: kubeflow
