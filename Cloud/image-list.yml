@@ -34,3 +34,4 @@ images:
   openvelinux: openvelinux
   cloudwego: cloudwego
   kata-containers: kata-containers
+  kuberay: kuberay

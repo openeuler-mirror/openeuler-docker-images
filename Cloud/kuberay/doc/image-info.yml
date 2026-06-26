@@ -1,0 +1,56 @@
+name: kuberay
+category: cloud
+description: KubeRay 是一个基于 Kubernetes 的开源 Ray 集群管理框架，用于在 Kubernetes 上部署、管理和扩展分布式 Ray 应用，支持 RayCluster、RayJob 和 RayService 等自定义资源，适用于分布式机器学习、数据处理和高性能计算场景。本镜像包含 kuberay-operator 和 kuberay-apiserver 两个核心组件。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  docker镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.6.2-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/kuberay/1.6.2/24.03-lts-sp3/Dockerfile) | KubeRay 1.6.2 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/kuberay:{Tag}
+  ```
+
+usage: |
+  - 启动 kuberay-operator
+
+    ```
+    docker run -it --rm openeuler/kuberay:{Tag} kuberay-operator
+    ```
+
+  - 启动 kuberay-apiserver
+
+    ```
+    docker run -it --rm openeuler/kuberay:{Tag} kuberay-apiserver
+    ```
+
+  - 交互式 shell 启动进入容器
+
+    ```
+    docker run -it --rm openeuler/kuberay:{Tag} bash
+    ```
+    `openeuler/kuberay` 镜像用于验证上游 KubeRay 版本和 openEuler 的集成。
+
+license: Apache-2.0 license
+similar_packages:
+  - Volcano: 面向 Kubernetes 的批量计算调度系统，支持机器学习和大数据工作负载。
+  - Kubeflow Training Operator: 面向 Kubernetes 的分布式机器学习训练框架。
+dependency:
+  - golang
+  - kubernetes
+
+homepage: https://github.com/ray-project/kuberay
+upstream:
+  version_url: ray-project/kuberay
+  version_prefix: v
+  version_filter: rc;alpha;beta
+  backend: GitHub
+  version_scheme: RPM
