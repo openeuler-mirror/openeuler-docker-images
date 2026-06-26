@@ -1,0 +1,44 @@
+name: scann
+category: others
+description: ScaNN（Scalable Nearest Neighbors）是一种高效的大规模向量相似性搜索方法，实现了搜索空间剪枝和最大内积搜索量化，同时支持欧氏距离等其他距离函数。该实现针对支持 AVX 的 x86 处理器进行了优化，在 ann-benchmarks.com 上达到领先性能。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  scann镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.4.2-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/scann/1.4.2/24.03-lts-sp3/Dockerfile) | scann 1.4.2 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/scann:{Tag}
+  ```
+
+usage: |
+  验证安装
+  ```
+  docker run --rm openeuler/scann:{Tag} python3 -c "import scann; print('ok')"
+  ```
+
+  在 Python 脚本中使用 scann 进行向量相似性搜索，详细用法参见 docs/example.ipynb。
+
+license: Apache-2.0
+similar_packages:
+  - faiss: Facebook AI 的向量相似性搜索库
+  - annoy: Spotify 的近似最近邻搜索库
+
+dependency:
+  -
+
+homepage: https://github.com/google-research/google-research/tree/master/scann
+upstream:
+  backend: GitHub
+  version_url: google-research/google-research
+  version_prefix:
+  version_filter: alpha;rc;candidate;beta;pre
+  version_scheme: RPM
