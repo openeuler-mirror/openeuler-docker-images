@@ -107,3 +107,4 @@ images:
   towhee: towhee
   xla: xla
   langgraph: langgraph
+  tensorrt-llm: tensorrt-llm

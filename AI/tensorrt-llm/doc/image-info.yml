@@ -1,0 +1,49 @@
+name: tensorrt-llm
+category: ai
+description: TensorRT LLM 为用户提供易于使用的 Python API 来定义大语言模型（LLM），并支持最先进的优化技术，以便在 NVIDIA GPU 上高效执行推理。TensorRT LLM 还包含用于创建 Python 和 C++ 运行时环境的组件，以高性能地编排推理执行。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  TensorRT LLM镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.2.1-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/tensorrt-llm/1.2.1/24.03-lts-sp3/Dockerfile) | tensorrt-llm 1.2.1 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/tensorrt-llm:{Tag}
+  ```
+
+usage: |
+  - 本镜像提供 TensorRT LLM 推理环境，包含 CUDA 13.1 和 PyTorch 2.9.1。使用 GPU 支持运行容器：
+    ```
+    docker run -it --gpus all --name trtllm-dev openeuler/tensorrt-llm:{Tag}
+    ```
+
+  - 进入容器后，验证安装：
+    ```
+    python3 -c "from tensorrt_llm import LLM; print('TensorRT LLM ready')"
+    ```
+
+license: Apache-2.0
+similar_packages:
+  - vllm: 高性能 LLM 推理引擎
+  - text-generation-inference: HuggingFace 的文本生成推理服务
+  - llama.cpp: 轻量级 LLM 推理框架
+  - sglang: 结构化生成语言的高效推理框架
+
+dependency:
+  -
+
+homepage: https://github.com/NVIDIA/TensorRT-LLM
+upstream:
+  backend: GitHub
+  version_url: NVIDIA/TensorRT-LLM
+  version_prefix: v
+  version_filter: alpha;rc;candidate;beta;pre
+  version_scheme: RPM
