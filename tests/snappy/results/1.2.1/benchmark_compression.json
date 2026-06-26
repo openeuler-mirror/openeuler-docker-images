@@ -1,0 +1,56 @@
+{
+  "benchmark": "compression",
+  "description": "Snappy compression/decompression speed across different data patterns on ARM64",
+  "reference": "https://github.com/google/snappy",
+  "software": "snappy",
+  "version": "1.2.2",
+  "architecture": "arm64",
+  "timestamp": "2026-06-26T09:32:00Z",
+  "performance_metrics": {
+    "compress_speed_mbs": {"unit": "MB/s", "description": "Compression throughput in megabytes per second"},
+    "decompress_speed_mbs": {"unit": "MB/s", "description": "Decompression throughput in megabytes per second"},
+    "compression_ratio": {"unit": "ratio", "description": "Original size divided by compressed size"}
+  },
+  "parameters": {
+    "data_size_bytes": 1048576,
+    "iterations": 1
+  },
+  "results_summary": {
+    "random_data": {
+      "original_size_bytes": 1048576,
+      "compressed_size_bytes": 1048630,
+      "compression_ratio": 0.9999,
+      "compress_speed_mbs": 1214.62,
+      "decompress_speed_mbs": 1626.91,
+      "compress_latency_us": 823.30,
+      "decompress_latency_us": 614.66
+    },
+    "repeated_data": {
+      "original_size_bytes": 1048576,
+      "compressed_size_bytes": 49331,
+      "compression_ratio": 21.2559,
+      "compress_speed_mbs": 3759.23,
+      "decompress_speed_mbs": 3423.00,
+      "compress_latency_us": 266.01,
+      "decompress_latency_us": 292.14
+    },
+    "text_data": {
+      "original_size_bytes": 1048576,
+      "compressed_size_bytes": 279944,
+      "compression_ratio": 3.7457,
+      "compress_speed_mbs": 470.76,
+      "decompress_speed_mbs": 987.73,
+      "compress_latency_us": 2124.24,
+      "decompress_latency_us": 1012.42
+    },
+    "html_data": {
+      "original_size_bytes": 1048576,
+      "compressed_size_bytes": 150122,
+      "compression_ratio": 6.9848,
+      "compress_speed_mbs": 1001.93,
+      "decompress_speed_mbs": 1991.55,
+      "compress_latency_us": 998.07,
+      "decompress_latency_us": 502.12
+    }
+  }
+}
