@@ -7,6 +7,7 @@ RUN dnf update -y \
     python3-docutils zlib-devel json-c-devel libuuid-devel  \
     libgcrypt-devel libfastjson-devel libestr-devel  \
     libcurl-devel mysql-devel protobuf-c-compiler protobuf-c-devel snappy-devel \
+    libyaml-devel diffutils \
     && dnf clean all \
     && rm -rf /var/cache/dnf
 
