@@ -33,3 +33,4 @@ images:
   ovirt-engine: ovirt-engine
   openvelinux: openvelinux
   cloudwego: cloudwego
+  kata-containers: kata-containers
