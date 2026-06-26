@@ -1,0 +1,106 @@
+{
+  "benchmark": "micro_operations",
+  "description": "Micro-level benchmarks for core hnswlib operations on ARM64",
+  "reference": "hnswlib library (https://github.com/nmslib/hnswlib)",
+  "timestamp": "2026-06-26T14:20:54.939669",
+  "performance_metrics": {
+    "add_rate": {
+      "unit": "vectors/sec",
+      "description": "Vector insertion rate into HNSW index"
+    },
+    "search_qps": {
+      "unit": "queries/sec",
+      "description": "Batch search throughput at different thread counts"
+    },
+    "recall": {
+      "unit": "ratio (0-1)",
+      "description": "Search accuracy at different ef_search values"
+    },
+    "serialization_time": {
+      "unit": "seconds",
+      "description": "Index save/load time"
+    }
+  },
+  "dataset_info": {
+    "name": "synthetic_random_float32",
+    "size": "10K vectors x 128 dimensions",
+    "source": "numpy random uniform distribution"
+  },
+  "parameters": {
+    "num_vectors": 10000,
+    "dimension": 128,
+    "iterations": 1
+  },
+  "results": {
+    "index_construction": {
+      "avg_time_s": 0.6804,
+      "add_rate_per_sec": 14696.88
+    },
+    "incremental_insert": {
+      "avg_time_s": 0.7049,
+      "add_rate_per_sec": 14185.55
+    },
+    "batch_search_multithread": {
+      "threads_1": {
+        "avg_time_s": 0.8323,
+        "avg_qps": 1201.56
+      },
+      "threads_2": {
+        "avg_time_s": 0.4157,
+        "avg_qps": 2405.38
+      },
+      "threads_4": {
+        "avg_time_s": 0.2217,
+        "avg_qps": 4510.54
+      },
+      "threads_8": {
+        "avg_time_s": 0.1089,
+        "avg_qps": 9186.27
+      },
+      "threads_all": {
+        "avg_time_s": 0.0302,
+        "avg_qps": 33114.41
+      }
+    },
+    "serialization_save_load": {
+      "avg_save_time_s": 0.0065,
+      "avg_load_time_s": 0.0147,
+      "avg_file_size_bytes": 6606132
+    },
+    "pickle_serialization": {
+      "avg_pickle_time_s": 0.0106,
+      "avg_unpickle_time_s": 0.0074,
+      "avg_pickle_size_bytes": 6726976
+    },
+    "ef_parameter_sweep": {
+      "ef_10": {
+        "avg_qps": 91305.57,
+        "avg_recall": 0.2655
+      },
+      "ef_20": {
+        "avg_qps": 83103.25,
+        "avg_recall": 0.4109
+      },
+      "ef_50": {
+        "avg_qps": 47186.92,
+        "avg_recall": 0.654
+      },
+      "ef_100": {
+        "avg_qps": 33588.29,
+        "avg_recall": 0.8298
+      },
+      "ef_200": {
+        "avg_qps": 19582.99,
+        "avg_recall": 0.9406
+      },
+      "ef_500": {
+        "avg_qps": 11551.76,
+        "avg_recall": 0.9934
+      },
+      "ef_1000": {
+        "avg_qps": 8435.59,
+        "avg_recall": 0.9995
+      }
+    }
+  }
+}

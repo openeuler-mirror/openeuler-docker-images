@@ -1,0 +1,107 @@
+[START] hnswlib Performance Benchmark v0.7.0
+[CHECK] Python3 OK: Python 3.12.3
+[CHECK] json_helper.py OK
+[SETUP] Downloading shUnit2 to /tmp/shunit2_wuF0OC...
+[START] hnswlib Performance Benchmark - v0.7.0 (pip)
+[START] OS: openEuler 24.03 SP3 (ubuntu), Build: pip
+[CHECK] Python3 OK: Python 3.12.3
+[CHECK] json_helper.py OK
+[PHASE1] === Phase 1: Install hnswlib v0.7.0 (method: pip) ===
+[PHASE1] Installing hnswlib==0.7.0 via pip...
+DEPRECATION: Loading egg at /usr/local/lib/python3.12/dist-packages/cloud_init-19.1-py3.12.egg is deprecated. pip 24.3 will enforce this behaviour change. A possible replacement is to use pip for package installation.. Discussion can be found at https://github.com/pypa/pip/issues/12330
+Collecting hnswlib==0.7.0
+  Downloading hnswlib-0.7.0.tar.gz (33 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Requirement already satisfied: numpy in /usr/local/lib/python3.12/dist-packages (from hnswlib==0.7.0) (2.5.0)
+Building wheels for collected packages: hnswlib
+  Building wheel for hnswlib (pyproject.toml): started
+  Building wheel for hnswlib (pyproject.toml): finished with status 'done'
+  Created wheel for hnswlib: filename=hnswlib-0.7.0-cp312-cp312-linux_aarch64.whl size=2423684 sha256=6f41e2bd4b9d12694f4ab4c8676c92501bed5b36f4045ee6c751ace5d476f7ad
+  Stored in directory: /root/.cache/pip/wheels/03/84/4a/4010d64dd2981ae63fd795704f799863e46bf0c4f3d4f7e90e
+Successfully built hnswlib
+Installing collected packages: hnswlib
+Successfully installed hnswlib-0.7.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+[PHASE1] hnswlib v0.7.0 installed successfully (pip)
+[PHASE2] === Phase 2: Collect Version Info ===
+[PHASE2] Version info saved (OS: openEuler 24.03 SP3)
+[PHASE3] === Phase 3: Run Benchmarks ===
+[PHASE3A] Running ANN benchmark...
+[ANN] Preparing data for HNSW_L2_M16_ef200 (space=l2)...
+[ANN] Computing ground truth for space=l2...
+[ANN] Benchmarking HNSW_L2_M16_ef200: HNSW L2 index, M=16 (default), ef_construction=200
+[ANN] HNSW_L2_M16_ef200 iteration 1/1
+[ANN] Preparing data for HNSW_L2_M32_ef200 (space=l2)...
+[ANN] Computing ground truth for space=l2...
+[ANN] Benchmarking HNSW_L2_M32_ef200: HNSW L2 index, M=32 (higher connectivity), ef_construction=200
+[ANN] HNSW_L2_M32_ef200 iteration 1/1
+[ANN] Preparing data for HNSW_L2_M64_ef200 (space=l2)...
+[ANN] Computing ground truth for space=l2...
+[ANN] Benchmarking HNSW_L2_M64_ef200: HNSW L2 index, M=64 (max connectivity), ef_construction=200
+[ANN] HNSW_L2_M64_ef200 iteration 1/1
+[ANN] Preparing data for HNSW_Cosine_M16_ef200 (space=cosine)...
+[ANN] Computing ground truth for space=cosine...
+[ANN] Benchmarking HNSW_Cosine_M16_ef200: HNSW Cosine index, M=16, ef_construction=200
+[ANN] HNSW_Cosine_M16_ef200 iteration 1/1
+[ANN] Preparing data for HNSW_IP_M16_ef200 (space=ip)...
+[ANN] Computing ground truth for space=ip...
+[ANN] Benchmarking HNSW_IP_M16_ef200: HNSW Inner Product index, M=16, ef_construction=200
+[ANN] HNSW_IP_M16_ef200 iteration 1/1
+[ANN] Results saved to: /root/tantian/Tian/test/hnswlib/results/0.7.0/benchmark_ann.json
+[ANN] HNSW_L2_M16_ef200: Build=0.6792s, Size=6606132B
+[ANN]   ef=10: QPS=106820.43, Recall@10=0.2712
+[ANN]   ef=50: QPS=46618.4, Recall@10=0.648
+[ANN]   ef=100: QPS=33091.94, Recall@10=0.8217
+[ANN]   ef=200: QPS=19343.3, Recall@10=0.9437
+[ANN]   ef=500: QPS=11204.71, Recall@10=0.9932
+[ANN] HNSW_L2_M32_ef200: Build=0.8908s, Size=7881016B
+[ANN]   ef=10: QPS=78007.44, Recall@10=0.3989
+[ANN]   ef=50: QPS=32628.56, Recall@10=0.818
+[ANN]   ef=100: QPS=20740.27, Recall@10=0.9479
+[ANN]   ef=200: QPS=13444.36, Recall@10=0.9915
+[ANN]   ef=500: QPS=8645.07, Recall@10=0.9998
+[ANN] HNSW_L2_M64_ef200: Build=0.7608s, Size=10439356B
+[ANN]   ef=10: QPS=57639.4, Recall@10=0.527
+[ANN]   ef=50: QPS=22299.57, Recall@10=0.9093
+[ANN]   ef=100: QPS=14910.01, Recall@10=0.9816
+[ANN]   ef=200: QPS=10714.95, Recall@10=0.9984
+[ANN]   ef=500: QPS=7760.22, Recall@10=1.0
+[ANN] HNSW_Cosine_M16_ef200: Build=0.5443s, Size=6606132B
+[ANN]   ef=10: QPS=136006.49, Recall@10=0.3032
+[ANN]   ef=50: QPS=63721.92, Recall@10=0.685
+[ANN]   ef=100: QPS=38778.7, Recall@10=0.8458
+[ANN]   ef=200: QPS=24752.17, Recall@10=0.9496
+[ANN]   ef=500: QPS=14139.99, Recall@10=0.9948
+[ANN] HNSW_IP_M16_ef200: Build=0.4731s, Size=6606132B
+[ANN]   ef=10: QPS=166249.32, Recall@10=0.8262
+[ANN]   ef=50: QPS=99414.65, Recall@10=0.9735
+[ANN]   ef=100: QPS=68101.51, Recall@10=0.9876
+[ANN]   ef=200: QPS=41397.83, Recall@10=0.9954
+[ANN]   ef=500: QPS=23478.17, Recall@10=0.998
+[ANN] Benchmark complete
+[PHASE3B] Running micro benchmark...
+[MICRO] Generating 10000 vectors of dimension 128...
+[MICRO] Running index_construction...
+[MICRO] Running incremental_insert...
+[MICRO] Running batch_search_multithread...
+[MICRO] Running serialization_save_load...
+[MICRO] Running pickle_serialization...
+[MICRO] Running ef_parameter_sweep...
+[MICRO] Results saved to: /root/tantian/Tian/test/hnswlib/results/0.7.0/micro_benchmark.json
+[MICRO] index_construction: {'avg_time_s': 0.6747, 'add_rate_per_sec': 14820.6}
+[MICRO] incremental_insert: {'avg_time_s': 0.6998, 'add_rate_per_sec': 14290.55}
+[MICRO] batch_search_multithread: {'threads_1': {'avg_time_s': 0.9355, 'avg_qps': 1068.93}, 'threads_2': {'avg_time_s': 0.4438, 'avg_qps': 2253.04}, 'threads_4': {'avg_time_s': 0.2258, 'avg_qps': 4428.39}, 'threads_8': {'avg_time_s': 0.117, 'avg_qps': 8549.02}, 'threads_all': {'avg_time_s': 0.0301, 'avg_qps': 33241.17}}
+[MICRO] serialization_save_load: {'avg_save_time_s': 0.0065, 'avg_load_time_s': 0.0266, 'avg_file_size_bytes': 6606132}
+[MICRO] pickle_serialization: {'avg_pickle_time_s': 0.016, 'avg_unpickle_time_s': 0.0074, 'avg_pickle_size_bytes': 6727044}
+[MICRO] ef_parameter_sweep: {'ef_10': {'avg_qps': 74688.89, 'avg_recall': 0.2739}, 'ef_20': {'avg_qps': 81154.42, 'avg_recall': 0.4155}, 'ef_50': {'avg_qps': 53597.22, 'avg_recall': 0.6558}, 'ef_100': {'avg_qps': 32652.7, 'avg_recall': 0.8316}, 'ef_200': {'avg_qps': 19915.88, 'avg_recall': 0.9422}, 'ef_500': {'avg_qps': 11220.96, 'avg_recall': 0.9937}, 'ef_1000': {'avg_qps': 7900.56, 'avg_recall': 0.9995}}
+[MICRO] Benchmark complete
+[PHASE4] === Phase 4: Aggregate & Report ===
+[PHASE4] Reports generated:
+[PHASE4]   JSON: /root/tantian/Tian/test/hnswlib/results/0.7.0/results.json
+[PHASE4]   TXT:  /root/tantian/Tian/test/hnswlib/results/0.7.0/results.txt
+[PHASE4]   LOG:  /root/tantian/Tian/test/hnswlib/results/0.7.0/results.log
