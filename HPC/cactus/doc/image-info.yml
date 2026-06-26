@@ -1,0 +1,56 @@
+name: cactus
+category: hpc
+description: Cactus 是一个无需参考基因组的全基因组比对程序，也是一个泛基因组图构建工具包。支持不同物种基因组的渐进式比对，以及用于同一物种基因组比对的 Minigraph-Cactus 泛基因组流程。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  cactus镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[3.2.1-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/cactus/3.2.1/24.03-lts-sp3/Dockerfile) | cactus 3.2.1 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/cactus:{Tag}
+  ```
+
+usage: |
+  本镜像提供 Cactus 全基因组比对和泛基因组图构建工具包。
+
+  - 运行 Progressive Cactus 比对不同物种的基因组：
+    ```
+    docker run -it --rm -v $(pwd):/data -w /data openeuler/cactus:{Tag} cactus jobStore seqFile output.hal
+    ```
+
+  - 运行 Minigraph-Cactus 泛基因组流程：
+    ```
+    docker run -it --rm -v $(pwd):/data -w /data openeuler/cactus:{Tag} cactus-pangenome jobStore seqFile output.gfa
+    ```
+
+  - 将 HAL 格式转换为 MAF 格式：
+    ```
+    docker run -it --rm -v $(pwd):/data -w /data openeuler/cactus:{Tag} cactus-hal2maf jobStore input.hal output.maf
+    ```
+
+license: MIT
+similar_packages:
+  - MUMmer: DNA 序列快速比对工具
+  - LASTZ: BLAST 类基因组比对工具
+  - minimap2: 长读序列比对工具
+  - Mauve: 多基因组比对工具
+
+dependency:
+  -
+
+homepage: https://github.com/ComparativeGenomicsToolkit/cactus
+upstream:
+  backend: GitHub
+  version_url: ComparativeGenomicsToolkit/cactus
+  version_prefix: v
+  version_filter: alpha;rc;candidate;beta;pre
+  version_scheme: RPM
