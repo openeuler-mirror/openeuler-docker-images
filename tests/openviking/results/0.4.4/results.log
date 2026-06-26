@@ -1,0 +1,37 @@
+[START] openviking Source Build & Performance Benchmark v0.4.4
+[CHECK] Python3 OK: Python 3.12.3
+[CHECK] Cargo OK: cargo 1.75.0
+[CHECK] CMake OK: cmake version 4.3.4
+[CHECK] GCC OK: gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+[CHECK] Git OK: git version 2.43.0
+[CHECK] json_helper.py OK
+[CHECK] OS: openEuler 24.03 SP3 (ubuntu)
+[CHECK] Architecture: aarch64
+[CHECK] Build method: pip
+[SETUP] Downloading shUnit2 to /tmp/shunit2_jCXpbp...
+[SETUP] shUnit2 downloaded successfully
+[START] openviking Source Build & Performance Benchmark - v0.4.4
+[START] OS: openEuler 24.03 SP3 (ubuntu), Build: pip
+[CHECK] Python3 OK: Python 3.12.3
+[CHECK] Cargo OK: cargo 1.75.0
+[CHECK] CMake OK: cmake version 4.3.4
+[CHECK] GCC OK: gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+[CHECK] Git OK: git version 2.43.0
+[CHECK] json_helper.py OK
+[CHECK] OS: openEuler 24.03 SP3 (ubuntu)
+[CHECK] Architecture: aarch64
+[CHECK] Build method: pip
+[PHASE1] === Phase 1: Install OpenViking v0.4.4 (pip) ===
+[PHASE1] OpenViking already importable, skipping install
+[PHASE2] === Phase 2: Collect Version Info ===
+[PHASE2] Version info saved (OS: openEuler 24.03 SP3, GCC: 13.3.0)
+[PHASE3] === Phase 3: Run Benchmarks ===
+[PHASE3A] Running context filesystem benchmark...
+[BENCHMARK_CONTEXT] Output written to /root/tantian/Tian/test/openviking/results/0.4.4/benchmark_context.json
+[PHASE3B] Running micro benchmark...
+[BENCHMARK_MICRO] Output written to /root/tantian/Tian/test/openviking/results/0.4.4/micro_benchmark.json
+[PHASE4] === Phase 4: Aggregate & Report ===
+[PHASE4] Reports generated:
+[PHASE4]   JSON: /root/tantian/Tian/test/openviking/results/0.4.4/results.json
+[PHASE4]   TXT:  /root/tantian/Tian/test/openviking/results/0.4.4/results.txt
+[PHASE4]   LOG:  /root/tantian/Tian/test/openviking/results/0.4.4/results.log
