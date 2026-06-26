@@ -1,0 +1,61 @@
+name: cufflinks
+category: hpc
+description: Cufflinks 用于组装转录本、估计丰度以及检测 RNA-Seq 样本中的差异表达和调控。它接受比对的 RNA-Seq 读数，并将比对结果组装成一组简洁的转录本，然后根据支持每个转录本的读数数量来估计其相对丰度。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  cufflinks镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[2.2.1-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/cufflinks/2.2.1/24.03-lts-sp3/Dockerfile) | cufflinks 2.2.1 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/cufflinks:{Tag}
+  ```
+
+usage: |
+  本镜像提供 Cufflinks 工具套件，用于转录组组装和差异表达分析。
+
+  - 对比对后的 RNA-Seq 数据运行 cufflinks：
+    ```
+    docker run -it --rm -v $(pwd):/data -w /data openeuler/cufflinks:{Tag} cufflinks -o output_dir accepted_hits.bam
+    ```
+
+  - 运行 cuffdiff 进行差异表达分析：
+    ```
+    docker run -it --rm -v $(pwd):/data -w /data openeuler/cufflinks:{Tag} cuffdiff -o diff_output transcripts.gtf sample1.bam sample2.bam
+    ```
+
+  - 镜像中提供的其他工具：
+    ```
+    cuffcompare  — 将组装转录本与参考注释进行比较
+    cuffmerge    — 合并组装的转录本
+    cuffnorm     — 归一化表达水平
+    cuffquant    — 定量表达水平
+    gffread      — 转换 GFF/GTF 文件
+    gtf_to_sam   — 将 GTF 转换为 SAM 格式
+    ```
+
+license: BSL-1.0
+similar_packages:
+  - StringTie: 高效转录本组装和定量工具
+  - Salmon: RNA-Seq 快速定量工具
+  - kallisto: 快速转录本定量工具
+  - HTSeq: Python 高通量测序分析框架
+
+dependency:
+  -
+
+homepage: https://github.com/cole-trapnell-lab/cufflinks
+upstream:
+  backend: GitHub
+  version_url: cole-trapnell-lab/cufflinks
+  version_prefix: v
+  version_filter: alpha;rc;candidate;beta;pre
+  version_scheme: RPM
