@@ -1,0 +1,60 @@
+name: tophat
+category: hpc
+description: TopHat 是一个用于 RNA-Seq 读数的快速剪接连接映射工具。它使用超高通量短读比对工具 Bowtie 将 RNA-Seq 读数比对到哺乳动物大小的基因组，然后分析映射结果以识别外显子之间的剪接连接。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  tophat镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[2.1.2-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/tophat/2.1.2/24.03-lts-sp3/Dockerfile) | tophat 2.1.2 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/tophat:{Tag}
+  ```
+
+usage: |
+  本镜像提供 TopHat 剪接读映射工具，用于 RNA-Seq 比对。
+
+  - 将 RNA-Seq 读数比对到参考基因组：
+    ```
+    docker run -it --rm -v $(pwd):/data -w /data openeuler/tophat:{Tag} tophat2 -o output_dir reference_genome reads.fastq
+    ```
+
+  - 使用双端读数运行：
+    ```
+    docker run -it --rm -v $(pwd):/data -w /data openeuler/tophat:{Tag} tophat2 -o output_dir reference_genome reads_1.fastq reads_2.fastq
+    ```
+
+  - 其他可用工具：
+    ```
+    bam2fastx    — 将 BAM 转换为 FASTQ/FASTA
+    bam_merge    — 合并 BAM 文件
+    gtf_to_fasta — 将 GTF 转换为 FASTA
+    gtf_juncs    — 从 GTF 提取剪接连接
+    prep_reads   — 准备比对读数
+    ```
+
+license: BSL-1.0
+similar_packages:
+  - HISAT2: 高效 RNA-Seq 比对工具，为 TopHat 的后续版本
+  - STAR: 快速 RNA-Seq 比对工具
+  - Bowtie2: 快速短读比对工具
+  - BWA: Burrows-Wheeler 比对工具
+
+dependency:
+  -
+
+homepage: https://github.com/DaehwanKimLab/tophat
+upstream:
+  backend: GitHub
+  version_url: DaehwanKimLab/tophat
+  version_prefix: v
+  version_filter: alpha;rc;candidate;beta;pre
+  version_scheme: RPM
