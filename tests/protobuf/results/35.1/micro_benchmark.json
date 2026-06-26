@@ -1,0 +1,126 @@
+{
+  "benchmark": "micro_operations",
+  "description": "Micro-level benchmarks for core protobuf serialization/deserialization operations on ARM64",
+  "reference": "protobuf library (https://github.com/protocolbuffers/protobuf)",
+  "timestamp": "2026-06-26T17:05:25.974105",
+  "performance_metrics": {
+    "serialize_qps": {
+      "unit": "messages/sec",
+      "description": "Message serialization throughput"
+    },
+    "deserialize_qps": {
+      "unit": "messages/sec",
+      "description": "Message deserialization throughput"
+    },
+    "latency": {
+      "unit": "microseconds",
+      "description": "Per-message latency for serialization/deserialization"
+    },
+    "fidelity": {
+      "unit": "ratio (0-1)",
+      "description": "Deserialized message matches original"
+    }
+  },
+  "parameters": {
+    "num_messages": 1000,
+    "iterations": 1,
+    "use_fallback_types": false
+  },
+  "results": {
+    "single_serialize": {
+      "avg_time_s": 0.000536,
+      "serialize_qps": 1864135.11,
+      "avg_latency_us": 0.5364
+    },
+    "single_deserialize": {
+      "avg_time_s": 0.001143,
+      "deserialize_qps": 875272.12,
+      "avg_latency_us": 1.1425
+    },
+    "multithread_serialize": {
+      "threads_1": {
+        "avg_time_s": 0.001247,
+        "avg_qps": 802123.54
+      },
+      "threads_2": {
+        "avg_time_s": 0.001047,
+        "avg_qps": 954987.25
+      },
+      "threads_4": {
+        "avg_time_s": 0.001291,
+        "avg_qps": 774857.57
+      },
+      "threads_8": {
+        "avg_time_s": 0.001859,
+        "avg_qps": 537938.18
+      },
+      "threads_all": {
+        "avg_time_s": 0.006041,
+        "avg_qps": 529730.15
+      }
+    },
+    "multithread_deserialize": {
+      "threads_1": {
+        "avg_time_s": 0.002105,
+        "avg_qps": 475167.55
+      },
+      "threads_2": {
+        "avg_time_s": 0.002162,
+        "avg_qps": 462437.05
+      },
+      "threads_4": {
+        "avg_time_s": 0.002686,
+        "avg_qps": 372330.58
+      },
+      "threads_8": {
+        "avg_time_s": 0.003193,
+        "avg_qps": 313218.13
+      },
+      "threads_all": {
+        "avg_time_s": 0.0107,
+        "avg_qps": 299052.45
+      }
+    },
+    "json_serialization": {
+      "binary_serialize": {
+        "avg_time_s": 0.000539,
+        "avg_qps": 1855886.73
+      },
+      "json_serialize": {
+        "avg_time_s": 0.033179,
+        "avg_qps": 30139.72
+      },
+      "binary_size_bytes": 23,
+      "json_size_bytes": 73,
+      "size_ratio": 3.17
+    },
+    "large_message": {
+      "avg_serialize_time_s": 1.1e-05,
+      "avg_deserialize_time_s": 1.4e-05,
+      "serialize_qps": 197174.88,
+      "avg_message_size_bytes": 1799
+    },
+    "size_parameter_sweep": {
+      "size_10": {
+        "avg_serialize_qps": 1942706.81,
+        "avg_deserialize_qps": 868206.17
+      },
+      "size_50": {
+        "avg_serialize_qps": 1773490.06,
+        "avg_deserialize_qps": 643199.51
+      },
+      "size_100": {
+        "avg_serialize_qps": 1519675.36,
+        "avg_deserialize_qps": 522394.32
+      },
+      "size_500": {
+        "avg_serialize_qps": 323160.8,
+        "avg_deserialize_qps": 186066.19
+      },
+      "size_1000": {
+        "avg_serialize_qps": 168873.21,
+        "avg_deserialize_qps": 106787.79
+      }
+    }
+  }
+}

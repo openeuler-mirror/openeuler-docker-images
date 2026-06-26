@@ -1,0 +1,13 @@
+{
+  "test_time": "2026-06-26T09:05:24Z",
+  "Model": "Kunpeng-920",
+  "architecture": "aarch64",
+  "kernel": "6.8.0-87-generic",
+  "os": "openEuler 24.03 SP3",
+  "cpu_model": "ARM64 CPU (32 cores)",
+  "cpu_cores": 32,
+  "software_name": "protobuf",
+  "software_version": "35.1",
+  "python_version": "Python 3.12.3",
+  "numpy_version": "2.5.0"
+}

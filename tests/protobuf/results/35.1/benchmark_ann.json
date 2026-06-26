@@ -1,0 +1,388 @@
+{
+  "benchmark": "serialization_search",
+  "description": "protobuf serialization/deserialization benchmark measuring throughput, latency, and fidelity",
+  "reference": "https://github.com/protocolbuffers/protobuf",
+  "timestamp": "2026-06-26T17:05:25.637439",
+  "performance_metrics": {
+    "serialize_qps": {
+      "unit": "messages/sec",
+      "description": "Serialization throughput (messages per second)"
+    },
+    "deserialize_qps": {
+      "unit": "messages/sec",
+      "description": "Deserialization throughput (messages per second)"
+    },
+    "serialize_latency": {
+      "unit": "microseconds",
+      "description": "Average latency per message serialization"
+    },
+    "deserialize_latency": {
+      "unit": "microseconds",
+      "description": "Average latency per message deserialization"
+    },
+    "serialized_size": {
+      "unit": "bytes",
+      "description": "Binary serialized message size"
+    },
+    "fidelity": {
+      "unit": "ratio (0-1)",
+      "description": "Deserialized message matches original (1.0 = perfect fidelity)"
+    }
+  },
+  "parameters": {
+    "num_messages": 1000,
+    "iterations": 1,
+    "size_values": [
+      10,
+      50,
+      100,
+      500,
+      1000
+    ],
+    "message_configs": {
+      "SimpleMessage": {
+        "description": "Simple message with 4 scalar fields (int32, string, float, bool)",
+        "has_repeated": false,
+        "has_nested": false
+      },
+      "RepeatedInt32": {
+        "description": "Message with repeated int32 field",
+        "has_repeated": true,
+        "has_nested": false,
+        "repeated_field": "values"
+      },
+      "RepeatedString": {
+        "description": "Message with repeated string field",
+        "has_repeated": true,
+        "has_nested": false,
+        "repeated_field": "items"
+      },
+      "NestedMessage": {
+        "description": "Message with nested sub-message and repeated nested fields",
+        "has_repeated": true,
+        "has_nested": true,
+        "repeated_field": "subs"
+      },
+      "LargeMessage": {
+        "description": "Large message with mixed scalar, repeated, and nested fields",
+        "has_repeated": true,
+        "has_nested": true,
+        "repeated_field": "values"
+      }
+    }
+  },
+  "results_summary": {
+    "SimpleMessage": {
+      "avg_serialize_time_s": 0.000629,
+      "avg_deserialize_time_s": 0.001094,
+      "avg_serialized_size_bytes": 28,
+      "avg_size_sweep": {
+        "10": {
+          "serialize_qps": 1842840.07,
+          "deserialize_qps": 890321.38,
+          "serialize_latency_us": 0.5426,
+          "deserialize_latency_us": 1.1232,
+          "serialized_size_bytes": 28,
+          "fidelity": 1.0
+        },
+        "50": {
+          "serialize_qps": 1988764.34,
+          "deserialize_qps": 881156.3,
+          "serialize_latency_us": 0.5028,
+          "deserialize_latency_us": 1.1349,
+          "serialized_size_bytes": 28,
+          "fidelity": 1.0
+        },
+        "100": {
+          "serialize_qps": 1927529.41,
+          "deserialize_qps": 864983.3,
+          "serialize_latency_us": 0.5188,
+          "deserialize_latency_us": 1.1561,
+          "serialized_size_bytes": 28,
+          "fidelity": 1.0
+        },
+        "500": {
+          "serialize_qps": 1939114.19,
+          "deserialize_qps": 879124.71,
+          "serialize_latency_us": 0.5157,
+          "deserialize_latency_us": 1.1375,
+          "serialized_size_bytes": 28,
+          "fidelity": 1.0
+        },
+        "1000": {
+          "serialize_qps": 2049000.49,
+          "deserialize_qps": 868206.17,
+          "serialize_latency_us": 0.488,
+          "deserialize_latency_us": 1.1518,
+          "serialized_size_bytes": 28,
+          "fidelity": 1.0
+        }
+      }
+    },
+    "RepeatedInt32": {
+      "avg_serialize_time_s": 0.000726,
+      "avg_deserialize_time_s": 0.001796,
+      "avg_serialized_size_bytes": 102,
+      "avg_size_sweep": {
+        "10": {
+          "serialize_qps": 1898734.27,
+          "deserialize_qps": 859136.42,
+          "serialize_latency_us": 0.5267,
+          "deserialize_latency_us": 1.164,
+          "serialized_size_bytes": 12,
+          "fidelity": 1.0
+        },
+        "50": {
+          "serialize_qps": 1783292.52,
+          "deserialize_qps": 635885.99,
+          "serialize_latency_us": 0.5608,
+          "deserialize_latency_us": 1.5726,
+          "serialized_size_bytes": 52,
+          "fidelity": 1.0
+        },
+        "100": {
+          "serialize_qps": 1554021.49,
+          "deserialize_qps": 537662.35,
+          "serialize_latency_us": 0.6435,
+          "deserialize_latency_us": 1.8599,
+          "serialized_size_bytes": 102,
+          "fidelity": 1.0
+        },
+        "500": {
+          "serialize_qps": 323859.47,
+          "deserialize_qps": 190174.74,
+          "serialize_latency_us": 3.0878,
+          "deserialize_latency_us": 5.2583,
+          "serialized_size_bytes": 875,
+          "fidelity": 1.0
+        },
+        "1000": {
+          "serialize_qps": 168432.42,
+          "deserialize_qps": 105671.27,
+          "serialize_latency_us": 5.9371,
+          "deserialize_latency_us": 9.4633,
+          "serialized_size_bytes": 1875,
+          "fidelity": 1.0
+        }
+      }
+    },
+    "RepeatedString": {
+      "avg_serialize_time_s": 0.002387,
+      "avg_deserialize_time_s": 0.004149,
+      "avg_serialized_size_bytes": 890,
+      "avg_size_sweep": {
+        "10": {
+          "serialize_qps": 1741820.6,
+          "deserialize_qps": 720670.79,
+          "serialize_latency_us": 0.5741,
+          "deserialize_latency_us": 1.3876,
+          "serialized_size_bytes": 80,
+          "fidelity": 1.0
+        },
+        "50": {
+          "serialize_qps": 973156.38,
+          "deserialize_qps": 361297.61,
+          "serialize_latency_us": 1.0276,
+          "deserialize_latency_us": 2.7678,
+          "serialized_size_bytes": 440,
+          "fidelity": 1.0
+        },
+        "100": {
+          "serialize_qps": 590747.04,
+          "deserialize_qps": 239880.13,
+          "serialize_latency_us": 1.6928,
+          "deserialize_latency_us": 4.1687,
+          "serialized_size_bytes": 890,
+          "fidelity": 1.0
+        },
+        "500": {
+          "serialize_qps": 185703.71,
+          "deserialize_qps": 81731.63,
+          "serialize_latency_us": 5.3849,
+          "deserialize_latency_us": 12.2352,
+          "serialized_size_bytes": 4890,
+          "fidelity": 1.0
+        },
+        "1000": {
+          "serialize_qps": 102395.0,
+          "deserialize_qps": 45434.7,
+          "serialize_latency_us": 9.7661,
+          "deserialize_latency_us": 22.0096,
+          "serialized_size_bytes": 9890,
+          "fidelity": 1.0
+        }
+      }
+    },
+    "NestedMessage": {
+      "avg_serialize_time_s": 0.006136,
+      "avg_deserialize_time_s": 0.007792,
+      "avg_serialized_size_bytes": 2204,
+      "avg_size_sweep": {
+        "10": {
+          "serialize_qps": 1019519.69,
+          "deserialize_qps": 515650.85,
+          "serialize_latency_us": 0.9809,
+          "deserialize_latency_us": 1.9393,
+          "serialized_size_bytes": 224,
+          "fidelity": 1.0
+        },
+        "50": {
+          "serialize_qps": 318595.06,
+          "deserialize_qps": 215911.87,
+          "serialize_latency_us": 3.1388,
+          "deserialize_latency_us": 4.6315,
+          "serialized_size_bytes": 1104,
+          "fidelity": 1.0
+        },
+        "100": {
+          "serialize_qps": 190788.94,
+          "deserialize_qps": 129449.83,
+          "serialize_latency_us": 5.2414,
+          "deserialize_latency_us": 7.725,
+          "serialized_size_bytes": 2204,
+          "fidelity": 1.0
+        },
+        "500": {
+          "serialize_qps": 42919.02,
+          "deserialize_qps": 31004.15,
+          "serialize_latency_us": 23.2997,
+          "deserialize_latency_us": 32.2537,
+          "serialized_size_bytes": 11776,
+          "fidelity": 1.0
+        },
+        "1000": {
+          "serialize_qps": 21588.41,
+          "deserialize_qps": 15960.18,
+          "serialize_latency_us": 46.3212,
+          "deserialize_latency_us": 62.6559,
+          "serialized_size_bytes": 23776,
+          "fidelity": 1.0
+        }
+      }
+    },
+    "LargeMessage": {
+      "avg_serialize_time_s": 0.001551,
+      "avg_deserialize_time_s": 0.002765,
+      "avg_serialized_size_bytes": 304,
+      "avg_size_sweep": {
+        "10": {
+          "serialize_qps": 873813.33,
+          "deserialize_qps": 503155.47,
+          "serialize_latency_us": 1.1444,
+          "deserialize_latency_us": 1.9875,
+          "serialized_size_bytes": 214,
+          "fidelity": 1.0
+        },
+        "50": {
+          "serialize_qps": 877285.92,
+          "deserialize_qps": 371703.65,
+          "serialize_latency_us": 1.1399,
+          "deserialize_latency_us": 2.6903,
+          "serialized_size_bytes": 254,
+          "fidelity": 1.0
+        },
+        "100": {
+          "serialize_qps": 818560.5,
+          "deserialize_qps": 352551.4,
+          "serialize_latency_us": 1.2217,
+          "deserialize_latency_us": 2.8365,
+          "serialized_size_bytes": 304,
+          "fidelity": 1.0
+        },
+        "500": {
+          "serialize_qps": 261002.12,
+          "deserialize_qps": 164792.71,
+          "serialize_latency_us": 3.8314,
+          "deserialize_latency_us": 6.0682,
+          "serialized_size_bytes": 1077,
+          "fidelity": 1.0
+        },
+        "1000": {
+          "serialize_qps": 149136.11,
+          "deserialize_qps": 98025.24,
+          "serialize_latency_us": 6.7053,
+          "deserialize_latency_us": 10.2015,
+          "serialized_size_bytes": 2077,
+          "fidelity": 1.0
+        }
+      }
+    }
+  },
+  "results_detailed": {
+    "SimpleMessage": [
+      {
+        "iteration": 1,
+        "serialize_time_s": 0.000629,
+        "deserialize_time_s": 0.001094,
+        "serialize_qps": 1589956.03,
+        "deserialize_qps": 913990.85,
+        "serialize_latency_us": 0.6289,
+        "deserialize_latency_us": 1.0941,
+        "serialized_size_bytes": 28,
+        "fidelity": 1.0,
+        "size": 100,
+        "num_messages": 1000
+      }
+    ],
+    "RepeatedInt32": [
+      {
+        "iteration": 1,
+        "serialize_time_s": 0.000726,
+        "deserialize_time_s": 0.001796,
+        "serialize_qps": 1378345.05,
+        "deserialize_qps": 556790.65,
+        "serialize_latency_us": 0.7255,
+        "deserialize_latency_us": 1.796,
+        "serialized_size_bytes": 102,
+        "fidelity": 1.0,
+        "size": 100,
+        "num_messages": 1000
+      }
+    ],
+    "RepeatedString": [
+      {
+        "iteration": 1,
+        "serialize_time_s": 0.002387,
+        "deserialize_time_s": 0.004149,
+        "serialize_qps": 418927.69,
+        "deserialize_qps": 241010.4,
+        "serialize_latency_us": 2.387,
+        "deserialize_latency_us": 4.1492,
+        "serialized_size_bytes": 890,
+        "fidelity": 1.0,
+        "size": 100,
+        "num_messages": 1000
+      }
+    ],
+    "NestedMessage": [
+      {
+        "iteration": 1,
+        "serialize_time_s": 0.006136,
+        "deserialize_time_s": 0.007792,
+        "serialize_qps": 162974.2,
+        "deserialize_qps": 128328.97,
+        "serialize_latency_us": 6.1359,
+        "deserialize_latency_us": 7.7925,
+        "serialized_size_bytes": 2204,
+        "fidelity": 1.0,
+        "size": 100,
+        "num_messages": 1000
+      }
+    ],
+    "LargeMessage": [
+      {
+        "iteration": 1,
+        "serialize_time_s": 0.001551,
+        "deserialize_time_s": 0.002765,
+        "serialize_qps": 644880.69,
+        "deserialize_qps": 361640.28,
+        "serialize_latency_us": 1.5507,
+        "deserialize_latency_us": 2.7652,
+        "serialized_size_bytes": 304,
+        "fidelity": 1.0,
+        "size": 100,
+        "num_messages": 1000
+      }
+    ]
+  }
+}
