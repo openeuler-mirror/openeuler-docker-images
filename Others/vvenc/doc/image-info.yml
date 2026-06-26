@@ -1,0 +1,47 @@
+name: vvenc
+category: others
+description: VVenC（Fraunhofer Versatile Video Encoder）是一个快速高效的 H.266/VVC 软件编码器，提供五种预设质量/速度等级、基于 XPSNR 视觉模型的感知优化、帧级和任务级并行化以及支持可变比特率的码率控制。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  vvenc镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.14.0-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/vvenc/1.14.0/24.03-lts-sp3/Dockerfile) | vvenc 1.14.0 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/vvenc:{Tag}
+  ```
+
+usage: |
+  - 查看帮助
+    ```
+    docker run --rm openeuler/vvenc:{Tag} vvencapp --help
+    ```
+
+  - 编码视频文件
+    ```
+    docker run --rm -v $(pwd):/data openeuler/vvenc:{Tag} vvencapp -i /data/input.yuv -s 1920x1080 -o /data/output.266
+    ```
+
+license: BSD-3-Clause-Clear
+similar_packages:
+  - x265: H.265/HEVC 视频编码器
+  - aomedia: AV1 视频编码器
+
+dependency:
+  -
+
+homepage: https://github.com/fraunhoferhhi/vvenc
+upstream:
+  backend: GitHub
+  version_url: fraunhoferhhi/vvenc
+  version_prefix: v
+  version_filter: alpha;rc;candidate;beta;pre
+  version_scheme: RPM
