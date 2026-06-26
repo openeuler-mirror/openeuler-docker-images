@@ -1,16 +1,13 @@
 {
-  "timestamp": "2026-06-23T10:34:30Z",
+  "test_time": "2026-06-26T04:06:33Z",
+  "Model": "Kunpeng-920",
   "architecture": "aarch64",
   "kernel": "6.8.0-87-generic",
-  "os": "Ubuntu 24.04.3 LTS",
+  "os": "openEuler 24.03 SP3",
   "cpu_model": "ARM64 CPU (32 cores)",
   "cpu_cores": 32,
-  "memory_mb": 63876,
   "software_name": "faiss",
   "software_version": "1.14.2",
   "python_version": "Python 3.12.3",
-  "faiss_version": "1.14.3",
-  "numpy_version": "2.5.0",
-  "blas_status": "10",
-  "parallelism": 32
+  "numpy_version": "2.5.0"
 }

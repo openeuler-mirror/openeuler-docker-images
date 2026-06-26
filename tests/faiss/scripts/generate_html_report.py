@@ -68,8 +68,8 @@ def generate_html_report(input_json, output_file):
 
     sections.append(f"""
     <div class="header">
-        <h1>Faiss ARM64 Performance Benchmark Report</h1>
-        <h2>Generated: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')} | Version: {data.get('environment', {}).get('software_version', 'N/A')}</h2>
+        <h1>Faiss Source Build & Performance Benchmark Report</h1>
+        <h2>Generated: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')} | Version: {data.get('environment', {}).get('software_version', 'N/A')} | Build: {data.get('environment', {}).get('build_method', 'source_build')}</h2>
     </div>
     """)
 
@@ -80,7 +80,8 @@ def generate_html_report(input_json, output_file):
                            ("cpu_cores", "CPU Cores"), ("memory_mb", "Memory (MB)"),
                            ("software_version", "Faiss Version"), ("python_version", "Python Version"),
                            ("numpy_version", "NumPy Version"), ("os", "Operating System"),
-                           ("kernel", "Kernel"), ("faiss_version", "Faiss Runtime Version")]:
+                           ("kernel", "Kernel"), ("faiss_version", "Faiss Runtime Version"),
+                           ("build_method", "Build Method"), ("build_os", "Build OS")]:
             rows.append(f"<tr><td>{label}</td><td>{env.get(key, 'N/A')}</td></tr>")
         sections.append(f"""
         <div class="section"><h2>Environment Information</h2>
@@ -171,14 +172,14 @@ def generate_html_report(input_json, output_file):
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Faiss ARM64 Benchmark Report</title>
+    <title>Faiss Source Build & Benchmark Report</title>
     {CSS_TEMPLATE}
 </head>
 <body>
     {"".join(sections)}
     <div class="section">
         <p style="text-align: center; color: #888; font-size: 12px;">
-            Faiss ARM64 Performance Benchmark | Powered by shUnit2 | {datetime.now(timezone.utc).strftime('%Y-%m-%d')}
+            Faiss Source Build & Performance Benchmark | Powered by shUnit2 | {datetime.now(timezone.utc).strftime('%Y-%m-%d')}
         </p>
     </div>
 </body>

@@ -6,8 +6,9 @@
     "reference": "https://github.com/erikbern/ann-benchmarks",
     "software": "faiss",
     "version": "1.14.3",
-    "architecture": "arm64",
-    "timestamp": "2026-06-23T10:34:35Z",
+    "architecture": "aarch64",
+    "build_method": "source_build",
+    "timestamp": "2026-06-26T03:31:07Z",
     "performance_metrics": {
       "qps": {
         "unit": "queries/sec",
@@ -40,95 +41,95 @@
     },
     "results_summary": {
       "FlatL2": {
-        "build_time_s": 0.0314,
+        "build_time_s": 0.0386,
         "train_time_s": 0.0,
-        "add_time_s": 0.0314,
-        "search_time_s": 0.7719,
-        "qps": 1295.59,
-        "latency_per_query_us": 771.85,
+        "add_time_s": 0.0386,
+        "search_time_s": 0.7524,
+        "qps": 1329.09,
+        "latency_per_query_us": 752.39,
         "recall_at_10": 1.0,
         "index_size_bytes": 51200045.0,
         "num_vectors": 100000.0,
         "num_queries": 1000.0,
-        "avg_latency_ms": 0.7719,
-        "avg_throughput_ops_per_sec": 1295.59
+        "avg_latency_ms": 0.7524,
+        "avg_throughput_ops_per_sec": 1329.09
       },
       "IVFFlat": {
-        "build_time_s": 0.6609,
-        "train_time_s": 0.4905,
-        "add_time_s": 0.1705,
-        "search_time_s": 0.0154,
-        "qps": 64761.89,
-        "latency_per_query_us": 15.44,
+        "build_time_s": 0.5148,
+        "train_time_s": 0.3953,
+        "add_time_s": 0.1195,
+        "search_time_s": 0.043,
+        "qps": 23262.01,
+        "latency_per_query_us": 42.99,
         "recall_at_10": 0.0562,
         "index_size_bytes": 52052139.0,
         "num_vectors": 100000.0,
         "num_queries": 1000.0,
-        "avg_latency_ms": 0.0154,
-        "avg_throughput_ops_per_sec": 64761.89
+        "avg_latency_ms": 0.043,
+        "avg_throughput_ops_per_sec": 23262.01
       },
       "HNSWFlat": {
-        "build_time_s": 2.1128,
+        "build_time_s": 2.0943,
         "train_time_s": 0.0,
-        "add_time_s": 2.1128,
-        "search_time_s": 0.012,
-        "qps": 83488.67,
-        "latency_per_query_us": 11.98,
-        "recall_at_10": 0.2009,
+        "add_time_s": 2.0943,
+        "search_time_s": 0.0109,
+        "qps": 91618.7,
+        "latency_per_query_us": 10.91,
+        "recall_at_10": 0.2027,
         "index_size_bytes": 78420834.0,
         "num_vectors": 100000.0,
         "num_queries": 1000.0,
-        "avg_latency_ms": 0.012,
-        "avg_throughput_ops_per_sec": 83488.67
+        "avg_latency_ms": 0.0109,
+        "avg_throughput_ops_per_sec": 91618.7
       }
     },
     "results": [
       {
         "iteration": 1,
-        "build_time_s": 0.0314,
+        "build_time_s": 0.0386,
         "train_time_s": 0,
-        "add_time_s": 0.0314,
-        "search_time_s": 0.771851,
-        "qps": 1295.59,
-        "latency_per_query_us": 771.85,
+        "add_time_s": 0.0386,
+        "search_time_s": 0.752393,
+        "qps": 1329.09,
+        "latency_per_query_us": 752.39,
         "recall_at_10": 1.0,
         "index_size_bytes": 51200045,
         "num_vectors": 100000,
         "num_queries": 1000,
-        "avg_latency_ms": 0.7719,
-        "avg_throughput_ops_per_sec": 1295.59,
+        "avg_latency_ms": 0.7524,
+        "avg_throughput_ops_per_sec": 1329.09,
         "index_name": "FlatL2"
       },
       {
         "iteration": 1,
-        "build_time_s": 0.6609,
-        "train_time_s": 0.4905,
-        "add_time_s": 0.1705,
-        "search_time_s": 0.015441,
-        "qps": 64761.89,
-        "latency_per_query_us": 15.44,
+        "build_time_s": 0.5148,
+        "train_time_s": 0.3953,
+        "add_time_s": 0.1195,
+        "search_time_s": 0.042989,
+        "qps": 23262.01,
+        "latency_per_query_us": 42.99,
         "recall_at_10": 0.0562,
         "index_size_bytes": 52052139,
         "num_vectors": 100000,
         "num_queries": 1000,
-        "avg_latency_ms": 0.0154,
-        "avg_throughput_ops_per_sec": 64761.89,
+        "avg_latency_ms": 0.043,
+        "avg_throughput_ops_per_sec": 23262.01,
         "index_name": "IVFFlat"
       },
       {
         "iteration": 1,
-        "build_time_s": 2.1128,
+        "build_time_s": 2.0943,
         "train_time_s": 0,
-        "add_time_s": 2.1128,
-        "search_time_s": 0.011978,
-        "qps": 83488.67,
-        "latency_per_query_us": 11.98,
-        "recall_at_10": 0.2009,
+        "add_time_s": 2.0943,
+        "search_time_s": 0.010915,
+        "qps": 91618.7,
+        "latency_per_query_us": 10.91,
+        "recall_at_10": 0.2027,
         "index_size_bytes": 78420834,
         "num_vectors": 100000,
         "num_queries": 1000,
-        "avg_latency_ms": 0.012,
-        "avg_throughput_ops_per_sec": 83488.67,
+        "avg_latency_ms": 0.0109,
+        "avg_throughput_ops_per_sec": 91618.7,
         "index_name": "HNSWFlat"
       }
     ]
@@ -139,8 +140,9 @@
     "reference": "Faiss library built-in operations (https://github.com/facebookresearch/faiss)",
     "software": "faiss",
     "version": "1.14.3",
-    "architecture": "arm64",
-    "timestamp": "2026-06-23T10:35:01Z",
+    "architecture": "aarch64",
+    "build_method": "source_build",
+    "timestamp": "2026-06-26T03:31:25Z",
     "performance_metrics": {
       "avg_latency_ms": {
         "unit": "ms",
@@ -165,65 +167,67 @@
       "dimension": 128,
       "iterations": 1
     },
-    "avg_latency_ms": 412.21,
+    "avg_latency_ms": 372.24,
     "results": [
       {
         "test": "kmeans_clustering",
         "description": "K-means clustering on random vectors (100 centroids, 20 iters)",
-        "avg_time_s": 1.2775,
-        "avg_latency_ms": 1277.5
+        "avg_time_s": 0.8987,
+        "avg_latency_ms": 898.7
       },
       {
         "test": "add_vectors_flat",
         "description": "Add vectors to IndexFlatL2 (bulk insertion throughput)",
-        "avg_time_s": 0.0411,
-        "add_rate_per_sec": 2431255.07,
-        "avg_latency_ms": 41.1
+        "avg_time_s": 0.0396,
+        "add_rate_per_sec": 2527298.14,
+        "avg_latency_ms": 39.6
       },
       {
         "test": "search_single_flat",
         "description": "Single query search on IndexFlatL2 (per-query latency)",
-        "avg_latency_us": 2882.25,
-        "avg_latency_ms": 2.8822
+        "avg_latency_us": 2716.83,
+        "avg_latency_ms": 2.7168
       },
       {
         "test": "search_batch_flat",
         "description": "Batch query search on IndexFlatL2 (batch throughput)",
-        "avg_time_s": 0.7695,
-        "avg_qps": 1299.62,
-        "avg_latency_ms": 769.5
+        "avg_time_s": 0.6489,
+        "avg_qps": 1541.11,
+        "avg_latency_ms": 648.9
       },
       {
         "test": "range_search_flat",
         "description": "Range search on IndexFlatL2 (radius-based search)",
-        "avg_time_s": 0.0565,
-        "avg_qps": 1770.48,
-        "avg_latency_ms": 56.5
+        "avg_time_s": 0.0852,
+        "avg_qps": 1174.14,
+        "avg_latency_ms": 85.2
       },
       {
         "test": "pq_encoding",
         "description": "Product Quantization encoding throughput",
-        "avg_time_s": 0.3258,
-        "encode_rate_per_sec": 306975.46,
-        "avg_latency_ms": 325.8
+        "avg_time_s": 0.5583,
+        "encode_rate_per_sec": 179121.67,
+        "avg_latency_ms": 558.3
       }
     ]
   },
   "environment": {
-    "timestamp": "2026-06-23T10:34:30Z",
     "architecture": "aarch64",
     "kernel": "6.8.0-87-generic",
-    "os": "Ubuntu 24.04.3 LTS",
+    "os": "openEuler 24.03 SP3",
     "cpu_model": "ARM64 CPU (32 cores)",
     "cpu_cores": 32,
     "memory_mb": 63876,
     "software_name": "faiss",
-    "software_version": "1.14.2",
+    "software_version": "1.14.3",
     "python_version": "Python 3.12.3",
     "faiss_version": "1.14.3",
     "numpy_version": "2.5.0",
     "blas_status": "10",
-    "parallelism": 32
+    "parallelism": 32,
+    "build_method": "source_build",
+    "build_os": "openEuler 24.03 SP3",
+    "test_time": "2026-06-26T03:31:01Z"
   },
-  "timestamp": "2026-06-23T10:35:01Z"
+  "test_time": "2026-06-26T03:31:25Z"
 }
