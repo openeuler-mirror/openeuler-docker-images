@@ -1,0 +1,42 @@
+name: rabitq-library
+category: others
+description: RaBitQ Library 提供了 RaBitQ 量化算法（1-bit 版本和多 bit 版本）及其在高维向量搜索中应用的高效轻量级实现。核心算法 RaBitQ 基于新加坡南洋理工大学 VectorDB 组的研究，支持欧氏距离、内积和余弦相似度的估计。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  rabitq-library镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[7c2d0d7-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/rabitq-library/7c2d0d7/24.03-lts-sp3/Dockerfile) | rabitq-library 7c2d0d7 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/rabitq-library:{Tag}
+  ```
+
+usage: |
+  在 C++ 项目中通过头文件使用 RaBitQ 库，头文件位于 /usr/local/include/rabitq。
+  ```
+  docker run --rm openeuler/rabitq-library:{Tag} ls /usr/local/include/rabitq/
+  ```
+
+license: Apache-2.0
+similar_packages:
+  - faiss: Facebook AI 的向量相似性搜索库
+  - scann: Google Research 的向量相似性搜索库
+
+dependency:
+  -
+
+homepage: https://github.com/VectorDB-NTU/RaBitQ-Library
+upstream:
+  backend: GitHub
+  version_url: VectorDB-NTU/RaBitQ-Library
+  version_prefix:
+  version_filter: alpha;rc;candidate;beta;pre
+  version_scheme: RPM
