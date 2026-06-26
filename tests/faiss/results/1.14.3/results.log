@@ -1,0 +1,50 @@
+[CHECK] Python3 OK: Python 3.12.3
+[CHECK] NumPy OK: 2.5.0
+[CHECK] Faiss OK: 1.14.3
+[CHECK] CMake OK: cmake version 3.28.3
+[CHECK] OS: openEuler 24.03 SP3 (ubuntu)
+[CHECK] Architecture: aarch64
+[CHECK] Build method: source_build (source build for openEuler 24.03 SP3 compatible)
+[SETUP] Downloading shUnit2 to /tmp/shunit2_JkaWng...
+[SETUP] shUnit2 downloaded successfully
+[START] faiss Source Build & Performance Benchmark - v1.14.3
+[START] Build Method: source_build | OS: openEuler 24.03 SP3 (ubuntu)
+[CHECK] Python3 OK: Python 3.12.3
+[CHECK] NumPy OK: 2.5.0
+[CHECK] Faiss OK: 1.14.3
+[CHECK] CMake OK: cmake version 3.28.3
+[CHECK] OS: openEuler 24.03 SP3 (ubuntu)
+[CHECK] Architecture: aarch64
+[CHECK] Build method: source_build (source build for openEuler 24.03 SP3 compatible)
+[PHASE1] === Phase 1: Source Build FAISS v1.14.3 ===
+[PHASE1] Faiss 1.14.3 already installed, skipping build
+[PHASE2] === Phase 2: Collect Version Info ===
+[PHASE2] Version info saved (OS: openEuler 24.03 SP3, Build: source_build)
+[PHASE3] === Phase 3: Run Benchmarks ===
+[PHASE3A] Running ANN benchmark...
+[ANN] Generating 100000 vectors of dimension 128...
+[ANN] Computing ground truth with IndexFlatL2...
+[ANN] Benchmarking FlatL2: Exact brute-force L2 search
+[ANN] FlatL2 iteration 1/1
+[ANN] Benchmarking IVFFlat: Inverted file with flat L2 quantizer, 100 lists
+[ANN] IVFFlat iteration 1/1
+[ANN] Benchmarking HNSWFlat: HNSW graph-based index, M=32
+[ANN] HNSWFlat iteration 1/1
+[ANN] Results saved to: /root/tantian/Tian/test/faiss/results/1.14.3/benchmark_primary.json
+[ANN] Benchmark complete
+[PHASE3B] Running micro benchmarks
+[MICRO] Generating 100000 vectors of dimension 128...
+[MICRO] Running kmeans_clustering...
+[MICRO] Running add_vectors_flat...
+[MICRO] Running search_single_flat...
+[MICRO] Running search_batch_flat...
+[MICRO] Running range_search_flat...
+[MICRO] Running pq_encoding...
+[MICRO] Results saved to: /root/tantian/Tian/test/faiss/results/1.14.3/micro_benchmark.json
+[MICRO] Benchmark complete
+[PHASE4] === Phase 4: Aggregate & Report ===
+[PHASE4] Reports generated:
+[PHASE4]   JSON: /root/tantian/Tian/test/faiss/results/1.14.3/results.json
+[PHASE4]   TXT:  /root/tantian/Tian/test/faiss/results/1.14.3/results.txt
+[PHASE4]   HTML: /root/tantian/Tian/test/faiss/results/1.14.3/results.html
+[PHASE4]   LOG:  /root/tantian/Tian/test/faiss/results/1.14.3/results.log

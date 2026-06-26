@@ -169,7 +169,8 @@ def main():
         "reference": "https://github.com/erikbern/ann-benchmarks",
         "software": "faiss",
         "version": getattr(faiss, '__version__', 'unknown'),
-        "architecture": "arm64",
+        "architecture": os.environ.get("ARCH", "aarch64"),
+        "build_method": "source_build",
         "timestamp": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "performance_metrics": {
             "qps": {

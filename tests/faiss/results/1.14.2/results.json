@@ -1,0 +1,228 @@
+{
+  "software_name": "faiss",
+  "primary_benchmark": {
+    "benchmark": "ann_search",
+    "description": "Approximate Nearest Neighbor search benchmark following ann-benchmarks methodology",
+    "reference": "https://github.com/erikbern/ann-benchmarks",
+    "software": "faiss",
+    "version": "1.14.2",
+    "architecture": "aarch64",
+    "build_method": "source_build",
+    "timestamp": "2026-06-26T04:06:38Z",
+    "performance_metrics": {
+      "qps": {
+        "unit": "queries/sec",
+        "description": "Queries per second throughput"
+      },
+      "recall_at_k": {
+        "unit": "ratio (0-1)",
+        "description": "Recall@10 - fraction of true nearest neighbors found"
+      },
+      "build_time": {
+        "unit": "seconds",
+        "description": "Total time to train and add vectors to index"
+      },
+      "latency_per_query": {
+        "unit": "microseconds",
+        "description": "Average latency per single query"
+      }
+    },
+    "dataset_info": {
+      "name": "synthetic_random_float32",
+      "size": "100K vectors x 128 dimensions",
+      "source": "numpy random uniform distribution"
+    },
+    "parameters": {
+      "num_vectors": 100000,
+      "dimension": 128,
+      "num_queries": 1000,
+      "k": 10,
+      "iterations": 1
+    },
+    "results_summary": {
+      "FlatL2": {
+        "build_time_s": 0.0353,
+        "train_time_s": 0.0,
+        "add_time_s": 0.0353,
+        "search_time_s": 0.6391,
+        "qps": 1564.65,
+        "latency_per_query_us": 639.12,
+        "recall_at_10": 1.0,
+        "index_size_bytes": 51200045.0,
+        "num_vectors": 100000.0,
+        "num_queries": 1000.0,
+        "avg_latency_ms": 0.6391,
+        "avg_throughput_ops_per_sec": 1564.65
+      },
+      "IVFFlat": {
+        "build_time_s": 0.5092,
+        "train_time_s": 0.3737,
+        "add_time_s": 0.1354,
+        "search_time_s": 0.0461,
+        "qps": 21683.72,
+        "latency_per_query_us": 46.12,
+        "recall_at_10": 0.0562,
+        "index_size_bytes": 52052139.0,
+        "num_vectors": 100000.0,
+        "num_queries": 1000.0,
+        "avg_latency_ms": 0.0461,
+        "avg_throughput_ops_per_sec": 21683.72
+      },
+      "HNSWFlat": {
+        "build_time_s": 2.109,
+        "train_time_s": 0.0,
+        "add_time_s": 2.109,
+        "search_time_s": 0.0093,
+        "qps": 108081.12,
+        "latency_per_query_us": 9.25,
+        "recall_at_10": 0.1931,
+        "index_size_bytes": 78420834.0,
+        "num_vectors": 100000.0,
+        "num_queries": 1000.0,
+        "avg_latency_ms": 0.0093,
+        "avg_throughput_ops_per_sec": 108081.12
+      }
+    },
+    "results": [
+      {
+        "iteration": 1,
+        "build_time_s": 0.0353,
+        "train_time_s": 0,
+        "add_time_s": 0.0353,
+        "search_time_s": 0.639119,
+        "qps": 1564.65,
+        "latency_per_query_us": 639.12,
+        "recall_at_10": 1.0,
+        "index_size_bytes": 51200045,
+        "num_vectors": 100000,
+        "num_queries": 1000,
+        "avg_latency_ms": 0.6391,
+        "avg_throughput_ops_per_sec": 1564.65,
+        "index_name": "FlatL2"
+      },
+      {
+        "iteration": 1,
+        "build_time_s": 0.5092,
+        "train_time_s": 0.3737,
+        "add_time_s": 0.1354,
+        "search_time_s": 0.046118,
+        "qps": 21683.72,
+        "latency_per_query_us": 46.12,
+        "recall_at_10": 0.0562,
+        "index_size_bytes": 52052139,
+        "num_vectors": 100000,
+        "num_queries": 1000,
+        "avg_latency_ms": 0.0461,
+        "avg_throughput_ops_per_sec": 21683.72,
+        "index_name": "IVFFlat"
+      },
+      {
+        "iteration": 1,
+        "build_time_s": 2.109,
+        "train_time_s": 0,
+        "add_time_s": 2.109,
+        "search_time_s": 0.009252,
+        "qps": 108081.12,
+        "latency_per_query_us": 9.25,
+        "recall_at_10": 0.1931,
+        "index_size_bytes": 78420834,
+        "num_vectors": 100000,
+        "num_queries": 1000,
+        "avg_latency_ms": 0.0093,
+        "avg_throughput_ops_per_sec": 108081.12,
+        "index_name": "HNSWFlat"
+      }
+    ]
+  },
+  "micro_benchmark": {
+    "benchmark": "micro_operations",
+    "description": "Micro-level benchmarks for core Faiss operations on ARM64",
+    "reference": "Faiss library built-in operations (https://github.com/facebookresearch/faiss)",
+    "software": "faiss",
+    "version": "1.14.2",
+    "architecture": "aarch64",
+    "build_method": "source_build",
+    "timestamp": "2026-06-26T04:06:56Z",
+    "performance_metrics": {
+      "avg_latency_ms": {
+        "unit": "ms",
+        "description": "Average latency per micro operation"
+      },
+      "search_latency_us": {
+        "unit": "microseconds",
+        "description": "Per-query latency for single vector search"
+      },
+      "add_rate": {
+        "unit": "vectors/sec",
+        "description": "Vector addition rate to IndexFlatL2"
+      }
+    },
+    "dataset_info": {
+      "name": "synthetic_random_float32",
+      "size": "100K vectors x 128 dimensions",
+      "source": "numpy random uniform distribution"
+    },
+    "parameters": {
+      "num_vectors": 100000,
+      "dimension": 128,
+      "iterations": 1
+    },
+    "avg_latency_ms": 311.98,
+    "results": [
+      {
+        "test": "kmeans_clustering",
+        "description": "K-means clustering on random vectors (100 centroids, 20 iters)",
+        "avg_time_s": 0.7291,
+        "avg_latency_ms": 729.1
+      },
+      {
+        "test": "add_vectors_flat",
+        "description": "Add vectors to IndexFlatL2 (bulk insertion throughput)",
+        "avg_time_s": 0.04,
+        "add_rate_per_sec": 2502896.56,
+        "avg_latency_ms": 40.0
+      },
+      {
+        "test": "search_single_flat",
+        "description": "Single query search on IndexFlatL2 (per-query latency)",
+        "avg_latency_us": 2481.07,
+        "avg_latency_ms": 2.4811
+      },
+      {
+        "test": "search_batch_flat",
+        "description": "Batch query search on IndexFlatL2 (batch throughput)",
+        "avg_time_s": 0.5386,
+        "avg_qps": 1856.62,
+        "avg_latency_ms": 538.6
+      },
+      {
+        "test": "range_search_flat",
+        "description": "Range search on IndexFlatL2 (radius-based search)",
+        "avg_time_s": 0.0551,
+        "avg_qps": 1814.6,
+        "avg_latency_ms": 55.1
+      },
+      {
+        "test": "pq_encoding",
+        "description": "Product Quantization encoding throughput",
+        "avg_time_s": 0.5066,
+        "encode_rate_per_sec": 197377.15,
+        "avg_latency_ms": 506.6
+      }
+    ]
+  },
+  "environment": {
+    "test_time": "2026-06-26T04:06:33Z",
+    "Model": "Kunpeng-920",
+    "architecture": "aarch64",
+    "kernel": "6.8.0-87-generic",
+    "os": "openEuler 24.03 SP3",
+    "cpu_model": "ARM64 CPU (32 cores)",
+    "cpu_cores": 32,
+    "software_name": "faiss",
+    "software_version": "1.14.2",
+    "python_version": "Python 3.12.3",
+    "numpy_version": "2.5.0"
+  },
+  "timestamp": "2026-06-26T04:06:56Z"
+}

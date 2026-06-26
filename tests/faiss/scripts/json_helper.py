@@ -212,24 +212,37 @@ def cmd_max_latency(filepath, *keys):
         print(0)
 
 
-def cmd_write_version_info(filepath, timestamp, arch, kernel, os_name, cpu_model,
-                           cores, mem_mb, sw_name, sw_version, python_ver,
-                           faiss_ver, numpy_ver, blas, parallelism):
+def cmd_write_version_info(filepath, timestamp, model, arch, kernel, os_name, cpu_model,
+                           cores, sw_name, sw_version, python_ver, numpy_ver):
     data = {
-        "timestamp": str(timestamp),
+        "test_time": str(timestamp),
+        "Model": str(model),
         "architecture": str(arch),
         "kernel": str(kernel),
         "os": str(os_name),
         "cpu_model": str(cpu_model),
         "cpu_cores": int(cores),
-        "memory_mb": int(mem_mb),
         "software_name": str(sw_name),
         "software_version": str(sw_version),
         "python_version": str(python_ver),
+        "numpy_version": str(numpy_ver)
+    }
+    save_json(filepath, data)
+
+
+def cmd_write_build_info(filepath, timestamp, os_id, os_name, arch, kernel,
+                         gcc_ver, cmake_ver, swig_ver, faiss_ver, build_method):
+    data = {
+        "timestamp": str(timestamp),
+        "os_id": str(os_id),
+        "os_name": str(os_name),
+        "architecture": str(arch),
+        "kernel": str(kernel),
+        "gcc_version": str(gcc_ver),
+        "cmake_version": str(cmake_ver),
+        "swig_version": str(swig_ver),
         "faiss_version": str(faiss_ver),
-        "numpy_version": str(numpy_ver),
-        "blas_status": str(blas),
-        "parallelism": int(parallelism)
+        "build_method": str(build_method)
     }
     save_json(filepath, data)
 
@@ -279,6 +292,7 @@ def main():
         "version": lambda: cmd_version(filepath),
         "contains": lambda: cmd_contains(filepath, args[0] if args else ""),
         "write_version_info": lambda: cmd_write_version_info(filepath, *args),
+        "write_build_info": lambda: cmd_write_build_info(filepath, *args),
         "avg_throughput": lambda: cmd_avg_throughput(filepath, *args),
         "max_latency": lambda: cmd_max_latency(filepath, *args),
         "merge_jsons": lambda: cmd_merge_jsons(filepath, *args),

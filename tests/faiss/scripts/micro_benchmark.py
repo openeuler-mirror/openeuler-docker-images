@@ -194,7 +194,8 @@ def main():
         "reference": "Faiss library built-in operations (https://github.com/facebookresearch/faiss)",
         "software": "faiss",
         "version": getattr(faiss, '__version__', 'unknown'),
-        "architecture": "arm64",
+        "architecture": os.environ.get("ARCH", "aarch64"),
+        "build_method": "source_build",
         "timestamp": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "performance_metrics": {
             "avg_latency_ms": {
