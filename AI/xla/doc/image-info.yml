@@ -1,0 +1,59 @@
+name: xla
+category: ai
+description: XLA（Accelerated Linear Algebra）是一个开源的机器学习（ML）编译器，支持 GPU、CPU 和 ML 加速器。XLA 编译器从 PyTorch、TensorFlow 和 JAX 等主流 ML 框架中获取模型，并对其进行优化，以便在不同硬件平台（包括 GPU、CPU 和 ML 加速器）上实现高性能执行。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  xla镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[3b0ff80-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/xla/3b0ff80/24.03-lts-sp3/Dockerfile) | xla 3b0ff80 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/xla:{Tag}
+  ```
+
+usage: |
+  本镜像提供开箱即用的 XLA 编译器开发环境。XLA 源码（commit 3b0ff80）已预先 clone 并配置为 CPU 后端，Bazel 已安装就绪，直接构建即可。
+
+  - 启动容器并构建 XLA：
+    ```
+    docker run -it --name xla-dev openeuler/xla:{Tag}
+    bazel build --spawn_strategy=sandboxed --test_output=all //xla/...
+    ```
+
+  - 如需 GPU/CUDA 支持，使用 GPU 访问权限启动容器，重新配置后再构建：
+    ```
+    docker run -it --gpus all --name xla-dev openeuler/xla:{Tag}
+    python3 ./configure.py --backend=CUDA
+    bazel build --spawn_strategy=sandboxed --test_output=all //xla/...
+    ```
+
+  - 如需仅构建特定 target 而非整个项目：
+    ```
+    bazel build --spawn_strategy=sandboxed //xla:xla_compile
+    ```
+
+license: Apache-2.0
+similar_packages:
+  - TensorFlow: 端到端机器学习平台，内置 XLA 编译器
+  - PyTorch: 开源深度学习框架，支持通过 XLA 加速
+  - JAX: 基于 XLA 的高性能数值计算框架
+  - MLIR: 用于构建编译器基础设施的可重用、可扩展框架
+
+dependency:
+  -
+
+homepage: https://github.com/openxla/xla
+upstream:
+  backend: GitHub
+  version_url: openxla/xla
+  version_prefix:
+  version_filter: alpha;rc;candidate;beta;pre
+  version_scheme: RPM
