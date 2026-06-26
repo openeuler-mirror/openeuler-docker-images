@@ -2,7 +2,7 @@
 import json
 import os
 import argparse
-import datetime
+from datetime import datetime, timezone
 
 
 def safe_float(val):
@@ -116,13 +116,13 @@ def main():
             summary["multithread_scaling_ratio"] = round(all_qps / one_qps, 2)
 
     result = {
+        "test_time": version_info.get("test_time", version_info.get("timestamp", datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'))),
         "environment": version_info,
         "benchmarks": {
             "ann": ann_data,
             "micro": micro_data,
         },
         "summary": summary,
-        "timestamp": datetime.datetime.now().isoformat(),
         "software": "hnswlib",
         "version": version_info.get("software_version", "0.8.0"),
     }

@@ -1,0 +1,95 @@
+[START] hnswlib Performance Benchmark v0.8.0
+[CHECK] Python3 OK: Python 3.12.3
+[CHECK] json_helper.py OK
+[SETUP] Downloading shUnit2 to /tmp/shunit2_HzO97g...
+[START] hnswlib Performance Benchmark - v0.8.0 (pip)
+[START] OS: openEuler 24.03 SP3 (ubuntu), Build: pip
+[CHECK] Python3 OK: Python 3.12.3
+[CHECK] json_helper.py OK
+[PHASE1] === Phase 1: Install hnswlib v0.8.0 (method: pip) ===
+[PHASE1] Installing hnswlib==0.8.0 via pip...
+DEPRECATION: Loading egg at /usr/local/lib/python3.12/dist-packages/cloud_init-19.1-py3.12.egg is deprecated. pip 24.3 will enforce this behaviour change. A possible replacement is to use pip for package installation.. Discussion can be found at https://github.com/pypa/pip/issues/12330
+Collecting hnswlib==0.8.0
+  Using cached hnswlib-0.8.0-cp312-cp312-linux_aarch64.whl
+Requirement already satisfied: numpy in /usr/local/lib/python3.12/dist-packages (from hnswlib==0.8.0) (2.5.0)
+Installing collected packages: hnswlib
+Successfully installed hnswlib-0.8.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+[PHASE1] hnswlib v0.8.0 installed successfully (pip)
+[PHASE2] === Phase 2: Collect Version Info ===
+[PHASE2] Version info saved (OS: openEuler 24.03 SP3)
+[PHASE3] === Phase 3: Run Benchmarks ===
+[PHASE3A] Running ANN benchmark...
+[ANN] Preparing data for HNSW_L2_M16_ef200 (space=l2)...
+[ANN] Computing ground truth for space=l2...
+[ANN] Benchmarking HNSW_L2_M16_ef200: HNSW L2 index, M=16 (default), ef_construction=200
+[ANN] HNSW_L2_M16_ef200 iteration 1/1
+[ANN] Preparing data for HNSW_L2_M32_ef200 (space=l2)...
+[ANN] Computing ground truth for space=l2...
+[ANN] Benchmarking HNSW_L2_M32_ef200: HNSW L2 index, M=32 (higher connectivity), ef_construction=200
+[ANN] HNSW_L2_M32_ef200 iteration 1/1
+[ANN] Preparing data for HNSW_L2_M64_ef200 (space=l2)...
+[ANN] Computing ground truth for space=l2...
+[ANN] Benchmarking HNSW_L2_M64_ef200: HNSW L2 index, M=64 (max connectivity), ef_construction=200
+[ANN] HNSW_L2_M64_ef200 iteration 1/1
+[ANN] Preparing data for HNSW_Cosine_M16_ef200 (space=cosine)...
+[ANN] Computing ground truth for space=cosine...
+[ANN] Benchmarking HNSW_Cosine_M16_ef200: HNSW Cosine index, M=16, ef_construction=200
+[ANN] HNSW_Cosine_M16_ef200 iteration 1/1
+[ANN] Preparing data for HNSW_IP_M16_ef200 (space=ip)...
+[ANN] Computing ground truth for space=ip...
+[ANN] Benchmarking HNSW_IP_M16_ef200: HNSW Inner Product index, M=16, ef_construction=200
+[ANN] HNSW_IP_M16_ef200 iteration 1/1
+[ANN] Results saved to: /root/tantian/Tian/test/hnswlib/results/0.8.0/benchmark_ann.json
+[ANN] HNSW_L2_M16_ef200: Build=0.6852s, Size=6606132B
+[ANN]   ef=10: QPS=139656.51, Recall@10=0.2685
+[ANN]   ef=50: QPS=50950.6, Recall@10=0.649
+[ANN]   ef=100: QPS=33185.41, Recall@10=0.8224
+[ANN]   ef=200: QPS=20094.88, Recall@10=0.9438
+[ANN]   ef=500: QPS=11502.62, Recall@10=0.9936
+[ANN] HNSW_L2_M32_ef200: Build=0.8955s, Size=7881016B
+[ANN]   ef=10: QPS=84673.54, Recall@10=0.4094
+[ANN]   ef=50: QPS=33463.41, Recall@10=0.8178
+[ANN]   ef=100: QPS=20179.96, Recall@10=0.9473
+[ANN]   ef=200: QPS=13586.15, Recall@10=0.9908
+[ANN]   ef=500: QPS=8960.24, Recall@10=0.9998
+[ANN] HNSW_L2_M64_ef200: Build=0.7614s, Size=10439356B
+[ANN]   ef=10: QPS=64193.95, Recall@10=0.5237
+[ANN]   ef=50: QPS=23812.33, Recall@10=0.9075
+[ANN]   ef=100: QPS=14901.48, Recall@10=0.9817
+[ANN]   ef=200: QPS=10596.04, Recall@10=0.9984
+[ANN]   ef=500: QPS=7933.3, Recall@10=1.0
+[ANN] HNSW_Cosine_M16_ef200: Build=0.5441s, Size=6606132B
+[ANN]   ef=10: QPS=141308.0, Recall@10=0.3043
+[ANN]   ef=50: QPS=61078.24, Recall@10=0.686
+[ANN]   ef=100: QPS=42916.82, Recall@10=0.8463
+[ANN]   ef=200: QPS=25737.61, Recall@10=0.9498
+[ANN]   ef=500: QPS=14287.04, Recall@10=0.9949
+[ANN] HNSW_IP_M16_ef200: Build=0.469s, Size=6606132B
+[ANN]   ef=10: QPS=145691.2, Recall@10=0.8237
+[ANN]   ef=50: QPS=90380.85, Recall@10=0.9736
+[ANN]   ef=100: QPS=67010.22, Recall@10=0.9877
+[ANN]   ef=200: QPS=49925.65, Recall@10=0.9954
+[ANN]   ef=500: QPS=32353.72, Recall@10=0.998
+[ANN] Benchmark complete
+[PHASE3B] Running micro benchmark...
+[MICRO] Generating 10000 vectors of dimension 128...
+[MICRO] Running index_construction...
+[MICRO] Running incremental_insert...
+[MICRO] Running batch_search_multithread...
+[MICRO] Running serialization_save_load...
+[MICRO] Running pickle_serialization...
+[MICRO] Running ef_parameter_sweep...
+[MICRO] Results saved to: /root/tantian/Tian/test/hnswlib/results/0.8.0/micro_benchmark.json
+[MICRO] index_construction: {'avg_time_s': 0.6804, 'add_rate_per_sec': 14696.88}
+[MICRO] incremental_insert: {'avg_time_s': 0.7049, 'add_rate_per_sec': 14185.55}
+[MICRO] batch_search_multithread: {'threads_1': {'avg_time_s': 0.8323, 'avg_qps': 1201.56}, 'threads_2': {'avg_time_s': 0.4157, 'avg_qps': 2405.38}, 'threads_4': {'avg_time_s': 0.2217, 'avg_qps': 4510.54}, 'threads_8': {'avg_time_s': 0.1089, 'avg_qps': 9186.27}, 'threads_all': {'avg_time_s': 0.0302, 'avg_qps': 33114.41}}
+[MICRO] serialization_save_load: {'avg_save_time_s': 0.0065, 'avg_load_time_s': 0.0147, 'avg_file_size_bytes': 6606132}
+[MICRO] pickle_serialization: {'avg_pickle_time_s': 0.0106, 'avg_unpickle_time_s': 0.0074, 'avg_pickle_size_bytes': 6726976}
+[MICRO] ef_parameter_sweep: {'ef_10': {'avg_qps': 91305.57, 'avg_recall': 0.2655}, 'ef_20': {'avg_qps': 83103.25, 'avg_recall': 0.4109}, 'ef_50': {'avg_qps': 47186.92, 'avg_recall': 0.654}, 'ef_100': {'avg_qps': 33588.29, 'avg_recall': 0.8298}, 'ef_200': {'avg_qps': 19582.99, 'avg_recall': 0.9406}, 'ef_500': {'avg_qps': 11551.76, 'avg_recall': 0.9934}, 'ef_1000': {'avg_qps': 8435.59, 'avg_recall': 0.9995}}
+[MICRO] Benchmark complete
+[PHASE4] === Phase 4: Aggregate & Report ===
+[PHASE4] Reports generated:
+[PHASE4]   JSON: /root/tantian/Tian/test/hnswlib/results/0.8.0/results.json
+[PHASE4]   TXT:  /root/tantian/Tian/test/hnswlib/results/0.8.0/results.txt
+[PHASE4]   LOG:  /root/tantian/Tian/test/hnswlib/results/0.8.0/results.log

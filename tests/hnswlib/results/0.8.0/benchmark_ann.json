@@ -1,0 +1,468 @@
+{
+  "benchmark": "ann_search",
+  "description": "Approximate Nearest Neighbor search benchmark following ann-benchmarks methodology for hnswlib",
+  "reference": "https://github.com/erikbern/ann-benchmarks",
+  "timestamp": "2026-06-26T14:20:41.408389",
+  "performance_metrics": {
+    "qps": {
+      "unit": "queries/sec",
+      "description": "Queries per second throughput at different ef_search values"
+    },
+    "recall_at_k": {
+      "unit": "ratio (0-1)",
+      "description": "Recall@10 - fraction of true nearest neighbors found"
+    },
+    "build_time": {
+      "unit": "seconds",
+      "description": "Time to add all vectors to the HNSW index"
+    },
+    "latency_per_query": {
+      "unit": "microseconds",
+      "description": "Average latency per single query"
+    },
+    "index_size": {
+      "unit": "bytes",
+      "description": "Serialized index file size"
+    }
+  },
+  "dataset_info": {
+    "name": "synthetic_random_float32",
+    "size": "10K vectors x 128 dimensions",
+    "source": "numpy random uniform distribution"
+  },
+  "parameters": {
+    "num_vectors": 10000,
+    "dimension": 128,
+    "num_queries": 1000,
+    "k": 10,
+    "iterations": 1,
+    "ef_search_values": [
+      10,
+      50,
+      100,
+      200,
+      500
+    ],
+    "index_configs": {
+      "HNSW_L2_M16_ef200": {
+        "space": "l2",
+        "M": 16,
+        "ef_construction": 200,
+        "description": "HNSW L2 index, M=16 (default), ef_construction=200"
+      },
+      "HNSW_L2_M32_ef200": {
+        "space": "l2",
+        "M": 32,
+        "ef_construction": 200,
+        "description": "HNSW L2 index, M=32 (higher connectivity), ef_construction=200"
+      },
+      "HNSW_L2_M64_ef200": {
+        "space": "l2",
+        "M": 64,
+        "ef_construction": 200,
+        "description": "HNSW L2 index, M=64 (max connectivity), ef_construction=200"
+      },
+      "HNSW_Cosine_M16_ef200": {
+        "space": "cosine",
+        "M": 16,
+        "ef_construction": 200,
+        "description": "HNSW Cosine index, M=16, ef_construction=200"
+      },
+      "HNSW_IP_M16_ef200": {
+        "space": "ip",
+        "M": 16,
+        "ef_construction": 200,
+        "description": "HNSW Inner Product index, M=16, ef_construction=200"
+      }
+    }
+  },
+  "results_summary": {
+    "HNSW_L2_M16_ef200": {
+      "avg_build_time_s": 0.6852,
+      "avg_index_size_bytes": 6606132,
+      "avg_ef_sweep": {
+        "10": {
+          "search_time_s": 0.0072,
+          "qps": 139656.51,
+          "latency_per_query_us": 7.16,
+          "recall_at_10": 0.2685
+        },
+        "50": {
+          "search_time_s": 0.0196,
+          "qps": 50950.6,
+          "latency_per_query_us": 19.63,
+          "recall_at_10": 0.649
+        },
+        "100": {
+          "search_time_s": 0.0301,
+          "qps": 33185.41,
+          "latency_per_query_us": 30.13,
+          "recall_at_10": 0.8224
+        },
+        "200": {
+          "search_time_s": 0.0498,
+          "qps": 20094.88,
+          "latency_per_query_us": 49.76,
+          "recall_at_10": 0.9438
+        },
+        "500": {
+          "search_time_s": 0.0869,
+          "qps": 11502.62,
+          "latency_per_query_us": 86.94,
+          "recall_at_10": 0.9936
+        }
+      }
+    },
+    "HNSW_L2_M32_ef200": {
+      "avg_build_time_s": 0.8955,
+      "avg_index_size_bytes": 7881016,
+      "avg_ef_sweep": {
+        "10": {
+          "search_time_s": 0.0118,
+          "qps": 84673.54,
+          "latency_per_query_us": 11.81,
+          "recall_at_10": 0.4094
+        },
+        "50": {
+          "search_time_s": 0.0299,
+          "qps": 33463.41,
+          "latency_per_query_us": 29.88,
+          "recall_at_10": 0.8178
+        },
+        "100": {
+          "search_time_s": 0.0496,
+          "qps": 20179.96,
+          "latency_per_query_us": 49.55,
+          "recall_at_10": 0.9473
+        },
+        "200": {
+          "search_time_s": 0.0736,
+          "qps": 13586.15,
+          "latency_per_query_us": 73.6,
+          "recall_at_10": 0.9908
+        },
+        "500": {
+          "search_time_s": 0.1116,
+          "qps": 8960.24,
+          "latency_per_query_us": 111.6,
+          "recall_at_10": 0.9998
+        }
+      }
+    },
+    "HNSW_L2_M64_ef200": {
+      "avg_build_time_s": 0.7614,
+      "avg_index_size_bytes": 10439356,
+      "avg_ef_sweep": {
+        "10": {
+          "search_time_s": 0.0156,
+          "qps": 64193.95,
+          "latency_per_query_us": 15.58,
+          "recall_at_10": 0.5237
+        },
+        "50": {
+          "search_time_s": 0.042,
+          "qps": 23812.33,
+          "latency_per_query_us": 42.0,
+          "recall_at_10": 0.9075
+        },
+        "100": {
+          "search_time_s": 0.0671,
+          "qps": 14901.48,
+          "latency_per_query_us": 67.11,
+          "recall_at_10": 0.9817
+        },
+        "200": {
+          "search_time_s": 0.0944,
+          "qps": 10596.04,
+          "latency_per_query_us": 94.37,
+          "recall_at_10": 0.9984
+        },
+        "500": {
+          "search_time_s": 0.1261,
+          "qps": 7933.3,
+          "latency_per_query_us": 126.05,
+          "recall_at_10": 1.0
+        }
+      }
+    },
+    "HNSW_Cosine_M16_ef200": {
+      "avg_build_time_s": 0.5441,
+      "avg_index_size_bytes": 6606132,
+      "avg_ef_sweep": {
+        "10": {
+          "search_time_s": 0.0071,
+          "qps": 141308.0,
+          "latency_per_query_us": 7.08,
+          "recall_at_10": 0.3043
+        },
+        "50": {
+          "search_time_s": 0.0164,
+          "qps": 61078.24,
+          "latency_per_query_us": 16.37,
+          "recall_at_10": 0.686
+        },
+        "100": {
+          "search_time_s": 0.0233,
+          "qps": 42916.82,
+          "latency_per_query_us": 23.3,
+          "recall_at_10": 0.8463
+        },
+        "200": {
+          "search_time_s": 0.0389,
+          "qps": 25737.61,
+          "latency_per_query_us": 38.85,
+          "recall_at_10": 0.9498
+        },
+        "500": {
+          "search_time_s": 0.07,
+          "qps": 14287.04,
+          "latency_per_query_us": 69.99,
+          "recall_at_10": 0.9949
+        }
+      }
+    },
+    "HNSW_IP_M16_ef200": {
+      "avg_build_time_s": 0.469,
+      "avg_index_size_bytes": 6606132,
+      "avg_ef_sweep": {
+        "10": {
+          "search_time_s": 0.0069,
+          "qps": 145691.2,
+          "latency_per_query_us": 6.86,
+          "recall_at_10": 0.8237
+        },
+        "50": {
+          "search_time_s": 0.0111,
+          "qps": 90380.85,
+          "latency_per_query_us": 11.06,
+          "recall_at_10": 0.9736
+        },
+        "100": {
+          "search_time_s": 0.0149,
+          "qps": 67010.22,
+          "latency_per_query_us": 14.92,
+          "recall_at_10": 0.9877
+        },
+        "200": {
+          "search_time_s": 0.02,
+          "qps": 49925.65,
+          "latency_per_query_us": 20.03,
+          "recall_at_10": 0.9954
+        },
+        "500": {
+          "search_time_s": 0.0309,
+          "qps": 32353.72,
+          "latency_per_query_us": 30.91,
+          "recall_at_10": 0.998
+        }
+      }
+    }
+  },
+  "results_detailed": {
+    "HNSW_L2_M16_ef200": [
+      {
+        "iteration": 1,
+        "build_time_s": 0.6852,
+        "index_size_bytes": 6606132,
+        "ef_sweep": {
+          "10": {
+            "search_time_s": 0.00716,
+            "qps": 139656.51,
+            "latency_per_query_us": 7.16,
+            "recall_at_10": 0.2685
+          },
+          "50": {
+            "search_time_s": 0.019627,
+            "qps": 50950.6,
+            "latency_per_query_us": 19.63,
+            "recall_at_10": 0.649
+          },
+          "100": {
+            "search_time_s": 0.030134,
+            "qps": 33185.41,
+            "latency_per_query_us": 30.13,
+            "recall_at_10": 0.8224
+          },
+          "200": {
+            "search_time_s": 0.049764,
+            "qps": 20094.88,
+            "latency_per_query_us": 49.76,
+            "recall_at_10": 0.9438
+          },
+          "500": {
+            "search_time_s": 0.086937,
+            "qps": 11502.62,
+            "latency_per_query_us": 86.94,
+            "recall_at_10": 0.9936
+          }
+        },
+        "num_vectors": 10000,
+        "num_queries": 1000
+      }
+    ],
+    "HNSW_L2_M32_ef200": [
+      {
+        "iteration": 1,
+        "build_time_s": 0.8955,
+        "index_size_bytes": 7881016,
+        "ef_sweep": {
+          "10": {
+            "search_time_s": 0.01181,
+            "qps": 84673.54,
+            "latency_per_query_us": 11.81,
+            "recall_at_10": 0.4094
+          },
+          "50": {
+            "search_time_s": 0.029883,
+            "qps": 33463.41,
+            "latency_per_query_us": 29.88,
+            "recall_at_10": 0.8178
+          },
+          "100": {
+            "search_time_s": 0.049554,
+            "qps": 20179.96,
+            "latency_per_query_us": 49.55,
+            "recall_at_10": 0.9473
+          },
+          "200": {
+            "search_time_s": 0.073604,
+            "qps": 13586.15,
+            "latency_per_query_us": 73.6,
+            "recall_at_10": 0.9908
+          },
+          "500": {
+            "search_time_s": 0.111604,
+            "qps": 8960.24,
+            "latency_per_query_us": 111.6,
+            "recall_at_10": 0.9998
+          }
+        },
+        "num_vectors": 10000,
+        "num_queries": 1000
+      }
+    ],
+    "HNSW_L2_M64_ef200": [
+      {
+        "iteration": 1,
+        "build_time_s": 0.7614,
+        "index_size_bytes": 10439356,
+        "ef_sweep": {
+          "10": {
+            "search_time_s": 0.015578,
+            "qps": 64193.95,
+            "latency_per_query_us": 15.58,
+            "recall_at_10": 0.5237
+          },
+          "50": {
+            "search_time_s": 0.041995,
+            "qps": 23812.33,
+            "latency_per_query_us": 42.0,
+            "recall_at_10": 0.9075
+          },
+          "100": {
+            "search_time_s": 0.067107,
+            "qps": 14901.48,
+            "latency_per_query_us": 67.11,
+            "recall_at_10": 0.9817
+          },
+          "200": {
+            "search_time_s": 0.094375,
+            "qps": 10596.04,
+            "latency_per_query_us": 94.37,
+            "recall_at_10": 0.9984
+          },
+          "500": {
+            "search_time_s": 0.126051,
+            "qps": 7933.3,
+            "latency_per_query_us": 126.05,
+            "recall_at_10": 1.0
+          }
+        },
+        "num_vectors": 10000,
+        "num_queries": 1000
+      }
+    ],
+    "HNSW_Cosine_M16_ef200": [
+      {
+        "iteration": 1,
+        "build_time_s": 0.5441,
+        "index_size_bytes": 6606132,
+        "ef_sweep": {
+          "10": {
+            "search_time_s": 0.007077,
+            "qps": 141308.0,
+            "latency_per_query_us": 7.08,
+            "recall_at_10": 0.3043
+          },
+          "50": {
+            "search_time_s": 0.016372,
+            "qps": 61078.24,
+            "latency_per_query_us": 16.37,
+            "recall_at_10": 0.686
+          },
+          "100": {
+            "search_time_s": 0.023301,
+            "qps": 42916.82,
+            "latency_per_query_us": 23.3,
+            "recall_at_10": 0.8463
+          },
+          "200": {
+            "search_time_s": 0.038854,
+            "qps": 25737.61,
+            "latency_per_query_us": 38.85,
+            "recall_at_10": 0.9498
+          },
+          "500": {
+            "search_time_s": 0.069993,
+            "qps": 14287.04,
+            "latency_per_query_us": 69.99,
+            "recall_at_10": 0.9949
+          }
+        },
+        "num_vectors": 10000,
+        "num_queries": 1000
+      }
+    ],
+    "HNSW_IP_M16_ef200": [
+      {
+        "iteration": 1,
+        "build_time_s": 0.469,
+        "index_size_bytes": 6606132,
+        "ef_sweep": {
+          "10": {
+            "search_time_s": 0.006864,
+            "qps": 145691.2,
+            "latency_per_query_us": 6.86,
+            "recall_at_10": 0.8237
+          },
+          "50": {
+            "search_time_s": 0.011064,
+            "qps": 90380.85,
+            "latency_per_query_us": 11.06,
+            "recall_at_10": 0.9736
+          },
+          "100": {
+            "search_time_s": 0.014923,
+            "qps": 67010.22,
+            "latency_per_query_us": 14.92,
+            "recall_at_10": 0.9877
+          },
+          "200": {
+            "search_time_s": 0.02003,
+            "qps": 49925.65,
+            "latency_per_query_us": 20.03,
+            "recall_at_10": 0.9954
+          },
+          "500": {
+            "search_time_s": 0.030908,
+            "qps": 32353.72,
+            "latency_per_query_us": 30.91,
+            "recall_at_10": 0.998
+          }
+        },
+        "num_vectors": 10000,
+        "num_queries": 1000
+      }
+    ]
+  }
+}
