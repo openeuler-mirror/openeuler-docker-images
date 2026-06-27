@@ -1,4 +1,5 @@
 images:
+  3fs: 3fs
   daos: daos
   kudu: kudu
   alluxio: alluxio
