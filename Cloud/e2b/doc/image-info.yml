@@ -1,0 +1,56 @@
+name: e2b
+category: cloud
+description: E2B 是一个开源的 AI 代码执行沙箱基础设施，为 AI 智能体提供安全、隔离的云端代码运行环境，支持 Python 和 JavaScript，广泛用于 AI Coding Agent、数据分析和代码解释器等场景。本镜像包含 e2b Python SDK，可通过编程方式创建和管理沙箱实例。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  docker镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[2.29.4-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/e2b/2.29.4/24.03-lts-sp3/Dockerfile) | E2B Python SDK 2.29.4 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/e2b:{Tag}
+  ```
+
+usage: |
+  - 启动容器并进入交互式 Python 环境
+
+    ```
+    docker run -it --rm openeuler/e2b:{Tag} python3
+    ```
+
+  - 验证 e2b SDK 安装
+
+    ```
+    docker run --rm openeuler/e2b:{Tag} python3 -c "import e2b; print(e2b.__version__)"
+    ```
+
+  - 挂载脚本运行
+
+    ```
+    docker run --rm -v $(pwd):/workspace openeuler/e2b:{Tag} python3 /workspace/your_script.py
+    ```
+    `openeuler/e2b` 镜像用于验证上游 E2B Python SDK 版本和 openEuler 的集成。
+
+license: Apache-2.0 license
+similar_packages:
+  - Modal: 面向 AI 工作负载的云端代码执行平台。
+  - Daytona: 开源的安全代码执行沙箱框架。
+dependency:
+  - python3
+  - python3-pip
+
+homepage: https://github.com/e2b-dev/e2b
+upstream:
+  version_url: e2b-dev/e2b
+  version_prefix: "@e2b/python-sdk@"
+  version_filter: rc;alpha;beta
+  backend: GitHub
+  version_scheme: RPM
