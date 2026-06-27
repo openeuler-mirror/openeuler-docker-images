@@ -22,3 +22,5 @@
   path: Bigdata/spark/4.0.0/24.03-lts-sp1/Dockerfile
 4.0.1-oe2403sp2:
   path: 4.0.1/24.03-lts-sp2/Dockerfile
+4.1.2-oe2403sp3:
+  path: 4.1.2/24.03-lts-sp3/Dockerfile
