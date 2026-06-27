@@ -44,8 +44,8 @@ dependency:
 
 homepage: https://github.com/klauspost/reedsolomon
 upstream:
+  backend: GitHub
   version_url: klauspost/reedsolomon
   version_prefix: v
-  version_filter: ""
-  backend: GitHub
-  version_scheme: SemVer
+  version_filter: alpha;rc;candidate;beta;pre
+  version_scheme: RPM

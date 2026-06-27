@@ -60,8 +60,8 @@ dependency:
 
 homepage: https://github.com/kvcache-ai/Mooncake
 upstream:
+  backend: GitHub
   version_url: kvcache-ai/Mooncake
   version_prefix: v
-  version_filter: ""
-  backend: GitHub
-  version_scheme: SemVer
+  version_filter: alpha;rc;candidate;beta;pre
+  version_scheme: RPM

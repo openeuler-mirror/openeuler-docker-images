@@ -57,8 +57,8 @@ dependency:
 
 homepage: https://github.com/juicedata/juicefs
 upstream:
+  backend: GitHub
   version_url: juicedata/juicefs
   version_prefix: v
-  version_filter: ""
-  backend: GitHub
-  version_scheme: SemVer
+  version_filter: alpha;rc;candidate;beta;pre;dev
+  version_scheme: RPM
