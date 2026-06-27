@@ -1,0 +1,53 @@
+name: opencloudos
+category: cloud
+description: OpenCloudOS 是由腾讯等企业联合发起的开源Linux操作系统社区。本镜像打包了OpenCloudOS旗舰工具nettrace——基于eBPF的网络诊断工具，提供网络报文跟踪、故障诊断和异常监控能力，适用于Linux云原生环境。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  docker镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.2.11-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/opencloudos/1.2.11/24.03-lts-sp3/Dockerfile) | OpenCloudOS nettrace 1.2.11 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/opencloudos:{Tag}
+  ```
+
+usage: |
+  - 跟踪网络报文（需要特权模式和宿主网络）
+
+    ```
+    docker run --rm --privileged --network host \
+        -v /lib/modules:/lib/modules:ro \
+        openeuler/opencloudos:{Tag} \
+        nettrace -p icmp
+    ```
+
+  - 诊断网络丢包事件
+
+    ```
+    docker run --rm --privileged --network host \
+        -v /lib/modules:/lib/modules:ro \
+        openeuler/opencloudos:{Tag} \
+        nettrace --drop
+    ```
+
+license: GPL-2.0 license
+similar_packages:
+  - tcpdump: 网络抓包工具
+  - dropwatch: 内核网络丢包监控
+dependency:
+  - N/A
+
+homepage: https://github.com/OpenCloudOS/nettrace
+upstream:
+  version_url: OpenCloudOS/nettrace
+  version_filter: rc;beta;alpha
+  backend: GitHub
+  version_scheme: RPM

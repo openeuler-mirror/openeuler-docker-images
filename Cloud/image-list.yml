@@ -38,3 +38,4 @@ images:
   kubeflow: kubeflow
   sriov-network-operator: sriov-network-operator
   deathstarbench: deathstarbench
+  opencloudos: opencloudos
