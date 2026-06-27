@@ -2,7 +2,7 @@ ARG BASE=openeuler/openeuler:24.03-lts-sp3
 FROM ${BASE}
 
 ARG TARGETARCH
-ARG VERSION=3b0ff80
+ARG VERSION=3b0ff804f29ee5bb224854bf0e12fc0cbecb6db9
 
 RUN dnf install -y \
       git gcc gcc-c++ make cmake \
