@@ -1,0 +1,41 @@
+name: deathstarbench
+category: cloud
+description: DeathStarBench 是一个开源的云微服务基准测试套件，提供酒店预订、社交网络等多个端到端微服务应用，用于评估微服务框架、云操作系统及硬件系统的性能。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  docker镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[0.4.1-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/deathstarbench/0.4.1/24.03-lts-sp3/Dockerfile) | DeathStarBench 0.4.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/deathstarbench:{Tag}
+  ```
+
+usage: |
+  - 启动deathstarbench实例
+
+    ```
+    docker run -it --name deathstarbench openeuler/deathstarbench:{Tag}
+    ```
+    `openeuler/deathstarbench`镜像构建了hotelReservation微服务基准测试套件，并安装了所有服务二进制文件（frontend、geo、profile、rate、recommendation、reservation、search、user等）。
+
+license: Apache-2.0 license
+similar_packages:
+  - N/A
+dependency:
+  - N/A
+
+homepage: https://github.com/delimitrou/DeathStarBench
+upstream:
+  version_url: delimitrou/DeathStarBench
+  version_filter: wrk2
+  backend: GitHub
+  version_scheme: RPM

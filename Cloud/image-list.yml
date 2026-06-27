@@ -37,3 +37,4 @@ images:
   kuberay: kuberay
   kubeflow: kubeflow
   sriov-network-operator: sriov-network-operator
+  deathstarbench: deathstarbench
