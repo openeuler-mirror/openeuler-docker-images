@@ -36,3 +36,4 @@ images:
   kata-containers: kata-containers
   kuberay: kuberay
   kubeflow: kubeflow
+  sriov-network-operator: sriov-network-operator
