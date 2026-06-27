@@ -11,7 +11,7 @@
   CPU Cores:         32
   Snappy Version:    1.2.2
   Python Version:    Python 3.12.3
-  GCC Version:       13.3.0-6ubuntu2~24.04)
+  GCC Version:       13.3.0-6ubuntu2~24.04
   OS:                openEuler 24.03 SP3
   Kernel:            6.8.0-87-generic
 

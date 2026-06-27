@@ -3,7 +3,7 @@
   "description": "Snappy compression/decompression speed across different data patterns on ARM64",
   "reference": "https://github.com/google/snappy",
   "software": "snappy",
-  "version": "1.2.2",
+  "version": "1.2.1",
   "architecture": "arm64",
   "timestamp": "2026-06-26T09:32:00Z",
   "performance_metrics": {

@@ -205,6 +205,9 @@ int main(int argc, char* argv[]) {
     size_t data_size = 1024 * 1024;
     if (argc >= 5) data_size = atol(argv[4]);
 
+    const char* env_version = getenv("SOFTWARE_VERSION");
+    std::string version_str = env_version ? env_version : "1.2.2";
+
     srand(42);
 
     if (mode == "compression") {
@@ -230,7 +233,7 @@ int main(int argc, char* argv[]) {
         fprintf(fp, "  \"description\": \"Snappy compression/decompression speed across different data patterns on ARM64\",\n");
         fprintf(fp, "  \"reference\": \"https://github.com/google/snappy\",\n");
         fprintf(fp, "  \"software\": \"snappy\",\n");
-        fprintf(fp, "  \"version\": \"1.2.2\",\n");
+        fprintf(fp, "  \"version\": \"%s\",\n", version_str.c_str());
         fprintf(fp, "  \"architecture\": \"arm64\",\n");
         fprintf(fp, "  \"timestamp\": \"%s\",\n", get_timestamp().c_str());
         fprintf(fp, "  \"performance_metrics\": {\n");
@@ -282,11 +285,11 @@ int main(int argc, char* argv[]) {
         fprintf(fp, "  \"description\": \"Snappy micro benchmarks: block-level compress/decompress latency and multithread scaling on ARM64\",\n");
         fprintf(fp, "  \"reference\": \"https://github.com/google/snappy\",\n");
         fprintf(fp, "  \"software\": \"snappy\",\n");
-        fprintf(fp, "  \"version\": \"1.2.2\",\n");
+        fprintf(fp, "  \"version\": \"%s\",\n", version_str.c_str());
         fprintf(fp, "  \"architecture\": \"arm64\",\n");
         fprintf(fp, "  \"timestamp\": \"%s\",\n", get_timestamp().c_str());
         fprintf(fp, "  \"performance_metrics\": {\n");
-        fprintf(fp, "    \"compress_speed_mbs\": {\"unit\": \"MB/s\", \"description\": \"Block compression throughput\"},\n");
+        fprintf(fp, "    \"compress_speed_mbs\": {\"unit\": \"MB/s\", \"description\": \"Block compression throughput\"},\n")
         fprintf(fp, "    \"decompress_speed_mbs\": {\"unit\": \"MB/s\", \"description\": \"Block decompression throughput\"},\n");
         fprintf(fp, "    \"compress_latency_us\": {\"unit\": \"us\", \"description\": \"Single block compress latency\"},\n");
         fprintf(fp, "    \"decompress_latency_us\": {\"unit\": \"us\", \"description\": \"Single block decompress latency\"}\n");
