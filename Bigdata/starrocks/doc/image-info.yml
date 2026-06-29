@@ -1,5 +1,5 @@
 name: starrocks
-category: cloud
+category: bigdata
 description: StarRocks 是世界上最快的开源查询引擎，支持亚秒级即席分析，适用于数据湖仓内外场景。它采用原生向量化 SQL 引擎，支持 ANSI SQL 语法和 MySQL 协议，具备实时更新、智能物化视图和直接查询数据湖等特性。作为 Linux Foundation 项目，StarRocks 的平均查询性能比其他流行替代方案快 3 倍以上。
 environment: |
   本应用在Docker环境中运行，安装Docker执行如下命令
@@ -11,7 +11,7 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
-  |[4.1.1-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/starrocks/4.1.1/24.03-lts-sp3/Dockerfile) | StarRocks 4.1.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+  |[4.1.1-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Bigdata/starrocks/4.1.1/24.03-lts-sp3/Dockerfile) | StarRocks 4.1.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 download: |
   拉取镜像到本地

@@ -16,7 +16,7 @@ The tag of each `starrocks` docker image is consist of the version of `starrocks
 
 | Tag | Currently | Architectures |
 |-----|-----------|---------------|
-| [4.1.1-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/starrocks/4.1.1/24.03-lts-sp3/Dockerfile) | StarRocks 4.1.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+| [4.1.1-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Bigdata/starrocks/4.1.1/24.03-lts-sp3/Dockerfile) | StarRocks 4.1.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.
