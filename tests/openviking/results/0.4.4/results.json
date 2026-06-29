@@ -1,0 +1,230 @@
+{
+  "software_name": "openviking",
+  "primary_benchmark": {
+    "benchmark": "context_fs",
+    "description": "OpenViking AGFS filesystem operations benchmark on ARM64",
+    "reference": "https://github.com/volcengine/OpenViking",
+    "software": "openviking",
+    "architecture": "arm64",
+    "performance_metrics": {
+      "ops_per_sec": {
+        "unit": "ops/s",
+        "description": "Filesystem operations per second"
+      },
+      "avg_latency_ms": {
+        "unit": "ms",
+        "description": "Average operation latency"
+      },
+      "throughput_mbs": {
+        "unit": "MB/s",
+        "description": "Data throughput in megabytes per second"
+      }
+    },
+    "parameters": {
+      "iterations": 1,
+      "data_sizes_bytes": [
+        1024,
+        65536,
+        1048576
+      ],
+      "operations": [
+        "write",
+        "read",
+        "stat",
+        "ls",
+        "rm",
+        "mkdir",
+        "grep"
+      ]
+    },
+    "results_summary": {
+      "small_1kb": {
+        "write_avg_latency_ms": 0.031,
+        "write_ops_per_sec": 31835.8,
+        "write_throughput_mbs": 31.09,
+        "read_avg_latency_ms": 0.009,
+        "read_ops_per_sec": 115605.28,
+        "read_throughput_mbs": 112.9,
+        "stat_avg_latency_ms": 0.013,
+        "stat_ops_per_sec": 79998.65,
+        "ls_avg_latency_ms": 0.017,
+        "ls_ops_per_sec": 58411.09,
+        "rm_avg_latency_ms": 0.009,
+        "rm_ops_per_sec": 113503.36,
+        "mkdir_avg_latency_ms": 0.021,
+        "mkdir_ops_per_sec": 46664.14,
+        "grep_avg_latency_ms": 0.851,
+        "grep_ops_per_sec": 1175.64,
+        "data_size_bytes": 1024
+      },
+      "medium_64kb": {
+        "write_avg_latency_ms": 0.076,
+        "write_ops_per_sec": 13159.49,
+        "write_throughput_mbs": 822.47,
+        "read_avg_latency_ms": 0.049,
+        "read_ops_per_sec": 20462.36,
+        "read_throughput_mbs": 1278.9,
+        "stat_avg_latency_ms": 0.011,
+        "stat_ops_per_sec": 90745.14,
+        "ls_avg_latency_ms": 0.012,
+        "ls_ops_per_sec": 84603.22,
+        "rm_avg_latency_ms": 0.007,
+        "rm_ops_per_sec": 136426.13,
+        "mkdir_avg_latency_ms": 0.019,
+        "mkdir_ops_per_sec": 51653.24,
+        "grep_avg_latency_ms": 0.674,
+        "grep_ops_per_sec": 1484.0,
+        "data_size_bytes": 65536
+      },
+      "large_1mb": {
+        "write_avg_latency_ms": 1.434,
+        "write_ops_per_sec": 697.44,
+        "write_throughput_mbs": 697.44,
+        "read_avg_latency_ms": 1.057,
+        "read_ops_per_sec": 945.99,
+        "read_throughput_mbs": 945.99,
+        "stat_avg_latency_ms": 0.02,
+        "stat_ops_per_sec": 49358.36,
+        "ls_avg_latency_ms": 0.013,
+        "ls_ops_per_sec": 74348.55,
+        "rm_avg_latency_ms": 0.126,
+        "rm_ops_per_sec": 7942.82,
+        "mkdir_avg_latency_ms": 0.028,
+        "mkdir_ops_per_sec": 35136.11,
+        "grep_avg_latency_ms": 2.184,
+        "grep_ops_per_sec": 457.77,
+        "data_size_bytes": 1048576
+      },
+      "write_ops_per_sec": 15230.91,
+      "write_avg_latency_ms": 0.514,
+      "read_ops_per_sec": 45671.21,
+      "read_avg_latency_ms": 0.372
+    }
+  },
+  "micro_benchmark": {
+    "benchmark": "micro_operations",
+    "description": "OpenViking micro benchmarks: import/init latency, filesystem ops, multithread scaling on ARM64",
+    "reference": "https://github.com/volcengine/OpenViking",
+    "software": "openviking",
+    "architecture": "arm64",
+    "performance_metrics": {
+      "ops_per_sec": {
+        "unit": "ops/s",
+        "description": "Operations per second"
+      },
+      "avg_latency_ms": {
+        "unit": "ms",
+        "description": "Average latency in milliseconds"
+      },
+      "init_time_ms": {
+        "unit": "ms",
+        "description": "Initialization time"
+      }
+    },
+    "parameters": {
+      "iterations": 1,
+      "data_sizes": [
+        1024,
+        65536,
+        1048576
+      ],
+      "thread_counts": [
+        1,
+        2,
+        4,
+        8,
+        32
+      ]
+    },
+    "results": {
+      "import_init": {
+        "import_time_ms": 72.549,
+        "reload_time_ms": 0.302,
+        "version": "0.4.5"
+      },
+      "client_init": {
+        "client_init_ms": 3.344,
+        "health_check_ms": 0.012,
+        "get_capabilities_ms": 0.006,
+        "health_result": "{'status': 'healthy'}",
+        "capabilities_info": "{'version': 'ragfs-python', 'features': ['memfs', 'kvfs', 'queuefs', 'sqlfs', 'localfs', 'serverinfofs', 's3fs']}"
+      },
+      "fs_ops_latency": {
+        "1kb": {
+          "write_avg_latency_ms": 0.041,
+          "write_ops_per_sec": 24654.25,
+          "write_throughput_mbs": 23.82,
+          "ls_avg_latency_ms": 0.019,
+          "ls_ops_per_sec": 53079.33,
+          "rm_avg_latency_ms": 0.01,
+          "rm_ops_per_sec": 101521.47
+        },
+        "64kb": {
+          "write_avg_latency_ms": 0.085,
+          "write_ops_per_sec": 11711.01,
+          "write_throughput_mbs": 735.29,
+          "ls_avg_latency_ms": 0.012,
+          "ls_ops_per_sec": 84033.8,
+          "rm_avg_latency_ms": 0.007,
+          "rm_ops_per_sec": 147492.01
+        },
+        "1mb": {
+          "write_avg_latency_ms": 1.349,
+          "write_ops_per_sec": 741.29,
+          "write_throughput_mbs": 741.29,
+          "ls_avg_latency_ms": 0.016,
+          "ls_ops_per_sec": 62073.18,
+          "rm_avg_latency_ms": 0.136,
+          "rm_ops_per_sec": 7379.52
+        }
+      },
+      "multithread_fs_ops": {
+        "threads_1": {
+          "total_ops": 50,
+          "wall_time_ms": 1.368,
+          "combined_ops_per_sec": 36549.71,
+          "avg_per_op_latency_ms": 0.014
+        },
+        "threads_2": {
+          "total_ops": 50,
+          "wall_time_ms": 2.014,
+          "combined_ops_per_sec": 24826.22,
+          "avg_per_op_latency_ms": 0.039
+        },
+        "threads_4": {
+          "total_ops": 48,
+          "wall_time_ms": 2.683,
+          "combined_ops_per_sec": 17890.42,
+          "avg_per_op_latency_ms": 0.084
+        },
+        "threads_8": {
+          "total_ops": 48,
+          "wall_time_ms": 3.92,
+          "combined_ops_per_sec": 12244.9,
+          "avg_per_op_latency_ms": 0.173
+        },
+        "threads_32": {
+          "total_ops": 32,
+          "wall_time_ms": 7.725,
+          "combined_ops_per_sec": 4142.39,
+          "avg_per_op_latency_ms": 0.256
+        }
+      }
+    }
+  },
+  "environment": {
+    "test_time": "2026-06-26T10:06:50Z",
+    "Model": "Kunpeng-920",
+    "architecture": "aarch64",
+    "kernel": "6.8.0-87-generic",
+    "os": "openEuler 24.03 SP3",
+    "cpu_model": "ARM64 CPU (32 cores)",
+    "cpu_cores": 32,
+    "software_name": "openviking",
+    "software_version": "0.4.4",
+    "python_version": "Python 3.12.3",
+    "gcc_version": "13.3.0"
+  },
+  "timestamp": "2026-06-26T10:06:51Z",
+  "test_time": "2026-06-26T10:06:50Z"
+}

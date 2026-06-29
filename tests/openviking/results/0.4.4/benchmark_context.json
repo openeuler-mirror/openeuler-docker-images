@@ -1,0 +1,101 @@
+{
+  "benchmark": "context_fs",
+  "description": "OpenViking AGFS filesystem operations benchmark on ARM64",
+  "reference": "https://github.com/volcengine/OpenViking",
+  "software": "openviking",
+  "architecture": "arm64",
+  "performance_metrics": {
+    "ops_per_sec": {
+      "unit": "ops/s",
+      "description": "Filesystem operations per second"
+    },
+    "avg_latency_ms": {
+      "unit": "ms",
+      "description": "Average operation latency"
+    },
+    "throughput_mbs": {
+      "unit": "MB/s",
+      "description": "Data throughput in megabytes per second"
+    }
+  },
+  "parameters": {
+    "iterations": 1,
+    "data_sizes_bytes": [
+      1024,
+      65536,
+      1048576
+    ],
+    "operations": [
+      "write",
+      "read",
+      "stat",
+      "ls",
+      "rm",
+      "mkdir",
+      "grep"
+    ]
+  },
+  "results_summary": {
+    "small_1kb": {
+      "write_avg_latency_ms": 0.031,
+      "write_ops_per_sec": 31835.8,
+      "write_throughput_mbs": 31.09,
+      "read_avg_latency_ms": 0.009,
+      "read_ops_per_sec": 115605.28,
+      "read_throughput_mbs": 112.9,
+      "stat_avg_latency_ms": 0.013,
+      "stat_ops_per_sec": 79998.65,
+      "ls_avg_latency_ms": 0.017,
+      "ls_ops_per_sec": 58411.09,
+      "rm_avg_latency_ms": 0.009,
+      "rm_ops_per_sec": 113503.36,
+      "mkdir_avg_latency_ms": 0.021,
+      "mkdir_ops_per_sec": 46664.14,
+      "grep_avg_latency_ms": 0.851,
+      "grep_ops_per_sec": 1175.64,
+      "data_size_bytes": 1024
+    },
+    "medium_64kb": {
+      "write_avg_latency_ms": 0.076,
+      "write_ops_per_sec": 13159.49,
+      "write_throughput_mbs": 822.47,
+      "read_avg_latency_ms": 0.049,
+      "read_ops_per_sec": 20462.36,
+      "read_throughput_mbs": 1278.9,
+      "stat_avg_latency_ms": 0.011,
+      "stat_ops_per_sec": 90745.14,
+      "ls_avg_latency_ms": 0.012,
+      "ls_ops_per_sec": 84603.22,
+      "rm_avg_latency_ms": 0.007,
+      "rm_ops_per_sec": 136426.13,
+      "mkdir_avg_latency_ms": 0.019,
+      "mkdir_ops_per_sec": 51653.24,
+      "grep_avg_latency_ms": 0.674,
+      "grep_ops_per_sec": 1484.0,
+      "data_size_bytes": 65536
+    },
+    "large_1mb": {
+      "write_avg_latency_ms": 1.434,
+      "write_ops_per_sec": 697.44,
+      "write_throughput_mbs": 697.44,
+      "read_avg_latency_ms": 1.057,
+      "read_ops_per_sec": 945.99,
+      "read_throughput_mbs": 945.99,
+      "stat_avg_latency_ms": 0.02,
+      "stat_ops_per_sec": 49358.36,
+      "ls_avg_latency_ms": 0.013,
+      "ls_ops_per_sec": 74348.55,
+      "rm_avg_latency_ms": 0.126,
+      "rm_ops_per_sec": 7942.82,
+      "mkdir_avg_latency_ms": 0.028,
+      "mkdir_ops_per_sec": 35136.11,
+      "grep_avg_latency_ms": 2.184,
+      "grep_ops_per_sec": 457.77,
+      "data_size_bytes": 1048576
+    },
+    "write_ops_per_sec": 15230.91,
+    "write_avg_latency_ms": 0.514,
+    "read_ops_per_sec": 45671.21,
+    "read_avg_latency_ms": 0.372
+  }
+}
