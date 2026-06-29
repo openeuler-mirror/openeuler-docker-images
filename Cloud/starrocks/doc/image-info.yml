@@ -1,0 +1,74 @@
+name: starrocks
+category: cloud
+description: StarRocks 是世界上最快的开源查询引擎，支持亚秒级即席分析，适用于数据湖仓内外场景。它采用原生向量化 SQL 引擎，支持 ANSI SQL 语法和 MySQL 协议，具备实时更新、智能物化视图和直接查询数据湖等特性。作为 Linux Foundation 项目，StarRocks 的平均查询性能比其他流行替代方案快 3 倍以上。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  docker镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[4.1.1-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/starrocks/4.1.1/24.03-lts-sp3/Dockerfile) | StarRocks 4.1.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/starrocks:{Tag}
+  ```
+
+usage: |
+  - 启动 StarRocks FE 实例
+
+    ```
+    docker run -d --name my-starrocks-fe -p 8030:8030 -p 9030:9030 openeuler/starrocks:{Tag}
+    ```
+    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。`my-starrocks-fe`启动之后，通过`mysql -h 127.0.0.1 -P9030 -uroot`连接并访问 StarRocks 查询服务。
+
+  - 启动 StarRocks BE 实例
+
+    ```
+    docker run -d --name my-starrocks-be -p 8040:8040 openeuler/starrocks:{Tag} /opt/starrocks/be/bin/start_be.sh --daemon
+    ```
+
+  - 启动参数
+
+    |    Parameter   |  Description  |
+    |----------------|---------------|
+    | -p 8030:8030  | 暴露 FE HTTP 服务端口 |
+    | -p 9030:9030  | 暴露 FE MySQL 查询端口 |
+    | -p 8040:8040  | 暴露 BE HTTP 服务端口 |
+    | -v /path/to/fe.conf:/opt/starrocks/fe/conf/fe.conf | 挂载自定义 FE 配置文件 |
+    | -v /path/to/be.conf:/opt/starrocks/be/conf/be.conf | 挂载自定义 BE 配置文件 |
+    | -v /path/to/meta:/opt/starrocks/fe/meta | 持久化 FE 元数据 |
+    | -v /path/to/data:/opt/starrocks/be/storage | 持久化 BE 存储数据 |
+
+  - 容器测试
+
+    查看运行日志
+    ```
+    docker logs -f my-starrocks-fe
+    ```
+
+    使用shell交互
+    ```
+    docker exec -it my-starrocks-fe /bin/bash
+    ```
+
+license: Apache-2.0 license
+similar_packages:
+  - Apache Doris: 基于 MPP 架构的高性能实时分析型数据库，支持标准 SQL 和 MySQL 协议，适用于报表分析、即席查询等场景。
+  - ClickHouse: 开源的列式存储数据库，专为在线分析处理(OLAP)设计，具备极高的查询性能和压缩率，广泛用于实时数据分析。
+  - Apache Druid: 实时分析型数据库，专为快速查询和实时数据摄入而设计，支持亚秒级 OLAP 查询，适用于事件驱动型数据分析和用户行为分析。
+  - Trino: 分布式 SQL 查询引擎，支持跨多种数据源的联邦查询，适用于对数据湖、关系数据库和其他异构数据源进行快速分析。
+dependency:
+  - java-11-openjdk
+
+homepage: https://github.com/starrocks/starrocks
+upstream:
+  version_url: starrocks/starrocks
+  version_filter: alpha;rc;candidate;beta;pre
+  backend: GitHub
+  version_scheme: RPM
