@@ -44,9 +44,9 @@ similar_packages:
 dependency:
   - perl
 
-homepage: https://github.com/openvelinux/flamegraph
+homepage: https://github.com/openvelinux
 upstream:
-  version_url: openvelinux/flamegraph
+  version_url: openvelinux
   version_filter: rc;beta;alpha
   backend: GitHub
   version_scheme: RPM
