@@ -19,6 +19,7 @@ Learn more on [Rust Programming Language](https://www.rust-lang.org/).
 The tag of each rust docker image is consist of the version of rust and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[1.96.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/rust/1.96.0/24.03-lts-sp3/Dockerfile) | rust 1.96.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 |[1.95.0-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/rust/1.95.0/24.03-lts-sp3/Dockerfile) | rust 1.95.0 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 
