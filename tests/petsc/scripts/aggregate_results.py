@@ -1,0 +1,62 @@
+#!/usr/bin/env python3
+import json
+import os
+import sys
+from datetime import datetime, timezone
+
+
+def aggregate_results(results_dir, output_file):
+    os.makedirs(results_dir, exist_ok=True)
+
+    merged = {
+        "software_name": "petsc",
+        "primary_benchmark": {},
+        "micro_benchmark": {},
+        "environment": {},
+        "timestamp": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "test_time": "",
+    }
+
+    benchmark_map = {
+        "benchmark_ann.json": "primary_benchmark",
+        "benchmark_kv.json": "primary_benchmark",
+        "benchmark_generic.json": "primary_benchmark",
+        "micro_benchmark.json": "micro_benchmark",
+    }
+
+    for filename, key in benchmark_map.items():
+        filepath = os.path.join(results_dir, filename)
+        if os.path.exists(filepath):
+            try:
+                with open(filepath) as f:
+                    data = json.load(f)
+                merged[key] = data
+                print(f"[AGGREGATE] Loaded {key} from {filepath}")
+            except Exception as e:
+                print(f"[AGGREGATE] Failed to load {filepath}: {e}")
+
+    env_file = os.path.join(results_dir, "version_info.json")
+    if os.path.exists(env_file):
+        try:
+            with open(env_file) as f:
+                merged["environment"] = json.load(f)
+            merged["test_time"] = merged["environment"].get("test_time", "")
+            print(f"[AGGREGATE] Loaded environment from {env_file}")
+        except Exception as e:
+            print(f"[AGGREGATE] Failed to load {env_file}: {e}")
+
+    try:
+        os.makedirs(os.path.dirname(output_file) or ".", exist_ok=True)
+        with open(output_file, "w") as f:
+            json.dump(merged, f, indent=2)
+        print(f"[AGGREGATE] Aggregated results saved to {output_file}")
+    except Exception as e:
+        print(f"[AGGREGATE] Failed to write {output_file}: {e}")
+    return merged
+
+
+if __name__ == "__main__":
+    if len(sys.argv) < 3:
+        print("Usage: aggregate_results.py <results_dir> <output_file>")
+        sys.exit(1)
+    aggregate_results(sys.argv[1], sys.argv[2])

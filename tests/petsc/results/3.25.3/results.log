@@ -1,0 +1,33 @@
+[START] petsc Performance Benchmark v3.25.3
+[CHECK] Docker OK: Docker version 29.4.0, build 9d7ad9f
+[CHECK] json_helper.py OK
+[CHECK] Architecture: aarch64
+[SETUP] Downloading shUnit2...
+[SETUP] shUnit2 downloaded successfully
+[START] petsc Performance Benchmark v3.25.3
+[CHECK] Docker OK: Docker version 29.4.0, build 9d7ad9f
+[CHECK] json_helper.py OK
+[CHECK] Architecture: aarch64
+[PHASE1] === Phase 1: Docker Pull petsc v3.25.3 ===
+[PHASE1] Pulling openeuler/petsc:3.25.3-oe2403sp3...
+3.25.3-oe2403sp3: Pulling from openeuler/petsc
+Digest: sha256:03bc317ab9ccf834577377dab0caaffcc18d4d5b001db561406a65d33006646b
+Status: Image is up to date for openeuler/petsc:3.25.3-oe2403sp3
+docker.io/openeuler/petsc:3.25.3-oe2403sp3
+[PHASE1] Starting container...
+[PHASE1] Container 3f026284d79bdd947a180bc807ca8f7017e251624481656ab963f97007ad92fe started
+[CHECK] python3 available inside container
+[PHASE2] === Phase 2: Collect Version Info ===
+[PHASE3] === Phase 3: Run Benchmarks ===
+[BENCHMARK] Running petsc benchmark (func=benchmark_petsc, iterations=5)
+[BENCHMARK] petsc: 10 test results, 10 summary entries
+[BENCHMARK] Output written to /workspace/results/3.25.3/benchmark_generic.json
+[PHASE3B] Running micro benchmark...
+[MICRO] Output written to /workspace/results/3.25.3/micro_benchmark.json
+[PHASE4] === Phase 4: Aggregate & Report ===
+[PHASE4] Reports generated:
+[PHASE4]   JSON: /home/runner/tantian/actions-runner/_work/Tian/Tian/tests/petsc/results/3.25.3/results.json
+[PHASE4]   TXT:  /home/runner/tantian/actions-runner/_work/Tian/Tian/tests/petsc/results/3.25.3/results.txt
+[PHASE4]   LOG:  /home/runner/tantian/actions-runner/_work/Tian/Tian/tests/petsc/results/3.25.3/results.log
+[WARN] petsc not found as Python module or binary, skipping install check
+[CLEANUP] Stopping container 3f026284d79bdd947a180bc807ca8f7017e251624481656ab963f97007ad92fe
