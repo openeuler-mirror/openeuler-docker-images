@@ -1,2 +1,4 @@
 f603c14-oe2403sp3:
   path: f603c14/24.03-lts-sp3/Dockerfile
+f603c14-oe2403sp4:
+  path: f603c14/24.03-lts-sp4/Dockerfile
