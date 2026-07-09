@@ -1,2 +1,4 @@
 5.8.3-oe2403sp1:
   path: 5.8.3/24.03-lts-sp1/Dockerfile
+5.8.3-oe2403sp4:
+  path: 5.8.3/24.03-lts-sp4/Dockerfile
