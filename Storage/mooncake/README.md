@@ -18,6 +18,7 @@ The tag of each `mooncake` docker image is consist of the version of `mooncake` 
 
 | Tag                                                                                                                                                       | Currently                                              | Architectures |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------|---------------|
+|[0.3.11.post1-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Storage/mooncake/0.3.11.post1/24.03-lts-sp4/Dockerfile) | Mooncake 0.3.11.post1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[0.3.11.post1-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Storage/mooncake/0.3.11.post1/24.03-lts-sp3/Dockerfile) | Mooncake 0.3.11.post1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 # Usage
