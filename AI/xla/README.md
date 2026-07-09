@@ -15,6 +15,7 @@ The XLA compiler takes models from popular ML frameworks such as PyTorch, Tensor
 The tag of each xla docker image is consist of the version of xla and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[3b0ff80-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/xla/3b0ff80/24.03-lts-sp4/Dockerfile) | xla 3b0ff80 on openEuler 24.03-lts-sp4 | amd64, arm64 |
 |[3b0ff80-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/xla/3b0ff80/24.03-lts-sp3/Dockerfile) | xla 3b0ff80 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 
