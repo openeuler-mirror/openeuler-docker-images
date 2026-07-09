@@ -22,6 +22,7 @@ Features:
 The tag of each `nginx` docker image is consist of the version of `nginx` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[1.30.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/nginx/1.30.0/24.03-lts-sp4/Dockerfile) | nginx 1.30.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[1.30.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/nginx/1.30.0/24.03-lts-sp3/Dockerfile) | nginx 1.30.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 |[1.29.1-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/nginx/1.29.1/24.03-lts-sp2/Dockerfile) | nginx 1.29.1 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[1.16.1-oe2003sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/nginx/1.16.1/20.03-lts-sp1/Dockerfile)| Nginx 1.16.1 on openEuler 20.03-LTS-SP1 | amd64, arm64 |
