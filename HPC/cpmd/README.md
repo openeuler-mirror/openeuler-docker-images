@@ -21,6 +21,7 @@ Each tag of CPMD container image consists of the version of CPMD and the version
 
 | Tags | Currently |  Architectures|
 |------|-----------|---------------|
+|[4.3-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/cpmd/4.3/24.03-lts-sp4/Dockerfile)| CPMD 4.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[4.3-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/cpmd/4.3/24.03-lts-sp3/Dockerfile)| CPMD 4.3 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 
