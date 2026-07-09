@@ -17,6 +17,7 @@ Learn more at [Elmer](https://github.com/ElmerCSC/elmerfem).
 The tag of each Elmer docker image is consist of the version of Elmer and the version of basic image. The details are as follows:
 | Tags | Currently | Architectures |
 |------|-----------|---------------|
+|[26.2.1-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/elmer/26.2.1/24.03-lts-sp4/Dockerfile) | Elmer 26.2.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[26.2.1-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/elmer/26.2.1/24.03-lts-sp3/Dockerfile) | Elmer 26.2.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 # Usage
