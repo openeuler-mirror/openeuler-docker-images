@@ -13,6 +13,7 @@ Gadget is the Globally applicable Area Disaggregated General Ecosystem Toolbox. 
 The tag of each gadget2 docker image is consist of the version of gadget2 and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[2.3.5-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/gadget2/2.3.5/24.03-lts-sp4/Dockerfile) | gadget2 2.3.5 on openEuler 24.03-lts-sp4 | amd64, arm64 |
 |[2.3.5-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/gadget2/2.3.5/24.03-lts-sp3/Dockerfile) | gadget2 2.3.5 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 
