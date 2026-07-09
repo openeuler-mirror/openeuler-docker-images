@@ -13,6 +13,7 @@ Monolith is a deep learning framework for large scale recommendation modeling. I
 The tag of each monolith docker image is consist of the version of monolith and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[135c491-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/monolith/135c491/24.03-lts-sp4/Dockerfile) | monolith 135c491 on openEuler 24.03-lts-sp4 | amd64, arm64 |
 |[135c491-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/monolith/135c491/24.03-lts-sp3/Dockerfile) | monolith 135c491 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 
