@@ -19,6 +19,7 @@ The tag of each `drbd-utils` docker image is consist of the version of `drbd-uti
 
 | Tag                                                                                                                                    | Currently                                    | Architectures |
 |----------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------|---------------|
+| [9.31.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/drbd-utils/9.31.0/24.03-lts-sp4/Dockerfile) | DRBD-utils 9.31.0 on openEuler 24.03-LTS-SP4 | amd64, arm64  |
 | [9.31.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/drbd-utils/9.31.0/24.03-lts-sp1/Dockerfile) | DRBD-utils 9.31.0 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 
 # Usage
