@@ -32,6 +32,7 @@ usage: |
     ```
     docker run -it openeuler/openjdk:{Tag} java --version
     ```
+    例如，`{Tag}`为`23_13-oe2403sp4`时，返回类似如下信息则证明环境正常：
     例如，`{Tag}`为`23_13-oe2203sp3`时，返回类似如下信息则证明环境正常：
     ```
     openjdk 23-ea 2024-09-17
