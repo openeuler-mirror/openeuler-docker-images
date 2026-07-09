@@ -3,3 +3,5 @@
 
 202103.Sumatra-oe2403sp3:
   path: 202103.Sumatra/24.03-lts-sp3/Dockerfile
+202103.Sumatra-oe2403sp4:
+  path: 202103.Sumatra/24.03-lts-sp4/Dockerfile
