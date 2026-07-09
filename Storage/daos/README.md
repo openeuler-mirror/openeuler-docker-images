@@ -18,6 +18,7 @@ The tag of each `daos` docker image is consist of the version of `daos` and the 
 
 | Tag                                                                                                                            | Currently                             | Architectures |
 |--------------------------------------------------------------------------------------------------------------------------------|---------------------------------------|---------------|
+| [2.6.3-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/daos/2.6.3/24.03-lts-sp4/Dockerfile) | Daos 2.6.3 on openEuler 24.03-LTS-SP4 | amd64, arm64  |
 | [2.6.3-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/daos/2.6.3/24.03-lts-sp2/Dockerfile) | Daos 2.6.3 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
 
 # Usage
