@@ -18,6 +18,7 @@ The tag of each `dhcp` docker image is consist of the version of `dhcp` and the 
 
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[4.4.3-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/dhcp/4.4.3/24.03-lts-sp4/Dockerfile)| DHCP 4.4.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[4.4.3-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/dhcp/4.4.3/24.03-lts-sp1/Dockerfile)| DHCP 4.4.3 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
