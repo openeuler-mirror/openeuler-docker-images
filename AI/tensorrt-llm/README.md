@@ -13,6 +13,7 @@ TensorRT LLM provides users with an easy-to-use Python API to define Large Langu
 The tag of each TensorRT-LLM docker image is consist of the version of TensorRT-LLM and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[1.2.1-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/tensorrt-llm/1.2.1/24.03-lts-sp4/Dockerfile) | tensorrt-llm 1.2.1 on openEuler 24.03-lts-sp4 | amd64, arm64 |
 |[1.2.1-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/tensorrt-llm/1.2.1/24.03-lts-sp3/Dockerfile) | tensorrt-llm 1.2.1 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 
