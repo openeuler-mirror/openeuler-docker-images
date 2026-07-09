@@ -13,6 +13,7 @@ Towhee is a cutting-edge framework designed to streamline the processing of unst
 The tag of each towhee docker image is consist of the version of towhee and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[1.1.3-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/towhee/1.1.3/24.03-lts-sp4/Dockerfile) | towhee 1.1.3 on openEuler 24.03-lts-sp4 | amd64, arm64 |
 |[1.1.3-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/towhee/1.1.3/24.03-lts-sp3/Dockerfile) | towhee 1.1.3 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 
