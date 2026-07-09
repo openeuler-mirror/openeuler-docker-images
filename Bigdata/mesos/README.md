@@ -16,6 +16,7 @@ For more information about mesos, please visit [http://mesos.apache.org/](http:/
 The tag of each mesos docker image is consist of the version of mesos and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[1.11.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/mesos/1.11.0/24.03-lts-sp4/Dockerfile)| Apache Mesos 1.11.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[1.11.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/mesos/1.11.0/24.03-lts-sp1/Dockerfile)| Apache Mesos 1.11.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
