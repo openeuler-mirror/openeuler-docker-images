@@ -13,6 +13,7 @@ The Grid Analysis and Display System (GrADS) is a tool for fast and easy access,
 The tag of each GrADS docker image is consist of the version of GrADS and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[2.2.3-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/grads/2.2.3/24.03-lts-sp4/Dockerfile) | GrADS 2.2.3 on openEuler 24.03-lts-sp4 | amd64, arm64 |
 |[2.2.3-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/grads/2.2.3/24.03-lts-sp3/Dockerfile) | GrADS 2.2.3 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 
