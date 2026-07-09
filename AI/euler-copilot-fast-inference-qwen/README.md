@@ -35,6 +35,7 @@ The tag of each euler-copilot-fast-inference-qwen docker image is consist of the
           # cd source code
           cd euler-copilot-fast-inference
           # start docker
+          docker run --name **** -it -d --net=host --privileged=true --entrypoint=bash openeuler/euler-copilot-fast-inference-qwen:1.5-oe2403sp4
           docker run --name **** -it -d --net=host --privileged=true --entrypoint=bash openeuler/euler-copilot-fast-inference-qwen:1.5-oe2203sp3
           # start inference
           docker exec -it <name> bash

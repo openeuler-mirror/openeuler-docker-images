@@ -30,6 +30,7 @@ usage: |
       # 进入源码目录
       cd mptcp_net-next
       # 启动容器
+      docker run --name **** -it -d --net=host --privileged=true --entrypoint=bash openeuler/euler-copilot-fast-inference-qwen:1.5-oe2403sp4
       docker run --name **** -it -d --net=host --privileged=true --entrypoint=bash openeuler/euler-copilot-fast-inference-qwen:1.5-oe2203sp3
       # 进入docker执行推理
       docker exec -it <name> bash
