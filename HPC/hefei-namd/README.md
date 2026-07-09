@@ -16,6 +16,7 @@ The tag of each `hefei-namd` docker image is consist of the version of `hefei-na
 
 | Tag                                                                                                                                   | Currently                                  | Architectures |
 |---------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------|---------------|
+| [1.0.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/hefei-namd/1.0.0/24.03-lts-sp4/Dockerfile)      | Hefei-NAMD 1.0.0 on openEuler 24.03-LTS-SP4 | amd64, arm64  |
 | [1.0.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/hefei-namd/1.0.0/24.03-lts-sp3/Dockerfile)      | Hefei-NAMD 1.0.0 on openEuler 24.03-LTS-SP3 | amd64, arm64  |
 
 # Usage
