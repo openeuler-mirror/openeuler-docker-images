@@ -1,0 +1,38 @@
+{
+  "name": "hnswlib",
+  "category": "Others",
+  "upstream": "https://github.com/nmslib/hnswlib",
+  "latestVersion": "0.9.0",
+  "supportedVersions": [
+    {
+      "version": "0.9.0",
+      "openEuler": "openEuler 24.03 LTS SP3",
+      "hardware": "Kunpeng 920",
+      "functional": "pass",
+      "functionalDate": "2026-06-26",
+      "performance": "improvement",
+      "performanceDate": "2026-06-26",
+      "integratedDate": "2026-05-19"
+    },
+    {
+      "version": "0.8.0",
+      "openEuler": "openEuler 24.03 LTS SP3",
+      "hardware": "Kunpeng 920",
+      "functional": "pass",
+      "functionalDate": "2026-06-26",
+      "performance": "stable",
+      "performanceDate": "2026-06-26",
+      "integratedDate": "2026-05-03"
+    },
+    {
+      "version": "0.7.0",
+      "openEuler": "openEuler 24.03 LTS SP3",
+      "hardware": "Kunpeng 920",
+      "functional": "pass",
+      "functionalDate": "2026-06-26",
+      "performance": "stable",
+      "performanceDate": "2026-06-26",
+      "integratedDate": "2026-04-03"
+    }
+  ]
+}
