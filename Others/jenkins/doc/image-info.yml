@@ -11,6 +11,7 @@ tags: |
 
   | Tag                                                                                                                              | Currently                                | Architectures |
   |----------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|---------------|
+  |[2.562-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.562/24.03-lts-sp4/Dockerfile) | jenkins 2.562 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[2.562-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.562/24.03-lts-sp3/Dockerfile) | jenkins 2.562 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
   |[2.555-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.555/24.03-lts-sp3/Dockerfile) | jenkins 2.555 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
   |[2.548-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.548/24.03-lts-sp3/Dockerfile) | jenkins 2.548 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
