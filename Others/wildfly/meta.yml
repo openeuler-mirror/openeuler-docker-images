@@ -4,3 +4,5 @@
   path: 37.0.0/24.03-lts-sp2/Dockerfile
 37.0.1-oe2403sp1:
   path: 37.0.1/24.03-lts-sp1/Dockerfile
+37.0.1-oe2403sp4:
+  path: 37.0.1/24.03-lts-sp4/Dockerfile
