@@ -13,6 +13,7 @@ VVenC, the Fraunhofer Versatile Video Encoder, is a fast and efficient software 
 The tag of each vvenc docker image is consist of the version of vvenc and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[1.14.0-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/vvenc/1.14.0/24.03-lts-sp4/Dockerfile) | vvenc 1.14.0 on openEuler 24.03-lts-sp4 | amd64, arm64 |
 |[1.14.0-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/vvenc/1.14.0/24.03-lts-sp3/Dockerfile) | vvenc 1.14.0 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 
