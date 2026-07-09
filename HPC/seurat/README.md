@@ -16,6 +16,7 @@ Learn more at [Seurat](https://github.com/satijalab/seurat).
 The tag of each Seurat docker image is consist of the version of Seurat and the version of basic image. The details are as follows:
 | Tags | Currently | Architectures |
 |------|-----------|---------------|
+|[5.5.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/seurat/5.5.0/24.03-lts-sp4/Dockerfile) | Seurat 5.5.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[5.5.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/seurat/5.5.0/24.03-lts-sp3/Dockerfile) | Seurat 5.5.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 # Usage
