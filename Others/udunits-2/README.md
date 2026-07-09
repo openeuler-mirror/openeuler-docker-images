@@ -14,6 +14,7 @@ Learn more on [UDUNITS | NSF Unidata](https://www.unidata.ucar.edu/software/udun
 The tag of each UDUNITS-2 docker image is consist of the version of UDUNITS-2 and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[2.2.28-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/udunits-2/2.2.28/24.03-lts-sp4/Dockerfile) | UDUNITS-2 2.2.28 on openEuler 24.03-lts-sp4 | amd64, arm64 |
 |[2.2.28-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/udunits-2/2.2.28/24.03-lts-sp3/Dockerfile) | UDUNITS-2 2.2.28 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 
