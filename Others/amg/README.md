@@ -13,6 +13,7 @@ AMG is a parallel algebraic multigrid solver for linear systems arising from pro
 The tag of each AMG docker image is consist of the version of AMG and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[1.2-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/AMG/1.2/24.03-lts-sp4/Dockerfile) | AMG 1.2 on openEuler 24.03-lts-sp4 | amd64, arm64 |
 |[1.2-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/AMG/1.2/24.03-lts-sp3/Dockerfile) | AMG 1.2 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 
