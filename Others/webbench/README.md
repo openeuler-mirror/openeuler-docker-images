@@ -17,6 +17,7 @@ The tag of each `webbench` docker image is consist of the version of `webbench` 
 
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[1.5-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/webbench/1.5/24.03-lts-sp4/Dockerfile)| webbench 1.5 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[1.5-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/webbench/1.5/24.03-lts-sp1/Dockerfile)| webbench 1.5 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
