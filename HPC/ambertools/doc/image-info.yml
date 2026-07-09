@@ -11,6 +11,7 @@ tags: |
 
   | Tag                                                                                                                                | Currently                                    | Architectures |
   |------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------|---------------|
+  | [24.8-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/ambertools/24.8/24.03-lts-sp4/Dockerfile) | AmberTools 24 on openEuler 24.03-LTS-SP4 | amd64, arm64  |
   | [24.8-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/ambertools/24.8/24.03-lts-sp2/Dockerfile) | AmberTools 24 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
 
 download: |
