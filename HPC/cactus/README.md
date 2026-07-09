@@ -13,6 +13,7 @@ Cactus is a reference-free whole-genome alignment program, as well as a pangenom
 The tag of each cactus docker image is consist of the version of cactus and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[3.2.1-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/cactus/3.2.1/24.03-lts-sp4/Dockerfile) | cactus 3.2.1 on openEuler 24.03-lts-sp4 | amd64, arm64 |
 |[3.2.1-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/cactus/3.2.1/24.03-lts-sp3/Dockerfile) | cactus 3.2.1 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 
