@@ -1,2 +1,4 @@
 fbf1aec-oe2403sp3:
   path: fbf1aec/24.03-lts-sp3/Dockerfile
+fbf1aec-oe2403sp4:
+  path: fbf1aec/24.03-lts-sp4/Dockerfile
