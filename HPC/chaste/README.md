@@ -21,6 +21,7 @@ Learn more at [Chaste](https://chaste.github.io).
 The tag of each Chaste docker image is consist of the version of Chaste and the version of basic image. The details are as follows:
 | Tags | Currently | Architectures |
 |------|-----------|---------------|
+|[2026.1-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/chaste/2026.1/24.03-lts-sp4/Dockerfile) | Chaste 2026.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[2026.1-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/chaste/2026.1/24.03-lts-sp3/Dockerfile) | Chaste 2026.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 # Usage
