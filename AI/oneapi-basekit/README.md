@@ -28,6 +28,7 @@ More details for [oneAPI Basekit](https://software.intel.com/oneapi/base-kit).
 
 # Supported tags and respective Dockerfile links
 
+- 2024.2.0-oe2403sp4
 - 2024.2.0-oe2403lts
 
 ## Operating System
