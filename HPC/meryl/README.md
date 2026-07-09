@@ -16,6 +16,7 @@ Learn more at [Meryl](https://github.com/marbl/meryl).
 The tag of each Meryl docker image is consist of the version of Meryl and the version of basic image. The details are as follows:
 | Tags | Currently | Architectures |
 |------|-----------|---------------|
+|[1.4.1-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/meryl/1.4.1/24.03-lts-sp4/Dockerfile) | Meryl 1.4.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[1.4.1-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/meryl/1.4.1/24.03-lts-sp3/Dockerfile) | Meryl 1.4.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 # Usage
