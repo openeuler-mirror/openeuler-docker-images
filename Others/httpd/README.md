@@ -17,6 +17,7 @@ Learn more on [Httpd Website](https://httpd.apache.org/)⁠.
 The tag of each `httpd` docker image is consist of the version of `httpd` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[2.4.66-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/httpd/2.4.66/24.03-lts-sp4/Dockerfile) | httpd 2.4.66 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[2.4.66-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/httpd/2.4.66/24.03-lts-sp2/Dockerfile) | httpd 2.4.66 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[2.4.51-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/httpd/2.4.51/22.03-lts/Dockerfile)| Apache HTTP Server 2.4.51 on openEuler 22.03-LTS | amd64, arm64 |
 |[2.4.58-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/httpd/2.4.58/22.03-lts-sp3/Dockerfile)| Apache HTTP Server 2.4.58 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
