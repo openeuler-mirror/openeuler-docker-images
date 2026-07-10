@@ -16,6 +16,7 @@ For more information about oozie, please visit [http://oozie.apache.org/](http:/
 The tag of each oozie docker image is consist of the version of oozie and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[5.2.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/oozie/5.2.1/24.03-lts-sp4/Dockerfile) | oozie 5.2.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[5.2.1-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/oozie/5.2.1/24.03-lts-sp3/Dockerfile) | oozie 5.2.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 |[5.2.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/oozie/5.2.1/24.03-lts-sp1/Dockerfile)| Apache Oozie 5.2.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
