@@ -16,6 +16,7 @@ The tag of each `lammps` docker image is consist of the version of `lammps` and 
 
 | Tag                                                                                                                                  | Currently                                   | Architectures |
 |--------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------|---------------|
+| [29Aug2024-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/lammps/29Aug2024/24.03-lts-sp4/Dockerfile) | lammps 29Aug2024 on openEuler 24.03-LTS-SP4 | amd64, arm64  |
 | [29Aug2024-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/lammps/29Aug2024/24.03-lts-sp1/Dockerfile) | lammps 29Aug2024 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 
 # Usage
