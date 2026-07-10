@@ -19,6 +19,7 @@ NCL is developed by the Computational and Information Systems Lab at the Nationa
 The tag of each ncl docker image is consist of the version of ncl and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[6.6.2-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/ncl/6.6.2/24.03-lts-sp4/Dockerfile) | ncl 6.6.2 on openEuler 24.03-lts-sp4 | amd64, arm64 |
 |[6.6.2-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/ncl/6.6.2/24.03-lts-sp3/Dockerfile) | ncl 6.6.2 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 
