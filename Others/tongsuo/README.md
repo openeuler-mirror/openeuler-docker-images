@@ -19,6 +19,7 @@ The tag of each `Tongsuo` docker image is consist of the version of `Tongsuo` an
 
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[8.4.0-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/Tongsuo/8.4.0/24.03-lts-sp4/Dockerfile) | Tongsuo 8.4.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[8.4.0-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/Tongsuo/8.4.0/24.03-lts-sp3/Dockerfile) | Tongsuo 8.4.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 # Usage
