@@ -7,3 +7,5 @@
   path: 25.09/24.03-lts-sp2/Dockerfile
 26.01-oe2403sp3:
   path: 26.01/24.03-lts-sp3/Dockerfile
+26.01-oe2403sp4:
+  path: 26.01/24.03-lts-sp4/Dockerfile
