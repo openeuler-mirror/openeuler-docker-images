@@ -16,6 +16,7 @@ Learn more about libwebp on [WebP](https://developers.google.com/speed/webp).
 The tag of each `libwebp` docker image is consist of the version of `libwebp` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[1.6.0-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/libwebp/1.6.0/24.03-lts-sp4/Dockerfile) | libwebp 1.6.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[1.6.0-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/libwebp/1.6.0/24.03-lts-sp3/Dockerfile) | libwebp 1.6.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 # Usage
