@@ -17,6 +17,7 @@ Learn more at [FDS](https://github.com/firemodels/fds).
 The tag of each FDS docker image is consist of the version of FDS and the version of basic image. The details are as follows:
 | Tags | Currently | Architectures |
 |------|-----------|---------------|
+|[6.11.0-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/fds/6.11.0/24.03-lts-sp4/Dockerfile) | FDS 6.11.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[6.11.0-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/fds/6.11.0/24.03-lts-sp3/Dockerfile) | FDS 6.11.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 # Usage
