@@ -19,6 +19,7 @@ Learn more at [FASTA](https://github.com/xapple/fasta).
 The tag of each FASTA docker image is consist of the version of FASTA and the version of basic image. The details are as follows:
 | Tags | Currently | Architectures |
 |------|-----------|---------------|
+|[2.3.6-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/fasta/2.3.6/24.03-lts-sp4/Dockerfile) | FASTA 2.3.6 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[2.3.6-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/fasta/2.3.6/24.03-lts-sp3/Dockerfile) | FASTA 2.3.6 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 # Usage
