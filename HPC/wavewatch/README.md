@@ -17,6 +17,7 @@ Learn more at [WAVEWATCH III](https://github.com/NOAA-EMC/WW3).
 The tag of each WAVEWATCH III docker image is consist of the version of WAVEWATCH III and the version of basic image. The details are as follows:
 | Tags | Currently | Architectures |
 |------|-----------|---------------|
+|[6.07.1-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/wavewatch/6.07.1/24.03-lts-sp4/Dockerfile) | WAVEWATCH III 6.07.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[6.07.1-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/wavewatch/6.07.1/24.03-lts-sp3/Dockerfile) | WAVEWATCH III 6.07.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 # Usage
