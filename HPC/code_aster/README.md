@@ -13,6 +13,7 @@ Code_Aster is a finite element solver for structural and thermomechanical analys
 The tag of each code_aster docker image is consist of the version of code_aster and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[f603c14-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/code_aster/f603c14/24.03-lts-sp4/Dockerfile) | code_aster f603c14 on openEuler 24.03-lts-sp4 | amd64, arm64 |
 |[f603c14-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/code_aster/f603c14/24.03-lts-sp3/Dockerfile) | code_aster f603c14 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 
