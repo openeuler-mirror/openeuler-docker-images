@@ -18,6 +18,7 @@ The tag of each `opencloudos` docker image is consist of the version of `openclo
 
 | Tag | Currently | Architectures |
 |-----|-----------|---------------|
+|[1.2.11-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/opencloudos/1.2.11/24.03-lts-sp4/Dockerfile) | OpenCloudOS nettrace 1.2.11 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[1.2.11-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/opencloudos/1.2.11/24.03-lts-sp3/Dockerfile) | OpenCloudOS nettrace 1.2.11 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 # Usage
