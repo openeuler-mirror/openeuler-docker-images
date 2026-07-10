@@ -1,2 +1,4 @@
 3.0.1-oe2403sp2:
   path: 3.0.1/24.03-lts-sp2/Dockerfile
+3.0.1-oe2403sp4:
+  path: 3.0.1/24.03-lts-sp4/Dockerfile
