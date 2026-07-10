@@ -25,6 +25,7 @@ The tag of each KleidiAI docker image is consist of the version of KleidiAI and 
 
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[1.0.0-torch2.9.0-python3.11-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/executorch/1.0.0-torch2.9.0-python3.11/24.03-lts-sp4/Dockerfile)| ExecuTorch 1.0.0 on openEuler 24.03-LTS-SP4 | aarch64 |
 |[1.0.0-torch2.9.0-python3.11-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/executorch/1.0.0-torch2.9.0-python3.11/24.03-lts-sp2/Dockerfile)| ExecuTorch 1.0.0 on openEuler 24.03-LTS-SP2 | aarch64 |
 
 # Usage
