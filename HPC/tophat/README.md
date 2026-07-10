@@ -13,6 +13,7 @@ TopHat is a fast splice junction mapper for RNA-Seq reads. It aligns RNA-Seq rea
 The tag of each tophat docker image is consist of the version of tophat and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[2.1.2-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/tophat/2.1.2/24.03-lts-sp4/Dockerfile) | tophat 2.1.2 on openEuler 24.03-lts-sp4 | amd64, arm64 |
 |[2.1.2-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/tophat/2.1.2/24.03-lts-sp3/Dockerfile) | tophat 2.1.2 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 
