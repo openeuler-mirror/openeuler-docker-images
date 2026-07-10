@@ -19,6 +19,7 @@ Learn more at [kb_python](https://github.com/pachterlab/kb_python).
 The tag of each kb_python docker image is consist of the version of kb_python and the version of basic image. The details are as follows:
 | Tags | Currently | Architectures |
 |------|-----------|---------------|
+|[0.30.2-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/kb_python/0.30.2/24.03-lts-sp4/Dockerfile) | kb_python 0.30.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[0.30.2-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/kb_python/0.30.2/24.03-lts-sp3/Dockerfile) | kb_python 0.30.2 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 # Usage
