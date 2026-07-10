@@ -19,6 +19,7 @@ Learn more at [SWMM](https://github.com/USEPA/Stormwater-Management-Model).
 The tag of each SWMM docker image is consist of the version of SWMM and the version of basic image. The details are as follows:
 | Tags | Currently | Architectures |
 |------|-----------|---------------|
+|[5.2.4-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/swmm/5.2.4/24.03-lts-sp4/Dockerfile) | SWMM 5.2.4 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[5.2.4-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/swmm/5.2.4/24.03-lts-sp3/Dockerfile) | SWMM 5.2.4 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 # Usage
