@@ -13,6 +13,7 @@ ROOT is a unified software package for the storage, processing, and analysis of 
 The tag of each root docker image is consist of the version of root and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[6-40-00-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/root/6-40-00/24.03-lts-sp4/Dockerfile) | root 6-40-00 on openEuler 24.03-lts-sp4 | amd64, arm64 |
 |[6-40-00-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/root/6-40-00/24.03-lts-sp3/Dockerfile) | root 6-40-00 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 

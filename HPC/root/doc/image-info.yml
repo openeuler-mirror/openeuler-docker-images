@@ -11,6 +11,7 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
+  |[6-40-00-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/root/6-40-00/24.03-lts-sp4/Dockerfile) | root 6-40-00 on openEuler 24.03-lts-sp4 | amd64, arm64 |
   |[6-40-00-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/root/6-40-00/24.03-lts-sp3/Dockerfile) | root 6-40-00 on openEuler 24.03-lts-sp3 | amd64, arm64 |
   
 download: |
