@@ -16,6 +16,7 @@ The tag of each `chroma` docker image is consist of the version of `chroma` and 
 
 | Tag                                                                                                                                  | Currently                                   | Architectures |
 |--------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------|---------------|
+| [chroma-3-44-0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/chroma/chroma-3-44-0/24.03-lts-sp4/Dockerfile) | chroma 3.44.0 on openEuler 24.03-LTS-SP4 | amd64, arm64  |
 | [chroma-3-44-0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/chroma/chroma-3-44-0/24.03-lts-sp3/Dockerfile) | chroma 3.44.0 on openEuler 24.03-LTS-SP3 | amd64, arm64  |
 
 # Usage
