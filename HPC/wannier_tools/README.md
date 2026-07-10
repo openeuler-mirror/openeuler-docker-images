@@ -18,6 +18,7 @@ Learn more at [WannierTools](https://www.wanniertools.org).
 The tag of each WannierTools docker image is consist of the version of WannierTools and the version of basic image. The details are as follows:
 | Tags | Currently | Architectures |
 |------|-----------|---------------|
+|[2.6.2-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/wannier_tools/2.6.2/24.03-lts-sp4/Dockerfile) | WannierTools 2.6.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[2.6.2-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/wannier_tools/2.6.2/24.03-lts-sp3/Dockerfile) | WannierTools 2.6.2 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 # Usage
