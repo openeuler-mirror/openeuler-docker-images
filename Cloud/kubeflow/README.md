@@ -18,6 +18,7 @@ The tag of each `kubeflow` docker image is consist of the version of `kubeflow` 
 
 | Tag | Currently | Architectures |
 |-----|-----------|---------------|
+| [1.10.0-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/kubeflow/1.10.0/24.03-lts-sp4/Dockerfile) | Kubeflow 1.10.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 | [1.10.0-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/kubeflow/1.10.0/24.03-lts-sp3/Dockerfile) | Kubeflow 1.10.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 # Usage
