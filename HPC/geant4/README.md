@@ -16,6 +16,7 @@ The tag of each `geant4` docker image is consist of the version of `geant4` and 
 
 | Tag                                                                                                                                  | Currently                                   | Architectures |
 |--------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------|---------------|
+| [11.4.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/geant4/11.4.1/24.03-lts-sp4/Dockerfile) | geant4 11.4.1 on openEuler 24.03-LTS-SP4 | amd64, arm64  |
 | [11.4.1-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/geant4/11.4.1/24.03-lts-sp3/Dockerfile) | geant4 11.4.1 on openEuler 24.03-LTS-SP3 | amd64, arm64  |
 
 # Usage
