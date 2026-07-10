@@ -13,6 +13,7 @@ The tag of each `tomcat` docker image is consist of the version of `tomcat` and 
 
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[11.0.22-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/tomcat/11.0.22/24.03-lts-sp4/Dockerfile) | tomcat 11.0.22 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[11.0.22-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/tomcat/11.0.22/24.03-lts-sp3/Dockerfile) | tomcat 11.0.22 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 |[11.0.20-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/tomcat/11.0.20/24.03-lts-sp3/Dockerfile) | tomcat 11.0.20 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 |[11.0.18-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/tomcat/11.0.18/24.03-lts-sp3/Dockerfile) | tomcat 11.0.18 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
