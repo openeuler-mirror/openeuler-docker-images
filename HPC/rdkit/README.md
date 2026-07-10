@@ -20,6 +20,7 @@ The RDKit is a collection of cheminformatics and machine-learning software writt
 The tag of each rdkit docker image is consist of the version of rdkit and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[2026_03_3-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/rdkit/2026_03_3/24.03-lts-sp4/Dockerfile) | rdkit 2026_03_3 on openEuler 24.03-lts-sp4 | amd64, arm64 |
 |[2026_03_3-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/rdkit/2026_03_3/24.03-lts-sp3/Dockerfile) | rdkit 2026_03_3 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 
