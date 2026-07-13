@@ -39,7 +39,7 @@ RUN wget https://www.python.org/ftp/python/2.7.18/Python-2.7.18.tgz && \
         ln -s /usr/local/python-2.7/bin/python /usr/bin/python2
 
 ENV LD_LIBRARY_PATH=/usr/local/python-2.7/lib/:/usr/local/openssl-1.0.2k/lib
-RUN wget https://downloads.apache.org/mesos/${VERSION}/mesos-${VERSION}.tar.gz && \
+RUN wget https://archive.apache.org/dist/mesos/${VERSION}/mesos-${VERSION}.tar.gz && \
     tar -zxf mesos-${VERSION}.tar.gz
 COPY grpc-1.10.0.patch /mesos-${VERSION}/3rdparty/grpc-1.10.0.patch
 COPY entrypoint.sh /
