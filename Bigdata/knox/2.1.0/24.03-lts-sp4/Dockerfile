@@ -18,7 +18,7 @@ ENV PATH=$PATH:/usr/local/hadoop/bin
 ENV HADOOP_HOME=/usr/local/hadoop/
 
 WORKDIR /opt
-RUN wget https://downloads.apache.org/knox/${VERSION}/knox-${VERSION}.zip && \
+RUN wget https://dlcdn.apache.org/knox/${VERSION}/knox-${VERSION}.zip && \
     unzip knox-${VERSION}.zip && \
     rm -f knox-${VERSION}.zip
 
