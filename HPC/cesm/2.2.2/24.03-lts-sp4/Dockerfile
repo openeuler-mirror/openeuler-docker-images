@@ -51,7 +51,7 @@ RUN wget -O pnetcdf-1.12.1.tar.gz https://parallel-netcdf.github.io/Release/pnet
 WORKDIR /opt/ncar
 RUN yum install -y subversion cmake lapack-devel blas-devel perl-XML-LibXML && \
     mkdir -p /root/.subversion && \
-    printf '[global]\nssl-trust-default-ca = yes\n' > /root/.subversion/servers && \
+    printf '[global]\nssl-trust-default-ca = yes\ntrust-server-cert-failures = unknown-ca,cn-mismatch,expired,not-yet-valid,other\n' > /root/.subversion/servers && \
     git clone -b release-cesm${VERSION} https://github.com/ESCOMP/cesm.git cesm2 && \
     cd cesm2 && \
     ./manage_externals/checkout_externals 
