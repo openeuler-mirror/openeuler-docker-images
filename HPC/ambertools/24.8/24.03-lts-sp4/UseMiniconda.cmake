@@ -171,7 +171,7 @@ function(download_and_use_miniconda)
         execute_process(COMMAND ${CONDA} install -y -c conda-forge f90nml mrcfile pdb2pqr)
         execute_process(COMMAND ${CONDA} install -y pandas)
 
-        execute_process(COMMAND ${CONDA} install -y -q conda-build numpy=1.26.4 scipy cython=0.29 ipython notebook pytest mock
+        execute_process(COMMAND ${CONDA} install -y -q conda-build numpy scipy cython=0.29 ipython notebook pytest mock
                 RESULT_VARIABLE PACKAGE_INSTALL_RETVAL)
         if(NOT ${PACKAGE_INSTALL_RETVAL} EQUAL 0)
                 message(FATAL_ERROR "Installation of packages failed!  Please fix what's wrong, or disable Miniconda.")
