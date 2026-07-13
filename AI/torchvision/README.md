@@ -13,6 +13,7 @@ The torchvision package consists of popular datasets, model architectures, and c
 The tag of each torchvision docker image is consist of the version of torchvision and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[0.27.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/torchvision/0.27.1/24.03-lts-sp4/Dockerfile) | torchvision 0.27.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[0.27.1-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/torchvision/0.27.1/24.03-lts-sp3/Dockerfile) | torchvision 0.27.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 |[0.27.0-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/torchvision/0.27.0/24.03-lts-sp3/Dockerfile) | torchvision 0.27.0 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
