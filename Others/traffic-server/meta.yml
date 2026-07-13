@@ -5,3 +5,5 @@
   path: 10.1.0/24.03-lts-sp1/Dockerfile
 10.1.0-oe2403sp2:
   path: 10.1.0/24.03-lts-sp2/Dockerfile
+10.1.0-oe2403sp4:
+  path: 10.1.0/24.03-lts-sp4/Dockerfile
