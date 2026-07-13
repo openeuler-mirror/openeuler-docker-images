@@ -16,6 +16,7 @@ Learn more on [kylin website](https://kylin.apache.org/).
 The tag of each kylin docker image is consist of the version of kylin and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[5.0.3-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kylin/5.0.3/24.03-lts-sp4/Dockerfile) | kylin 5.0.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[5.0.3-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kylin/5.0.3/24.03-lts-sp3/Dockerfile) | kylin 5.0.3 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 |[5.0.2-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kylin/5.0.2/24.03-lts-sp1/Dockerfile)| Apache kylin 5.0.2 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
