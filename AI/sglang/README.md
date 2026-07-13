@@ -16,6 +16,7 @@ The tag of each SGLang docker image is consist of the version of SGLang and the 
 
 | Tags | Currently | Architectures |
 |------|-----------|---------------|
+|[0.5.13-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/sglang/0.5.13/24.03-lts-sp4/Dockerfile) | sglang 0.5.13 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[0.5.13-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/sglang/0.5.13/24.03-lts-sp3/Dockerfile) | sglang 0.5.13 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 |[0.5.12-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/sglang/0.5.12/24.03-lts-sp3/Dockerfile) | sglang 0.5.12 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 |[0.5.11-24.03-lts-sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/sglang/0.5.11/24.03-lts-sp3/Dockerfile)| sglang 0.5.11 on openEuler 24.03-lts-sp3 | amd64, arm64 |
