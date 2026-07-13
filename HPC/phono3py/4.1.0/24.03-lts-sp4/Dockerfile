@@ -10,6 +10,7 @@ RUN yum install -y \
 RUN pip3 install --no-cache-dir phonopy && \
     git clone -b ${TAG} --depth=1 https://github.com/phonopy/phono3py.git /phono3py && \
     cd /phono3py && \
+    sed -i 's/cmake\.verbose/build.verbose/g' pyproject.toml && \
     USE_CONDA_PATH=OFF pip3 install --no-cache-dir . && \
     rm -rf /phono3py
 WORKDIR /workspace
