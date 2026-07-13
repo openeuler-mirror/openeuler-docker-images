@@ -16,6 +16,7 @@ The tag of each `sysbench` docker image is consist of the version of `sysbench` 
 
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[1.0.20-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/sysbench/1.0.20/24.03-lts-sp4/Dockerfile)| sysbench 1.0.20 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[1.0.20-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/sysbench/1.0.20/24.03-lts-sp1/Dockerfile)| sysbench 1.0.20 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
