@@ -101,7 +101,7 @@ function(download_and_use_miniconda)
 
         # location to download the installer to
         set(MINICONDA_INSTALLER ${MINICONDA_DOWNLOAD_DIR}/${MINICONDA_INSTALLER_FILENAME})
-        set(INSTALLER_URL "https://github.com/conda-forge/miniforge/releases/latest/download/${MINICONDA_INSTALLER_FILENAME}")
+        set(INSTALLER_URL "https://github.com/conda-forge/miniforge/releases/download/24.3.0-0/${MINICONDA_INSTALLER_FILENAME}")
 
         # If we've already downloaded the installer, use it.
         if(EXISTS "${MINICONDA_INSTALLER}")
