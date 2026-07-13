@@ -4,6 +4,7 @@ ARG VERSION=1.1
 
 RUN dnf update -y && \
     dnf install -y \
+    git \
     wget \
     gcc \
     make \
@@ -17,9 +18,7 @@ WORKDIR /opt
 
 COPY Export-CACHED_UUID-and-CACHED_LABEL.patch .
 
-RUN wget https://git.kernel.org/pub/scm/linux/kernel/git/colyli/bcache-tools.git/snapshot/bcache-tools-${VERSION}.tar.gz \
-    && tar -zxvf bcache-tools-${VERSION}.tar.gz \
-    && rm -f bcache-tools-${VERSION}.tar.gz
+RUN git clone --depth 1 --branch bcache-tools-${VERSION} https://git.kernel.org/pub/scm/linux/kernel/git/colyli/bcache-tools.git /opt/bcache-tools-${VERSION}
 
 WORKDIR /opt/bcache-tools-${VERSION}
 
