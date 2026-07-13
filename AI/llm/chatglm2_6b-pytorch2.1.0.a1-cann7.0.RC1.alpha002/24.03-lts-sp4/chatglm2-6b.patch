@@ -1,0 +1,62 @@
+diff --git a/modeling_chatglm.py b/modeling_chatglm.py
+index d3fb395..41e8fb5 100644
+--- a/modeling_chatglm.py
++++ b/modeling_chatglm.py
+@@ -29,11 +29,11 @@ from .configuration_chatglm import ChatGLMConfig
+ 
+ # flags required to enable jit fusion kernels
+ 
+-if sys.platform != 'darwin':
+-    torch._C._jit_set_profiling_mode(False)
+-    torch._C._jit_set_profiling_executor(False)
+-    torch._C._jit_override_can_fuse_on_cpu(True)
+-    torch._C._jit_override_can_fuse_on_gpu(True)
++#if sys.platform != 'darwin':
++#    torch._C._jit_set_profiling_mode(False)
++#    torch._C._jit_set_profiling_executor(False)
++#    torch._C._jit_override_can_fuse_on_cpu(True)
++#    torch._C._jit_override_can_fuse_on_gpu(True)
+ 
+ logger = logging.get_logger(__name__)
+ 
+@@ -815,7 +815,9 @@ class ChatGLMModel(ChatGLMPreTrainedModel):
+                                             attention_mask], dim=-1)
+ 
+         if full_attention_mask is None:
+-            if (attention_mask is not None and not attention_mask.all()) or (past_key_values and seq_length != 1):
++            #print(attention_mask.dtype, attention_mask,type)
++            #if (attention_mask is not None and not attention_mask.all()) or (past_key_values and seq_length != 1):
++            if (attention_mask is not None and not attention_mask.bool().all()) or (past_key_values and seq_length != 1):
+                 full_attention_mask = self.get_masks(input_ids, past_key_values, padding_mask=attention_mask)
+ 
+         # Rotary positional embeddings
+@@ -1019,7 +1021,8 @@ class ChatGLMForConditionalGeneration(ChatGLMPreTrainedModel):
+         inputs = inputs.to(self.device)
+         return inputs
+ 
+-    @torch.inference_mode()
++    #@torch.inference_mode()
++    @torch.no_grad()
+     def chat(self, tokenizer, query: str, history: List[Tuple[str, str]] = None, max_length: int = 8192, num_beams=1,
+              do_sample=True, top_p=0.8, temperature=0.8, logits_processor=None, **kwargs):
+         if history is None:
+@@ -1037,7 +1040,8 @@ class ChatGLMForConditionalGeneration(ChatGLMPreTrainedModel):
+         history = history + [(query, response)]
+         return response, history
+ 
+-    @torch.inference_mode()
++    #@torch.inference_mode()
++    @torch.no_grad()
+     def stream_chat(self, tokenizer, query: str, history: List[Tuple[str, str]] = None, past_key_values=None,
+                     max_length: int = 8192, do_sample=True, top_p=0.8, temperature=0.8, logits_processor=None,
+                     return_past_key_values=False, **kwargs):
+@@ -1074,7 +1078,8 @@ class ChatGLMForConditionalGeneration(ChatGLMPreTrainedModel):
+                 else:
+                     yield response, new_history
+ 
+-    @torch.inference_mode()
++    #@torch.inference_mode()
++    @torch.no_grad()
+     def stream_generate(
+             self,
+             input_ids,
