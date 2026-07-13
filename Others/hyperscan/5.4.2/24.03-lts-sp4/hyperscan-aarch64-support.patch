@@ -1,0 +1,3498 @@
+From e95491b3a2261aecdc5576a7e507b4f4ace88cbc Mon Sep 17 00:00:00 2001
+From: Yikun Jiang <yikunkero@gmail.com>
+Date: Mon, 20 Jul 2020 17:20:15 +0800
+Subject: [PATCH] Add aarch64 support
+
+Signed-off-by: Liu Zixian <liuzixian4@huawei.com>
+---
+ CMakeLists.txt                             |  108 +-
+ cmake/config.h.in                          |    9 +
+ cmake/platform.cmake                       |   13 +-
+ cmake/ragel.cmake                          |   20 +
+ src/crc32.c                                |   43 +
+ src/fdr/fdr.c                              |  136 ++-
+ src/hs_valid_platform.c                    |    9 +-
+ src/nfa/limex_exceptional.h                |   22 +-
+ src/nfa/limex_internal.h                   |    2 +-
+ src/nfa/limex_native.c                     |   10 +-
+ src/nfa/shufti.c                           |   18 +-
+ src/nfa/truffle.c                          |   10 +-
+ src/parser/control_verbs.cpp               |  340 +++++++
+ src/rose/counting_miracle.h                |    2 +-
+ src/util/arch.h                            |   11 +
+ src/util/cpuid_flags.c                     |    6 +
+ src/util/cpuid_flags.h                     |    2 +
+ src/util/cpuid_inline.h                    |   17 +-
+ src/util/intrinsics.h                      |   12 +
+ src/util/popcount.h                        |    6 +-
+ src/util/simd_arm.h                        | 1069 ++++++++++++++++++++
+ src/util/simd_types.h                      |   17 +
+ src/util/simd_utils.h                      |   13 +
+ src/util/simd_x86.h                        |   10 +
+ tools/hscollider/CMakeLists.txt            |    9 +-
+ tools/hscollider/ColliderCorporaParser.cpp |  474 +++++++++
+ unit/internal/simd_utils.cpp               |    2 +-
+ util/CMakeLists.txt                        |    8 +-
+ util/ExpressionParser.cpp                  |  397 ++++++++
+ 29 files changed, 2717 insertions(+), 78 deletions(-)
+ create mode 100644 src/parser/control_verbs.cpp
+ create mode 100644 src/util/simd_arm.h
+ create mode 100644 src/util/simd_utils.h
+ create mode 100644 tools/hscollider/ColliderCorporaParser.cpp
+ create mode 100644 util/ExpressionParser.cpp
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index bd6d2de..8dbcb72 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -74,6 +74,7 @@ include (${CMAKE_MODULE_PATH}/boost.cmake)
+ # -- make this work? set(python_ADDITIONAL_VERSIONS 2.7 2.6)
+ find_package(PythonInterp)
+ find_program(RAGEL ragel)
++find_program(COPY cp)
+
+ if(PYTHONINTERP_FOUND)
+     set(PYTHON ${PYTHON_EXECUTABLE})
+@@ -189,24 +190,30 @@ else()
+         # cpuid info and then chooses the best microarch it can (and replaces
+         # the flag), so use that for tune.
+
+-        # arg1 might exist if using ccache
+-        string (STRIP "${CMAKE_C_COMPILER_ARG1}" CC_ARG1)
+-        set (EXEC_ARGS ${CC_ARG1} -c -Q --help=target -march=native -mtune=native)
+-        execute_process(COMMAND ${CMAKE_C_COMPILER} ${EXEC_ARGS}
+-            OUTPUT_VARIABLE _GCC_OUTPUT)
+-        string(FIND "${_GCC_OUTPUT}" "march" POS)
+-        string(SUBSTRING "${_GCC_OUTPUT}" ${POS} -1 _GCC_OUTPUT)
+-        string(REGEX REPLACE "march=[ \t]*([^ \n]*)[ \n].*" "\\1"
+-            GNUCC_ARCH "${_GCC_OUTPUT}")
+-
+-        # test the parsed flag
+-        set (EXEC_ARGS ${CC_ARG1} -E - -mtune=${GNUCC_ARCH})
+-        execute_process(COMMAND ${CMAKE_C_COMPILER} ${EXEC_ARGS}
+-            OUTPUT_QUIET ERROR_QUIET
+-            INPUT_FILE /dev/null
+-            RESULT_VARIABLE GNUCC_TUNE_TEST)
+-        if (NOT GNUCC_TUNE_TEST EQUAL 0)
+-            message(SEND_ERROR "Something went wrong determining gcc tune: -mtune=${GNUCC_ARCH} not valid")
++        if (CMAKE_SYSTEM_PROCESSOR MATCHES "x86_64|i386")
++            # arg1 might exist if using ccache
++            string (STRIP "${CMAKE_C_COMPILER_ARG1}" CC_ARG1)
++            set (EXEC_ARGS ${CC_ARG1} -c -Q --help=target -march=native -mtune=native)
++            execute_process(COMMAND ${CMAKE_C_COMPILER} ${EXEC_ARGS}
++                OUTPUT_VARIABLE _GCC_OUTPUT)
++            string(FIND "${_GCC_OUTPUT}" "march" POS)
++            string(SUBSTRING "${_GCC_OUTPUT}" ${POS} -1 _GCC_OUTPUT)
++            string(REGEX REPLACE "march=[ \t]*([^ \n]*)[ \n].*" "\\1"
++                GNUCC_ARCH "${_GCC_OUTPUT}")
++
++            # test the parsed flag
++            set (EXEC_ARGS ${CC_ARG1} -E - -mtune=${GNUCC_ARCH})
++            execute_process(COMMAND ${CMAKE_C_COMPILER} ${EXEC_ARGS}
++                OUTPUT_QUIET ERROR_QUIET
++                INPUT_FILE /dev/null
++                RESULT_VARIABLE GNUCC_TUNE_TEST)
++            if (NOT GNUCC_TUNE_TEST EQUAL 0)
++                message(SEND_ERROR "Something went wrong determining gcc tune: -mtune=${GNUCC_ARCH} not valid")
++            endif()
++        endif()
++
++        if (CMAKE_SYSTEM_PROCESSOR MATCHES "aarch64|AARCH64")
++            set (EXEC_ARGS ${CC_ARG1} -c -Q --help=target -march=armv8-a -mtune=armv8-a)
+         endif()
+         set(TUNE_FLAG ${GNUCC_ARCH})
+     else ()
+@@ -239,6 +246,13 @@ else()
+     set(EXTRA_C_FLAGS "${OPT_C_FLAG} -std=c99 -Wall -Wextra -Wshadow -Wcast-qual -fno-strict-aliasing")
+     set(EXTRA_CXX_FLAGS "${OPT_CXX_FLAG} -std=c++11 -Wall -Wextra -Wshadow -Wswitch -Wreturn-type -Wcast-qual -Wno-deprecated -Wnon-virtual-dtor -fno-strict-aliasing")
+
++    if (CMAKE_SYSTEM_PROCESSOR MATCHES "aarch64|AARCH64")
++        set(EXTRA_C_FLAGS "${EXTRA_C_FLAGS} -fsigned-char")
++        set(EXTRA_CXX_FLAGS "${EXTRA_CXX_FLAGS} -fsigned-char")
++        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -march=armv8-a+crc")
++        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=armv8-a+crc")
++    endif()
++
+     if (NOT RELEASE_BUILD)
+         # -Werror is most useful during development, don't potentially break
+         # release builds
+@@ -252,11 +266,19 @@ else()
+     endif()
+
+     if (NOT CMAKE_C_FLAGS MATCHES .*march.* AND NOT CMAKE_C_FLAGS MATCHES .*mtune.*)
+-        set(ARCH_C_FLAGS "-march=native -mtune=${TUNE_FLAG}")
++        if (CMAKE_SYSTEM_PROCESSOR MATCHES "x86_64|i386")
++            set(ARCH_C_FLAGS "-march=native -mtune=${TUNE_FLAG}")
++        elseif (CMAKE_SYSTEM_PROCESSOR MATCHES "aarch64|AARCH64")
++            set(ARCH_C_FLAGS "-march=armv8-a -mtune=${TUNE_FLAG}")
++        endif ()
+     endif()
+
+     if (NOT CMAKE_CXX_FLAGS MATCHES .*march.* AND NOT CMAKE_CXX_FLAGS MATCHES .*mtune.*)
+-        set(ARCH_CXX_FLAGS "-march=native -mtune=${TUNE_FLAG}")
++        if (CMAKE_SYSTEM_PROCESSOR MATCHES "x86_64|i386")
++            set(ARCH_CXX_FLAGS "-march=native -mtune=${TUNE_FLAG}")
++        elseif (CMAKE_SYSTEM_PROCESSOR MATCHES "aarch64|AARCH64")
++            set(ARCH_CXX_FLAGS "-march=armv8-a -mtune=${TUNE_FLAG}")
++        endif()
+     endif()
+
+     if(CMAKE_COMPILER_IS_GNUCC)
+@@ -289,10 +311,18 @@ else()
+ endif()
+
+ CHECK_INCLUDE_FILES(unistd.h HAVE_UNISTD_H)
+-CHECK_INCLUDE_FILES(intrin.h HAVE_C_INTRIN_H)
+-CHECK_INCLUDE_FILE_CXX(intrin.h HAVE_CXX_INTRIN_H)
+-CHECK_INCLUDE_FILES(x86intrin.h HAVE_C_X86INTRIN_H)
+-CHECK_INCLUDE_FILE_CXX(x86intrin.h HAVE_CXX_X86INTRIN_H)
++
++if (CMAKE_SYSTEM_PROCESSOR MATCHES "x86_64|i386")
++    CHECK_INCLUDE_FILES(intrin.h HAVE_C_INTRIN_H)
++    CHECK_INCLUDE_FILE_CXX(intrin.h HAVE_CXX_INTRIN_H)
++    CHECK_INCLUDE_FILES(x86intrin.h HAVE_C_X86INTRIN_H)
++    CHECK_INCLUDE_FILE_CXX(x86intrin.h HAVE_CXX_X86INTRIN_H)
++endif()
++
++if (CMAKE_SYSTEM_PROCESSOR MATCHES "aarch64|AARCH64")
++    CHECK_INCLUDE_FILES(arm_neon.h HAVE_C_ARM_NEON_H)
++    CHECK_INCLUDE_FILE_CXX(arm_neon.h HAVE_CXX_ARM_NEON_H)
++endif()
+
+ CHECK_FUNCTION_EXISTS(posix_memalign HAVE_POSIX_MEMALIGN)
+ CHECK_FUNCTION_EXISTS(_aligned_malloc HAVE__ALIGNED_MALLOC)
+@@ -325,6 +355,9 @@ if (CMAKE_SYSTEM_NAME MATCHES "Linux")
+             (CMAKE_VERSION VERSION_GREATER "3.0" AND CMAKE_GENERATOR MATCHES "Ninja")))
+         message (STATUS "Building the fat runtime requires the Unix Makefiles generator, or Ninja with CMake v3.0 or higher")
+         set (FAT_RUNTIME_REQUISITES FALSE)
++    elseif (CMAKE_SYSTEM_PROCESSOR MATCHES "aarch64|AARCH64")
++        message(STATUS "AARCH64 platform don't support fat runtime")
++        set (FAT_RUNTIME_REQUISITES FALSE)
+     else()
+         include (${CMAKE_MODULE_PATH}/attrib.cmake)
+         if (NOT HAS_C_ATTR_IFUNC)
+@@ -337,7 +370,9 @@ if (CMAKE_SYSTEM_NAME MATCHES "Linux")
+     CMAKE_DEPENDENT_OPTION(FAT_RUNTIME "Build a library that supports multiple microarchitectures" ${RELEASE_BUILD} "FAT_RUNTIME_REQUISITES" OFF)
+ endif ()
+
+-include (${CMAKE_MODULE_PATH}/arch.cmake)
++if (CMAKE_SYSTEM_PROCESSOR MATCHES "x86_64|i386")
++    include (${CMAKE_MODULE_PATH}/arch.cmake)
++endif()
+
+ # testing a builtin takes a little more work
+ CHECK_C_SOURCE_COMPILES("void *aa_test(void *x) { return __builtin_assume_aligned(x, 16);}\nint main(void) { return 0; }" HAVE_CC_BUILTIN_ASSUME_ALIGNED)
+@@ -415,12 +450,6 @@ if (CXX_IGNORED_ATTR)
+     set(EXTRA_CXX_FLAGS "${EXTRA_CXX_FLAGS} -Wno-ignored-attributes")
+ endif()
+
+-# gcc 9 complains about redundant move for returned variable
+-CHECK_CXX_COMPILER_FLAG("-Wredundant-move" CXX_REDUNDANT_MOVE)
+-if (CXX_REDUNDANT_MOVE)
+-    set(EXTRA_CXX_FLAGS "${EXTRA_CXX_FLAGS} -Wno-redundant-move")
+-endif()
+-
+ # note this for later
+ # g++ doesn't have this flag but clang does
+ CHECK_CXX_COMPILER_FLAG("-Wweak-vtables" CXX_WEAK_VTABLES)
+@@ -477,6 +506,14 @@ else()
+     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
+ endif()
+
++# Test case for neon function.
++option(UNIT_SIMD "Simd funtion test case, default is OFF" OFF)
++if (CMAKE_SYSTEM_PROCESSOR MATCHES "aarch64|AARCH64")
++  if (UNIT_SIMD)
++	add_subdirectory(unit-simd)
++  endif()
++endif()
++
+ add_subdirectory(util)
+ add_subdirectory(doc/dev-reference)
+
+@@ -573,7 +610,14 @@ set_source_files_properties(
+     PROPERTIES
+         COMPILE_FLAGS "${RAGEL_C_FLAGS}")
+
+-ragelmaker(src/parser/control_verbs.rl)
++
++if (CMAKE_SYSTEM_PROCESSOR MATCHES "x86_64|i386")
++    ragelmaker(src/parser/control_verbs.rl)
++endif()
++
++if (CMAKE_SYSTEM_PROCESSOR MATCHES "aarch64|AARCH64")
++    ragelcopyer(src/parser/control_verbs.rl)
++endif()
+
+ SET(hs_HEADERS
+     src/hs.h
+diff --git a/cmake/config.h.in b/cmake/config.h.in
+index 5454643..336cf19 100644
+--- a/cmake/config.h.in
++++ b/cmake/config.h.in
+@@ -15,6 +15,9 @@
+ /* "Define if building for EM64T" */
+ #cmakedefine ARCH_X86_64
+
++/* "Define if building for aarch64" */
++#cmakedefine ARCH_AARCH64
++
+ /* internal build, switch on dump support. */
+ #cmakedefine DUMP_SUPPORT
+
+@@ -48,6 +51,12 @@
+ /* C compiler has intrin.h */
+ #cmakedefine HAVE_C_INTRIN_H
+
++/* C++ compiler has arm_neon.h */
++#cmakedefine HAVE_CXX_ARM_NEON_H
++
++/* C compiler has arm_neon.h */
++#cmakedefine HAVE_C_ARM_NEON_H
++
+ /* Define to 1 if you have the declaration of `pthread_setaffinity_np', and to
+    0 if you don't. */
+ #cmakedefine HAVE_DECL_PTHREAD_SETAFFINITY_NP
+diff --git a/cmake/platform.cmake b/cmake/platform.cmake
+index 593c544..213dcc5 100644
+--- a/cmake/platform.cmake
++++ b/cmake/platform.cmake
+@@ -1,9 +1,14 @@
+ # determine the target arch
+
+ # really only interested in the preprocessor here
+-CHECK_C_SOURCE_COMPILES("#if !(defined(__x86_64__) || defined(_M_X64))\n#error not 64bit\n#endif\nint main(void) { return 0; }" ARCH_64_BIT)
++CHECK_C_SOURCE_COMPILES("#if !(defined(__x86_64__) || defined(_M_X64))\n#error not 64bit\n#endif\nint main(void) { return 0; }" ARCH_X86_64)
+
+-CHECK_C_SOURCE_COMPILES("#if !(defined(__i386__) || defined(_M_IX86))\n#error not 64bit\n#endif\nint main(void) { return 0; }" ARCH_32_BIT)
++CHECK_C_SOURCE_COMPILES("#if !(defined(__i386__) || defined(_M_IX86))\n#error not 32bit\n#endif\nint main(void) { return 0; }" ARCH_IA32)
+
+-set(ARCH_X86_64 ${ARCH_64_BIT})
+-set(ARCH_IA32 ${ARCH_32_BIT})
++CHECK_C_SOURCE_COMPILES("#if !(defined(__aarch64__))\n#error not 64bit\n#endif\nint main(void) { return 0; }" ARCH_AARCH64)
++
++if (ARCH_X86_64 OR ARCH_AARCH64)
++    set(ARCH_64_BIT 1)
++elseif (ARCH_IA32)
++    set(ARCH_32_BIT 1)
++endif()
+\ No newline at end of file
+diff --git a/cmake/ragel.cmake b/cmake/ragel.cmake
+index d3f0b92..3356cb9 100644
+--- a/cmake/ragel.cmake
++++ b/cmake/ragel.cmake
+@@ -14,3 +14,23 @@ function(ragelmaker src_rl)
+     set_source_files_properties(${rl_out} PROPERTIES GENERATED TRUE)
+ endfunction(ragelmaker)
+
++ # On the aarch64 platform, char is unsigned by default, so in order to be consistent with
++ # the x86 platform, we will add -fsigned-char to the compile option to force the char type.
++ # However, when the ragel generates c++ code, the char variable used will still be considered
++ # unsigned, resulting in the overflow of the char variable value in the generated code,
++ # resulting in some errors.
++ # function for copying the previously modified code to the specified path
++
++ function(ragelcopyer src_rl)
++     get_filename_component(src_dir ${src_rl} PATH) # old cmake needs PATH
++     get_filename_component(src_file ${src_rl} NAME_WE)
++     set(rl_out ${CMAKE_CURRENT_BINARY_DIR}/${src_dir}/${src_file}.cpp)
++     add_custom_command(
++             OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${src_dir}/${src_file}.cpp
++             COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/${src_dir}
++			 COMMAND ${COPY} -f  ${CMAKE_CURRENT_SOURCE_DIR}/${src_dir}/${src_file}.cpp ${rl_out} 2>/dev/null ||:
++             DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/${src_dir}/${src_file}.cpp
++     )
++     add_custom_target(ragel_${src_file} DEPENDS ${rl_out})
++     set_source_files_properties(${rl_out} PROPERTIES GENERATED TRUE)
++ endfunction(ragelcopyer)
+\ No newline at end of file
+diff --git a/src/crc32.c b/src/crc32.c
+index 1dae47b..4609c5d 100644
+--- a/src/crc32.c
++++ b/src/crc32.c
+@@ -32,6 +32,47 @@
+ #include "util/arch.h"
+ #include "util/intrinsics.h"
+
++#if defined(HAVE_NEON)
++
++#define CRC32CX(crc, value) __asm__("crc32cx %w[c], %w[c], %x[v]":[c]"+r"(crc):[v]"r"(value))
++#define CRC32CW(crc, value) __asm__("crc32cw %w[c], %w[c], %w[v]":[c]"+r"(crc):[v]"r"(value))
++#define CRC32CH(crc, value) __asm__("crc32ch %w[c], %w[c], %w[v]":[c]"+r"(crc):[v]"r"(value))
++#define CRC32CB(crc, value) __asm__("crc32cb %w[c], %w[c], %w[v]":[c]"+r"(crc):[v]"r"(value))
++#define CRC_WORD 8
++#define CRC_TYPE u64a
++static  really_inline
++u32 crc32c_neon(u32 running_crc, const unsigned char * p_buf, const size_t length)
++{
++    u32 crc=running_crc;
++
++    //Processbyte-by-byteuntilp_bufisaligned
++    const unsigned char * aligned_buf = ROUNDUP_PTR(p_buf, CRC_WORD);
++    size_t init_bytes = aligned_buf - p_buf;
++    size_t running_length = ((length - init_bytes) / CRC_WORD) * CRC_WORD;
++    size_t end_bytes = length - init_bytes - running_length;
++
++    while(p_buf < aligned_buf){
++        CRC32CB(crc, *p_buf);
++        p_buf++;
++    }
++
++    //Main aligned loop, processes a word at a time.
++    for(size_t li = 0; li < running_length / CRC_WORD; li++){
++        CRC_TYPE block = *(const CRC_TYPE *)p_buf;
++        CRC32CX(crc,block);
++        p_buf += CRC_WORD;
++    }
++
++    //Remainingbytes
++    for(size_t li = 0; li < end_bytes; li++){
++        CRC32CB(crc,*p_buf);
++        p_buf++;
++    }
++    return crc;
++}
++#endif
++
++
+ #if !defined(HAVE_SSE42)
+
+ /***
+@@ -636,6 +677,8 @@ u32 crc32c_sse42(u32 running_crc, const unsigned char* p_buf,
+ u32 Crc32c_ComputeBuf(u32 inCrc32, const void *buf, size_t bufLen) {
+ #if defined(HAVE_SSE42)
+     u32 crc = crc32c_sse42(inCrc32, (const unsigned char *)buf, bufLen);
++#elif defined(HAVE_NEON)
++    u32 crc = crc32c_neon(inCrc32, (const unsigned char *)buf, bufLen);
+ #else
+     u32 crc = crc32c_sb8_64_bit(inCrc32, (const unsigned char *)buf, bufLen);
+ #endif
+diff --git a/src/fdr/fdr.c b/src/fdr/fdr.c
+index d33756d..718f169 100644
+--- a/src/fdr/fdr.c
++++ b/src/fdr/fdr.c
+@@ -127,6 +127,13 @@ u64a andn(const u32 a, const u8 *b) {
+     u64a r;
+ #if defined(HAVE_BMI) && !defined(NO_ASM)
+     __asm__ ("andn\t%2,%1,%k0" : "=r"(r) : "r"(a), "m"(*(const u32 *)b));
++#elif defined(HAVE_NEON)
++    __asm__ __volatile__("ldr w0, %w2         \n\t"
++                         "bic %w0,w0,%w1      \n\t"
++                         : "=r"(r)
++                         : "r"(a), "m"(*(const u32 *)b)
++                         : "w0"
++    );
+ #else
+     r = unaligned_load_u32(b) & ~a;
+ #endif
+@@ -159,7 +166,104 @@ void get_conf_stride_1(const u8 *itPtr, UNUSED const u8 *start_ptr,
+                        UNUSED const u8 *end_ptr, u32 domain_mask_flipped,
+                        const u64a *ft, u64a *conf0, u64a *conf8, m128 *s) {
+     /* +1: the zones ensure that we can read the byte at z->end */
+-    assert(itPtr >= start_ptr && itPtr + ITER_BYTES <= end_ptr);
++    assert(itPtr >= start_ptr && itPtr <= end_ptr);
++#if defined(HAVE_NEON)
++    domain_mask_flipped = ~domain_mask_flipped;
++
++    u32 reach0, reach1, reach2, reach3;
++    u64a ptr = unaligned_load_u64a(itPtr);
++
++    reach0 = ptr & domain_mask_flipped;
++    reach1 = ptr >> 8 & domain_mask_flipped;
++    reach2 = ptr >> 16 & domain_mask_flipped;
++    reach3 = ptr >> 24 & domain_mask_flipped;
++
++    m128 st0 = load_m128_from_u64a(ft + reach0);
++    m128 st1 = load_m128_from_u64a(ft + reach1);
++    m128 st2 = load_m128_from_u64a(ft + reach2);
++    m128 st3 = load_m128_from_u64a(ft + reach3);
++
++    u32 reach4, reach5, reach6, reach7;
++    ptr = unaligned_load_u64a(itPtr + 4);
++    reach4 = ptr & domain_mask_flipped;
++    reach5 = ptr >> 8 & domain_mask_flipped;
++    reach6 = ptr >> 16 & domain_mask_flipped;
++    reach7 = ptr >> 24 & domain_mask_flipped;
++
++    m128 st4 = load_m128_from_u64a(ft + reach4);
++    m128 st5 = load_m128_from_u64a(ft + reach5);
++    m128 st6 = load_m128_from_u64a(ft + reach6);
++    m128 st7 = load_m128_from_u64a(ft + reach7);
++
++    m128 zero = zeroes128();
++
++    st1.vect_s8 = vextq_s8(zero.vect_s8, st1.vect_s8, 15);
++    st2.vect_s8 = vextq_s8(zero.vect_s8, st2.vect_s8, 14);
++    st3.vect_s8 = vextq_s8(zero.vect_s8, st3.vect_s8, 13);
++    st4.vect_s8 = vextq_s8(zero.vect_s8, st4.vect_s8, 12);
++    st5.vect_s8 = vextq_s8(zero.vect_s8, st5.vect_s8, 11);
++    st6.vect_s8 = vextq_s8(zero.vect_s8, st6.vect_s8, 10);
++    st7.vect_s8 = vextq_s8(zero.vect_s8, st7.vect_s8, 9);
++
++    st0 = or128(st0, st1);
++    st2 = or128(st2, st3);
++    st4 = or128(st4, st5);
++    st6 = or128(st6, st7);
++    st0 = or128(st0, st2);
++    st4 = or128(st4, st6);
++    st0 = or128(st0, st4);
++    *s = or128(*s, st0);
++
++    *conf0 = movq(*s);
++    *s = rshiftbyte_m128(*s, 8);
++    *conf0 = ~(*conf0);
++
++    u32 reach8, reach9, reach10, reach11;
++    ptr = unaligned_load_u64a(itPtr + 8);
++    reach8 = ptr & domain_mask_flipped;
++    reach9 = ptr >> 8 & domain_mask_flipped;
++    reach10 = ptr >> 16 & domain_mask_flipped;
++    reach11 = ptr >> 24 & domain_mask_flipped;
++
++    m128 st8 = load_m128_from_u64a(ft + reach8);
++    m128 st9 = load_m128_from_u64a(ft + reach9);
++    m128 st10 = load_m128_from_u64a(ft + reach10);
++    m128 st11 = load_m128_from_u64a(ft + reach11);
++
++    u32 reach12, reach13, reach14, reach15;
++    ptr = unaligned_load_u64a(itPtr + 12);
++    reach12 = ptr & domain_mask_flipped;
++    reach13 = ptr >> 8 & domain_mask_flipped;
++    reach14 = ptr >> 16 & domain_mask_flipped;
++    reach15 = ptr >> 24 & domain_mask_flipped;
++
++    m128 st12 = load_m128_from_u64a(ft + reach12);
++    m128 st13 = load_m128_from_u64a(ft + reach13);
++    m128 st14 = load_m128_from_u64a(ft + reach14);
++    m128 st15 = load_m128_from_u64a(ft + reach15);
++
++    st9.vect_s8 = vextq_s8(zero.vect_s8, st9.vect_s8, 15);
++    st10.vect_s8 = vextq_s8(zero.vect_s8, st10.vect_s8, 14);
++    st11.vect_s8 = vextq_s8(zero.vect_s8, st11.vect_s8, 13);
++    st12.vect_s8 = vextq_s8(zero.vect_s8, st12.vect_s8, 12);
++    st13.vect_s8 = vextq_s8(zero.vect_s8, st13.vect_s8, 11);
++    st14.vect_s8 = vextq_s8(zero.vect_s8, st14.vect_s8, 10);
++    st15.vect_s8 = vextq_s8(zero.vect_s8, st15.vect_s8, 9);
++
++    st8 = or128(st8, st9);
++    st10 = or128(st10, st11);
++    st12 = or128(st12, st13);
++    st14 = or128(st14, st15);
++    st8 = or128(st8, st10);
++    st12 = or128(st12, st14);
++    st8 = or128(st8, st12);
++    *s = or128(*s, st8);
++
++    *conf8 = movq(*s);
++    *s = rshiftbyte_m128(*s, 8);
++    *conf8 = ~(*conf8);
++
++#else
+     u64a reach0 = andn(domain_mask_flipped, itPtr);
+     u64a reach1 = andn(domain_mask_flipped, itPtr + 1);
+     u64a reach2 = andn(domain_mask_flipped, itPtr + 2);
+@@ -241,6 +345,8 @@ void get_conf_stride_1(const u8 *itPtr, UNUSED const u8 *start_ptr,
+     *conf8 = movq(*s);
+     *s = rshiftbyte_m128(*s, 8);
+     *conf8 ^= ~0ULL;
++
++#endif
+ }
+
+ static really_inline
+@@ -349,12 +455,12 @@ void do_confirm_fdr(u64a *conf, u8 offset, hwlmcb_rv_t *control,
+         u32 bitRem = bit % bucket;
+         u32 idx = bitRem;
+         u32 cf = confBase[idx];
+-        if (!cf) {
++        if (unlikely(!cf)) {
+             continue;
+         }
+         const struct FDRConfirm *fdrc = (const struct FDRConfirm *)
+                                         ((const u8 *)confBase + cf);
+-        if (!(fdrc->groups & *control)) {
++        if (unlikely(!(fdrc->groups & *control))) {
+             continue;
+         }
+         u64a confVal = unaligned_load_u64a(confLoc + byte - sizeof(u64a) + 1);
+@@ -603,7 +709,7 @@ void createEndZone(const u8 *buf, const u8 *begin, const u8 *end,
+     assert(z_len > 0);
+     size_t iter_bytes_second = 0;
+     size_t z_len_first = z_len;
+-    if (z_len > ITER_BYTES) {
++    if (unlikely(z_len > ITER_BYTES)) {
+         z_len_first = z_len - ITER_BYTES;
+         iter_bytes_second = ITER_BYTES;
+     }
+@@ -637,7 +743,7 @@ void createEndZone(const u8 *buf, const u8 *begin, const u8 *end,
+
+     /* copy the last 16 bytes, may overlap with the previous 8 byte write */
+     storeu128(z_end_first - sizeof(m128), loadu128(end_first - sizeof(m128)));
+-    if (iter_bytes_second) {
++    if (unlikely(iter_bytes_second)) {
+         storeu128(z_end - sizeof(m128), loadu128(end - sizeof(m128)));
+     }
+
+@@ -658,7 +764,7 @@ size_t prepareZones(const u8 *buf, size_t len, const u8 *hend,
+     const u8 *ptr = buf + start;
+     size_t remaining = len - start;
+
+-    if (remaining <= ITER_BYTES) {
++    if (unlikely(remaining <= ITER_BYTES)) {
+         /* enough bytes to make only one zone */
+         createShortZone(buf, hend, ptr, buf + len, &zoneArr[0]);
+         return 1;
+@@ -691,13 +797,25 @@ size_t prepareZones(const u8 *buf, size_t len, const u8 *hend,
+
+ #define INVALID_MATCH_ID (~0U)
+
++/* add prefetch for aarch64,
++ *- due to gcc4.8.5 do not support builtin_prefetch.
++ */
++#if defined(HAVE_NEON)
++#define PREFETCH __asm__ __volatile__("prfm pldl1keep, %0" ::"Q"(*(itPtr + 256)))
++#define P2ALIGN   __asm__ __volatile__(".p2align 6")
++#else
++#define PREFETCH __builtin_prefetch(itPtr + ITER_BYTES)
++#define P2ALIGN
++#endif
++
+ #define FDR_MAIN_LOOP(zz, s, get_conf_fn)                                   \
+     do {                                                                    \
++        P2ALIGN;                                                            \
+         const u8 *tryFloodDetect = zz->floodPtr;                            \
+         const u8 *start_ptr = zz->start;                                    \
+-        const u8 *end_ptr = zz->end;                                        \
++        const u8 *end_ptr = zz->end - ITER_BYTES;                           \
+                                                                             \
+-        for (const u8 *itPtr = start_ptr; itPtr + ITER_BYTES <= end_ptr;    \
++        for (const u8 *itPtr = start_ptr; itPtr <= end_ptr;                 \
+             itPtr += ITER_BYTES) {                                          \
+             if (unlikely(itPtr > tryFloodDetect)) {                         \
+                 tryFloodDetect = floodDetect(fdr, a, &itPtr, tryFloodDetect,\
+@@ -707,7 +825,7 @@ size_t prepareZones(const u8 *buf, size_t len, const u8 *hend,
+                     return HWLM_TERMINATED;                                 \
+                 }                                                           \
+             }                                                               \
+-            __builtin_prefetch(itPtr + ITER_BYTES);                         \
++            PREFETCH;                                                       \
+             u64a conf0;                                                     \
+             u64a conf8;                                                     \
+             get_conf_fn(itPtr, start_ptr, end_ptr, domain_mask_flipped,     \
+diff --git a/src/hs_valid_platform.c b/src/hs_valid_platform.c
+index 59ad3f3..035d3ff 100644
+--- a/src/hs_valid_platform.c
++++ b/src/hs_valid_platform.c
+@@ -33,9 +33,16 @@
+ HS_PUBLIC_API
+ hs_error_t HS_CDECL hs_valid_platform(void) {
+     /* Hyperscan requires SSSE3, anything else is a bonus */
++#if defined(__x86_64__)
+     if (check_ssse3()) {
+         return HS_SUCCESS;
+-    } else {
++    }
++#else
++    if (check_neon()) {
++        return HS_SUCCESS;
++    }
++#endif
++    else {
+         return HS_ARCH_ERROR;
+     }
+ }
+diff --git a/src/nfa/limex_exceptional.h b/src/nfa/limex_exceptional.h
+index 6c7335f..8304215 100644
+--- a/src/nfa/limex_exceptional.h
++++ b/src/nfa/limex_exceptional.h
+@@ -131,7 +131,7 @@ int RUN_EXCEPTION_FN(const EXCEPTION_T *e, STATE_ARG,
+         union RepeatControl *repeat_ctrl = ctx->repeat_ctrl + info->ctrlIndex;
+         char *repeat_state = ctx->repeat_state + info->stateOffset;
+
+-        if (e->trigger == LIMEX_TRIGGER_POS) {
++        if (unlikely(e->trigger == LIMEX_TRIGGER_POS)) {
+             char cyclic_on = TESTBIT_STATE(*STATE_ARG_P, info->cyclicState);
+             processPosTrigger(repeat, repeat_ctrl, repeat_state, offset,
+                               cyclic_on);
+@@ -140,7 +140,7 @@ int RUN_EXCEPTION_FN(const EXCEPTION_T *e, STATE_ARG,
+             assert(e->trigger == LIMEX_TRIGGER_TUG);
+             enum TriggerResult rv =
+                 processTugTrigger(repeat, repeat_ctrl, repeat_state, offset);
+-            if (rv == TRIGGER_FAIL) {
++            if (likely(rv == TRIGGER_FAIL)) {
+                 *cacheable = DO_NOT_CACHE_RESULT_AND_FLUSH_BR_ENTRIES;
+                 DEBUG_PRINTF("tug found no valid matches in repeat state\n");
+                 return 1; // continue
+@@ -150,7 +150,7 @@ int RUN_EXCEPTION_FN(const EXCEPTION_T *e, STATE_ARG,
+                 assert(e->hasSquash == LIMEX_SQUASH_TUG);
+                 *succ = AND_STATE(*succ, LOAD_FROM_ENG(&e->squash));
+                 return 1; // continue
+-            } else if (rv == TRIGGER_SUCCESS_CACHE) {
++            } else if (unlikely(rv == TRIGGER_SUCCESS_CACHE)) {
+                 new_cache->br = 1;
+             } else {
+                 assert(rv == TRIGGER_SUCCESS);
+@@ -160,7 +160,7 @@ int RUN_EXCEPTION_FN(const EXCEPTION_T *e, STATE_ARG,
+     }
+
+     // Some exceptions fire accepts.
+-    if (e->reports != MO_INVALID_IDX) {
++    if (unlikely(e->reports != MO_INVALID_IDX)) {
+         if (flags & CALLBACK_OUTPUT) {
+             const ReportID *reports =
+                 (const ReportID *)((const char *)limex + e->reports);
+@@ -171,7 +171,7 @@ int RUN_EXCEPTION_FN(const EXCEPTION_T *e, STATE_ARG,
+                 return 0; // halt
+             }
+             if (*cacheable == CACHE_RESULT) {
+-                if (!new_cache->reports || new_cache->reports == reports) {
++                if (likely(!new_cache->reports || new_cache->reports == reports)) {
+                     new_cache->reports = reports;
+                 } else {
+                     *cacheable = DO_NOT_CACHE_RESULT;
+@@ -194,8 +194,8 @@ int RUN_EXCEPTION_FN(const EXCEPTION_T *e, STATE_ARG,
+
+     // Some exceptions squash states behind them. Note that we squash states in
+     // 'succ', not local_succ.
+-    if (e->hasSquash == LIMEX_SQUASH_CYCLIC
+-        || e->hasSquash == LIMEX_SQUASH_REPORT) {
++    if (unlikely(e->hasSquash == LIMEX_SQUASH_CYCLIC
++        || e->hasSquash == LIMEX_SQUASH_REPORT)) {
+         *succ = AND_STATE(*succ, LOAD_FROM_ENG(&e->squash));
+         if (*cacheable == CACHE_RESULT) {
+             *cacheable = DO_NOT_CACHE_RESULT;
+@@ -331,12 +331,12 @@ int PE_FN(STATE_ARG, ESTATE_ARG, UNUSED u32 diffmask, STATE_T *succ,
+             u32 idx = local_index + base_index[t];
+             const EXCEPTION_T *e = &exceptions[idx];
+
+-            if (!RUN_EXCEPTION_FN(e, STATE_ARG_NAME, succ,
++            if (unlikely(!RUN_EXCEPTION_FN(e, STATE_ARG_NAME, succ,
+ #ifndef BIG_MODEL
+                                   &local_succ,
+ #endif
+                                   limex, offset, ctx, &new_cache, &cacheable,
+-                                  in_rev, flags)) {
++                                  in_rev, flags))) {
+                 return PE_RV_HALT;
+             }
+         } while (word);
+@@ -349,7 +349,7 @@ int PE_FN(STATE_ARG, ESTATE_ARG, UNUSED u32 diffmask, STATE_T *succ,
+     *succ = OR_STATE(*succ, ctx->local_succ);
+ #endif
+
+-    if (cacheable == CACHE_RESULT) {
++    if (likely(cacheable == CACHE_RESULT)) {
+         ctx->cached_estate = estate;
+ #ifndef BIG_MODEL
+         ctx->cached_esucc = local_succ;
+@@ -359,7 +359,7 @@ int PE_FN(STATE_ARG, ESTATE_ARG, UNUSED u32 diffmask, STATE_T *succ,
+         ctx->cached_reports = new_cache.reports;
+         ctx->cached_br = new_cache.br;
+     } else if (cacheable == DO_NOT_CACHE_RESULT_AND_FLUSH_BR_ENTRIES) {
+-        if (ctx->cached_br) {
++        if (unlikely(ctx->cached_br)) {
+             ctx->cached_estate = ZERO_STATE;
+         }
+     }
+diff --git a/src/nfa/limex_internal.h b/src/nfa/limex_internal.h
+index 23b1bd9..0e27c79 100644
+--- a/src/nfa/limex_internal.h
++++ b/src/nfa/limex_internal.h
+@@ -119,7 +119,7 @@ struct NFAException##size {                                                 \
+     u32 repeatOffset; /**< offset to NFARepeatInfo, or MO_INVALID_IDX */    \
+     u8 hasSquash; /**< from enum LimExSquash */                             \
+     u8 trigger; /**< from enum LimExTrigger */                              \
+-};                                                                          \
++}__attribute__ ((aligned (16)));                                            \
+                                                                             \
+ struct LimExNFA##size {                                                     \
+     u8 reachMap[N_CHARS]; /**< map of char -> entry in reach[] */           \
+diff --git a/src/nfa/limex_native.c b/src/nfa/limex_native.c
+index f6f5809..8998830 100644
+--- a/src/nfa/limex_native.c
++++ b/src/nfa/limex_native.c
+@@ -77,7 +77,7 @@ int processExceptional32(u32 s, u32 estate, UNUSED u32 diffmask, u32 *succ,
+                          struct NFAContext32 *ctx, char in_rev, char flags) {
+     assert(estate != 0); // guaranteed by calling macro
+
+-    if (estate == ctx->cached_estate) {
++    if (unlikely(estate == ctx->cached_estate)) {
+         DEBUG_PRINTF("using cached succ from previous state\n");
+         *succ |= ctx->cached_esucc;
+         if (ctx->cached_reports && (flags & CALLBACK_OUTPUT)) {
+@@ -103,21 +103,21 @@ int processExceptional32(u32 s, u32 estate, UNUSED u32 diffmask, u32 *succ,
+         u32 bit = findAndClearLSB_32(&estate);
+         u32 idx = rank_in_mask32(limex->exceptionMask, bit);
+         const struct NFAException32 *e = &exceptions[idx];
+-        if (!runException32(e, s, succ, &local_succ, limex, offset, ctx,
+-                            &new_cache, &cacheable, in_rev, flags)) {
++        if (unlikely(!runException32(e, s, succ, &local_succ, limex, offset, ctx,
++                            &new_cache, &cacheable, in_rev, flags))) {
+             return PE_RV_HALT;
+         }
+     } while (estate != 0);
+
+     *succ |= local_succ;
+
+-    if (cacheable == CACHE_RESULT) {
++    if (unlikely(cacheable == CACHE_RESULT)) {
+         ctx->cached_estate = orig_estate;
+         ctx->cached_esucc = local_succ;
+         ctx->cached_reports = new_cache.reports;
+         ctx->cached_br = new_cache.br;
+     } else if (cacheable == DO_NOT_CACHE_RESULT_AND_FLUSH_BR_ENTRIES) {
+-        if (ctx->cached_br) {
++        if (unlikely(ctx->cached_br)) {
+             ctx->cached_estate = 0U;
+         }
+     }
+diff --git a/src/nfa/shufti.c b/src/nfa/shufti.c
+index 09ffc0c..2cb74f0 100644
+--- a/src/nfa/shufti.c
++++ b/src/nfa/shufti.c
+@@ -153,13 +153,13 @@ const u8 *shuftiExec(m128 mask_lo, m128 mask_hi, const u8 *buf,
+     assert(buf < buf_end);
+
+     // Slow path for small cases.
+-    if (buf_end - buf < 16) {
++    if (unlikely(buf_end - buf < 16)) {
+         return shuftiFwdSlow((const u8 *)&mask_lo, (const u8 *)&mask_hi,
+                              buf, buf_end);
+     }
+
+     const m128 zeroes = zeroes128();
+-    const m128 low4bits = _mm_set1_epi8(0xf);
++    const m128 low4bits = set16x8(0xf);
+     const u8 *rv;
+
+     size_t min = (size_t)buf % 16;
+@@ -179,6 +179,11 @@ const u8 *shuftiExec(m128 mask_lo, m128 mask_hi, const u8 *buf,
+     const u8 *last_block = buf_end - 16;
+     while (buf < last_block) {
+         m128 lchars = load128(buf);
++
++#if defined(HAVE_NEON)
++        __asm__ __volatile__("prfm pldl1keep, %0" ::"Q"(*(buf + 256)));
++#endif
++
+         rv = fwdBlock(mask_lo, mask_hi, lchars, buf, low4bits, zeroes);
+         if (rv) {
+             return rv;
+@@ -246,7 +251,7 @@ const u8 *rshuftiExec(m128 mask_lo, m128 mask_hi, const u8 *buf,
+     }
+
+     const m128 zeroes = zeroes128();
+-    const m128 low4bits = _mm_set1_epi8(0xf);
++    const m128 low4bits = set16x8(0xf);
+     const u8 *rv;
+
+     assert(buf_end - buf >= 16);
+@@ -320,7 +325,7 @@ const u8 *shuftiDoubleExec(m128 mask1_lo, m128 mask1_hi,
+                            m128 mask2_lo, m128 mask2_hi,
+                            const u8 *buf, const u8 *buf_end) {
+     const m128 ones = ones128();
+-    const m128 low4bits = _mm_set1_epi8(0xf);
++    const m128 low4bits = set16x8(0xf);
+     const u8 *rv;
+
+     size_t min = (size_t)buf % 16;
+@@ -340,6 +345,11 @@ const u8 *shuftiDoubleExec(m128 mask1_lo, m128 mask1_hi,
+     const u8 *last_block = buf_end - 16;
+     while (buf < last_block) {
+         m128 lchars = load128(buf);
++
++#if defined(HAVE_NEON)
++        __asm__ __volatile__("prfm pldl1keep, %0" ::"Q"(*(buf + 256)));
++#endif
++
+         rv = fwdBlock2(mask1_lo, mask1_hi, mask2_lo, mask2_hi,
+                        lchars, buf, low4bits, ones);
+         if (rv) {
+diff --git a/src/nfa/truffle.c b/src/nfa/truffle.c
+index be6b312..c05d778 100644
+--- a/src/nfa/truffle.c
++++ b/src/nfa/truffle.c
+@@ -41,7 +41,7 @@
+
+ static really_inline
+ const u8 *lastMatch(const u8 *buf, u32 z) {
+-    if (unlikely(z != 0xffff)) {
++    if (z != 0xffff) {
+         u32 pos = clz32(~z & 0xffff);
+         assert(pos >= 16 && pos < 32);
+         return buf + (31 - pos);
+@@ -52,7 +52,7 @@ const u8 *lastMatch(const u8 *buf, u32 z) {
+
+ static really_inline
+ const u8 *firstMatch(const u8 *buf, u32 z) {
+-    if (unlikely(z != 0xffff)) {
++    if (likely(z != 0xffff)) {
+         u32 pos = ctz32(~z & 0xffff);
+         assert(pos < 16);
+         return buf + pos;
+@@ -64,8 +64,8 @@ const u8 *firstMatch(const u8 *buf, u32 z) {
+ static really_inline
+ u32 block(m128 shuf_mask_lo_highclear, m128 shuf_mask_lo_highset, m128 v) {
+
+-    m128 highconst = _mm_set1_epi8(0x80);
+-    m128 shuf_mask_hi = _mm_set1_epi64x(0x8040201008040201);
++    m128 highconst = set16x8(0x80);
++    m128 shuf_mask_hi = set2x64(0x8040201008040201);
+
+     // and now do the real work
+     m128 shuf1 = pshufb_m128(shuf_mask_lo_highclear, v);
+@@ -124,7 +124,7 @@ const u8 *truffleExec(m128 shuf_mask_lo_highclear,
+     assert(buf < buf_end);
+     const u8 *rv;
+
+-    if (buf_end - buf < 16) {
++    if (unlikely(buf_end - buf < 16)) {
+         return truffleMini(shuf_mask_lo_highclear, shuf_mask_lo_highset, buf,
+                            buf_end);
+     }
+diff --git a/src/parser/control_verbs.cpp b/src/parser/control_verbs.cpp
+new file mode 100644
+index 0000000..482004d
+--- /dev/null
++++ b/src/parser/control_verbs.cpp
+@@ -0,0 +1,340 @@
++
++/*
++ * Copyright (c) 2017, Intel Corporation
++ *
++ * Redistribution and use in source and binary forms, with or without
++ * modification, are permitted provided that the following conditions are met:
++ *
++ *  * Redistributions of source code must retain the above copyright notice,
++ *    this list of conditions and the following disclaimer.
++ *  * Redistributions in binary form must reproduce the above copyright
++ *    notice, this list of conditions and the following disclaimer in the
++ *    documentation and/or other materials provided with the distribution.
++ *  * Neither the name of Intel Corporation nor the names of its contributors
++ *    may be used to endorse or promote products derived from this software
++ *    without specific prior written permission.
++ *
++ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
++ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
++ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
++ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
++ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
++ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
++ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
++ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
++ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
++ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
++ * POSSIBILITY OF SUCH DAMAGE.
++ */
++
++/**
++ * \file
++ * \brief Parser for control verbs that can occur at the beginning of a pattern.
++ */
++
++#include "parser/control_verbs.h"
++
++#include "parser/Parser.h"
++#include "parser/parse_error.h"
++
++#include <cstring>
++#include <sstream>
++
++using namespace std;
++
++namespace ue2 {
++
++const char *read_control_verbs(const char *ptr, const char *end, size_t start,
++                               ParseMode &mode) {
++    const char *p = ptr;
++    const char *pe = end;
++    const char *eof = pe;
++    const char *ts, *te;
++    int cs;
++    UNUSED int act;
++
++    static const char _ControlVerbs_actions[] = {
++        0, 1, 0, 1, 1, 1, 2, 1, 3, 1, 4, 1, 5, 1, 6, 1, 7, 1, 8, 1, 9};
++
++    static const unsigned char _ControlVerbs_key_offsets[] = {
++        0,   7,   8,   10,  12,  14,  16,  18,  20,  21,  23,  25,  27,
++        30,  32,  34,  36,  38,  40,  42,  44,  46,  48,  50,  52,  55,
++        57,  59,  61,  63,  66,  68,  70,  72,  74,  76,  79,  82,  84,
++        86,  88,  90,  92,  94,  96,  98,  100, 102, 105, 107, 109, 111,
++        113, 115, 117, 119, 121, 123, 125, 127, 129, 131, 133, 135, 137,
++        139, 141, 143, 146, 148, 149, 151, 155, 157, 159, 160, 161};
++
++    static const char _ControlVerbs_trans_keys[] = {
++        41, 65, 66, 67, 76, 78, 85, 41, 41, 78, 41, 89, 41, 67, 41, 82, 41,
++        76, 41, 70, 41, 41, 83, 41, 82, 41, 95, 41, 65, 85, 41, 78, 41, 89,
++        41, 67, 41, 78, 41, 73, 41, 67, 41, 79, 41, 68, 41, 69, 41, 82, 41,
++        76, 41, 70, 73, 41, 77, 41, 73, 41, 84, 41, 95, 41, 77, 82, 41, 65,
++        41, 84, 41, 67, 41, 72, 41, 61, 41, 48, 57, 41, 48, 57, 41, 69, 41,
++        67, 41, 85, 41, 82, 41, 83, 41, 73, 41, 79, 41, 78, 41, 79, 41, 95,
++        41, 65, 83, 41, 85, 41, 84, 41, 79, 41, 95, 41, 80, 41, 79, 41, 83,
++        41, 83, 41, 69, 41, 83, 41, 83, 41, 84, 41, 65, 41, 82, 41, 84, 41,
++        95, 41, 79, 41, 80, 41, 84, 41, 67, 84, 41, 80, 41, 41, 70, 41, 49,
++        51, 56, 41, 54, 41, 50, 41, 40, 42, 0};
++
++    static const char _ControlVerbs_single_lengths[] = {
++        7, 1, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 3, 2, 2, 2, 2, 2, 2, 2,
++        2, 2, 2, 2, 3, 2, 2, 2, 2, 3, 2, 2, 2, 2, 2, 1, 1, 2, 2, 2,
++        2, 2, 2, 2, 2, 2, 2, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
++        2, 2, 2, 2, 2, 2, 2, 3, 2, 1, 2, 4, 2, 2, 1, 1, 1};
++
++    static const char _ControlVerbs_range_lengths[] = {
++        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
++        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0,
++        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
++        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
++
++    static const short _ControlVerbs_index_offsets[] = {
++        0,   8,   10,  13,  16,  19,  22,  25,  28,  30,  33,  36,  39,
++        43,  46,  49,  52,  55,  58,  61,  64,  67,  70,  73,  76,  80,
++        83,  86,  89,  92,  96,  99,  102, 105, 108, 111, 114, 117, 120,
++        123, 126, 129, 132, 135, 138, 141, 144, 147, 151, 154, 157, 160,
++        163, 166, 169, 172, 175, 178, 181, 184, 187, 190, 193, 196, 199,
++        202, 205, 208, 212, 215, 217, 220, 225, 228, 231, 233, 235};
++
++    static const char _ControlVerbs_indicies[] = {
++        0,  2,  3,  4,  5,  6,  7,  1,  8,  1,  8,  9,  1,  8,  10, 1,  11,
++        12, 1,  8,  13, 1,  8,  14, 1,  8,  15, 1,  11, 1,  8,  16, 1,  8,
++        17, 1,  8,  18, 1,  8,  19, 20, 1,  8,  21, 1,  8,  22, 1,  8,  12,
++        1,  8,  23, 1,  8,  24, 1,  8,  25, 1,  8,  26, 1,  8,  27, 1,  8,
++        15, 1,  8,  28, 1,  11, 14, 1,  8,  15, 29, 1,  8,  30, 1,  8,  31,
++        1,  8,  32, 1,  8,  33, 1,  8,  34, 35, 1,  8,  36, 1,  8,  37, 1,
++        8,  38, 1,  8,  39, 1,  8,  40, 1,  8,  41, 1,  11, 41, 1,  8,  42,
++        1,  8,  43, 1,  8,  44, 1,  8,  45, 1,  8,  46, 1,  8,  47, 1,  8,
++        48, 1,  8,  39, 1,  8,  49, 1,  8,  50, 1,  8,  51, 52, 1,  8,  53,
++        1,  8,  54, 1,  8,  55, 1,  8,  56, 1,  8,  57, 1,  8,  58, 1,  8,
++        59, 1,  8,  60, 1,  8,  61, 1,  8,  62, 1,  8,  15, 1,  8,  63, 1,
++        8,  64, 1,  8,  65, 1,  8,  66, 1,  8,  67, 1,  8,  68, 1,  8,  69,
++        1,  8,  15, 1,  8,  70, 71, 1,  8,  72, 1,  73, 1,  8,  74, 1,  75,
++        76, 77, 78, 1,  8,  15, 1,  8,  15, 1,  75, 1,  80, 79, 82, 81, 0};
++
++    static const char _ControlVerbs_trans_targs[] = {
++        75, 1,  2,  9,  22, 24, 45, 67, 75, 3,  4,  75, 5,  6,  7,  8,  10,
++        11, 12, 13, 16, 14, 15, 17, 18, 19, 20, 21, 23, 25, 26, 27, 28, 29,
++        30, 37, 31, 32, 33, 34, 35, 36, 38, 39, 40, 41, 42, 43, 44, 46, 47,
++        48, 59, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 60, 61, 62, 63, 64,
++        65, 66, 68, 70, 69, 75, 71, 75, 72, 73, 74, 75, 76, 75, 0};
++
++    static const char _ControlVerbs_trans_actions[] = {
++        19, 0, 0, 0, 0, 0, 0, 0, 13, 0, 0, 11, 0, 0, 0, 0, 0,  0, 0,  0, 0,
++        0,  0, 0, 0, 0, 0, 0, 0, 0,  0, 0, 0,  0, 0, 0, 0, 0,  0, 0,  0, 0,
++        0,  0, 0, 0, 0, 0, 0, 0, 0,  0, 0, 0,  0, 0, 0, 0, 0,  0, 0,  0, 0,
++        0,  0, 0, 0, 0, 0, 0, 0, 0,  0, 9, 0,  7, 0, 0, 0, 15, 5, 17, 0};
++
++    static const char _ControlVerbs_to_state_actions[] = {
++        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
++        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
++        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
++        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0};
++
++    static const char _ControlVerbs_from_state_actions[] = {
++        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
++        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
++        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
++        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0};
++
++    static const short _ControlVerbs_eof_trans[] = {
++        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
++        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
++        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
++        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 82};
++
++    static const int ControlVerbs_start = 75;
++    static const int ControlVerbs_first_final = 75;
++    static const int ControlVerbs_error = -1;
++
++    static const int ControlVerbs_en_main = 75;
++
++    {
++        cs = ControlVerbs_start;
++        ts = 0;
++        te = 0;
++        act = 0;
++    }
++
++    try {
++
++        {
++            int _klen;
++            unsigned int _trans;
++            const char *_acts;
++            unsigned int _nacts;
++            const char *_keys;
++
++            if (p == pe)
++                goto _test_eof;
++        _resume:
++            _acts =
++                _ControlVerbs_actions + _ControlVerbs_from_state_actions[cs];
++            _nacts = (unsigned int)*_acts++;
++            while (_nacts-- > 0) {
++                switch (*_acts++) {
++                case 1: {
++                    ts = p;
++                } break;
++                }
++            }
++
++            _keys = _ControlVerbs_trans_keys + _ControlVerbs_key_offsets[cs];
++            _trans = _ControlVerbs_index_offsets[cs];
++
++            _klen = _ControlVerbs_single_lengths[cs];
++            if (_klen > 0) {
++                const char *_lower = _keys;
++                const char *_mid;
++                const char *_upper = _keys + _klen - 1;
++                while (1) {
++                    if (_upper < _lower)
++                        break;
++
++                    _mid = _lower + ((_upper - _lower) >> 1);
++                    if ((*p) < *_mid)
++                        _upper = _mid - 1;
++                    else if ((*p) > *_mid)
++                        _lower = _mid + 1;
++                    else {
++                        _trans += (unsigned int)(_mid - _keys);
++                        goto _match;
++                    }
++                }
++                _keys += _klen;
++                _trans += _klen;
++            }
++
++            _klen = _ControlVerbs_range_lengths[cs];
++            if (_klen > 0) {
++                const char *_lower = _keys;
++                const char *_mid;
++                const char *_upper = _keys + (_klen << 1) - 2;
++                while (1) {
++                    if (_upper < _lower)
++                        break;
++
++                    _mid = _lower + (((_upper - _lower) >> 1) & ~1);
++                    if ((*p) < _mid[0])
++                        _upper = _mid - 2;
++                    else if ((*p) > _mid[1])
++                        _lower = _mid + 2;
++                    else {
++                        _trans += (unsigned int)((_mid - _keys) >> 1);
++                        goto _match;
++                    }
++                }
++                _trans += _klen;
++            }
++
++        _match:
++            _trans = _ControlVerbs_indicies[_trans];
++        _eof_trans:
++            cs = _ControlVerbs_trans_targs[_trans];
++
++            if (_ControlVerbs_trans_actions[_trans] == 0)
++                goto _again;
++
++            _acts = _ControlVerbs_actions + _ControlVerbs_trans_actions[_trans];
++            _nacts = (unsigned int)*_acts++;
++            while (_nacts-- > 0) {
++                switch (*_acts++) {
++                case 2: {
++                    te = p + 1;
++                } break;
++                case 3: {
++                    te = p + 1;
++                    { mode.utf8 = true; }
++                } break;
++                case 4: {
++                    te = p + 1;
++                    { mode.ucp = true; }
++                } break;
++                case 5: {
++                    te = p + 1;
++                    {
++                        ostringstream str;
++                        str << "Unsupported control verb "
++                            << string(ts, te - ts);
++                        throw LocatedParseError(str.str());
++                    }
++                } break;
++                case 6: {
++                    te = p + 1;
++                    {
++                        ostringstream str;
++                        str << "Unknown control verb " << string(ts, te - ts);
++                        throw LocatedParseError(str.str());
++                    }
++                } break;
++                case 7: {
++                    te = p + 1;
++                    {
++                        p--;
++                        {
++                            p++;
++                            goto _out;
++                        }
++                    }
++                } break;
++                case 8: {
++                    te = p;
++                    p--;
++                    {
++                        p--;
++                        {
++                            p++;
++                            goto _out;
++                        }
++                    }
++                } break;
++                case 9: {
++                    { p = ((te)) - 1; }
++                    {
++                        p--;
++                        {
++                            p++;
++                            goto _out;
++                        }
++                    }
++                } break;
++                }
++            }
++
++        _again:
++            _acts = _ControlVerbs_actions + _ControlVerbs_to_state_actions[cs];
++            _nacts = (unsigned int)*_acts++;
++            while (_nacts-- > 0) {
++                switch (*_acts++) {
++                case 0: {
++                    ts = 0;
++                } break;
++                }
++            }
++
++            if (++p != pe)
++                goto _resume;
++        _test_eof : {}
++            if (p == eof) {
++                if (_ControlVerbs_eof_trans[cs] > 0) {
++                    _trans = _ControlVerbs_eof_trans[cs] - 1;
++                    goto _eof_trans;
++                }
++            }
++
++        _out : {}
++        }
++
++    } catch (LocatedParseError &error) {
++        if (ts >= ptr && ts <= pe) {
++            error.locate(ts - ptr + start);
++        } else {
++            error.locate(0);
++        }
++        throw;
++    }
++
++    return p;
++}
++
++} // namespace ue2
+diff --git a/src/rose/counting_miracle.h b/src/rose/counting_miracle.h
+index 976208b..4456679 100644
+--- a/src/rose/counting_miracle.h
++++ b/src/rose/counting_miracle.h
+@@ -94,7 +94,7 @@ u32 roseCountingMiracleScanShufti(m128 mask_lo, m128 mask_hi, u8 poison,
+     u32 count = *count_inout;
+
+     const m128 zeroes = zeroes128();
+-    const m128 low4bits = _mm_set1_epi8(0xf);
++    const m128 low4bits = set16x8(0xf);
+
+     for (; d + 16 <= d_end; d_end -= 16) {
+         m128 data = loadu128(d_end - 16);
+diff --git a/src/util/arch.h b/src/util/arch.h
+index 985fec6..fe4a910 100644
+--- a/src/util/arch.h
++++ b/src/util/arch.h
+@@ -61,6 +61,10 @@
+ #define HAVE_AVX512VBMI
+ #endif
+
++#if defined(__aarch64__)
++#define HAVE_NEON
++#endif
++
+ /*
+  * ICC and MSVC don't break out POPCNT or BMI/2 as separate pre-def macros
+  */
+@@ -87,4 +91,11 @@
+ #define NO_ASM
+ #endif
+
++/*
++ * AARCH64 uses a different form of inline asm
++ */
++#if defined(__aarch64__)
++#define NO_ASM
++#endif
++
+ #endif // UTIL_ARCH_H_
+diff --git a/src/util/cpuid_flags.c b/src/util/cpuid_flags.c
+index c00ce58..96286ee 100644
+--- a/src/util/cpuid_flags.c
++++ b/src/util/cpuid_flags.c
+@@ -40,6 +40,7 @@
+ u64a cpuid_flags(void) {
+     u64a cap = 0;
+
++#if defined(__X86_64__)
+     if (check_avx2()) {
+         DEBUG_PRINTF("AVX2 enabled\n");
+         cap |= HS_CPU_FEATURES_AVX2;
+@@ -67,6 +68,7 @@ u64a cpuid_flags(void) {
+ #if (!defined(FAT_RUNTIME) && !defined(HAVE_AVX512VBMI)) ||                    \
+     (defined(FAT_RUNTIME) && !defined(BUILD_AVX512VBMI))
+     cap &= ~HS_CPU_FEATURES_AVX512VBMI;
++#endif
+ #endif
+
+     return cap;
+@@ -78,6 +80,7 @@ struct family_id {
+     u32 tune;
+ };
+
++#if defined(__X86_64__)
+ /* from table 35-1 of the Intel 64 and IA32 Arch. Software Developer's Manual
+  * and "Intel Architecture and Processor Identification With CPUID Model and
+  * Family Numbers" */
+@@ -121,6 +124,7 @@ static const struct family_id known_microarch[] = {
+     { 0x6, 0x6C, HS_TUNE_FAMILY_ICX }, /* Icelake Xeon */
+
+ };
++#endif
+
+ #ifdef DUMP_SUPPORT
+ static UNUSED
+@@ -144,6 +148,7 @@ const char *dumpTune(u32 tune) {
+ #endif
+
+ u32 cpuid_tune(void) {
++#if defined(__X86_64__)
+     unsigned int eax, ebx, ecx, edx;
+
+     cpuid(1, 0, &eax, &ebx, &ecx, &edx);
+@@ -171,6 +176,7 @@ u32 cpuid_tune(void) {
+         DEBUG_PRINTF("found tune flag %s\n", dumpTune(tune) );
+         return tune;
+     }
++#endif
+
+     return HS_TUNE_FAMILY_GENERIC;
+ }
+diff --git a/src/util/cpuid_flags.h b/src/util/cpuid_flags.h
+index 527c6d5..3125bd1 100644
+--- a/src/util/cpuid_flags.h
++++ b/src/util/cpuid_flags.h
+@@ -32,7 +32,9 @@
+ #include "ue2common.h"
+
+ #if !defined(_WIN32) && !defined(CPUID_H_)
++#if defined(__x86_64__)
+ #include <cpuid.h>
++#endif
+  /* system header doesn't have a header guard */
+ #define CPUID_H_
+ #endif
+diff --git a/src/util/cpuid_inline.h b/src/util/cpuid_inline.h
+index b7b4245..b228c1d 100644
+--- a/src/util/cpuid_inline.h
++++ b/src/util/cpuid_inline.h
+@@ -32,17 +32,20 @@
+ #include "ue2common.h"
+ #include "cpuid_flags.h"
+
++#if defined(__x86_64__) || defined(_M_X64)
+ #if !defined(_WIN32) && !defined(CPUID_H_)
+ #include <cpuid.h>
+ /* system header doesn't have a header guard */
+ #define CPUID_H_
+ #endif
++#endif
+
+ #ifdef __cplusplus
+ extern "C"
+ {
+ #endif
+
++#if defined(__x86_64__) || defined(_M_X64)
+ static inline
+ void cpuid(unsigned int op, unsigned int leaf, unsigned int *eax,
+            unsigned int *ebx, unsigned int *ecx, unsigned int *edx) {
+@@ -57,6 +60,7 @@ void cpuid(unsigned int op, unsigned int leaf, unsigned int *eax,
+     *edx = a[3];
+ #endif
+ }
++#endif
+
+ // ECX
+ #define CPUID_SSE3 (1 << 0)
+@@ -93,11 +97,12 @@ void cpuid(unsigned int op, unsigned int leaf, unsigned int *eax,
+ #define CPUID_XCR0_AVX512                                                      \
+     (CPUID_XCR0_OPMASK | CPUID_XCR0_ZMM_Hi256 | CPUID_XCR0_Hi16_ZMM)
+
++#if defined(__x86_64__)
+ static inline
+ u64a xgetbv(u32 op) {
+ #if defined(_WIN32) || defined(__INTEL_COMPILER)
+     return _xgetbv(op);
+-#else
++#elif defined(__x86_64__)
+     u32 a, d;
+     __asm__ volatile (
+             "xgetbv\n"
+@@ -252,6 +257,16 @@ int check_popcnt(void) {
+     cpuid(1, 0, &eax, &ebx, &ecx, &edx);
+     return !!(ecx & CPUID_POPCNT);
+ }
++#endif  //__x86_64__
++
++static inline
++int check_neon(void) {
++#if defined(__aarch64__)
++    return 1;
++#else
++    return 0;
++#endif
++}
+
+ #ifdef __cplusplus
+ } /* extern "C" */
+diff --git a/src/util/intrinsics.h b/src/util/intrinsics.h
+index edc4f6e..ece3b1a 100644
+--- a/src/util/intrinsics.h
++++ b/src/util/intrinsics.h
+@@ -55,10 +55,22 @@
+ # endif
+ #endif
+
++#ifdef __cplusplus
++# if defined(HAVE_CXX_ARM_NEON_H)
++#  define USE_ARM_NEON_H
++# endif
++#else // C
++# if defined(HAVE_C_ARM_NEON_H)
++#  define USE_ARM_NEON_H
++# endif
++#endif
++
+ #if defined(USE_X86INTRIN_H)
+ #include <x86intrin.h>
+ #elif defined(USE_INTRIN_H)
+ #include <intrin.h>
++#elif defined(USE_ARM_NEON_H)
++#include <arm_neon.h>
+ #else
+ #error no intrinsics file
+ #endif
+diff --git a/src/util/popcount.h b/src/util/popcount.h
+index eb08f6b..7d794d1 100644
+--- a/src/util/popcount.h
++++ b/src/util/popcount.h
+@@ -41,6 +41,8 @@ u32 popcount32(u32 x) {
+ #if defined(HAVE_POPCOUNT_INSTR)
+     // Single-instruction builtin.
+     return _mm_popcnt_u32(x);
++#elif defined(HAVE_NEON)
++    return (u32)vaddlv_u8(vcnt_u8(vcreate_u8((u64a)x)));
+ #else
+     // Fast branch-free version from bit-twiddling hacks as older Intel
+     // processors do not have a POPCNT instruction.
+@@ -63,7 +65,9 @@ u32 popcount64(u64a x) {
+     x = (x & 0x3333333333333333) + ((x >> 2) & 0x3333333333333333);
+     x = (x + (x >> 4)) & 0x0f0f0f0f0f0f0f0f;
+     return (x * 0x0101010101010101) >> 56;
+-# endif
++#endif
++#elif defined(HAVE_NEON)
++    return (u32)vaddlv_u8(vcnt_u8(vcreate_u8((u64a)x)));
+ #else
+     // Synthesise from two 32-bit cases.
+     return popcount32(x >> 32) + popcount32(x);
+diff --git a/src/util/simd_arm.h b/src/util/simd_arm.h
+new file mode 100644
+index 0000000..cce119f
+--- /dev/null
++++ b/src/util/simd_arm.h
+@@ -0,0 +1,1069 @@
++/*
++ * Copyright (c) 2015-2017, Intel Corporation
++ * 2020.01 - Use the neon instruction to implement the function of 128-bit operation.
++ *           Huawei Technologies Co., Ltd.
++ *
++ * Redistribution and use in source and binary forms, with or without
++ * modification, are permitted provided that the following conditions are met:
++ *
++ *  * Redistributions of source code must retain the above copyright notice,
++ *    this list of conditions and the following disclaimer.
++ *  * Redistributions in binary form must reproduce the above copyright
++ *    notice, this list of conditions and the following disclaimer in the
++ *    documentation and/or other materials provided with the distribution.
++ *  * Neither the name of Intel Corporation nor the names of its contributors
++ *    may be used to endorse or promote products derived from this software
++ *    without specific prior written permission.
++ *
++ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
++ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
++ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
++ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
++ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
++ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
++ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
++ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
++ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
++ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
++ * POSSIBILITY OF SUCH DAMAGE.
++ */
++
++/** \file
++ * \brief SIMD types and primitive operations.
++ */
++
++#ifndef SIMD_ARM
++#define SIMD_ARM
++
++#include "config.h"
++#include "simd_types.h"
++#include "ue2common.h"
++#include "unaligned.h"
++#include "util/arch.h"
++#include "util/intrinsics.h"
++
++#include <string.h> // for memcpy
++
++// Define a common assume_aligned using an appropriate compiler built-in, if
++// it's available. Note that we need to handle C or C++ compilation.
++#ifdef __cplusplus
++#ifdef HAVE_CXX_BUILTIN_ASSUME_ALIGNED
++#define assume_aligned(x, y) __builtin_assume_aligned((x), (y))
++#endif
++#else
++#ifdef HAVE_CC_BUILTIN_ASSUME_ALIGNED
++#define assume_aligned(x, y) __builtin_assume_aligned((x), (y))
++#endif
++#endif
++
++// Fallback to identity case.
++#ifndef assume_aligned
++#define assume_aligned(x, y) (x)
++#endif
++
++#ifdef __cplusplus
++extern "C" {
++#endif
++extern const char vbs_mask_data[];
++#ifdef __cplusplus
++}
++#endif
++
++/*
++** extend 4.8.5 neon inline assembly functions
++*/
++__extension__ static __inline uint64x2_t __attribute__((__always_inline__))
++vmvnq_u64(uint64x2_t a) {
++    uint64x2_t result;
++    __asm__("mvn %0.16b,%1.16b" : "=w"(result) : "w"(a) : /* No clobbers */);
++    return result;
++}
++
++#pragma GCC diagnostic push
++#pragma GCC diagnostic ignored "-Wshadow"
++
++static really_inline m128 ones128(void) {
++    m128 result;
++    result.vect_s32 = vdupq_n_s32(0xFFFFFFFF);
++    return result;
++}
++
++static really_inline m128 zeroes128(void) {
++    m128 result;
++    result.vect_s32 = vdupq_n_s32(0x0);
++    return result;
++}
++
++/** \brief Return 1 if a and b are different otherwise 0 */
++static really_inline int diff128(m128 a, m128 b) {
++    return !!vaddlvq_s16(veorq_s16(a.vect_s16, b.vect_s16));
++}
++
++static really_inline int isnonzero128(m128 a) {
++    return !!diff128(a, zeroes128());
++}
++
++/**
++ * "Rich" version of diff128(). Takes two vectors a and b and returns a 4-bit
++ * mask indicating which 32-bit words contain differences.
++ */
++static really_inline u32 diffrich128(m128 a, m128 b) {
++    m128 tmp;
++    tmp.vect_u32 = vmvnq_u32(vceqq_u32(a.vect_u32, b.vect_u32));
++    return ((vgetq_lane_u32(tmp.vect_u32, 3) & 0x8) |
++            (vgetq_lane_u32(tmp.vect_u32, 2) & 0x4) |
++            (vgetq_lane_u32(tmp.vect_u32, 1) & 0x2) |
++            (vgetq_lane_u32(tmp.vect_u32, 0) & 0x1));
++}
++
++/**
++ * "Rich" version of diff128(), 64-bit variant. Takes two vectors a and b and
++ * returns a 4-bit mask indicating which 64-bit words contain differences.
++ */
++static really_inline u32 diffrich64_128(m128 a, m128 b) {
++    m128 tmp;
++    tmp.vect_u64 = vmvnq_u64(vceqq_u64(a.vect_u64, b.vect_u64));
++    return (u32)((vgetq_lane_u64(tmp.vect_u64, 1) & 0x4) |
++                 (vgetq_lane_u64(tmp.vect_u64, 0) & 0x1));
++}
++
++static really_really_inline m128 lshift64_m128(m128 a, unsigned b) {
++    assert(b <= 63);
++    m128 result;
++    result.vect_s64 = vshlq_n_s64(a.vect_s64, b);
++    return result;
++}
++
++static really_really_inline m128 rshift64_m128(m128 a, int imm8) {
++    assert(imm8 >= 0 && imm8 <= 63);
++    if (unlikely(imm8 == 0)) {
++        return a;
++    }
++    m128 result;
++    result.vect_u64 = vshrq_n_u64(a.vect_u64, imm8);
++    return result;
++}
++
++static really_really_inline m128 eq128(m128 a, m128 b) {
++    m128 result;
++    result.vect_u8 = vceqq_s8(a.vect_s8, b.vect_s8);
++    return result;
++}
++
++static really_really_inline u32 movemask128(m128 a) {
++    m128 result;
++    result.vect_u8 = vshrq_n_u8(a.vect_u8, 7);
++    result.vect_u16 = vsraq_n_u16(result.vect_u16, result.vect_u16, 7);
++    result.vect_u32 = vsraq_n_u32(result.vect_u32, result.vect_u32, 14);
++    result.vect_u64 = vsraq_n_u64(result.vect_u64, result.vect_u64, 28);
++    return (u32)(vgetq_lane_u8(result.vect_u8, 0) |
++                 ((u32)vgetq_lane_u8(result.vect_u8, 8) << 8));
++}
++
++static really_really_inline m128 rshiftbyte_m128(m128 a, int imm8) {
++    assert(imm8 >= 0 && imm8 <= 15);
++    m128 result;
++    result.vect_s8 = vextq_s8(a.vect_s8, vdupq_n_s8(0), imm8);
++    return result;
++}
++
++static really_really_inline m128 lshiftbyte_m128(m128 a, int imm8) {
++    assert(imm8 >= 0 && imm8 <= 15);
++    m128 result;
++    if (unlikely(imm8 == 0)) {
++        return a;
++    }
++    result.vect_s8 = vextq_s8(vdupq_n_s8(0), a.vect_s8, (16 - imm8));
++    return result;
++}
++
++static really_inline m128 set16x8(u8 c) {
++    m128 result;
++    result.vect_s8 = vdupq_n_s8(c);
++    return result;
++}
++
++static really_inline m128 set4x32(u32 c) {
++    m128 result;
++    result.vect_s32 = vdupq_n_s32(c);
++    return result;
++}
++
++static really_inline m128 set2x64(u64a c) {
++    m128 result;
++    result.vect_u64 = vdupq_n_u64(c);
++    return result;
++}
++
++static really_inline u32 movd(const m128 in) {
++    u32 result;
++    result = vgetq_lane_u32(in.vect_u32, 0);
++    return result;
++}
++
++static really_inline u64a movq(const m128 in) {
++    return vgetq_lane_u64(in.vect_u64, 0);
++}
++
++/* another form of movq */
++static really_inline m128 load_m128_from_u64a(const u64a *p) {
++    m128 result;
++    __asm__ __volatile__("ldr %d0, %1         \n\t"
++                         : "=w"(result)
++                         : "Utv"(*p)
++                         : /* No clobbers */
++    );
++    return result;
++}
++
++/*The x86 platform does not perform the lower 2 bit operation.
++If the value of imm exceeds 2 bit, a compilation error occurs.*/
++static really_inline u32 extract32from128(m128 a, int imm) {
++    return vgetq_lane_s32(a.vect_s32, imm & 0x0003);
++}
++
++/*The x86 platform does not perform the lower 1 bit operation.
++If the value of imm exceeds 1 bit, a compilation error occurs.*/
++static really_inline u64a extract64from128(m128 a, int imm) {
++    return vgetq_lane_s64(a.vect_s64, imm & 0x0001);
++}
++
++#define extractlow64from256(a) movq(a.lo)
++#define extractlow32from256(a) movd(a.lo)
++
++/*The x86 platform does not perform the lower 2 bit operation.
++If the value of imm exceeds 2 bit, a compilation error occurs.*/
++static really_inline u32 extract32from256(m256 a, int imm) {
++    return vgetq_lane_s32((imm >> 2) ? a.hi.vect_s32 : a.lo.vect_s32,
++                          imm & 0x0003);
++}
++
++/*The x86 platform does not perform the lower 1 bit operation.
++If the value of imm exceeds 1 bit, a compilation error occurs.*/
++static really_inline u64a extract64from256(m256 a, int imm) {
++    return vgetq_lane_s64((imm >> 1) ? a.hi.vect_s64 : a.lo.vect_s64,
++                          imm & 0x0001);
++}
++
++static really_inline m128 and128(m128 a, m128 b) {
++    m128 result;
++    result.vect_s32 = vandq_s32(a.vect_s32, b.vect_s32);
++    return result;
++}
++
++static really_inline m128 not128(m128 a) {
++    m128 result;
++    result.vect_s32 = vmvnq_s32(a.vect_s32);
++    return result;
++}
++
++static really_inline m128 xor128(m128 a, m128 b) {
++    m128 result;
++    result.vect_s32 = veorq_s32(a.vect_s32, b.vect_s32);
++    return result;
++}
++
++static really_inline m128 or128(m128 a, m128 b) {
++    m128 result;
++    result.vect_s32 = vorrq_s32(a.vect_s32, b.vect_s32);
++    return result;
++}
++
++static really_inline m128 andnot128(m128 a, m128 b) {
++    m128 result;
++    result.vect_s32 = vbicq_s32(b.vect_s32, a.vect_s32);
++    return result;
++}
++
++// aligned load
++static really_inline m128 load128(const void *ptr) {
++    assert(ISALIGNED_N(ptr, alignof(m128)));
++    ptr = assume_aligned(ptr, 16);
++    m128 result;
++    result.vect_s32 = vld1q_s32((const int32_t *)ptr);
++    return result;
++}
++
++// aligned store
++static really_inline void store128(void *ptr, m128 a) {
++    assert(ISALIGNED_N(ptr, alignof(m128)));
++    ptr = assume_aligned(ptr, 16);
++    *(m128 *)ptr = a;
++}
++
++// unaligned load
++static really_inline m128 loadu128(const void *ptr) {
++    m128 result;
++    result.vect_s32 = vld1q_s32((const int32_t *)ptr);
++    return result;
++}
++
++// unaligned store
++static really_inline void storeu128(void *ptr, m128 a) {
++    vst1q_s32((int32_t *)ptr, a.vect_s32);
++}
++
++// packed unaligned store of first N bytes
++static really_inline void storebytes128(void *ptr, m128 a, unsigned int n) {
++    assert(n <= sizeof(a));
++    memcpy(ptr, &a, n);
++}
++
++// packed unaligned load of first N bytes, pad with zero
++static really_inline m128 loadbytes128(const void *ptr, unsigned int n) {
++    m128 a = zeroes128();
++    assert(n <= sizeof(a));
++    memcpy(&a, ptr, n);
++    return a;
++}
++
++#ifdef __cplusplus
++extern "C" {
++#endif
++extern const u8 simd_onebit_masks[];
++#ifdef __cplusplus
++}
++#endif
++
++static really_inline m128 mask1bit128(unsigned int n) {
++    assert(n < sizeof(m128) * 8);
++    u32 mask_idx = ((n % 8) * 64) + 95;
++    mask_idx -= n / 8;
++    return loadu128(&simd_onebit_masks[mask_idx]);
++}
++
++// switches on bit N in the given vector.
++static really_inline void setbit128(m128 *ptr, unsigned int n) {
++    *ptr = or128(mask1bit128(n), *ptr);
++}
++
++// switches off bit N in the given vector.
++static really_inline void clearbit128(m128 *ptr, unsigned int n) {
++    *ptr = andnot128(mask1bit128(n), *ptr);
++}
++
++// tests bit N in the given vector.
++static really_inline char testbit128(m128 val, unsigned int n) {
++    const m128 mask = mask1bit128(n);
++    return isnonzero128(and128(mask, val));
++}
++
++// offset must be an immediate
++/*The x86 platform does not perform the lower 8 bit operation.
++If the value of imm exceeds 8 bit, a compilation error occurs.*/
++static really_inline m128 palignr(m128 a, m128 b, int count) {
++    m128 result;
++    count = count & 0xff;
++    if (likely(count < 16)) {
++        result.vect_s8 = vextq_s8(b.vect_s8, a.vect_s8, count);
++    } else if (count < 32) {
++        result.vect_s8 = vextq_s8(a.vect_s8, vdupq_n_s8(0x0), count - 16);
++    } else {
++        result.vect_s32 = vdupq_n_s32(0);
++    }
++    return result;
++}
++
++static really_inline m128 pshufb_m128(m128 a, m128 b) {
++    m128 result;
++    __asm__ __volatile__("movi v3.16b, 0x8f                   \n\t"
++                         "and v3.16b, v3.16b, %2.16b          \n\t"
++                         "tbl %0.16b, {%1.16b}, v3.16b        \n\t"
++                         : "=w"(result)
++                         : "w"(a), "w"(b)
++                         : "v3");
++    return result;
++}
++
++static really_inline m256 pshufb_m256(m256 a, m256 b) {
++    m256 rv;
++    rv.lo = pshufb_m128(a.lo, b.lo);
++    rv.hi = pshufb_m128(a.hi, b.hi);
++    return rv;
++}
++
++static really_inline m128 variable_byte_shift_m128(m128 in, s32 amount) {
++    assert(amount >= -16 && amount <= 16);
++    m128 shift_mask = loadu128(vbs_mask_data + 16 - amount);
++    return pshufb_m128(in, shift_mask);
++}
++
++static really_inline m128 max_u8_m128(m128 a, m128 b) {
++    m128 result;
++    result.vect_u8 = vmaxq_u8(a.vect_u8, b.vect_u8);
++    return result;
++}
++
++static really_inline m128 min_u8_m128(m128 a, m128 b) {
++    m128 result;
++    result.vect_u8 = vminq_u8(a.vect_u8, b.vect_u8);
++    return result;
++}
++
++static really_inline m128 sadd_u8_m128(m128 a, m128 b) {
++    m128 result;
++    result.vect_u8 = vqaddq_u8(a.vect_u8, b.vect_u8);
++    return result;
++}
++
++static really_inline m128 sub_u8_m128(m128 a, m128 b) {
++    m128 result;
++    result.vect_u8 = vsubq_u8(a.vect_u8, b.vect_u8);
++    return result;
++}
++
++static really_inline m128 set64x2(int64_t hi, int64_t lo) {
++    m128 result;
++    result.vect_s64 = vsetq_lane_s64(hi, vdupq_n_s64(lo), 1);
++    return result;
++}
++
++static really_inline m128 set32x4(int i3, int i2, int i1, int i0) {
++    m128 result;
++    result.vect_s32 = vsetq_lane_s32(
++        i3, vsetq_lane_s32(i2, vsetq_lane_s32(i1, vdupq_n_s32(i0), 1), 2), 3);
++    return result;
++}
++
++/****
++ **** 256-bit Primitives
++ ****/
++
++static really_really_inline m256 lshift64_m256(m256 a, int b) {
++    m256 rv = a;
++    rv.lo = lshift64_m128(rv.lo, b);
++    rv.hi = lshift64_m128(rv.hi, b);
++    return rv;
++}
++
++static really_inline m256 rshift64_m256(m256 a, int b) {
++    m256 rv = a;
++    rv.lo = rshift64_m128(rv.lo, b);
++    rv.hi = rshift64_m128(rv.hi, b);
++    return rv;
++}
++static really_inline m256 set32x8(u32 in) {
++    m256 rv;
++    rv.lo = set16x8((u8)in);
++    rv.hi = rv.lo;
++    return rv;
++}
++
++static really_inline m256 eq256(m256 a, m256 b) {
++    m256 rv;
++    rv.lo = eq128(a.lo, b.lo);
++    rv.hi = eq128(a.hi, b.hi);
++    return rv;
++}
++
++static really_inline u32 movemask256(m256 a) {
++    u32 lo_mask = movemask128(a.lo);
++    u32 hi_mask = movemask128(a.hi);
++    return lo_mask | (hi_mask << 16);
++}
++
++static really_inline m256 set2x128(m128 a) {
++    m256 rv = {a, a};
++    return rv;
++}
++
++static really_inline m256 zeroes256(void) {
++    m256 rv = {zeroes128(), zeroes128()};
++    return rv;
++}
++
++static really_inline m256 ones256(void) {
++    m256 rv = {ones128(), ones128()};
++    return rv;
++}
++
++static really_inline m256 and256(m256 a, m256 b) {
++    m256 rv;
++    rv.lo = and128(a.lo, b.lo);
++    rv.hi = and128(a.hi, b.hi);
++    return rv;
++}
++
++static really_inline m256 or256(m256 a, m256 b) {
++    m256 rv;
++    rv.lo = or128(a.lo, b.lo);
++    rv.hi = or128(a.hi, b.hi);
++    return rv;
++}
++
++static really_inline m256 xor256(m256 a, m256 b) {
++    m256 rv;
++    rv.lo = xor128(a.lo, b.lo);
++    rv.hi = xor128(a.hi, b.hi);
++    return rv;
++}
++
++static really_inline m256 not256(m256 a) {
++    m256 rv;
++    rv.lo = not128(a.lo);
++    rv.hi = not128(a.hi);
++    return rv;
++}
++
++static really_inline m256 andnot256(m256 a, m256 b) {
++    m256 rv;
++    rv.lo = andnot128(a.lo, b.lo);
++    rv.hi = andnot128(a.hi, b.hi);
++    return rv;
++}
++
++static really_inline int diff256(m256 a, m256 b) {
++    return diff128(a.lo, b.lo) || diff128(a.hi, b.hi);
++}
++
++static really_inline int isnonzero256(m256 a) {
++    return isnonzero128(or128(a.lo, a.hi));
++}
++
++/**
++ * "Rich" version of diff256(). Takes two vectors a and b and returns an 8-bit
++ * mask indicating which 32-bit words contain differences.
++ */
++static really_inline u32 diffrich256(m256 a, m256 b) {
++    uint32x4_t x = vceqq_s32(a.lo.vect_s32, b.lo.vect_s32);
++    uint32x4_t y = vceqq_s32(a.hi.vect_s32, b.hi.vect_s32);
++    uint8x8_t lo = vqmovn_u16(vcombine_u16(vqmovn_u32(x), vqmovn_u32(y)));
++
++    static const int8_t __attribute__((aligned(16)))
++    xr[8] = {-7, -6, -5, -4, -3, -2, -1, 0};
++    uint8x8_t mask_and = vdup_n_u8(0x80);
++    int8x8_t mask_shift = vld1_s8(xr);
++
++    lo = vand_u8(lo, mask_and);
++    lo = vshl_u8(lo, mask_shift);
++
++    lo = vpadd_u8(lo, lo);
++    lo = vpadd_u8(lo, lo);
++    lo = vpadd_u8(lo, lo);
++
++    return ~(lo[0] & 0xFF) & 0xff;
++}
++
++/**
++ * "Rich" version of diff256(), 64-bit variant. Takes two vectors a and b and
++ * returns an 8-bit mask indicating which 64-bit words contain differences.
++ */
++static really_inline u32 diffrich64_256(m256 a, m256 b) {
++    u32 d = diffrich256(a, b);
++    return (d | (d >> 1)) & 0x55555555;
++}
++
++// aligned load
++static really_inline m256 load256(const void *ptr) {
++    assert(ISALIGNED_N(ptr, alignof(m256)));
++    m256 rv = {load128(ptr), load128((const char *)ptr + 16)};
++    return rv;
++}
++
++// aligned load  of 128-bit value to low and high part of 256-bit value
++static really_inline m256 load2x128(const void *ptr) {
++    assert(ISALIGNED_N(ptr, alignof(m128)));
++    m256 rv;
++    rv.hi = rv.lo = load128(ptr);
++    return rv;
++}
++
++static really_inline m256 loadu2x128(const void *ptr) {
++    return set2x128(loadu128(ptr));
++}
++
++// aligned store
++static really_inline void store256(void *ptr, m256 a) {
++    assert(ISALIGNED_N(ptr, alignof(m256)));
++    ptr = assume_aligned(ptr, 16);
++    *(m256 *)ptr = a;
++}
++
++// unaligned load
++static really_inline m256 loadu256(const void *ptr) {
++    m256 rv = {loadu128(ptr), loadu128((const char *)ptr + 16)};
++    return rv;
++}
++
++// unaligned store
++static really_inline void storeu256(void *ptr, m256 a) {
++    storeu128(ptr, a.lo);
++    storeu128((char *)ptr + 16, a.hi);
++}
++
++// packed unaligned store of first N bytes
++static really_inline void storebytes256(void *ptr, m256 a, unsigned int n) {
++    assert(n <= sizeof(a));
++    memcpy(ptr, &a, n);
++}
++
++// packed unaligned load of first N bytes, pad with zero
++static really_inline m256 loadbytes256(const void *ptr, unsigned int n) {
++    m256 a = zeroes256();
++    assert(n <= sizeof(a));
++    memcpy(&a, ptr, n);
++    return a;
++}
++
++static really_inline m256 mask1bit256(unsigned int n) {
++    assert(n < sizeof(m256) * 8);
++    u32 mask_idx = ((n % 8) * 64) + 95;
++    mask_idx -= n / 8;
++    return loadu256(&simd_onebit_masks[mask_idx]);
++}
++
++static really_inline m256 set64x4(u64a hi_1, u64a hi_0, u64a lo_1, u64a lo_0) {
++    m256 rv;
++    rv.hi = set64x2(hi_1, hi_0);
++    rv.lo = set64x2(lo_1, lo_0);
++    return rv;
++}
++
++// switches on bit N in the given vector.
++static really_inline void setbit256(m256 *ptr, unsigned int n) {
++    assert(n < sizeof(*ptr) * 8);
++    m128 *sub;
++    if (n < 128) {
++        sub = &ptr->lo;
++    } else {
++        sub = &ptr->hi;
++        n -= 128;
++    }
++    setbit128(sub, n);
++}
++
++// switches off bit N in the given vector.
++static really_inline void clearbit256(m256 *ptr, unsigned int n) {
++    assert(n < sizeof(*ptr) * 8);
++    m128 *sub;
++    if (n < 128) {
++        sub = &ptr->lo;
++    } else {
++        sub = &ptr->hi;
++        n -= 128;
++    }
++    clearbit128(sub, n);
++}
++
++// tests bit N in the given vector.
++static really_inline char testbit256(m256 val, unsigned int n) {
++    assert(n < sizeof(val) * 8);
++    m128 sub;
++    if (n < 128) {
++        sub = val.lo;
++    } else {
++        sub = val.hi;
++        n -= 128;
++    }
++    return testbit128(sub, n);
++}
++
++static really_really_inline m128 movdq_hi(m256 x) { return x.hi; }
++
++static really_really_inline m128 movdq_lo(m256 x) { return x.lo; }
++
++static really_inline m256 combine2x128(m128 hi, m128 lo) {
++    m256 rv = {lo, hi};
++    return rv;
++}
++
++/****
++ **** 384-bit Primitives
++ ****/
++
++static really_inline m384 and384(m384 a, m384 b) {
++    m384 rv;
++    rv.lo = and128(a.lo, b.lo);
++    rv.mid = and128(a.mid, b.mid);
++    rv.hi = and128(a.hi, b.hi);
++    return rv;
++}
++
++static really_inline m384 or384(m384 a, m384 b) {
++    m384 rv;
++    rv.lo = or128(a.lo, b.lo);
++    rv.mid = or128(a.mid, b.mid);
++    rv.hi = or128(a.hi, b.hi);
++    return rv;
++}
++
++static really_inline m384 xor384(m384 a, m384 b) {
++    m384 rv;
++    rv.lo = xor128(a.lo, b.lo);
++    rv.mid = xor128(a.mid, b.mid);
++    rv.hi = xor128(a.hi, b.hi);
++    return rv;
++}
++static really_inline m384 not384(m384 a) {
++    m384 rv;
++    rv.lo = not128(a.lo);
++    rv.mid = not128(a.mid);
++    rv.hi = not128(a.hi);
++    return rv;
++}
++static really_inline m384 andnot384(m384 a, m384 b) {
++    m384 rv;
++    rv.lo = andnot128(a.lo, b.lo);
++    rv.mid = andnot128(a.mid, b.mid);
++    rv.hi = andnot128(a.hi, b.hi);
++    return rv;
++}
++
++static really_really_inline m384 lshift64_m384(m384 a, unsigned b) {
++    m384 rv;
++    rv.lo = lshift64_m128(a.lo, b);
++    rv.mid = lshift64_m128(a.mid, b);
++    rv.hi = lshift64_m128(a.hi, b);
++    return rv;
++}
++
++static really_inline m384 zeroes384(void) {
++    m384 rv = {zeroes128(), zeroes128(), zeroes128()};
++    return rv;
++}
++
++static really_inline m384 ones384(void) {
++    m384 rv = {ones128(), ones128(), ones128()};
++    return rv;
++}
++
++static really_inline int diff384(m384 a, m384 b) {
++    return diff128(a.lo, b.lo) || diff128(a.mid, b.mid) || diff128(a.hi, b.hi);
++}
++
++static really_inline int isnonzero384(m384 a) {
++    return isnonzero128(or128(or128(a.lo, a.mid), a.hi));
++}
++
++/**
++ * "Rich" version of diff384(). Takes two vectors a and b and returns a 12-bit
++ * mask indicating which 32-bit words contain differences.
++ */
++static really_inline u32 diffrich384(m384 a, m384 b) {
++    m128 z = zeroes128();
++    uint32x4_t x = vceqq_s32(a.lo.vect_s32, b.lo.vect_s32);
++    uint32x4_t y = vceqq_s32(a.mid.vect_s32, b.mid.vect_s32);
++    uint32x4_t w = vceqq_s32(a.hi.vect_s32, b.hi.vect_s32);
++
++    uint16x8_t q = vcombine_u16(vqmovn_u32(x), vqmovn_u32(y));
++    uint16x8_t p = vcombine_u16(vqmovn_u32(w), vqmovn_u32(z.vect_u32));
++
++    uint8x16_t input = vcombine_u8(vqmovn_u16(q), vqmovn_u16(p));
++
++    static const int8_t __attribute__((aligned(16)))
++    xr[8] = {-7, -6, -5, -4, -3, -2, -1, 0};
++    uint8x8_t mask_and = vdup_n_u8(0x80);
++    int8x8_t mask_shift = vld1_s8(xr);
++
++    uint8x8_t lo = vget_low_u8(input);
++    uint8x8_t hi = vget_high_u8(input);
++
++    lo = vand_u8(lo, mask_and);
++    lo = vshl_u8(lo, mask_shift);
++
++    hi = vand_u8(hi, mask_and);
++    hi = vshl_u8(hi, mask_shift);
++
++    lo = vpadd_u8(lo, lo);
++    lo = vpadd_u8(lo, lo);
++    lo = vpadd_u8(lo, lo);
++
++    hi = vpadd_u8(hi, hi);
++    hi = vpadd_u8(hi, hi);
++    hi = vpadd_u8(hi, hi);
++
++    return ~((hi[0] << 8) | (lo[0] & 0xFF)) & 0xfff;
++}
++
++/**
++ * "Rich" version of diff384(), 64-bit variant. Takes two vectors a and b and
++ * returns a 12-bit mask indicating which 64-bit words contain differences.
++ */
++static really_inline u32 diffrich64_384(m384 a, m384 b) {
++    u32 d = diffrich384(a, b);
++    return (d | (d >> 1)) & 0x55555555;
++}
++
++// aligned load
++static really_inline m384 load384(const void *ptr) {
++    assert(ISALIGNED_16(ptr));
++    m384 rv = {load128(ptr), load128((const char *)ptr + 16),
++               load128((const char *)ptr + 32)};
++    return rv;
++}
++
++// aligned store
++static really_inline void store384(void *ptr, m384 a) {
++    assert(ISALIGNED_16(ptr));
++    ptr = assume_aligned(ptr, 16);
++    *(m384 *)ptr = a;
++}
++
++// unaligned load
++static really_inline m384 loadu384(const void *ptr) {
++    m384 rv = {loadu128(ptr), loadu128((const char *)ptr + 16),
++               loadu128((const char *)ptr + 32)};
++    return rv;
++}
++
++// packed unaligned store of first N bytes
++static really_inline void storebytes384(void *ptr, m384 a, unsigned int n) {
++    assert(n <= sizeof(a));
++    memcpy(ptr, &a, n);
++}
++
++// packed unaligned load of first N bytes, pad with zero
++static really_inline m384 loadbytes384(const void *ptr, unsigned int n) {
++    m384 a = zeroes384();
++    assert(n <= sizeof(a));
++    memcpy(&a, ptr, n);
++    return a;
++}
++
++// switches on bit N in the given vector.
++static really_inline void setbit384(m384 *ptr, unsigned int n) {
++    assert(n < sizeof(*ptr) * 8);
++    m128 *sub;
++    if (n < 128) {
++        sub = &ptr->lo;
++    } else if (n < 256) {
++        sub = &ptr->mid;
++    } else {
++        sub = &ptr->hi;
++    }
++    setbit128(sub, n % 128);
++}
++
++// switches off bit N in the given vector.
++static really_inline void clearbit384(m384 *ptr, unsigned int n) {
++    assert(n < sizeof(*ptr) * 8);
++    m128 *sub;
++    if (n < 128) {
++        sub = &ptr->lo;
++    } else if (n < 256) {
++        sub = &ptr->mid;
++    } else {
++        sub = &ptr->hi;
++    }
++    clearbit128(sub, n % 128);
++}
++
++// tests bit N in the given vector.
++static really_inline char testbit384(m384 val, unsigned int n) {
++    assert(n < sizeof(val) * 8);
++    m128 sub;
++    if (n < 128) {
++        sub = val.lo;
++    } else if (n < 256) {
++        sub = val.mid;
++    } else {
++        sub = val.hi;
++    }
++    return testbit128(sub, n % 128);
++}
++
++/****
++ **** 512-bit Primitives
++ ****/
++
++static really_inline m512 zeroes512(void) {
++    m512 rv = {zeroes256(), zeroes256()};
++    return rv;
++}
++
++static really_inline m512 ones512(void) {
++    m512 rv = {ones256(), ones256()};
++    return rv;
++}
++
++static really_inline m512 and512(m512 a, m512 b) {
++    m512 rv;
++    rv.lo = and256(a.lo, b.lo);
++    rv.hi = and256(a.hi, b.hi);
++    return rv;
++}
++
++static really_inline m512 or512(m512 a, m512 b) {
++    m512 rv;
++    rv.lo = or256(a.lo, b.lo);
++    rv.hi = or256(a.hi, b.hi);
++    return rv;
++}
++
++static really_inline m512 xor512(m512 a, m512 b) {
++    m512 rv;
++    rv.lo = xor256(a.lo, b.lo);
++    rv.hi = xor256(a.hi, b.hi);
++    return rv;
++}
++
++static really_inline m512 not512(m512 a) {
++    m512 rv;
++    rv.lo = not256(a.lo);
++    rv.hi = not256(a.hi);
++    return rv;
++}
++
++static really_inline m512 andnot512(m512 a, m512 b) {
++    m512 rv;
++    rv.lo = andnot256(a.lo, b.lo);
++    rv.hi = andnot256(a.hi, b.hi);
++    return rv;
++}
++
++static really_really_inline m512 lshift64_m512(m512 a, unsigned b) {
++    m512 rv;
++    rv.lo = lshift64_m256(a.lo, b);
++    rv.hi = lshift64_m256(a.hi, b);
++    return rv;
++}
++
++static really_inline int diff512(m512 a, m512 b) {
++    return diff256(a.lo, b.lo) || diff256(a.hi, b.hi);
++}
++
++static really_inline int isnonzero512(m512 a) {
++    m128 x = or128(a.lo.lo, a.lo.hi);
++    m128 y = or128(a.hi.lo, a.hi.hi);
++    return isnonzero128(or128(x, y));
++}
++
++/**
++ * "Rich" version of diff512(). Takes two vectors a and b and returns a 16-bit
++ * mask indicating which 32-bit words contain differences.
++ */
++static really_inline u32 diffrich512(m512 a, m512 b) {
++    uint32x4_t x = vceqq_s32(a.lo.lo.vect_s32, b.lo.lo.vect_s32);
++    uint32x4_t y = vceqq_s32(a.lo.hi.vect_s32, b.lo.hi.vect_s32);
++    uint32x4_t z = vceqq_s32(a.hi.lo.vect_s32, b.hi.lo.vect_s32);
++    uint32x4_t w = vceqq_s32(a.hi.hi.vect_s32, b.hi.hi.vect_s32);
++    uint16x8_t p = vcombine_u16(vqmovn_u32(x), vqmovn_u32(y));
++    uint16x8_t q = vcombine_u16(vqmovn_u32(z), vqmovn_u32(w));
++
++    uint8x16_t input = vcombine_u8(vqmovn_u16(p), vqmovn_u16(q));
++
++    static const int8_t __attribute__((aligned(16)))
++    xr[8] = {-7, -6, -5, -4, -3, -2, -1, 0};
++    uint8x8_t mask_and = vdup_n_u8(0x80);
++    int8x8_t mask_shift = vld1_s8(xr);
++
++    uint8x8_t lo = vget_low_u8(input);
++    uint8x8_t hi = vget_high_u8(input);
++
++    lo = vand_u8(lo, mask_and);
++    lo = vshl_u8(lo, mask_shift);
++
++    hi = vand_u8(hi, mask_and);
++    hi = vshl_u8(hi, mask_shift);
++
++    lo = vpadd_u8(lo, lo);
++    lo = vpadd_u8(lo, lo);
++    lo = vpadd_u8(lo, lo);
++
++    hi = vpadd_u8(hi, hi);
++    hi = vpadd_u8(hi, hi);
++    hi = vpadd_u8(hi, hi);
++
++    return ~((hi[0] << 8) | (lo[0] & 0xFF)) & 0xffff;
++}
++
++/**
++ * "Rich" version of diffrich(), 64-bit variant. Takes two vectors a and b and
++ * returns a 16-bit mask indicating which 64-bit words contain differences.
++ */
++static really_inline u32 diffrich64_512(m512 a, m512 b) {
++    u32 d = diffrich512(a, b);
++    return (d | (d >> 1)) & 0x55555555;
++}
++
++// aligned load
++static really_inline m512 load512(const void *ptr) {
++    assert(ISALIGNED_N(ptr, alignof(m256)));
++    m512 rv = {load256(ptr), load256((const char *)ptr + 32)};
++    return rv;
++}
++
++// aligned store
++static really_inline void store512(void *ptr, m512 a) {
++    assert(ISALIGNED_N(ptr, alignof(m512)));
++    ptr = assume_aligned(ptr, 16);
++    *(m512 *)ptr = a;
++}
++
++// unaligned load
++static really_inline m512 loadu512(const void *ptr) {
++    m512 rv = {loadu256(ptr), loadu256((const char *)ptr + 32)};
++    return rv;
++}
++
++// packed unaligned store of first N bytes
++static really_inline void storebytes512(void *ptr, m512 a, unsigned int n) {
++    assert(n <= sizeof(a));
++    memcpy(ptr, &a, n);
++}
++
++// packed unaligned load of first N bytes, pad with zero
++static really_inline m512 loadbytes512(const void *ptr, unsigned int n) {
++    m512 a = zeroes512();
++    assert(n <= sizeof(a));
++    memcpy(&a, ptr, n);
++    return a;
++}
++
++static really_inline m512 mask1bit512(unsigned int n) {
++    assert(n < sizeof(m512) * 8);
++    u32 mask_idx = ((n % 8) * 64) + 95;
++    mask_idx -= n / 8;
++    return loadu512(&simd_onebit_masks[mask_idx]);
++}
++
++// switches on bit N in the given vector.
++static really_inline void setbit512(m512 *ptr, unsigned int n) {
++    assert(n < sizeof(*ptr) * 8);
++    m128 *sub;
++    if (n < 128) {
++        sub = &ptr->lo.lo;
++    } else if (n < 256) {
++        sub = &ptr->lo.hi;
++    } else if (n < 384) {
++        sub = &ptr->hi.lo;
++    } else {
++        sub = &ptr->hi.hi;
++    }
++    setbit128(sub, n % 128);
++}
++
++// switches off bit N in the given vector.
++static really_inline void clearbit512(m512 *ptr, unsigned int n) {
++    assert(n < sizeof(*ptr) * 8);
++    m128 *sub;
++    if (n < 128) {
++        sub = &ptr->lo.lo;
++    } else if (n < 256) {
++        sub = &ptr->lo.hi;
++    } else if (n < 384) {
++        sub = &ptr->hi.lo;
++    } else {
++        sub = &ptr->hi.hi;
++    }
++    clearbit128(sub, n % 128);
++}
++
++// tests bit N in the given vector.
++static really_inline char testbit512(m512 val, unsigned int n) {
++    assert(n < sizeof(val) * 8);
++    m128 sub;
++    if (n < 128) {
++        sub = val.lo.lo;
++    } else if (n < 256) {
++        sub = val.lo.hi;
++    } else if (n < 384) {
++        sub = val.hi.lo;
++    } else {
++        sub = val.hi.hi;
++    }
++    return testbit128(sub, n % 128);
++}
++#pragma GCC diagnostic pop
++
++#endif
+diff --git a/src/util/simd_types.h b/src/util/simd_types.h
+index 962cad6..b3f96ea 100644
+--- a/src/util/simd_types.h
++++ b/src/util/simd_types.h
+@@ -35,6 +35,23 @@
+ #include "ue2common.h"
+
+ #if defined(HAVE_SSE2)
++typedef __m128i m128;
++#elif defined(HAVE_NEON)
++#include "arm_neon.h"
++
++typedef union {
++    int8x16_t vect_s8;
++    int16x8_t vect_s16;
++    int32x4_t vect_s32;
++    int64x2_t vect_s64;
++    uint8x16_t vect_u8;
++    uint16x8_t vect_u16;
++    uint32x4_t vect_u32;
++    uint64x2_t vect_u64;
++} __m128i;
++typedef float32x4_t __m128;
++typedef float64x2_t __m128d;
++
+ typedef __m128i m128;
+ #else
+ typedef struct ALIGN_DIRECTIVE {u64a hi; u64a lo;} m128;
+diff --git a/src/util/simd_utils.h b/src/util/simd_utils.h
+new file mode 100644
+index 0000000..9588d97
+--- /dev/null
++++ b/src/util/simd_utils.h
+@@ -0,0 +1,13 @@
++// SPDX-License-Identifier: GPL-2.0-only
++// Copyright (c) Huawei Technologies Co., Ltd. 2023. All rights reserved.
++
++#ifndef SIMD_UTILS
++#define SIMD_UTILS
++
++#if defined(__x86_64__)
++#include "simd_x86.h"
++#elif defined(__aarch64__)
++#include "simd_arm.h"
++#endif
++
++#endif
+diff --git a/src/util/simd_x86.h b/src/util/simd_x86.h
+index 5fa727e..5daaa74 100644
+--- a/src/util/simd_x86.h
++++ b/src/util/simd_x86.h
+@@ -1417,4 +1417,14 @@ char testbit512(m512 val, unsigned int n) {
+ #endif
+ }
+
++static really_inline m128 set2x64(u64a c)
++{
++	return _mm_set1_epi32(c);
++}
++
++static really_inline m128 set32x4(int i3, int i2, int i1, int i0)
++{
++	return _mm_set_epi32(i3, i2, i1, i0);
++}
++
+ #endif
+diff --git a/tools/hscollider/CMakeLists.txt b/tools/hscollider/CMakeLists.txt
+index a4d71b2..0c41ab9 100644
+--- a/tools/hscollider/CMakeLists.txt
++++ b/tools/hscollider/CMakeLists.txt
+@@ -21,7 +21,14 @@ set_source_files_properties(
+     PROPERTIES
+     COMPILE_FLAGS "${RAGEL_C_FLAGS} -I${CMAKE_CURRENT_SOURCE_DIR}")
+
+-ragelmaker(ColliderCorporaParser.rl)
++
++if (CMAKE_SYSTEM_PROCESSOR MATCHES "x86_64|i386")
++    ragelmaker(ColliderCorporaParser.rl)
++endif()
++
++if (CMAKE_SYSTEM_PROCESSOR MATCHES "aarch64|AARCH64")
++    ragelcopyer(ColliderCorporaParser.rl)
++endif()
+
+ if (BUILD_CHIMERA)
+     add_definitions(-DHS_HYBRID)
+diff --git a/tools/hscollider/ColliderCorporaParser.cpp b/tools/hscollider/ColliderCorporaParser.cpp
+new file mode 100644
+index 0000000..5391473
+--- /dev/null
++++ b/tools/hscollider/ColliderCorporaParser.cpp
+@@ -0,0 +1,474 @@
++
++
++/*
++ * Copyright (c) 2015-2017, Intel Corporation
++ *
++ * Redistribution and use in source and binary forms, with or without
++ * modification, are permitted provided that the following conditions are met:
++ *
++ *  * Redistributions of source code must retain the above copyright notice,
++ *    this list of conditions and the following disclaimer.
++ *  * Redistributions in binary form must reproduce the above copyright
++ *    notice, this list of conditions and the following disclaimer in the
++ *    documentation and/or other materials provided with the distribution.
++ *  * Neither the name of Intel Corporation nor the names of its contributors
++ *    may be used to endorse or promote products derived from this software
++ *    without specific prior written permission.
++ *
++ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
++ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
++ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
++ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
++ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
++ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
++ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
++ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
++ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
++ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
++ * POSSIBILITY OF SUCH DAMAGE.
++ */
++
++#include "config.h"
++
++#include "ColliderCorporaParser.h"
++#include "Corpora.h"
++
++#include "ue2common.h"
++
++#include <cassert>
++#include <cstdio>
++#include <cstdlib>
++#include <string>
++
++using namespace std;
++
++namespace /* anonymous */ {
++
++// Take a string like '\xFF' and convert it to the character it represents
++char unhex(const char *start, UNUSED const char *end) {
++    assert(start + 4 == end);
++    assert(start[0] == '\\');
++    assert(start[1] == 'x');
++    assert(isxdigit(start[2]));
++    assert(isxdigit(start[2]));
++
++    char temp[3] = {start[2], start[3], 0};
++
++    return strtol(temp, nullptr, 16);
++}
++
++static const char _FileCorporaParser_actions[] = {
++    0,  1,  0,  1,  3,  1,  4,  1,  5,  1,  6, 1,  7, 1,  8, 1,  9, 1,  10,
++    1,  11, 1,  12, 1,  13, 1,  14, 1,  15, 1, 16, 1, 17, 1, 18, 1, 19, 1,
++    20, 1,  21, 1,  22, 1,  23, 1,  24, 2,  0, 2,  2, 3,  0, 3,  1, 0,  2};
++
++static const char _FileCorporaParser_key_offsets[] = {
++    0, 0, 2, 6, 7, 13, 19, 25, 31, 34, 34, 35, 52, 54, 71, 72, 75, 79};
++
++static const char _FileCorporaParser_trans_keys[] = {
++    48,  57,  58,  61,  48,  57,  34,  48,  57,  65,  70,  97,  102, 48,
++    57,  65,  70,  97,  102, 48,  57,  65,  70,  97,  102, 48,  57,  65,
++    70,  97,  102, 32,  48,  57,  92,  48,  97,  110, 114, 116, 118, 120,
++    49,  57,  65,  90,  98,  100, 101, 102, 103, 122, 34,  92,  48,  97,
++    110, 114, 116, 118, 120, 49,  57,  65,  90,  98,  100, 101, 102, 103,
++    122, 58,  32,  48,  57,  32,  44,  48,  57,  32,  44,  0};
++
++static const char _FileCorporaParser_single_lengths[] = {
++    0, 0, 2, 1, 0, 0, 0, 0, 1, 0, 1, 7, 2, 7, 1, 1, 2, 2};
++
++static const char _FileCorporaParser_range_lengths[] = {
++    0, 1, 1, 0, 3, 3, 3, 3, 1, 0, 0, 5, 0, 5, 0, 1, 1, 0};
++
++static const char _FileCorporaParser_index_offsets[] = {
++    0, 0, 2, 6, 8, 12, 16, 20, 24, 27, 28, 30, 43, 46, 59, 61, 64, 68};
++
++static const char _FileCorporaParser_indicies[] = {
++    0,  1,  3,  4,  2,  1,  5,  1,  7,  7,  7,  6,  8,  8,  8,  6,  10, 10,
++    10, 9,  11, 11, 11, 9,  12, 13, 1,  1,  15, 14, 18, 18, 18, 18, 18, 18,
++    19, 16, 16, 16, 18, 16, 17, 21, 22, 20, 25, 25, 25, 25, 25, 25, 26, 23,
++    23, 23, 25, 23, 24, 27, 1,  28, 29, 1,  31, 32, 13, 30, 31, 32, 30, 0};
++
++static const char _FileCorporaParser_trans_targs[] = {
++    2,  0,  2, 9,  3,  9,  10, 5,  10, 12, 7,  12, 8,  16, 10, 11, 10,
++    10, 10, 4, 12, 12, 13, 12, 12, 12, 6,  14, 8,  16, 15, 17, 15};
++
++static const char _FileCorporaParser_trans_actions[] = {
++    53, 0,  47, 5,  0,  7,  25, 0,  15, 39, 0,  27, 0,  1,  21, 13, 23,
++    19, 17, 0,  33, 35, 13, 37, 31, 29, 0,  41, 3,  50, 45, 0,  43};
++
++static const char _FileCorporaParser_to_state_actions[] = {
++    0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 9, 0, 9, 9, 0, 0};
++
++static const char _FileCorporaParser_from_state_actions[] = {
++    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 0, 11, 0, 11, 11, 0, 0};
++
++static const char _FileCorporaParser_eof_trans[] = {
++    0, 0, 0, 0, 7, 7, 10, 10, 0, 0, 0, 17, 0, 24, 0, 0, 31, 31};
++
++static const int FileCorporaParser_start = 1;
++static const int FileCorporaParser_first_final = 9;
++static const int FileCorporaParser_error = 0;
++
++static const int FileCorporaParser_en_corpus_old = 10;
++static const int FileCorporaParser_en_corpus_new = 12;
++static const int FileCorporaParser_en_colon_sep = 14;
++static const int FileCorporaParser_en_match_list = 15;
++static const int FileCorporaParser_en_main = 1;
++
++} // namespace
++
++bool parseCorpus(const string &line, Corpus &c, unsigned int &id) {
++    const char *p = line.c_str();
++    const char *pe = p + line.size();
++    const char *eof = pe;
++    const char *ts;
++    const char *te;
++    int cs;
++    UNUSED int act;
++
++    // For storing integers as they're scanned
++    unsigned int num = 0;
++
++    string &sout = c.data;
++
++    {
++        cs = FileCorporaParser_start;
++        ts = 0;
++        te = 0;
++        act = 0;
++    }
++
++    {
++        int _klen;
++        unsigned int _trans;
++        const char *_acts;
++        unsigned int _nacts;
++        const char *_keys;
++
++        if (p == pe)
++            goto _test_eof;
++        if (cs == 0)
++            goto _out;
++    _resume:
++        _acts = _FileCorporaParser_actions +
++                _FileCorporaParser_from_state_actions[cs];
++        _nacts = (unsigned int)*_acts++;
++        while (_nacts-- > 0) {
++            switch (*_acts++) {
++            case 7:
++
++            {
++                ts = p;
++            } break;
++            }
++        }
++
++        _keys =
++            _FileCorporaParser_trans_keys + _FileCorporaParser_key_offsets[cs];
++        _trans = _FileCorporaParser_index_offsets[cs];
++
++        _klen = _FileCorporaParser_single_lengths[cs];
++        if (_klen > 0) {
++            const char *_lower = _keys;
++            const char *_mid;
++            const char *_upper = _keys + _klen - 1;
++            while (1) {
++                if (_upper < _lower)
++                    break;
++
++                _mid = _lower + ((_upper - _lower) >> 1);
++                if ((*p) < *_mid)
++                    _upper = _mid - 1;
++                else if ((*p) > *_mid)
++                    _lower = _mid + 1;
++                else {
++                    _trans += (unsigned int)(_mid - _keys);
++                    goto _match;
++                }
++            }
++            _keys += _klen;
++            _trans += _klen;
++        }
++
++        _klen = _FileCorporaParser_range_lengths[cs];
++        if (_klen > 0) {
++            const char *_lower = _keys;
++            const char *_mid;
++            const char *_upper = _keys + (_klen << 1) - 2;
++            while (1) {
++                if (_upper < _lower)
++                    break;
++
++                _mid = _lower + (((_upper - _lower) >> 1) & ~1);
++                if ((*p) < _mid[0])
++                    _upper = _mid - 2;
++                else if ((*p) > _mid[1])
++                    _lower = _mid + 2;
++                else {
++                    _trans += (unsigned int)((_mid - _keys) >> 1);
++                    goto _match;
++                }
++            }
++            _trans += _klen;
++        }
++
++    _match:
++        _trans = _FileCorporaParser_indicies[_trans];
++    _eof_trans:
++        cs = _FileCorporaParser_trans_targs[_trans];
++
++        if (_FileCorporaParser_trans_actions[_trans] == 0)
++            goto _again;
++
++        _acts = _FileCorporaParser_actions +
++                _FileCorporaParser_trans_actions[_trans];
++        _nacts = (unsigned int)*_acts++;
++        while (_nacts-- > 0) {
++            switch (*_acts++) {
++            case 0:
++
++            {
++                num = (num * 10) + ((*p) - '0');
++            } break;
++            case 1:
++
++            {
++                num = 0;
++            } break;
++            case 2:
++
++            {
++                id = num;
++            } break;
++            case 3:
++
++            {
++                num = 0;
++            } break;
++            case 4:
++
++            {
++                {
++                    cs = 10;
++                    goto _again;
++                }
++            } break;
++            case 5:
++
++            {
++                c.hasMatches = true;
++                {
++                    cs = 12;
++                    goto _again;
++                }
++            } break;
++            case 8:
++
++            {
++                te = p + 1;
++            } break;
++            case 9:
++
++            {
++                te = p + 1;
++                { sout.push_back(unhex(ts, te)); }
++            } break;
++            case 10:
++
++            {
++                te = p + 1;
++                {
++                    switch (*(ts + 1)) {
++                    case '0':
++                        sout.push_back('\x00');
++                        break;
++                    case 'a':
++                        sout.push_back('\x07');
++                        break;
++                    case 'e':
++                        sout.push_back('\x1b');
++                        break;
++                    case 'f':
++                        sout.push_back('\x0c');
++                        break;
++                    case 'n':
++                        sout.push_back('\x0a');
++                        break;
++                    case 'v':
++                        sout.push_back('\x0b');
++                        break;
++                    case 'r':
++                        sout.push_back('\x0d');
++                        break;
++                    case 't':
++                        sout.push_back('\x09');
++                        break;
++                    default: {
++                        p++;
++                        goto _out;
++                    }
++                    }
++                }
++            } break;
++            case 11:
++
++            {
++                te = p + 1;
++                { sout.push_back(*(ts + 1)); }
++            } break;
++            case 12:
++
++            {
++                te = p + 1;
++                { sout.push_back(*ts); }
++            } break;
++            case 13:
++
++            {
++                te = p;
++                p--;
++                { sout.push_back(*ts); }
++            } break;
++            case 14:
++
++            {
++                { p = ((te)) - 1; }
++                { sout.push_back(*ts); }
++            } break;
++            case 15:
++
++            {
++                te = p + 1;
++                { sout.push_back(unhex(ts, te)); }
++            } break;
++            case 16:
++
++            {
++                te = p + 1;
++                {
++                    switch (*(ts + 1)) {
++                    case '0':
++                        sout.push_back('\x00');
++                        break;
++                    case 'a':
++                        sout.push_back('\x07');
++                        break;
++                    case 'e':
++                        sout.push_back('\x1b');
++                        break;
++                    case 'f':
++                        sout.push_back('\x0c');
++                        break;
++                    case 'n':
++                        sout.push_back('\x0a');
++                        break;
++                    case 'v':
++                        sout.push_back('\x0b');
++                        break;
++                    case 'r':
++                        sout.push_back('\x0d');
++                        break;
++                    case 't':
++                        sout.push_back('\x09');
++                        break;
++                    default: {
++                        p++;
++                        goto _out;
++                    }
++                    }
++                }
++            } break;
++            case 17:
++
++            {
++                te = p + 1;
++                { sout.push_back(*(ts + 1)); }
++            } break;
++            case 18:
++
++            {
++                te = p + 1;
++                { sout.push_back(*ts); }
++            } break;
++            case 19:
++
++            {
++                te = p + 1;
++                {
++                    {
++                        cs = 14;
++                        goto _again;
++                    }
++                }
++            } break;
++            case 20:
++
++            {
++                te = p;
++                p--;
++                { sout.push_back(*ts); }
++            } break;
++            case 21:
++
++            {
++                { p = ((te)) - 1; }
++                { sout.push_back(*ts); }
++            } break;
++            case 22:
++
++            {
++                te = p + 1;
++                {
++                    {
++                        cs = 15;
++                        goto _again;
++                    }
++                }
++            } break;
++            case 23:
++
++            {
++                te = p + 1;
++                { c.matches.insert(num); }
++            } break;
++            case 24:
++
++            {
++                te = p;
++                p--;
++                { c.matches.insert(num); }
++            } break;
++            }
++        }
++
++    _again:
++        _acts = _FileCorporaParser_actions +
++                _FileCorporaParser_to_state_actions[cs];
++        _nacts = (unsigned int)*_acts++;
++        while (_nacts-- > 0) {
++            switch (*_acts++) {
++            case 6:
++
++            {
++                ts = 0;
++            } break;
++            }
++        }
++
++        if (cs == 0)
++            goto _out;
++        if (++p != pe)
++            goto _resume;
++    _test_eof : {}
++        if (p == eof) {
++            if (_FileCorporaParser_eof_trans[cs] > 0) {
++                _trans = _FileCorporaParser_eof_trans[cs] - 1;
++                goto _eof_trans;
++            }
++        }
++
++    _out : {}
++    }
++
++    return (cs != FileCorporaParser_error) && (p == pe);
++}
+diff --git a/unit/internal/simd_utils.cpp b/unit/internal/simd_utils.cpp
+index 623c2c9..22945d6 100644
+--- a/unit/internal/simd_utils.cpp
++++ b/unit/internal/simd_utils.cpp
+@@ -663,7 +663,7 @@ TEST(SimdUtilsTest, movq) {
+     ASSERT_EQ(0, memcmp(cmp, &simd, sizeof(simd)));
+     ASSERT_EQ(0, memcmp(cmp, &r, sizeof(r)));
+
+-    simd = _mm_set_epi64x(~0LL, 0x123456789abcdef);
++    simd = set64x2(~0LL, 0x123456789abcdef);
+     r = movq(simd);
+     ASSERT_EQ(r, 0x123456789abcdef);
+ }
+diff --git a/util/CMakeLists.txt b/util/CMakeLists.txt
+index ea942ef..d7bef50 100644
+--- a/util/CMakeLists.txt
++++ b/util/CMakeLists.txt
+@@ -11,7 +11,13 @@ set_source_files_properties(
+     PROPERTIES
+     COMPILE_FLAGS "${RAGEL_C_FLAGS}")
+
+-ragelmaker(ExpressionParser.rl)
++if (CMAKE_SYSTEM_PROCESSOR MATCHES "x86_64|i386")
++    ragelmaker(ExpressionParser.rl)
++endif()
++
++if (CMAKE_SYSTEM_PROCESSOR MATCHES "aarch64|AARCH64")
++    ragelcopyer(ExpressionParser.rl)
++endif()
+
+ set(expressionutil_SRCS
+     expressions.cpp
+diff --git a/util/ExpressionParser.cpp b/util/ExpressionParser.cpp
+new file mode 100644
+index 0000000..687fc39
+--- /dev/null
++++ b/util/ExpressionParser.cpp
+@@ -0,0 +1,397 @@
++
++
++/*
++ * Copyright (c) 2015-2018, Intel Corporation
++ *
++ * Redistribution and use in source and binary forms, with or without
++ * modification, are permitted provided that the following conditions are met:
++ *
++ *  * Redistributions of source code must retain the above copyright notice,
++ *    this list of conditions and the following disclaimer.
++ *  * Redistributions in binary form must reproduce the above copyright
++ *    notice, this list of conditions and the following disclaimer in the
++ *    documentation and/or other materials provided with the distribution.
++ *  * Neither the name of Intel Corporation nor the names of its contributors
++ *    may be used to endorse or promote products derived from this software
++ *    without specific prior written permission.
++ *
++ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
++ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
++ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
++ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
++ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
++ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
++ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
++ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
++ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
++ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
++ * POSSIBILITY OF SUCH DAMAGE.
++ */
++
++#include "config.h"
++
++#include "ExpressionParser.h"
++
++#include <cassert>
++#include <cstdio>
++#include <cstdlib>
++#include <cstring>
++#include <string>
++
++#include "hs_compile.h"
++#include "ue2common.h"
++
++using std::string;
++
++namespace { // anon
++
++enum ParamKey {
++    PARAM_NONE,
++    PARAM_MIN_OFFSET,
++    PARAM_MAX_OFFSET,
++    PARAM_MIN_LENGTH,
++    PARAM_EDIT_DISTANCE,
++    PARAM_HAMM_DISTANCE
++};
++
++static const char _ExpressionParser_actions[] = {0, 1, 0,  1, 1, 1, 2, 1, 3,
++                                                 1, 4, 1,  5, 1, 6, 1, 7, 1,
++                                                 9, 1, 10, 2, 8, 0
++
++};
++
++static const char _ExpressionParser_key_offsets[] = {
++    0,  0,  4,  8,  9,  10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
++    20, 21, 23, 28, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41,
++    42, 43, 44, 45, 46, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57,
++    58, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 82};
++
++static const char _ExpressionParser_trans_keys[] = {
++    32,  101, 104, 109, 32,  101, 104, 109, 100, 105, 116, 95,  100, 105,
++    115, 116, 97,  110, 99,  101, 61,  48,  57,  32,  44,  125, 48,  57,
++    32,  44,  125, 97,  109, 109, 105, 110, 103, 95,  100, 105, 115, 116,
++    97,  110, 99,  101, 97,  105, 120, 95,  111, 102, 102, 115, 101, 116,
++    110, 95,  108, 111, 101, 110, 103, 116, 104, 102, 102, 115, 101, 116,
++    56,  67,  72,  76,  105, 109, 115, 123, 79,  81,  86,  87,  0};
++
++static const char _ExpressionParser_single_lengths[] = {
++    0, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 3, 3, 1,
++    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1,
++    1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 8, 0};
++
++static const char _ExpressionParser_range_lengths[] = {
++    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0,
++    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
++    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0};
++
++static const unsigned char _ExpressionParser_index_offsets[] = {
++    0,   0,   5,   10,  12,  14,  16,  18,  20,  22,  24,  26,  28, 30, 32,
++    34,  36,  38,  43,  47,  49,  51,  53,  55,  57,  59,  61,  63, 65, 67,
++    69,  71,  73,  75,  77,  80,  82,  84,  86,  88,  90,  92,  94, 96, 98,
++    100, 103, 105, 107, 109, 111, 113, 115, 117, 119, 121, 123, 134};
++
++static const char _ExpressionParser_trans_targs[] = {
++    2,  3,  19, 34, 0,  2,  3,  19, 34, 0,  4,  0,  5,  0,  6,  0,  7,
++    0,  8,  0,  9,  0,  10, 0,  11, 0,  12, 0,  13, 0,  14, 0,  15, 0,
++    16, 0,  17, 0,  18, 1,  57, 17, 0,  18, 1,  57, 0,  20, 0,  21, 0,
++    22, 0,  23, 0,  24, 0,  25, 0,  26, 0,  27, 0,  28, 0,  29, 0,  30,
++    0,  31, 0,  32, 0,  33, 0,  15, 0,  35, 43, 0,  36, 0,  37, 0,  38,
++    0,  39, 0,  40, 0,  41, 0,  42, 0,  15, 0,  44, 0,  45, 0,  46, 51,
++    0,  47, 0,  48, 0,  49, 0,  50, 0,  15, 0,  52, 0,  53, 0,  54, 0,
++    55, 0,  15, 0,  56, 56, 56, 56, 56, 56, 56, 1,  56, 56, 0,  0,  0};
++
++static const char _ExpressionParser_trans_actions[] = {
++    17, 17, 17, 17, 19, 0,  0,  0,  0,  19, 0,  19, 0,  19, 0,  19, 0,
++    19, 0,  19, 0,  19, 0,  19, 0,  19, 0,  19, 0,  19, 0,  19, 13, 19,
++    0,  19, 21, 19, 0,  5,  5,  1,  19, 0,  5,  5,  19, 0,  19, 0,  19,
++    0,  19, 0,  19, 0,  19, 0,  19, 0,  19, 0,  19, 0,  19, 0,  19, 0,
++    19, 0,  19, 0,  19, 0,  19, 15, 19, 0,  0,  19, 0,  19, 0,  19, 0,
++    19, 0,  19, 0,  19, 0,  19, 0,  19, 9,  19, 0,  19, 0,  19, 0,  0,
++    19, 0,  19, 0,  19, 0,  19, 0,  19, 11, 19, 0,  19, 0,  19, 0,  19,
++    0,  19, 7,  19, 3,  3,  3,  3,  3,  3,  3,  0,  3,  3,  19, 19, 0};
++
++static const char _ExpressionParser_eof_actions[] = {
++    0,  19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19,
++    19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19,
++    19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19,
++    19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 0,  0};
++
++static const int ExpressionParser_start = 56;
++static const int ExpressionParser_first_final = 56;
++static const int ExpressionParser_error = 0;
++
++static const int ExpressionParser_en_main = 56;
++
++} // namespace
++
++static void initExt(hs_expr_ext *ext) {
++    memset(ext, 0, sizeof(*ext));
++    ext->max_offset = MAX_OFFSET;
++}
++
++bool HS_CDECL readExpression(const std::string &input, std::string &expr,
++                             unsigned int *flags, hs_expr_ext *ext,
++                             bool *must_be_ordered) {
++    assert(flags);
++    assert(ext);
++
++    // Init flags and ext params.
++    *flags = 0;
++    initExt(ext);
++    if (must_be_ordered) {
++        *must_be_ordered = false;
++    }
++
++    // Extract expr, which is easier to do in straight C++ than with Ragel.
++    if (input.empty() || input[0] != '/') {
++        return false;
++    }
++    size_t end = input.find_last_of('/');
++    if (end == string::npos || end == 0) {
++        return false;
++    }
++    expr = input.substr(1, end - 1);
++
++    // Use a Ragel scanner to handle flags and params.
++    const char *p = input.c_str() + end + 1;
++    const char *pe = input.c_str() + input.size();
++    UNUSED const char *eof = pe;
++    UNUSED const char *ts = p, *te = p;
++    int cs;
++    UNUSED int act;
++
++    assert(p);
++    assert(pe);
++
++    // For storing integers as they're scanned.
++    u64a num = 0;
++    enum ParamKey key = PARAM_NONE;
++
++    { cs = ExpressionParser_start; }
++
++    {
++        int _klen;
++        unsigned int _trans;
++        const char *_acts;
++        unsigned int _nacts;
++        const char *_keys;
++
++        if (p == pe)
++            goto _test_eof;
++        if (cs == 0)
++            goto _out;
++    _resume:
++        _keys =
++            _ExpressionParser_trans_keys + _ExpressionParser_key_offsets[cs];
++        _trans = _ExpressionParser_index_offsets[cs];
++
++        _klen = _ExpressionParser_single_lengths[cs];
++        if (_klen > 0) {
++            const char *_lower = _keys;
++            const char *_mid;
++            const char *_upper = _keys + _klen - 1;
++            while (1) {
++                if (_upper < _lower)
++                    break;
++
++                _mid = _lower + ((_upper - _lower) >> 1);
++                if ((*p) < *_mid)
++                    _upper = _mid - 1;
++                else if ((*p) > *_mid)
++                    _lower = _mid + 1;
++                else {
++                    _trans += (unsigned int)(_mid - _keys);
++                    goto _match;
++                }
++            }
++            _keys += _klen;
++            _trans += _klen;
++        }
++
++        _klen = _ExpressionParser_range_lengths[cs];
++        if (_klen > 0) {
++            const char *_lower = _keys;
++            const char *_mid;
++            const char *_upper = _keys + (_klen << 1) - 2;
++            while (1) {
++                if (_upper < _lower)
++                    break;
++
++                _mid = _lower + (((_upper - _lower) >> 1) & ~1);
++                if ((*p) < _mid[0])
++                    _upper = _mid - 2;
++                else if ((*p) > _mid[1])
++                    _lower = _mid + 2;
++                else {
++                    _trans += (unsigned int)((_mid - _keys) >> 1);
++                    goto _match;
++                }
++            }
++            _trans += _klen;
++        }
++
++    _match:
++        cs = _ExpressionParser_trans_targs[_trans];
++
++        if (_ExpressionParser_trans_actions[_trans] == 0)
++            goto _again;
++
++        _acts =
++            _ExpressionParser_actions + _ExpressionParser_trans_actions[_trans];
++        _nacts = (unsigned int)*_acts++;
++        while (_nacts-- > 0) {
++            switch (*_acts++) {
++            case 0:
++
++            {
++                num = (num * 10) + ((*p) - '0');
++            } break;
++            case 1:
++
++            {
++                switch ((*p)) {
++                case 'i':
++                    *flags |= HS_FLAG_CASELESS;
++                    break;
++                case 's':
++                    *flags |= HS_FLAG_DOTALL;
++                    break;
++                case 'm':
++                    *flags |= HS_FLAG_MULTILINE;
++                    break;
++                case 'H':
++                    *flags |= HS_FLAG_SINGLEMATCH;
++                    break;
++                case 'O':
++                    if (must_be_ordered) {
++                        *must_be_ordered = true;
++                    }
++                    break;
++                case 'V':
++                    *flags |= HS_FLAG_ALLOWEMPTY;
++                    break;
++                case 'W':
++                    *flags |= HS_FLAG_UCP;
++                    break;
++                case '8':
++                    *flags |= HS_FLAG_UTF8;
++                    break;
++                case 'P':
++                    *flags |= HS_FLAG_PREFILTER;
++                    break;
++                case 'L':
++                    *flags |= HS_FLAG_SOM_LEFTMOST;
++                    break;
++                case 'C':
++                    *flags |= HS_FLAG_COMBINATION;
++                    break;
++                case 'Q':
++                    *flags |= HS_FLAG_QUIET;
++                    break;
++                default: {
++                    p++;
++                    goto _out;
++                }
++                }
++            } break;
++            case 2:
++
++            {
++                switch (key) {
++                case PARAM_MIN_OFFSET:
++                    ext->flags |= HS_EXT_FLAG_MIN_OFFSET;
++                    ext->min_offset = num;
++                    break;
++                case PARAM_MAX_OFFSET:
++                    ext->flags |= HS_EXT_FLAG_MAX_OFFSET;
++                    ext->max_offset = num;
++                    break;
++                case PARAM_MIN_LENGTH:
++                    ext->flags |= HS_EXT_FLAG_MIN_LENGTH;
++                    ext->min_length = num;
++                    break;
++                case PARAM_EDIT_DISTANCE:
++                    ext->flags |= HS_EXT_FLAG_EDIT_DISTANCE;
++                    ext->edit_distance = num;
++                    break;
++                case PARAM_HAMM_DISTANCE:
++                    ext->flags |= HS_EXT_FLAG_HAMMING_DISTANCE;
++                    ext->hamming_distance = num;
++                    break;
++                case PARAM_NONE:
++                default:
++                    // No key specified, syntax invalid.
++                    return false;
++                }
++            } break;
++            case 3:
++
++            {
++                key = PARAM_MIN_OFFSET;
++            } break;
++            case 4:
++
++            {
++                key = PARAM_MAX_OFFSET;
++            } break;
++            case 5:
++
++            {
++                key = PARAM_MIN_LENGTH;
++            } break;
++            case 6:
++
++            {
++                key = PARAM_EDIT_DISTANCE;
++            } break;
++            case 7:
++
++            {
++                key = PARAM_HAMM_DISTANCE;
++            } break;
++            case 8:
++
++            {
++                num = 0;
++            } break;
++            case 9:
++
++            {
++                key = PARAM_NONE;
++            } break;
++            case 10:
++
++            {
++                return false;
++            } break;
++            }
++        }
++
++    _again:
++        if (cs == 0)
++            goto _out;
++        if (++p != pe)
++            goto _resume;
++    _test_eof : {}
++        if (p == eof) {
++            const char *__acts =
++                _ExpressionParser_actions + _ExpressionParser_eof_actions[cs];
++            unsigned int __nacts = (unsigned int)*__acts++;
++            while (__nacts-- > 0) {
++                switch (*__acts++) {
++                case 10:
++
++                {
++                    return false;
++                } break;
++                }
++            }
++        }
++
++    _out : {}
++    }
++
++    DEBUG_PRINTF("expr='%s', flags=%u\n", expr.c_str(), *flags);
++
++    return (cs != ExpressionParser_error) && (p == pe);
++}
+--
+2.39.0
+
