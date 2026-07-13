@@ -17,9 +17,9 @@ RUN yum install -y \
         patch g++ net-tools && \
     yum clean all
 
-RUN wget https://www.openssl.org/source/old/1.0.2/openssl-1.0.2k.tar.gz && \
-    tar -zxvf openssl-1.0.2k.tar.gz && \
-    cd openssl-1.0.2k && \
+RUN wget https://github.com/openssl/openssl/archive/refs/tags/OpenSSL_1_0_2k.tar.gz && \
+    tar -zxvf OpenSSL_1_0_2k.tar.gz && \
+    cd openssl-OpenSSL_1_0_2k && \
     ./config shared --prefix=/usr/local/openssl-1.0.2k && \
     make -j$(nproc) && make install
 
@@ -38,7 +38,7 @@ RUN wget https://www.python.org/ftp/python/2.7.18/Python-2.7.18.tgz && \
         make -j$(nproc) && make install && \
         ln -s /usr/local/python-2.7/bin/python /usr/bin/python2
 
-ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/python-2.7/lib/:/usr/local/openssl-1.0.2k/lib
+ENV LD_LIBRARY_PATH=/usr/local/python-2.7/lib/:/usr/local/openssl-1.0.2k/lib
 RUN wget https://downloads.apache.org/mesos/${VERSION}/mesos-${VERSION}.tar.gz && \
     tar -zxf mesos-${VERSION}.tar.gz
 COPY grpc-1.10.0.patch /mesos-${VERSION}/3rdparty/grpc-1.10.0.patch
@@ -48,7 +48,7 @@ RUN cd /mesos-${VERSION} && \
     make -j 2 && make install && \
     chmod +x /entrypoint.sh
 
-ENV PATH $PATH:/mesos/bin
+ENV PATH=$PATH:/mesos/bin
 
 EXPOSE 5050 5051
 ENTRYPOINT ["/entrypoint.sh"]
