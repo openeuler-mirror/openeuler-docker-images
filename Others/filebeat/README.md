@@ -18,6 +18,7 @@ The tag of each `filebeat` docker image is consist of the version of `filebeat` 
 
 |    Tag   | Currently                                 |   Architectures  |
 |----------|-------------------------------------------|------------------|
+|[9.0.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/filebeat/9.0.1/24.03-lts-sp4/Dockerfile)| Filebeat 9.0.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[9.0.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/filebeat/9.0.1/24.03-lts-sp1/Dockerfile)| Filebeat 9.0.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
