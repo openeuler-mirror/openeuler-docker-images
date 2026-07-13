@@ -22,6 +22,7 @@ download: |
 usage: |
   拉取镜像（示例）：
   ```
+  docker pull openeuler/deepmd-kit:3.1.3-oe2403sp4
   docker pull openeuler/deepmd-kit:3.1.3-oe2403sp3
   ```
 

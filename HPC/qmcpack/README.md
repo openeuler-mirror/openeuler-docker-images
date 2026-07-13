@@ -16,6 +16,7 @@ The tag of each `qmcpack` docker image is consist of the version of `qmcpack` an
 
 | Tag                                                                                                                                  | Currently                                   | Architectures |
 |--------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------|---------------|
+| [4.2.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/qmcpack/4.2.0/24.03-lts-sp4/Dockerfile) | QMCPACK 4.2.0 on openEuler 24.03-LTS-SP4 | amd64, arm64  |
 | [4.2.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/qmcpack/4.2.0/24.03-lts-sp3/Dockerfile) | QMCPACK 4.2.0 on openEuler 24.03-LTS-SP3 | amd64, arm64  |
 
 # Usage

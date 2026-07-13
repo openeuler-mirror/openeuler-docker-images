@@ -18,6 +18,7 @@ The tag of each mne docker image is consist of the version of mne and the versio
 
 | Tags                                                                                                                      | Currently                                   | Architectures |
 |---------------------------------------------------------------------------------------------------------------------------|---------------------------------------------|---------------|
+|[1.12.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/mne/1.12.1/24.03-lts-sp4/Dockerfile) | mne 1.12.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[1.12.1-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/mne/1.12.1/24.03-lts-sp3/Dockerfile) | mne 1.12.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 | [1.9.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/mne/1.9.0/24.03-lts-sp1/Dockerfile) | MNE-Python 1.9.0 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 

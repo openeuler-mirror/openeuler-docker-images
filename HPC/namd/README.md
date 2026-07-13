@@ -16,6 +16,7 @@ The tag of each `namd` docker image is consist of the version of `namd` and the 
 
 | Tag                                                                                                                        | Currently                             | Architectures |
 |----------------------------------------------------------------------------------------------------------------------------|---------------------------------------|---------------|
+| [3.0.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/namd/3.0.2/24.03-lts-sp4/Dockerfile) | NAMD 3.0.1 on openEuler 24.03-LTS-SP4 | amd64, arm64  |
 | [3.0.1-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/namd/3.0.2/24.03-lts-sp2/Dockerfile) | NAMD 3.0.1 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
 
 # Usage

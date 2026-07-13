@@ -1,0 +1,20 @@
+--- ./src/nettest_omni.c.bak	2021-08-03 17:12:46.083392014 +0800
++++ ./src/nettest_omni.c	2021-08-03 17:13:38.299856016 +0800
+@@ -456,15 +456,13 @@
+
+  /* different options for the sockets				*/
+
+-int
++extern int
+   loc_nodelay,		/* don't/do use NODELAY	locally		*/
+   rem_nodelay,		/* don't/do use NODELAY remotely	*/
+   loc_sndavoid,		/* avoid send copies locally		*/
+   loc_rcvavoid,		/* avoid recv copies locally		*/
+   rem_sndavoid,		/* avoid send copies remotely		*/
+-  rem_rcvavoid; 	/* avoid recv_copies remotely		*/
+-
+-extern int
++  rem_rcvavoid, 	/* avoid recv_copies remotely		*/
+   loc_tcpcork,
+   rem_tcpcork,
+   local_connected,

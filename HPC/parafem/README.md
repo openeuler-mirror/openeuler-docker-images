@@ -13,6 +13,7 @@ ParaFEM is an open source parallel finite element analysis library that is docum
 The tag of each parafem docker image is consist of the version of parafem and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[5.0.3-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/parafem/5.0.3/24.03-lts-sp4/Dockerfile) | parafem 5.0.3 on openEuler 24.03-lts-sp4 | amd64, arm64 |
 |[5.0.3-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/parafem/5.0.3/24.03-lts-sp3/Dockerfile) | parafem 5.0.3 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 

@@ -18,6 +18,7 @@ The tag of each `openvelinux` docker image is consist of the version of `openvel
 
 | Tag | Currently | Architectures |
 |-----|-----------|---------------|
+|[velinux/1.0+velinux2-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/openvelinux/velinux-1.0+velinux2/24.03-lts-sp4/Dockerfile) | openvelinux velinux/1.0+velinux2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[velinux/1.0+velinux2-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/openvelinux/velinux-1.0+velinux2/24.03-lts-sp3/Dockerfile) | openvelinux velinux/1.0+velinux2 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 |[1.0-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/openvelinux/1.0/24.03-lts-sp3/Dockerfile) | OpenVeLinux flamegraph 1.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 

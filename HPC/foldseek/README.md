@@ -13,6 +13,7 @@ Foldseek enables fast and sensitive comparisons of large protein structure sets,
 The tag of each foldseek docker image is consist of the version of foldseek and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[10-941cd33-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/foldseek/10-941cd33/24.03-lts-sp4/Dockerfile) | foldseek 10-941cd33 on openEuler 24.03-lts-sp4 | amd64, arm64 |
 |[10-941cd33-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/foldseek/10-941cd33/24.03-lts-sp3/Dockerfile) | foldseek 10-941cd33 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 

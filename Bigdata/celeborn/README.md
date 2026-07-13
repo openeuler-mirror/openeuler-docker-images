@@ -16,6 +16,7 @@ Learn more on [Apache Celeborn™](https://celeborn.apache.org/docs/latest/)
 The tag of each celeborn docker image is consist of the version of celeborn and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[0.6.3-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Bigdata/celeborn/0.6.3/24.03-lts-sp4/Dockerfile) | celeborn 0.6.3 on openEuler 24.03-lts-sp4 | amd64, arm64 |
 |[0.6.3-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Bigdata/celeborn/0.6.3/24.03-lts-sp3/Dockerfile) | celeborn 0.6.3 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 

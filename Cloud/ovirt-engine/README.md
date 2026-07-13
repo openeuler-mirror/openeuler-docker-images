@@ -16,6 +16,7 @@ The tag of each `ovirt-engine` docker image is consist of the version of `ovirt-
 
 | Tag                                                                                                                                  | Currently                                     | Architectures |
 |--------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------|---------------|
+|[4.5.7-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/ovirt-engine/4.5.7/24.03-lts-sp4/Dockerfile) | ovirt 4.5.7 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[4.5.7-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/ovirt-engine/4.5.7/24.03-lts-sp3/Dockerfile) | ovirt 4.5.7 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 | [4.5.6-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/ovirt-engine/4.5.6/24.03-lts-sp1/Dockerfile) | oVirt Engine 4.5.6 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 

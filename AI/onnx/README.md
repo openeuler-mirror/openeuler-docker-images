@@ -17,6 +17,7 @@ Learn more about on [ONNX Website](https://onnx.ai/).
 The tag of each `ONNX` docker image is consist of the complete software stack version. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[1.18.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/onnx/1.18.0/24.03-lts-sp4/Dockerfile)| ONNX 1.18.0 on openEuler 24.03-LTS | amd64, arm64 |
 |[1.18.0-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/onnx/1.18.0/24.03-lts/Dockerfile)| ONNX 1.18.0 on openEuler 24.03-LTS | amd64, arm64 |
 
 # Usage

@@ -18,6 +18,7 @@ The tag of each `SPECFEM3D_GLOBE` docker image is consist of the version of `SPE
 
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[8.1.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/specfem3d_globe/8.1.0/24.03-lts-sp4/Dockerfile) | SPECFEM3D_GLOBE 8.1.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[8.1.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/specfem3d_globe/8.1.0/24.03-lts-sp3/Dockerfile) | SPECFEM3D_GLOBE 8.1.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 # Usage

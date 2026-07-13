@@ -13,6 +13,7 @@ GRIB API is the encoding/decoding software for GRIB edition 1 and 2 developed at
 The tag of each grib_api docker image is consist of the version of grib_api and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[1.21.0-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/grib_api/1.21.0/24.03-lts-sp4/Dockerfile) | grib_api 1.21.0 on openEuler 24.03-lts-sp4 | amd64, arm64 |
 |[1.21.0-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/grib_api/1.21.0/24.03-lts-sp3/Dockerfile) | grib_api 1.21.0 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 

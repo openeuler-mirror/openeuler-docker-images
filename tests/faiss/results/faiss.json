@@ -1,0 +1,28 @@
+{
+  "name": "faiss",
+  "category": "AI",
+  "upstream": "https://github.com/facebookresearch/faiss",
+  "latestVersion": "1.14.3",
+  "supportedVersions": [
+    {
+      "version": "1.14.3",
+      "openEuler": "openEuler 24.03 LTS SP3",
+      "hardware": "Kunpeng 920",
+      "functional": "pass",
+      "functionalDate": "2026-06-26",
+      "performance": "improvement",
+      "performanceDate": "2026-06-26",
+      "integratedDate": "2026-05-19"
+    },
+    {
+      "version": "1.14.2",
+      "openEuler": "openEuler 24.03 LTS SP3",
+      "hardware": "Kunpeng 920",
+      "functional": "pass",
+      "functionalDate": "2026-06-03",
+      "performance": "stable",
+      "performanceDate": "2026-06-26",
+      "integratedDate": "2026-05-03"
+    }
+  ]
+}

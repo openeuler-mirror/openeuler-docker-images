@@ -11,6 +11,7 @@ tags: |
 
   | Tags | Currently |  Architectures|
   |------|-----------|---------------|
+  |[3.5.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/hadoop/3.5.0/24.03-lts-sp4/Dockerfile) | hadoop 3.5.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[3.5.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/hadoop/3.5.0/24.03-lts-sp3/Dockerfile) | hadoop 3.5.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
   |[3.4.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/hadoop/3.4.1/24.03-lts-sp1/Dockerfile)| Apache hadoop 3.4.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 

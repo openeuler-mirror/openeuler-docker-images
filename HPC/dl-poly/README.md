@@ -16,6 +16,7 @@ The tag of each `dl-poly` docker image is consist of the version of `dl-poly` an
 
 | Tag                                                                                                                                | Currently                                   | Architectures |
 |------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------|---------------|
+| [5.1.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/dl-poly/5.1.0/24.03-lts-sp4/Dockerfile) | DL_POLY 5.1.0 on openEuler 24.03-LTS-SP4 | amd64, arm64  |
 | [5.1.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/dl-poly/5.1.0/24.03-lts-sp3/Dockerfile) | DL_POLY 5.1.0 on openEuler 24.03-LTS-SP3 | amd64, arm64  |
 
 # Usage

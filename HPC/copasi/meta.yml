@@ -1,2 +1,4 @@
 4.46.300-oe2403sp3:
   path: 4.46.300/24.03-lts-sp3/Dockerfile
+4.46.300-oe2403sp4:
+  path: 4.46.300/24.03-lts-sp4/Dockerfile

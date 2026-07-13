@@ -18,6 +18,7 @@ The tag of each `docker` docker image is consist of the version of `docker` and 
 
 | Tag                                                                                                                              | Currently                                | Architectures |
 |----------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|---------------|
+| [28.2.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/docker/28.2.1/24.03-lts-sp4/Dockerfile) | Docker 28.2.1 on openEuler 24.03-LTS-SP4 | amd64, arm64  |
 | [28.2.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/docker/28.2.1/24.03-lts-sp1/Dockerfile) | Docker 28.2.1 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 
 # Usage

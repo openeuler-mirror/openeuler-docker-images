@@ -18,6 +18,7 @@ The tag of each `kuberay` docker image is consist of the version of `kuberay` an
 
 | Tag | Currently | Architectures |
 |-----|-----------|---------------|
+| [1.6.2-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/kuberay/1.6.2/24.03-lts-sp4/Dockerfile) | KubeRay 1.6.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 | [1.6.2-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/kuberay/1.6.2/24.03-lts-sp3/Dockerfile) | KubeRay 1.6.2 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 # Usage

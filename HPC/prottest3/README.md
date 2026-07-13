@@ -13,6 +13,7 @@ ProtTest 3 is a bioinformatics tool for selecting the best-fit amino acid replac
 The tag of each prottest3 docker image is consist of the version of prottest3 and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[3.4.2-release-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/prottest3/3.4.2-release/24.03-lts-sp4/Dockerfile) | prottest3 3.4.2-release on openEuler 24.03-lts-sp4 | amd64, arm64 |
 |[3.4.2-release-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/prottest3/3.4.2-release/24.03-lts-sp3/Dockerfile) | prottest3 3.4.2-release on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 

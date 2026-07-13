@@ -11,6 +11,7 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
+  |[3.0.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/namd/3.0.1/24.03-lts-sp4/Dockerfile)| namd 3.0.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[3.0.1-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/namd/3.0.1/24.03-lts-sp2/Dockerfile)| namd 3.0.1 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 
 download: |

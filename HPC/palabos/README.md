@@ -19,6 +19,7 @@ Learn more at [Palabos](https://gitlab.com/unigespc/palabos).
 The tag of each Palabos docker image is consist of the version of Palabos and the version of basic image. The details are as follows:
 | Tags | Currently | Architectures |
 |------|-----------|---------------|
+|[v2.3.0-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/palabos/v2.3.0/24.03-lts-sp4/Dockerfile) | Palabos v2.3.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[v2.3.0-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/palabos/v2.3.0/24.03-lts-sp3/Dockerfile) | Palabos v2.3.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 # Usage
