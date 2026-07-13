@@ -3,7 +3,7 @@ FROM $BASE
 ARG VERSION=0.4.09
 ARG TARGETARCH
 RUN yum install -y \
-        git which curl bzip2 \
+        git which curl bzip2 jq \
         gcc gcc-c++ gcc-gfortran \
         zlib-devel openssl-devel libcurl-devel && \
     yum clean all && rm -rf /var/cache/yum
