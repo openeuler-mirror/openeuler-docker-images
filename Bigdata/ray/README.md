@@ -14,6 +14,7 @@ Learn more about Ray on [Welcome to Ray!](https://docs.ray.io/en/latest/).
 The tag of each ray docker image is consist of the version of ray and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[2.55.1-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Bigdata/ray/2.55.1/24.03-lts-sp4/Dockerfile) | ray 2.55.1 on openEuler 24.03-lts-sp4 | amd64, arm64 |
 |[2.55.1-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Bigdata/ray/2.55.1/24.03-lts-sp3/Dockerfile) | ray 2.55.1 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 

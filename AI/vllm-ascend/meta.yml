@@ -21,3 +21,5 @@
 
 0.11.0rc0-torch_npu2.5.1-cann8.1.rc1-python3.10-oe2203lts:
   path: 0.11.0rc0-torch_npu2.5.1-cann8.1.rc1-python3.10/22.03-lts/Dockerfile
+0.11.0rc0-torch_npu2.5.1-cann8.1.rc1-python3.10-oe2403sp4:
+  path: 0.11.0rc0-torch_npu2.5.1-cann8.1.rc1-python3.10/24.03-lts-sp4/Dockerfile

@@ -1,2 +1,4 @@
 29Aug2024-oe2403sp1:
   path: 29Aug2024/24.03-lts-sp1/Dockerfile
+29Aug2024-oe2403sp4:
+  path: 29Aug2024/24.03-lts-sp4/Dockerfile

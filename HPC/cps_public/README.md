@@ -13,6 +13,7 @@ The CPS consists of code to build a library which can be statically linked to yo
 The tag of each CPS_public docker image is consist of the version of CPS_public and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[5_2_5-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/cps_public/5_2_5/24.03-lts-sp4/Dockerfile) | CPS_public 5_2_5 on openEuler 24.03-lts-sp4 | amd64, arm64 |
 |[5_2_5-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/cps_public/5_2_5/24.03-lts-sp3/Dockerfile) | CPS_public 5_2_5 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 

@@ -14,6 +14,7 @@ Learn more on [EPA CMAQ Website](https://www.epa.gov/cmaq).
 The tag of each cmaq docker image is consist of the version of cmaq and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[5.5.2Oct2024-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/cmaq/5.5.2Oct2024/24.03-lts-sp4/Dockerfile) | cmaq 5.5.2Oct2024 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[5.5.2Oct2024-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/cmaq/5.5.2Oct2024/24.03-lts-sp3/Dockerfile) | cmaq 5.5.2Oct2024 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 |[5.5-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/cmaq/5.5/24.03-lts-sp3/Dockerfile) | cmaq 5.5 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 

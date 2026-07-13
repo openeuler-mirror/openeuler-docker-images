@@ -4,3 +4,5 @@
   path: 7.0.25/24.03-lts-sp1/Dockerfile
 710-20250515-before-cpenv-oe2403sp3:
   path: 710-20250515-before-cpenv/24.03-lts-sp3/Dockerfile
+710-20250515-before-cpenv-oe2403sp4:
+  path: 710-20250515-before-cpenv/24.03-lts-sp4/Dockerfile

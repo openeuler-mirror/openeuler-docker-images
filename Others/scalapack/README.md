@@ -15,6 +15,7 @@ Learn more on [ScaLAPACK — Scalable Linear Algebra PACKage](https://netlib.org
 The tag of each scalapack docker image is consist of the version of scalapack and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[2.2.3-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/scalapack/2.2.3/24.03-lts-sp4/Dockerfile) | scalapack 2.2.3 on openEuler 24.03-lts-sp4 | amd64, arm64 |
 |[2.2.3-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/scalapack/2.2.3/24.03-lts-sp3/Dockerfile) | scalapack 2.2.3 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 

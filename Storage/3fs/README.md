@@ -18,6 +18,7 @@ The tag of each `3fs` docker image is consist of the version of `3fs` and the ve
 
 | Tag                                                                                                                      | Currently                                | Architectures |
 |--------------------------------------------------------------------------------------------------------------------------|------------------------------------------|---------------|
+|[22fca04-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Storage/3fs/22fca04/24.03-lts-sp4/Dockerfile) | 3fs 22fca04 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[22fca04-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Storage/3fs/22fca04/24.03-lts-sp3/Dockerfile) | 3fs 22fca04 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 # Usage

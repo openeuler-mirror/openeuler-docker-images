@@ -16,6 +16,7 @@ The tag of each `fastjson` docker image is consist of the version of `fastjson` 
 
 | Tag                                                                                                                                 | Currently                                   | Architectures |
 |-------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------|---------------|
+|[2.0.62-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/fastjson/2.0.62/24.03-lts-sp4/Dockerfile) | fastjson 2.0.62 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[2.0.62-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/fastjson/2.0.62/24.03-lts-sp3/Dockerfile) | fastjson 2.0.62 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 | [2.0.57-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/fastjson/2.0.57/24.03-lts-sp1/Dockerfile) | FASTJSON2 2.0.57 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 | [2.0.58-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/fastjson/2.0.58/24.03-lts-sp2/Dockerfile) | FASTJSON2 2.0.58 on openEuler 24.03-LTS-SP2 | amd64, arm64  |

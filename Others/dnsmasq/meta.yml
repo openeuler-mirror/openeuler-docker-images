@@ -1,3 +1,5 @@
 2.91-oe2403sp1:
   path: 2.91/24.03-lts-sp1/Dockerfile
 
+2.91-oe2403sp4:
+  path: 2.91/24.03-lts-sp4/Dockerfile

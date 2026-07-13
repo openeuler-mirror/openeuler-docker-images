@@ -16,6 +16,7 @@ The tag of each `wrk` docker image is consist of the version of `wrk` and the ve
 
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[4.2.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/wrk/4.2.0/24.03-lts-sp4/Dockerfile)| wrk 4.2.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[4.2.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/wrk/4.2.0/24.03-lts-sp1/Dockerfile)| wrk 4.2.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage

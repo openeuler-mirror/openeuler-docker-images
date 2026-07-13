@@ -1,0 +1,120 @@
+{
+  "benchmark": "container_performance",
+  "description": "rust performance benchmark - real computational tests in container environment",
+  "reference": "https://github.com/erikbern/ann-benchmarks methodology",
+  "software": "rust",
+  "version": "1.96.0",
+  "architecture": "aarch64",
+  "timestamp": "2026-07-07T10:58:16Z",
+  "performance_metrics": {
+    "rustc_compile_hello": {
+      "unit": "seconds",
+      "avg_s": 0.228,
+      "min_s": 0.2248,
+      "max_s": 0.2293,
+      "p99_s": 0.2293
+    },
+    "rust_hello_run": {
+      "unit": "seconds",
+      "avg_s": 0.013,
+      "min_s": 0.0128,
+      "max_s": 0.0132,
+      "p99_s": 0.0132
+    },
+    "rustc_compile_matmul": {
+      "unit": "seconds",
+      "avg_s": 0.2573,
+      "min_s": 0.2544,
+      "max_s": 0.261,
+      "p99_s": 0.261
+    },
+    "rust_matmul_500x500": {
+      "unit": "seconds",
+      "avg_s": 6.0216,
+      "min_s": 5.9691,
+      "max_s": 6.0686,
+      "p99_s": 6.0686
+    }
+  },
+  "system_info": {
+    "architecture": "aarch64",
+    "cpu_cores": 32,
+    "platform": "linux",
+    "python_version": "3.11.6",
+    "kernel": "6.8.0-87-generic",
+    "cpu_model": "0x48",
+    "memory_mb": 63876
+  },
+  "parameters": {
+    "iterations": 5,
+    "software_specific": true
+  },
+  "container_environment": {
+    "python_packages": {
+      "sqlite3": "unknown"
+    },
+    "binaries": {
+      "gcc": "gcc (GCC) 12.3.1 (openEuler 12.3.1-105.oe2403sp3)\nCopyright (C) 2022 Free Softwa",
+      "g++": "g++ (GCC) 12.3.1 (openEuler 12.3.1-105.oe2403sp3)\nCopyright (C) 2022 Free Softwa",
+      "cmake": "cmake version 3.27.9\n\nCMake suite maintained and supported by Kitware (kitware.c",
+      "make": "GNU Make 4.4.1\nBuilt for aarch64-openEuler-linux-gnu\nCopyright (C) 1988-2023 Fre",
+      "python3": "Python 3.11.6",
+      "curl": "curl 8.4.0 (aarch64-openEuler-linux-gnu) libcurl/8.4.0 OpenSSL/3.0.12 zlib/1.2.1"
+    }
+  },
+  "results_summary": {
+    "rustc_version": "rustc 1.96.0 (ac68faa20 2026-05-25)",
+    "cargo_version": "cargo 1.96.0 (30a34c682 2026-05-25)",
+    "rustc_compile_hello": {
+      "avg": 0.228,
+      "min": 0.2248,
+      "max": 0.2293,
+      "p99": 0.2293,
+      "count": 5
+    },
+    "rust_hello_run": {
+      "avg": 0.013,
+      "min": 0.0128,
+      "max": 0.0132,
+      "p99": 0.0132,
+      "count": 5
+    },
+    "rustc_compile_matmul": {
+      "avg": 0.2573,
+      "min": 0.2544,
+      "max": 0.261,
+      "p99": 0.261,
+      "count": 5
+    },
+    "rust_matmul_500x500": {
+      "avg": 6.0216,
+      "min": 5.9691,
+      "max": 6.0686,
+      "p99": 6.0686,
+      "count": 5
+    }
+  },
+  "results": [
+    {
+      "operation": "rustc_compile_hello",
+      "iterations": 5,
+      "avg_time_s": 0.228,
+      "compile_success": true
+    },
+    {
+      "operation": "rust_hello_run",
+      "iterations": 5,
+      "avg_time_s": 0.013
+    },
+    {
+      "operation": "rustc_compile_matmul",
+      "iterations": 5,
+      "avg_time_s": 0.2573
+    },
+    {
+      "operation": "rust_matmul_500x500",
+      "iterations": 5,
+      "avg_time_s": 6.0216
+    }
+  ]
+}

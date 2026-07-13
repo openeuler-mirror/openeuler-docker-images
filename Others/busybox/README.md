@@ -16,6 +16,7 @@ The tag of each BusyBox docker image is consist of the version of BusyBox and th
 
 | Tags                                                                                                                               | Currently                                 |  Architectures|
 |------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------|--|
+| [1.37.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/busybox/1.37.0/24.03-lts-sp4/Dockerfile) | BusyBox 1.37.0 on openEuler 24.03-LTS-SP4 |  amd64, arm64 |
 | [1.37.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/busybox/1.37.0/24.03-lts-sp1/Dockerfile) | BusyBox 1.37.0 on openEuler 24.03-LTS-SP1 |  amd64, arm64 |
 
 # Usage

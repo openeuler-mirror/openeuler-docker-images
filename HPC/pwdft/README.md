@@ -37,6 +37,7 @@ docker run -it --rm openeuler/pwdft:1.0.0-oe2403sp3 pwdft --help
 Run a DFT calculation (example):
 
 ```bash
+docker run -it --rm -v /path/to/input:/data openeuler/pwdft:1.0.0-oe2403sp4 pwdft /data/input.nw
 docker run -it --rm -v /path/to/input:/data openeuler/pwdft:1.0.0-oe2403sp3 pwdft /data/input.nw
 ```
 

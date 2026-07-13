@@ -18,6 +18,7 @@ The tag of each `hiredis` docker image is consist of the version of `hiredis` an
 
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[1.3.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/hiredis/1.3.0/24.03-lts-sp4/Dockerfile)| Hiredis 1.3.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[1.3.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/hiredis/1.3.0/24.03-lts-sp1/Dockerfile)| Hiredis 1.3.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage

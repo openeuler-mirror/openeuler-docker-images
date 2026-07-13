@@ -1,0 +1,25 @@
+From ef83b1fda6a95a675f60e4d01ecbdf9d4f9d7fd2 Mon Sep 17 00:00:00 2001
+From: Marcelo Ricardo Leitner <marcelo.leitner@gmail.com>
+Date: Thu, 18 Apr 2024 21:01:19 +0800
+Subject: [PATCH] netserver: suppress debug log by default
+
+---
+ src/netserver.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git ./src/netserver.c ./src/netserver.c
+index 9534722..b8b8c49 100644
+--- ./src/netserver.c
++++ ./src/netserver.c
+@@ -196,7 +196,7 @@ int      daemon_parent = 0;
+ int      not_inetd;
+ int      want_daemonize;
+ int      spawn_on_accept;
+-int      suppress_debug = 0;
++int      suppress_debug = 1;
+
+ extern	char	*optarg;
+ extern	int	optind, opterr;
+--
+2.27.0
+

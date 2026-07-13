@@ -1,0 +1,180 @@
+[START] snappy Source Build & Performance Benchmark v1.2.2
+[CHECK] Python3 OK: Python 3.12.3
+[CHECK] GCC OK: g++ (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+[CHECK] CMake OK: cmake version 3.28.3
+[CHECK] Git OK: git version 2.43.0
+[CHECK] json_helper.py OK
+[CHECK] OS: openEuler 24.03 SP3 (ubuntu)
+[CHECK] Architecture: aarch64
+[CHECK] Build method: source_build
+[SETUP] Downloading shUnit2 to /tmp/shunit2_9qucQs...
+[SETUP] shUnit2 downloaded successfully
+[START] snappy Source Build & Performance Benchmark - v1.2.2
+[START] OS: openEuler 24.03 SP3 (ubuntu), Build: source_build
+[CHECK] Python3 OK: Python 3.12.3
+[CHECK] GCC OK: g++ (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+[CHECK] CMake OK: cmake version 3.28.3
+[CHECK] Git OK: git version 2.43.0
+[CHECK] json_helper.py OK
+[CHECK] OS: openEuler 24.03 SP3 (ubuntu)
+[CHECK] Architecture: aarch64
+[CHECK] Build method: source_build
+[PHASE1] === Phase 1: Source Build Snappy v1.2.2 ===
+[BUILD] Created temp build directory: /tmp/snappy_build_jL0bAB
+[PHASE1] Building Snappy from source on ubuntu...
+[PHASE1] Installing build dependencies (Ubuntu/Debian)...
+W: Target Packages (main/binary-arm64/Packages) is configured multiple times in /etc/apt/sources.list.d/adoptium.list:1 and /etc/apt/sources.list.d/temurin.list:1
+W: Target Packages (main/binary-all/Packages) is configured multiple times in /etc/apt/sources.list.d/adoptium.list:1 and /etc/apt/sources.list.d/temurin.list:1
+W: Target Translations (main/i18n/Translation-en) is configured multiple times in /etc/apt/sources.list.d/adoptium.list:1 and /etc/apt/sources.list.d/temurin.list:1
+W: Target DEP-11 (main/dep11/Components-arm64.yml) is configured multiple times in /etc/apt/sources.list.d/adoptium.list:1 and /etc/apt/sources.list.d/temurin.list:1
+W: Target DEP-11 (main/dep11/Components-all.yml) is configured multiple times in /etc/apt/sources.list.d/adoptium.list:1 and /etc/apt/sources.list.d/temurin.list:1
+W: Target CNF (main/cnf/Commands-arm64) is configured multiple times in /etc/apt/sources.list.d/adoptium.list:1 and /etc/apt/sources.list.d/temurin.list:1
+W: Target CNF (main/cnf/Commands-all) is configured multiple times in /etc/apt/sources.list.d/adoptium.list:1 and /etc/apt/sources.list.d/temurin.list:1
+W: Target Packages (main/binary-arm64/Packages) is configured multiple times in /etc/apt/sources.list.d/adoptium.list:1 and /etc/apt/sources.list.d/temurin.list:1
+W: Target Packages (main/binary-all/Packages) is configured multiple times in /etc/apt/sources.list.d/adoptium.list:1 and /etc/apt/sources.list.d/temurin.list:1
+W: Target Translations (main/i18n/Translation-en) is configured multiple times in /etc/apt/sources.list.d/adoptium.list:1 and /etc/apt/sources.list.d/temurin.list:1
+W: Target DEP-11 (main/dep11/Components-arm64.yml) is configured multiple times in /etc/apt/sources.list.d/adoptium.list:1 and /etc/apt/sources.list.d/temurin.list:1
+W: Target DEP-11 (main/dep11/Components-all.yml) is configured multiple times in /etc/apt/sources.list.d/adoptium.list:1 and /etc/apt/sources.list.d/temurin.list:1
+W: Target CNF (main/cnf/Commands-arm64) is configured multiple times in /etc/apt/sources.list.d/adoptium.list:1 and /etc/apt/sources.list.d/temurin.list:1
+W: Target CNF (main/cnf/Commands-all) is configured multiple times in /etc/apt/sources.list.d/adoptium.list:1 and /etc/apt/sources.list.d/temurin.list:1
+[PHASE1] Cloning Snappy v1.2.2...
+Cloning into '/tmp/snappy_build_jL0bAB/snappy_src'...
+Note: switching to '6af9287fbdb913f0794d0148c6aa43b58e63c8e3'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+Submodule 'third_party/benchmark' (https://github.com/google/benchmark.git) registered for path 'third_party/benchmark'
+Submodule 'third_party/googletest' (https://github.com/google/googletest.git) registered for path 'third_party/googletest'
+Cloning into '/tmp/snappy_build_jL0bAB/snappy_src/third_party/benchmark'...
+Cloning into '/tmp/snappy_build_jL0bAB/snappy_src/third_party/googletest'...
+Submodule path 'third_party/benchmark': checked out 'd572f4777349d43653b21d6c2fc63020ab326db2'
+Submodule path 'third_party/googletest': checked out 'b796f7d44681514f58a683a3a71ff17c94edb0c1'
+[PHASE1] Configuring CMake...
+-- The C compiler identification is GNU 13.3.0
+-- The CXX compiler identification is GNU 13.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Looking for sys/mman.h
+-- Looking for sys/mman.h - found
+-- Looking for sys/resource.h
+-- Looking for sys/resource.h - found
+-- Looking for sys/time.h
+-- Looking for sys/time.h - found
+-- Looking for sys/uio.h
+-- Looking for sys/uio.h - found
+-- Looking for unistd.h
+-- Looking for unistd.h - found
+-- Looking for windows.h
+-- Looking for windows.h - not found
+-- Looking for zlibVersion in z
+-- Looking for zlibVersion in z - found
+-- Looking for lzo1x_1_15_compress in lzo2
+-- Looking for lzo1x_1_15_compress in lzo2 - not found
+-- Looking for LZ4_compress_default in lz4
+-- Looking for LZ4_compress_default in lz4 - found
+-- Performing Test HAVE_VISUAL_STUDIO_ARCH_AVX
+-- Performing Test HAVE_VISUAL_STUDIO_ARCH_AVX - Failed
+-- Performing Test HAVE_VISUAL_STUDIO_ARCH_AVX2
+-- Performing Test HAVE_VISUAL_STUDIO_ARCH_AVX2 - Failed
+-- Performing Test HAVE_CLANG_MAVX
+-- Performing Test HAVE_CLANG_MAVX - Failed
+-- Performing Test HAVE_CLANG_MBMI2
+-- Performing Test HAVE_CLANG_MBMI2 - Failed
+-- Performing Test SNAPPY_HAVE_NO_MISSING_FIELD_INITIALIZERS
+-- Performing Test SNAPPY_HAVE_NO_MISSING_FIELD_INITIALIZERS - Success
+-- Performing Test SNAPPY_HAVE_NO_IMPLICIT_INT_FLOAT_CONVERSION
+-- Performing Test SNAPPY_HAVE_NO_IMPLICIT_INT_FLOAT_CONVERSION - Success
+-- Performing Test HAVE_BUILTIN_EXPECT
+-- Performing Test HAVE_BUILTIN_EXPECT - Success
+-- Performing Test HAVE_BUILTIN_CTZ
+-- Performing Test HAVE_BUILTIN_CTZ - Success
+-- Performing Test HAVE_BUILTIN_PREFETCH
+-- Performing Test HAVE_BUILTIN_PREFETCH - Success
+-- Performing Test HAVE_ATTRIBUTE_ALWAYS_INLINE
+-- Performing Test HAVE_ATTRIBUTE_ALWAYS_INLINE - Success
+-- Performing Test SNAPPY_HAVE_SSSE3
+-- Performing Test SNAPPY_HAVE_SSSE3 - Failed
+-- Performing Test SNAPPY_HAVE_X86_CRC32
+-- Performing Test SNAPPY_HAVE_X86_CRC32 - Failed
+-- Performing Test SNAPPY_HAVE_NEON_CRC32
+-- Performing Test SNAPPY_HAVE_NEON_CRC32 - Failed
+-- Performing Test SNAPPY_HAVE_BMI2
+-- Performing Test SNAPPY_HAVE_BMI2 - Failed
+-- Performing Test SNAPPY_HAVE_NEON
+-- Performing Test SNAPPY_HAVE_NEON - Success
+-- Looking for mmap
+-- Looking for mmap - found
+-- Looking for sysconf
+-- Looking for sysconf - found
+-- Configuring done (4.6s)
+-- Generating done (0.0s)
+-- Build files have been written to: /tmp/snappy_build_jL0bAB/build
+[PHASE1] Compiling Snappy...
+[ 40%] Building CXX object CMakeFiles/snappy.dir/snappy-c.cc.o
+[ 40%] Building CXX object CMakeFiles/snappy.dir/snappy-sinksource.cc.o
+[ 60%] Building CXX object CMakeFiles/snappy.dir/snappy-stubs-internal.cc.o
+[ 80%] Building CXX object CMakeFiles/snappy.dir/snappy.cc.o
+[100%] Linking CXX static library libsnappy.a
+[100%] Built target snappy
+[PHASE1] Installing Snappy...
+[100%] Built target snappy
+Install the project...
+-- Install configuration: "Release"
+-- Installing: /tmp/snappy_build_jL0bAB/install/lib/libsnappy.a
+-- Installing: /tmp/snappy_build_jL0bAB/install/include/snappy-c.h
+-- Installing: /tmp/snappy_build_jL0bAB/install/include/snappy-sinksource.h
+-- Installing: /tmp/snappy_build_jL0bAB/install/include/snappy.h
+-- Installing: /tmp/snappy_build_jL0bAB/install/include/snappy-stubs-public.h
+-- Installing: /tmp/snappy_build_jL0bAB/install/lib/cmake/Snappy/SnappyTargets.cmake
+-- Installing: /tmp/snappy_build_jL0bAB/install/lib/cmake/Snappy/SnappyTargets-release.cmake
+-- Installing: /tmp/snappy_build_jL0bAB/install/lib/cmake/Snappy/SnappyConfig.cmake
+-- Installing: /tmp/snappy_build_jL0bAB/install/lib/cmake/Snappy/SnappyConfigVersion.cmake
+[PHASE1] Compiling benchmark program...
+[PHASE1] Linking against static library: /tmp/snappy_build_jL0bAB/install/lib/libsnappy.a
+/root/tantian/Tian/test/snappy/scripts/snappy_benchmark.cc: In function ‘int main(int, char**)’:
+/root/tantian/Tian/test/snappy/scripts/snappy_benchmark.cc:219:20: warning: structured bindings only available with ‘-std=c++17’ or ‘-std=gnu++17’ [-Wc++17-extensions]
+  219 |         for (auto& [name, data] : data_types) {
+      |                    ^
+[PHASE1] Verifying benchmark binary...
+[PHASE1] Benchmark binary verified successfully
+[PHASE1] Snappy source build and benchmark compilation complete
+[PHASE2] === Phase 2: Collect Version Info ===
+[PHASE2] Version info saved (OS: openEuler 24.03 SP3, GCC: 13.3.0-6ubuntu2~24.04))
+[PHASE3] === Phase 3: Run Benchmarks ===
+[PHASE3A] Running compression benchmark...
+[BENCHMARK_COMPRESSION] Running: /tmp/snappy_build_jL0bAB/snappy_benchmark compression 1 /root/tantian/Tian/test/snappy/results/1.2.2/benchmark_compression.json 1048576
+[BENCHMARK_COMPRESSION] Output written to /root/tantian/Tian/test/snappy/results/1.2.2/benchmark_compression.json
+[BENCHMARK_COMPRESSION] Validation: benchmark=compression, data_types=['random_data', 'repeated_data', 'text_data', 'html_data']
+[PHASE3B] Running micro benchmark...
+[BENCHMARK_MICRO] Running: /tmp/snappy_build_jL0bAB/snappy_benchmark micro 1 /root/tantian/Tian/test/snappy/results/1.2.2/micro_benchmark.json
+[BENCHMARK_MICRO] Output written to /root/tantian/Tian/test/snappy/results/1.2.2/micro_benchmark.json
+[BENCHMARK_MICRO] Validation: benchmark=micro_operations, result_keys=['block_compress_decompress', 'multithread_scaling']
+[BENCHMARK_MICRO] Block sizes: ['1024', '4096', '16384', '65536', '262144', '1048576']
+[BENCHMARK_MICRO] Thread counts: ['threads_1', 'threads_2', 'threads_4', 'threads_8', 'threads_32']
+[PHASE4] === Phase 4: Aggregate & Report ===
+[PHASE4] Reports generated:
+[PHASE4]   JSON: /root/tantian/Tian/test/snappy/results/1.2.2/results.json
+[PHASE4]   TXT:  /root/tantian/Tian/test/snappy/results/1.2.2/results.txt
+[PHASE4]   LOG:  /root/tantian/Tian/test/snappy/results/1.2.2/results.log
+[BUILD] Cleaning up temp build directory: /tmp/snappy_build_jL0bAB

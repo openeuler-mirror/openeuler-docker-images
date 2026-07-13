@@ -18,6 +18,7 @@ The tag of each memtester docker image is consist of the version of memtester an
 
 | Tags                                                                                                                               | Currently                                  |  Architectures|
 |------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------|--|
+|[4.7.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/memtester/4.7.1/24.03-lts-sp4/Dockerfile) | memtester 4.7.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[4.7.1-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/memtester/4.7.1/24.03-lts-sp3/Dockerfile) | memtester 4.7.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 | [4.7.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/memtester/4.7.1/24.03-lts-sp1/Dockerfile) | memtester 4.7.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 

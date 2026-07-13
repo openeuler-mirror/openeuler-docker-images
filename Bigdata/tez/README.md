@@ -16,6 +16,7 @@ For more information about tez, please visit [https://tez.apache.org/](https://t
 The tag of each tez docker image is consist of the version of tez and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[0.10.5-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/tez/0.10.5/24.03-lts-sp4/Dockerfile)| Apache Tez 0.10.5 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[0.10.5-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/tez/0.10.5/24.03-lts-sp1/Dockerfile)| Apache Tez 0.10.5 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage

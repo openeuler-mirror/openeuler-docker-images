@@ -17,6 +17,7 @@ Learn more at [AutoDock Vina](https://autodock-vina.readthedocs.io/en/latest/).
 The tag of each AutoDock Vina docker image is consist of the version of AutoDock Vina and the version of basic image. The details are as follows:
 | Tags | Currently | Architectures |
 |------|-----------|---------------|
+|[1.2.7-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/autodock-vina/1.2.7/24.03-lts-sp4/Dockerfile) | AutoDock Vina 1.2.7 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[1.2.7-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/autodock-vina/1.2.7/24.03-lts-sp3/Dockerfile) | AutoDock Vina 1.2.7 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 # Usage

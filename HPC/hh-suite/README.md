@@ -18,6 +18,7 @@ Learn more at [HH-suite](https://github.com/soedinglab/hh-suite).
 The tag of each HH-suite docker image is consist of the version of HH-suite and the version of basic image. The details are as follows:
 | Tags | Currently | Architectures |
 |------|-----------|---------------|
+|[3.3.0-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/hh-suite/3.3.0/24.03-lts-sp4/Dockerfile) | HH-suite 3.3.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[3.3.0-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/hh-suite/3.3.0/24.03-lts-sp3/Dockerfile) | HH-suite 3.3.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 # Usage

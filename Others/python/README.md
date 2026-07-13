@@ -26,6 +26,7 @@ The tag of each Python docker image is consist of the version of Python and the 
 |[3.12.10-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/Others/python/3.12.10/22.03-lts/Dockerfile)| Python 3.12.10 on openEuler 22.03-LTS | amd64, arm64 |
 |[3.12.10-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/Others/python/3.12.10/24.03-lts/Dockerfile)| Python 3.12.10 on openEuler 24.03-LTS | amd64, arm64 |
 |[3.13.4-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/Others/python/3.13.4/22.03-lts/Dockerfile)| Python 3.13.4 on openEuler 22.03-LTS | amd64, arm64 |
+|[3.13.4-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/Others/python/3.13.4/24.03-lts-sp4/Dockerfile)| Python 3.13.4 on openEuler 24.03-LTS | amd64, arm64 |
 |[3.13.4-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/Others/python/3.13.4/24.03-lts/Dockerfile)| Python 3.13.4 on openEuler 24.03-LTS | amd64, arm64 |
 
 

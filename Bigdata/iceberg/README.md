@@ -17,6 +17,7 @@ Learn more on [Iceberg website](https://iceberg.apache.org/).
 The tag of each iceberg docker image is consist of the version of iceberg and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[1.10.1-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Bigdata/iceberg/1.10.1/24.03-lts-sp4/Dockerfile) | Apache Iceberg 1.10.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[1.10.1-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Bigdata/iceberg/1.10.1/24.03-lts-sp3/Dockerfile) | Apache Iceberg 1.10.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 

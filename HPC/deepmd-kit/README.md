@@ -21,6 +21,7 @@ In this usage, users can select the corresponding `{Tag}` based on their require
 Pull the image (example):
 
 ```bash
+docker pull openeuler/deepmd-kit:3.1.3-oe2403sp4
 docker pull openeuler/deepmd-kit:3.1.3-oe2403sp3
 ```
 

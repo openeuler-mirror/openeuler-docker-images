@@ -13,6 +13,7 @@ QDK is used to build QPKG files/applications for QNAP Turbo NAS. A QPKG file mak
 The tag of each QDK docker image is consist of the version of QDK and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[2.5.0-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/qdk/2.5.0/24.03-lts-sp4/Dockerfile) | QDK 2.5.0 on openEuler 24.03-lts-sp4 | amd64, arm64 |
 |[2.5.0-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/qdk/2.5.0/24.03-lts-sp3/Dockerfile) | QDK 2.5.0 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 

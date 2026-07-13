@@ -1,0 +1,22 @@
+diff -urN byte-unixbench-6.0.0/UnixBench/HOWTO byte-unixbench-6.0.0-bak/UnixBench/HOWTO
+--- byte-unixbench-6.0.0/UnixBench/HOWTO	1970-01-01 08:00:00.000000000 +0800
++++ byte-unixbench-6.0.0-bak/UnixBench/HOWTO	2020-05-03 00:15:21.446228140 +0800
+@@ -0,0 +1,18 @@
++This is an ugly usage solution for unixbench because it's not a friendly package software.
++
++So, what we do is to keep all files and rebuild locally.
++
++mkdir xxx/
++cp -r /opt/unixbench/src xxx/
++cp /opt/unixbench/Run xxx/
++cp /opt/unixbench/Makefile xxx/
++chmod +x xxx/Run
++mkdir xxx/pgms
++cp /opt/unixbench/pgms/* xxx/pgms/
++mkdir xxx/testdir
++mkdir xxx/tmp
++mkdir xxx/results
++cd xxx
++./Run
++
++do whatever you want.

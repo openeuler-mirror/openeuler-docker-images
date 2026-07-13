@@ -41,3 +41,4 @@ images:
   iceberg: iceberg
   celeborn: celeborn
   bolt: bolt
+  starrocks: starrocks

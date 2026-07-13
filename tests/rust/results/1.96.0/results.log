@@ -1,0 +1,33 @@
+[START] rust Performance Benchmark v1.96.0
+[CHECK] Docker OK: Docker version 29.4.0, build 9d7ad9f
+[CHECK] json_helper.py OK
+[CHECK] Architecture: aarch64
+[SETUP] Downloading shUnit2...
+[SETUP] shUnit2 downloaded successfully
+[START] rust Performance Benchmark v1.96.0
+[CHECK] Docker OK: Docker version 29.4.0, build 9d7ad9f
+[CHECK] json_helper.py OK
+[CHECK] Architecture: aarch64
+[PHASE1] === Phase 1: Docker Pull rust v1.96.0 ===
+[PHASE1] Pulling openeuler/rust:1.96.0-oe2403sp3...
+1.96.0-oe2403sp3: Pulling from openeuler/rust
+Digest: sha256:06fe357e502210b8c44fdfbb2ecfdf97e8ba716e1e17577df32a00e82b0aa2f7
+Status: Image is up to date for openeuler/rust:1.96.0-oe2403sp3
+docker.io/openeuler/rust:1.96.0-oe2403sp3
+[PHASE1] Starting container...
+[PHASE1] Container 7a41c3310b3fa4cae361ae5eb4bbe0d1c8387af72059fee57b8bb19e2d5198e4 started
+[CHECK] python3 available inside container
+[PHASE2] === Phase 2: Collect Version Info ===
+[PHASE3] === Phase 3: Run Benchmarks ===
+[BENCHMARK] Running rust benchmark (func=benchmark_rust, iterations=5)
+[BENCHMARK] rust: 4 test results, 6 summary entries
+[BENCHMARK] Output written to /workspace/results/1.96.0/benchmark_generic.json
+[PHASE3B] Running micro benchmark...
+[MICRO] Output written to /workspace/results/1.96.0/micro_benchmark.json
+[PHASE4] === Phase 4: Aggregate & Report ===
+[PHASE4] Reports generated:
+[PHASE4]   JSON: /home/runner/tantian/actions-runner/_work/Tian/Tian/tests/rust/results/1.96.0/results.json
+[PHASE4]   TXT:  /home/runner/tantian/actions-runner/_work/Tian/Tian/tests/rust/results/1.96.0/results.txt
+[PHASE4]   LOG:  /home/runner/tantian/actions-runner/_work/Tian/Tian/tests/rust/results/1.96.0/results.log
+[WARN] rust not found as Python module or binary, skipping install check
+[CLEANUP] Stopping container 7a41c3310b3fa4cae361ae5eb4bbe0d1c8387af72059fee57b8bb19e2d5198e4

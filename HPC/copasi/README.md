@@ -19,6 +19,7 @@ Learn more at [COPASI](https://github.com/copasi/COPASI).
 The tag of each COPASI docker image is consist of the version of COPASI and the version of basic image. The details are as follows:
 | Tags | Currently | Architectures |
 |------|-----------|---------------|
+|[4.46.300-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/copasi/4.46.300/24.03-lts-sp4/Dockerfile) | COPASI 4.46 (Build 300) on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[4.46.300-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/copasi/4.46.300/24.03-lts-sp3/Dockerfile) | COPASI 4.46 (Build 300) on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 # Usage

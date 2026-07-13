@@ -18,6 +18,7 @@ The tag of each busco container image is consist of the version of busco and the
 
 | Tags | Currently |  Architectures|
 |------|-----------|---------------|
+|[5.8.3-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/busco/5.8.3/24.03-lts-sp4/Dockerfile)| BUSCO 5.8.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[5.8.3-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/busco/5.8.3/24.03-lts-sp1/Dockerfile)| BUSCO 5.8.3 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 

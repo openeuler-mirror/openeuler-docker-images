@@ -13,6 +13,7 @@ GSL - GNU Scientific Library, a collection of numerical routines for scientific 
 The tag of each gsl docker image is consist of the version of gsl and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[20211111-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/gsl/20211111/24.03-lts-sp4/Dockerfile) | gsl 20211111 on openEuler 24.03-lts-sp4 | amd64, arm64 |
 |[20211111-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/gsl/20211111/24.03-lts-sp3/Dockerfile) | gsl 20211111 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 

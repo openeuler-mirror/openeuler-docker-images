@@ -15,6 +15,7 @@ Learn more on [Apache Hudi | An Open Source Data Lake Platform | Apache Hudi](ht
 The tag of each hudi docker image is consist of the version of hudi and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[1.1.1-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Bigdata/hudi/1.1.1/24.03-lts-sp4/Dockerfile) | hudi 1.1.1 on openEuler 24.03-lts-sp4 | amd64, arm64 |
 |[1.1.1-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Bigdata/hudi/1.1.1/24.03-lts-sp3/Dockerfile) | hudi 1.1.1 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 

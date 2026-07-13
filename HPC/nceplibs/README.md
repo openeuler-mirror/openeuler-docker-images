@@ -14,6 +14,7 @@ Learn more on [NCEPLIBS Documentation](https://noaa-emc.github.io/NCEPLIBS/).
 The tag of each NCEPLIBS docker image is consist of the version of NCEPLIBS and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[1.4.0-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/nceplibs/1.4.0/24.03-lts-sp4/Dockerfile) | NCEPLIBS 1.4.0 on openEuler 24.03-lts-sp4 | amd64, arm64 |
 |[1.4.0-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/nceplibs/1.4.0/24.03-lts-sp3/Dockerfile) | NCEPLIBS 1.4.0 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 
