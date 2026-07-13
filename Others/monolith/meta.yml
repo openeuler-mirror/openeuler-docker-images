@@ -1,2 +1,4 @@
 135c491-oe2403sp3:
   path: 135c491/24.03-lts-sp3/Dockerfile
+135c491-oe2403sp4:
+  path: 135c491/24.03-lts-sp4/Dockerfile
