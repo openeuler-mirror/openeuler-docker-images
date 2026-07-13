@@ -13,7 +13,7 @@ RUN yum install -y java-11-openjdk-devel openssh openssh-clients sudo hostname &
 ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
 
 # install zookeeper
-RUN curl -fSL -o zookeeper.tar.gz https://archive.apache.org/dist/zookeeper/zookeeper-3.9.3/apache-zookeeper-3.9.3-bin.tar.gz; \
+RUN curl -fSL -o zookeeper.tar.gz https://repo.huaweicloud.com/apache/zookeeper/zookeeper-3.9.3/apache-zookeeper-3.9.3-bin.tar.gz; \
     mkdir -p /usr/local/zookeeper && \
     tar -zxf zookeeper.tar.gz -C /usr/local/zookeeper --strip-components=1 && \
     rm -rf zookeeper.tar.gz && \
