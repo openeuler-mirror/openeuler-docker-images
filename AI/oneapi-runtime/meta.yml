@@ -3,3 +3,4 @@
   arch: x86_64
 2024.2.0-oe2403sp4:
   path: 2024.2.0/24.03-lts-sp4/Dockerfile
+  arch: x86_64
