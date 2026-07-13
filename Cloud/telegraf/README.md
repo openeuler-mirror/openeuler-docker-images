@@ -17,7 +17,7 @@ Learn more on [Telegraf website](https://docs.influxdata.com/telegraf/v1/).
 The tag of each `telegraf` docker image is consist of the version of `telegraf` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
-|[1.39.1-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/telegraf/1.39.1/24.03-lts-sp3/Dockerfile) | telegraf 1.39.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[1.38.3-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/telegraf/1.38.3/24.03-lts-sp4/Dockerfile) | telegraf 1.38.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[1.38.3-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/telegraf/1.38.3/24.03-lts-sp3/Dockerfile) | telegraf 1.38.3 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 |[1.38.1-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/telegraf/1.38.1/24.03-lts-sp3/Dockerfile) | telegraf 1.38.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 |[1.36.3-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/telegraf/1.36.3/24.03-lts-sp2/Dockerfile) | telegraf 1.36.3 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
