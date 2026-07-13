@@ -18,6 +18,7 @@ The tag of each livy docker image is consist of the version of livy and the vers
 
 | Tags                                                                                                                           | Currently                               |  Architectures|
 |--------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|--|
+| [0.8.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/livy/0.8.0/24.03-lts-sp4/Dockerfile) | Livy 0.8.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 | [0.8.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/livy/0.8.0/24.03-lts-sp1/Dockerfile) | Livy 0.8.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
