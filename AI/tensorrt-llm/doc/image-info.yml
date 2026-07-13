@@ -11,6 +11,7 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
+  |[1.2.1-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/tensorrt-llm/1.2.1/24.03-lts-sp4/Dockerfile) | tensorrt-llm 1.2.1 on openEuler 24.03-lts-sp4 | amd64, arm64 |
   |[1.2.1-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/tensorrt-llm/1.2.1/24.03-lts-sp3/Dockerfile) | tensorrt-llm 1.2.1 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 download: |
