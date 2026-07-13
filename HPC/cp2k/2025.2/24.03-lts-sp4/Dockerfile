@@ -19,7 +19,13 @@ RUN /bin/bash -c -o pipefail \
      --with-cusolvermp=no \
      --with-libtorch=no \
      --with-gcc=system \
-     --with-openmpi=install"
+     --with-openmpi=install \
+     --with-sirius=no --with-elpa=no --with-plumed=no \
+     --with-libvori=no --with-cosma=no --with-libsmeagol=no \
+     --with-dftd4=no --with-tblite=no --with-trexio=no \
+     --with-greenx=no --with-gmp=no \
+     --with-spfft=no --with-spla=no --with-gsl=no \
+     --with-spglib=no --with-hdf5=no --with-libvdwxc=no"
 
 WORKDIR /opt/cp2k
 RUN /bin/bash -c -o pipefail \
