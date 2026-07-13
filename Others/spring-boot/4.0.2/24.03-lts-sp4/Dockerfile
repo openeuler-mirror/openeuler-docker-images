@@ -8,7 +8,7 @@ ARG BASE=openeuler/openeuler:24.03-lts-sp4
      && rm -rf /var/run/cache/*
  
  ARG MAVEN_VERSION=3.9.12
- RUN wget https://dlcdn.apache.org/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz \
+ RUN wget https://repo.huaweicloud.com/apache/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz \
      && mkdir -p /usr/local/maven \
      && tar -zxvf apache-maven-3.9.12-bin.tar.gz -C /usr/local/maven --strip-components=1
  
