@@ -23,13 +23,6 @@ WORKDIR /opt/mesa-${VERSION}
 RUN pip3 install --upgrade pip \
     && pip3 install meson ninja mako
 
-RUN wget -O /tmp/wayland-protocols-1.41.tar.xz https://gitlab.freedesktop.org/wayland/wayland-protocols/-/releases/1.41/downloads/wayland-protocols-1.41.tar.xz \
-    && tar -xvf /tmp/wayland-protocols-1.41.tar.xz -C /tmp \
-    && cd /tmp/wayland-protocols-1.41 \
-    && meson setup build \
-    && meson install -C build \
-    && rm -rf /tmp/wayland-protocols-1.41 /tmp/wayland-protocols-1.41.tar.xz
-
 RUN mkdir build \
     && meson setup build  \
      -Dcpp_std=gnu++17 \
