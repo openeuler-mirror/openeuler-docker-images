@@ -18,6 +18,7 @@ Learn more at [Phono3py](https://phonopy.github.io/phono3py/).
 The tag of each Phono3py docker image is consist of the version of Phono3py and the version of basic image. The details are as follows:
 | Tags | Currently | Architectures |
 |------|-----------|---------------|
+|[4.1.0-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/phono3py/4.1.0/24.03-lts-sp4/Dockerfile) | Phono3py 4.1.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[4.1.0-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/phono3py/4.1.0/24.03-lts-sp3/Dockerfile) | Phono3py 4.1.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 # Usage
