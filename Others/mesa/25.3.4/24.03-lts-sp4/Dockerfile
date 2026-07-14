@@ -6,7 +6,7 @@
      && dnf install -y wget dnf-plugins-core xz python3-pyyaml python3-pip  \
      gcc-c++ cmake libglvnd-devel mesa-libGLU-devel libdrm-devel llvm-devel clang-devel  \
      mesa-libGLU-devel pkgconfig libdrm-devel libudev-devel bison byacc  \
-     spirv-tools lua-devel wayland-devel elfutils-libelf-devel flex  \
+      spirv-tools lua-devel wayland-devel wayland-protocols-devel elfutils-libelf-devel flex  \
      libXext-devel libX11-devel libxshmfence-devel  \
      libXxf86vm-devel libXrandr-devel \
      && dnf clean all \
