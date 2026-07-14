@@ -10,7 +10,7 @@ RUN dnf update -y \
     && dnf clean all \
     && rm -rf /var/cache/dnf
 
-RUN wget https://www.wireshark.org/download/src/wireshark-${VERSION}.tar.xz \
+RUN wget https://www.wireshark.org/download/src/all-versions/wireshark-${VERSION}.tar.xz \
     && tar -xf wireshark-${VERSION}.tar.xz \
     && rm -f wireshark-${VERSION}.tar.xz \
     && cd wireshark-${VERSION} \
