@@ -7,7 +7,6 @@ RUN dnf update -y \
     && dnf clean all \
     && rm -rf /var/cache/dnf
 
-# `install.sh` installs the latest npm version
-RUN curl -qL https://www.npmjs.com/install.sh | sh
+RUN npm install -g npm@${VERSION}
 
 CMD ["npm", "-v"]
