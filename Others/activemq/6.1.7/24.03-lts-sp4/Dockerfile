@@ -25,7 +25,7 @@ ENV PATH=/jdk-17.0.12/bin:$PATH
 
 WORKDIR /opt/
 
-RUN wget https://dlcdn.apache.org//activemq/${VERSION}/apache-activemq-${VERSION}-bin.tar.gz \
+RUN wget https://archive.apache.org/dist/activemq/${VERSION}/apache-activemq-${VERSION}-bin.tar.gz \
     && tar -zxvf apache-activemq-${VERSION}-bin.tar.gz \
     && rm -f apache-activemq-${VERSION}-bin.tar.gz
 
