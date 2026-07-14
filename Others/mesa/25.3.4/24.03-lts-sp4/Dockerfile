@@ -20,6 +20,8 @@
  
 WORKDIR /opt/mesa-${VERSION}
 
+RUN sed -i 's/source_hash = .*/source_hash = 5a2712e6e20ac68b355f3926f983c1e6e40f061aec355835fbb5ec48a7078e4f/' subprojects/wayland-protocols.wrap
+
 RUN pip3 install --upgrade pip \
     && pip3 install meson ninja mako
 
