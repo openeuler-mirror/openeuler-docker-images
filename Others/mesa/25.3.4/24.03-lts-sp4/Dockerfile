@@ -6,7 +6,7 @@
      && dnf install -y wget dnf-plugins-core xz python3-pyyaml python3-pip  \
      gcc-c++ cmake libglvnd-devel mesa-libGLU-devel libdrm-devel llvm-devel clang-devel  \
      mesa-libGLU-devel pkgconfig libdrm-devel libudev-devel bison byacc  \
-      spirv-tools lua-devel wayland-devel wayland-protocols-devel elfutils-libelf-devel flex  \
+      spirv-tools lua-devel wayland-devel elfutils-libelf-devel flex  \
      libXext-devel libX11-devel libxshmfence-devel  \
      libXxf86vm-devel libXrandr-devel \
      && dnf clean all \
@@ -22,13 +22,6 @@ WORKDIR /opt/mesa-${VERSION}
 
 RUN pip3 install --upgrade pip \
     && pip3 install meson ninja mako
-
-RUN wget -q -O /tmp/wayland-protocols-1.41.tar.xz \
-    https://gitlab.freedesktop.org/wayland/wayland-protocols/-/releases/1.41/downloads/wayland-protocols-1.41.tar.xz \
-    && WP_HASH=$(sha256sum /tmp/wayland-protocols-1.41.tar.xz | cut -d' ' -f1) \
-    && sed -i "s/^source_hash = .*/source_hash = ${WP_HASH}/" subprojects/wayland-protocols.wrap \
-    && mkdir -p subprojects/packagecache \
-    && mv /tmp/wayland-protocols-1.41.tar.xz subprojects/packagecache/wayland-protocols-1.41.tar.xz
 
 RUN mkdir build \
     && meson setup build  \
