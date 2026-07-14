@@ -28,7 +28,7 @@ RUN pip3 --no-cache-dir install --upgrade pip \
     && pip3 install -r requirements-build.txt \
     && scons --jobs $(nproc) --config=force --build-deps=yes install
 
-ENV CPATH=/daos/install/include/:$CPATH
-ENV PATH=/daos/install/bin/:${daospath}/install/sbin:$PATH
+ENV CPATH=/daos/install/include/:${CPATH:-}
+ENV PATH=/daos/install/bin/:/daos/install/sbin:$PATH
 
 CMD ["daos", "--help"]
