@@ -23,7 +23,8 @@ WORKDIR /opt/mesa-${VERSION}
 RUN pip3 install --upgrade pip \
     && pip3 install meson ninja mako
 
-RUN mkdir build \
+RUN sed -i '/^source_hash = /a source_fallback_url = https://github.com/mesonbuild/wrapdb/releases/download/wayland-protocols_1.41-1/wayland-protocols-1.41.tar.xz' subprojects/wayland-protocols.wrap \
+    && mkdir build \
     && meson setup build  \
      -Dcpp_std=gnu++17 \
      -Dandroid-libbacktrace=disabled \
