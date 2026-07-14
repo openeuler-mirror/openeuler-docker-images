@@ -13,9 +13,9 @@ RUN yum update -y && \
         libicu \
         openssl-libs \
         libstdc++ \
+        shadow \
         tzdata \
         zlib && \
-    rm -rf /var/lib/apt/lists/* && \
     yum clean all
 
 RUN groupadd --gid=$APP_UID app && \
