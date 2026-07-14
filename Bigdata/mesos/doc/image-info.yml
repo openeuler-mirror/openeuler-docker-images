@@ -11,6 +11,7 @@ tags: |
 
   | Tags | Currently |  Architectures|
   |------|-----------|---------------|
+  |[1.11.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/mesos/1.11.0/24.03-lts-sp4/Dockerfile)| Apache Mesos 1.11.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[1.11.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/mesos/1.11.0/24.03-lts-sp1/Dockerfile)| Apache Mesos 1.11.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 download: |

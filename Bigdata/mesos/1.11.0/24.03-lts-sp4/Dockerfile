@@ -1,0 +1,54 @@
+ARG BASE=openeuler/openeuler:24.03-lts-sp4
+FROM ${BASE}
+
+ARG VERSION=1.11.0
+ARG TARGETARCH
+ARG BUILDARCH
+
+WORKDIR /
+
+RUN yum install -y \
+        wget maven \
+        python-six python-virtualenv \
+        java-devel zlib-devel libcurl-devel \
+        cyrus-sasl-devel cyrus-sasl-md5 \
+        apr-devel subversion-devel apr-util-devel \
+        gcc make libtool libsysfs \
+        patch g++ net-tools && \
+    yum clean all
+
+RUN wget https://github.com/openssl/openssl/archive/refs/tags/OpenSSL_1_0_2k.tar.gz && \
+    tar -zxvf OpenSSL_1_0_2k.tar.gz && \
+    cd openssl-OpenSSL_1_0_2k && \
+    ./config shared --prefix=/usr/local/openssl-1.0.2k && \
+    make -j$(nproc) && make install
+
+COPY pysetup.patch /
+RUN wget https://www.python.org/ftp/python/2.7.18/Python-2.7.18.tgz && \
+    tar -zxvf Python-2.7.18.tgz && \
+    cd Python-2.7.18 && \
+    patch Modules/Setup.dist < /pysetup.patch && \
+    ./configure \
+        --prefix=/usr/local/python-2.7 \
+        --enable-unicode=ucs4 \
+        --enable-shared \
+        LDFLAGS="-L/usr/local/openssl-1.0.2k/lib" \
+        CPPFLAGS="-I/usr/local/openssl-1.0.2k/include" \
+        LD_LIBRARY_PATH=/usr/local/openssl-1.0.2k/lib && \
+        make -j$(nproc) && make install && \
+        ln -s /usr/local/python-2.7/bin/python /usr/bin/python2
+
+ENV LD_LIBRARY_PATH=/usr/local/python-2.7/lib/:/usr/local/openssl-1.0.2k/lib
+RUN wget https://repo.huaweicloud.com/apache/mesos/${VERSION}/mesos-${VERSION}.tar.gz && \
+    tar -zxf mesos-${VERSION}.tar.gz
+COPY grpc-1.10.0.patch /mesos-${VERSION}/3rdparty/grpc-1.10.0.patch
+COPY entrypoint.sh /
+RUN cd /mesos-${VERSION} && \
+    CXXFLAGS="-Wno-nonnull -Wno-deprecated-declarations -Wno-parentheses" ./configure && \
+    make -j 2 && make install && \
+    chmod +x /entrypoint.sh
+
+ENV PATH=$PATH:/mesos/bin
+
+EXPOSE 5050 5051
+ENTRYPOINT ["/entrypoint.sh"]
