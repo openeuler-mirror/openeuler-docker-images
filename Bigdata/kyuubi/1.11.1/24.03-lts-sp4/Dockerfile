@@ -14,7 +14,7 @@ RUN dnf install -y wget procps && \
     dnf clean all
 
 # Download Kyuubi
-RUN wget https://downloads.apache.org/kyuubi/kyuubi-${KYUUBI_VERSION}/apache-kyuubi-${KYUUBI_VERSION}-bin.tgz && \
+RUN wget https://dlcdn.apache.org/kyuubi/kyuubi-${KYUUBI_VERSION}/apache-kyuubi-${KYUUBI_VERSION}-bin.tgz && \
     tar -xzf apache-kyuubi-${KYUUBI_VERSION}-bin.tgz && \
     mv apache-kyuubi-${KYUUBI_VERSION}-bin ${KYUUBI_HOME} && \
     rm -f apache-kyuubi-${KYUUBI_VERSION}-bin.tgz
@@ -26,12 +26,12 @@ RUN wget https://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/spark-${SP
     rm -f spark-${SPARK_VERSION}-bin-hadoop3.tgz
 
 RUN if [ "$TARGETARCH" = "amd64" ]; then \
-      BUILDARCH="x64"; \
+      JAVA_ARCH="x64"; \
     elif [ "$TARGETARCH" = "arm64" ]; then \
-      BUILDARCH="aarch64"; \
+      JAVA_ARCH="aarch64"; \
     fi \
     && mkdir -p /usr/local/jre \
-    && wget -O jre.tar.gz https://mirrors.tuna.tsinghua.edu.cn/Adoptium/11/jre/${BUILDARCH}/linux/OpenJDK11U-jre_${BUILDARCH}_linux_hotspot_${JDK_VERSION}.tar.gz \
+    && wget -O jre.tar.gz https://mirrors.tuna.tsinghua.edu.cn/Adoptium/11/jre/${JAVA_ARCH}/linux/OpenJDK11U-jre_${JAVA_ARCH}_linux_hotspot_${JDK_VERSION}.tar.gz \
     && tar -zxvf jre.tar.gz --strip-components=1 -C /usr/local/jre \
     && rm -f jre.tar.gz
 
