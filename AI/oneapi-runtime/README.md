@@ -27,6 +27,7 @@ docker run --device=/dev/dri -it "$image"
 
 # Supported tags and respective Dockerfile links
 
+- 2024.2.0-oe2403sp4
 - 2024.2.0-oe2403lts
 
 ## Operating System
