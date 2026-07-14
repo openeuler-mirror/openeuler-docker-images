@@ -27,12 +27,16 @@ WORKDIR /root/open-webui
 
 RUN npm config set registry https://registry.npmmirror.com/ && \
     npm i && \
-    npm run build && \
-    pip install pydantic -i https://mirrors.aliyun.com/pypi/simple/ && \
-    pip install -r backend/requirements.txt -i https://mirrors.aliyun.com/pypi/simple/ && \
-    pip install fastapi_sso \
-	transformers \
-	accelerate -i https://mirrors.aliyun.com/pypi/simple/
+    npm run build
+
+RUN pip install pydantic -i https://mirrors.aliyun.com/pypi/simple/
+
+RUN pip install --retries 5 -r backend/requirements.txt -i https://mirrors.aliyun.com/pypi/simple/
+
+RUN pip install --retries 5 \
+    fastapi_sso \
+    transformers \
+    accelerate -i https://mirrors.aliyun.com/pypi/simple/
 RUN pip uninstall litellm -y
 RUN pip install "litellm[proxy]" -i https://mirrors.aliyun.com/pypi/simple/
 
