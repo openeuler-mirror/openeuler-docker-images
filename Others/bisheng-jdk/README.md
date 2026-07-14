@@ -24,7 +24,7 @@ The tag of each BiSheng JDK docker image is consist of the version of BiSheng JD
 | [1.8.0-oe2203lts](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/bisheng-jdk/1.8.0/22.03-lts/Dockerfile) | BiSheng JDK 1.8.0 on openEuler 22.03-LTS |  amd64, arm64 |
 | [1.8.0-oe2203sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/bisheng-jdk/1.8.0/22.03-lts-sp3/Dockerfile) | BiSheng JDK 1.8.0 on openEuler 22.03-LTS-SP3 |  amd64, arm64 |
 | [17.0.10-oe2203sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/bisheng-jdk/17.0.10/22.03-lts-sp3/Dockerfile) | BiSheng JDK 17.0.10 on openEuler 22.03-LTS-SP3 |  amd64, arm64 |
-| [21.0.5-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/bisheng-jdk/21.0.5/24.03-lts-sp4/Dockerfile) | BiSheng JDK 21.0.5 on openEuler 22.03-LTS-SP4 |  amd64, arm64 |
+| [21.0.5-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/bisheng-jdk/21.0.5/24.03-lts-sp4/Dockerfile) | BiSheng JDK 21.0.5 on openEuler 24.03-LTS-SP4 |  amd64, arm64 |
 | [21.0.5-oe2203sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/bisheng-jdk/21.0.5/22.03-lts-sp3/Dockerfile) | BiSheng JDK 21.0.5 on openEuler 22.03-LTS-SP3 |  amd64, arm64 |
 
 # Usage
