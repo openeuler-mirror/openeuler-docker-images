@@ -18,13 +18,20 @@
      && tar -xvf mesa-${VERSION}.tar.xz \
      && rm -f mesa-${VERSION}.tar.xz
  
- WORKDIR /opt/mesa-${VERSION}
- 
- RUN pip3 install --upgrade pip \
-     && pip3 install meson ninja mako
- 
- RUN mkdir build \
-     && meson setup build  \
+WORKDIR /opt/mesa-${VERSION}
+
+RUN pip3 install --upgrade pip \
+    && pip3 install meson ninja mako
+
+RUN wget -q -O /tmp/wayland-protocols-1.41.tar.xz \
+    https://gitlab.freedesktop.org/wayland/wayland-protocols/-/releases/1.41/downloads/wayland-protocols-1.41.tar.xz \
+    && WP_HASH=$(sha256sum /tmp/wayland-protocols-1.41.tar.xz | cut -d' ' -f1) \
+    && sed -i "s/^source_hash = .*/source_hash = ${WP_HASH}/" subprojects/wayland-protocols.wrap \
+    && mkdir -p subprojects/packagecache \
+    && mv /tmp/wayland-protocols-1.41.tar.xz subprojects/packagecache/wayland-protocols-1.41.tar.xz
+
+RUN mkdir build \
+    && meson setup build  \
      -Dcpp_std=gnu++17 \
      -Dandroid-libbacktrace=disabled \
      -Dlibunwind=disabled \
