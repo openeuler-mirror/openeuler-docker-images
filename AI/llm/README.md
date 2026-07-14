@@ -25,6 +25,7 @@ docker run --device $DEVICE --device /dev/davinci_manager --device /dev/devmm_sv
 
 # Supported tags and respective Dockerfile links
 
+- chatglm2_6b-pytorch2.1.0.a1-cann7.0.RC1.alpha002-oe2403sp4
 - chatglm2_6b-pytorch2.1.0.a1-cann7.0.RC1.alpha002-oe2203sp2
 - fastchat-pytorch2.1.0.a1-cann7.0.RC1.alpha002-oe2203sp2
 
