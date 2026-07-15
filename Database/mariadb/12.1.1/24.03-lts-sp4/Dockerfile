@@ -21,6 +21,7 @@ RUN curl -fSL -o mariadb.tar.gz https://archive.mariadb.org//mariadb-${VERSION}/
         -DWITH_SSL=system \
         -DWITH_ZLIB=system \
         -DWITH_LOBWRAP=0 \
+        -DWITHOUT_ABI_CHECK=1 \
         -DMYSQL_UNIX_ADDR=/data/mariadb/run/mysql.sock \
         -DDEFAULT_CHARSET=utf8 \
         -DDEFAULT_COLLATION=utf8_general_ci && \
