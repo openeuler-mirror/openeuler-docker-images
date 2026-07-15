@@ -10,7 +10,7 @@ RUN yum -y install java && \
 RUN groupadd --system --gid 1000 cassandra && \
     useradd --system --gid cassandra --uid 1000 cassandra
 
-RUN curl -o /tmp/cassandra-${VERSION}.tar.gz https://archive.apache.org/dist/cassandra/${VERSION}/apache-cassandra-${VERSION}-bin.tar.gz && \
+RUN curl -o /tmp/cassandra-${VERSION}.tar.gz https://repo.huaweicloud.com/apache/cassandra/${VERSION}/apache-cassandra-${VERSION}-bin.tar.gz && \
     tar -zxvf /tmp/cassandra-${VERSION}.tar.gz -C /tmp && \
     cd /tmp/apache-cassandra-${VERSION}/bin && \
     rm -rf /tmp/cassandra-${VERSION}.tar.gz
