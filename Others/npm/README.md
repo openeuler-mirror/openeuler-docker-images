@@ -18,6 +18,7 @@ The tag of each `npm` docker image is consist of the version of `npm` and the ve
 
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[11.13.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/npm/11.13.0/24.03-lts-sp4/Dockerfile) | npm 11.13.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[11.13.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/npm/11.13.0/24.03-lts-sp3/Dockerfile) | npm 11.13.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 |[11.12.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/npm/11.12.0/24.03-lts-sp3/Dockerfile) | npm 11.12.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 |[11.8.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/npm/11.8.0/24.03-lts-sp3/Dockerfile) | npm 11.8.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
