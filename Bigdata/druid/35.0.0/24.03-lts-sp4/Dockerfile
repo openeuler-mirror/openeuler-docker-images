@@ -6,7 +6,7 @@ ARG DRUID_HOME=/opt/druid
 
 RUN dnf install -y wget
 
-RUN wget https://archive.apache.org/dist/druid/${VERSION}/apache-druid-${VERSION}-bin.tar.gz \
+RUN wget https://repo.huaweicloud.com/apache/druid/${VERSION}/apache-druid-${VERSION}-bin.tar.gz \
     && tar -zxvf apache-druid-${VERSION}-bin.tar.gz \
     && mv apache-druid-${VERSION} ${DRUID_HOME} \
     && rm -f apache-druid-${VERSION}-bin.tar.gz
