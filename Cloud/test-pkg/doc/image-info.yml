@@ -1,0 +1,64 @@
+name: test-pkg
+category: cloud
+description: kubectl 是 Kubernetes 官方命令行工具，用于与 Kubernetes 集群的 API Server 交互，完成 Pod、Deployment、Service 等集群资源的创建、查看、更新与删除。本镜像在 openEuler 基础镜像上提供官方预编译的 kubectl 二进制，开箱即用，同时支持 x86 (amd64) 与 ARM (arm64) 架构。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  docker镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.36.2-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/test-pkg/1.36.2/24.03-lts-sp3/Dockerfile) | Kubectl 1.36.2 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/test-pkg:{Tag}
+  ```
+
+usage: |
+  kubectl 为运行即退出的 CLI 工具，使用 docker run --rm 直接运行命令即可。
+
+  - 运行 kubectl 命令操作集群
+
+    ```
+    docker run --rm openeuler/test-pkg:{Tag} get nodes
+    ```
+
+  - 通过 kubeconfig 连接集群
+
+    ```
+    docker run --rm -v ~/.kube:/root/.kube openeuler/test-pkg:{Tag} cluster-info
+    ```
+
+  - 查看 kubectl 版本
+
+    ```
+    docker run --rm openeuler/test-pkg:{Tag} version --client
+    ```
+
+  - 获取交互式 shell
+
+    ```
+    docker run --rm -it --entrypoint /bin/bash openeuler/test-pkg:{Tag}
+    ```
+
+license: Apache-2.0
+similar_packages:
+  - helm: Kubernetes 包管理器 CLI，用于安装和管理 Chart 应用。
+  - k9s: 提供终端 UI 的 Kubernetes 集群管理工具，增强 kubectl 交互体验。
+  - kubectx: 在多个 Kubernetes 上下文与命名空间之间快速切换的 CLI 工具。
+  - kustomize: Kubernetes 原生的无模板清单定制工具，kubectl 已内置集成。
+dependency:
+  - kubernetes
+
+homepage: https://github.com/kubernetes/kubectl
+upstream:
+  version_url: kubernetes/kubectl
+  version_prefix: v
+  version_filter: alpha;rc;candidate;beta;pre
+  backend: GitHub
+  version_scheme: RPM
