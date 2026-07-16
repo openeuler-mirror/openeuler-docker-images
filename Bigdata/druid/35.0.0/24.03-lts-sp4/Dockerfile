@@ -1,6 +1,6 @@
 ARG BASE=openeuler/openeuler:24.03-lts-sp4
 
-FROM ${BASE} as builder
+FROM ${BASE} AS builder
 ARG VERSION=35.0.0
 ARG DRUID_HOME=/opt/druid
 
