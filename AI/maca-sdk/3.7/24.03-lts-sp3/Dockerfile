@@ -1,12 +1,11 @@
-FROM openeuler-24.03-lts-sp3:latest
+FROM openeuler/openeuler:24.03-lts-sp3
 
 ARG TARGETPLATFORM
 ARG SDK_VERSION=3.7.0.38
 ENV SDK_VERSION=${SDK_VERSION}
 
-RUN printf '\nkeepcache=True\nsslverify=False\n' >> /etc/dnf/dnf.conf && \
-    dnf update -y && \
-    dnf install -y util-linux xz make gcc g++ && \
+RUN dnf update -y && \
+    dnf install -y util-linux xz make gcc gcc-c++ && \
     dnf clean all
 
 COPY EUR.repo /etc/yum.repos.d/maca-sdk.repo

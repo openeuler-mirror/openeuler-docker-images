@@ -40,17 +40,25 @@ In this usage, users can select the corresponding `{Tag}` and `container startup
     docker run -it --rm \
       --device /dev/dri \
       --device /dev/mxcd \
-      --device /dev/infiniband \
-      --privileged=true \
+      --device /dev/fuse \
+      --cap-add SYS_ADMIN \
       --group-add video \
       --network=host \
       -v /sys/kernel/debug:/sys/kernel/debug \
       -v /opt/mxdriver:/opt/mxdriver \
       -v /usr/bin/mx-smi:/usr/bin/mx-smi \
       --name mxsdk \
-      -v /root:/root \
       openeuler/maca-sdk:{Tag}
     ```
+
+    InfiniBand/RDMA support is optional. If it is required, check which device nodes exist on the host with `ls -1 /dev/infiniband`, then add only the required nodes to the command above. A typical RDMA workload uses:
+
+    ```bash
+    --device /dev/infiniband/rdma_cm \
+    --device /dev/infiniband/uverbs0
+    ```
+
+    For hosts with multiple RDMA devices, also map each required user-verbs node (for example, `/dev/infiniband/uverbs1`). Management tools may additionally require `/dev/infiniband/umad0` or `/dev/infiniband/issm0` (and their numbered variants). Do not add nodes that do not exist on the host.
 
 - Container startup options
 
@@ -59,14 +67,17 @@ In this usage, users can select the corresponding `{Tag}` and `container startup
     | `--name mxsdk` | Names the container `mxsdk`. |
     | `--device /dev/dri` | Maps the Direct Rendering Infrastructure (DRM) render nodes so the container can access the GPU graphics/compute context. |
     | `--device /dev/mxcd` | Maps the MetaX compute device (`mxcd`), the entry point used by MACA to submit compute tasks to the GPU. |
-    | `--device /dev/infiniband` | Maps the InfiniBand device, enabling RDMA / high-bandwidth interconnect for multi-card and distributed training. Optional if InfiniBand is not used. |
-    | `--privileged=true` | Grants extended privileges so the runtime can access driver interfaces under `/dev` and `/sys/kernel/debug`. Tighten this if your environment allows device-level mappings only. |
+    | `--device /dev/fuse` | Maps the FUSE device so the container can use FUSE-based filesystems. |
+    | `--cap-add SYS_ADMIN` | Grants the `SYS_ADMIN` capability required to mount FUSE filesystems inside the container. Only use this option with trusted containers. |
+    | Optional: `--device /dev/infiniband/rdma_cm` | Maps the RDMA connection-manager node when InfiniBand/RDMA is used. |
+    | Optional: `--device /dev/infiniband/uverbs<N>` | Maps a user-verbs node such as `uverbs0`; repeat this option for each RDMA device required by the workload. |
+    | Optional: `--device /dev/infiniband/umad<N>` | Maps a userspace management-datagram node such as `umad0`; needed only by InfiniBand management tools. |
+    | Optional: `--device /dev/infiniband/issm<N>` | Maps an InfiniBand subnet-management node such as `issm0`; needed only by subnet-manager tools. |
     | `--group-add video` | Adds the container's user to the host `video` group so it has the permissions required to access `/dev/dri/*`. |
     | `--network=host` | Shares the host network namespace. Required by some distributed training and RPC backends; remove if you prefer bridge networking. |
     | `-v /sys/kernel/debug:/sys/kernel/debug` | Mounts the host debugfs so driver/runtime diagnostics (e.g. profiling tools) can be collected. |
     | `-v /opt/mxdriver:/opt/mxdriver` | Mounts the host MetaX driver directory into the container. The MACA runtime must match the driver version installed on the host. |
     | `-v /usr/bin/mx-smi:/usr/bin/mx-smi` | Mounts the host `mx-smi` (MetaX System Management Interface) tool so you can query GPU status from inside the container. |
-    | `-v /root:/root` | Mounts the host `/root` directory, convenient for sharing code, datasets and credentials. Adjust the path to your own working directory. |
     | `-it` | Starts the container in interactive mode with a terminal. |
     | `--rm` | Automatically removes the container when it exits. |
     | `openeuler/maca-sdk:{Tag}` | Specifies the Docker image to run, replace `{Tag}` with the specific version or tag of the `openeuler/maca-sdk` image you want to use. |
