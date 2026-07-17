@@ -1,0 +1,10 @@
+[copr:eur.openeuler.openatom.cn:ObjectNotFound:maca-sdk]
+name=Copr repo for maca-sdk owned by ObjectNotFound
+baseurl=https://eur.openeuler.openatom.cn/results/ObjectNotFound/maca-sdk/openeuler-24.03_LTS_SP2-$basearch/
+type=rpm-md
+skip_if_unavailable=True
+gpgcheck=1
+gpgkey=https://eur.openeuler.openatom.cn/results/ObjectNotFound/maca-sdk/pubkey.gpg
+repo_gpgcheck=0
+enabled=1
+enabled_metadata=1
