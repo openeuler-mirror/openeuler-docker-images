@@ -1,6 +1,6 @@
 name: flannel
 category: cloud
-description: flannel 是一个为容器设计的网络 fabric，专为 Kubernetes 而设计。
+description: flannel 是一个为 Kubernetes 设计的简单易用的三层网络 fabric。它在每个节点运行一个名为 flanneld 的单二进制代理，负责从预配置的大地址空间中为每个节点分配子网租约，并通过 VXLAN 等多种后端机制转发数据包。
 environment: |
   本应用在Docker环境中运行，安装Docker执行如下命令
   ```
@@ -9,11 +9,12 @@ environment: |
 tags: |
   docker镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
 
-  |    Tag   |  Currently  |   Architectures  |
-  |----------|-------------|------------------|
-  |[0.27.3-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/flannel/0.27.3/24.03-lts-sp4/Dockerfile) | flannel 0.27.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-  |[0.27.3-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/flannel/0.27.3/24.03-lts-sp1/Dockerfile) | flannel 0.27.3 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
-  |[0.26.7-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/flannel/0.26.7/24.03-lts-sp1/Dockerfile)| flannel 0.26.7 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+  | Tag | Currently | Architectures |
+  |-----|-----------|---------------|
+  |[0.28.7-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/flannel/0.28.7/24.03-lts-sp3/Dockerfile) | flannel 0.28.7 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+  |[0.27.3-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/flannel/0.27.3/24.03-lts-sp4/Dockerfile) | flannel 0.27.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[0.27.3-oe2403sp1](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/flannel/0.27.3/24.03-lts-sp1/Dockerfile) | flannel 0.27.3 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+  |[0.26.7-oe2403sp1](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/flannel/0.26.7/24.03-lts-sp1/Dockerfile) | flannel 0.26.7 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 download: |
   拉取镜像到本地
@@ -22,23 +23,57 @@ download: |
   ```
 
 usage: |
-  - 启动flannel实例
+  - 拉取 `openeuler/flannel` 镜像
 
     ```
-    docker run -it --name flannel openeuler/flannel:{Tag}
+    docker pull openeuler/flannel:{Tag}
     ```
-    `openeuler/flannel`镜像用于验证上游flannel版本和openEuler的集成。
 
-license: Apache-2.0 license
+  - 启动 flannel 实例
+
+    ```
+    docker run -d --name my-flannel --cap-add NET_ADMIN --net=host openeuler/flannel:{Tag} --ip-masq --kube-subnet-mgr
+    ```
+
+  - 容器启动参数
+
+    | 选项 | 说明 |
+    |------|------|
+    | `--ip-masq` | 为发往 overlay 外的流量启用 IP 伪装。 |
+    | `--iface` | 用于主机间通信的网络接口。 |
+    | `--kube-subnet-mgr` | 使用 Kubernetes API 作为后端存储，替代 etcd。 |
+    | `--etcd-endpoints` | 未使用 Kubernetes API 时，etcd 端点列表（逗号分隔）。 |
+    | `--subnet-file` | 子网环境文件写入路径（默认 `/run/flannel/subnet.env`）。 |
+    | `--cap-add NET_ADMIN` | 管理网络接口和路由所需。 |
+    | `--net=host` | 在主机网络命名空间运行，以便 flannel 配置主机路由。 |
+
+  - 查看容器运行日志
+
+    ```
+    docker logs -f my-flannel
+    ```
+
+  - 获取交互式 shell
+
+    ```
+    docker exec -it my-flannel /bin/bash
+    ```
+
+license: Apache-2.0
 similar_packages:
-  - N/A
+  - Calico: 基于 BGP 的 Kubernetes 网络与网络策略方案，支持路由和 overlay 模式。
+  - Cilium: 基于 eBPF 的高性能 Kubernetes 网络与安全方案。
+  - Weave Net: 简单易用的 Kubernetes overlay 网络方案，支持多主机容器互联。
+  - Kube-router: 基于 BGP 的轻量级 Kubernetes 网络、服务代理与网络策略方案。
 dependency:
-  - N/A
+  - etcd 或 Kubernetes API（作为网络配置的后端存储）
+  - conntrack-tools、ipset（运行时依赖）
+  - 内核 br_netfilter 模块
 
 homepage: https://github.com/flannel-io/flannel
 upstream:
   version_url: flannel-io/flannel
   version_prefix: v
-  version_filter: k3s;rc;dual;stack
+  version_filter: alpha;rc;candidate;beta;pre
   backend: GitHub
   version_scheme: RPM
