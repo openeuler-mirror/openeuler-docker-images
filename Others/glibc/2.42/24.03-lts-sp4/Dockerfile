@@ -21,7 +21,7 @@ RUN wget https://mirrors.tuna.tsinghua.edu.cn/gnu/glibc/glibc-${VERSION}.tar.xz 
 
 WORKDIR /opt/glibc-${VERSION}/build
 
-RUN ../configure --prefix=/usr/local/glibc && \
+RUN ../configure --prefix=/usr/local/glibc --disable-werror && \
     make -j$(nproc) && \
     make install
 
