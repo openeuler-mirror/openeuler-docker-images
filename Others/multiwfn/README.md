@@ -13,6 +13,7 @@ Multiwfn is an extremely powerful program for realizing electronic wavefunction 
 The tag of each multiwfn docker image is consist of the version of multiwfn and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[cb37c53-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/multiwfn/cb37c53/24.03-lts-sp4/Dockerfile) | multiwfn cb37c53 on openEuler 24.03-lts-sp4 | amd64, arm64 |
 |[cb37c53-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/multiwfn/cb37c53/24.03-lts-sp3/Dockerfile) | multiwfn cb37c53 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 
