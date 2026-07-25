@@ -16,6 +16,7 @@ Learn more at [Apache brpc](https://brpc.apache.org/).
 The tag of each brpc docker image is consist of the version of brpc and the version of basic image. The details are as follows:
 | Tags | Currently | Architectures |
 |------|-----------|---------------|
+|[1.16.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/brpc/1.16.0/24.03-lts-sp4/Dockerfile)| brpc 1.16.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[1.16.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/brpc/1.16.0/24.03-lts-sp3/Dockerfile)| brpc 1.16.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 # Usage
