@@ -1,0 +1,6 @@
+file:
+  /usr/sbin/nginx: {exists: true, mode: "0755"}
+package:
+  nginx: {installed: true}
+port:
+  tcp:80: {listening: true, timeout: 15000}

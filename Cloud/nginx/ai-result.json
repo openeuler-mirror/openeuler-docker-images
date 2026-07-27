@@ -1,0 +1,15 @@
+{
+  "success": true,
+  "package_name": "nginx",
+  "version": "1.27.2",
+  "files_created": [
+    "Cloud/nginx/1.27.2/24.03-lts/Dockerfile",
+    "Cloud/nginx/meta.yml",
+    "Cloud/nginx/README.md",
+    "Cloud/nginx/doc/image-info.yml",
+    "Cloud/nginx/doc/picture/logo.png",
+    "Cloud/nginx/tests/goss.yaml",
+    "Cloud/nginx/tests/test_helpers.sh",
+    "Cloud/nginx/1.27.2/24.03-lts/test.sh"
+  ]
+}
