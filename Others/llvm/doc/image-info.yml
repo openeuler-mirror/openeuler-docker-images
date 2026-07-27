@@ -61,3 +61,11 @@ dependency:
   - libc
   - glibc-devel
   - libgcc
+
+homepage: https://github.com/llvm/llvm-project
+upstream:
+  backend: GitHub
+  version_url: llvm/llvm-project
+  version_prefix: llvmorg-
+  version_filter: rc;alpha;beta
+  version_scheme: RPM

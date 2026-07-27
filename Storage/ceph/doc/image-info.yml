@@ -40,3 +40,11 @@ dependency:
   - openssl
   - libcurl
   - systemd
+
+homepage: https://github.com/ceph/ceph
+upstream:
+  backend: GitHub
+  version_url: ceph/ceph
+  version_prefix: v
+  version_filter: rc;alpha;beta;pre
+  version_scheme: RPM

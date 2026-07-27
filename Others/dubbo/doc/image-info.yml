@@ -12,8 +12,8 @@ tags: |
   | Tag                                                                                                                            | Currently                              | Architectures |
   |--------------------------------------------------------------------------------------------------------------------------------|----------------------------------------|---------------|
   | [3.3.4-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/dubbo/3.3.4/24.03-lts-sp1/Dockerfile) | Dubbo 3.3.4 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
-  | [3.3.5-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/dubbo/3.3.5/24.03-lts-sp4/Dockerfile) | Dubbo 3.3.5 on openEuler 24.03-LTS-SP4 | amd64, arm64  |
   | [3.3.5-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/dubbo/3.3.5/24.03-lts-sp2/Dockerfile) | Dubbo 3.3.5 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
+  | [3.3.5-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/dubbo/3.3.5/24.03-lts-sp4/Dockerfile) | Dubbo 3.3.5 on openEuler 24.03-LTS-SP4 | amd64, arm64  |
 
 download: |
   拉取镜像到本地
@@ -60,3 +60,11 @@ dependency:
   - Triple
   - Spring Boot
   - maven
+
+homepage: https://github.com/apache/dubbo
+upstream:
+  backend: GitHub
+  version_url: apache/dubbo
+  version_prefix: dubbo-
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM

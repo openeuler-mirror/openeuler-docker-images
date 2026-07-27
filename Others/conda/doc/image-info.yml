@@ -1,0 +1,38 @@
+name: conda
+category: others
+description: Conda 是一个开源的包管理系统和环境管理系统，支持多语言（Python、R、Ruby 等），广泛用于数据科学和科学计算领域。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  conda镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[25.1.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/conda/25.1.1/24.03-lts-sp4/Dockerfile)| conda 25.1.1 on openEuler 24.03-lts-sp4 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/conda:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+    ```
+    docker run -it openeuler/conda:{Tag} bash
+    ```
+
+license: BSD-3-Clause
+similar_packages:
+  -
+
+dependency:
+  -
+
+homepage: https://github.com/conda/conda
+upstream:
+  backend: GitHub
+  version_url: conda/conda

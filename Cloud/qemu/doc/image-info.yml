@@ -75,3 +75,11 @@ dependency:
   - libzstd
   - libusbx
   - libseccomp
+
+homepage: https://github.com/qemu/qemu
+upstream:
+  backend: GitHub
+  version_url: qemu/qemu
+  version_prefix: v
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM

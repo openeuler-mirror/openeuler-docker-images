@@ -80,3 +80,11 @@ similar_packages:
   - CRI-O: Kubernetes 社区开发的轻量级容器运行时，只实现 Kubernetes CRI 接口。
 dependency:
   - golang
+
+homepage: https://github.com/containerd/containerd
+upstream:
+  backend: GitHub
+  version_url: containerd/containerd
+  version_prefix: v
+  version_filter: rc;alpha;beta;pre
+  version_scheme: RPM

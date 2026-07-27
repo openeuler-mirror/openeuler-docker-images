@@ -63,3 +63,11 @@ dependency:
   - dpkg
   - python3
   - python3-pip
+
+homepage: https://github.com/apache/spark
+upstream:
+  backend: GitHub
+  version_url: apache/spark
+  version_prefix: v
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM

@@ -70,3 +70,10 @@ similar_packages:
   - Kubeflow: Kubeflow是一个基于Kubernetes的开源平台，用于在机器学习工作流中管理和部署模型。它提供了用于构建、训练和部署机器学习模型的工具和组件，并支持自动化的部署和扩展。
 dependency:
   - python3
+
+homepage: https://github.com/mlflow/mlflow
+upstream:
+  backend: GitHub
+  version_url: mlflow/mlflow
+  version_prefix: v
+  version_filter: rc;alpha;candidate

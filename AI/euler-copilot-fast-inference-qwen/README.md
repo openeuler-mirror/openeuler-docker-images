@@ -8,7 +8,8 @@ The tag of each euler-copilot-fast-inference-qwen docker image is consist of the
 
 | Tags                                                         | Currently                                                    | Architectures |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------- |
-| [1.5-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/euler-copilot-fast-inference-qwen/1.5/22.03-lts-sp3/Dockerfile) | euler-copilot-fast-inference-qwen 1.5 on openEuler 22.03-lts-sp3 | arm64         |
+| [1.5-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/euler-copilot-fast-inference-qwen/1.5/22.03-lts-sp4/Dockerfile) | euler-copilot-fast-inference-qwen 1.5 on openEuler 22.03-lts-sp4 | amd64, arm64         |
+| [1.5-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/euler-copilot-fast-inference-qwen/1.5/22.03-lts-sp3/Dockerfile) | euler-copilot-fast-inference-qwen 1.5 on openEuler 22.03-lts-sp3 | amd64, arm64         |
 
 # Usage：
 1. Start the container based on the application image

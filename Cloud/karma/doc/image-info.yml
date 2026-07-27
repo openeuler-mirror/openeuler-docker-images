@@ -52,3 +52,11 @@ similar_packages:
   - N/A
 dependency:
   - Alertmanager
+
+homepage: https://github.com/prymitive/karma
+upstream:
+  backend: GitHub
+  version_url: prymitive/karma
+  version_prefix: v
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM

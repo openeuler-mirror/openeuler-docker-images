@@ -85,3 +85,11 @@ dependency:
   - libdb
   - spdlog
   - pam
+
+homepage: https://github.com/lizardfs/lizardfs
+upstream:
+  backend: GitHub
+  version_url: lizardfs/lizardfs
+  version_prefix: v
+  version_filter: rc;alpha;beta;pre
+  version_scheme: RPM

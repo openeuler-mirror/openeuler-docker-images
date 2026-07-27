@@ -61,3 +61,11 @@ dependency:
   - libuv
   - openssl
   - node.js
+
+homepage: https://github.com/netdata/netdata
+upstream:
+  backend: GitHub
+  version_url: netdata/netdata
+  version_prefix: v
+  version_filter: rc;alpha;beta
+  version_scheme: RPM

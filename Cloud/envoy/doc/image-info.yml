@@ -100,3 +100,11 @@ dependency:
   - libssl
   - libprotobuf
   - libnghttp2
+
+homepage: https://github.com/envoyproxy/envoy
+upstream:
+  backend: GitHub
+  version_url: envoyproxy/envoy
+  version_prefix: v
+  version_filter: rc;alpha;candidate
+  version_scheme: RPM

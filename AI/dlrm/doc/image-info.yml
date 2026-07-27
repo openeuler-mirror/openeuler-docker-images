@@ -59,3 +59,11 @@ dependency:
   - tqdm
   - torchrec-nightly
   - torchx-nightly
+
+homepage: https://gitee.com/ls39938477/dlrm
+upstream:
+  backend: Github
+  version_url: ls39938477/dlrm
+  version_prefix: 
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM

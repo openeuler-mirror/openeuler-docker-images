@@ -72,3 +72,11 @@ dependency:
   - corosynclib
   - corosync
   - userspace-rcu
+
+homepage: https://github.com/sheepdog/sheepdog
+upstream:
+  backend: GitHub
+  version_url: sheepdog/sheepdog
+  version_prefix: v
+  version_filter: rc;alpha;beta;pre
+  version_scheme: RPM

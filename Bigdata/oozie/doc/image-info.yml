@@ -36,3 +36,11 @@ similar_packages:
   - N/A
 dependency:
   - N/A
+
+homepage: https://github.com/apache/oozie
+upstream:
+  backend: GitHub
+  version_url: apache/oozie
+  version_prefix: release-
+  version_filter: RC;alpha;rc;candidate
+  version_scheme: RPM

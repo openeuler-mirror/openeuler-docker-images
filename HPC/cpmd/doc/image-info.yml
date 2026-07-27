@@ -45,3 +45,11 @@ dependency:
   - fftw
   - blas
   - lapack
+
+homepage: https://github.com/CPMD-code/CPMD
+upstream:
+  backend: GitHub
+  version_url: CPMD-code/CPMD
+  version_prefix: 
+  version_filter: rc;alpha;beta;candidate
+  version_scheme: RPM

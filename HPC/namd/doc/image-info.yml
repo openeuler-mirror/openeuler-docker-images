@@ -57,3 +57,11 @@ similar_packages:
 dependency:
   - tcl
   - fftw
+
+homepage: http://www.ks.uiuc.edu/Research/namd/
+upstream:
+  backend: custom
+  version_url: http://www.ks.uiuc.edu/Research/namd/namd-3.0/
+  version_prefix: 
+  version_filter: rc;alpha;beta;candidate
+  version_scheme: RPM

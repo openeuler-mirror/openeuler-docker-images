@@ -74,3 +74,11 @@ similar_packages:
   - N/A
 dependency:
   - N/A
+
+homepage: https://github.com/elastic/kibana
+upstream:
+  backend: GitHub
+  version_url: elastic/kibana
+  version_prefix: v
+  version_filter: rc;alpha;candidate
+  version_scheme: RPM

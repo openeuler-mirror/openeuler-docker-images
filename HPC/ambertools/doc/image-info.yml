@@ -48,3 +48,9 @@ dependency:
   - libXext
   - libXt
   - zlib
+
+homepage: https://ambermd.org/AmberTools
+upstream:
+  backend: GitHub
+  version_url: Amber-MD/AmberToolMachines
+  version_prefix: AmberTools

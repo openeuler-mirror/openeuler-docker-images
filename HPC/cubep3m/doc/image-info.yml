@@ -37,3 +37,11 @@ similar_packages:
 dependency:
   - openmpi
   - fftw2
+
+homepage: https://github.com/jharno/cubep3m
+upstream:
+  backend: GitHub
+  version_url: jharno/cubep3m
+  version_prefix: 
+  version_filter: rc;alpha;beta;candidate
+  version_scheme: RPM

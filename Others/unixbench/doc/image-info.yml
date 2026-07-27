@@ -44,3 +44,11 @@ dependency:
   - openssl
   - systemd
   - perl
+
+homepage: https://github.com/kdlucas/byte-unixbench
+upstream:
+  backend: GitHub
+  version_url: kdlucas/byte-unixbench
+  version_prefix: v
+  version_filter: rc
+  version_scheme: RPM

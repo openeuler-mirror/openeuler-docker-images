@@ -1,0 +1,42 @@
+name: pypi
+category: others
+description: pypi 镜像提供 PyPI 包管理工具 pip，用于安装和管理 Python 软件包。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  pypi镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[23.3.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/pypi/23.3.1/24.03-lts-sp4/Dockerfile)| pypi 23.3.1 on openEuler 24.03-lts-sp4 | amd64, arm64 |
+  |[23.3.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/pypi/23.3.1/24.03-lts-sp1/Dockerfile)| pypi 23.3.1 on openEuler 24.03-lts-sp1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/pypi:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+    ```
+    docker run -it openeuler/pypi:{Tag} bash
+    ```
+
+license: MIT
+similar_packages:
+  -
+
+dependency:
+  -
+
+homepage: https://github.com/pypa/pip
+upstream:
+  backend: GitHub
+  version_url: pypa/pip
+  version_prefix: 
+  version_filter: rc;alpha;beta
+  version_scheme: RPM

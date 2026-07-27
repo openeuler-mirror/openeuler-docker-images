@@ -17,6 +17,8 @@ The tag of each tengine docker image is consist of the version of tengine and th
 | Tags | Currently |  Architectures|
 |--|--|--|
 |[2.4.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/tengine/2.4.1/24.03-lts-sp1/Dockerfile)| tengine 2.4.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[3.1.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/tengine/3.1.0/24.03-lts-sp1/Dockerfile)| tengine 3.1.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[3.1.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/tengine/3.1.0/24.03-lts-sp4/Dockerfile)| tengine 3.1.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 # Usage
 

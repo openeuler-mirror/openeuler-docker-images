@@ -44,3 +44,11 @@ dependency:
   - libnotify
   - libnotify
   - xapp
+
+homepage: https://github.com/linuxmint/nemo
+upstream:
+  backend: GitHub
+  version_url: linuxmint/nemo
+  version_prefix: 
+  version_filter: unstable;rc;alpha;beta;candidate
+  version_scheme: RPM

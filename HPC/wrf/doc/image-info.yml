@@ -44,3 +44,11 @@ dependency:
   - mpich
   - hdf5
   - netcdf
+
+homepage: https://github.com/wrf-model/WRF
+upstream:
+  backend: GitHub
+  version_url: wrf-model/WRF
+  version_prefix: v
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM

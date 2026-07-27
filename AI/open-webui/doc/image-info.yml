@@ -51,3 +51,11 @@ dependency:
     - transformers
     - accelerate
     - npm
+
+homepage: https://github.com/open-webui/open-webui
+upstream:
+  backend: GitHub
+  version_url: open-webui/open-webui
+  version_prefix: v
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM

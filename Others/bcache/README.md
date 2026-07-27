@@ -16,7 +16,8 @@ The tag of each `bcache` docker image is consist of the version of `bcache` and 
 
 | Tag                                                                                                                     | Currently                         | Architectures |
 |-------------------------------------------------------------------------------------------------------------------------|-----------------------------------|---------------|
-| [1.1-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/bcache/1.1/24.03-lts/Dockerfile) | Bcache 1.1 on openEuler 24.03-LTS | amd64, arm64  |
+|[1.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/bcache/1.1/24.03-lts-sp1/Dockerfile)| bcache 1.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[1.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/bcache/1.1/24.03-lts-sp4/Dockerfile)| bcache 1.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.

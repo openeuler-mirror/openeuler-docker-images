@@ -77,3 +77,11 @@ dependency:
   - gfortran
   - hdf5-devel 
   - mpich-devel
+
+homepage: https://swanmodel.sourceforge.io
+upstream:
+  backend: custom
+  version_url: https://swanmodel.sourceforge.io/modifications/modifications.htm
+  version_prefix: 
+  version_filter: rc;alpha;beta;candidate
+  version_scheme: RPM

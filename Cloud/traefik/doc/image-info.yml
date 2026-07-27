@@ -69,3 +69,11 @@ similar_packages:
   - Caddy: Caddy是一款现代化的Web服务器和反向代理软件，具有自动HTTPS、自动HTTP/2和易于使用的配置功能。它支持动态代理和负载均衡，并适用于容器化环境。
 dependency:
   - N/A
+
+homepage: https://github.com/traefik/traefik
+upstream:
+  backend: GitHub
+  version_url: traefik/traefik
+  version_prefix: v
+  version_filter: rc;alpha;beta;candidate
+  version_scheme: RPM

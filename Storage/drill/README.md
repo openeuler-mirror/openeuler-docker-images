@@ -18,7 +18,9 @@ The tag of each `drill` docker image is consist of the version of `drill` and th
 
 | Tag                                                                                                                               | Currently                                      | Architectures |
 |-----------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------|---------------|
-| [1.21.2-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/drill/1.21.2/24.03-lts-sp1/Dockerfile) | Apache Drill 1.21.2 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+|[1.21.2-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/drill/1.21.2/24.03-lts-sp1/Dockerfile)| Apache Drill 1.21.2 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[1.22.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/drill/1.22.0/24.03-lts-sp1/Dockerfile)| Apache Drill 1.22.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[1.22.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/drill/1.22.0/24.03-lts-sp4/Dockerfile)| Apache Drill 1.22.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.

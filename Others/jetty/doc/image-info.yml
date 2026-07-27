@@ -44,3 +44,11 @@ similar_packages:
 dependency:
   - openjdk
   - maven
+
+homepage: https://github.com/jetty/jetty.project
+upstream:
+  backend: GitHub
+  version_url: jetty/jetty.project
+  version_prefix: jetty-
+  version_filter: rc;alpha;beta
+  version_scheme: RPM

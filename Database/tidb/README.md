@@ -16,7 +16,9 @@ For more information about tidb, please visit [https://pingcap.com/](https://pin
 The tag of each tidb docker image is consist of the version of tidb and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
-|[8.5.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/tidb/8.5.1/24.03-lts-sp1/Dockerfile)| Tidb 8.5.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[8.5.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/tidb/8.5.1/24.03-lts-sp1/Dockerfile)| TiDB 8.5.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[8.5.3-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/tidb/8.5.3/24.03-lts-sp1/Dockerfile)| TiDB 8.5.3 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[8.5.3-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/tidb/8.5.3/24.03-lts-sp4/Dockerfile)| TiDB 8.5.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 # Usage
 

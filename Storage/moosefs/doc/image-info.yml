@@ -82,3 +82,11 @@ dependency:
   - zlib
   - glibc
   - m4
+
+homepage: https://github.com/moosefs/moosefs
+upstream:
+  backend: GitHub
+  version_url: moosefs/moosefs
+  version_prefix: v
+  version_filter: rc;alpha;beta;pre
+  version_scheme: RPM

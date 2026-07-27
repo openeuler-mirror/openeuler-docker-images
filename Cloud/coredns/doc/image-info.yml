@@ -70,3 +70,11 @@ similar_packages:
   - dnsmasq: 轻量级的 DNS 和 DHCP 转发器，适合本地网络、开发环境或小型集群。
 dependency:
   - golang
+
+homepage: https://github.com/coredns/coredns
+upstream:
+  backend: GitHub
+  version_url: coredns/coredns
+  version_prefix: v
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM

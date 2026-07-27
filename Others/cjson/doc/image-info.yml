@@ -86,3 +86,11 @@ similar_packages:
 dependency:
   - libc
   - gcc
+
+homepage: https://github.com/DaveGamble/cJSON
+upstream:
+  backend: GitHub
+  version_url: DaveGamble/cJSON
+  version_prefix: v
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM
