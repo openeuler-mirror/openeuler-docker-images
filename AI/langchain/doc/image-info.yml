@@ -50,3 +50,11 @@ dependency:
   - python3
   - python3-pip
   - langchain-community
+
+homepage: https://github.com/langchain-ai/langchain
+upstream:
+  backend: GitHub
+  version_url: langchain-ai/langchain
+  version_prefix: langchain-openai==
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM
