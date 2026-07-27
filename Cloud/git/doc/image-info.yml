@@ -1,0 +1,41 @@
+name: git
+category: cloud
+description: git container image based on openEuler.
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  | Tag | Currently | Architectures |
+  |-----|-----------|---------------|
+  | [2.47.2-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/git/2.47.2/24.03-lts/Dockerfile) | git 2.47.2 on openEuler 24.03-lts | amd64, arm64 |
+download: |
+  ```
+  docker pull openeuler/git:{{Tag}}
+  ```
+usage: |
+  启动容器：
+  ```
+  docker run -d --name my-git -p 80:80 openeuler/git:{{Tag}}
+  ```
+  - 查看运行日志
+  ```
+  docker logs -f my-git
+  ```
+  - 停止容器
+  ```
+  docker stop my-git
+  docker rm my-git
+  ```
+license: BSD-2-Clause
+similar_packages:
+  - git: git package on openEuler
+dependency:
+  - glibc
+homepage: https://git.org/
+upstream:
+  backend: GitHub
+  version_url: git/git
+  version_filter: alpha;rc;candidate;beta;pre
+  version_scheme: RPM
