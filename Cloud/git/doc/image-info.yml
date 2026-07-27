@@ -1,0 +1,4 @@
+name: git
+category: cloud
+description: git container image based on openEuler.
+license: BSD-2-Clause
