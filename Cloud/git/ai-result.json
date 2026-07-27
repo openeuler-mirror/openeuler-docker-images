@@ -1,0 +1,9 @@
+{
+  "success": true,
+  "package_name": "git",
+  "version": "2.47.1",
+  "files_created": [
+    "Cloud/git/2.47.1/24.03-lts/Dockerfile (already exists)"
+  ],
+  "skipped": true
+}
