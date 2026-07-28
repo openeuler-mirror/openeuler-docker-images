@@ -1,7 +1,7 @@
 ARG BASE=openeuler/openeuler:24.03-lts-sp4
 FROM ${BASE}
 
-VERSION=0.3.23
+ARG VERSION=0.3.23
 
 LABEL author="ls" description="langchain"
 
