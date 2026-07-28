@@ -49,14 +49,14 @@ usage: |
         ...
     ```
 
-license: View license
+license: Apache-2.0
 similar_packages:
   - PostgreSQL: PostgreSQL是一个功能强大的开源关系型数据库管理系统，它提供了与oceanbase类似的功能，并且支持广泛的标准SQL语法。PostgreSQL具有高度的可扩展性、可靠性和数据一致性，同时还提供了许多高级功能，如复杂查询、事务控制和触发器等。
   - Oracle Database: Oracle Database是一款商业的关系型数据库管理系统，它是市场上最受欢迎和广泛使用的数据库之一。Oracle Database提供了丰富的功能集，包括高级查询、分布式数据库、数据复制和高可用性选项等。
   - Microsoft SQL Server: Microsoft SQL Server是由Microsoft开发的关系型数据库管理系统。它提供了与oceanbase类似的功能，同时还与Microsoft的其他产品和技术集成紧密。Microsoft SQL Server适用于Windows操作系统，并提供了高性能、可伸缩性和企业级功能。
   - SQLite: SQLite是一种嵌入式关系型数据库管理系统，它提供了轻量级的、零配置的数据库解决方案。SQLite具有小巧、高效、可嵌入的特点，适用于嵌入式设备和移动应用程序。
 dependency:
-  - N/A
+  - 
 
 homepage: https://github.com/oceanbase/oceanbase
 upstream:
