@@ -36,3 +36,6 @@ homepage: https://github.com/apache/maven
 upstream:
   backend: GitHub
   version_url: apache/maven
+  version_prefix: maven-
+  version_filter: rc;candidate
+  version_scheme: RPM

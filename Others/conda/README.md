@@ -18,6 +18,11 @@ The tag of each `conda` docker image is consist of the version of `conda` and th
 
 | Tag | Currently | Architectures |
 |-----|-----------|---------------|
+| [25.1.1-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/conda/25.1.1/22.03-lts-sp4/Dockerfile) | Conda 25.1.1 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+| [25.1.1-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/conda/25.1.1/24.03-lts/Dockerfile) | Conda 25.1.1 on openEuler 24.03-LTS | amd64, arm64 |
+| [25.1.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/conda/25.1.1/24.03-lts-sp1/Dockerfile) | Conda 25.1.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+| [25.1.1-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/conda/25.1.1/24.03-lts-sp2/Dockerfile) | Conda 25.1.1 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+| [25.1.1-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/conda/25.1.1/24.03-lts-sp3/Dockerfile) | Conda 25.1.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 | [25.1.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/conda/25.1.1/24.03-lts-sp4/Dockerfile) | Conda 25.1.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 # Usage
