@@ -45,10 +45,10 @@ similar_packages:
 dependency:
   -
 
-homepage: https://github.com/anomalyco/opencode-ai
+homepage: https://github.com/anomalyco/opencode
 upstream:
   backend: GitHub
-  version_url: anomalyco/opencode-ai
+  version_url: anomalyco/opencode
   version_prefix: v
   version_filter: rc;alpha;beta
   version_scheme: RPM
