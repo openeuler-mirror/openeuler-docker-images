@@ -1,0 +1,44 @@
+name: rabbitmq
+category: cloud
+description: RabbitMQ是一个功能强大的企业级开源消息和流代理，可为应用程序提供高效、可靠和多样化的通信，非常适合分布式微服务、实时数据和物联网场景。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  rabbitmq镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[3.9.10-oe2203lts](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/rabbitmq/3.9.10/22.03-lts/Dockerfile) | rabbitmq 3.9.10 on openEuler 22.03-lts | amd64, arm64 |
+  |[3.9.10-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/rabbitmq/3.9.10/24.03-lts-sp4/Dockerfile) | rabbitmq 3.9.10 on openEuler 24.03-lts-sp4 | amd64, arm64 |
+  
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/rabbitmq:{Tag}
+  ```
+
+usage: |
+  运行RabbitMQ容器，AMQP 0-9-1客户端连接监听5672端口，管理界面监听15672端口：
+  ```
+  docker run -d --name rabbitmq -p 5672:5672 -p 15672:15672 openeuler/rabbitmq:{Tag}
+  ```
+
+license: MPL-2.0
+similar_packages:
+  - kafka: 分布式流处理平台，提供高吞吐量消息发布订阅
+  - rocketmq: 分布式消息中间件，支持事务消息和顺序消息
+  - activemq: 多协议消息代理，支持JMS和AMQP
+
+dependency:
+  - openeuler 24.03-lts-sp4
+
+homepage: https://github.com/rabbitmq/rabbitmq-server
+upstream:
+  backend: GitHub
+  version_url: rabbitmq/rabbitmq-server
+  version_prefix: v
+  version_filter: alpha;rc;candidate;beta;pre
+  version_scheme: RPM
