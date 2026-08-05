@@ -498,10 +498,10 @@ testAggregatedResultsContainsAllBenchmarks() {
         return
     fi
     local has_primary has_micro
-    has_primary="$(json_contains "${agg_file}" primary_benchmark)"
-    has_micro="$(json_contains "${agg_file}" micro_benchmark)"
-    assertTrue "Should contain primary_benchmark (ANN) data" "[ ${has_primary} -eq 1 ]"
-    assertTrue "Should contain micro_benchmark data" "[ ${has_micro} -eq 1 ]"
+    has_primary="$(json_contains "${agg_file}" primary)"
+    has_micro="$(json_contains "${agg_file}" micro)"
+    assertTrue "Should contain benchmarks.primary data" "[ ${has_primary} -eq 1 ]"
+    assertTrue "Should contain benchmarks.micro data" "[ ${has_micro} -eq 1 ]"
 }
 
 oneTimeTearDown() {

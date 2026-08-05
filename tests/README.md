@@ -1,6 +1,6 @@
 # 开源软件 ARM64 性能测试框架
 
-面向 openEuler 24.03 SP3 (aarch64/Kunpeng-920) 的开源软件源码编译构建 + 性能基准测试 + 结果输出一体化框架。当前已适配 **faiss** 和 **hnswlib**，可通过 SKILL.md 模板一键扩展至其他软件。
+面向 openEuler 24.03 SP3 (aarch64/Kunpeng-920) 的开源软件源码编译构建 + 性能基准测试 + 结果输出一体化框架。当前已适配 **faiss、hnswlib、openviking、petsc、protobuf、rust、snappy** 共 7 款软件，可通过 SKILL.md 模板一键扩展至其他软件。
 
 ---
 
@@ -23,6 +23,30 @@ SOFTWARE_VERSION=0.9.0 BUILD_METHOD=source_build ./hnswlib_test.sh
 
 # hnswlib 0.7.0（pip 安装）
 SOFTWARE_VERSION=0.7.0 BUILD_METHOD=pip ./hnswlib_test.sh
+
+# openviking 0.4.5（pip 安装）
+SOFTWARE_VERSION=0.4.5 ./openviking_test.sh
+
+# openviking 0.4.4
+SOFTWARE_VERSION=0.4.4 ./openviking_test.sh
+
+# protobuf 35.1（源码构建）
+SOFTWARE_VERSION=35.1 ./protobuf_test.sh
+
+# protobuf 34.2
+SOFTWARE_VERSION=34.2 ./protobuf_test.sh
+
+# snappy 1.2.2（源码构建）
+SOFTWARE_VERSION=1.2.2 ./snappy_test.sh
+
+# snappy 1.2.1
+SOFTWARE_VERSION=1.2.1 ./snappy_test.sh
+
+# petsc 3.25.3（Docker 容器内运行）
+SOFTWARE_VERSION=3.25.3 ./petsc_test.sh
+
+# rust 1.96.0（Docker 容器内运行）
+SOFTWARE_VERSION=1.96.0 ./rust_test.sh
 ```
 
 **可调参数：**
@@ -193,10 +217,19 @@ SKILL.md 是从 faiss/hnswlib 适配经验提炼的通用技能模板，包含�
 
 ## 当前适配软件一览
 
-| 软件 | 版本 | 构建方式 | ANN 配置 | 测试状态 |
+| 软件 | 版本 | 构建方式 | 基准配置 | 测试状态 |
 |---|---|---|---|---|
 | faiss | 1.14.3 | source_build (cmake/make) | FlatL2/IVFFlat/HNSWFlat | 19/19 pass |
 | faiss | 1.14.2 | source_build (cmake/make) | FlatL2/IVFFlat/HNSWFlat | 19/19 pass |
 | hnswlib | 0.9.0 | source_build (git clone+pip install .) | HNSW L2/Cosine/IP × M16/M32/M64 | 18/19 pass |
 | hnswlib | 0.8.0 | pip | HNSW L2/Cosine/IP × M16/M32/M64 | 18/19 pass |
 | hnswlib | 0.7.0 | pip | HNSW L2/Cosine/IP × M16/M32/M64 | 18/19 pass |
+| openviking | 0.4.5 | pip | AGFS 文件系统操作 (small_1kb/medium_64kb/large_1mb, write/read/stat/ls/rm/mkdir/grep) | 19/19 pass |
+| openviking | 0.4.4 | pip | AGFS 文件系统操作 (small_1kb/medium_64kb/large_1mb, write/read/stat/ls/rm/mkdir/grep) | 19/19 pass |
+| petsc | 3.25.3 | docker 容器 (GitHub Actions) | 计算基准 (float_add/list_sort/dict_create/prime_sieve 等) | 15/15 pass |
+| protobuf | 35.1 | source_build (cmake/make) | 序列化基准 (SimpleMessage, size sweep 10~1000) | 20/20 pass |
+| protobuf | 35.0 | source_build (cmake/make) | 序列化基准 (SimpleMessage, size sweep 10~1000) | 20/20 pass |
+| protobuf | 34.2 | source_build (cmake/make) | 序列化基准 (SimpleMessage, size sweep 10~1000) | 20/20 pass |
+| rust | 1.96.0 | docker 容器 (GitHub Actions) | 编译/计算基准 (rustc_compile_hello, matmul_500x500) | 15/15 pass |
+| snappy | 1.2.2 | source_build (cmake/make) | 压缩基准 (random/repeated/text/html 数据) | 21/21 pass |
+| snappy | 1.2.1 | source_build (cmake/make) | 压缩基准 (random/repeated/text/html 数据) | 21/21 pass |
