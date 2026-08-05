@@ -568,10 +568,10 @@ testAggregatedResultsContainsAllBenchmarks() {
     local agg_file="${RESULTS_DIR}/results.json"
     if [ ! -f "${agg_file}" ]; then startSkipping; return; fi
     local has_primary has_micro
-    has_primary="$(json_contains "${agg_file}" primary_benchmark)"
+    has_primary="$(json_contains "${agg_file}" primary)"
     has_micro="$(json_contains "${agg_file}" micro)"
-    assertTrue "Should contain primary_benchmark (compression) data" "[ ${has_primary} -eq 1 ]"
-    assertTrue "Should contain micro_benchmark data" "[ ${has_micro} -eq 1 ]"
+    assertTrue "Should contain benchmarks.primary data" "[ ${has_primary} -eq 1 ]"
+    assertTrue "Should contain benchmarks.micro data" "[ ${has_micro} -eq 1 ]"
 }
 
 usage() {
