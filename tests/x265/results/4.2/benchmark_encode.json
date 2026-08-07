@@ -1,0 +1,72 @@
+{
+  "benchmark": "encode",
+  "description": "x265 H.265/HEVC encoding preset sweep (1280x720, 50 frames) on ARM64",
+  "reference": "https://bitbucket.org/multicoreware/x265_git",
+  "software": "x265",
+  "version": "4.2",
+  "architecture": "arm64",
+  "timestamp": "2026-08-07T08:05:01Z",
+  "performance_metrics": {
+    "fps": {
+      "unit": "fps",
+      "description": "Encoding frames per second"
+    },
+    "psnr_db": {
+      "unit": "dB",
+      "description": "Peak signal-to-noise ratio"
+    },
+    "encode_time_s": {
+      "unit": "s",
+      "description": "Total encode time"
+    }
+  },
+  "parameters": {
+    "resolution": "1280x720",
+    "frames": 50,
+    "iterations": 1,
+    "presets": [
+      "ultrafast",
+      "fast",
+      "medium",
+      "slow",
+      "veryslow"
+    ]
+  },
+  "results_summary": {
+    "preset_ultrafast": {
+      "preset": "ultrafast",
+      "fps": 210.55,
+      "encode_time_s": 0.24,
+      "psnr_db": 47.642,
+      "frames": 50
+    },
+    "preset_fast": {
+      "preset": "fast",
+      "fps": 59.64,
+      "encode_time_s": 0.84,
+      "psnr_db": 49.224,
+      "frames": 50
+    },
+    "preset_medium": {
+      "preset": "medium",
+      "fps": 33.52,
+      "encode_time_s": 1.49,
+      "psnr_db": 50.321,
+      "frames": 50
+    },
+    "preset_slow": {
+      "preset": "slow",
+      "fps": 18.95,
+      "encode_time_s": 2.64,
+      "psnr_db": 50.296,
+      "frames": 50
+    },
+    "preset_veryslow": {
+      "preset": "veryslow",
+      "fps": 2.41,
+      "encode_time_s": 20.74,
+      "psnr_db": 50.153,
+      "frames": 50
+    }
+  }
+}

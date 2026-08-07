@@ -1,0 +1,171 @@
+{
+  "test_time": "2026-08-07T08:14:13Z",
+  "environment": {
+    "test_time": "2026-08-07T08:14:13Z",
+    "Model": "Kunpeng-920",
+    "architecture": "aarch64",
+    "kernel": "6.6.0-132.0.0.111.oe2403sp3.aarch64",
+    "os": "openEuler 24.03 SP3",
+    "cpu_model": "ARM64 CPU (32 cores)",
+    "cpu_cores": 32,
+    "software_name": "x265",
+    "software_version": "x265 [info]: HEVC encoder version 4.1",
+    "python_version": "Python 3.11.6",
+    "gcc_version": "12.3.1"
+  },
+  "benchmarks": {
+    "primary": {
+      "benchmark": "encode",
+      "description": "x265 H.265/HEVC encoding preset sweep (1280x720, 50 frames) on ARM64",
+      "reference": "https://bitbucket.org/multicoreware/x265_git",
+      "software": "x265",
+      "version": "4.1",
+      "architecture": "arm64",
+      "timestamp": "2026-08-07T08:14:39Z",
+      "performance_metrics": {
+        "fps": {
+          "unit": "fps",
+          "description": "Encoding frames per second"
+        },
+        "psnr_db": {
+          "unit": "dB",
+          "description": "Peak signal-to-noise ratio"
+        },
+        "encode_time_s": {
+          "unit": "s",
+          "description": "Total encode time"
+        }
+      },
+      "parameters": {
+        "resolution": "1280x720",
+        "frames": 50,
+        "iterations": 1,
+        "presets": [
+          "ultrafast",
+          "fast",
+          "medium",
+          "slow",
+          "veryslow"
+        ]
+      },
+      "results_summary": {
+        "preset_ultrafast": {
+          "preset": "ultrafast",
+          "fps": 195.79,
+          "encode_time_s": 0.26,
+          "psnr_db": 47.642,
+          "frames": 50
+        },
+        "preset_fast": {
+          "preset": "fast",
+          "fps": 61.23,
+          "encode_time_s": 0.82,
+          "psnr_db": 49.275,
+          "frames": 50
+        },
+        "preset_medium": {
+          "preset": "medium",
+          "fps": 33.72,
+          "encode_time_s": 1.48,
+          "psnr_db": 50.3,
+          "frames": 50
+        },
+        "preset_slow": {
+          "preset": "slow",
+          "fps": 18.32,
+          "encode_time_s": 2.73,
+          "psnr_db": 50.306,
+          "frames": 50
+        },
+        "preset_veryslow": {
+          "preset": "veryslow",
+          "fps": 2.45,
+          "encode_time_s": 20.39,
+          "psnr_db": 49.797,
+          "frames": 50
+        }
+      }
+    },
+    "micro": {
+      "benchmark": "micro_operations",
+      "description": "x265 micro: resolution scaling + thread scaling on ARM64",
+      "reference": "https://bitbucket.org/multicoreware/x265_git",
+      "software": "x265",
+      "version": "4.1",
+      "architecture": "arm64",
+      "timestamp": "2026-08-07T08:15:02Z",
+      "performance_metrics": {
+        "fps": {
+          "unit": "fps",
+          "description": "Encoding frames per second"
+        }
+      },
+      "parameters": {
+        "resolutions": [
+          "320x240",
+          "1280x720",
+          "1920x1080"
+        ],
+        "thread_counts": [
+          "1",
+          "2",
+          "4",
+          "8",
+          "all"
+        ],
+        "iterations": 1
+      },
+      "results": {
+        "resolution_scaling": {
+          "320x240": {
+            "fps": 66.94,
+            "encode_time_s": 0.1494
+          },
+          "1280x720": {
+            "fps": 22.4,
+            "encode_time_s": 0.4464
+          },
+          "1920x1080": {
+            "fps": 16.61,
+            "encode_time_s": 0.602
+          }
+        },
+        "thread_scaling": {
+          "threads_1": {
+            "fps": 3.58
+          },
+          "threads_2": {
+            "fps": 6.55
+          },
+          "threads_4": {
+            "fps": 13.61
+          },
+          "threads_8": {
+            "fps": 23.02
+          },
+          "threads_all": {
+            "fps": 6.82
+          }
+        }
+      }
+    }
+  },
+  "summary": {
+    "avg_fps": 62.3,
+    "max_fps": 195.79,
+    "min_fps": 2.45,
+    "avg_psnr_db": 49.46,
+    "max_psnr_db": 50.31,
+    "preset_ultrafast_fps": 195.79,
+    "preset_fast_fps": 61.23,
+    "preset_medium_fps": 33.72,
+    "preset_slow_fps": 18.32,
+    "preset_veryslow_fps": 2.45,
+    "res_320x240_fps": 66.94,
+    "res_1280x720_fps": 22.4,
+    "res_1920x1080_fps": 16.61,
+    "thread_scaling_ratio": 1.91
+  },
+  "software": "x265",
+  "version": "x265 [info]: HEVC encoder version 4.1"
+}

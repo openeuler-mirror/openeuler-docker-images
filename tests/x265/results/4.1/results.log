@@ -1,0 +1,321 @@
+[START] x265 Source Build & Performance Benchmark v4.1
+[CHECK] Python3 OK: Python 3.11.6
+[CHECK] G++ OK: g++ (GCC) 12.3.1 (openEuler 12.3.1-105.oe2403sp3)
+[CHECK] CMake OK: cmake version 3.27.9
+[CHECK] Git OK: git version 2.43.0
+[CHECK] json_helper.py OK
+[CHECK] OS: openEuler 24.03 SP3 (openEuler)
+[CHECK] Architecture: aarch64
+[CHECK] Build method: source_build (cmake, NEON auto-detected on aarch64)
+[SETUP] Downloading shUnit2 to /tmp/shunit2_3bfG5U...
+[SETUP] shUnit2 downloaded successfully
+[START] x265 Source Build & Performance Benchmark - v4.1
+[START] OS: openEuler 24.03 SP3 (openEuler), Build: source_build
+[CHECK] Python3 OK: Python 3.11.6
+[CHECK] G++ OK: g++ (GCC) 12.3.1 (openEuler 12.3.1-105.oe2403sp3)
+[CHECK] CMake OK: cmake version 3.27.9
+[CHECK] Git OK: git version 2.43.0
+[CHECK] json_helper.py OK
+[CHECK] OS: openEuler 24.03 SP3 (openEuler)
+[CHECK] Architecture: aarch64
+[CHECK] Build method: source_build (cmake, NEON auto-detected on aarch64)
+[PHASE1] === Phase 1: Source Build x265 v4.1 ===
+[BUILD] Created temp build dir: /tmp/x265_build_Azcmqz
+[PHASE1] Preparing env on openEuler...
+Last metadata expiration check: 0:19:02 ago on Fri 07 Aug 2026 07:54:17 AM UTC.
+Package gcc-12.3.1-105.oe2403sp3.aarch64 is already installed.
+Package gcc-c++-12.3.1-105.oe2403sp3.aarch64 is already installed.
+Package cmake-3.27.9-8.oe2403sp3.aarch64 is already installed.
+Package make-1:4.4.1-2.oe2403sp3.aarch64 is already installed.
+Package git-2.43.0-11.oe2403sp3.aarch64 is already installed.
+Package wget-1.21.4-4.oe2403sp3.aarch64 is already installed.
+Package curl-8.4.0-33.oe2403sp3.aarch64 is already installed.
+Dependencies resolved.
+Nothing to do.
+Complete!
+[PHASE1] Cloning x265 tag 4.1 (from Bitbucket)...
+Cloning into '/tmp/x265_build_Azcmqz/x265_src'...
+Note: switching to '1d117bed4747758b51bd2c124d738527e30392cb'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+[PHASE1] Configuring CMake...
+-- cmake version 3.27.9
+CMake Deprecation Warning at CMakeLists.txt:10 (cmake_policy):
+  The OLD behavior for policy CMP0025 will be removed from a future version
+  of CMake.
+
+  The cmake-policies(7) manual explains that the OLD behaviors of all
+  policies are deprecated and that a policy should be set to OLD only under
+  specific short-term circumstances.  Projects should be ported to the NEW
+  behavior and not rely on setting a policy to OLD.
+
+
+CMake Deprecation Warning at CMakeLists.txt:16 (cmake_policy):
+  The OLD behavior for policy CMP0054 will be removed from a future version
+  of CMake.
+
+  The cmake-policies(7) manual explains that the OLD behaviors of all
+  policies are deprecated and that a policy should be set to OLD only under
+  specific short-term circumstances.  Projects should be ported to the NEW
+  behavior and not rely on setting a policy to OLD.
+
+
+CMake Warning (dev) at CMakeLists.txt:19 (project):
+  cmake_minimum_required() should be called prior to this top-level project()
+  call.  Please see the cmake-commands(7) manual for usage documentation of
+  both commands.
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- The C compiler identification is GNU 12.3.1
+-- The CXX compiler identification is GNU 12.3.1
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+CMake Deprecation Warning at CMakeLists.txt:20 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+-- Detected ARM64 target processor
+CMake Warning (dev) at /usr/share/cmake/Modules/FindPackageHandleStandardArgs.cmake:438 (message):
+  The package name passed to `find_package_handle_standard_args` (NUMA) does
+  not match the name of the calling package (Numa).  This can lead to
+  problems in calling code that expects `find_package` result variables
+  (e.g., `_FOUND`) to follow a certain pattern.
+Call Stack (most recent call first):
+  cmake/FindNuma.cmake:43 (find_package_handle_standard_args)
+  CMakeLists.txt:130 (find_package)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Could NOT find NUMA (missing: NUMA_ROOT_DIR NUMA_INCLUDE_DIR NUMA_LIBRARY) 
+-- Looking for include file inttypes.h
+-- Looking for include file inttypes.h - found
+-- Configuring build for run-time CPU feature detection
+-- Performing Test SVE_COMPILATION_C_TEST_COMPILED
+-- Performing Test SVE_COMPILATION_C_TEST_COMPILED - Success
+-- Performing Test SVE_COMPILATION_CXX_TEST_COMPILED
+-- Performing Test SVE_COMPILATION_CXX_TEST_COMPILED - Success
+-- Performing Test SVE_HEADER_C_TEST_COMPILED
+-- Performing Test SVE_HEADER_C_TEST_COMPILED - Failed
+-- Performing Test SVE_HEADER_CXX_TEST_COMPILED
+-- Performing Test SVE_HEADER_CXX_TEST_COMPILED - Failed
+-- Found Neon
+-- Found Neon DotProd
+-- Found Neon I8MM
+-- Found SVE
+-- Found SVE2
+-- Performing Test CC_HAS_FLAX_VEC_CONV_NONE
+-- Performing Test CC_HAS_FLAX_VEC_CONV_NONE - Failed
+-- Performing Test CC_HAS_NO_STRICT_OVERFLOW
+-- Performing Test CC_HAS_NO_STRICT_OVERFLOW - Success
+-- Performing Test CC_HAS_NO_NARROWING
+-- Performing Test CC_HAS_NO_NARROWING - Success
+-- Performing Test CC_HAS_NO_ARRAY_BOUNDS
+-- Performing Test CC_HAS_NO_ARRAY_BOUNDS - Success
+-- Performing Test CC_HAS_FAST_MATH
+-- Performing Test CC_HAS_FAST_MATH - Success
+-- Performing Test CC_HAS_FNO_EXCEPTIONS_FLAG
+-- Performing Test CC_HAS_FNO_EXCEPTIONS_FLAG - Success
+CMake Warning (dev) at /usr/share/cmake/Modules/FindPackageHandleStandardArgs.cmake:438 (message):
+  The package name passed to `find_package_handle_standard_args` (nasm) does
+  not match the name of the calling package (Nasm).  This can lead to
+  problems in calling code that expects `find_package` result variables
+  (e.g., `_FOUND`) to follow a certain pattern.
+Call Stack (most recent call first):
+  cmake/FindNasm.cmake:23 (find_package_handle_standard_args)
+  CMakeLists.txt:504 (find_package)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Could NOT find nasm (missing: NASM_EXECUTABLE) 
+-- GIT_EXECUTABLE /usr/bin/git
+-- GIT LIVE REPO VERSION RETRIEVED
+-- X265 RELEASE VERSION 4.1
+-- Detected CXX compiler using -O3 optimization level
+-- The ASM compiler identification is GNU
+-- Found assembler: /usr/bin/cc
+-- Looking for strtok_r
+-- Looking for strtok_r - found
+-- Looking for include file getopt.h
+-- Looking for include file getopt.h - found
+-- Configuring done (2.2s)
+-- Generating done (0.0s)
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    ENABLE_HDR
+
+
+-- Build files have been written to: /tmp/x265_build_Azcmqz/build
+[PHASE1] Compiling x265...
+[  1%] Building CXX object encoder/CMakeFiles/encoder.dir/search.cpp.o
+[  2%] Building CXX object encoder/CMakeFiles/encoder.dir/frameencoder.cpp.o
+[  5%] Building CXX object encoder/CMakeFiles/encoder.dir/slicetype.cpp.o
+[  5%] Building CXX object encoder/CMakeFiles/encoder.dir/bitcost.cpp.o
+[  5%] Building CXX object encoder/CMakeFiles/encoder.dir/analysis.cpp.o
+[  7%] Building CXX object common/CMakeFiles/common.dir/aarch64/filter-prim.cpp.o
+[  7%] Building CXX object encoder/CMakeFiles/encoder.dir/motion.cpp.o
+[  8%] Building CXX object common/CMakeFiles/common.dir/aarch64/pixel-prim.cpp.o
+[  9%] Building CXX object common/CMakeFiles/common.dir/aarch64/asm-primitives.cpp.o
+[ 10%] Building CXX object encoder/CMakeFiles/encoder.dir/framefilter.cpp.o
+[ 11%] Building CXX object encoder/CMakeFiles/encoder.dir/level.cpp.o
+[ 12%] Building CXX object encoder/CMakeFiles/encoder.dir/sei.cpp.o
+[ 13%] Building CXX object encoder/CMakeFiles/encoder.dir/nal.cpp.o
+[ 15%] Building CXX object common/CMakeFiles/common.dir/aarch64/loopfilter-prim.cpp.o
+[ 15%] Building CXX object common/CMakeFiles/common.dir/aarch64/dct-prim.cpp.o
+[ 16%] Building CXX object encoder/CMakeFiles/encoder.dir/sao.cpp.o
+[ 18%] Building CXX object encoder/CMakeFiles/encoder.dir/dpb.cpp.o
+[ 18%] Building CXX object encoder/CMakeFiles/encoder.dir/entropy.cpp.o
+[ 19%] Building CXX object encoder/CMakeFiles/encoder.dir/reference.cpp.o
+[ 20%] Building CXX object encoder/CMakeFiles/encoder.dir/ratecontrol.cpp.o
+[ 22%] Building CXX object common/CMakeFiles/common.dir/aarch64/arm64-utils.cpp.o
+[ 22%] Building CXX object common/CMakeFiles/common.dir/aarch64/intrapred-prim.cpp.o
+[ 24%] Building CXX object common/CMakeFiles/common.dir/aarch64/filter-neon-dotprod.cpp.o
+[ 24%] Building CXX object common/CMakeFiles/common.dir/aarch64/sao-prim.cpp.o
+[ 25%] Building CXX object common/CMakeFiles/common.dir/aarch64/filter-neon-i8mm.cpp.o
+[ 26%] Building CXX object encoder/CMakeFiles/encoder.dir/weightPrediction.cpp.o
+[ 27%] Building CXX object encoder/CMakeFiles/encoder.dir/api.cpp.o
+[ 28%] Building CXX object common/CMakeFiles/common.dir/dct.cpp.o
+[ 29%] Building CXX object encoder/CMakeFiles/encoder.dir/encoder.cpp.o
+[ 32%] Building CXX object common/CMakeFiles/common.dir/lowpassdct.cpp.o
+[ 32%] Building CXX object common/CMakeFiles/common.dir/pixel.cpp.o
+[ 30%] Building CXX object common/CMakeFiles/common.dir/primitives.cpp.o
+[ 34%] Building CXX object common/CMakeFiles/common.dir/ipfilter.cpp.o
+[ 35%] Building CXX object common/CMakeFiles/common.dir/intrapred.cpp.o
+[ 36%] Building CXX object common/CMakeFiles/common.dir/loopfilter.cpp.o
+[ 37%] Building CXX object common/CMakeFiles/common.dir/constants.cpp.o
+[ 38%] Building CXX object common/CMakeFiles/common.dir/cpu.cpp.o
+[ 39%] Building CXX object common/CMakeFiles/common.dir/version.cpp.o
+[ 40%] Building CXX object common/CMakeFiles/common.dir/threading.cpp.o
+/tmp/x265_build_Azcmqz/x265_src/source/common/cpu.cpp:65:13: warning: ‘x265::enable512’ defined but not used [-Wunused-variable]
+   65 | static bool enable512 = false;
+      |             ^~~~~~~~~
+[ 41%] Building CXX object common/CMakeFiles/common.dir/threadpool.cpp.o
+[ 42%] Building CXX object common/CMakeFiles/common.dir/wavefront.cpp.o
+[ 43%] Building CXX object common/CMakeFiles/common.dir/md5.cpp.o
+[ 44%] Building CXX object common/CMakeFiles/common.dir/bitstream.cpp.o
+[ 45%] Building CXX object common/CMakeFiles/common.dir/yuv.cpp.o
+[ 46%] Building CXX object common/CMakeFiles/common.dir/shortyuv.cpp.o
+[ 47%] Building CXX object common/CMakeFiles/common.dir/picyuv.cpp.o
+[ 48%] Building CXX object common/CMakeFiles/common.dir/common.cpp.o
+[ 49%] Building CXX object common/CMakeFiles/common.dir/param.cpp.o
+[ 50%] Building CXX object common/CMakeFiles/common.dir/frame.cpp.o
+[ 51%] Building CXX object common/CMakeFiles/common.dir/framedata.cpp.o
+[ 52%] Building CXX object common/CMakeFiles/common.dir/cudata.cpp.o
+[ 53%] Building CXX object common/CMakeFiles/common.dir/slice.cpp.o
+[ 54%] Building CXX object common/CMakeFiles/common.dir/lowres.cpp.o
+[ 55%] Building CXX object common/CMakeFiles/common.dir/piclist.cpp.o
+[ 56%] Building CXX object common/CMakeFiles/common.dir/predict.cpp.o
+[ 57%] Building CXX object common/CMakeFiles/common.dir/scalinglist.cpp.o
+[ 58%] Building CXX object common/CMakeFiles/common.dir/quant.cpp.o
+[ 59%] Building CXX object common/CMakeFiles/common.dir/deblock.cpp.o
+[ 60%] Building CXX object common/CMakeFiles/common.dir/scaler.cpp.o
+[ 61%] Building CXX object common/CMakeFiles/common.dir/ringmem.cpp.o
+[ 62%] Building CXX object common/CMakeFiles/common.dir/temporalfilter.cpp.o
+[ 62%] Built target encoder
+[ 62%] Built target common
+[ 64%] Generating blockcopy8-common.S.o
+[ 64%] Generating asm-sve.S.o
+[ 65%] Generating ssd-neon-dotprod.S.o
+[ 67%] Generating asm.S.o
+[ 68%] Generating blockcopy8-sve.S.o
+[ 69%] Generating mc-a-common.S.o
+[ 72%] Generating mc-a-sve2.S.o
+[ 72%] Generating intrapred.S.o
+[ 72%] Generating blockcopy8.S.o
+[ 73%] Generating dct.S.o
+[ 74%] Generating p2s-common.S.o
+[ 75%] Generating mc-a.S.o
+[ 77%] Generating p2s-sve.S.o
+[ 77%] Generating pixel-util-common.S.o
+[ 79%] Generating pixel-util-sve2.S.o
+[ 79%] Generating p2s.S.o
+[ 80%] Generating pixel-util-sve.S.o
+[ 81%] Generating pixel-util.S.o
+[ 82%] Generating sad-neon-dotprod.S.o
+[ 83%] Generating ssd-a-common.S.o
+[ 84%] Generating sad-a.S.o
+[ 85%] Generating ssd-a-sve2.S.o
+[ 86%] Generating ssd-a.S.o
+[ 87%] Linking CXX static library libx265.a
+[ 87%] Built target x265-static
+[ 88%] Building CXX object CMakeFiles/cli.dir/input/input.cpp.o
+[ 89%] Building CXX object CMakeFiles/cli.dir/input/y4m.cpp.o
+[ 91%] Building CXX object CMakeFiles/cli.dir/output/output.cpp.o
+[ 91%] Building CXX object CMakeFiles/cli.dir/output/reconplay.cpp.o
+[ 92%] Building CXX object CMakeFiles/cli.dir/input/yuv.cpp.o
+[ 93%] Building CXX object CMakeFiles/cli.dir/output/yuv.cpp.o
+[ 95%] Building CXX object CMakeFiles/cli.dir/x265.cpp.o
+[ 95%] Building CXX object CMakeFiles/cli.dir/output/raw.cpp.o
+[ 96%] Building CXX object CMakeFiles/cli.dir/x265cli.cpp.o
+[ 97%] Building CXX object CMakeFiles/cli.dir/output/y4m.cpp.o
+[ 98%] Building CXX object CMakeFiles/cli.dir/abrEncApp.cpp.o
+[100%] Linking CXX executable x265
+[100%] Built target cli
+[ 44%] Built target common
+[ 62%] Built target encoder
+[ 87%] Built target x265-static
+[100%] Built target cli
+Install the project...
+-- Install configuration: "Release"
+-- Installing: /tmp/x265_build_Azcmqz/install/lib/libx265.a
+-- Installing: /tmp/x265_build_Azcmqz/install/include/x265.h
+-- Installing: /tmp/x265_build_Azcmqz/install/include/x265_config.h
+-- Installing: /tmp/x265_build_Azcmqz/install/lib/pkgconfig/x265.pc
+-- Installing: /tmp/x265_build_Azcmqz/install/bin/x265
+[PHASE1] Verifying x265 binary...
+x265 [info]: HEVC encoder version 4.1
+x265 [info]: build info [Linux][GCC 12.3.1][64 bit] 8bit
+x265 [info]: using cpu capabilities: NEON Neon_DotProd
+[PHASE1] Generating test YUV (1280x720, 50 frames)...
+[GEN_YUV] Generated 1280x720 I420, 50 frames, 69120000 bytes (65.9 MB) -> /tmp/x265_build_Azcmqz/test_1280x720.yuv
+[PHASE1] Build phase complete
+[PHASE2] === Phase 2: Collect Version Info ===
+[PHASE2] Version info saved (x265: x265 [info]: HEVC encoder version 4.1)
+[PHASE3] === Phase 3: Run Benchmarks ===
+[PHASE3A] Running H.265 encode preset sweep...
+[BENCHMARK_ENCODE] Running preset ultrafast...
+[BENCHMARK_ENCODE] Running preset fast...
+[BENCHMARK_ENCODE] Running preset medium...
+[BENCHMARK_ENCODE] Running preset slow...
+[BENCHMARK_ENCODE] Running preset veryslow...
+[BENCHMARK_ENCODE] Output written to /root/tian/Tian/tests/x265/results/4.1/benchmark_encode.json (5 presets)
+[PHASE3B] Running micro benchmark...
+[BENCHMARK_MICRO] 320x240: 66.94 fps
+[BENCHMARK_MICRO] 1280x720: 22.4 fps
+[BENCHMARK_MICRO] 1920x1080: 16.61 fps
+[BENCHMARK_MICRO] threads 1: 3.58 fps
+[BENCHMARK_MICRO] threads 2: 6.55 fps
+[BENCHMARK_MICRO] threads 4: 13.61 fps
+[BENCHMARK_MICRO] threads 8: 23.02 fps
+[BENCHMARK_MICRO] threads all: 6.82 fps
+[BENCHMARK_MICRO] Output written to /root/tian/Tian/tests/x265/results/4.1/micro_benchmark.json
+[PHASE4] === Phase 4: Aggregate & Report ===
+[PHASE4] Reports generated:
+[PHASE4]   JSON: /root/tian/Tian/tests/x265/results/4.1/results.json
+[PHASE4]   TXT:  /root/tian/Tian/tests/x265/results/4.1/results.txt
+[PHASE4]   LOG:  /root/tian/Tian/tests/x265/results/4.1/results.log
+[BUILD] Cleaning up: /tmp/x265_build_Azcmqz
