@@ -1,0 +1,178 @@
+{
+  "test_time": "2026-08-07T07:41:26Z",
+  "environment": {
+    "test_time": "2026-08-07T07:41:26Z",
+    "Model": "Kunpeng-920",
+    "architecture": "aarch64",
+    "kernel": "6.6.0-132.0.0.111.oe2403sp3.aarch64",
+    "os": "openEuler 24.03 SP3",
+    "cpu_model": "ARM64 CPU (32 cores)",
+    "cpu_cores": 32,
+    "software_name": "x264",
+    "software_version": "x264 0.164.x",
+    "python_version": "Python 3.11.6",
+    "gcc_version": "12.3.1"
+  },
+  "benchmarks": {
+    "primary": {
+      "benchmark": "encode",
+      "description": "x264 H.264 encoding preset sweep (1280x720, 50 frames) on ARM64",
+      "reference": "https://www.videolan.org/developers/x264.html",
+      "software": "x264",
+      "version": "rolling",
+      "architecture": "arm64",
+      "timestamp": "2026-08-07T07:41:29Z",
+      "performance_metrics": {
+        "fps": {
+          "unit": "fps",
+          "description": "Encoding frames per second"
+        },
+        "bitrate_kbps": {
+          "unit": "kb/s",
+          "description": "Output bitrate"
+        },
+        "psnr_db": {
+          "unit": "dB",
+          "description": "Peak signal-to-noise ratio"
+        },
+        "encode_time_s": {
+          "unit": "s",
+          "description": "Total encode time"
+        }
+      },
+      "parameters": {
+        "resolution": "1280x720",
+        "frames": 50,
+        "iterations": 1,
+        "presets": [
+          "ultrafast",
+          "fast",
+          "medium",
+          "slow",
+          "veryslow"
+        ]
+      },
+      "results_summary": {
+        "preset_ultrafast": {
+          "preset": "ultrafast",
+          "fps": 670.67,
+          "bitrate_kbps": 6929.04,
+          "psnr_db": 0.0,
+          "encode_time_s": 0.0746,
+          "frames": 50
+        },
+        "preset_fast": {
+          "preset": "fast",
+          "fps": 152.65,
+          "bitrate_kbps": 2421.02,
+          "psnr_db": 0.0,
+          "encode_time_s": 0.3275,
+          "frames": 50
+        },
+        "preset_medium": {
+          "preset": "medium",
+          "fps": 118.67,
+          "bitrate_kbps": 2252.93,
+          "psnr_db": 0.0,
+          "encode_time_s": 0.4213,
+          "frames": 50
+        },
+        "preset_slow": {
+          "preset": "slow",
+          "fps": 88.49,
+          "bitrate_kbps": 2366.64,
+          "psnr_db": 0.0,
+          "encode_time_s": 0.565,
+          "frames": 50
+        },
+        "preset_veryslow": {
+          "preset": "veryslow",
+          "fps": 32.44,
+          "bitrate_kbps": 1507.66,
+          "psnr_db": 0.0,
+          "encode_time_s": 1.5413,
+          "frames": 50
+        }
+      }
+    },
+    "micro": {
+      "benchmark": "micro_operations",
+      "description": "x264 micro: resolution scaling + thread scaling on ARM64",
+      "reference": "https://www.videolan.org/developers/x264.html",
+      "software": "x264",
+      "version": "rolling",
+      "architecture": "arm64",
+      "timestamp": "2026-08-07T07:41:34Z",
+      "performance_metrics": {
+        "fps": {
+          "unit": "fps",
+          "description": "Encoding frames per second"
+        }
+      },
+      "parameters": {
+        "resolutions": [
+          "320x240",
+          "1280x720",
+          "1920x1080"
+        ],
+        "thread_counts": [
+          "1",
+          "2",
+          "4",
+          "8",
+          "all"
+        ],
+        "iterations": 1
+      },
+      "results": {
+        "resolution_scaling": {
+          "320x240": {
+            "fps": 459.37,
+            "encode_time_s": 0.0218
+          },
+          "1280x720": {
+            "fps": 67.97,
+            "encode_time_s": 0.1471
+          },
+          "1920x1080": {
+            "fps": 35.94,
+            "encode_time_s": 0.2782
+          }
+        },
+        "thread_scaling": {
+          "threads_1": {
+            "fps": 19.43
+          },
+          "threads_2": {
+            "fps": 28.89
+          },
+          "threads_4": {
+            "fps": 37.03
+          },
+          "threads_8": {
+            "fps": 52.4
+          },
+          "threads_all": {
+            "fps": 0.0
+          }
+        }
+      }
+    }
+  },
+  "summary": {
+    "avg_fps": 212.58,
+    "max_fps": 670.67,
+    "min_fps": 32.44,
+    "avg_bitrate_kbps": 3095.46,
+    "preset_ultrafast_fps": 670.67,
+    "preset_fast_fps": 152.65,
+    "preset_medium_fps": 118.67,
+    "preset_slow_fps": 88.49,
+    "preset_veryslow_fps": 32.44,
+    "res_320x240_fps": 459.37,
+    "res_1280x720_fps": 67.97,
+    "res_1920x1080_fps": 35.94
+  },
+  "software": "x264",
+  "version": "x264 0.164.x"
+}
