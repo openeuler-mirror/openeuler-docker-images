@@ -1,0 +1,69 @@
+{
+  "benchmark": "json",
+  "description": "sonic-cpp JSON parse/serialize/find benchmark across document sizes on ARM64",
+  "reference": "https://github.com/bytedance/sonic-cpp",
+  "software": "sonic",
+  "version": "1.0.2",
+  "architecture": "arm64",
+  "timestamp": "2026-08-07T08:03:44Z",
+  "performance_metrics": {
+    "qps": {"unit": "ops/s", "description": "Operations per second"},
+    "throughput_mbs": {"unit": "MB/s", "description": "JSON bytes processed per second"},
+    "avg_time_us": {"unit": "us", "description": "Average time per operation"}
+  },
+  "parameters": {
+    "iterations": 1,
+    "doc_sizes": ["small(~1KB)", "medium(~100KB)", "large(~1MB)"]
+  },
+  "results_summary": {
+    "parse_small": {
+      "operation": "parse",
+      "doc_size_bytes": 2285,
+      "qps": 45100.04,
+      "avg_time_us": 22.17,
+      "throughput_mbs": 98.28
+    },
+    "parse_medium": {
+      "operation": "parse",
+      "doc_size_bytes": 249700,
+      "qps": 1108.72,
+      "avg_time_us": 901.94,
+      "throughput_mbs": 264.02
+    },
+    "parse_large": {
+      "operation": "parse",
+      "doc_size_bytes": 2601933,
+      "qps": 121.10,
+      "avg_time_us": 8257.63,
+      "throughput_mbs": 300.50
+    },
+    "serialize_small": {
+      "operation": "serialize",
+      "doc_size_bytes": 2285,
+      "qps": 59074.70,
+      "avg_time_us": 16.93,
+      "throughput_mbs": 128.73
+    },
+    "serialize_medium": {
+      "operation": "serialize",
+      "doc_size_bytes": 249700,
+      "qps": 3600.26,
+      "avg_time_us": 277.76,
+      "throughput_mbs": 857.34
+    },
+    "serialize_large": {
+      "operation": "serialize",
+      "doc_size_bytes": 2601933,
+      "qps": 290.06,
+      "avg_time_us": 3447.53,
+      "throughput_mbs": 719.76
+    },
+    "find_medium": {
+      "operation": "find",
+      "doc_size_bytes": 249700,
+      "qps": 4194304.00,
+      "avg_time_us": 0.24,
+      "throughput_mbs": 0.00
+    }
+  }
+}
