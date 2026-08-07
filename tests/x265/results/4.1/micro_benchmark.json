@@ -1,0 +1,63 @@
+{
+  "benchmark": "micro_operations",
+  "description": "x265 micro: resolution scaling + thread scaling on ARM64",
+  "reference": "https://bitbucket.org/multicoreware/x265_git",
+  "software": "x265",
+  "version": "4.1",
+  "architecture": "arm64",
+  "timestamp": "2026-08-07T08:15:02Z",
+  "performance_metrics": {
+    "fps": {
+      "unit": "fps",
+      "description": "Encoding frames per second"
+    }
+  },
+  "parameters": {
+    "resolutions": [
+      "320x240",
+      "1280x720",
+      "1920x1080"
+    ],
+    "thread_counts": [
+      "1",
+      "2",
+      "4",
+      "8",
+      "all"
+    ],
+    "iterations": 1
+  },
+  "results": {
+    "resolution_scaling": {
+      "320x240": {
+        "fps": 66.94,
+        "encode_time_s": 0.1494
+      },
+      "1280x720": {
+        "fps": 22.4,
+        "encode_time_s": 0.4464
+      },
+      "1920x1080": {
+        "fps": 16.61,
+        "encode_time_s": 0.602
+      }
+    },
+    "thread_scaling": {
+      "threads_1": {
+        "fps": 3.58
+      },
+      "threads_2": {
+        "fps": 6.55
+      },
+      "threads_4": {
+        "fps": 13.61
+      },
+      "threads_8": {
+        "fps": 23.02
+      },
+      "threads_all": {
+        "fps": 6.82
+      }
+    }
+  }
+}

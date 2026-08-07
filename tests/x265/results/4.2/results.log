@@ -1,0 +1,2382 @@
+[START] x265 Source Build & Performance Benchmark v4.2
+[CHECK] Python3 OK: Python 3.11.6
+[CHECK] G++ OK: g++ (GCC) 12.3.1 (openEuler 12.3.1-105.oe2403sp3)
+[CHECK] CMake OK: cmake version 3.27.9
+[CHECK] Git OK: git version 2.43.0
+[CHECK] json_helper.py OK
+[CHECK] OS: openEuler 24.03 SP3 (openEuler)
+[CHECK] Architecture: aarch64
+[CHECK] Build method: source_build (cmake, NEON auto-detected on aarch64)
+[SETUP] Downloading shUnit2 to /tmp/shunit2_FdSwNI...
+[SETUP] shUnit2 downloaded successfully
+[START] x265 Source Build & Performance Benchmark - v4.2
+[START] OS: openEuler 24.03 SP3 (openEuler), Build: source_build
+[CHECK] Python3 OK: Python 3.11.6
+[CHECK] G++ OK: g++ (GCC) 12.3.1 (openEuler 12.3.1-105.oe2403sp3)
+[CHECK] CMake OK: cmake version 3.27.9
+[CHECK] Git OK: git version 2.43.0
+[CHECK] json_helper.py OK
+[CHECK] OS: openEuler 24.03 SP3 (openEuler)
+[CHECK] Architecture: aarch64
+[CHECK] Build method: source_build (cmake, NEON auto-detected on aarch64)
+[PHASE1] === Phase 1: Source Build x265 v4.2 ===
+[BUILD] Created temp build dir: /tmp/x265_build_5vXBV1
+[PHASE1] Preparing env on openEuler...
+Last metadata expiration check: 0:24:21 ago on Fri 07 Aug 2026 07:20:04 AM UTC.
+Package gcc-12.3.1-105.oe2403sp3.aarch64 is already installed.
+Package gcc-c++-12.3.1-105.oe2403sp3.aarch64 is already installed.
+Package cmake-3.27.9-8.oe2403sp3.aarch64 is already installed.
+Package make-1:4.4.1-2.oe2403sp3.aarch64 is already installed.
+Package git-2.43.0-11.oe2403sp3.aarch64 is already installed.
+Package wget-1.21.4-4.oe2403sp3.aarch64 is already installed.
+Package curl-8.4.0-33.oe2403sp3.aarch64 is already installed.
+Dependencies resolved.
+Nothing to do.
+Complete!
+[PHASE1] Cloning x265 tag 4.2 (from Bitbucket)...
+Cloning into '/tmp/x265_build_5vXBV1/x265_src'...
+Note: switching to 'e444744c03978c1fb4e037168967020cf2648427'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+[PHASE1] Configuring CMake...
+-- cmake version 3.27.9
+-- The C compiler identification is GNU 12.3.1
+-- The CXX compiler identification is GNU 12.3.1
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Detected ARM64 target processor
+-- Could NOT find Numa (missing: NUMA_ROOT_DIR NUMA_INCLUDE_DIR NUMA_LIBRARY) 
+-- Looking for include file inttypes.h
+-- Looking for include file inttypes.h - found
+-- Configuring build for run-time CPU feature detection
+-- Performing Test SVE_COMPILATION_C_TEST_COMPILED
+-- Performing Test SVE_COMPILATION_C_TEST_COMPILED - Success
+-- Performing Test SVE_COMPILATION_CXX_TEST_COMPILED
+-- Performing Test SVE_COMPILATION_CXX_TEST_COMPILED - Success
+-- Performing Test SVE_HEADER_C_TEST_COMPILED
+-- Performing Test SVE_HEADER_C_TEST_COMPILED - Failed
+-- Performing Test SVE_HEADER_CXX_TEST_COMPILED
+-- Performing Test SVE_HEADER_CXX_TEST_COMPILED - Failed
+-- Found Neon
+-- Found Neon DotProd
+-- Found Neon I8MM
+-- Found SVE
+-- Found SVE2
+-- Found SVE2 BitPerm
+-- Performing Test CC_HAS_FLAX_VEC_CONV_NONE
+-- Performing Test CC_HAS_FLAX_VEC_CONV_NONE - Failed
+-- Performing Test CC_HAS_NO_STRICT_OVERFLOW
+-- Performing Test CC_HAS_NO_STRICT_OVERFLOW - Success
+-- Performing Test CC_HAS_NO_NARROWING
+-- Performing Test CC_HAS_NO_NARROWING - Success
+-- Performing Test CC_HAS_NO_ARRAY_BOUNDS
+-- Performing Test CC_HAS_NO_ARRAY_BOUNDS - Success
+-- Performing Test CC_HAS_FAST_MATH
+-- Performing Test CC_HAS_FAST_MATH - Success
+-- Performing Test CC_HAS_FNO_EXCEPTIONS_FLAG
+-- Performing Test CC_HAS_FNO_EXCEPTIONS_FLAG - Success
+-- Could NOT find Nasm (missing: NASM_EXECUTABLE) 
+-- GIT_EXECUTABLE /usr/bin/git
+-- GIT LIVE REPO VERSION RETRIEVED
+-- X265 RELEASE VERSION 4.2
+-- Detected CXX compiler using -O3 optimization level
+-- The ASM compiler identification is GNU
+-- Found assembler: /usr/bin/cc
+-- Looking for strtok_r
+-- Looking for strtok_r - found
+-- Looking for include file getopt.h
+-- Looking for include file getopt.h - found
+-- Configuring done (2.2s)
+-- Generating done (0.0s)
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    ENABLE_HDR
+
+
+-- Build files have been written to: /tmp/x265_build_5vXBV1/build
+[PHASE1] Compiling x265...
+[  1%] Building CXX object encoder/CMakeFiles/encoder.dir/analysis.cpp.o
+[  3%] Building CXX object encoder/CMakeFiles/encoder.dir/search.cpp.o
+[  3%] Building CXX object encoder/CMakeFiles/encoder.dir/motion.cpp.o
+[  4%] Building CXX object encoder/CMakeFiles/encoder.dir/bitcost.cpp.o
+[  5%] Building CXX object encoder/CMakeFiles/encoder.dir/framefilter.cpp.o
+[  6%] Building CXX object encoder/CMakeFiles/encoder.dir/slicetype.cpp.o
+[  7%] Building CXX object encoder/CMakeFiles/encoder.dir/nal.cpp.o
+[  8%] Building CXX object encoder/CMakeFiles/encoder.dir/level.cpp.o
+[ 10%] Building CXX object encoder/CMakeFiles/encoder.dir/sei.cpp.o
+[ 10%] Building CXX object encoder/CMakeFiles/encoder.dir/frameencoder.cpp.o
+[ 11%] Building CXX object common/CMakeFiles/common.dir/aarch64/asm-primitives.cpp.o
+[ 13%] Building CXX object encoder/CMakeFiles/encoder.dir/sao.cpp.o
+[ 13%] Building CXX object encoder/CMakeFiles/encoder.dir/entropy.cpp.o
+[ 14%] Building CXX object common/CMakeFiles/common.dir/aarch64/dct-prim.cpp.o
+[ 15%] Building CXX object common/CMakeFiles/common.dir/aarch64/filter-prim.cpp.o
+[ 16%] Building CXX object common/CMakeFiles/common.dir/aarch64/loopfilter-prim.cpp.o
+[ 19%] Building CXX object encoder/CMakeFiles/encoder.dir/dpb.cpp.o
+[ 19%] Building CXX object common/CMakeFiles/common.dir/aarch64/pixel-prim.cpp.o
+[ 19%] Building CXX object encoder/CMakeFiles/encoder.dir/ratecontrol.cpp.o
+[ 20%] Building CXX object encoder/CMakeFiles/encoder.dir/api.cpp.o
+[ 22%] Building CXX object encoder/CMakeFiles/encoder.dir/weightPrediction.cpp.o
+[ 22%] Building CXX object encoder/CMakeFiles/encoder.dir/reference.cpp.o
+[ 24%] Building CXX object common/CMakeFiles/common.dir/aarch64/arm64-utils.cpp.o
+[ 24%] Building CXX object common/CMakeFiles/common.dir/aarch64/sao-prim.cpp.o
+[ 25%] Building CXX object encoder/CMakeFiles/encoder.dir/encoder.cpp.o
+[ 27%] Building CXX object common/CMakeFiles/common.dir/aarch64/filter-neon-dotprod.cpp.o
+[ 27%] Building CXX object common/CMakeFiles/common.dir/aarch64/pixel-prim-neon-dotprod.cpp.o
+[ 28%] Building CXX object common/CMakeFiles/common.dir/aarch64/intrapred-prim.cpp.o
+[ 30%] Building CXX object common/CMakeFiles/common.dir/primitives.cpp.o
+[ 30%] Building CXX object common/CMakeFiles/common.dir/aarch64/filter-neon-i8mm.cpp.o
+[ 31%] Building CXX object encoder/CMakeFiles/encoder.dir/threadedme.cpp.o
+[ 32%] Building CXX object common/CMakeFiles/common.dir/pixel.cpp.o
+[ 33%] Building CXX object common/CMakeFiles/common.dir/dct.cpp.o
+[ 34%] Building CXX object common/CMakeFiles/common.dir/lowpassdct.cpp.o
+[ 35%] Building CXX object common/CMakeFiles/common.dir/ipfilter.cpp.o
+[ 36%] Building CXX object common/CMakeFiles/common.dir/intrapred.cpp.o
+[ 37%] Building CXX object common/CMakeFiles/common.dir/loopfilter.cpp.o
+[ 38%] Building CXX object common/CMakeFiles/common.dir/constants.cpp.o
+[ 39%] Building CXX object common/CMakeFiles/common.dir/cpu.cpp.o
+[ 40%] Building CXX object common/CMakeFiles/common.dir/version.cpp.o
+[ 41%] Building CXX object common/CMakeFiles/common.dir/threading.cpp.o
+[ 42%] Building CXX object common/CMakeFiles/common.dir/threadpool.cpp.o
+[ 43%] Building CXX object common/CMakeFiles/common.dir/wavefront.cpp.o
+[ 44%] Building CXX object common/CMakeFiles/common.dir/md5.cpp.o
+[ 45%] Building CXX object common/CMakeFiles/common.dir/bitstream.cpp.o
+[ 46%] Building CXX object common/CMakeFiles/common.dir/yuv.cpp.o
+[ 47%] Building CXX object common/CMakeFiles/common.dir/shortyuv.cpp.o
+[ 48%] Building CXX object common/CMakeFiles/common.dir/picyuv.cpp.o
+[ 50%] Building CXX object common/CMakeFiles/common.dir/common.cpp.o
+[ 51%] Building CXX object common/CMakeFiles/common.dir/param.cpp.o
+[ 52%] Building CXX object common/CMakeFiles/common.dir/frame.cpp.o
+[ 53%] Building CXX object common/CMakeFiles/common.dir/framedata.cpp.o
+/tmp/x265_build_5vXBV1/x265_src/source/common/threadpool.cpp: In function ‘void x265::distributeThreadsForTme(x265_param*, int, int&, bool, int*, uint64_t*, int&, int&)’:
+/tmp/x265_build_5vXBV1/x265_src/source/common/threadpool.cpp:268:10: warning: unused parameter ‘bNumaSupport’ [-Wunused-parameter]
+  268 |     bool bNumaSupport,
+      |     ~~~~~^~~~~~~~~~~~
+[ 54%] Building CXX object common/CMakeFiles/common.dir/cudata.cpp.o
+[ 55%] Building CXX object common/CMakeFiles/common.dir/slice.cpp.o
+[ 56%] Building CXX object common/CMakeFiles/common.dir/lowres.cpp.o
+[ 57%] Building CXX object common/CMakeFiles/common.dir/piclist.cpp.o
+[ 58%] Building CXX object common/CMakeFiles/common.dir/predict.cpp.o
+[ 59%] Building CXX object common/CMakeFiles/common.dir/scalinglist.cpp.o
+[ 60%] Building CXX object common/CMakeFiles/common.dir/quant.cpp.o
+[ 61%] Building CXX object common/CMakeFiles/common.dir/deblock.cpp.o
+[ 62%] Building CXX object common/CMakeFiles/common.dir/scaler.cpp.o
+[ 63%] Building CXX object common/CMakeFiles/common.dir/ringmem.cpp.o
+[ 64%] Building CXX object common/CMakeFiles/common.dir/temporalfilter.cpp.o
+[ 64%] Built target encoder
+[ 64%] Built target common
+[ 66%] Generating blockcopy8.S.o
+[ 66%] Generating ssd-neon-dotprod.S.o
+[ 67%] Generating intrapred.S.o
+[ 69%] Generating asm-sve.S.o
+[ 69%] Generating asm.S.o
+[ 71%] Generating dct.S.o
+[ 71%] Generating mc-a.S.o
+[ 73%] Generating mc-a-common.S.o
+[ 73%] Generating mc-a-sve2.S.o
+[ 74%] Generating p2s-sve.S.o
+[ 75%] Generating pixel-util-common.S.o
+[ 78%] Generating pixel-util-sve.S.o
+[ 78%] Generating p2s.S.o
+[ 78%] Generating p2s-common.S.o
+[ 79%] Generating pixel-util-sve2-bitperm.S.o
+[ 81%] Generating pixel-util.S.o
+[ 81%] Generating sad-neon-dotprod.S.o
+[ 84%] Generating pixel-util-sve2.S.o
+[ 84%] Generating sad-a.S.o
+[ 84%] Generating ssd-a-common.S.o
+[ 85%] Generating ssd-a-sve.S.o
+[ 86%] Generating ssd-a.S.o
+[ 87%] Linking CXX static library libx265.a
+[ 87%] Built target x265-static
+[ 88%] Building CXX object CMakeFiles/cli.dir/input/input.cpp.o
+[ 90%] Building CXX object CMakeFiles/cli.dir/input/y4m.cpp.o
+[ 90%] Building CXX object CMakeFiles/cli.dir/input/yuv.cpp.o
+[ 91%] Building CXX object CMakeFiles/cli.dir/output/output.cpp.o
+[ 92%] Building CXX object CMakeFiles/cli.dir/output/reconplay.cpp.o
+[ 93%] Building CXX object CMakeFiles/cli.dir/output/raw.cpp.o
+[ 94%] Building CXX object CMakeFiles/cli.dir/output/y4m.cpp.o
+[ 95%] Building CXX object CMakeFiles/cli.dir/x265.cpp.o
+[ 98%] Building CXX object CMakeFiles/cli.dir/abrEncApp.cpp.o
+[ 98%] Building CXX object CMakeFiles/cli.dir/x265cli.cpp.o
+[ 98%] Building CXX object CMakeFiles/cli.dir/output/yuv.cpp.o
+[100%] Linking CXX executable x265
+[100%] Built target cli
+[ 44%] Built target common
+[ 64%] Built target encoder
+[ 87%] Built target x265-static
+[100%] Built target cli
+Install the project...
+-- Install configuration: "Release"
+-- Installing: /tmp/x265_build_5vXBV1/install/lib/libx265.a
+-- Installing: /tmp/x265_build_5vXBV1/install/include/x265.h
+-- Installing: /tmp/x265_build_5vXBV1/install/include/x265_config.h
+-- Installing: /tmp/x265_build_5vXBV1/install/lib/pkgconfig/x265.pc
+-- Installing: /tmp/x265_build_5vXBV1/install/bin/x265
+[PHASE1] Verifying x265 binary...
+x265 [info]: HEVC encoder version 4.2
+x265 [info]: build info [Linux][GCC 12.3.1][64 bit] 8bit
+x265 [info]: using cpu capabilities: NEON Neon_DotProd
+[PHASE1] Generating test YUV (1280x720, 50 frames)...
+[GEN_YUV] Generated 1280x720 I420, 50 frames, 69120000 bytes (65.9 MB) -> /tmp/x265_build_5vXBV1/test_1280x720.yuv
+[PHASE1] Build phase complete
+[PHASE2] === Phase 2: Collect Version Info ===
+[PHASE2] Version info saved (x265: x265 [info]: HEVC encoder version 4.2)
+[PHASE3] === Phase 3: Run Benchmarks ===
+[PHASE3A] Running H.265 encode preset sweep...
+[BENCHMARK_ENCODE] Running preset ultrafast...
+[BENCHMARK_ENCODE] Running preset fast...
+[BENCHMARK_ENCODE] Running preset medium...
+[BENCHMARK_ENCODE] Running preset slow...
+[BENCHMARK_ENCODE] Running preset veryslow...
+[BENCHMARK_ENCODE] Output written to /root/tian/Tian/tests/x265/results/4.2/benchmark_encode.json (5 presets)
+[PHASE3B] Running micro benchmark...
+[BENCHMARK_MICRO] 320x240: 0.0 fps
+[BENCHMARK_MICRO] 1280x720: 0.0 fps
+[BENCHMARK_MICRO] 1920x1080: 0.0 fps
+[BENCHMARK_MICRO] threads 1: 0.0 fps
+[BENCHMARK_MICRO] threads 2: 0.0 fps
+[BENCHMARK_MICRO] threads 4: 0.0 fps
+[BENCHMARK_MICRO] threads 8: 0.0 fps
+[BENCHMARK_MICRO] threads all: 0.0 fps
+[BENCHMARK_MICRO] Output written to /root/tian/Tian/tests/x265/results/4.2/micro_benchmark.json
+[PHASE4] === Phase 4: Aggregate & Report ===
+[PHASE4] Reports generated:
+[PHASE4]   JSON: /root/tian/Tian/tests/x265/results/4.2/results.json
+[PHASE4]   TXT:  /root/tian/Tian/tests/x265/results/4.2/results.txt
+[PHASE4]   LOG:  /root/tian/Tian/tests/x265/results/4.2/results.log
+[BUILD] Cleaning up: /tmp/x265_build_5vXBV1
+[START] x265 Source Build & Performance Benchmark v4.2
+[CHECK] Python3 OK: Python 3.11.6
+[CHECK] G++ OK: g++ (GCC) 12.3.1 (openEuler 12.3.1-105.oe2403sp3)
+[CHECK] CMake OK: cmake version 3.27.9
+[CHECK] Git OK: git version 2.43.0
+[CHECK] json_helper.py OK
+[CHECK] OS: openEuler 24.03 SP3 (openEuler)
+[CHECK] Architecture: aarch64
+[CHECK] Build method: source_build (cmake, NEON auto-detected on aarch64)
+[SETUP] Downloading shUnit2 to /tmp/shunit2_ljZwjG...
+[SETUP] shUnit2 downloaded successfully
+[START] x265 Source Build & Performance Benchmark - v4.2
+[START] OS: openEuler 24.03 SP3 (openEuler), Build: source_build
+[CHECK] Python3 OK: Python 3.11.6
+[CHECK] G++ OK: g++ (GCC) 12.3.1 (openEuler 12.3.1-105.oe2403sp3)
+[CHECK] CMake OK: cmake version 3.27.9
+[CHECK] Git OK: git version 2.43.0
+[CHECK] json_helper.py OK
+[CHECK] OS: openEuler 24.03 SP3 (openEuler)
+[CHECK] Architecture: aarch64
+[CHECK] Build method: source_build (cmake, NEON auto-detected on aarch64)
+[PHASE1] === Phase 1: Source Build x265 v4.2 ===
+[BUILD] Created temp build dir: /tmp/x265_build_jdqdCa
+[PHASE1] Preparing env on openEuler...
+Last metadata expiration check: 0:32:18 ago on Fri 07 Aug 2026 07:20:04 AM UTC.
+Package gcc-12.3.1-105.oe2403sp3.aarch64 is already installed.
+Package gcc-c++-12.3.1-105.oe2403sp3.aarch64 is already installed.
+Package cmake-3.27.9-8.oe2403sp3.aarch64 is already installed.
+Package make-1:4.4.1-2.oe2403sp3.aarch64 is already installed.
+Package git-2.43.0-11.oe2403sp3.aarch64 is already installed.
+Package wget-1.21.4-4.oe2403sp3.aarch64 is already installed.
+Package curl-8.4.0-33.oe2403sp3.aarch64 is already installed.
+Dependencies resolved.
+Nothing to do.
+Complete!
+[PHASE1] Cloning x265 tag 4.2 (from Bitbucket)...
+Cloning into '/tmp/x265_build_jdqdCa/x265_src'...
+Note: switching to 'e444744c03978c1fb4e037168967020cf2648427'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+[PHASE1] Configuring CMake...
+-- cmake version 3.27.9
+-- The C compiler identification is GNU 12.3.1
+-- The CXX compiler identification is GNU 12.3.1
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Detected ARM64 target processor
+-- Could NOT find Numa (missing: NUMA_ROOT_DIR NUMA_INCLUDE_DIR NUMA_LIBRARY) 
+-- Looking for include file inttypes.h
+-- Looking for include file inttypes.h - found
+-- Configuring build for run-time CPU feature detection
+-- Performing Test SVE_COMPILATION_C_TEST_COMPILED
+-- Performing Test SVE_COMPILATION_C_TEST_COMPILED - Success
+-- Performing Test SVE_COMPILATION_CXX_TEST_COMPILED
+-- Performing Test SVE_COMPILATION_CXX_TEST_COMPILED - Success
+-- Performing Test SVE_HEADER_C_TEST_COMPILED
+-- Performing Test SVE_HEADER_C_TEST_COMPILED - Failed
+-- Performing Test SVE_HEADER_CXX_TEST_COMPILED
+-- Performing Test SVE_HEADER_CXX_TEST_COMPILED - Failed
+-- Found Neon
+-- Found Neon DotProd
+-- Found Neon I8MM
+-- Found SVE
+-- Found SVE2
+-- Found SVE2 BitPerm
+-- Performing Test CC_HAS_FLAX_VEC_CONV_NONE
+-- Performing Test CC_HAS_FLAX_VEC_CONV_NONE - Failed
+-- Performing Test CC_HAS_NO_STRICT_OVERFLOW
+-- Performing Test CC_HAS_NO_STRICT_OVERFLOW - Success
+-- Performing Test CC_HAS_NO_NARROWING
+-- Performing Test CC_HAS_NO_NARROWING - Success
+-- Performing Test CC_HAS_NO_ARRAY_BOUNDS
+-- Performing Test CC_HAS_NO_ARRAY_BOUNDS - Success
+-- Performing Test CC_HAS_FAST_MATH
+-- Performing Test CC_HAS_FAST_MATH - Success
+-- Performing Test CC_HAS_FNO_EXCEPTIONS_FLAG
+-- Performing Test CC_HAS_FNO_EXCEPTIONS_FLAG - Success
+-- Could NOT find Nasm (missing: NASM_EXECUTABLE) 
+-- GIT_EXECUTABLE /usr/bin/git
+-- GIT LIVE REPO VERSION RETRIEVED
+-- X265 RELEASE VERSION 4.2
+-- Detected CXX compiler using -O3 optimization level
+-- The ASM compiler identification is GNU
+-- Found assembler: /usr/bin/cc
+-- Looking for strtok_r
+-- Looking for strtok_r - found
+-- Looking for include file getopt.h
+-- Looking for include file getopt.h - found
+-- Configuring done (2.1s)
+-- Generating done (0.0s)
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    ENABLE_HDR
+
+
+-- Build files have been written to: /tmp/x265_build_jdqdCa/build
+[PHASE1] Compiling x265...
+[  2%] Building CXX object encoder/CMakeFiles/encoder.dir/search.cpp.o
+[  2%] Building CXX object common/CMakeFiles/common.dir/aarch64/asm-primitives.cpp.o
+[  4%] Building CXX object encoder/CMakeFiles/encoder.dir/analysis.cpp.o
+[  4%] Building CXX object encoder/CMakeFiles/encoder.dir/bitcost.cpp.o
+[  6%] Building CXX object encoder/CMakeFiles/encoder.dir/motion.cpp.o
+[  6%] Building CXX object encoder/CMakeFiles/encoder.dir/slicetype.cpp.o
+[ 10%] Building CXX object common/CMakeFiles/common.dir/aarch64/dct-prim.cpp.o
+[ 10%] Building CXX object common/CMakeFiles/common.dir/aarch64/loopfilter-prim.cpp.o
+[ 10%] Building CXX object common/CMakeFiles/common.dir/aarch64/filter-prim.cpp.o
+[ 10%] Building CXX object common/CMakeFiles/common.dir/aarch64/pixel-prim.cpp.o
+[ 13%] Building CXX object encoder/CMakeFiles/encoder.dir/framefilter.cpp.o
+[ 15%] Building CXX object encoder/CMakeFiles/encoder.dir/frameencoder.cpp.o
+[ 17%] Building CXX object encoder/CMakeFiles/encoder.dir/nal.cpp.o
+[ 13%] Building CXX object common/CMakeFiles/common.dir/aarch64/sao-prim.cpp.o
+[ 18%] Building CXX object common/CMakeFiles/common.dir/aarch64/intrapred-prim.cpp.o
+[ 19%] Building CXX object encoder/CMakeFiles/encoder.dir/sei.cpp.o
+[ 19%] Building CXX object encoder/CMakeFiles/encoder.dir/level.cpp.o
+[ 19%] Building CXX object encoder/CMakeFiles/encoder.dir/sao.cpp.o
+[ 19%] Building CXX object common/CMakeFiles/common.dir/aarch64/arm64-utils.cpp.o
+[ 21%] Building CXX object common/CMakeFiles/common.dir/pixel.cpp.o
+[ 22%] Building CXX object common/CMakeFiles/common.dir/aarch64/filter-neon-dotprod.cpp.o
+[ 24%] Building CXX object common/CMakeFiles/common.dir/aarch64/filter-neon-i8mm.cpp.o
+[ 27%] Building CXX object common/CMakeFiles/common.dir/dct.cpp.o
+[ 28%] Building CXX object encoder/CMakeFiles/encoder.dir/entropy.cpp.o
+[ 31%] Building CXX object encoder/CMakeFiles/encoder.dir/dpb.cpp.o
+[ 32%] Building CXX object encoder/CMakeFiles/encoder.dir/reference.cpp.o
+[ 32%] Building CXX object common/CMakeFiles/common.dir/aarch64/pixel-prim-neon-dotprod.cpp.o
+[ 32%] Building CXX object encoder/CMakeFiles/encoder.dir/encoder.cpp.o
+[ 32%] Building CXX object encoder/CMakeFiles/encoder.dir/ratecontrol.cpp.o
+[ 32%] Building CXX object common/CMakeFiles/common.dir/primitives.cpp.o
+[ 32%] Building CXX object encoder/CMakeFiles/encoder.dir/api.cpp.o
+[ 32%] Building CXX object common/CMakeFiles/common.dir/lowpassdct.cpp.o
+[ 33%] Building CXX object encoder/CMakeFiles/encoder.dir/weightPrediction.cpp.o
+[ 34%] Building CXX object encoder/CMakeFiles/encoder.dir/threadedme.cpp.o
+[ 35%] Building CXX object common/CMakeFiles/common.dir/ipfilter.cpp.o
+[ 36%] Building CXX object common/CMakeFiles/common.dir/intrapred.cpp.o
+[ 37%] Building CXX object common/CMakeFiles/common.dir/loopfilter.cpp.o
+[ 38%] Building CXX object common/CMakeFiles/common.dir/constants.cpp.o
+[ 39%] Building CXX object common/CMakeFiles/common.dir/cpu.cpp.o
+[ 40%] Building CXX object common/CMakeFiles/common.dir/version.cpp.o
+[ 41%] Building CXX object common/CMakeFiles/common.dir/threading.cpp.o
+[ 42%] Building CXX object common/CMakeFiles/common.dir/threadpool.cpp.o
+[ 43%] Building CXX object common/CMakeFiles/common.dir/wavefront.cpp.o
+[ 44%] Building CXX object common/CMakeFiles/common.dir/md5.cpp.o
+[ 45%] Building CXX object common/CMakeFiles/common.dir/bitstream.cpp.o
+[ 46%] Building CXX object common/CMakeFiles/common.dir/yuv.cpp.o
+[ 47%] Building CXX object common/CMakeFiles/common.dir/shortyuv.cpp.o
+[ 48%] Building CXX object common/CMakeFiles/common.dir/picyuv.cpp.o
+[ 50%] Building CXX object common/CMakeFiles/common.dir/common.cpp.o
+[ 51%] Building CXX object common/CMakeFiles/common.dir/param.cpp.o
+[ 52%] Building CXX object common/CMakeFiles/common.dir/frame.cpp.o
+/tmp/x265_build_jdqdCa/x265_src/source/common/threadpool.cpp: In function ‘void x265::distributeThreadsForTme(x265_param*, int, int&, bool, int*, uint64_t*, int&, int&)’:
+/tmp/x265_build_jdqdCa/x265_src/source/common/threadpool.cpp:268:10: warning: unused parameter ‘bNumaSupport’ [-Wunused-parameter]
+  268 |     bool bNumaSupport,
+      |     ~~~~~^~~~~~~~~~~~
+[ 53%] Building CXX object common/CMakeFiles/common.dir/framedata.cpp.o
+[ 54%] Building CXX object common/CMakeFiles/common.dir/cudata.cpp.o
+[ 55%] Building CXX object common/CMakeFiles/common.dir/slice.cpp.o
+[ 56%] Building CXX object common/CMakeFiles/common.dir/lowres.cpp.o
+[ 57%] Building CXX object common/CMakeFiles/common.dir/piclist.cpp.o
+[ 58%] Building CXX object common/CMakeFiles/common.dir/predict.cpp.o
+[ 59%] Building CXX object common/CMakeFiles/common.dir/scalinglist.cpp.o
+[ 60%] Building CXX object common/CMakeFiles/common.dir/quant.cpp.o
+[ 61%] Building CXX object common/CMakeFiles/common.dir/deblock.cpp.o
+[ 62%] Building CXX object common/CMakeFiles/common.dir/scaler.cpp.o
+[ 63%] Building CXX object common/CMakeFiles/common.dir/ringmem.cpp.o
+[ 64%] Building CXX object common/CMakeFiles/common.dir/temporalfilter.cpp.o
+[ 64%] Built target encoder
+[ 64%] Built target common
+[ 67%] Generating asm-sve.S.o
+[ 67%] Generating blockcopy8.S.o
+[ 67%] Generating ssd-neon-dotprod.S.o
+[ 68%] Generating asm.S.o
+[ 71%] Generating dct.S.o
+[ 71%] Generating mc-a-common.S.o
+[ 71%] Generating intrapred.S.o
+[ 72%] Generating mc-a.S.o
+[ 73%] Generating p2s-sve.S.o
+[ 74%] Generating pixel-util-common.S.o
+[ 76%] Generating mc-a-sve2.S.o
+[ 76%] Generating p2s-common.S.o
+[ 79%] Generating p2s.S.o
+[ 79%] Generating pixel-util-sve.S.o
+[ 79%] Generating pixel-util-sve2-bitperm.S.o
+[ 82%] Generating pixel-util-sve2.S.o
+[ 82%] Generating pixel-util.S.o
+[ 82%] Generating sad-neon-dotprod.S.o
+[ 83%] Generating sad-a.S.o
+[ 84%] Generating ssd-a-sve.S.o
+[ 85%] Generating ssd-a.S.o
+[ 86%] Generating ssd-a-common.S.o
+[ 87%] Linking CXX static library libx265.a
+[ 87%] Built target x265-static
+[ 88%] Building CXX object CMakeFiles/cli.dir/input/input.cpp.o
+[ 89%] Building CXX object CMakeFiles/cli.dir/output/output.cpp.o
+[ 91%] Building CXX object CMakeFiles/cli.dir/output/raw.cpp.o
+[ 91%] Building CXX object CMakeFiles/cli.dir/input/y4m.cpp.o
+[ 92%] Building CXX object CMakeFiles/cli.dir/input/yuv.cpp.o
+[ 94%] Building CXX object CMakeFiles/cli.dir/output/reconplay.cpp.o
+[ 94%] Building CXX object CMakeFiles/cli.dir/output/yuv.cpp.o
+[ 95%] Building CXX object CMakeFiles/cli.dir/x265.cpp.o
+[ 96%] Building CXX object CMakeFiles/cli.dir/output/y4m.cpp.o
+[ 97%] Building CXX object CMakeFiles/cli.dir/x265cli.cpp.o
+[ 98%] Building CXX object CMakeFiles/cli.dir/abrEncApp.cpp.o
+[100%] Linking CXX executable x265
+[100%] Built target cli
+[ 44%] Built target common
+[ 64%] Built target encoder
+[ 87%] Built target x265-static
+[100%] Built target cli
+Install the project...
+-- Install configuration: "Release"
+-- Installing: /tmp/x265_build_jdqdCa/install/lib/libx265.a
+-- Installing: /tmp/x265_build_jdqdCa/install/include/x265.h
+-- Installing: /tmp/x265_build_jdqdCa/install/include/x265_config.h
+-- Installing: /tmp/x265_build_jdqdCa/install/lib/pkgconfig/x265.pc
+-- Installing: /tmp/x265_build_jdqdCa/install/bin/x265
+[PHASE1] Verifying x265 binary...
+x265 [info]: HEVC encoder version 4.2
+x265 [info]: build info [Linux][GCC 12.3.1][64 bit] 8bit
+x265 [info]: using cpu capabilities: NEON Neon_DotProd
+[PHASE1] Generating test YUV (1280x720, 50 frames)...
+[GEN_YUV] Generated 1280x720 I420, 50 frames, 69120000 bytes (65.9 MB) -> /tmp/x265_build_jdqdCa/test_1280x720.yuv
+[PHASE1] Build phase complete
+[PHASE2] === Phase 2: Collect Version Info ===
+[PHASE2] Version info saved (x265: x265 [info]: HEVC encoder version 4.2)
+[PHASE3] === Phase 3: Run Benchmarks ===
+[PHASE3A] Running H.265 encode preset sweep...
+[BENCHMARK_ENCODE] Running preset ultrafast...
+[BENCHMARK_ENCODE][DEBUG] preset=ultrafast returncode=1
+[BENCHMARK_ENCODE][DEBUG] cmd: /tmp/x265_build_jdqdCa/install/bin/x265 --input-res 1280x720 --input-fps 25 --frames 50 --preset ultrafast --psnr -o /dev/null /tmp/x265_build_jdqdCa/test_1280x720.yuv
+[BENCHMARK_ENCODE][DEBUG] raw output (last 2500 chars):
+t. Default disabled
+   --[no-]eob                    Emit end of bitstream nal unit at the end of the bitstream. Default disabled
+   --[no-]eos                    Emit end of sequence nal unit at the end of every coded video sequence. Default disabled
+   --atc-sei <integer>           Emit the alternative transfer characteristics SEI message where the integer is the preferred transfer characteristic. Default disabled
+   --pic-struct <integer>        Set the picture structure and emit it in the picture timing SEI message. Values in the range 0..12. See D.3.3 of the HEVC spec. for a detailed explanation.
+   --log2-max-poc-lsb <integer>  Maximum of the picture order count
+   --[no-]vui-timing-info        Emit VUI timing information in the bitstream. Default enabled
+   --[no-]vui-hrd-info           Emit VUI HRD information in the bitstream. Default enabled
+   --[no-]opt-qp-pps             Dynamically optimize QP in PPS (instead of default 26) based on QPs in previous GOP. Default disabled
+   --[no-]opt-ref-list-length-pps  Dynamically set L0 and L1 ref list length in PPS (instead of default 0) based on values in the last GOP. Default disabled
+   --[no-]multi-pass-opt-rps     Enable storing commonly used RPS in SPS in multi-pass mode. Default disabled
+   --[no-]opt-cu-delta-qp        Optimize to signal consistent CU level delta QPs in the frame. Default disabled
+   --lowpass-dct                 Use low-pass subband DCT approximation. Default disabled
+   --[no-]frame-dup              Enable Frame duplication. Default disabled
+   --dup-threshold <integer>     PSNR threshold for Frame duplication. Default 70
+   --[no-]mcstf                  Enable GOP-based temporal filter. Default 0
+ ABR-ladder settings
+   --abr-ladder <file>           File containing config settings required for the generation of ABR-ladder
+
+SEI Message Options
+   --film-grain <filename>       File containing Film Grain Characteristics to be written as a SEI Message
+   --aom-film-grain <filename>   File containing Aom Film Grain Characteristics to be written as a SEI Message
+   --[no-]frame-rc              Enable configuring Rate Control parameters(QP, CRF or Bitrate) at frame level.Default 0
+                                Enable this option only when planning to invoke the API function x265_encoder_reconfig to configure Rate Control parameters
+
+Use --fullhelp for a full listing (or --log-level full --help)
+
+
+Complete documentation may be found at http://x265.readthedocs.org/en/default/cli.html
+
+[BENCHMARK_ENCODE] Running preset fast...
+[BENCHMARK_ENCODE][DEBUG] preset=fast returncode=1
+[BENCHMARK_ENCODE][DEBUG] cmd: /tmp/x265_build_jdqdCa/install/bin/x265 --input-res 1280x720 --input-fps 25 --frames 50 --preset fast --psnr -o /dev/null /tmp/x265_build_jdqdCa/test_1280x720.yuv
+[BENCHMARK_ENCODE][DEBUG] raw output (last 2500 chars):
+t. Default disabled
+   --[no-]eob                    Emit end of bitstream nal unit at the end of the bitstream. Default disabled
+   --[no-]eos                    Emit end of sequence nal unit at the end of every coded video sequence. Default disabled
+   --atc-sei <integer>           Emit the alternative transfer characteristics SEI message where the integer is the preferred transfer characteristic. Default disabled
+   --pic-struct <integer>        Set the picture structure and emit it in the picture timing SEI message. Values in the range 0..12. See D.3.3 of the HEVC spec. for a detailed explanation.
+   --log2-max-poc-lsb <integer>  Maximum of the picture order count
+   --[no-]vui-timing-info        Emit VUI timing information in the bitstream. Default enabled
+   --[no-]vui-hrd-info           Emit VUI HRD information in the bitstream. Default enabled
+   --[no-]opt-qp-pps             Dynamically optimize QP in PPS (instead of default 26) based on QPs in previous GOP. Default disabled
+   --[no-]opt-ref-list-length-pps  Dynamically set L0 and L1 ref list length in PPS (instead of default 0) based on values in the last GOP. Default disabled
+   --[no-]multi-pass-opt-rps     Enable storing commonly used RPS in SPS in multi-pass mode. Default disabled
+   --[no-]opt-cu-delta-qp        Optimize to signal consistent CU level delta QPs in the frame. Default disabled
+   --lowpass-dct                 Use low-pass subband DCT approximation. Default disabled
+   --[no-]frame-dup              Enable Frame duplication. Default disabled
+   --dup-threshold <integer>     PSNR threshold for Frame duplication. Default 70
+   --[no-]mcstf                  Enable GOP-based temporal filter. Default 0
+ ABR-ladder settings
+   --abr-ladder <file>           File containing config settings required for the generation of ABR-ladder
+
+SEI Message Options
+   --film-grain <filename>       File containing Film Grain Characteristics to be written as a SEI Message
+   --aom-film-grain <filename>   File containing Aom Film Grain Characteristics to be written as a SEI Message
+   --[no-]frame-rc              Enable configuring Rate Control parameters(QP, CRF or Bitrate) at frame level.Default 0
+                                Enable this option only when planning to invoke the API function x265_encoder_reconfig to configure Rate Control parameters
+
+Use --fullhelp for a full listing (or --log-level full --help)
+
+
+Complete documentation may be found at http://x265.readthedocs.org/en/default/cli.html
+
+[BENCHMARK_ENCODE] Running preset medium...
+[BENCHMARK_ENCODE][DEBUG] preset=medium returncode=1
+[BENCHMARK_ENCODE][DEBUG] cmd: /tmp/x265_build_jdqdCa/install/bin/x265 --input-res 1280x720 --input-fps 25 --frames 50 --preset medium --psnr -o /dev/null /tmp/x265_build_jdqdCa/test_1280x720.yuv
+[BENCHMARK_ENCODE][DEBUG] raw output (last 2500 chars):
+t. Default disabled
+   --[no-]eob                    Emit end of bitstream nal unit at the end of the bitstream. Default disabled
+   --[no-]eos                    Emit end of sequence nal unit at the end of every coded video sequence. Default disabled
+   --atc-sei <integer>           Emit the alternative transfer characteristics SEI message where the integer is the preferred transfer characteristic. Default disabled
+   --pic-struct <integer>        Set the picture structure and emit it in the picture timing SEI message. Values in the range 0..12. See D.3.3 of the HEVC spec. for a detailed explanation.
+   --log2-max-poc-lsb <integer>  Maximum of the picture order count
+   --[no-]vui-timing-info        Emit VUI timing information in the bitstream. Default enabled
+   --[no-]vui-hrd-info           Emit VUI HRD information in the bitstream. Default enabled
+   --[no-]opt-qp-pps             Dynamically optimize QP in PPS (instead of default 26) based on QPs in previous GOP. Default disabled
+   --[no-]opt-ref-list-length-pps  Dynamically set L0 and L1 ref list length in PPS (instead of default 0) based on values in the last GOP. Default disabled
+   --[no-]multi-pass-opt-rps     Enable storing commonly used RPS in SPS in multi-pass mode. Default disabled
+   --[no-]opt-cu-delta-qp        Optimize to signal consistent CU level delta QPs in the frame. Default disabled
+   --lowpass-dct                 Use low-pass subband DCT approximation. Default disabled
+   --[no-]frame-dup              Enable Frame duplication. Default disabled
+   --dup-threshold <integer>     PSNR threshold for Frame duplication. Default 70
+   --[no-]mcstf                  Enable GOP-based temporal filter. Default 0
+ ABR-ladder settings
+   --abr-ladder <file>           File containing config settings required for the generation of ABR-ladder
+
+SEI Message Options
+   --film-grain <filename>       File containing Film Grain Characteristics to be written as a SEI Message
+   --aom-film-grain <filename>   File containing Aom Film Grain Characteristics to be written as a SEI Message
+   --[no-]frame-rc              Enable configuring Rate Control parameters(QP, CRF or Bitrate) at frame level.Default 0
+                                Enable this option only when planning to invoke the API function x265_encoder_reconfig to configure Rate Control parameters
+
+Use --fullhelp for a full listing (or --log-level full --help)
+
+
+Complete documentation may be found at http://x265.readthedocs.org/en/default/cli.html
+
+[BENCHMARK_ENCODE] Running preset slow...
+[BENCHMARK_ENCODE][DEBUG] preset=slow returncode=1
+[BENCHMARK_ENCODE][DEBUG] cmd: /tmp/x265_build_jdqdCa/install/bin/x265 --input-res 1280x720 --input-fps 25 --frames 50 --preset slow --psnr -o /dev/null /tmp/x265_build_jdqdCa/test_1280x720.yuv
+[BENCHMARK_ENCODE][DEBUG] raw output (last 2500 chars):
+t. Default disabled
+   --[no-]eob                    Emit end of bitstream nal unit at the end of the bitstream. Default disabled
+   --[no-]eos                    Emit end of sequence nal unit at the end of every coded video sequence. Default disabled
+   --atc-sei <integer>           Emit the alternative transfer characteristics SEI message where the integer is the preferred transfer characteristic. Default disabled
+   --pic-struct <integer>        Set the picture structure and emit it in the picture timing SEI message. Values in the range 0..12. See D.3.3 of the HEVC spec. for a detailed explanation.
+   --log2-max-poc-lsb <integer>  Maximum of the picture order count
+   --[no-]vui-timing-info        Emit VUI timing information in the bitstream. Default enabled
+   --[no-]vui-hrd-info           Emit VUI HRD information in the bitstream. Default enabled
+   --[no-]opt-qp-pps             Dynamically optimize QP in PPS (instead of default 26) based on QPs in previous GOP. Default disabled
+   --[no-]opt-ref-list-length-pps  Dynamically set L0 and L1 ref list length in PPS (instead of default 0) based on values in the last GOP. Default disabled
+   --[no-]multi-pass-opt-rps     Enable storing commonly used RPS in SPS in multi-pass mode. Default disabled
+   --[no-]opt-cu-delta-qp        Optimize to signal consistent CU level delta QPs in the frame. Default disabled
+   --lowpass-dct                 Use low-pass subband DCT approximation. Default disabled
+   --[no-]frame-dup              Enable Frame duplication. Default disabled
+   --dup-threshold <integer>     PSNR threshold for Frame duplication. Default 70
+   --[no-]mcstf                  Enable GOP-based temporal filter. Default 0
+ ABR-ladder settings
+   --abr-ladder <file>           File containing config settings required for the generation of ABR-ladder
+
+SEI Message Options
+   --film-grain <filename>       File containing Film Grain Characteristics to be written as a SEI Message
+   --aom-film-grain <filename>   File containing Aom Film Grain Characteristics to be written as a SEI Message
+   --[no-]frame-rc              Enable configuring Rate Control parameters(QP, CRF or Bitrate) at frame level.Default 0
+                                Enable this option only when planning to invoke the API function x265_encoder_reconfig to configure Rate Control parameters
+
+Use --fullhelp for a full listing (or --log-level full --help)
+
+
+Complete documentation may be found at http://x265.readthedocs.org/en/default/cli.html
+
+[BENCHMARK_ENCODE] Running preset veryslow...
+[BENCHMARK_ENCODE][DEBUG] preset=veryslow returncode=1
+[BENCHMARK_ENCODE][DEBUG] cmd: /tmp/x265_build_jdqdCa/install/bin/x265 --input-res 1280x720 --input-fps 25 --frames 50 --preset veryslow --psnr -o /dev/null /tmp/x265_build_jdqdCa/test_1280x720.yuv
+[BENCHMARK_ENCODE][DEBUG] raw output (last 2500 chars):
+t. Default disabled
+   --[no-]eob                    Emit end of bitstream nal unit at the end of the bitstream. Default disabled
+   --[no-]eos                    Emit end of sequence nal unit at the end of every coded video sequence. Default disabled
+   --atc-sei <integer>           Emit the alternative transfer characteristics SEI message where the integer is the preferred transfer characteristic. Default disabled
+   --pic-struct <integer>        Set the picture structure and emit it in the picture timing SEI message. Values in the range 0..12. See D.3.3 of the HEVC spec. for a detailed explanation.
+   --log2-max-poc-lsb <integer>  Maximum of the picture order count
+   --[no-]vui-timing-info        Emit VUI timing information in the bitstream. Default enabled
+   --[no-]vui-hrd-info           Emit VUI HRD information in the bitstream. Default enabled
+   --[no-]opt-qp-pps             Dynamically optimize QP in PPS (instead of default 26) based on QPs in previous GOP. Default disabled
+   --[no-]opt-ref-list-length-pps  Dynamically set L0 and L1 ref list length in PPS (instead of default 0) based on values in the last GOP. Default disabled
+   --[no-]multi-pass-opt-rps     Enable storing commonly used RPS in SPS in multi-pass mode. Default disabled
+   --[no-]opt-cu-delta-qp        Optimize to signal consistent CU level delta QPs in the frame. Default disabled
+   --lowpass-dct                 Use low-pass subband DCT approximation. Default disabled
+   --[no-]frame-dup              Enable Frame duplication. Default disabled
+   --dup-threshold <integer>     PSNR threshold for Frame duplication. Default 70
+   --[no-]mcstf                  Enable GOP-based temporal filter. Default 0
+ ABR-ladder settings
+   --abr-ladder <file>           File containing config settings required for the generation of ABR-ladder
+
+SEI Message Options
+   --film-grain <filename>       File containing Film Grain Characteristics to be written as a SEI Message
+   --aom-film-grain <filename>   File containing Aom Film Grain Characteristics to be written as a SEI Message
+   --[no-]frame-rc              Enable configuring Rate Control parameters(QP, CRF or Bitrate) at frame level.Default 0
+                                Enable this option only when planning to invoke the API function x265_encoder_reconfig to configure Rate Control parameters
+
+Use --fullhelp for a full listing (or --log-level full --help)
+
+
+Complete documentation may be found at http://x265.readthedocs.org/en/default/cli.html
+
+[BENCHMARK_ENCODE] Output written to /root/tian/Tian/tests/x265/results/4.2/benchmark_encode.json (5 presets)
+[PHASE3B] Running micro benchmark...
+[BENCHMARK_MICRO][DEBUG] threads=None returncode=1
+[BENCHMARK_MICRO][DEBUG] cmd: /tmp/x265_build_jdqdCa/install/bin/x265 --input-res 320x240 --input-fps 25 --frames 10 --preset medium -o /dev/null /tmp/x265_micro_0tkl4quq/320x240.yuv
+[BENCHMARK_MICRO][DEBUG] raw output (last 2500 chars):
+t. Default disabled
+   --[no-]eob                    Emit end of bitstream nal unit at the end of the bitstream. Default disabled
+   --[no-]eos                    Emit end of sequence nal unit at the end of every coded video sequence. Default disabled
+   --atc-sei <integer>           Emit the alternative transfer characteristics SEI message where the integer is the preferred transfer characteristic. Default disabled
+   --pic-struct <integer>        Set the picture structure and emit it in the picture timing SEI message. Values in the range 0..12. See D.3.3 of the HEVC spec. for a detailed explanation.
+   --log2-max-poc-lsb <integer>  Maximum of the picture order count
+   --[no-]vui-timing-info        Emit VUI timing information in the bitstream. Default enabled
+   --[no-]vui-hrd-info           Emit VUI HRD information in the bitstream. Default enabled
+   --[no-]opt-qp-pps             Dynamically optimize QP in PPS (instead of default 26) based on QPs in previous GOP. Default disabled
+   --[no-]opt-ref-list-length-pps  Dynamically set L0 and L1 ref list length in PPS (instead of default 0) based on values in the last GOP. Default disabled
+   --[no-]multi-pass-opt-rps     Enable storing commonly used RPS in SPS in multi-pass mode. Default disabled
+   --[no-]opt-cu-delta-qp        Optimize to signal consistent CU level delta QPs in the frame. Default disabled
+   --lowpass-dct                 Use low-pass subband DCT approximation. Default disabled
+   --[no-]frame-dup              Enable Frame duplication. Default disabled
+   --dup-threshold <integer>     PSNR threshold for Frame duplication. Default 70
+   --[no-]mcstf                  Enable GOP-based temporal filter. Default 0
+ ABR-ladder settings
+   --abr-ladder <file>           File containing config settings required for the generation of ABR-ladder
+
+SEI Message Options
+   --film-grain <filename>       File containing Film Grain Characteristics to be written as a SEI Message
+   --aom-film-grain <filename>   File containing Aom Film Grain Characteristics to be written as a SEI Message
+   --[no-]frame-rc              Enable configuring Rate Control parameters(QP, CRF or Bitrate) at frame level.Default 0
+                                Enable this option only when planning to invoke the API function x265_encoder_reconfig to configure Rate Control parameters
+
+Use --fullhelp for a full listing (or --log-level full --help)
+
+
+Complete documentation may be found at http://x265.readthedocs.org/en/default/cli.html
+
+[BENCHMARK_MICRO] 320x240: 0.0 fps
+[BENCHMARK_MICRO][DEBUG] threads=None returncode=1
+[BENCHMARK_MICRO][DEBUG] cmd: /tmp/x265_build_jdqdCa/install/bin/x265 --input-res 1280x720 --input-fps 25 --frames 10 --preset medium -o /dev/null /tmp/x265_micro_0tkl4quq/1280x720.yuv
+[BENCHMARK_MICRO][DEBUG] raw output (last 2500 chars):
+t. Default disabled
+   --[no-]eob                    Emit end of bitstream nal unit at the end of the bitstream. Default disabled
+   --[no-]eos                    Emit end of sequence nal unit at the end of every coded video sequence. Default disabled
+   --atc-sei <integer>           Emit the alternative transfer characteristics SEI message where the integer is the preferred transfer characteristic. Default disabled
+   --pic-struct <integer>        Set the picture structure and emit it in the picture timing SEI message. Values in the range 0..12. See D.3.3 of the HEVC spec. for a detailed explanation.
+   --log2-max-poc-lsb <integer>  Maximum of the picture order count
+   --[no-]vui-timing-info        Emit VUI timing information in the bitstream. Default enabled
+   --[no-]vui-hrd-info           Emit VUI HRD information in the bitstream. Default enabled
+   --[no-]opt-qp-pps             Dynamically optimize QP in PPS (instead of default 26) based on QPs in previous GOP. Default disabled
+   --[no-]opt-ref-list-length-pps  Dynamically set L0 and L1 ref list length in PPS (instead of default 0) based on values in the last GOP. Default disabled
+   --[no-]multi-pass-opt-rps     Enable storing commonly used RPS in SPS in multi-pass mode. Default disabled
+   --[no-]opt-cu-delta-qp        Optimize to signal consistent CU level delta QPs in the frame. Default disabled
+   --lowpass-dct                 Use low-pass subband DCT approximation. Default disabled
+   --[no-]frame-dup              Enable Frame duplication. Default disabled
+   --dup-threshold <integer>     PSNR threshold for Frame duplication. Default 70
+   --[no-]mcstf                  Enable GOP-based temporal filter. Default 0
+ ABR-ladder settings
+   --abr-ladder <file>           File containing config settings required for the generation of ABR-ladder
+
+SEI Message Options
+   --film-grain <filename>       File containing Film Grain Characteristics to be written as a SEI Message
+   --aom-film-grain <filename>   File containing Aom Film Grain Characteristics to be written as a SEI Message
+   --[no-]frame-rc              Enable configuring Rate Control parameters(QP, CRF or Bitrate) at frame level.Default 0
+                                Enable this option only when planning to invoke the API function x265_encoder_reconfig to configure Rate Control parameters
+
+Use --fullhelp for a full listing (or --log-level full --help)
+
+
+Complete documentation may be found at http://x265.readthedocs.org/en/default/cli.html
+
+[BENCHMARK_MICRO] 1280x720: 0.0 fps
+[BENCHMARK_MICRO][DEBUG] threads=None returncode=1
+[BENCHMARK_MICRO][DEBUG] cmd: /tmp/x265_build_jdqdCa/install/bin/x265 --input-res 1920x1080 --input-fps 25 --frames 10 --preset medium -o /dev/null /tmp/x265_micro_0tkl4quq/1920x1080.yuv
+[BENCHMARK_MICRO][DEBUG] raw output (last 2500 chars):
+t. Default disabled
+   --[no-]eob                    Emit end of bitstream nal unit at the end of the bitstream. Default disabled
+   --[no-]eos                    Emit end of sequence nal unit at the end of every coded video sequence. Default disabled
+   --atc-sei <integer>           Emit the alternative transfer characteristics SEI message where the integer is the preferred transfer characteristic. Default disabled
+   --pic-struct <integer>        Set the picture structure and emit it in the picture timing SEI message. Values in the range 0..12. See D.3.3 of the HEVC spec. for a detailed explanation.
+   --log2-max-poc-lsb <integer>  Maximum of the picture order count
+   --[no-]vui-timing-info        Emit VUI timing information in the bitstream. Default enabled
+   --[no-]vui-hrd-info           Emit VUI HRD information in the bitstream. Default enabled
+   --[no-]opt-qp-pps             Dynamically optimize QP in PPS (instead of default 26) based on QPs in previous GOP. Default disabled
+   --[no-]opt-ref-list-length-pps  Dynamically set L0 and L1 ref list length in PPS (instead of default 0) based on values in the last GOP. Default disabled
+   --[no-]multi-pass-opt-rps     Enable storing commonly used RPS in SPS in multi-pass mode. Default disabled
+   --[no-]opt-cu-delta-qp        Optimize to signal consistent CU level delta QPs in the frame. Default disabled
+   --lowpass-dct                 Use low-pass subband DCT approximation. Default disabled
+   --[no-]frame-dup              Enable Frame duplication. Default disabled
+   --dup-threshold <integer>     PSNR threshold for Frame duplication. Default 70
+   --[no-]mcstf                  Enable GOP-based temporal filter. Default 0
+ ABR-ladder settings
+   --abr-ladder <file>           File containing config settings required for the generation of ABR-ladder
+
+SEI Message Options
+   --film-grain <filename>       File containing Film Grain Characteristics to be written as a SEI Message
+   --aom-film-grain <filename>   File containing Aom Film Grain Characteristics to be written as a SEI Message
+   --[no-]frame-rc              Enable configuring Rate Control parameters(QP, CRF or Bitrate) at frame level.Default 0
+                                Enable this option only when planning to invoke the API function x265_encoder_reconfig to configure Rate Control parameters
+
+Use --fullhelp for a full listing (or --log-level full --help)
+
+
+Complete documentation may be found at http://x265.readthedocs.org/en/default/cli.html
+
+[BENCHMARK_MICRO] 1920x1080: 0.0 fps
+[BENCHMARK_MICRO][DEBUG] threads=1 returncode=1
+[BENCHMARK_MICRO][DEBUG] cmd: /tmp/x265_build_jdqdCa/install/bin/x265 --input-res 1280x720 --input-fps 25 --frames 30 --preset medium -o /dev/null --threads 1 /tmp/x265_micro_0tkl4quq/1280x720.yuv
+[BENCHMARK_MICRO][DEBUG] raw output (last 2500 chars):
+t. Default disabled
+   --[no-]eob                    Emit end of bitstream nal unit at the end of the bitstream. Default disabled
+   --[no-]eos                    Emit end of sequence nal unit at the end of every coded video sequence. Default disabled
+   --atc-sei <integer>           Emit the alternative transfer characteristics SEI message where the integer is the preferred transfer characteristic. Default disabled
+   --pic-struct <integer>        Set the picture structure and emit it in the picture timing SEI message. Values in the range 0..12. See D.3.3 of the HEVC spec. for a detailed explanation.
+   --log2-max-poc-lsb <integer>  Maximum of the picture order count
+   --[no-]vui-timing-info        Emit VUI timing information in the bitstream. Default enabled
+   --[no-]vui-hrd-info           Emit VUI HRD information in the bitstream. Default enabled
+   --[no-]opt-qp-pps             Dynamically optimize QP in PPS (instead of default 26) based on QPs in previous GOP. Default disabled
+   --[no-]opt-ref-list-length-pps  Dynamically set L0 and L1 ref list length in PPS (instead of default 0) based on values in the last GOP. Default disabled
+   --[no-]multi-pass-opt-rps     Enable storing commonly used RPS in SPS in multi-pass mode. Default disabled
+   --[no-]opt-cu-delta-qp        Optimize to signal consistent CU level delta QPs in the frame. Default disabled
+   --lowpass-dct                 Use low-pass subband DCT approximation. Default disabled
+   --[no-]frame-dup              Enable Frame duplication. Default disabled
+   --dup-threshold <integer>     PSNR threshold for Frame duplication. Default 70
+   --[no-]mcstf                  Enable GOP-based temporal filter. Default 0
+ ABR-ladder settings
+   --abr-ladder <file>           File containing config settings required for the generation of ABR-ladder
+
+SEI Message Options
+   --film-grain <filename>       File containing Film Grain Characteristics to be written as a SEI Message
+   --aom-film-grain <filename>   File containing Aom Film Grain Characteristics to be written as a SEI Message
+   --[no-]frame-rc              Enable configuring Rate Control parameters(QP, CRF or Bitrate) at frame level.Default 0
+                                Enable this option only when planning to invoke the API function x265_encoder_reconfig to configure Rate Control parameters
+
+Use --fullhelp for a full listing (or --log-level full --help)
+
+
+Complete documentation may be found at http://x265.readthedocs.org/en/default/cli.html
+
+[BENCHMARK_MICRO] threads 1: 0.0 fps
+[BENCHMARK_MICRO][DEBUG] threads=2 returncode=1
+[BENCHMARK_MICRO][DEBUG] cmd: /tmp/x265_build_jdqdCa/install/bin/x265 --input-res 1280x720 --input-fps 25 --frames 30 --preset medium -o /dev/null --threads 2 /tmp/x265_micro_0tkl4quq/1280x720.yuv
+[BENCHMARK_MICRO][DEBUG] raw output (last 2500 chars):
+t. Default disabled
+   --[no-]eob                    Emit end of bitstream nal unit at the end of the bitstream. Default disabled
+   --[no-]eos                    Emit end of sequence nal unit at the end of every coded video sequence. Default disabled
+   --atc-sei <integer>           Emit the alternative transfer characteristics SEI message where the integer is the preferred transfer characteristic. Default disabled
+   --pic-struct <integer>        Set the picture structure and emit it in the picture timing SEI message. Values in the range 0..12. See D.3.3 of the HEVC spec. for a detailed explanation.
+   --log2-max-poc-lsb <integer>  Maximum of the picture order count
+   --[no-]vui-timing-info        Emit VUI timing information in the bitstream. Default enabled
+   --[no-]vui-hrd-info           Emit VUI HRD information in the bitstream. Default enabled
+   --[no-]opt-qp-pps             Dynamically optimize QP in PPS (instead of default 26) based on QPs in previous GOP. Default disabled
+   --[no-]opt-ref-list-length-pps  Dynamically set L0 and L1 ref list length in PPS (instead of default 0) based on values in the last GOP. Default disabled
+   --[no-]multi-pass-opt-rps     Enable storing commonly used RPS in SPS in multi-pass mode. Default disabled
+   --[no-]opt-cu-delta-qp        Optimize to signal consistent CU level delta QPs in the frame. Default disabled
+   --lowpass-dct                 Use low-pass subband DCT approximation. Default disabled
+   --[no-]frame-dup              Enable Frame duplication. Default disabled
+   --dup-threshold <integer>     PSNR threshold for Frame duplication. Default 70
+   --[no-]mcstf                  Enable GOP-based temporal filter. Default 0
+ ABR-ladder settings
+   --abr-ladder <file>           File containing config settings required for the generation of ABR-ladder
+
+SEI Message Options
+   --film-grain <filename>       File containing Film Grain Characteristics to be written as a SEI Message
+   --aom-film-grain <filename>   File containing Aom Film Grain Characteristics to be written as a SEI Message
+   --[no-]frame-rc              Enable configuring Rate Control parameters(QP, CRF or Bitrate) at frame level.Default 0
+                                Enable this option only when planning to invoke the API function x265_encoder_reconfig to configure Rate Control parameters
+
+Use --fullhelp for a full listing (or --log-level full --help)
+
+
+Complete documentation may be found at http://x265.readthedocs.org/en/default/cli.html
+
+[BENCHMARK_MICRO] threads 2: 0.0 fps
+[BENCHMARK_MICRO][DEBUG] threads=4 returncode=1
+[BENCHMARK_MICRO][DEBUG] cmd: /tmp/x265_build_jdqdCa/install/bin/x265 --input-res 1280x720 --input-fps 25 --frames 30 --preset medium -o /dev/null --threads 4 /tmp/x265_micro_0tkl4quq/1280x720.yuv
+[BENCHMARK_MICRO][DEBUG] raw output (last 2500 chars):
+t. Default disabled
+   --[no-]eob                    Emit end of bitstream nal unit at the end of the bitstream. Default disabled
+   --[no-]eos                    Emit end of sequence nal unit at the end of every coded video sequence. Default disabled
+   --atc-sei <integer>           Emit the alternative transfer characteristics SEI message where the integer is the preferred transfer characteristic. Default disabled
+   --pic-struct <integer>        Set the picture structure and emit it in the picture timing SEI message. Values in the range 0..12. See D.3.3 of the HEVC spec. for a detailed explanation.
+   --log2-max-poc-lsb <integer>  Maximum of the picture order count
+   --[no-]vui-timing-info        Emit VUI timing information in the bitstream. Default enabled
+   --[no-]vui-hrd-info           Emit VUI HRD information in the bitstream. Default enabled
+   --[no-]opt-qp-pps             Dynamically optimize QP in PPS (instead of default 26) based on QPs in previous GOP. Default disabled
+   --[no-]opt-ref-list-length-pps  Dynamically set L0 and L1 ref list length in PPS (instead of default 0) based on values in the last GOP. Default disabled
+   --[no-]multi-pass-opt-rps     Enable storing commonly used RPS in SPS in multi-pass mode. Default disabled
+   --[no-]opt-cu-delta-qp        Optimize to signal consistent CU level delta QPs in the frame. Default disabled
+   --lowpass-dct                 Use low-pass subband DCT approximation. Default disabled
+   --[no-]frame-dup              Enable Frame duplication. Default disabled
+   --dup-threshold <integer>     PSNR threshold for Frame duplication. Default 70
+   --[no-]mcstf                  Enable GOP-based temporal filter. Default 0
+ ABR-ladder settings
+   --abr-ladder <file>           File containing config settings required for the generation of ABR-ladder
+
+SEI Message Options
+   --film-grain <filename>       File containing Film Grain Characteristics to be written as a SEI Message
+   --aom-film-grain <filename>   File containing Aom Film Grain Characteristics to be written as a SEI Message
+   --[no-]frame-rc              Enable configuring Rate Control parameters(QP, CRF or Bitrate) at frame level.Default 0
+                                Enable this option only when planning to invoke the API function x265_encoder_reconfig to configure Rate Control parameters
+
+Use --fullhelp for a full listing (or --log-level full --help)
+
+
+Complete documentation may be found at http://x265.readthedocs.org/en/default/cli.html
+
+[BENCHMARK_MICRO] threads 4: 0.0 fps
+[BENCHMARK_MICRO][DEBUG] threads=8 returncode=1
+[BENCHMARK_MICRO][DEBUG] cmd: /tmp/x265_build_jdqdCa/install/bin/x265 --input-res 1280x720 --input-fps 25 --frames 30 --preset medium -o /dev/null --threads 8 /tmp/x265_micro_0tkl4quq/1280x720.yuv
+[BENCHMARK_MICRO][DEBUG] raw output (last 2500 chars):
+t. Default disabled
+   --[no-]eob                    Emit end of bitstream nal unit at the end of the bitstream. Default disabled
+   --[no-]eos                    Emit end of sequence nal unit at the end of every coded video sequence. Default disabled
+   --atc-sei <integer>           Emit the alternative transfer characteristics SEI message where the integer is the preferred transfer characteristic. Default disabled
+   --pic-struct <integer>        Set the picture structure and emit it in the picture timing SEI message. Values in the range 0..12. See D.3.3 of the HEVC spec. for a detailed explanation.
+   --log2-max-poc-lsb <integer>  Maximum of the picture order count
+   --[no-]vui-timing-info        Emit VUI timing information in the bitstream. Default enabled
+   --[no-]vui-hrd-info           Emit VUI HRD information in the bitstream. Default enabled
+   --[no-]opt-qp-pps             Dynamically optimize QP in PPS (instead of default 26) based on QPs in previous GOP. Default disabled
+   --[no-]opt-ref-list-length-pps  Dynamically set L0 and L1 ref list length in PPS (instead of default 0) based on values in the last GOP. Default disabled
+   --[no-]multi-pass-opt-rps     Enable storing commonly used RPS in SPS in multi-pass mode. Default disabled
+   --[no-]opt-cu-delta-qp        Optimize to signal consistent CU level delta QPs in the frame. Default disabled
+   --lowpass-dct                 Use low-pass subband DCT approximation. Default disabled
+   --[no-]frame-dup              Enable Frame duplication. Default disabled
+   --dup-threshold <integer>     PSNR threshold for Frame duplication. Default 70
+   --[no-]mcstf                  Enable GOP-based temporal filter. Default 0
+ ABR-ladder settings
+   --abr-ladder <file>           File containing config settings required for the generation of ABR-ladder
+
+SEI Message Options
+   --film-grain <filename>       File containing Film Grain Characteristics to be written as a SEI Message
+   --aom-film-grain <filename>   File containing Aom Film Grain Characteristics to be written as a SEI Message
+   --[no-]frame-rc              Enable configuring Rate Control parameters(QP, CRF or Bitrate) at frame level.Default 0
+                                Enable this option only when planning to invoke the API function x265_encoder_reconfig to configure Rate Control parameters
+
+Use --fullhelp for a full listing (or --log-level full --help)
+
+
+Complete documentation may be found at http://x265.readthedocs.org/en/default/cli.html
+
+[BENCHMARK_MICRO] threads 8: 0.0 fps
+[BENCHMARK_MICRO][DEBUG] threads=all returncode=1
+[BENCHMARK_MICRO][DEBUG] cmd: /tmp/x265_build_jdqdCa/install/bin/x265 --input-res 1280x720 --input-fps 25 --frames 30 --preset medium -o /dev/null --threads all /tmp/x265_micro_0tkl4quq/1280x720.yuv
+[BENCHMARK_MICRO][DEBUG] raw output (last 2500 chars):
+t. Default disabled
+   --[no-]eob                    Emit end of bitstream nal unit at the end of the bitstream. Default disabled
+   --[no-]eos                    Emit end of sequence nal unit at the end of every coded video sequence. Default disabled
+   --atc-sei <integer>           Emit the alternative transfer characteristics SEI message where the integer is the preferred transfer characteristic. Default disabled
+   --pic-struct <integer>        Set the picture structure and emit it in the picture timing SEI message. Values in the range 0..12. See D.3.3 of the HEVC spec. for a detailed explanation.
+   --log2-max-poc-lsb <integer>  Maximum of the picture order count
+   --[no-]vui-timing-info        Emit VUI timing information in the bitstream. Default enabled
+   --[no-]vui-hrd-info           Emit VUI HRD information in the bitstream. Default enabled
+   --[no-]opt-qp-pps             Dynamically optimize QP in PPS (instead of default 26) based on QPs in previous GOP. Default disabled
+   --[no-]opt-ref-list-length-pps  Dynamically set L0 and L1 ref list length in PPS (instead of default 0) based on values in the last GOP. Default disabled
+   --[no-]multi-pass-opt-rps     Enable storing commonly used RPS in SPS in multi-pass mode. Default disabled
+   --[no-]opt-cu-delta-qp        Optimize to signal consistent CU level delta QPs in the frame. Default disabled
+   --lowpass-dct                 Use low-pass subband DCT approximation. Default disabled
+   --[no-]frame-dup              Enable Frame duplication. Default disabled
+   --dup-threshold <integer>     PSNR threshold for Frame duplication. Default 70
+   --[no-]mcstf                  Enable GOP-based temporal filter. Default 0
+ ABR-ladder settings
+   --abr-ladder <file>           File containing config settings required for the generation of ABR-ladder
+
+SEI Message Options
+   --film-grain <filename>       File containing Film Grain Characteristics to be written as a SEI Message
+   --aom-film-grain <filename>   File containing Aom Film Grain Characteristics to be written as a SEI Message
+   --[no-]frame-rc              Enable configuring Rate Control parameters(QP, CRF or Bitrate) at frame level.Default 0
+                                Enable this option only when planning to invoke the API function x265_encoder_reconfig to configure Rate Control parameters
+
+Use --fullhelp for a full listing (or --log-level full --help)
+
+
+Complete documentation may be found at http://x265.readthedocs.org/en/default/cli.html
+
+[BENCHMARK_MICRO] threads all: 0.0 fps
+[BENCHMARK_MICRO] Output written to /root/tian/Tian/tests/x265/results/4.2/micro_benchmark.json
+[PHASE4] === Phase 4: Aggregate & Report ===
+[PHASE4] Reports generated:
+[PHASE4]   JSON: /root/tian/Tian/tests/x265/results/4.2/results.json
+[PHASE4]   TXT:  /root/tian/Tian/tests/x265/results/4.2/results.txt
+[PHASE4]   LOG:  /root/tian/Tian/tests/x265/results/4.2/results.log
+[BUILD] Cleaning up: /tmp/x265_build_jdqdCa
+[START] x265 Source Build & Performance Benchmark v4.2
+[CHECK] Python3 OK: Python 3.11.6
+[CHECK] G++ OK: g++ (GCC) 12.3.1 (openEuler 12.3.1-105.oe2403sp3)
+[CHECK] CMake OK: cmake version 3.27.9
+[CHECK] Git OK: git version 2.43.0
+[CHECK] json_helper.py OK
+[CHECK] OS: openEuler 24.03 SP3 (openEuler)
+[CHECK] Architecture: aarch64
+[CHECK] Build method: source_build (cmake, NEON auto-detected on aarch64)
+[START] x265 Source Build & Performance Benchmark v4.2
+[CHECK] Python3 OK: Python 3.11.6
+[CHECK] G++ OK: g++ (GCC) 12.3.1 (openEuler 12.3.1-105.oe2403sp3)
+[CHECK] CMake OK: cmake version 3.27.9
+[CHECK] Git OK: git version 2.43.0
+[CHECK] json_helper.py OK
+[CHECK] OS: openEuler 24.03 SP3 (openEuler)
+[CHECK] Architecture: aarch64
+[CHECK] Build method: source_build (cmake, NEON auto-detected on aarch64)
+[SETUP] Downloading shUnit2 to /tmp/shunit2_x0UnbE...
+[SETUP] shUnit2 downloaded successfully
+[START] x265 Source Build & Performance Benchmark - v4.2
+[START] OS: openEuler 24.03 SP3 (openEuler), Build: source_build
+[CHECK] Python3 OK: Python 3.11.6
+[CHECK] G++ OK: g++ (GCC) 12.3.1 (openEuler 12.3.1-105.oe2403sp3)
+[CHECK] CMake OK: cmake version 3.27.9
+[CHECK] Git OK: git version 2.43.0
+[CHECK] json_helper.py OK
+[CHECK] OS: openEuler 24.03 SP3 (openEuler)
+[CHECK] Architecture: aarch64
+[CHECK] Build method: source_build (cmake, NEON auto-detected on aarch64)
+[PHASE1] === Phase 1: Source Build x265 v4.2 ===
+[BUILD] Created temp build dir: /tmp/x265_build_5y6vbm
+[PHASE1] Preparing env on openEuler...
+Last metadata expiration check: 0:00:30 ago on Fri 07 Aug 2026 07:54:17 AM UTC.
+Package gcc-12.3.1-105.oe2403sp3.aarch64 is already installed.
+Package gcc-c++-12.3.1-105.oe2403sp3.aarch64 is already installed.
+Package cmake-3.27.9-8.oe2403sp3.aarch64 is already installed.
+Package make-1:4.4.1-2.oe2403sp3.aarch64 is already installed.
+Package git-2.43.0-11.oe2403sp3.aarch64 is already installed.
+Package wget-1.21.4-4.oe2403sp3.aarch64 is already installed.
+Package curl-8.4.0-33.oe2403sp3.aarch64 is already installed.
+Dependencies resolved.
+Nothing to do.
+Complete!
+[PHASE1] Cloning x265 tag 4.2 (from Bitbucket)...
+Cloning into '/tmp/x265_build_5y6vbm/x265_src'...
+Note: switching to 'e444744c03978c1fb4e037168967020cf2648427'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+[PHASE1] Configuring CMake...
+-- cmake version 3.27.9
+-- The C compiler identification is GNU 12.3.1
+-- The CXX compiler identification is GNU 12.3.1
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Detected ARM64 target processor
+-- Could NOT find Numa (missing: NUMA_ROOT_DIR NUMA_INCLUDE_DIR NUMA_LIBRARY) 
+-- Looking for include file inttypes.h
+-- Looking for include file inttypes.h - found
+-- Configuring build for run-time CPU feature detection
+-- Performing Test SVE_COMPILATION_C_TEST_COMPILED
+-- Performing Test SVE_COMPILATION_C_TEST_COMPILED - Success
+-- Performing Test SVE_COMPILATION_CXX_TEST_COMPILED
+-- Performing Test SVE_COMPILATION_CXX_TEST_COMPILED - Success
+-- Performing Test SVE_HEADER_C_TEST_COMPILED
+-- Performing Test SVE_HEADER_C_TEST_COMPILED - Failed
+-- Performing Test SVE_HEADER_CXX_TEST_COMPILED
+-- Performing Test SVE_HEADER_CXX_TEST_COMPILED - Failed
+-- Found Neon
+-- Found Neon DotProd
+-- Found Neon I8MM
+-- Found SVE
+-- Found SVE2
+-- Found SVE2 BitPerm
+-- Performing Test CC_HAS_FLAX_VEC_CONV_NONE
+-- Performing Test CC_HAS_FLAX_VEC_CONV_NONE - Failed
+-- Performing Test CC_HAS_NO_STRICT_OVERFLOW
+-- Performing Test CC_HAS_NO_STRICT_OVERFLOW - Success
+-- Performing Test CC_HAS_NO_NARROWING
+-- Performing Test CC_HAS_NO_NARROWING - Success
+-- Performing Test CC_HAS_NO_ARRAY_BOUNDS
+-- Performing Test CC_HAS_NO_ARRAY_BOUNDS - Success
+-- Performing Test CC_HAS_FAST_MATH
+-- Performing Test CC_HAS_FAST_MATH - Success
+-- Performing Test CC_HAS_FNO_EXCEPTIONS_FLAG
+-- Performing Test CC_HAS_FNO_EXCEPTIONS_FLAG - Success
+-- Could NOT find Nasm (missing: NASM_EXECUTABLE) 
+-- GIT_EXECUTABLE /usr/bin/git
+-- GIT LIVE REPO VERSION RETRIEVED
+-- X265 RELEASE VERSION 4.2
+-- Detected CXX compiler using -O3 optimization level
+-- The ASM compiler identification is GNU
+-- Found assembler: /usr/bin/cc
+-- Looking for strtok_r
+-- Looking for strtok_r - found
+-- Looking for include file getopt.h
+-- Looking for include file getopt.h - found
+-- Configuring done (2.2s)
+-- Generating done (0.0s)
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    ENABLE_HDR
+
+
+-- Build files have been written to: /tmp/x265_build_5y6vbm/build
+[PHASE1] Compiling x265...
+[  2%] Building CXX object encoder/CMakeFiles/encoder.dir/analysis.cpp.o
+[  2%] Building CXX object encoder/CMakeFiles/encoder.dir/bitcost.cpp.o
+[  3%] Building CXX object encoder/CMakeFiles/encoder.dir/search.cpp.o
+[  5%] Building CXX object encoder/CMakeFiles/encoder.dir/motion.cpp.o
+[  5%] Building CXX object encoder/CMakeFiles/encoder.dir/slicetype.cpp.o
+[  6%] Building CXX object common/CMakeFiles/common.dir/aarch64/pixel-prim.cpp.o
+[  7%] Building CXX object common/CMakeFiles/common.dir/aarch64/filter-prim.cpp.o
+[  9%] Building CXX object encoder/CMakeFiles/encoder.dir/level.cpp.o
+[  9%] Building CXX object encoder/CMakeFiles/encoder.dir/framefilter.cpp.o
+[ 10%] Building CXX object common/CMakeFiles/common.dir/aarch64/asm-primitives.cpp.o
+[ 11%] Building CXX object encoder/CMakeFiles/encoder.dir/frameencoder.cpp.o
+[ 12%] Building CXX object common/CMakeFiles/common.dir/aarch64/intrapred-prim.cpp.o
+[ 14%] Building CXX object common/CMakeFiles/common.dir/aarch64/dct-prim.cpp.o
+[ 14%] Building CXX object encoder/CMakeFiles/encoder.dir/nal.cpp.o
+[ 16%] Building CXX object encoder/CMakeFiles/encoder.dir/sao.cpp.o
+[ 16%] Building CXX object common/CMakeFiles/common.dir/aarch64/loopfilter-prim.cpp.o
+[ 18%] Building CXX object common/CMakeFiles/common.dir/aarch64/sao-prim.cpp.o
+[ 18%] Building CXX object common/CMakeFiles/common.dir/aarch64/filter-neon-dotprod.cpp.o
+[ 19%] Building CXX object encoder/CMakeFiles/encoder.dir/dpb.cpp.o
+[ 22%] Building CXX object common/CMakeFiles/common.dir/aarch64/arm64-utils.cpp.o
+[ 22%] Building CXX object encoder/CMakeFiles/encoder.dir/entropy.cpp.o
+[ 22%] Building CXX object encoder/CMakeFiles/encoder.dir/sei.cpp.o
+[ 26%] Building CXX object common/CMakeFiles/common.dir/aarch64/filter-neon-i8mm.cpp.o
+[ 26%] Building CXX object encoder/CMakeFiles/encoder.dir/reference.cpp.o
+[ 26%] Building CXX object common/CMakeFiles/common.dir/primitives.cpp.o
+[ 26%] Building CXX object encoder/CMakeFiles/encoder.dir/encoder.cpp.o
+[ 27%] Building CXX object encoder/CMakeFiles/encoder.dir/api.cpp.o
+[ 28%] Building CXX object encoder/CMakeFiles/encoder.dir/weightPrediction.cpp.o
+[ 29%] Building CXX object common/CMakeFiles/common.dir/aarch64/pixel-prim-neon-dotprod.cpp.o
+[ 30%] Building CXX object common/CMakeFiles/common.dir/pixel.cpp.o
+[ 31%] Building CXX object encoder/CMakeFiles/encoder.dir/ratecontrol.cpp.o
+[ 32%] Building CXX object encoder/CMakeFiles/encoder.dir/threadedme.cpp.o
+[ 33%] Building CXX object common/CMakeFiles/common.dir/dct.cpp.o
+[ 34%] Building CXX object common/CMakeFiles/common.dir/lowpassdct.cpp.o
+[ 35%] Building CXX object common/CMakeFiles/common.dir/ipfilter.cpp.o
+[ 36%] Building CXX object common/CMakeFiles/common.dir/intrapred.cpp.o
+[ 37%] Building CXX object common/CMakeFiles/common.dir/loopfilter.cpp.o
+[ 38%] Building CXX object common/CMakeFiles/common.dir/constants.cpp.o
+[ 39%] Building CXX object common/CMakeFiles/common.dir/cpu.cpp.o
+[ 40%] Building CXX object common/CMakeFiles/common.dir/version.cpp.o
+[ 41%] Building CXX object common/CMakeFiles/common.dir/threading.cpp.o
+[ 42%] Building CXX object common/CMakeFiles/common.dir/threadpool.cpp.o
+[ 43%] Building CXX object common/CMakeFiles/common.dir/wavefront.cpp.o
+[ 44%] Building CXX object common/CMakeFiles/common.dir/md5.cpp.o
+[ 46%] Building CXX object common/CMakeFiles/common.dir/yuv.cpp.o
+[ 45%] Building CXX object common/CMakeFiles/common.dir/bitstream.cpp.o
+[ 47%] Building CXX object common/CMakeFiles/common.dir/shortyuv.cpp.o
+[ 48%] Building CXX object common/CMakeFiles/common.dir/picyuv.cpp.o
+[ 50%] Building CXX object common/CMakeFiles/common.dir/common.cpp.o
+[ 51%] Building CXX object common/CMakeFiles/common.dir/param.cpp.o
+[ 52%] Building CXX object common/CMakeFiles/common.dir/frame.cpp.o
+[ 53%] Building CXX object common/CMakeFiles/common.dir/framedata.cpp.o
+[ 54%] Building CXX object common/CMakeFiles/common.dir/cudata.cpp.o
+[ 55%] Building CXX object common/CMakeFiles/common.dir/slice.cpp.o
+/tmp/x265_build_5y6vbm/x265_src/source/common/threadpool.cpp: In function ‘void x265::distributeThreadsForTme(x265_param*, int, int&, bool, int*, uint64_t*, int&, int&)’:
+/tmp/x265_build_5y6vbm/x265_src/source/common/threadpool.cpp:268:10: warning: unused parameter ‘bNumaSupport’ [-Wunused-parameter]
+  268 |     bool bNumaSupport,
+      |     ~~~~~^~~~~~~~~~~~
+[ 56%] Building CXX object common/CMakeFiles/common.dir/lowres.cpp.o
+[ 57%] Building CXX object common/CMakeFiles/common.dir/piclist.cpp.o
+[ 58%] Building CXX object common/CMakeFiles/common.dir/predict.cpp.o
+[ 59%] Building CXX object common/CMakeFiles/common.dir/scalinglist.cpp.o
+[ 60%] Building CXX object common/CMakeFiles/common.dir/quant.cpp.o
+[ 61%] Building CXX object common/CMakeFiles/common.dir/deblock.cpp.o
+[ 62%] Building CXX object common/CMakeFiles/common.dir/scaler.cpp.o
+[ 63%] Building CXX object common/CMakeFiles/common.dir/ringmem.cpp.o
+[ 64%] Building CXX object common/CMakeFiles/common.dir/temporalfilter.cpp.o
+[ 64%] Built target encoder
+[ 64%] Built target common
+[ 66%] Generating ssd-neon-dotprod.S.o
+[ 66%] Generating blockcopy8.S.o
+[ 67%] Generating asm-sve.S.o
+[ 68%] Generating dct.S.o
+[ 69%] Generating asm.S.o
+[ 70%] Generating intrapred.S.o
+[ 71%] Generating mc-a-sve2.S.o
+[ 73%] Generating mc-a-common.S.o
+[ 73%] Generating mc-a.S.o
+[ 74%] Generating p2s.S.o
+[ 75%] Generating pixel-util-common.S.o
+[ 76%] Generating p2s-common.S.o
+[ 77%] Generating p2s-sve.S.o
+[ 78%] Generating pixel-util-sve2-bitperm.S.o
+[ 80%] Generating pixel-util-sve.S.o
+[ 80%] Generating pixel-util-sve2.S.o
+[ 81%] Generating pixel-util.S.o
+[ 82%] Generating sad-neon-dotprod.S.o
+[ 83%] Generating sad-a.S.o
+[ 84%] Generating ssd-a-sve.S.o
+[ 85%] Generating ssd-a-common.S.o
+[ 86%] Generating ssd-a.S.o
+[ 87%] Linking CXX static library libx265.a
+[ 87%] Built target x265-static
+[ 91%] Building CXX object CMakeFiles/cli.dir/input/yuv.cpp.o
+[ 91%] Building CXX object CMakeFiles/cli.dir/output/raw.cpp.o
+[ 91%] Building CXX object CMakeFiles/cli.dir/input/y4m.cpp.o
+[ 91%] Building CXX object CMakeFiles/cli.dir/input/input.cpp.o
+[ 92%] Building CXX object CMakeFiles/cli.dir/output/y4m.cpp.o
+[ 94%] Building CXX object CMakeFiles/cli.dir/x265.cpp.o
+[ 94%] Building CXX object CMakeFiles/cli.dir/output/output.cpp.o
+[ 95%] Building CXX object CMakeFiles/cli.dir/output/yuv.cpp.o
+[ 96%] Building CXX object CMakeFiles/cli.dir/output/reconplay.cpp.o
+[ 97%] Building CXX object CMakeFiles/cli.dir/x265cli.cpp.o
+[ 98%] Building CXX object CMakeFiles/cli.dir/abrEncApp.cpp.o
+[100%] Linking CXX executable x265
+[100%] Built target cli
+[ 44%] Built target common
+[ 64%] Built target encoder
+[ 87%] Built target x265-static
+[100%] Built target cli
+Install the project...
+-- Install configuration: "Release"
+-- Installing: /tmp/x265_build_5y6vbm/install/lib/libx265.a
+-- Installing: /tmp/x265_build_5y6vbm/install/include/x265.h
+-- Installing: /tmp/x265_build_5y6vbm/install/include/x265_config.h
+-- Installing: /tmp/x265_build_5y6vbm/install/lib/pkgconfig/x265.pc
+-- Installing: /tmp/x265_build_5y6vbm/install/bin/x265
+[PHASE1] Verifying x265 binary...
+x265 [info]: HEVC encoder version 4.2
+x265 [info]: build info [Linux][GCC 12.3.1][64 bit] 8bit
+x265 [info]: using cpu capabilities: NEON Neon_DotProd
+[PHASE1] Generating test YUV (1280x720, 50 frames)...
+[GEN_YUV] Generated 1280x720 I420, 50 frames, 69120000 bytes (65.9 MB) -> /tmp/x265_build_5y6vbm/test_1280x720.yuv
+[PHASE1] Build phase complete
+[PHASE2] === Phase 2: Collect Version Info ===
+[PHASE2] Version info saved (x265: x265 [info]: HEVC encoder version 4.2)
+[PHASE3] === Phase 3: Run Benchmarks ===
+[PHASE3A] Running H.265 encode preset sweep...
+[BENCHMARK_ENCODE] Running preset ultrafast...
+[BENCHMARK_ENCODE][DEBUG] preset=ultrafast returncode=1
+[BENCHMARK_ENCODE][DEBUG] cmd: /tmp/x265_build_5y6vbm/install/bin/x265 --input-res 1280x720 --input-fps 25 --frames 50 --preset ultrafast --psnr -o /dev/null /tmp/x265_build_5y6vbm/test_1280x720.yuv
+[BENCHMARK_ENCODE][DEBUG] raw output (last 2500 chars):
+t. Default disabled
+   --[no-]eob                    Emit end of bitstream nal unit at the end of the bitstream. Default disabled
+   --[no-]eos                    Emit end of sequence nal unit at the end of every coded video sequence. Default disabled
+   --atc-sei <integer>           Emit the alternative transfer characteristics SEI message where the integer is the preferred transfer characteristic. Default disabled
+   --pic-struct <integer>        Set the picture structure and emit it in the picture timing SEI message. Values in the range 0..12. See D.3.3 of the HEVC spec. for a detailed explanation.
+   --log2-max-poc-lsb <integer>  Maximum of the picture order count
+   --[no-]vui-timing-info        Emit VUI timing information in the bitstream. Default enabled
+   --[no-]vui-hrd-info           Emit VUI HRD information in the bitstream. Default enabled
+   --[no-]opt-qp-pps             Dynamically optimize QP in PPS (instead of default 26) based on QPs in previous GOP. Default disabled
+   --[no-]opt-ref-list-length-pps  Dynamically set L0 and L1 ref list length in PPS (instead of default 0) based on values in the last GOP. Default disabled
+   --[no-]multi-pass-opt-rps     Enable storing commonly used RPS in SPS in multi-pass mode. Default disabled
+   --[no-]opt-cu-delta-qp        Optimize to signal consistent CU level delta QPs in the frame. Default disabled
+   --lowpass-dct                 Use low-pass subband DCT approximation. Default disabled
+   --[no-]frame-dup              Enable Frame duplication. Default disabled
+   --dup-threshold <integer>     PSNR threshold for Frame duplication. Default 70
+   --[no-]mcstf                  Enable GOP-based temporal filter. Default 0
+ ABR-ladder settings
+   --abr-ladder <file>           File containing config settings required for the generation of ABR-ladder
+
+SEI Message Options
+   --film-grain <filename>       File containing Film Grain Characteristics to be written as a SEI Message
+   --aom-film-grain <filename>   File containing Aom Film Grain Characteristics to be written as a SEI Message
+   --[no-]frame-rc              Enable configuring Rate Control parameters(QP, CRF or Bitrate) at frame level.Default 0
+                                Enable this option only when planning to invoke the API function x265_encoder_reconfig to configure Rate Control parameters
+
+Use --fullhelp for a full listing (or --log-level full --help)
+
+
+Complete documentation may be found at http://x265.readthedocs.org/en/default/cli.html
+
+[BENCHMARK_ENCODE] Running preset fast...
+[BENCHMARK_ENCODE][DEBUG] preset=fast returncode=1
+[BENCHMARK_ENCODE][DEBUG] cmd: /tmp/x265_build_5y6vbm/install/bin/x265 --input-res 1280x720 --input-fps 25 --frames 50 --preset fast --psnr -o /dev/null /tmp/x265_build_5y6vbm/test_1280x720.yuv
+[BENCHMARK_ENCODE][DEBUG] raw output (last 2500 chars):
+t. Default disabled
+   --[no-]eob                    Emit end of bitstream nal unit at the end of the bitstream. Default disabled
+   --[no-]eos                    Emit end of sequence nal unit at the end of every coded video sequence. Default disabled
+   --atc-sei <integer>           Emit the alternative transfer characteristics SEI message where the integer is the preferred transfer characteristic. Default disabled
+   --pic-struct <integer>        Set the picture structure and emit it in the picture timing SEI message. Values in the range 0..12. See D.3.3 of the HEVC spec. for a detailed explanation.
+   --log2-max-poc-lsb <integer>  Maximum of the picture order count
+   --[no-]vui-timing-info        Emit VUI timing information in the bitstream. Default enabled
+   --[no-]vui-hrd-info           Emit VUI HRD information in the bitstream. Default enabled
+   --[no-]opt-qp-pps             Dynamically optimize QP in PPS (instead of default 26) based on QPs in previous GOP. Default disabled
+   --[no-]opt-ref-list-length-pps  Dynamically set L0 and L1 ref list length in PPS (instead of default 0) based on values in the last GOP. Default disabled
+   --[no-]multi-pass-opt-rps     Enable storing commonly used RPS in SPS in multi-pass mode. Default disabled
+   --[no-]opt-cu-delta-qp        Optimize to signal consistent CU level delta QPs in the frame. Default disabled
+   --lowpass-dct                 Use low-pass subband DCT approximation. Default disabled
+   --[no-]frame-dup              Enable Frame duplication. Default disabled
+   --dup-threshold <integer>     PSNR threshold for Frame duplication. Default 70
+   --[no-]mcstf                  Enable GOP-based temporal filter. Default 0
+ ABR-ladder settings
+   --abr-ladder <file>           File containing config settings required for the generation of ABR-ladder
+
+SEI Message Options
+   --film-grain <filename>       File containing Film Grain Characteristics to be written as a SEI Message
+   --aom-film-grain <filename>   File containing Aom Film Grain Characteristics to be written as a SEI Message
+   --[no-]frame-rc              Enable configuring Rate Control parameters(QP, CRF or Bitrate) at frame level.Default 0
+                                Enable this option only when planning to invoke the API function x265_encoder_reconfig to configure Rate Control parameters
+
+Use --fullhelp for a full listing (or --log-level full --help)
+
+
+Complete documentation may be found at http://x265.readthedocs.org/en/default/cli.html
+
+[BENCHMARK_ENCODE] Running preset medium...
+[BENCHMARK_ENCODE][DEBUG] preset=medium returncode=1
+[BENCHMARK_ENCODE][DEBUG] cmd: /tmp/x265_build_5y6vbm/install/bin/x265 --input-res 1280x720 --input-fps 25 --frames 50 --preset medium --psnr -o /dev/null /tmp/x265_build_5y6vbm/test_1280x720.yuv
+[BENCHMARK_ENCODE][DEBUG] raw output (last 2500 chars):
+t. Default disabled
+   --[no-]eob                    Emit end of bitstream nal unit at the end of the bitstream. Default disabled
+   --[no-]eos                    Emit end of sequence nal unit at the end of every coded video sequence. Default disabled
+   --atc-sei <integer>           Emit the alternative transfer characteristics SEI message where the integer is the preferred transfer characteristic. Default disabled
+   --pic-struct <integer>        Set the picture structure and emit it in the picture timing SEI message. Values in the range 0..12. See D.3.3 of the HEVC spec. for a detailed explanation.
+   --log2-max-poc-lsb <integer>  Maximum of the picture order count
+   --[no-]vui-timing-info        Emit VUI timing information in the bitstream. Default enabled
+   --[no-]vui-hrd-info           Emit VUI HRD information in the bitstream. Default enabled
+   --[no-]opt-qp-pps             Dynamically optimize QP in PPS (instead of default 26) based on QPs in previous GOP. Default disabled
+   --[no-]opt-ref-list-length-pps  Dynamically set L0 and L1 ref list length in PPS (instead of default 0) based on values in the last GOP. Default disabled
+   --[no-]multi-pass-opt-rps     Enable storing commonly used RPS in SPS in multi-pass mode. Default disabled
+   --[no-]opt-cu-delta-qp        Optimize to signal consistent CU level delta QPs in the frame. Default disabled
+   --lowpass-dct                 Use low-pass subband DCT approximation. Default disabled
+   --[no-]frame-dup              Enable Frame duplication. Default disabled
+   --dup-threshold <integer>     PSNR threshold for Frame duplication. Default 70
+   --[no-]mcstf                  Enable GOP-based temporal filter. Default 0
+ ABR-ladder settings
+   --abr-ladder <file>           File containing config settings required for the generation of ABR-ladder
+
+SEI Message Options
+   --film-grain <filename>       File containing Film Grain Characteristics to be written as a SEI Message
+   --aom-film-grain <filename>   File containing Aom Film Grain Characteristics to be written as a SEI Message
+   --[no-]frame-rc              Enable configuring Rate Control parameters(QP, CRF or Bitrate) at frame level.Default 0
+                                Enable this option only when planning to invoke the API function x265_encoder_reconfig to configure Rate Control parameters
+
+Use --fullhelp for a full listing (or --log-level full --help)
+
+
+Complete documentation may be found at http://x265.readthedocs.org/en/default/cli.html
+
+[BENCHMARK_ENCODE] Running preset slow...
+[BENCHMARK_ENCODE][DEBUG] preset=slow returncode=1
+[BENCHMARK_ENCODE][DEBUG] cmd: /tmp/x265_build_5y6vbm/install/bin/x265 --input-res 1280x720 --input-fps 25 --frames 50 --preset slow --psnr -o /dev/null /tmp/x265_build_5y6vbm/test_1280x720.yuv
+[BENCHMARK_ENCODE][DEBUG] raw output (last 2500 chars):
+t. Default disabled
+   --[no-]eob                    Emit end of bitstream nal unit at the end of the bitstream. Default disabled
+   --[no-]eos                    Emit end of sequence nal unit at the end of every coded video sequence. Default disabled
+   --atc-sei <integer>           Emit the alternative transfer characteristics SEI message where the integer is the preferred transfer characteristic. Default disabled
+   --pic-struct <integer>        Set the picture structure and emit it in the picture timing SEI message. Values in the range 0..12. See D.3.3 of the HEVC spec. for a detailed explanation.
+   --log2-max-poc-lsb <integer>  Maximum of the picture order count
+   --[no-]vui-timing-info        Emit VUI timing information in the bitstream. Default enabled
+   --[no-]vui-hrd-info           Emit VUI HRD information in the bitstream. Default enabled
+   --[no-]opt-qp-pps             Dynamically optimize QP in PPS (instead of default 26) based on QPs in previous GOP. Default disabled
+   --[no-]opt-ref-list-length-pps  Dynamically set L0 and L1 ref list length in PPS (instead of default 0) based on values in the last GOP. Default disabled
+   --[no-]multi-pass-opt-rps     Enable storing commonly used RPS in SPS in multi-pass mode. Default disabled
+   --[no-]opt-cu-delta-qp        Optimize to signal consistent CU level delta QPs in the frame. Default disabled
+   --lowpass-dct                 Use low-pass subband DCT approximation. Default disabled
+   --[no-]frame-dup              Enable Frame duplication. Default disabled
+   --dup-threshold <integer>     PSNR threshold for Frame duplication. Default 70
+   --[no-]mcstf                  Enable GOP-based temporal filter. Default 0
+ ABR-ladder settings
+   --abr-ladder <file>           File containing config settings required for the generation of ABR-ladder
+
+SEI Message Options
+   --film-grain <filename>       File containing Film Grain Characteristics to be written as a SEI Message
+   --aom-film-grain <filename>   File containing Aom Film Grain Characteristics to be written as a SEI Message
+   --[no-]frame-rc              Enable configuring Rate Control parameters(QP, CRF or Bitrate) at frame level.Default 0
+                                Enable this option only when planning to invoke the API function x265_encoder_reconfig to configure Rate Control parameters
+
+Use --fullhelp for a full listing (or --log-level full --help)
+
+
+Complete documentation may be found at http://x265.readthedocs.org/en/default/cli.html
+
+[BENCHMARK_ENCODE] Running preset veryslow...
+[BENCHMARK_ENCODE][DEBUG] preset=veryslow returncode=1
+[BENCHMARK_ENCODE][DEBUG] cmd: /tmp/x265_build_5y6vbm/install/bin/x265 --input-res 1280x720 --input-fps 25 --frames 50 --preset veryslow --psnr -o /dev/null /tmp/x265_build_5y6vbm/test_1280x720.yuv
+[BENCHMARK_ENCODE][DEBUG] raw output (last 2500 chars):
+t. Default disabled
+   --[no-]eob                    Emit end of bitstream nal unit at the end of the bitstream. Default disabled
+   --[no-]eos                    Emit end of sequence nal unit at the end of every coded video sequence. Default disabled
+   --atc-sei <integer>           Emit the alternative transfer characteristics SEI message where the integer is the preferred transfer characteristic. Default disabled
+   --pic-struct <integer>        Set the picture structure and emit it in the picture timing SEI message. Values in the range 0..12. See D.3.3 of the HEVC spec. for a detailed explanation.
+   --log2-max-poc-lsb <integer>  Maximum of the picture order count
+   --[no-]vui-timing-info        Emit VUI timing information in the bitstream. Default enabled
+   --[no-]vui-hrd-info           Emit VUI HRD information in the bitstream. Default enabled
+   --[no-]opt-qp-pps             Dynamically optimize QP in PPS (instead of default 26) based on QPs in previous GOP. Default disabled
+   --[no-]opt-ref-list-length-pps  Dynamically set L0 and L1 ref list length in PPS (instead of default 0) based on values in the last GOP. Default disabled
+   --[no-]multi-pass-opt-rps     Enable storing commonly used RPS in SPS in multi-pass mode. Default disabled
+   --[no-]opt-cu-delta-qp        Optimize to signal consistent CU level delta QPs in the frame. Default disabled
+   --lowpass-dct                 Use low-pass subband DCT approximation. Default disabled
+   --[no-]frame-dup              Enable Frame duplication. Default disabled
+   --dup-threshold <integer>     PSNR threshold for Frame duplication. Default 70
+   --[no-]mcstf                  Enable GOP-based temporal filter. Default 0
+ ABR-ladder settings
+   --abr-ladder <file>           File containing config settings required for the generation of ABR-ladder
+
+SEI Message Options
+   --film-grain <filename>       File containing Film Grain Characteristics to be written as a SEI Message
+   --aom-film-grain <filename>   File containing Aom Film Grain Characteristics to be written as a SEI Message
+   --[no-]frame-rc              Enable configuring Rate Control parameters(QP, CRF or Bitrate) at frame level.Default 0
+                                Enable this option only when planning to invoke the API function x265_encoder_reconfig to configure Rate Control parameters
+
+Use --fullhelp for a full listing (or --log-level full --help)
+
+
+Complete documentation may be found at http://x265.readthedocs.org/en/default/cli.html
+
+[BENCHMARK_ENCODE] Output written to /root/tian/Tian/tests/x265/results/4.2/benchmark_encode.json (5 presets)
+[PHASE3B] Running micro benchmark...
+[BENCHMARK_MICRO][DEBUG] threads=None returncode=1
+[BENCHMARK_MICRO][DEBUG] cmd: /tmp/x265_build_5y6vbm/install/bin/x265 --input-res 320x240 --input-fps 25 --frames 10 --preset medium -o /dev/null /tmp/x265_micro_xed47tom/320x240.yuv
+[BENCHMARK_MICRO][DEBUG] raw output (last 2500 chars):
+t. Default disabled
+   --[no-]eob                    Emit end of bitstream nal unit at the end of the bitstream. Default disabled
+   --[no-]eos                    Emit end of sequence nal unit at the end of every coded video sequence. Default disabled
+   --atc-sei <integer>           Emit the alternative transfer characteristics SEI message where the integer is the preferred transfer characteristic. Default disabled
+   --pic-struct <integer>        Set the picture structure and emit it in the picture timing SEI message. Values in the range 0..12. See D.3.3 of the HEVC spec. for a detailed explanation.
+   --log2-max-poc-lsb <integer>  Maximum of the picture order count
+   --[no-]vui-timing-info        Emit VUI timing information in the bitstream. Default enabled
+   --[no-]vui-hrd-info           Emit VUI HRD information in the bitstream. Default enabled
+   --[no-]opt-qp-pps             Dynamically optimize QP in PPS (instead of default 26) based on QPs in previous GOP. Default disabled
+   --[no-]opt-ref-list-length-pps  Dynamically set L0 and L1 ref list length in PPS (instead of default 0) based on values in the last GOP. Default disabled
+   --[no-]multi-pass-opt-rps     Enable storing commonly used RPS in SPS in multi-pass mode. Default disabled
+   --[no-]opt-cu-delta-qp        Optimize to signal consistent CU level delta QPs in the frame. Default disabled
+   --lowpass-dct                 Use low-pass subband DCT approximation. Default disabled
+   --[no-]frame-dup              Enable Frame duplication. Default disabled
+   --dup-threshold <integer>     PSNR threshold for Frame duplication. Default 70
+   --[no-]mcstf                  Enable GOP-based temporal filter. Default 0
+ ABR-ladder settings
+   --abr-ladder <file>           File containing config settings required for the generation of ABR-ladder
+
+SEI Message Options
+   --film-grain <filename>       File containing Film Grain Characteristics to be written as a SEI Message
+   --aom-film-grain <filename>   File containing Aom Film Grain Characteristics to be written as a SEI Message
+   --[no-]frame-rc              Enable configuring Rate Control parameters(QP, CRF or Bitrate) at frame level.Default 0
+                                Enable this option only when planning to invoke the API function x265_encoder_reconfig to configure Rate Control parameters
+
+Use --fullhelp for a full listing (or --log-level full --help)
+
+
+Complete documentation may be found at http://x265.readthedocs.org/en/default/cli.html
+
+[BENCHMARK_MICRO] 320x240: 0.0 fps
+[BENCHMARK_MICRO][DEBUG] threads=None returncode=1
+[BENCHMARK_MICRO][DEBUG] cmd: /tmp/x265_build_5y6vbm/install/bin/x265 --input-res 1280x720 --input-fps 25 --frames 10 --preset medium -o /dev/null /tmp/x265_micro_xed47tom/1280x720.yuv
+[BENCHMARK_MICRO][DEBUG] raw output (last 2500 chars):
+t. Default disabled
+   --[no-]eob                    Emit end of bitstream nal unit at the end of the bitstream. Default disabled
+   --[no-]eos                    Emit end of sequence nal unit at the end of every coded video sequence. Default disabled
+   --atc-sei <integer>           Emit the alternative transfer characteristics SEI message where the integer is the preferred transfer characteristic. Default disabled
+   --pic-struct <integer>        Set the picture structure and emit it in the picture timing SEI message. Values in the range 0..12. See D.3.3 of the HEVC spec. for a detailed explanation.
+   --log2-max-poc-lsb <integer>  Maximum of the picture order count
+   --[no-]vui-timing-info        Emit VUI timing information in the bitstream. Default enabled
+   --[no-]vui-hrd-info           Emit VUI HRD information in the bitstream. Default enabled
+   --[no-]opt-qp-pps             Dynamically optimize QP in PPS (instead of default 26) based on QPs in previous GOP. Default disabled
+   --[no-]opt-ref-list-length-pps  Dynamically set L0 and L1 ref list length in PPS (instead of default 0) based on values in the last GOP. Default disabled
+   --[no-]multi-pass-opt-rps     Enable storing commonly used RPS in SPS in multi-pass mode. Default disabled
+   --[no-]opt-cu-delta-qp        Optimize to signal consistent CU level delta QPs in the frame. Default disabled
+   --lowpass-dct                 Use low-pass subband DCT approximation. Default disabled
+   --[no-]frame-dup              Enable Frame duplication. Default disabled
+   --dup-threshold <integer>     PSNR threshold for Frame duplication. Default 70
+   --[no-]mcstf                  Enable GOP-based temporal filter. Default 0
+ ABR-ladder settings
+   --abr-ladder <file>           File containing config settings required for the generation of ABR-ladder
+
+SEI Message Options
+   --film-grain <filename>       File containing Film Grain Characteristics to be written as a SEI Message
+   --aom-film-grain <filename>   File containing Aom Film Grain Characteristics to be written as a SEI Message
+   --[no-]frame-rc              Enable configuring Rate Control parameters(QP, CRF or Bitrate) at frame level.Default 0
+                                Enable this option only when planning to invoke the API function x265_encoder_reconfig to configure Rate Control parameters
+
+Use --fullhelp for a full listing (or --log-level full --help)
+
+
+Complete documentation may be found at http://x265.readthedocs.org/en/default/cli.html
+
+[BENCHMARK_MICRO] 1280x720: 0.0 fps
+[BENCHMARK_MICRO][DEBUG] threads=None returncode=1
+[BENCHMARK_MICRO][DEBUG] cmd: /tmp/x265_build_5y6vbm/install/bin/x265 --input-res 1920x1080 --input-fps 25 --frames 10 --preset medium -o /dev/null /tmp/x265_micro_xed47tom/1920x1080.yuv
+[BENCHMARK_MICRO][DEBUG] raw output (last 2500 chars):
+t. Default disabled
+   --[no-]eob                    Emit end of bitstream nal unit at the end of the bitstream. Default disabled
+   --[no-]eos                    Emit end of sequence nal unit at the end of every coded video sequence. Default disabled
+   --atc-sei <integer>           Emit the alternative transfer characteristics SEI message where the integer is the preferred transfer characteristic. Default disabled
+   --pic-struct <integer>        Set the picture structure and emit it in the picture timing SEI message. Values in the range 0..12. See D.3.3 of the HEVC spec. for a detailed explanation.
+   --log2-max-poc-lsb <integer>  Maximum of the picture order count
+   --[no-]vui-timing-info        Emit VUI timing information in the bitstream. Default enabled
+   --[no-]vui-hrd-info           Emit VUI HRD information in the bitstream. Default enabled
+   --[no-]opt-qp-pps             Dynamically optimize QP in PPS (instead of default 26) based on QPs in previous GOP. Default disabled
+   --[no-]opt-ref-list-length-pps  Dynamically set L0 and L1 ref list length in PPS (instead of default 0) based on values in the last GOP. Default disabled
+   --[no-]multi-pass-opt-rps     Enable storing commonly used RPS in SPS in multi-pass mode. Default disabled
+   --[no-]opt-cu-delta-qp        Optimize to signal consistent CU level delta QPs in the frame. Default disabled
+   --lowpass-dct                 Use low-pass subband DCT approximation. Default disabled
+   --[no-]frame-dup              Enable Frame duplication. Default disabled
+   --dup-threshold <integer>     PSNR threshold for Frame duplication. Default 70
+   --[no-]mcstf                  Enable GOP-based temporal filter. Default 0
+ ABR-ladder settings
+   --abr-ladder <file>           File containing config settings required for the generation of ABR-ladder
+
+SEI Message Options
+   --film-grain <filename>       File containing Film Grain Characteristics to be written as a SEI Message
+   --aom-film-grain <filename>   File containing Aom Film Grain Characteristics to be written as a SEI Message
+   --[no-]frame-rc              Enable configuring Rate Control parameters(QP, CRF or Bitrate) at frame level.Default 0
+                                Enable this option only when planning to invoke the API function x265_encoder_reconfig to configure Rate Control parameters
+
+Use --fullhelp for a full listing (or --log-level full --help)
+
+
+Complete documentation may be found at http://x265.readthedocs.org/en/default/cli.html
+
+[BENCHMARK_MICRO] 1920x1080: 0.0 fps
+[BENCHMARK_MICRO][DEBUG] threads=1 returncode=1
+[BENCHMARK_MICRO][DEBUG] cmd: /tmp/x265_build_5y6vbm/install/bin/x265 --input-res 1280x720 --input-fps 25 --frames 30 --preset medium -o /dev/null --threads 1 /tmp/x265_micro_xed47tom/1280x720.yuv
+[BENCHMARK_MICRO][DEBUG] raw output (last 2500 chars):
+t. Default disabled
+   --[no-]eob                    Emit end of bitstream nal unit at the end of the bitstream. Default disabled
+   --[no-]eos                    Emit end of sequence nal unit at the end of every coded video sequence. Default disabled
+   --atc-sei <integer>           Emit the alternative transfer characteristics SEI message where the integer is the preferred transfer characteristic. Default disabled
+   --pic-struct <integer>        Set the picture structure and emit it in the picture timing SEI message. Values in the range 0..12. See D.3.3 of the HEVC spec. for a detailed explanation.
+   --log2-max-poc-lsb <integer>  Maximum of the picture order count
+   --[no-]vui-timing-info        Emit VUI timing information in the bitstream. Default enabled
+   --[no-]vui-hrd-info           Emit VUI HRD information in the bitstream. Default enabled
+   --[no-]opt-qp-pps             Dynamically optimize QP in PPS (instead of default 26) based on QPs in previous GOP. Default disabled
+   --[no-]opt-ref-list-length-pps  Dynamically set L0 and L1 ref list length in PPS (instead of default 0) based on values in the last GOP. Default disabled
+   --[no-]multi-pass-opt-rps     Enable storing commonly used RPS in SPS in multi-pass mode. Default disabled
+   --[no-]opt-cu-delta-qp        Optimize to signal consistent CU level delta QPs in the frame. Default disabled
+   --lowpass-dct                 Use low-pass subband DCT approximation. Default disabled
+   --[no-]frame-dup              Enable Frame duplication. Default disabled
+   --dup-threshold <integer>     PSNR threshold for Frame duplication. Default 70
+   --[no-]mcstf                  Enable GOP-based temporal filter. Default 0
+ ABR-ladder settings
+   --abr-ladder <file>           File containing config settings required for the generation of ABR-ladder
+
+SEI Message Options
+   --film-grain <filename>       File containing Film Grain Characteristics to be written as a SEI Message
+   --aom-film-grain <filename>   File containing Aom Film Grain Characteristics to be written as a SEI Message
+   --[no-]frame-rc              Enable configuring Rate Control parameters(QP, CRF or Bitrate) at frame level.Default 0
+                                Enable this option only when planning to invoke the API function x265_encoder_reconfig to configure Rate Control parameters
+
+Use --fullhelp for a full listing (or --log-level full --help)
+
+
+Complete documentation may be found at http://x265.readthedocs.org/en/default/cli.html
+
+[BENCHMARK_MICRO] threads 1: 0.0 fps
+[BENCHMARK_MICRO][DEBUG] threads=2 returncode=1
+[BENCHMARK_MICRO][DEBUG] cmd: /tmp/x265_build_5y6vbm/install/bin/x265 --input-res 1280x720 --input-fps 25 --frames 30 --preset medium -o /dev/null --threads 2 /tmp/x265_micro_xed47tom/1280x720.yuv
+[BENCHMARK_MICRO][DEBUG] raw output (last 2500 chars):
+t. Default disabled
+   --[no-]eob                    Emit end of bitstream nal unit at the end of the bitstream. Default disabled
+   --[no-]eos                    Emit end of sequence nal unit at the end of every coded video sequence. Default disabled
+   --atc-sei <integer>           Emit the alternative transfer characteristics SEI message where the integer is the preferred transfer characteristic. Default disabled
+   --pic-struct <integer>        Set the picture structure and emit it in the picture timing SEI message. Values in the range 0..12. See D.3.3 of the HEVC spec. for a detailed explanation.
+   --log2-max-poc-lsb <integer>  Maximum of the picture order count
+   --[no-]vui-timing-info        Emit VUI timing information in the bitstream. Default enabled
+   --[no-]vui-hrd-info           Emit VUI HRD information in the bitstream. Default enabled
+   --[no-]opt-qp-pps             Dynamically optimize QP in PPS (instead of default 26) based on QPs in previous GOP. Default disabled
+   --[no-]opt-ref-list-length-pps  Dynamically set L0 and L1 ref list length in PPS (instead of default 0) based on values in the last GOP. Default disabled
+   --[no-]multi-pass-opt-rps     Enable storing commonly used RPS in SPS in multi-pass mode. Default disabled
+   --[no-]opt-cu-delta-qp        Optimize to signal consistent CU level delta QPs in the frame. Default disabled
+   --lowpass-dct                 Use low-pass subband DCT approximation. Default disabled
+   --[no-]frame-dup              Enable Frame duplication. Default disabled
+   --dup-threshold <integer>     PSNR threshold for Frame duplication. Default 70
+   --[no-]mcstf                  Enable GOP-based temporal filter. Default 0
+ ABR-ladder settings
+   --abr-ladder <file>           File containing config settings required for the generation of ABR-ladder
+
+SEI Message Options
+   --film-grain <filename>       File containing Film Grain Characteristics to be written as a SEI Message
+   --aom-film-grain <filename>   File containing Aom Film Grain Characteristics to be written as a SEI Message
+   --[no-]frame-rc              Enable configuring Rate Control parameters(QP, CRF or Bitrate) at frame level.Default 0
+                                Enable this option only when planning to invoke the API function x265_encoder_reconfig to configure Rate Control parameters
+
+Use --fullhelp for a full listing (or --log-level full --help)
+
+
+Complete documentation may be found at http://x265.readthedocs.org/en/default/cli.html
+
+[BENCHMARK_MICRO] threads 2: 0.0 fps
+[BENCHMARK_MICRO][DEBUG] threads=4 returncode=1
+[BENCHMARK_MICRO][DEBUG] cmd: /tmp/x265_build_5y6vbm/install/bin/x265 --input-res 1280x720 --input-fps 25 --frames 30 --preset medium -o /dev/null --threads 4 /tmp/x265_micro_xed47tom/1280x720.yuv
+[BENCHMARK_MICRO][DEBUG] raw output (last 2500 chars):
+t. Default disabled
+   --[no-]eob                    Emit end of bitstream nal unit at the end of the bitstream. Default disabled
+   --[no-]eos                    Emit end of sequence nal unit at the end of every coded video sequence. Default disabled
+   --atc-sei <integer>           Emit the alternative transfer characteristics SEI message where the integer is the preferred transfer characteristic. Default disabled
+   --pic-struct <integer>        Set the picture structure and emit it in the picture timing SEI message. Values in the range 0..12. See D.3.3 of the HEVC spec. for a detailed explanation.
+   --log2-max-poc-lsb <integer>  Maximum of the picture order count
+   --[no-]vui-timing-info        Emit VUI timing information in the bitstream. Default enabled
+   --[no-]vui-hrd-info           Emit VUI HRD information in the bitstream. Default enabled
+   --[no-]opt-qp-pps             Dynamically optimize QP in PPS (instead of default 26) based on QPs in previous GOP. Default disabled
+   --[no-]opt-ref-list-length-pps  Dynamically set L0 and L1 ref list length in PPS (instead of default 0) based on values in the last GOP. Default disabled
+   --[no-]multi-pass-opt-rps     Enable storing commonly used RPS in SPS in multi-pass mode. Default disabled
+   --[no-]opt-cu-delta-qp        Optimize to signal consistent CU level delta QPs in the frame. Default disabled
+   --lowpass-dct                 Use low-pass subband DCT approximation. Default disabled
+   --[no-]frame-dup              Enable Frame duplication. Default disabled
+   --dup-threshold <integer>     PSNR threshold for Frame duplication. Default 70
+   --[no-]mcstf                  Enable GOP-based temporal filter. Default 0
+ ABR-ladder settings
+   --abr-ladder <file>           File containing config settings required for the generation of ABR-ladder
+
+SEI Message Options
+   --film-grain <filename>       File containing Film Grain Characteristics to be written as a SEI Message
+   --aom-film-grain <filename>   File containing Aom Film Grain Characteristics to be written as a SEI Message
+   --[no-]frame-rc              Enable configuring Rate Control parameters(QP, CRF or Bitrate) at frame level.Default 0
+                                Enable this option only when planning to invoke the API function x265_encoder_reconfig to configure Rate Control parameters
+
+Use --fullhelp for a full listing (or --log-level full --help)
+
+
+Complete documentation may be found at http://x265.readthedocs.org/en/default/cli.html
+
+[BENCHMARK_MICRO] threads 4: 0.0 fps
+[BENCHMARK_MICRO][DEBUG] threads=8 returncode=1
+[BENCHMARK_MICRO][DEBUG] cmd: /tmp/x265_build_5y6vbm/install/bin/x265 --input-res 1280x720 --input-fps 25 --frames 30 --preset medium -o /dev/null --threads 8 /tmp/x265_micro_xed47tom/1280x720.yuv
+[BENCHMARK_MICRO][DEBUG] raw output (last 2500 chars):
+t. Default disabled
+   --[no-]eob                    Emit end of bitstream nal unit at the end of the bitstream. Default disabled
+   --[no-]eos                    Emit end of sequence nal unit at the end of every coded video sequence. Default disabled
+   --atc-sei <integer>           Emit the alternative transfer characteristics SEI message where the integer is the preferred transfer characteristic. Default disabled
+   --pic-struct <integer>        Set the picture structure and emit it in the picture timing SEI message. Values in the range 0..12. See D.3.3 of the HEVC spec. for a detailed explanation.
+   --log2-max-poc-lsb <integer>  Maximum of the picture order count
+   --[no-]vui-timing-info        Emit VUI timing information in the bitstream. Default enabled
+   --[no-]vui-hrd-info           Emit VUI HRD information in the bitstream. Default enabled
+   --[no-]opt-qp-pps             Dynamically optimize QP in PPS (instead of default 26) based on QPs in previous GOP. Default disabled
+   --[no-]opt-ref-list-length-pps  Dynamically set L0 and L1 ref list length in PPS (instead of default 0) based on values in the last GOP. Default disabled
+   --[no-]multi-pass-opt-rps     Enable storing commonly used RPS in SPS in multi-pass mode. Default disabled
+   --[no-]opt-cu-delta-qp        Optimize to signal consistent CU level delta QPs in the frame. Default disabled
+   --lowpass-dct                 Use low-pass subband DCT approximation. Default disabled
+   --[no-]frame-dup              Enable Frame duplication. Default disabled
+   --dup-threshold <integer>     PSNR threshold for Frame duplication. Default 70
+   --[no-]mcstf                  Enable GOP-based temporal filter. Default 0
+ ABR-ladder settings
+   --abr-ladder <file>           File containing config settings required for the generation of ABR-ladder
+
+SEI Message Options
+   --film-grain <filename>       File containing Film Grain Characteristics to be written as a SEI Message
+   --aom-film-grain <filename>   File containing Aom Film Grain Characteristics to be written as a SEI Message
+   --[no-]frame-rc              Enable configuring Rate Control parameters(QP, CRF or Bitrate) at frame level.Default 0
+                                Enable this option only when planning to invoke the API function x265_encoder_reconfig to configure Rate Control parameters
+
+Use --fullhelp for a full listing (or --log-level full --help)
+
+
+Complete documentation may be found at http://x265.readthedocs.org/en/default/cli.html
+
+[BENCHMARK_MICRO] threads 8: 0.0 fps
+[BENCHMARK_MICRO][DEBUG] threads=all returncode=1
+[BENCHMARK_MICRO][DEBUG] cmd: /tmp/x265_build_5y6vbm/install/bin/x265 --input-res 1280x720 --input-fps 25 --frames 30 --preset medium -o /dev/null --threads all /tmp/x265_micro_xed47tom/1280x720.yuv
+[BENCHMARK_MICRO][DEBUG] raw output (last 2500 chars):
+t. Default disabled
+   --[no-]eob                    Emit end of bitstream nal unit at the end of the bitstream. Default disabled
+   --[no-]eos                    Emit end of sequence nal unit at the end of every coded video sequence. Default disabled
+   --atc-sei <integer>           Emit the alternative transfer characteristics SEI message where the integer is the preferred transfer characteristic. Default disabled
+   --pic-struct <integer>        Set the picture structure and emit it in the picture timing SEI message. Values in the range 0..12. See D.3.3 of the HEVC spec. for a detailed explanation.
+   --log2-max-poc-lsb <integer>  Maximum of the picture order count
+   --[no-]vui-timing-info        Emit VUI timing information in the bitstream. Default enabled
+   --[no-]vui-hrd-info           Emit VUI HRD information in the bitstream. Default enabled
+   --[no-]opt-qp-pps             Dynamically optimize QP in PPS (instead of default 26) based on QPs in previous GOP. Default disabled
+   --[no-]opt-ref-list-length-pps  Dynamically set L0 and L1 ref list length in PPS (instead of default 0) based on values in the last GOP. Default disabled
+   --[no-]multi-pass-opt-rps     Enable storing commonly used RPS in SPS in multi-pass mode. Default disabled
+   --[no-]opt-cu-delta-qp        Optimize to signal consistent CU level delta QPs in the frame. Default disabled
+   --lowpass-dct                 Use low-pass subband DCT approximation. Default disabled
+   --[no-]frame-dup              Enable Frame duplication. Default disabled
+   --dup-threshold <integer>     PSNR threshold for Frame duplication. Default 70
+   --[no-]mcstf                  Enable GOP-based temporal filter. Default 0
+ ABR-ladder settings
+   --abr-ladder <file>           File containing config settings required for the generation of ABR-ladder
+
+SEI Message Options
+   --film-grain <filename>       File containing Film Grain Characteristics to be written as a SEI Message
+   --aom-film-grain <filename>   File containing Aom Film Grain Characteristics to be written as a SEI Message
+   --[no-]frame-rc              Enable configuring Rate Control parameters(QP, CRF or Bitrate) at frame level.Default 0
+                                Enable this option only when planning to invoke the API function x265_encoder_reconfig to configure Rate Control parameters
+
+Use --fullhelp for a full listing (or --log-level full --help)
+
+
+Complete documentation may be found at http://x265.readthedocs.org/en/default/cli.html
+
+[BENCHMARK_MICRO] threads all: 0.0 fps
+[BENCHMARK_MICRO] Output written to /root/tian/Tian/tests/x265/results/4.2/micro_benchmark.json
+[PHASE4] === Phase 4: Aggregate & Report ===
+[PHASE4] Reports generated:
+[PHASE4]   JSON: /root/tian/Tian/tests/x265/results/4.2/results.json
+[PHASE4]   TXT:  /root/tian/Tian/tests/x265/results/4.2/results.txt
+[PHASE4]   LOG:  /root/tian/Tian/tests/x265/results/4.2/results.log
+[BUILD] Cleaning up: /tmp/x265_build_5y6vbm
+[START] x265 Source Build & Performance Benchmark v4.2
+[CHECK] Python3 OK: Python 3.11.6
+[CHECK] G++ OK: g++ (GCC) 12.3.1 (openEuler 12.3.1-105.oe2403sp3)
+[CHECK] CMake OK: cmake version 3.27.9
+[CHECK] Git OK: git version 2.43.0
+[CHECK] json_helper.py OK
+[CHECK] OS: openEuler 24.03 SP3 (openEuler)
+[CHECK] Architecture: aarch64
+[CHECK] Build method: source_build (cmake, NEON auto-detected on aarch64)
+[SETUP] Downloading shUnit2 to /tmp/shunit2_9BsyXd...
+[SETUP] shUnit2 downloaded successfully
+[START] x265 Source Build & Performance Benchmark - v4.2
+[START] OS: openEuler 24.03 SP3 (openEuler), Build: source_build
+[CHECK] Python3 OK: Python 3.11.6
+[CHECK] G++ OK: g++ (GCC) 12.3.1 (openEuler 12.3.1-105.oe2403sp3)
+[CHECK] CMake OK: cmake version 3.27.9
+[CHECK] Git OK: git version 2.43.0
+[CHECK] json_helper.py OK
+[CHECK] OS: openEuler 24.03 SP3 (openEuler)
+[CHECK] Architecture: aarch64
+[CHECK] Build method: source_build (cmake, NEON auto-detected on aarch64)
+[PHASE1] === Phase 1: Source Build x265 v4.2 ===
+[BUILD] Created temp build dir: /tmp/x265_build_wXbBYQ
+[PHASE1] Preparing env on openEuler...
+Last metadata expiration check: 0:06:10 ago on Fri 07 Aug 2026 07:54:17 AM UTC.
+Package gcc-12.3.1-105.oe2403sp3.aarch64 is already installed.
+Package gcc-c++-12.3.1-105.oe2403sp3.aarch64 is already installed.
+Package cmake-3.27.9-8.oe2403sp3.aarch64 is already installed.
+Package make-1:4.4.1-2.oe2403sp3.aarch64 is already installed.
+Package git-2.43.0-11.oe2403sp3.aarch64 is already installed.
+Package wget-1.21.4-4.oe2403sp3.aarch64 is already installed.
+Package curl-8.4.0-33.oe2403sp3.aarch64 is already installed.
+Dependencies resolved.
+Nothing to do.
+Complete!
+[PHASE1] Cloning x265 tag 4.2 (from Bitbucket)...
+Cloning into '/tmp/x265_build_wXbBYQ/x265_src'...
+Note: switching to 'e444744c03978c1fb4e037168967020cf2648427'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+[PHASE1] Configuring CMake...
+-- cmake version 3.27.9
+-- The C compiler identification is GNU 12.3.1
+-- The CXX compiler identification is GNU 12.3.1
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Detected ARM64 target processor
+-- Could NOT find Numa (missing: NUMA_ROOT_DIR NUMA_INCLUDE_DIR NUMA_LIBRARY) 
+-- Looking for include file inttypes.h
+-- Looking for include file inttypes.h - found
+-- Configuring build for run-time CPU feature detection
+-- Performing Test SVE_COMPILATION_C_TEST_COMPILED
+-- Performing Test SVE_COMPILATION_C_TEST_COMPILED - Success
+-- Performing Test SVE_COMPILATION_CXX_TEST_COMPILED
+-- Performing Test SVE_COMPILATION_CXX_TEST_COMPILED - Success
+-- Performing Test SVE_HEADER_C_TEST_COMPILED
+-- Performing Test SVE_HEADER_C_TEST_COMPILED - Failed
+-- Performing Test SVE_HEADER_CXX_TEST_COMPILED
+-- Performing Test SVE_HEADER_CXX_TEST_COMPILED - Failed
+-- Found Neon
+-- Found Neon DotProd
+-- Found Neon I8MM
+-- Found SVE
+-- Found SVE2
+-- Found SVE2 BitPerm
+-- Performing Test CC_HAS_FLAX_VEC_CONV_NONE
+-- Performing Test CC_HAS_FLAX_VEC_CONV_NONE - Failed
+-- Performing Test CC_HAS_NO_STRICT_OVERFLOW
+-- Performing Test CC_HAS_NO_STRICT_OVERFLOW - Success
+-- Performing Test CC_HAS_NO_NARROWING
+-- Performing Test CC_HAS_NO_NARROWING - Success
+-- Performing Test CC_HAS_NO_ARRAY_BOUNDS
+-- Performing Test CC_HAS_NO_ARRAY_BOUNDS - Success
+-- Performing Test CC_HAS_FAST_MATH
+-- Performing Test CC_HAS_FAST_MATH - Success
+-- Performing Test CC_HAS_FNO_EXCEPTIONS_FLAG
+-- Performing Test CC_HAS_FNO_EXCEPTIONS_FLAG - Success
+-- Could NOT find Nasm (missing: NASM_EXECUTABLE) 
+-- GIT_EXECUTABLE /usr/bin/git
+-- GIT LIVE REPO VERSION RETRIEVED
+-- X265 RELEASE VERSION 4.2
+-- Detected CXX compiler using -O3 optimization level
+-- The ASM compiler identification is GNU
+-- Found assembler: /usr/bin/cc
+-- Looking for strtok_r
+-- Looking for strtok_r - found
+-- Looking for include file getopt.h
+-- Looking for include file getopt.h - found
+-- Configuring done (2.2s)
+-- Generating done (0.0s)
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    ENABLE_HDR
+
+
+-- Build files have been written to: /tmp/x265_build_wXbBYQ/build
+[PHASE1] Compiling x265...
+[  2%] Building CXX object encoder/CMakeFiles/encoder.dir/analysis.cpp.o
+[  2%] Building CXX object encoder/CMakeFiles/encoder.dir/bitcost.cpp.o
+[  3%] Building CXX object encoder/CMakeFiles/encoder.dir/search.cpp.o
+[  6%] Building CXX object encoder/CMakeFiles/encoder.dir/slicetype.cpp.o
+[  6%] Building CXX object encoder/CMakeFiles/encoder.dir/nal.cpp.o
+[  6%] Building CXX object encoder/CMakeFiles/encoder.dir/level.cpp.o
+[  7%] Building CXX object encoder/CMakeFiles/encoder.dir/motion.cpp.o
+[  9%] Building CXX object encoder/CMakeFiles/encoder.dir/frameencoder.cpp.o
+[  9%] Building CXX object encoder/CMakeFiles/encoder.dir/framefilter.cpp.o
+[ 11%] Building CXX object common/CMakeFiles/common.dir/aarch64/pixel-prim.cpp.o
+[ 11%] Building CXX object common/CMakeFiles/common.dir/aarch64/asm-primitives.cpp.o
+[ 12%] Building CXX object encoder/CMakeFiles/encoder.dir/sei.cpp.o
+[ 14%] Building CXX object encoder/CMakeFiles/encoder.dir/entropy.cpp.o
+[ 14%] Building CXX object encoder/CMakeFiles/encoder.dir/sao.cpp.o
+[ 15%] Building CXX object common/CMakeFiles/common.dir/aarch64/dct-prim.cpp.o
+[ 17%] Building CXX object common/CMakeFiles/common.dir/aarch64/loopfilter-prim.cpp.o
+[ 17%] Building CXX object common/CMakeFiles/common.dir/aarch64/intrapred-prim.cpp.o
+[ 18%] Building CXX object encoder/CMakeFiles/encoder.dir/dpb.cpp.o
+[ 20%] Building CXX object encoder/CMakeFiles/encoder.dir/reference.cpp.o
+[ 20%] Building CXX object encoder/CMakeFiles/encoder.dir/ratecontrol.cpp.o
+[ 21%] Building CXX object common/CMakeFiles/common.dir/aarch64/arm64-utils.cpp.o
+[ 22%] Building CXX object common/CMakeFiles/common.dir/aarch64/filter-neon-dotprod.cpp.o
+[ 23%] Building CXX object common/CMakeFiles/common.dir/primitives.cpp.o
+[ 24%] Building CXX object common/CMakeFiles/common.dir/dct.cpp.o
+[ 26%] Building CXX object common/CMakeFiles/common.dir/aarch64/filter-prim.cpp.o
+[ 26%] Building CXX object common/CMakeFiles/common.dir/aarch64/sao-prim.cpp.o
+[ 27%] Building CXX object encoder/CMakeFiles/encoder.dir/api.cpp.o
+[ 29%] Building CXX object encoder/CMakeFiles/encoder.dir/encoder.cpp.o
+[ 29%] Building CXX object common/CMakeFiles/common.dir/pixel.cpp.o
+[ 31%] Building CXX object common/CMakeFiles/common.dir/aarch64/filter-neon-i8mm.cpp.o
+[ 31%] Building CXX object common/CMakeFiles/common.dir/aarch64/pixel-prim-neon-dotprod.cpp.o
+[ 32%] Building CXX object encoder/CMakeFiles/encoder.dir/weightPrediction.cpp.o
+[ 33%] Building CXX object encoder/CMakeFiles/encoder.dir/threadedme.cpp.o
+[ 34%] Building CXX object common/CMakeFiles/common.dir/lowpassdct.cpp.o
+[ 35%] Building CXX object common/CMakeFiles/common.dir/ipfilter.cpp.o
+[ 36%] Building CXX object common/CMakeFiles/common.dir/intrapred.cpp.o
+[ 37%] Building CXX object common/CMakeFiles/common.dir/loopfilter.cpp.o
+[ 38%] Building CXX object common/CMakeFiles/common.dir/constants.cpp.o
+[ 39%] Building CXX object common/CMakeFiles/common.dir/cpu.cpp.o
+[ 40%] Building CXX object common/CMakeFiles/common.dir/version.cpp.o
+[ 41%] Building CXX object common/CMakeFiles/common.dir/threading.cpp.o
+[ 42%] Building CXX object common/CMakeFiles/common.dir/threadpool.cpp.o
+[ 43%] Building CXX object common/CMakeFiles/common.dir/wavefront.cpp.o
+[ 44%] Building CXX object common/CMakeFiles/common.dir/md5.cpp.o
+[ 45%] Building CXX object common/CMakeFiles/common.dir/bitstream.cpp.o
+[ 46%] Building CXX object common/CMakeFiles/common.dir/yuv.cpp.o
+[ 47%] Building CXX object common/CMakeFiles/common.dir/picyuv.cpp.o
+[ 48%] Building CXX object common/CMakeFiles/common.dir/shortyuv.cpp.o
+[ 50%] Building CXX object common/CMakeFiles/common.dir/common.cpp.o
+[ 51%] Building CXX object common/CMakeFiles/common.dir/param.cpp.o
+[ 52%] Building CXX object common/CMakeFiles/common.dir/frame.cpp.o
+[ 53%] Building CXX object common/CMakeFiles/common.dir/framedata.cpp.o
+[ 54%] Building CXX object common/CMakeFiles/common.dir/slice.cpp.o
+/tmp/x265_build_wXbBYQ/x265_src/source/common/threadpool.cpp: In function ‘void x265::distributeThreadsForTme(x265_param*, int, int&, bool, int*, uint64_t*, int&, int&)’:
+/tmp/x265_build_wXbBYQ/x265_src/source/common/threadpool.cpp:268:10: warning: unused parameter ‘bNumaSupport’ [-Wunused-parameter]
+  268 |     bool bNumaSupport,
+      |     ~~~~~^~~~~~~~~~~~
+[ 55%] Building CXX object common/CMakeFiles/common.dir/cudata.cpp.o
+[ 56%] Building CXX object common/CMakeFiles/common.dir/lowres.cpp.o
+[ 57%] Building CXX object common/CMakeFiles/common.dir/piclist.cpp.o
+[ 58%] Building CXX object common/CMakeFiles/common.dir/predict.cpp.o
+[ 59%] Building CXX object common/CMakeFiles/common.dir/scalinglist.cpp.o
+[ 60%] Building CXX object common/CMakeFiles/common.dir/quant.cpp.o
+[ 61%] Building CXX object common/CMakeFiles/common.dir/deblock.cpp.o
+[ 62%] Building CXX object common/CMakeFiles/common.dir/scaler.cpp.o
+[ 63%] Building CXX object common/CMakeFiles/common.dir/ringmem.cpp.o
+[ 64%] Building CXX object common/CMakeFiles/common.dir/temporalfilter.cpp.o
+[ 64%] Built target encoder
+[ 64%] Built target common
+[ 67%] Generating asm.S.o
+[ 67%] Generating dct.S.o
+[ 67%] Generating ssd-neon-dotprod.S.o
+[ 69%] Generating blockcopy8.S.o
+[ 69%] Generating asm-sve.S.o
+[ 70%] Generating mc-a-common.S.o
+[ 72%] Generating p2s-sve.S.o
+[ 72%] Generating mc-a.S.o
+[ 74%] Generating p2s-common.S.o
+[ 74%] Generating intrapred.S.o
+[ 75%] Generating pixel-util-sve.S.o
+[ 76%] Generating mc-a-sve2.S.o
+[ 77%] Generating p2s.S.o
+[ 80%] Generating pixel-util-sve2.S.o
+[ 80%] Generating pixel-util-common.S.o
+[ 80%] Generating pixel-util-sve2-bitperm.S.o
+[ 81%] Generating pixel-util.S.o
+[ 82%] Generating sad-a.S.o
+[ 83%] Generating ssd-a-sve.S.o
+[ 84%] Generating sad-neon-dotprod.S.o
+[ 86%] Generating ssd-a-common.S.o
+[ 86%] Generating ssd-a.S.o
+[ 87%] Linking CXX static library libx265.a
+[ 87%] Built target x265-static
+[ 88%] Building CXX object CMakeFiles/cli.dir/input/input.cpp.o
+[ 90%] Building CXX object CMakeFiles/cli.dir/input/y4m.cpp.o
+[ 90%] Building CXX object CMakeFiles/cli.dir/input/yuv.cpp.o
+[ 92%] Building CXX object CMakeFiles/cli.dir/output/raw.cpp.o
+[ 92%] Building CXX object CMakeFiles/cli.dir/output/y4m.cpp.o
+[ 93%] Building CXX object CMakeFiles/cli.dir/output/reconplay.cpp.o
+[ 95%] Building CXX object CMakeFiles/cli.dir/x265.cpp.o
+[ 95%] Building CXX object CMakeFiles/cli.dir/output/yuv.cpp.o
+[ 97%] Building CXX object CMakeFiles/cli.dir/x265cli.cpp.o
+[ 97%] Building CXX object CMakeFiles/cli.dir/output/output.cpp.o
+[ 98%] Building CXX object CMakeFiles/cli.dir/abrEncApp.cpp.o
+[100%] Linking CXX executable x265
+[100%] Built target cli
+[ 44%] Built target common
+[ 64%] Built target encoder
+[ 87%] Built target x265-static
+[100%] Built target cli
+Install the project...
+-- Install configuration: "Release"
+-- Installing: /tmp/x265_build_wXbBYQ/install/lib/libx265.a
+-- Installing: /tmp/x265_build_wXbBYQ/install/include/x265.h
+-- Installing: /tmp/x265_build_wXbBYQ/install/include/x265_config.h
+-- Installing: /tmp/x265_build_wXbBYQ/install/lib/pkgconfig/x265.pc
+-- Installing: /tmp/x265_build_wXbBYQ/install/bin/x265
+[PHASE1] Verifying x265 binary...
+x265 [info]: HEVC encoder version 4.2
+x265 [info]: build info [Linux][GCC 12.3.1][64 bit] 8bit
+x265 [info]: using cpu capabilities: NEON Neon_DotProd
+[PHASE1] Generating test YUV (1280x720, 50 frames)...
+[GEN_YUV] Generated 1280x720 I420, 50 frames, 69120000 bytes (65.9 MB) -> /tmp/x265_build_wXbBYQ/test_1280x720.yuv
+[PHASE1] Build phase complete
+[PHASE2] === Phase 2: Collect Version Info ===
+[PHASE2] Version info saved (x265: x265 [info]: HEVC encoder version 4.2)
+[PHASE3] === Phase 3: Run Benchmarks ===
+[PHASE3A] Running H.265 encode preset sweep...
+[BENCHMARK_ENCODE] Running preset ultrafast...
+[BENCHMARK_ENCODE] Running preset fast...
+[BENCHMARK_ENCODE] Running preset medium...
+[BENCHMARK_ENCODE] Running preset slow...
+[BENCHMARK_ENCODE] Running preset veryslow...
+[BENCHMARK_ENCODE] Output written to /root/tian/Tian/tests/x265/results/4.2/benchmark_encode.json (5 presets)
+[PHASE3B] Running micro benchmark...
+[BENCHMARK_MICRO] 320x240: 67.28 fps
+[BENCHMARK_MICRO] 1280x720: 23.09 fps
+[BENCHMARK_MICRO] 1920x1080: 16.86 fps
+[BENCHMARK_MICRO][DEBUG] threads=1 returncode=1
+[BENCHMARK_MICRO][DEBUG] cmd: /tmp/x265_build_wXbBYQ/install/bin/x265 --input-res 1280x720 --fps 25 --frames 30 --preset medium -o /dev/null --threads 1 /tmp/x265_micro_371takoc/1280x720.yuv
+[BENCHMARK_MICRO][DEBUG] raw output (last 2500 chars):
+t. Default disabled
+   --[no-]eob                    Emit end of bitstream nal unit at the end of the bitstream. Default disabled
+   --[no-]eos                    Emit end of sequence nal unit at the end of every coded video sequence. Default disabled
+   --atc-sei <integer>           Emit the alternative transfer characteristics SEI message where the integer is the preferred transfer characteristic. Default disabled
+   --pic-struct <integer>        Set the picture structure and emit it in the picture timing SEI message. Values in the range 0..12. See D.3.3 of the HEVC spec. for a detailed explanation.
+   --log2-max-poc-lsb <integer>  Maximum of the picture order count
+   --[no-]vui-timing-info        Emit VUI timing information in the bitstream. Default enabled
+   --[no-]vui-hrd-info           Emit VUI HRD information in the bitstream. Default enabled
+   --[no-]opt-qp-pps             Dynamically optimize QP in PPS (instead of default 26) based on QPs in previous GOP. Default disabled
+   --[no-]opt-ref-list-length-pps  Dynamically set L0 and L1 ref list length in PPS (instead of default 0) based on values in the last GOP. Default disabled
+   --[no-]multi-pass-opt-rps     Enable storing commonly used RPS in SPS in multi-pass mode. Default disabled
+   --[no-]opt-cu-delta-qp        Optimize to signal consistent CU level delta QPs in the frame. Default disabled
+   --lowpass-dct                 Use low-pass subband DCT approximation. Default disabled
+   --[no-]frame-dup              Enable Frame duplication. Default disabled
+   --dup-threshold <integer>     PSNR threshold for Frame duplication. Default 70
+   --[no-]mcstf                  Enable GOP-based temporal filter. Default 0
+ ABR-ladder settings
+   --abr-ladder <file>           File containing config settings required for the generation of ABR-ladder
+
+SEI Message Options
+   --film-grain <filename>       File containing Film Grain Characteristics to be written as a SEI Message
+   --aom-film-grain <filename>   File containing Aom Film Grain Characteristics to be written as a SEI Message
+   --[no-]frame-rc              Enable configuring Rate Control parameters(QP, CRF or Bitrate) at frame level.Default 0
+                                Enable this option only when planning to invoke the API function x265_encoder_reconfig to configure Rate Control parameters
+
+Use --fullhelp for a full listing (or --log-level full --help)
+
+
+Complete documentation may be found at http://x265.readthedocs.org/en/default/cli.html
+
+[BENCHMARK_MICRO] threads 1: 0.0 fps
+[BENCHMARK_MICRO][DEBUG] threads=2 returncode=1
+[BENCHMARK_MICRO][DEBUG] cmd: /tmp/x265_build_wXbBYQ/install/bin/x265 --input-res 1280x720 --fps 25 --frames 30 --preset medium -o /dev/null --threads 2 /tmp/x265_micro_371takoc/1280x720.yuv
+[BENCHMARK_MICRO][DEBUG] raw output (last 2500 chars):
+t. Default disabled
+   --[no-]eob                    Emit end of bitstream nal unit at the end of the bitstream. Default disabled
+   --[no-]eos                    Emit end of sequence nal unit at the end of every coded video sequence. Default disabled
+   --atc-sei <integer>           Emit the alternative transfer characteristics SEI message where the integer is the preferred transfer characteristic. Default disabled
+   --pic-struct <integer>        Set the picture structure and emit it in the picture timing SEI message. Values in the range 0..12. See D.3.3 of the HEVC spec. for a detailed explanation.
+   --log2-max-poc-lsb <integer>  Maximum of the picture order count
+   --[no-]vui-timing-info        Emit VUI timing information in the bitstream. Default enabled
+   --[no-]vui-hrd-info           Emit VUI HRD information in the bitstream. Default enabled
+   --[no-]opt-qp-pps             Dynamically optimize QP in PPS (instead of default 26) based on QPs in previous GOP. Default disabled
+   --[no-]opt-ref-list-length-pps  Dynamically set L0 and L1 ref list length in PPS (instead of default 0) based on values in the last GOP. Default disabled
+   --[no-]multi-pass-opt-rps     Enable storing commonly used RPS in SPS in multi-pass mode. Default disabled
+   --[no-]opt-cu-delta-qp        Optimize to signal consistent CU level delta QPs in the frame. Default disabled
+   --lowpass-dct                 Use low-pass subband DCT approximation. Default disabled
+   --[no-]frame-dup              Enable Frame duplication. Default disabled
+   --dup-threshold <integer>     PSNR threshold for Frame duplication. Default 70
+   --[no-]mcstf                  Enable GOP-based temporal filter. Default 0
+ ABR-ladder settings
+   --abr-ladder <file>           File containing config settings required for the generation of ABR-ladder
+
+SEI Message Options
+   --film-grain <filename>       File containing Film Grain Characteristics to be written as a SEI Message
+   --aom-film-grain <filename>   File containing Aom Film Grain Characteristics to be written as a SEI Message
+   --[no-]frame-rc              Enable configuring Rate Control parameters(QP, CRF or Bitrate) at frame level.Default 0
+                                Enable this option only when planning to invoke the API function x265_encoder_reconfig to configure Rate Control parameters
+
+Use --fullhelp for a full listing (or --log-level full --help)
+
+
+Complete documentation may be found at http://x265.readthedocs.org/en/default/cli.html
+
+[BENCHMARK_MICRO] threads 2: 0.0 fps
+[BENCHMARK_MICRO][DEBUG] threads=4 returncode=1
+[BENCHMARK_MICRO][DEBUG] cmd: /tmp/x265_build_wXbBYQ/install/bin/x265 --input-res 1280x720 --fps 25 --frames 30 --preset medium -o /dev/null --threads 4 /tmp/x265_micro_371takoc/1280x720.yuv
+[BENCHMARK_MICRO][DEBUG] raw output (last 2500 chars):
+t. Default disabled
+   --[no-]eob                    Emit end of bitstream nal unit at the end of the bitstream. Default disabled
+   --[no-]eos                    Emit end of sequence nal unit at the end of every coded video sequence. Default disabled
+   --atc-sei <integer>           Emit the alternative transfer characteristics SEI message where the integer is the preferred transfer characteristic. Default disabled
+   --pic-struct <integer>        Set the picture structure and emit it in the picture timing SEI message. Values in the range 0..12. See D.3.3 of the HEVC spec. for a detailed explanation.
+   --log2-max-poc-lsb <integer>  Maximum of the picture order count
+   --[no-]vui-timing-info        Emit VUI timing information in the bitstream. Default enabled
+   --[no-]vui-hrd-info           Emit VUI HRD information in the bitstream. Default enabled
+   --[no-]opt-qp-pps             Dynamically optimize QP in PPS (instead of default 26) based on QPs in previous GOP. Default disabled
+   --[no-]opt-ref-list-length-pps  Dynamically set L0 and L1 ref list length in PPS (instead of default 0) based on values in the last GOP. Default disabled
+   --[no-]multi-pass-opt-rps     Enable storing commonly used RPS in SPS in multi-pass mode. Default disabled
+   --[no-]opt-cu-delta-qp        Optimize to signal consistent CU level delta QPs in the frame. Default disabled
+   --lowpass-dct                 Use low-pass subband DCT approximation. Default disabled
+   --[no-]frame-dup              Enable Frame duplication. Default disabled
+   --dup-threshold <integer>     PSNR threshold for Frame duplication. Default 70
+   --[no-]mcstf                  Enable GOP-based temporal filter. Default 0
+ ABR-ladder settings
+   --abr-ladder <file>           File containing config settings required for the generation of ABR-ladder
+
+SEI Message Options
+   --film-grain <filename>       File containing Film Grain Characteristics to be written as a SEI Message
+   --aom-film-grain <filename>   File containing Aom Film Grain Characteristics to be written as a SEI Message
+   --[no-]frame-rc              Enable configuring Rate Control parameters(QP, CRF or Bitrate) at frame level.Default 0
+                                Enable this option only when planning to invoke the API function x265_encoder_reconfig to configure Rate Control parameters
+
+Use --fullhelp for a full listing (or --log-level full --help)
+
+
+Complete documentation may be found at http://x265.readthedocs.org/en/default/cli.html
+
+[BENCHMARK_MICRO] threads 4: 0.0 fps
+[BENCHMARK_MICRO][DEBUG] threads=8 returncode=1
+[BENCHMARK_MICRO][DEBUG] cmd: /tmp/x265_build_wXbBYQ/install/bin/x265 --input-res 1280x720 --fps 25 --frames 30 --preset medium -o /dev/null --threads 8 /tmp/x265_micro_371takoc/1280x720.yuv
+[BENCHMARK_MICRO][DEBUG] raw output (last 2500 chars):
+t. Default disabled
+   --[no-]eob                    Emit end of bitstream nal unit at the end of the bitstream. Default disabled
+   --[no-]eos                    Emit end of sequence nal unit at the end of every coded video sequence. Default disabled
+   --atc-sei <integer>           Emit the alternative transfer characteristics SEI message where the integer is the preferred transfer characteristic. Default disabled
+   --pic-struct <integer>        Set the picture structure and emit it in the picture timing SEI message. Values in the range 0..12. See D.3.3 of the HEVC spec. for a detailed explanation.
+   --log2-max-poc-lsb <integer>  Maximum of the picture order count
+   --[no-]vui-timing-info        Emit VUI timing information in the bitstream. Default enabled
+   --[no-]vui-hrd-info           Emit VUI HRD information in the bitstream. Default enabled
+   --[no-]opt-qp-pps             Dynamically optimize QP in PPS (instead of default 26) based on QPs in previous GOP. Default disabled
+   --[no-]opt-ref-list-length-pps  Dynamically set L0 and L1 ref list length in PPS (instead of default 0) based on values in the last GOP. Default disabled
+   --[no-]multi-pass-opt-rps     Enable storing commonly used RPS in SPS in multi-pass mode. Default disabled
+   --[no-]opt-cu-delta-qp        Optimize to signal consistent CU level delta QPs in the frame. Default disabled
+   --lowpass-dct                 Use low-pass subband DCT approximation. Default disabled
+   --[no-]frame-dup              Enable Frame duplication. Default disabled
+   --dup-threshold <integer>     PSNR threshold for Frame duplication. Default 70
+   --[no-]mcstf                  Enable GOP-based temporal filter. Default 0
+ ABR-ladder settings
+   --abr-ladder <file>           File containing config settings required for the generation of ABR-ladder
+
+SEI Message Options
+   --film-grain <filename>       File containing Film Grain Characteristics to be written as a SEI Message
+   --aom-film-grain <filename>   File containing Aom Film Grain Characteristics to be written as a SEI Message
+   --[no-]frame-rc              Enable configuring Rate Control parameters(QP, CRF or Bitrate) at frame level.Default 0
+                                Enable this option only when planning to invoke the API function x265_encoder_reconfig to configure Rate Control parameters
+
+Use --fullhelp for a full listing (or --log-level full --help)
+
+
+Complete documentation may be found at http://x265.readthedocs.org/en/default/cli.html
+
+[BENCHMARK_MICRO] threads 8: 0.0 fps
+[BENCHMARK_MICRO][DEBUG] threads=all returncode=1
+[BENCHMARK_MICRO][DEBUG] cmd: /tmp/x265_build_wXbBYQ/install/bin/x265 --input-res 1280x720 --fps 25 --frames 30 --preset medium -o /dev/null --threads all /tmp/x265_micro_371takoc/1280x720.yuv
+[BENCHMARK_MICRO][DEBUG] raw output (last 2500 chars):
+t. Default disabled
+   --[no-]eob                    Emit end of bitstream nal unit at the end of the bitstream. Default disabled
+   --[no-]eos                    Emit end of sequence nal unit at the end of every coded video sequence. Default disabled
+   --atc-sei <integer>           Emit the alternative transfer characteristics SEI message where the integer is the preferred transfer characteristic. Default disabled
+   --pic-struct <integer>        Set the picture structure and emit it in the picture timing SEI message. Values in the range 0..12. See D.3.3 of the HEVC spec. for a detailed explanation.
+   --log2-max-poc-lsb <integer>  Maximum of the picture order count
+   --[no-]vui-timing-info        Emit VUI timing information in the bitstream. Default enabled
+   --[no-]vui-hrd-info           Emit VUI HRD information in the bitstream. Default enabled
+   --[no-]opt-qp-pps             Dynamically optimize QP in PPS (instead of default 26) based on QPs in previous GOP. Default disabled
+   --[no-]opt-ref-list-length-pps  Dynamically set L0 and L1 ref list length in PPS (instead of default 0) based on values in the last GOP. Default disabled
+   --[no-]multi-pass-opt-rps     Enable storing commonly used RPS in SPS in multi-pass mode. Default disabled
+   --[no-]opt-cu-delta-qp        Optimize to signal consistent CU level delta QPs in the frame. Default disabled
+   --lowpass-dct                 Use low-pass subband DCT approximation. Default disabled
+   --[no-]frame-dup              Enable Frame duplication. Default disabled
+   --dup-threshold <integer>     PSNR threshold for Frame duplication. Default 70
+   --[no-]mcstf                  Enable GOP-based temporal filter. Default 0
+ ABR-ladder settings
+   --abr-ladder <file>           File containing config settings required for the generation of ABR-ladder
+
+SEI Message Options
+   --film-grain <filename>       File containing Film Grain Characteristics to be written as a SEI Message
+   --aom-film-grain <filename>   File containing Aom Film Grain Characteristics to be written as a SEI Message
+   --[no-]frame-rc              Enable configuring Rate Control parameters(QP, CRF or Bitrate) at frame level.Default 0
+                                Enable this option only when planning to invoke the API function x265_encoder_reconfig to configure Rate Control parameters
+
+Use --fullhelp for a full listing (or --log-level full --help)
+
+
+Complete documentation may be found at http://x265.readthedocs.org/en/default/cli.html
+
+[BENCHMARK_MICRO] threads all: 0.0 fps
+[BENCHMARK_MICRO] Output written to /root/tian/Tian/tests/x265/results/4.2/micro_benchmark.json
+[PHASE4] === Phase 4: Aggregate & Report ===
+[PHASE4] Reports generated:
+[PHASE4]   JSON: /root/tian/Tian/tests/x265/results/4.2/results.json
+[PHASE4]   TXT:  /root/tian/Tian/tests/x265/results/4.2/results.txt
+[PHASE4]   LOG:  /root/tian/Tian/tests/x265/results/4.2/results.log
+[BUILD] Cleaning up: /tmp/x265_build_wXbBYQ
+[START] x265 Source Build & Performance Benchmark v4.2
+[CHECK] Python3 OK: Python 3.11.6
+[CHECK] G++ OK: g++ (GCC) 12.3.1 (openEuler 12.3.1-105.oe2403sp3)
+[CHECK] CMake OK: cmake version 3.27.9
+[CHECK] Git OK: git version 2.43.0
+[CHECK] json_helper.py OK
+[CHECK] OS: openEuler 24.03 SP3 (openEuler)
+[CHECK] Architecture: aarch64
+[CHECK] Build method: source_build (cmake, NEON auto-detected on aarch64)
+[SETUP] Downloading shUnit2 to /tmp/shunit2_G529vY...
+[SETUP] shUnit2 downloaded successfully
+[START] x265 Source Build & Performance Benchmark - v4.2
+[START] OS: openEuler 24.03 SP3 (openEuler), Build: source_build
+[CHECK] Python3 OK: Python 3.11.6
+[CHECK] G++ OK: g++ (GCC) 12.3.1 (openEuler 12.3.1-105.oe2403sp3)
+[CHECK] CMake OK: cmake version 3.27.9
+[CHECK] Git OK: git version 2.43.0
+[CHECK] json_helper.py OK
+[CHECK] OS: openEuler 24.03 SP3 (openEuler)
+[CHECK] Architecture: aarch64
+[CHECK] Build method: source_build (cmake, NEON auto-detected on aarch64)
+[PHASE1] === Phase 1: Source Build x265 v4.2 ===
+[BUILD] Created temp build dir: /tmp/x265_build_VltxFf
+[PHASE1] Preparing env on openEuler...
+Last metadata expiration check: 0:09:19 ago on Fri 07 Aug 2026 07:54:17 AM UTC.
+Package gcc-12.3.1-105.oe2403sp3.aarch64 is already installed.
+Package gcc-c++-12.3.1-105.oe2403sp3.aarch64 is already installed.
+Package cmake-3.27.9-8.oe2403sp3.aarch64 is already installed.
+Package make-1:4.4.1-2.oe2403sp3.aarch64 is already installed.
+Package git-2.43.0-11.oe2403sp3.aarch64 is already installed.
+Package wget-1.21.4-4.oe2403sp3.aarch64 is already installed.
+Package curl-8.4.0-33.oe2403sp3.aarch64 is already installed.
+Dependencies resolved.
+Nothing to do.
+Complete!
+[PHASE1] Cloning x265 tag 4.2 (from Bitbucket)...
+Cloning into '/tmp/x265_build_VltxFf/x265_src'...
+Note: switching to 'e444744c03978c1fb4e037168967020cf2648427'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+[PHASE1] Configuring CMake...
+-- cmake version 3.27.9
+-- The C compiler identification is GNU 12.3.1
+-- The CXX compiler identification is GNU 12.3.1
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Detected ARM64 target processor
+-- Could NOT find Numa (missing: NUMA_ROOT_DIR NUMA_INCLUDE_DIR NUMA_LIBRARY) 
+-- Looking for include file inttypes.h
+-- Looking for include file inttypes.h - found
+-- Configuring build for run-time CPU feature detection
+-- Performing Test SVE_COMPILATION_C_TEST_COMPILED
+-- Performing Test SVE_COMPILATION_C_TEST_COMPILED - Success
+-- Performing Test SVE_COMPILATION_CXX_TEST_COMPILED
+-- Performing Test SVE_COMPILATION_CXX_TEST_COMPILED - Success
+-- Performing Test SVE_HEADER_C_TEST_COMPILED
+-- Performing Test SVE_HEADER_C_TEST_COMPILED - Failed
+-- Performing Test SVE_HEADER_CXX_TEST_COMPILED
+-- Performing Test SVE_HEADER_CXX_TEST_COMPILED - Failed
+-- Found Neon
+-- Found Neon DotProd
+-- Found Neon I8MM
+-- Found SVE
+-- Found SVE2
+-- Found SVE2 BitPerm
+-- Performing Test CC_HAS_FLAX_VEC_CONV_NONE
+-- Performing Test CC_HAS_FLAX_VEC_CONV_NONE - Failed
+-- Performing Test CC_HAS_NO_STRICT_OVERFLOW
+-- Performing Test CC_HAS_NO_STRICT_OVERFLOW - Success
+-- Performing Test CC_HAS_NO_NARROWING
+-- Performing Test CC_HAS_NO_NARROWING - Success
+-- Performing Test CC_HAS_NO_ARRAY_BOUNDS
+-- Performing Test CC_HAS_NO_ARRAY_BOUNDS - Success
+-- Performing Test CC_HAS_FAST_MATH
+-- Performing Test CC_HAS_FAST_MATH - Success
+-- Performing Test CC_HAS_FNO_EXCEPTIONS_FLAG
+-- Performing Test CC_HAS_FNO_EXCEPTIONS_FLAG - Success
+-- Could NOT find Nasm (missing: NASM_EXECUTABLE) 
+-- GIT_EXECUTABLE /usr/bin/git
+-- GIT LIVE REPO VERSION RETRIEVED
+-- X265 RELEASE VERSION 4.2
+-- Detected CXX compiler using -O3 optimization level
+-- The ASM compiler identification is GNU
+-- Found assembler: /usr/bin/cc
+-- Looking for strtok_r
+-- Looking for strtok_r - found
+-- Looking for include file getopt.h
+-- Looking for include file getopt.h - found
+-- Configuring done (2.3s)
+-- Generating done (0.0s)
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    ENABLE_HDR
+
+
+-- Build files have been written to: /tmp/x265_build_VltxFf/build
+[PHASE1] Compiling x265...
+[  2%] Building CXX object encoder/CMakeFiles/encoder.dir/motion.cpp.o
+[  2%] Building CXX object encoder/CMakeFiles/encoder.dir/search.cpp.o
+[  4%] Building CXX object encoder/CMakeFiles/encoder.dir/slicetype.cpp.o
+[  4%] Building CXX object encoder/CMakeFiles/encoder.dir/bitcost.cpp.o
+[  5%] Building CXX object encoder/CMakeFiles/encoder.dir/frameencoder.cpp.o
+[  6%] Building CXX object common/CMakeFiles/common.dir/aarch64/pixel-prim.cpp.o
+[  8%] Building CXX object encoder/CMakeFiles/encoder.dir/framefilter.cpp.o
+[  8%] Building CXX object encoder/CMakeFiles/encoder.dir/analysis.cpp.o
+[  9%] Building CXX object encoder/CMakeFiles/encoder.dir/level.cpp.o
+[ 11%] Building CXX object encoder/CMakeFiles/encoder.dir/nal.cpp.o
+[ 11%] Building CXX object encoder/CMakeFiles/encoder.dir/sei.cpp.o
+[ 12%] Building CXX object common/CMakeFiles/common.dir/aarch64/filter-prim.cpp.o
+[ 14%] Building CXX object encoder/CMakeFiles/encoder.dir/entropy.cpp.o
+[ 14%] Building CXX object encoder/CMakeFiles/encoder.dir/dpb.cpp.o
+[ 15%] Building CXX object encoder/CMakeFiles/encoder.dir/sao.cpp.o
+[ 16%] Building CXX object encoder/CMakeFiles/encoder.dir/ratecontrol.cpp.o
+[ 17%] Building CXX object common/CMakeFiles/common.dir/aarch64/dct-prim.cpp.o
+[ 18%] Building CXX object common/CMakeFiles/common.dir/aarch64/sao-prim.cpp.o
+[ 21%] Building CXX object encoder/CMakeFiles/encoder.dir/encoder.cpp.o
+[ 21%] Building CXX object encoder/CMakeFiles/encoder.dir/reference.cpp.o
+[ 19%] Building CXX object common/CMakeFiles/common.dir/aarch64/intrapred-prim.cpp.o
+[ 22%] Building CXX object common/CMakeFiles/common.dir/aarch64/pixel-prim-neon-dotprod.cpp.o
+[ 24%] Building CXX object common/CMakeFiles/common.dir/aarch64/asm-primitives.cpp.o
+[ 24%] Building CXX object common/CMakeFiles/common.dir/aarch64/filter-neon-i8mm.cpp.o
+[ 26%] Building CXX object encoder/CMakeFiles/encoder.dir/api.cpp.o
+[ 26%] Building CXX object common/CMakeFiles/common.dir/aarch64/arm64-utils.cpp.o
+[ 27%] Building CXX object common/CMakeFiles/common.dir/aarch64/loopfilter-prim.cpp.o
+[ 28%] Building CXX object common/CMakeFiles/common.dir/aarch64/filter-neon-dotprod.cpp.o
+[ 29%] Building CXX object common/CMakeFiles/common.dir/pixel.cpp.o
+[ 30%] Building CXX object common/CMakeFiles/common.dir/dct.cpp.o
+[ 31%] Building CXX object common/CMakeFiles/common.dir/primitives.cpp.o
+[ 32%] Building CXX object encoder/CMakeFiles/encoder.dir/weightPrediction.cpp.o
+[ 33%] Building CXX object encoder/CMakeFiles/encoder.dir/threadedme.cpp.o
+[ 34%] Building CXX object common/CMakeFiles/common.dir/lowpassdct.cpp.o
+[ 35%] Building CXX object common/CMakeFiles/common.dir/ipfilter.cpp.o
+[ 36%] Building CXX object common/CMakeFiles/common.dir/intrapred.cpp.o
+[ 37%] Building CXX object common/CMakeFiles/common.dir/loopfilter.cpp.o
+[ 38%] Building CXX object common/CMakeFiles/common.dir/constants.cpp.o
+[ 39%] Building CXX object common/CMakeFiles/common.dir/cpu.cpp.o
+[ 40%] Building CXX object common/CMakeFiles/common.dir/version.cpp.o
+[ 41%] Building CXX object common/CMakeFiles/common.dir/threading.cpp.o
+[ 42%] Building CXX object common/CMakeFiles/common.dir/threadpool.cpp.o
+[ 43%] Building CXX object common/CMakeFiles/common.dir/wavefront.cpp.o
+[ 44%] Building CXX object common/CMakeFiles/common.dir/md5.cpp.o
+[ 45%] Building CXX object common/CMakeFiles/common.dir/bitstream.cpp.o
+[ 46%] Building CXX object common/CMakeFiles/common.dir/yuv.cpp.o
+[ 47%] Building CXX object common/CMakeFiles/common.dir/shortyuv.cpp.o
+[ 48%] Building CXX object common/CMakeFiles/common.dir/picyuv.cpp.o
+[ 50%] Building CXX object common/CMakeFiles/common.dir/common.cpp.o
+[ 51%] Building CXX object common/CMakeFiles/common.dir/param.cpp.o
+/tmp/x265_build_VltxFf/x265_src/source/common/threadpool.cpp: In function ‘void x265::distributeThreadsForTme(x265_param*, int, int&, bool, int*, uint64_t*, int&, int&)’:
+/tmp/x265_build_VltxFf/x265_src/source/common/threadpool.cpp:268:10: warning: unused parameter ‘bNumaSupport’ [-Wunused-parameter]
+  268 |     bool bNumaSupport,
+      |     ~~~~~^~~~~~~~~~~~
+[ 52%] Building CXX object common/CMakeFiles/common.dir/frame.cpp.o
+[ 53%] Building CXX object common/CMakeFiles/common.dir/framedata.cpp.o
+[ 54%] Building CXX object common/CMakeFiles/common.dir/cudata.cpp.o
+[ 55%] Building CXX object common/CMakeFiles/common.dir/slice.cpp.o
+[ 56%] Building CXX object common/CMakeFiles/common.dir/lowres.cpp.o
+[ 57%] Building CXX object common/CMakeFiles/common.dir/piclist.cpp.o
+[ 58%] Building CXX object common/CMakeFiles/common.dir/predict.cpp.o
+[ 59%] Building CXX object common/CMakeFiles/common.dir/scalinglist.cpp.o
+[ 60%] Building CXX object common/CMakeFiles/common.dir/quant.cpp.o
+[ 61%] Building CXX object common/CMakeFiles/common.dir/deblock.cpp.o
+[ 62%] Building CXX object common/CMakeFiles/common.dir/scaler.cpp.o
+[ 64%] Building CXX object common/CMakeFiles/common.dir/ringmem.cpp.o
+[ 63%] Building CXX object common/CMakeFiles/common.dir/temporalfilter.cpp.o
+[ 64%] Built target encoder
+[ 64%] Built target common
+[ 66%] Generating asm-sve.S.o
+[ 66%] Generating ssd-neon-dotprod.S.o
+[ 67%] Generating blockcopy8.S.o
+[ 68%] Generating intrapred.S.o
+[ 70%] Generating dct.S.o
+[ 70%] Generating asm.S.o
+[ 71%] Generating mc-a-sve2.S.o
+[ 72%] Generating p2s-common.S.o
+[ 75%] Generating mc-a.S.o
+[ 75%] Generating pixel-util-common.S.o
+[ 75%] Generating p2s-sve.S.o
+[ 76%] Generating mc-a-common.S.o
+[ 77%] Generating p2s.S.o
+[ 78%] Generating pixel-util-sve2.S.o
+[ 80%] Generating pixel-util-sve2-bitperm.S.o
+[ 80%] Generating pixel-util.S.o
+[ 81%] Generating pixel-util-sve.S.o
+[ 82%] Generating sad-a.S.o
+[ 84%] Generating ssd-a-common.S.o
+[ 84%] Generating sad-neon-dotprod.S.o
+[ 85%] Generating ssd-a-sve.S.o
+[ 86%] Generating ssd-a.S.o
+[ 87%] Linking CXX static library libx265.a
+[ 87%] Built target x265-static
+[ 88%] Building CXX object CMakeFiles/cli.dir/input/input.cpp.o
+[ 90%] Building CXX object CMakeFiles/cli.dir/input/y4m.cpp.o
+[ 90%] Building CXX object CMakeFiles/cli.dir/input/yuv.cpp.o
+[ 92%] Building CXX object CMakeFiles/cli.dir/output/output.cpp.o
+[ 92%] Building CXX object CMakeFiles/cli.dir/output/reconplay.cpp.o
+[ 93%] Building CXX object CMakeFiles/cli.dir/output/yuv.cpp.o
+[ 96%] Building CXX object CMakeFiles/cli.dir/output/raw.cpp.o
+[ 96%] Building CXX object CMakeFiles/cli.dir/abrEncApp.cpp.o
+[ 96%] Building CXX object CMakeFiles/cli.dir/output/y4m.cpp.o
+[ 97%] Building CXX object CMakeFiles/cli.dir/x265.cpp.o
+[ 98%] Building CXX object CMakeFiles/cli.dir/x265cli.cpp.o
+[100%] Linking CXX executable x265
+[100%] Built target cli
+[ 44%] Built target common
+[ 64%] Built target encoder
+[ 87%] Built target x265-static
+[100%] Built target cli
+Install the project...
+-- Install configuration: "Release"
+-- Installing: /tmp/x265_build_VltxFf/install/lib/libx265.a
+-- Installing: /tmp/x265_build_VltxFf/install/include/x265.h
+-- Installing: /tmp/x265_build_VltxFf/install/include/x265_config.h
+-- Installing: /tmp/x265_build_VltxFf/install/lib/pkgconfig/x265.pc
+-- Installing: /tmp/x265_build_VltxFf/install/bin/x265
+[PHASE1] Verifying x265 binary...
+x265 [info]: HEVC encoder version 4.2
+x265 [info]: build info [Linux][GCC 12.3.1][64 bit] 8bit
+x265 [info]: using cpu capabilities: NEON Neon_DotProd
+[PHASE1] Generating test YUV (1280x720, 50 frames)...
+[GEN_YUV] Generated 1280x720 I420, 50 frames, 69120000 bytes (65.9 MB) -> /tmp/x265_build_VltxFf/test_1280x720.yuv
+[PHASE1] Build phase complete
+[PHASE2] === Phase 2: Collect Version Info ===
+[PHASE2] Version info saved (x265: x265 [info]: HEVC encoder version 4.2)
+[PHASE3] === Phase 3: Run Benchmarks ===
+[PHASE3A] Running H.265 encode preset sweep...
+[BENCHMARK_ENCODE] Running preset ultrafast...
+[BENCHMARK_ENCODE] Running preset fast...
+[BENCHMARK_ENCODE] Running preset medium...
+[BENCHMARK_ENCODE] Running preset slow...
+[BENCHMARK_ENCODE] Running preset veryslow...
+[BENCHMARK_ENCODE] Output written to /root/tian/Tian/tests/x265/results/4.2/benchmark_encode.json (5 presets)
+[PHASE3B] Running micro benchmark...
+[BENCHMARK_MICRO] 320x240: 67.4 fps
+[BENCHMARK_MICRO] 1280x720: 22.99 fps
+[BENCHMARK_MICRO] 1920x1080: 17.1 fps
+[BENCHMARK_MICRO] threads 1: 3.56 fps
+[BENCHMARK_MICRO] threads 2: 6.59 fps
+[BENCHMARK_MICRO] threads 4: 13.21 fps
+[BENCHMARK_MICRO] threads 8: 22.82 fps
+[BENCHMARK_MICRO] threads all: 7.14 fps
+[BENCHMARK_MICRO] Output written to /root/tian/Tian/tests/x265/results/4.2/micro_benchmark.json
+[PHASE4] === Phase 4: Aggregate & Report ===
+[PHASE4] Reports generated:
+[PHASE4]   JSON: /root/tian/Tian/tests/x265/results/4.2/results.json
+[PHASE4]   TXT:  /root/tian/Tian/tests/x265/results/4.2/results.txt
+[PHASE4]   LOG:  /root/tian/Tian/tests/x265/results/4.2/results.log
+[BUILD] Cleaning up: /tmp/x265_build_VltxFf
