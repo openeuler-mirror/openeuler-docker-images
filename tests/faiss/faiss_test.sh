@@ -149,7 +149,9 @@ phase1_build() {
     os_id="$(detect_os_id)"
     log "PHASE1" "Building FAISS from source on ${os_id}..."
 
-    case "${os_id}" in
+    local os_id_lower
+    os_id_lower="$(echo "${os_id}" | tr '[:upper:]' '[:lower:]')"
+    case "${os_id_lower}" in
         ubuntu|debian)
             log "PHASE1" "Installing build dependencies (Ubuntu/Debian)..."
             sudo apt-get update -qq 2>&1 | tee -a "${LOG_FILE}"
