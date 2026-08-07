@@ -1,0 +1,85 @@
+[START] sonic (sonic-cpp) Source Build & Performance Benchmark v1.0.1
+[CHECK] Python3 OK: Python 3.11.6
+[CHECK] GCC OK: g++ (GCC) 12.3.1 (openEuler 12.3.1-105.oe2403sp3)
+[CHECK] Git OK: git version 2.43.0
+[CHECK] json_helper.py OK
+[CHECK] OS: openEuler 24.03 SP3 (openEuler)
+[CHECK] Architecture: aarch64
+[CHECK] Build method: source_build (header-only, no lib build needed)
+[SETUP] Downloading shUnit2 to /tmp/shunit2_bKSM0o...
+[SETUP] shUnit2 downloaded successfully
+[START] sonic (sonic-cpp) Source Build & Performance Benchmark - v1.0.1
+[START] OS: openEuler 24.03 SP3 (openEuler), Build: source_build
+[CHECK] Python3 OK: Python 3.11.6
+[CHECK] GCC OK: g++ (GCC) 12.3.1 (openEuler 12.3.1-105.oe2403sp3)
+[CHECK] Git OK: git version 2.43.0
+[CHECK] json_helper.py OK
+[CHECK] OS: openEuler 24.03 SP3 (openEuler)
+[CHECK] Architecture: aarch64
+[CHECK] Build method: source_build (header-only, no lib build needed)
+[PHASE1] === Phase 1: Build sonic v1.0.1 (header-only) + benchmark ===
+[BUILD] Created temp build directory: /tmp/sonic_build_Cp65Ju
+[PHASE1] Preparing build env on openEuler...
+Last metadata expiration check: 0:12:26 ago on Fri 07 Aug 2026 07:54:17 AM UTC.
+Package gcc-12.3.1-105.oe2403sp3.aarch64 is already installed.
+Package gcc-c++-12.3.1-105.oe2403sp3.aarch64 is already installed.
+Package git-2.43.0-11.oe2403sp3.aarch64 is already installed.
+Package wget-1.21.4-4.oe2403sp3.aarch64 is already installed.
+Package curl-8.4.0-33.oe2403sp3.aarch64 is already installed.
+Dependencies resolved.
+Nothing to do.
+Complete!
+[PHASE1] Cloning sonic-cpp tag v1.0.1...
+Cloning into '/tmp/sonic_build_Cp65Ju/sonic_src'...
+Note: switching to 'e933fd15baf4289568d318e74eb40a457f3f1928'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+[PHASE1] sonic headers found at /tmp/sonic_build_Cp65Ju/sonic_src/include (header-only, no lib build)
+[PHASE1] Compiling single-library benchmark (sonic_benchmark.cc)...
+[PHASE1] Verifying benchmark binary...
+[BENCH] json benchmark written to /tmp/sonic_build_Cp65Ju/test_verify.json (7 entries)
+[PHASE1] Benchmark binary verified successfully
+[PHASE1] Attempting head-to-head competitor clone (optional)...
+Cloning into '/tmp/sonic_build_Cp65Ju/rapidjson'...
+remote: Repository not found.
+fatal: repository 'https://github.com/rapidjson/rapidjson.git/' not found
+Cloning into '/tmp/sonic_build_Cp65Ju/yyjson'...
+remote: Repository not found.
+fatal: repository 'https://github.com/Realtin/yyjson.git/' not found
+Cloning into '/tmp/sonic_build_Cp65Ju/nlohmann'...
+[PHASE1] Not all competitors available - head-to-head mode will be skipped
+[PHASE1] Build phase complete
+[PHASE2] === Phase 2: Collect Version Info ===
+[PHASE2] Version info saved (OS: openEuler 24.03 SP3, GCC: 12.3.1)
+[PHASE3] === Phase 3: Run Benchmarks ===
+[PHASE3A] Running JSON benchmark (single-library, sonic)...
+[BENCHMARK_JSON] Running: /tmp/sonic_build_Cp65Ju/sonic_benchmark json 1 /root/tian/Tian/tests/sonic/results/1.0.1/benchmark_json.json
+[BENCHMARK_JSON] Output written to /root/tian/Tian/tests/sonic/results/1.0.1/benchmark_json.json
+[BENCHMARK_JSON] Validation: benchmark=json, entries=['parse_small', 'parse_medium', 'parse_large', 'serialize_small', 'serialize_medium', 'serialize_large', 'find_medium']
+[PHASE3B] Running micro benchmark...
+[BENCHMARK_MICRO] Running: /tmp/sonic_build_Cp65Ju/sonic_benchmark micro 1 /root/tian/Tian/tests/sonic/results/1.0.1/micro_benchmark.json
+[BENCHMARK_MICRO] Output written to /root/tian/Tian/tests/sonic/results/1.0.1/micro_benchmark.json
+[BENCHMARK_MICRO] Validation: benchmark=micro_operations, result_keys=['parse_latency_by_size', 'multithread_parse']
+[BENCHMARK_MICRO] Doc sizes: ['1024', '102400', '1048576']
+[BENCHMARK_MICRO] Thread counts: ['threads_1', 'threads_2', 'threads_4', 'threads_8', 'threads_32']
+[PHASE3C] Head-to-head binary not available - skipping compare benchmark
+[PHASE4] === Phase 4: Aggregate & Report ===
+[PHASE4] Reports generated:
+[PHASE4]   JSON: /root/tian/Tian/tests/sonic/results/1.0.1/results.json
+[PHASE4]   TXT:  /root/tian/Tian/tests/sonic/results/1.0.1/results.txt
+[PHASE4]   LOG:  /root/tian/Tian/tests/sonic/results/1.0.1/results.log
+[BUILD] Cleaning up temp build directory: /tmp/sonic_build_Cp65Ju

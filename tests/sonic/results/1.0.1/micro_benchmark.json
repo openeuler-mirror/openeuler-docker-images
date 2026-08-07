@@ -1,0 +1,56 @@
+{
+  "benchmark": "micro_operations",
+  "description": "sonic-cpp micro: per-size parse latency and multithread parse scaling on ARM64",
+  "reference": "https://github.com/bytedance/sonic-cpp",
+  "software": "sonic",
+  "version": "1.0.1",
+  "architecture": "arm64",
+  "timestamp": "2026-08-07T08:06:58Z",
+  "performance_metrics": {
+    "qps": {"unit": "ops/s", "description": "Parses per second"},
+    "avg_time_us": {"unit": "us", "description": "Single parse latency"}
+  },
+  "parameters": {
+    "iterations": 1,
+    "max_threads": 32,
+    "data_size_bytes": 1048576
+  },
+  "results": {
+    "parse_latency_by_size": {
+      "1024": {
+        "avg_time_us": 15.97,
+        "qps": 62601.55
+      },
+      "102400": {
+        "avg_time_us": 879.76,
+        "qps": 1136.67
+      },
+      "1048576": {
+        "avg_time_us": 8917.81,
+        "qps": 112.14
+      }
+    },
+    "multithread_parse": {
+      "threads_1": {
+        "qps": 869.02,
+        "total_time_s": 0.001151
+      },
+      "threads_2": {
+        "qps": 1722.82,
+        "total_time_s": 0.001161
+      },
+      "threads_4": {
+        "qps": 3556.76,
+        "total_time_s": 0.001125
+      },
+      "threads_8": {
+        "qps": 5723.28,
+        "total_time_s": 0.001398
+      },
+      "threads_32": {
+        "qps": 10605.33,
+        "total_time_s": 0.003017
+      }
+    }
+  }
+}
