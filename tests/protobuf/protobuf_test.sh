@@ -159,7 +159,9 @@ phase1_install() {
             os_id="$(detect_os_id)"
             log "PHASE1" "Installing build dependencies on ${os_id}..."
 
-            case "${os_id}" in
+            local os_id_lower
+    os_id_lower="$(echo "${os_id}" | tr '[:upper:]' '[:lower:]')"
+    case "${os_id_lower}" in
                 openeuler|centos|rhel|fedora)
                     sudo dnf install -y gcc gcc-c++ cmake make \
                         python3-devel python3-pip \
