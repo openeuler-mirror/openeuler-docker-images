@@ -1,0 +1,325 @@
+[START] zstd Source Build & Performance Benchmark v1.5.7
+[CHECK] Python3 OK: Python 3.11.6
+[CHECK] GCC OK: g++ (GCC) 12.3.1 (openEuler 12.3.1-105.oe2403sp3)
+[CHECK] CMake OK: cmake version 3.27.9
+[CHECK] Git OK: git version 2.43.0
+[CHECK] json_helper.py OK
+[CHECK] OS: openEuler 24.03 SP3 (openEuler)
+[CHECK] Architecture: aarch64
+[CHECK] Build method: source_build
+[SETUP] Downloading shUnit2 to /tmp/shunit2_saeIrV...
+[SETUP] shUnit2 downloaded successfully
+[START] zstd Source Build & Performance Benchmark - v1.5.7
+[START] OS: openEuler 24.03 SP3 (openEuler), Build: source_build
+[CHECK] Python3 OK: Python 3.11.6
+[CHECK] GCC OK: g++ (GCC) 12.3.1 (openEuler 12.3.1-105.oe2403sp3)
+[CHECK] CMake OK: cmake version 3.27.9
+[CHECK] Git OK: git version 2.43.0
+[CHECK] json_helper.py OK
+[CHECK] OS: openEuler 24.03 SP3 (openEuler)
+[CHECK] Architecture: aarch64
+[CHECK] Build method: source_build
+[PHASE1] === Phase 1: Source Build Zstd v1.5.7 ===
+[BUILD] Created temp build directory: /tmp/zstd_build_hDMsSH
+[PHASE1] Building Zstd from source on openEuler...
+[PHASE1] Installing build dependencies (openEuler 24.03 SP3)...
+Last metadata expiration check: 0:17:41 ago on Fri 07 Aug 2026 07:20:04 AM UTC.
+Package gcc-12.3.1-105.oe2403sp3.aarch64 is already installed.
+Package gcc-c++-12.3.1-105.oe2403sp3.aarch64 is already installed.
+Package cmake-3.27.9-8.oe2403sp3.aarch64 is already installed.
+Package make-1:4.4.1-2.oe2403sp3.aarch64 is already installed.
+Package git-2.43.0-11.oe2403sp3.aarch64 is already installed.
+Package wget-1.21.4-4.oe2403sp3.aarch64 is already installed.
+Package curl-8.4.0-33.oe2403sp3.aarch64 is already installed.
+Dependencies resolved.
+Nothing to do.
+Complete!
+[PHASE1] Cloning Zstd tag v1.5.7...
+Cloning into '/tmp/zstd_build_hDMsSH/zstd_src'...
+Note: switching to 'f8745da6ff1ad1e7bab384bd1f9d742439278e99'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+[PHASE1] Configuring CMake...
+-- The C compiler identification is GNU 12.3.1
+-- The ASM compiler identification is GNU
+-- Found assembler: /usr/bin/cc
+-- The CXX compiler identification is GNU 12.3.1
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- ZSTD VERSION: 1.5.7
+-- Performing Test C_FLAG_WALL
+-- Performing Test C_FLAG_WALL - Success
+-- Performing Test CXX_FLAG_WALL
+-- Performing Test CXX_FLAG_WALL - Success
+-- Performing Test C_FLAG_WEXTRA
+-- Performing Test C_FLAG_WEXTRA - Success
+-- Performing Test CXX_FLAG_WEXTRA
+-- Performing Test CXX_FLAG_WEXTRA - Success
+-- Performing Test C_FLAG_WUNDEF
+-- Performing Test C_FLAG_WUNDEF - Success
+-- Performing Test CXX_FLAG_WUNDEF
+-- Performing Test CXX_FLAG_WUNDEF - Success
+-- Performing Test C_FLAG_WSHADOW
+-- Performing Test C_FLAG_WSHADOW - Success
+-- Performing Test CXX_FLAG_WSHADOW
+-- Performing Test CXX_FLAG_WSHADOW - Success
+-- Performing Test C_FLAG_WCAST_ALIGN
+-- Performing Test C_FLAG_WCAST_ALIGN - Success
+-- Performing Test CXX_FLAG_WCAST_ALIGN
+-- Performing Test CXX_FLAG_WCAST_ALIGN - Success
+-- Performing Test C_FLAG_WCAST_QUAL
+-- Performing Test C_FLAG_WCAST_QUAL - Success
+-- Performing Test CXX_FLAG_WCAST_QUAL
+-- Performing Test CXX_FLAG_WCAST_QUAL - Success
+-- Performing Test C_FLAG_WSTRICT_PROTOTYPES
+-- Performing Test C_FLAG_WSTRICT_PROTOTYPES - Success
+-- Performing Test LD_FLAG_WL_Z_NOEXECSTACK
+-- Performing Test LD_FLAG_WL_Z_NOEXECSTACK - Success
+-- Performing Test C_FLAG_QUNUSED_ARGUMENTS
+-- Performing Test C_FLAG_QUNUSED_ARGUMENTS - Failed
+-- Performing Test CXX_FLAG_QUNUSED_ARGUMENTS
+-- Performing Test CXX_FLAG_QUNUSED_ARGUMENTS - Failed
+-- Performing Test C_FLAG_WA_NOEXECSTACK
+-- Performing Test C_FLAG_WA_NOEXECSTACK - Success
+-- Performing Test CXX_FLAG_WA_NOEXECSTACK
+-- Performing Test CXX_FLAG_WA_NOEXECSTACK - Success
+-- CMAKE_INSTALL_PREFIX: /tmp/zstd_build_hDMsSH/install
+-- CMAKE_INSTALL_LIBDIR: lib64
+-- ZSTD_LEGACY_SUPPORT defined!
+-- ZSTD_MULTITHREAD_SUPPORT is enabled
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Configuring done (2.8s)
+-- Generating done (0.0s)
+-- Build files have been written to: /tmp/zstd_build_hDMsSH/build
+[PHASE1] Compiling Zstd...
+[  1%] Building C object lib/CMakeFiles/libzstd_static.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/common/error_private.c.o
+[  5%] Building C object lib/CMakeFiles/libzstd_static.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/common/debug.c.o
+[  5%] Building C object lib/CMakeFiles/libzstd_shared.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/common/debug.c.o
+[  5%] Building C object lib/CMakeFiles/libzstd_static.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/common/entropy_common.c.o
+[  7%] Building C object lib/CMakeFiles/libzstd_static.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/common/pool.c.o
+[  7%] Building C object lib/CMakeFiles/libzstd_static.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/common/fse_decompress.c.o
+[  9%] Building C object lib/CMakeFiles/libzstd_static.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/common/threading.c.o
+[ 10%] Building C object lib/CMakeFiles/libzstd_static.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/common/xxhash.c.o
+[ 11%] Building C object lib/CMakeFiles/libzstd_static.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/common/zstd_common.c.o
+[ 13%] Building C object lib/CMakeFiles/libzstd_static.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/compress/fse_compress.c.o
+[ 18%] Building C object lib/CMakeFiles/libzstd_shared.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/common/pool.c.o
+[ 18%] Building C object lib/CMakeFiles/libzstd_shared.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/common/entropy_common.c.o
+[ 18%] Building C object lib/CMakeFiles/libzstd_shared.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/common/threading.c.o
+[ 18%] Building C object lib/CMakeFiles/libzstd_shared.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/common/error_private.c.o
+[ 19%] Building C object lib/CMakeFiles/libzstd_shared.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/common/fse_decompress.c.o
+[ 22%] Building C object lib/CMakeFiles/libzstd_shared.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/compress/fse_compress.c.o
+[ 22%] Building C object lib/CMakeFiles/libzstd_static.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/compress/huf_compress.c.o
+[ 23%] Building C object lib/CMakeFiles/libzstd_static.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/compress/hist.c.o
+[ 26%] Building C object lib/CMakeFiles/libzstd_shared.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/common/xxhash.c.o
+[ 26%] Building C object lib/CMakeFiles/libzstd_shared.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/common/zstd_common.c.o
+[ 30%] Building C object lib/CMakeFiles/libzstd_static.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/compress/zstd_compress_literals.c.o
+[ 31%] Building C object lib/CMakeFiles/libzstd_static.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/compress/zstd_compress_superblock.c.o
+[ 31%] Building C object lib/CMakeFiles/libzstd_shared.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/compress/hist.c.o
+[ 30%] Building C object lib/CMakeFiles/libzstd_static.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/compress/zstd_compress_sequences.c.o
+[ 34%] Building C object lib/CMakeFiles/libzstd_shared.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/compress/zstd_compress.c.o
+[ 34%] Building C object lib/CMakeFiles/libzstd_shared.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/compress/huf_compress.c.o
+[ 35%] Building C object lib/CMakeFiles/libzstd_static.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/compress/zstd_compress.c.o
+[ 36%] Building C object lib/CMakeFiles/libzstd_shared.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/compress/zstd_compress_literals.c.o
+[ 39%] Building C object lib/CMakeFiles/libzstd_static.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/compress/zstd_double_fast.c.o
+[ 39%] Building C object lib/CMakeFiles/libzstd_static.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/compress/zstd_fast.c.o
+[ 42%] Building C object lib/CMakeFiles/libzstd_shared.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/compress/zstd_compress_sequences.c.o
+[ 42%] Building C object lib/CMakeFiles/libzstd_shared.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/compress/zstd_compress_superblock.c.o
+[ 43%] Building C object lib/CMakeFiles/libzstd_static.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/compress/zstd_lazy.c.o
+[ 44%] Building C object lib/CMakeFiles/libzstd_shared.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/compress/zstd_double_fast.c.o
+[ 47%] Building C object lib/CMakeFiles/libzstd_static.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/compress/zstd_ldm.c.o
+[ 47%] Building C object lib/CMakeFiles/libzstd_shared.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/compress/zstd_fast.c.o
+[ 48%] Building C object lib/CMakeFiles/libzstd_static.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/compress/zstd_opt.c.o
+[ 50%] Building C object lib/CMakeFiles/libzstd_shared.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/compress/zstd_lazy.c.o
+[ 51%] Building C object lib/CMakeFiles/libzstd_shared.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/compress/zstd_ldm.c.o
+[ 52%] Building C object lib/CMakeFiles/libzstd_static.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/compress/zstd_preSplit.c.o
+[ 53%] Building C object lib/CMakeFiles/libzstd_shared.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/compress/zstd_opt.c.o
+[ 55%] Building C object lib/CMakeFiles/libzstd_static.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/compress/zstdmt_compress.c.o
+[ 56%] Building C object lib/CMakeFiles/libzstd_static.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/decompress/huf_decompress.c.o
+[ 57%] Building C object lib/CMakeFiles/libzstd_shared.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/compress/zstd_preSplit.c.o
+[ 59%] Building C object lib/CMakeFiles/libzstd_shared.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/compress/zstdmt_compress.c.o
+[ 60%] Building C object lib/CMakeFiles/libzstd_static.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/decompress/zstd_ddict.c.o
+[ 61%] Building C object lib/CMakeFiles/libzstd_static.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/decompress/zstd_decompress.c.o
+[ 63%] Building C object lib/CMakeFiles/libzstd_shared.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/decompress/huf_decompress.c.o
+[ 64%] Building C object lib/CMakeFiles/libzstd_shared.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/decompress/zstd_ddict.c.o
+[ 65%] Building C object lib/CMakeFiles/libzstd_static.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/decompress/zstd_decompress_block.c.o
+[ 67%] Building C object lib/CMakeFiles/libzstd_static.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/dictBuilder/cover.c.o
+[ 68%] Building C object lib/CMakeFiles/libzstd_shared.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/decompress/zstd_decompress.c.o
+[ 69%] Building C object lib/CMakeFiles/libzstd_shared.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/decompress/zstd_decompress_block.c.o
+[ 71%] Building C object lib/CMakeFiles/libzstd_shared.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/dictBuilder/cover.c.o
+[ 72%] Building C object lib/CMakeFiles/libzstd_static.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/dictBuilder/divsufsort.c.o
+[ 73%] Building C object lib/CMakeFiles/libzstd_shared.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/dictBuilder/divsufsort.c.o
+[ 75%] Building C object lib/CMakeFiles/libzstd_static.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/dictBuilder/fastcover.c.o
+[ 76%] Building C object lib/CMakeFiles/libzstd_shared.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/dictBuilder/fastcover.c.o
+[ 77%] Building C object lib/CMakeFiles/libzstd_static.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/dictBuilder/zdict.c.o
+[ 78%] Building C object lib/CMakeFiles/libzstd_static.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v01.c.o
+[ 80%] Building C object lib/CMakeFiles/libzstd_shared.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/dictBuilder/zdict.c.o
+[ 81%] Building C object lib/CMakeFiles/libzstd_static.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v02.c.o
+[ 82%] Building C object lib/CMakeFiles/libzstd_shared.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v01.c.o
+[ 84%] Building C object lib/CMakeFiles/libzstd_shared.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v02.c.o
+[ 85%] Building C object lib/CMakeFiles/libzstd_shared.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v03.c.o
+[ 86%] Building C object lib/CMakeFiles/libzstd_static.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v03.c.o
+[ 89%] Building C object lib/CMakeFiles/libzstd_static.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v04.c.o
+[ 89%] Building C object lib/CMakeFiles/libzstd_shared.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v04.c.o
+[ 90%] Building C object lib/CMakeFiles/libzstd_static.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v05.c.o
+[ 92%] Building C object lib/CMakeFiles/libzstd_shared.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v05.c.o
+[ 93%] Building C object lib/CMakeFiles/libzstd_static.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v06.c.o
+[ 94%] Building C object lib/CMakeFiles/libzstd_shared.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v06.c.o
+[ 96%] Building C object lib/CMakeFiles/libzstd_static.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v07.c.o
+/tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v01.c: In function ‘ZSTD_decompressSequences’:
+/tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v01.c:1850:35: warning: ‘dumps’ may be used uninitialized [-Wmaybe-uninitialized]
+ 1850 |         seqState.dumpsEnd = dumps + dumpsLength;
+      |                             ~~~~~~^~~~~~~~~~~~~
+/tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v01.c:1830:17: note: ‘dumps’ was declared here
+ 1830 |     const BYTE* dumps;
+      |                 ^~~~~
+/tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v01.c:1861:18: warning: ‘nbSeq’ may be used uninitialized [-Wmaybe-uninitialized]
+ 1861 |             nbSeq--;
+      |             ~~~~~^~
+/tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v01.c:1829:9: note: ‘nbSeq’ was declared here
+ 1829 |     int nbSeq;
+      |         ^~~~~
+/tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v01.c:1850:35: warning: ‘dumpsLength’ may be used uninitialized [-Wmaybe-uninitialized]
+ 1850 |         seqState.dumpsEnd = dumps + dumpsLength;
+      |                             ~~~~~~^~~~~~~~~~~~~
+/tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v01.c:1826:23: note: ‘dumpsLength’ was declared here
+ 1826 |     size_t errorCode, dumpsLength;
+      |                       ^~~~~~~~~~~
+[ 97%] Building C object lib/CMakeFiles/libzstd_shared.dir/tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v07.c.o
+In function ‘ZSTDv01_decodeLiteralsBlock’,
+    inlined from ‘ZSTD_decompressBlock’ at /tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v01.c:1899:17:
+/tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v01.c:1508:16: warning: ‘litbp.origSize’ may be used uninitialized [-Wmaybe-uninitialized]
+ 1508 |             if (rleSize > 0) {
+      |                ^
+/tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v01.c: In function ‘ZSTD_decompressBlock’:
+/tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v01.c:1489:23: note: ‘litbp.origSize’ was declared here
+ 1489 |     blockProperties_t litbp;
+      |                       ^~~~~
+In function ‘ZSTDv01_decodeLiteralsBlock’,
+    inlined from ‘ZSTD_decompressBlock’ at /tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v01.c:1899:17:
+/tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v01.c:1496:5: warning: ‘*(unsigned int *)((char *)&litbp + offsetof(blockProperties_t, blockType))’ may be used uninitialized [-Wmaybe-uninitialized]
+ 1496 |     switch(litbp.blockType)
+      |     ^~~~~~
+/tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v01.c: In function ‘ZSTD_decompressBlock’:
+/tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v01.c:1489:23: note: ‘*(unsigned int *)((char *)&litbp + offsetof(blockProperties_t, blockType))’ was declared here
+ 1489 |     blockProperties_t litbp;
+      |                       ^~~~~
+/tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v01.c: In function ‘ZSTDv01_decompressDCtx’:
+/tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v01.c:1936:9: warning: ‘*(unsigned int *)((char *)&blockProperties + offsetof(blockProperties_t, blockType))’ may be used uninitialized [-Wmaybe-uninitialized]
+ 1936 |         switch(blockProperties.blockType)
+      |         ^~~~~~
+/tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v01.c:1918:23: note: ‘*(unsigned int *)((char *)&blockProperties + offsetof(blockProperties_t, blockType))’ was declared here
+ 1918 |     blockProperties_t blockProperties;
+      |                       ^~~~~~~~~~~~~~~
+/tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v01.c: In function ‘ZSTD_decompressSequences’:
+/tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v01.c:1850:35: warning: ‘dumps’ may be used uninitialized [-Wmaybe-uninitialized]
+ 1850 |         seqState.dumpsEnd = dumps + dumpsLength;
+      |                             ~~~~~~^~~~~~~~~~~~~
+/tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v01.c:1830:17: note: ‘dumps’ was declared here
+ 1830 |     const BYTE* dumps;
+      |                 ^~~~~
+/tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v01.c:1861:18: warning: ‘nbSeq’ may be used uninitialized [-Wmaybe-uninitialized]
+ 1861 |             nbSeq--;
+      |             ~~~~~^~
+/tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v01.c:1829:9: note: ‘nbSeq’ was declared here
+ 1829 |     int nbSeq;
+      |         ^~~~~
+/tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v01.c:1850:35: warning: ‘dumpsLength’ may be used uninitialized [-Wmaybe-uninitialized]
+ 1850 |         seqState.dumpsEnd = dumps + dumpsLength;
+      |                             ~~~~~~^~~~~~~~~~~~~
+/tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v01.c:1826:23: note: ‘dumpsLength’ was declared here
+ 1826 |     size_t errorCode, dumpsLength;
+      |                       ^~~~~~~~~~~
+In function ‘ZSTDv01_decodeLiteralsBlock’,
+    inlined from ‘ZSTD_decompressBlock’ at /tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v01.c:1899:17:
+/tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v01.c:1508:16: warning: ‘litbp.origSize’ may be used uninitialized [-Wmaybe-uninitialized]
+ 1508 |             if (rleSize > 0) {
+      |                ^
+/tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v01.c: In function ‘ZSTD_decompressBlock’:
+/tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v01.c:1489:23: note: ‘litbp.origSize’ was declared here
+ 1489 |     blockProperties_t litbp;
+      |                       ^~~~~
+In function ‘ZSTDv01_decodeLiteralsBlock’,
+    inlined from ‘ZSTD_decompressBlock’ at /tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v01.c:1899:17:
+/tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v01.c:1496:5: warning: ‘*(unsigned int *)((char *)&litbp + offsetof(blockProperties_t, blockType))’ may be used uninitialized [-Wmaybe-uninitialized]
+ 1496 |     switch(litbp.blockType)
+      |     ^~~~~~
+/tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v01.c: In function ‘ZSTD_decompressBlock’:
+/tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v01.c:1489:23: note: ‘*(unsigned int *)((char *)&litbp + offsetof(blockProperties_t, blockType))’ was declared here
+ 1489 |     blockProperties_t litbp;
+      |                       ^~~~~
+/tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v01.c: In function ‘ZSTDv01_decompressDCtx’:
+/tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v01.c:1936:9: warning: ‘*(unsigned int *)((char *)&blockProperties + offsetof(blockProperties_t, blockType))’ may be used uninitialized [-Wmaybe-uninitialized]
+ 1936 |         switch(blockProperties.blockType)
+      |         ^~~~~~
+/tmp/zstd_build_hDMsSH/zstd_src/lib/legacy/zstd_v01.c:1918:23: note: ‘*(unsigned int *)((char *)&blockProperties + offsetof(blockProperties_t, blockType))’ was declared here
+ 1918 |     blockProperties_t blockProperties;
+      |                       ^~~~~~~~~~~~~~~
+[ 98%] Linking C static library libzstd.a
+[ 98%] Built target libzstd_static
+[100%] Linking C shared library libzstd.so
+[100%] Built target libzstd_shared
+[PHASE1] Installing Zstd...
+[ 50%] Built target libzstd_shared
+[100%] Built target libzstd_static
+Install the project...
+-- Install configuration: "Release"
+-- Installing: /tmp/zstd_build_hDMsSH/install/lib64/cmake/zstd/zstdTargets.cmake
+-- Installing: /tmp/zstd_build_hDMsSH/install/lib64/cmake/zstd/zstdTargets-release.cmake
+-- Installing: /tmp/zstd_build_hDMsSH/install/lib64/cmake/zstd/zstdConfig.cmake
+-- Installing: /tmp/zstd_build_hDMsSH/install/lib64/cmake/zstd/zstdConfigVersion.cmake
+-- Installing: /tmp/zstd_build_hDMsSH/install/lib64/pkgconfig/libzstd.pc
+-- Installing: /tmp/zstd_build_hDMsSH/install/include/zdict.h
+-- Installing: /tmp/zstd_build_hDMsSH/install/include/zstd.h
+-- Installing: /tmp/zstd_build_hDMsSH/install/include/zstd_errors.h
+-- Installing: /tmp/zstd_build_hDMsSH/install/lib64/libzstd.so.1.5.7
+-- Installing: /tmp/zstd_build_hDMsSH/install/lib64/libzstd.so.1
+-- Installing: /tmp/zstd_build_hDMsSH/install/lib64/libzstd.so
+-- Installing: /tmp/zstd_build_hDMsSH/install/lib64/libzstd.a
+[PHASE1] Compiling benchmark program...
+[PHASE1] Linking against static library: /tmp/zstd_build_hDMsSH/install/lib64/libzstd.a
+[PHASE1] Verifying benchmark binary...
+[PHASE1] Benchmark binary verified successfully
+[PHASE1] Zstd source build and benchmark compilation complete
+[PHASE2] === Phase 2: Collect Version Info ===
+[PHASE2] Version info saved (OS: openEuler 24.03 SP3, GCC: 12.3.1)
+[PHASE3] === Phase 3: Run Benchmarks ===
+[PHASE3A] Running compression benchmark...
+[BENCHMARK_COMPRESSION] Running: /tmp/zstd_build_hDMsSH/zstd_benchmark compression 1 /root/tian/Tian/tests/zstd/results/1.5.7/benchmark_compression.json 1048576
+[BENCHMARK_COMPRESSION] Output written to /root/tian/Tian/tests/zstd/results/1.5.7/benchmark_compression.json
+[BENCHMARK_COMPRESSION] Validation: benchmark=compression, entries=16, levels=[1, 3, 9, 19]
+[PHASE3B] Running micro benchmark...
+[BENCHMARK_MICRO] Running: /tmp/zstd_build_hDMsSH/zstd_benchmark micro 1 /root/tian/Tian/tests/zstd/results/1.5.7/micro_benchmark.json
+[BENCHMARK_MICRO] Output written to /root/tian/Tian/tests/zstd/results/1.5.7/micro_benchmark.json
+[BENCHMARK_MICRO] Validation: benchmark=micro_operations, result_keys=['block_compress_decompress', 'multithread_scaling']
+[BENCHMARK_MICRO] Block sizes: ['1024', '4096', '16384', '65536', '262144', '1048576']
+[BENCHMARK_MICRO] Thread counts: ['threads_1', 'threads_2', 'threads_4', 'threads_8', 'threads_32']
+[PHASE4] === Phase 4: Aggregate & Report ===
+[PHASE4] Reports generated:
+[PHASE4]   JSON: /root/tian/Tian/tests/zstd/results/1.5.7/results.json
+[PHASE4]   TXT:  /root/tian/Tian/tests/zstd/results/1.5.7/results.txt
+[PHASE4]   LOG:  /root/tian/Tian/tests/zstd/results/1.5.7/results.log
+[BUILD] Cleaning up temp build directory: /tmp/zstd_build_hDMsSH

@@ -1,0 +1,197 @@
+{
+  "benchmark": "compression",
+  "description": "Zstd compression/decompression across data patterns and compression levels (1/3/9/19) on ARM64",
+  "reference": "https://github.com/facebook/zstd",
+  "software": "zstd",
+  "version": "1.5.6",
+  "architecture": "arm64",
+  "timestamp": "2026-08-07T07:37:00Z",
+  "performance_metrics": {
+    "compress_speed_mbs": {"unit": "MB/s", "description": "Compression throughput in megabytes per second"},
+    "decompress_speed_mbs": {"unit": "MB/s", "description": "Decompression throughput in megabytes per second"},
+    "compression_ratio": {"unit": "ratio", "description": "Original size divided by compressed size"}
+  },
+  "parameters": {
+    "data_size_bytes": 1048576,
+    "iterations": 1,
+    "compression_levels": [1, 3, 9, 19]
+  },
+  "results_summary": {
+    "random_data_level1": {
+      "data_type": "random_data",
+      "level": 1,
+      "original_size_bytes": 1048576,
+      "compressed_size_bytes": 624886,
+      "compression_ratio": 1.6780,
+      "compress_speed_mbs": 526.67,
+      "decompress_speed_mbs": 912.65,
+      "compress_latency_us": 1898.74,
+      "decompress_latency_us": 1095.71
+    },
+    "random_data_level3": {
+      "data_type": "random_data",
+      "level": 3,
+      "original_size_bytes": 1048576,
+      "compressed_size_bytes": 625065,
+      "compression_ratio": 1.6775,
+      "compress_speed_mbs": 318.26,
+      "decompress_speed_mbs": 956.88,
+      "compress_latency_us": 3142.04,
+      "decompress_latency_us": 1045.06
+    },
+    "random_data_level9": {
+      "data_type": "random_data",
+      "level": 9,
+      "original_size_bytes": 1048576,
+      "compressed_size_bytes": 629849,
+      "compression_ratio": 1.6648,
+      "compress_speed_mbs": 47.87,
+      "decompress_speed_mbs": 588.19,
+      "compress_latency_us": 20891.30,
+      "decompress_latency_us": 1700.12
+    },
+    "random_data_level19": {
+      "data_type": "random_data",
+      "level": 19,
+      "original_size_bytes": 1048576,
+      "compressed_size_bytes": 625695,
+      "compression_ratio": 1.6759,
+      "compress_speed_mbs": 5.40,
+      "decompress_speed_mbs": 785.87,
+      "compress_latency_us": 185041.31,
+      "decompress_latency_us": 1272.47
+    },
+    "repeated_data_level1": {
+      "data_type": "repeated_data",
+      "level": 1,
+      "original_size_bytes": 1048576,
+      "compressed_size_bytes": 115,
+      "compression_ratio": 9118.0522,
+      "compress_speed_mbs": 5440.70,
+      "decompress_speed_mbs": 2223.85,
+      "compress_latency_us": 183.80,
+      "decompress_latency_us": 449.67
+    },
+    "repeated_data_level3": {
+      "data_type": "repeated_data",
+      "level": 3,
+      "original_size_bytes": 1048576,
+      "compressed_size_bytes": 114,
+      "compression_ratio": 9198.0351,
+      "compress_speed_mbs": 4690.21,
+      "decompress_speed_mbs": 2351.56,
+      "compress_latency_us": 213.21,
+      "decompress_latency_us": 425.25
+    },
+    "repeated_data_level9": {
+      "data_type": "repeated_data",
+      "level": 9,
+      "original_size_bytes": 1048576,
+      "compressed_size_bytes": 107,
+      "compression_ratio": 9799.7757,
+      "compress_speed_mbs": 817.45,
+      "decompress_speed_mbs": 2020.73,
+      "compress_latency_us": 1223.32,
+      "decompress_latency_us": 494.87
+    },
+    "repeated_data_level19": {
+      "data_type": "repeated_data",
+      "level": 19,
+      "original_size_bytes": 1048576,
+      "compressed_size_bytes": 107,
+      "compression_ratio": 9799.7757,
+      "compress_speed_mbs": 994.76,
+      "decompress_speed_mbs": 2066.67,
+      "compress_latency_us": 1005.27,
+      "decompress_latency_us": 483.87
+    },
+    "text_data_level1": {
+      "data_type": "text_data",
+      "level": 1,
+      "original_size_bytes": 1048576,
+      "compressed_size_bytes": 166141,
+      "compression_ratio": 6.3114,
+      "compress_speed_mbs": 273.68,
+      "decompress_speed_mbs": 751.61,
+      "compress_latency_us": 3653.87,
+      "decompress_latency_us": 1330.47
+    },
+    "text_data_level3": {
+      "data_type": "text_data",
+      "level": 3,
+      "original_size_bytes": 1048576,
+      "compressed_size_bytes": 163538,
+      "compression_ratio": 6.4118,
+      "compress_speed_mbs": 235.58,
+      "decompress_speed_mbs": 765.94,
+      "compress_latency_us": 4244.93,
+      "decompress_latency_us": 1305.59
+    },
+    "text_data_level9": {
+      "data_type": "text_data",
+      "level": 9,
+      "original_size_bytes": 1048576,
+      "compressed_size_bytes": 141653,
+      "compression_ratio": 7.4024,
+      "compress_speed_mbs": 34.16,
+      "decompress_speed_mbs": 898.50,
+      "compress_latency_us": 29270.34,
+      "decompress_latency_us": 1112.97
+    },
+    "text_data_level19": {
+      "data_type": "text_data",
+      "level": 19,
+      "original_size_bytes": 1048576,
+      "compressed_size_bytes": 104127,
+      "compression_ratio": 10.0702,
+      "compress_speed_mbs": 1.81,
+      "decompress_speed_mbs": 1256.06,
+      "compress_latency_us": 551104.01,
+      "decompress_latency_us": 796.14
+    },
+    "html_data_level1": {
+      "data_type": "html_data",
+      "level": 1,
+      "original_size_bytes": 1048576,
+      "compressed_size_bytes": 81954,
+      "compression_ratio": 12.7947,
+      "compress_speed_mbs": 432.36,
+      "decompress_speed_mbs": 976.07,
+      "compress_latency_us": 2312.91,
+      "decompress_latency_us": 1024.52
+    },
+    "html_data_level3": {
+      "data_type": "html_data",
+      "level": 3,
+      "original_size_bytes": 1048576,
+      "compressed_size_bytes": 76983,
+      "compression_ratio": 13.6209,
+      "compress_speed_mbs": 425.61,
+      "decompress_speed_mbs": 1095.06,
+      "compress_latency_us": 2349.56,
+      "decompress_latency_us": 913.19
+    },
+    "html_data_level9": {
+      "data_type": "html_data",
+      "level": 9,
+      "original_size_bytes": 1048576,
+      "compressed_size_bytes": 57731,
+      "compression_ratio": 18.1631,
+      "compress_speed_mbs": 63.91,
+      "decompress_speed_mbs": 1789.93,
+      "compress_latency_us": 15646.24,
+      "decompress_latency_us": 558.68
+    },
+    "html_data_level19": {
+      "data_type": "html_data",
+      "level": 19,
+      "original_size_bytes": 1048576,
+      "compressed_size_bytes": 40046,
+      "compression_ratio": 26.1843,
+      "compress_speed_mbs": 1.08,
+      "decompress_speed_mbs": 2364.74,
+      "compress_latency_us": 924638.01,
+      "decompress_latency_us": 422.88
+    }
+  }
+}
