@@ -1,0 +1,8 @@
+file:
+  /home/kylin/apache-kylin-5.0.3-bin/bin/kylin.sh:
+    exists: true
+    mode: "0755"
+  /home/kylin/apache-kylin-5.0.3-bin/server/newten.jar:
+    exists: true
+  /home/kylin/apache-kylin-5.0.3-bin/VERSION:
+    exists: true
