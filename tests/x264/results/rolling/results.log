@@ -1,0 +1,891 @@
+[START] x264 Source Build & Performance Benchmark rolling
+[CHECK] Python3 OK: Python 3.11.6
+[CHECK] GCC OK: gcc (GCC) 12.3.1 (openEuler 12.3.1-105.oe2403sp3)
+[CHECK] Make OK
+[CHECK] Git OK: git version 2.43.0
+[CHECK] NASM not needed on aarch64 (uses gas)
+[CHECK] json_helper.py OK
+[CHECK] OS: openEuler 24.03 SP3 (openEuler)
+[CHECK] Architecture: aarch64
+[CHECK] Build method: source_build (autoconf, NEON auto-detected on aarch64)
+[SETUP] Downloading shUnit2 to /tmp/shunit2_Lmk1Sf...
+[SETUP] shUnit2 downloaded successfully
+[START] x264 Source Build & Performance Benchmark - rolling
+[START] OS: openEuler 24.03 SP3 (openEuler), Build: source_build
+[CHECK] Python3 OK: Python 3.11.6
+[CHECK] GCC OK: gcc (GCC) 12.3.1 (openEuler 12.3.1-105.oe2403sp3)
+[CHECK] Make OK
+[CHECK] Git OK: git version 2.43.0
+[CHECK] NASM not needed on aarch64 (uses gas)
+[CHECK] json_helper.py OK
+[CHECK] OS: openEuler 24.03 SP3 (openEuler)
+[CHECK] Architecture: aarch64
+[CHECK] Build method: source_build (autoconf, NEON auto-detected on aarch64)
+[PHASE1] === Phase 1: Source Build x264 (rolling) ===
+[BUILD] Created temp build dir: /tmp/x264_build_sooZzm
+[PHASE1] Preparing env on openEuler...
+Last metadata expiration check: 0:21:03 ago on Fri 07 Aug 2026 07:20:04 AM UTC.
+Package gcc-12.3.1-105.oe2403sp3.aarch64 is already installed.
+Package make-1:4.4.1-2.oe2403sp3.aarch64 is already installed.
+Package git-2.43.0-11.oe2403sp3.aarch64 is already installed.
+Package wget-1.21.4-4.oe2403sp3.aarch64 is already installed.
+Package curl-8.4.0-33.oe2403sp3.aarch64 is already installed.
+Dependencies resolved.
+Nothing to do.
+Complete!
+[PHASE1] Cloning x264 (rolling master)...
+Cloning into '/tmp/x264_build_sooZzm/x264_src'...
+[PHASE1] Configuring (autoconf-style)...
+platform:       AARCH64
+byte order:     little-endian
+system:         LINUX
+cli:            yes
+libx264:        internal
+shared:         no
+static:         yes
+bashcompletion: no
+asm:            yes
+interlaced:     yes
+avs:            yes
+lavf:           no
+ffms:           no
+mp4:            no
+gpl:            yes
+thread:         posix
+opencl:         yes
+filters:        crop select_every
+lto:            no
+debug:          no
+gprof:          no
+strip:          no
+PIC:            yes
+bit depth:      all
+chroma format:  all
+
+You can run 'make' or 'make fprofiled' now.
+[PHASE1] Compiling x264...
+cat common/opencl/x264-cl.h common/opencl/bidir.cl common/opencl/downscale.cl common/opencl/intra.cl common/opencl/motionsearch.cl common/opencl/subpel.cl common/opencl/weightp.cl | ./tools/cltostr.sh common/oclobj.h
+dependency file generation...
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c x264.c -o x264.o
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c autocomplete.c -o autocomplete.o
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c input/input.c -o input/input.o
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c input/timecode.c -o input/timecode.o
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c input/raw.c -o input/raw.o
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c input/y4m.c -o input/y4m.o
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c output/raw.c -o output/raw.o
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c output/matroska.c -o output/matroska.o
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c output/matroska_ebml.c -o output/matroska_ebml.o
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c output/flv.c -o output/flv.o
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c output/flv_bytestream.c -o output/flv_bytestream.o
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c filters/filters.c -o filters/filters.o
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c filters/video/video.c -o filters/video/video.o
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c filters/video/source.c -o filters/video/source.o
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c filters/video/internal.c -o filters/video/internal.o
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c filters/video/resize.c -o filters/video/resize.o
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c filters/video/fix_vfr_pts.c -o filters/video/fix_vfr_pts.o
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c filters/video/select_every.c -o filters/video/select_every.o
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c filters/video/crop.c -o filters/video/crop.o
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c input/avs.c -o input/avs.o
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c filters/video/cache.c -o filters/video/cache-8.o -DHIGH_BIT_DEPTH=0 -DBIT_DEPTH=8
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c filters/video/depth.c -o filters/video/depth-8.o -DHIGH_BIT_DEPTH=0 -DBIT_DEPTH=8
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c input/thread.c -o input/thread-8.o -DHIGH_BIT_DEPTH=0 -DBIT_DEPTH=8
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c filters/video/cache.c -o filters/video/cache-10.o -DHIGH_BIT_DEPTH=1 -DBIT_DEPTH=10
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c filters/video/depth.c -o filters/video/depth-10.o -DHIGH_BIT_DEPTH=1 -DBIT_DEPTH=10
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c input/thread.c -o input/thread-10.o -DHIGH_BIT_DEPTH=1 -DBIT_DEPTH=10
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c common/osdep.c -o common/osdep.o
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c common/base.c -o common/base.o
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c common/cpu.c -o common/cpu.o
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c common/tables.c -o common/tables.o
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c encoder/api.c -o encoder/api.o
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c common/mc.c -o common/mc-8.o -DHIGH_BIT_DEPTH=0 -DBIT_DEPTH=8
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c common/predict.c -o common/predict-8.o -DHIGH_BIT_DEPTH=0 -DBIT_DEPTH=8
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c common/pixel.c -o common/pixel-8.o -DHIGH_BIT_DEPTH=0 -DBIT_DEPTH=8
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c common/macroblock.c -o common/macroblock-8.o -DHIGH_BIT_DEPTH=0 -DBIT_DEPTH=8
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c common/frame.c -o common/frame-8.o -DHIGH_BIT_DEPTH=0 -DBIT_DEPTH=8
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c common/dct.c -o common/dct-8.o -DHIGH_BIT_DEPTH=0 -DBIT_DEPTH=8
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c common/cabac.c -o common/cabac-8.o -DHIGH_BIT_DEPTH=0 -DBIT_DEPTH=8
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c common/common.c -o common/common-8.o -DHIGH_BIT_DEPTH=0 -DBIT_DEPTH=8
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c common/rectangle.c -o common/rectangle-8.o -DHIGH_BIT_DEPTH=0 -DBIT_DEPTH=8
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c common/set.c -o common/set-8.o -DHIGH_BIT_DEPTH=0 -DBIT_DEPTH=8
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c common/quant.c -o common/quant-8.o -DHIGH_BIT_DEPTH=0 -DBIT_DEPTH=8
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c common/deblock.c -o common/deblock-8.o -DHIGH_BIT_DEPTH=0 -DBIT_DEPTH=8
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c common/vlc.c -o common/vlc-8.o -DHIGH_BIT_DEPTH=0 -DBIT_DEPTH=8
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c common/mvpred.c -o common/mvpred-8.o -DHIGH_BIT_DEPTH=0 -DBIT_DEPTH=8
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c common/bitstream.c -o common/bitstream-8.o -DHIGH_BIT_DEPTH=0 -DBIT_DEPTH=8
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c encoder/analyse.c -o encoder/analyse-8.o -DHIGH_BIT_DEPTH=0 -DBIT_DEPTH=8
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c encoder/me.c -o encoder/me-8.o -DHIGH_BIT_DEPTH=0 -DBIT_DEPTH=8
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c encoder/ratecontrol.c -o encoder/ratecontrol-8.o -DHIGH_BIT_DEPTH=0 -DBIT_DEPTH=8
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c encoder/set.c -o encoder/set-8.o -DHIGH_BIT_DEPTH=0 -DBIT_DEPTH=8
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c encoder/macroblock.c -o encoder/macroblock-8.o -DHIGH_BIT_DEPTH=0 -DBIT_DEPTH=8
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c encoder/cabac.c -o encoder/cabac-8.o -DHIGH_BIT_DEPTH=0 -DBIT_DEPTH=8
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c encoder/cavlc.c -o encoder/cavlc-8.o -DHIGH_BIT_DEPTH=0 -DBIT_DEPTH=8
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c encoder/encoder.c -o encoder/encoder-8.o -DHIGH_BIT_DEPTH=0 -DBIT_DEPTH=8
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c encoder/lookahead.c -o encoder/lookahead-8.o -DHIGH_BIT_DEPTH=0 -DBIT_DEPTH=8
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c common/threadpool.c -o common/threadpool-8.o -DHIGH_BIT_DEPTH=0 -DBIT_DEPTH=8
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c common/aarch64/asm-offsets.c -o common/aarch64/asm-offsets-8.o -DHIGH_BIT_DEPTH=0 -DBIT_DEPTH=8
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c common/aarch64/mc-c.c -o common/aarch64/mc-c-8.o -DHIGH_BIT_DEPTH=0 -DBIT_DEPTH=8
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c common/aarch64/predict-c.c -o common/aarch64/predict-c-8.o -DHIGH_BIT_DEPTH=0 -DBIT_DEPTH=8
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c common/opencl.c -o common/opencl-8.o -DHIGH_BIT_DEPTH=0 -DBIT_DEPTH=8
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c encoder/slicetype-cl.c -o encoder/slicetype-cl-8.o -DHIGH_BIT_DEPTH=0 -DBIT_DEPTH=8
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c common/mc.c -o common/mc-10.o -DHIGH_BIT_DEPTH=1 -DBIT_DEPTH=10
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c common/predict.c -o common/predict-10.o -DHIGH_BIT_DEPTH=1 -DBIT_DEPTH=10
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c common/pixel.c -o common/pixel-10.o -DHIGH_BIT_DEPTH=1 -DBIT_DEPTH=10
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c common/macroblock.c -o common/macroblock-10.o -DHIGH_BIT_DEPTH=1 -DBIT_DEPTH=10
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c common/frame.c -o common/frame-10.o -DHIGH_BIT_DEPTH=1 -DBIT_DEPTH=10
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c common/dct.c -o common/dct-10.o -DHIGH_BIT_DEPTH=1 -DBIT_DEPTH=10
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c common/cabac.c -o common/cabac-10.o -DHIGH_BIT_DEPTH=1 -DBIT_DEPTH=10
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c common/common.c -o common/common-10.o -DHIGH_BIT_DEPTH=1 -DBIT_DEPTH=10
+In file included from encoder/analyse.c:33:
+encoder/rdo.c: In function ‘quant_trellis_cabac’:
+encoder/rdo.c:834:27: warning: dangling pointer to ‘ssd1’ may be used [-Wdangling-pointer=]
+  834 |             ssd0[k] = ssd1[k];\
+      |                       ~~~~^~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:815:27: note: ‘ssd1’ declared here
+  815 |         uint64_t ssd0[2], ssd1[2];\
+      |                           ^~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:847:17: warning: dangling pointer to ‘ssd1’ may be used [-Wdangling-pointer=]
+  847 |             ssd1[0] += (uint64_t)cost_siglast[0] * lambda2 >> ( CABAC_SIZE_BITS - LAMBDA_BITS );\
+      |             ~~~~^~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:815:27: note: ‘ssd1’ declared here
+  815 |         uint64_t ssd0[2], ssd1[2];\
+      |                           ^~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:847:46: warning: dangling pointer to ‘cost_siglast’ may be used [-Wdangling-pointer=]
+  847 |             ssd1[0] += (uint64_t)cost_siglast[0] * lambda2 >> ( CABAC_SIZE_BITS - LAMBDA_BITS );\
+      |                                  ~~~~~~~~~~~~^~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:789:13: note: ‘cost_siglast’ declared here
+  789 |         int cost_siglast[3]; /* { zero, nonzero, nonzero-and-last } */\
+      |             ^~~~~~~~~~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:848:55: warning: dangling pointer to ‘ssd0’ may be used [-Wdangling-pointer=]
+  848 |             levels_used = trellis_coef0_##ctx_hi( ssd0[0]-ssd1[0], nodes_cur, nodes_prev, level_tree, levels_used );\
+      |                                                   ~~~~^~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:815:18: note: ‘ssd0’ declared here
+  815 |         uint64_t ssd0[2], ssd1[2];\
+      |                  ^~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:848:63: warning: dangling pointer to ‘ssd1’ may be used [-Wdangling-pointer=]
+  848 |             levels_used = trellis_coef0_##ctx_hi( ssd0[0]-ssd1[0], nodes_cur, nodes_prev, level_tree, levels_used );\
+      |                                                           ~~~~^~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:815:27: note: ‘ssd1’ declared here
+  815 |         uint64_t ssd0[2], ssd1[2];\
+      |                           ^~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:849:55: warning: dangling pointer to ‘ssd0’ may be used [-Wdangling-pointer=]
+  849 |             levels_used = trellis_coef1_##ctx_hi( ssd0[1]-ssd1[0], ssd1[1]-ssd1[0], cost_siglast, nodes_cur, nodes_prev, level_tree, levels_used, lambda2, level_state );\
+      |                                                   ~~~~^~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:815:18: note: ‘ssd0’ declared here
+  815 |         uint64_t ssd0[2], ssd1[2];\
+      |                  ^~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:849:63: warning: dangling pointer to ‘ssd1’ may be used [-Wdangling-pointer=]
+  849 |             levels_used = trellis_coef1_##ctx_hi( ssd0[1]-ssd1[0], ssd1[1]-ssd1[0], cost_siglast, nodes_cur, nodes_prev, level_tree, levels_used, lambda2, level_state );\
+      |                                                           ~~~~^~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:815:27: note: ‘ssd1’ declared here
+  815 |         uint64_t ssd0[2], ssd1[2];\
+      |                           ^~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:849:72: warning: dangling pointer to ‘ssd1’ may be used [-Wdangling-pointer=]
+  849 |             levels_used = trellis_coef1_##ctx_hi( ssd0[1]-ssd1[0], ssd1[1]-ssd1[0], cost_siglast, nodes_cur, nodes_prev, level_tree, levels_used, lambda2, level_state );\
+      |                                                                    ~~~~^~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:815:27: note: ‘ssd1’ declared here
+  815 |         uint64_t ssd0[2], ssd1[2];\
+      |                           ^~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:849:80: warning: dangling pointer to ‘ssd1’ may be used [-Wdangling-pointer=]
+  849 |             levels_used = trellis_coef1_##ctx_hi( ssd0[1]-ssd1[0], ssd1[1]-ssd1[0], cost_siglast, nodes_cur, nodes_prev, level_tree, levels_used, lambda2, level_state );\
+      |                                                                            ~~~~^~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:815:27: note: ‘ssd1’ declared here
+  815 |         uint64_t ssd0[2], ssd1[2];\
+      |                           ^~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:852:27: warning: dangling pointer to ‘ssd0’ may be used [-Wdangling-pointer=]
+  852 |             levels_used = trellis_coef1_##ctx_hi( ssd0[0], ssd1[0], cost_siglast, nodes_cur, nodes_prev, level_tree, levels_used, lambda2, level_state );\
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:815:18: note: ‘ssd0’ declared here
+  815 |         uint64_t ssd0[2], ssd1[2];\
+      |                  ^~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:852:27: warning: dangling pointer to ‘ssd1’ may be used [-Wdangling-pointer=]
+  852 |             levels_used = trellis_coef1_##ctx_hi( ssd0[0], ssd1[0], cost_siglast, nodes_cur, nodes_prev, level_tree, levels_used, lambda2, level_state );\
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:815:27: note: ‘ssd1’ declared here
+  815 |         uint64_t ssd0[2], ssd1[2];\
+      |                           ^~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:853:27: warning: dangling pointer to ‘ssd0’ may be used [-Wdangling-pointer=]
+  853 |             levels_used = trellis_coefn_##ctx_hi( q, ssd0[1], ssd1[1], cost_siglast, nodes_cur, nodes_prev, level_tree, levels_used, lambda2, level_state, levelgt1_ctx );\
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:815:18: note: ‘ssd0’ declared here
+  815 |         uint64_t ssd0[2], ssd1[2];\
+      |                  ^~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:853:27: warning: dangling pointer to ‘ssd1’ may be used [-Wdangling-pointer=]
+  853 |             levels_used = trellis_coefn_##ctx_hi( q, ssd0[1], ssd1[1], cost_siglast, nodes_cur, nodes_prev, level_tree, levels_used, lambda2, level_state, levelgt1_ctx );\
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:815:27: note: ‘ssd1’ declared here
+  815 |         uint64_t ssd0[2], ssd1[2];\
+      |                           ^~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:856:27: warning: dangling pointer to ‘ssd0’ may be used [-Wdangling-pointer=]
+  856 |             levels_used = trellis_coefn_##ctx_hi( q-1, ssd0[0], ssd1[0], cost_siglast, nodes_cur, nodes_prev, level_tree, levels_used, lambda2, level_state, levelgt1_ctx );\
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:815:18: note: ‘ssd0’ declared here
+  815 |         uint64_t ssd0[2], ssd1[2];\
+      |                  ^~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:856:27: warning: dangling pointer to ‘ssd1’ may be used [-Wdangling-pointer=]
+  856 |             levels_used = trellis_coefn_##ctx_hi( q-1, ssd0[0], ssd1[0], cost_siglast, nodes_cur, nodes_prev, level_tree, levels_used, lambda2, level_state, levelgt1_ctx );\
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:815:27: note: ‘ssd1’ declared here
+  815 |         uint64_t ssd0[2], ssd1[2];\
+      |                           ^~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:857:27: warning: dangling pointer to ‘ssd0’ may be used [-Wdangling-pointer=]
+  857 |             levels_used = trellis_coefn_##ctx_hi( q, ssd0[1], ssd1[1], cost_siglast, nodes_cur, nodes_prev, level_tree, levels_used, lambda2, level_state, levelgt1_ctx );\
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:815:18: note: ‘ssd0’ declared here
+  815 |         uint64_t ssd0[2], ssd1[2];\
+      |                  ^~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:857:27: warning: dangling pointer to ‘ssd1’ may be used [-Wdangling-pointer=]
+  857 |             levels_used = trellis_coefn_##ctx_hi( q, ssd0[1], ssd1[1], cost_siglast, nodes_cur, nodes_prev, level_tree, levels_used, lambda2, level_state, levelgt1_ctx );\
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:815:27: note: ‘ssd1’ declared here
+  815 |         uint64_t ssd0[2], ssd1[2];\
+      |                           ^~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c common/rectangle.c -o common/rectangle-10.o -DHIGH_BIT_DEPTH=1 -DBIT_DEPTH=10
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c common/set.c -o common/set-10.o -DHIGH_BIT_DEPTH=1 -DBIT_DEPTH=10
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c common/quant.c -o common/quant-10.o -DHIGH_BIT_DEPTH=1 -DBIT_DEPTH=10
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c common/deblock.c -o common/deblock-10.o -DHIGH_BIT_DEPTH=1 -DBIT_DEPTH=10
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c common/vlc.c -o common/vlc-10.o -DHIGH_BIT_DEPTH=1 -DBIT_DEPTH=10
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c common/mvpred.c -o common/mvpred-10.o -DHIGH_BIT_DEPTH=1 -DBIT_DEPTH=10
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c common/bitstream.c -o common/bitstream-10.o -DHIGH_BIT_DEPTH=1 -DBIT_DEPTH=10
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c encoder/analyse.c -o encoder/analyse-10.o -DHIGH_BIT_DEPTH=1 -DBIT_DEPTH=10
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c encoder/me.c -o encoder/me-10.o -DHIGH_BIT_DEPTH=1 -DBIT_DEPTH=10
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c encoder/ratecontrol.c -o encoder/ratecontrol-10.o -DHIGH_BIT_DEPTH=1 -DBIT_DEPTH=10
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c encoder/set.c -o encoder/set-10.o -DHIGH_BIT_DEPTH=1 -DBIT_DEPTH=10
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c encoder/macroblock.c -o encoder/macroblock-10.o -DHIGH_BIT_DEPTH=1 -DBIT_DEPTH=10
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c encoder/cabac.c -o encoder/cabac-10.o -DHIGH_BIT_DEPTH=1 -DBIT_DEPTH=10
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c encoder/cavlc.c -o encoder/cavlc-10.o -DHIGH_BIT_DEPTH=1 -DBIT_DEPTH=10
+In file included from ./common/common.h:122,
+                 from encoder/set.c:27:
+In function ‘bs_realign’,
+    inlined from ‘x264_8_sei_recovery_point_write’ at encoder/set.c:581:5:
+./common/bitstream.h:120:23: warning: array subscript 0 is outside array bounds of ‘uint8_t[100]’ {aka ‘unsigned char[100]’} [-Warray-bounds]
+  120 |         s->cur_bits = endian_fix32( M32(s->p) );
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ./common/base.h:43,
+                 from ./common/common.h:30:
+encoder/set.c: In function ‘x264_8_sei_recovery_point_write’:
+encoder/set.c:577:24: note: at offset [-3, -1] into object ‘tmp_buf’ of size 100
+  577 |     ALIGNED_4( uint8_t tmp_buf[100] );
+      |                        ^~~~~~~
+./common/osdep.h:285:35: note: in definition of macro ‘DECLARE_ALIGNED’
+  285 | #define DECLARE_ALIGNED( var, n ) var __attribute__((aligned(n)))
+      |                                   ^~~
+encoder/set.c:577:5: note: in expansion of macro ‘ALIGNED_4’
+  577 |     ALIGNED_4( uint8_t tmp_buf[100] );
+      |     ^~~~~~~~~
+In file included from encoder/analyse.c:33:
+encoder/rdo.c: In function ‘quant_trellis_cabac’:
+encoder/rdo.c:834:27: warning: dangling pointer to ‘ssd1’ may be used [-Wdangling-pointer=]
+  834 |             ssd0[k] = ssd1[k];\
+      |                       ~~~~^~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:815:27: note: ‘ssd1’ declared here
+  815 |         uint64_t ssd0[2], ssd1[2];\
+      |                           ^~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:847:17: warning: dangling pointer to ‘ssd1’ may be used [-Wdangling-pointer=]
+  847 |             ssd1[0] += (uint64_t)cost_siglast[0] * lambda2 >> ( CABAC_SIZE_BITS - LAMBDA_BITS );\
+      |             ~~~~^~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:815:27: note: ‘ssd1’ declared here
+  815 |         uint64_t ssd0[2], ssd1[2];\
+      |                           ^~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:847:46: warning: dangling pointer to ‘cost_siglast’ may be used [-Wdangling-pointer=]
+  847 |             ssd1[0] += (uint64_t)cost_siglast[0] * lambda2 >> ( CABAC_SIZE_BITS - LAMBDA_BITS );\
+      |                                  ~~~~~~~~~~~~^~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:789:13: note: ‘cost_siglast’ declared here
+  789 |         int cost_siglast[3]; /* { zero, nonzero, nonzero-and-last } */\
+      |             ^~~~~~~~~~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:848:55: warning: dangling pointer to ‘ssd0’ may be used [-Wdangling-pointer=]
+  848 |             levels_used = trellis_coef0_##ctx_hi( ssd0[0]-ssd1[0], nodes_cur, nodes_prev, level_tree, levels_used );\
+      |                                                   ~~~~^~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:815:18: note: ‘ssd0’ declared here
+  815 |         uint64_t ssd0[2], ssd1[2];\
+      |                  ^~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:848:63: warning: dangling pointer to ‘ssd1’ may be used [-Wdangling-pointer=]
+  848 |             levels_used = trellis_coef0_##ctx_hi( ssd0[0]-ssd1[0], nodes_cur, nodes_prev, level_tree, levels_used );\
+      |                                                           ~~~~^~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:815:27: note: ‘ssd1’ declared here
+  815 |         uint64_t ssd0[2], ssd1[2];\
+      |                           ^~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:849:55: warning: dangling pointer to ‘ssd0’ may be used [-Wdangling-pointer=]
+  849 |             levels_used = trellis_coef1_##ctx_hi( ssd0[1]-ssd1[0], ssd1[1]-ssd1[0], cost_siglast, nodes_cur, nodes_prev, level_tree, levels_used, lambda2, level_state );\
+      |                                                   ~~~~^~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:815:18: note: ‘ssd0’ declared here
+  815 |         uint64_t ssd0[2], ssd1[2];\
+      |                  ^~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:849:63: warning: dangling pointer to ‘ssd1’ may be used [-Wdangling-pointer=]
+  849 |             levels_used = trellis_coef1_##ctx_hi( ssd0[1]-ssd1[0], ssd1[1]-ssd1[0], cost_siglast, nodes_cur, nodes_prev, level_tree, levels_used, lambda2, level_state );\
+      |                                                           ~~~~^~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:815:27: note: ‘ssd1’ declared here
+  815 |         uint64_t ssd0[2], ssd1[2];\
+      |                           ^~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:849:72: warning: dangling pointer to ‘ssd1’ may be used [-Wdangling-pointer=]
+  849 |             levels_used = trellis_coef1_##ctx_hi( ssd0[1]-ssd1[0], ssd1[1]-ssd1[0], cost_siglast, nodes_cur, nodes_prev, level_tree, levels_used, lambda2, level_state );\
+      |                                                                    ~~~~^~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:815:27: note: ‘ssd1’ declared here
+  815 |         uint64_t ssd0[2], ssd1[2];\
+      |                           ^~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:849:80: warning: dangling pointer to ‘ssd1’ may be used [-Wdangling-pointer=]
+  849 |             levels_used = trellis_coef1_##ctx_hi( ssd0[1]-ssd1[0], ssd1[1]-ssd1[0], cost_siglast, nodes_cur, nodes_prev, level_tree, levels_used, lambda2, level_state );\
+      |                                                                            ~~~~^~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:815:27: note: ‘ssd1’ declared here
+  815 |         uint64_t ssd0[2], ssd1[2];\
+      |                           ^~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:852:27: warning: dangling pointer to ‘ssd0’ may be used [-Wdangling-pointer=]
+  852 |             levels_used = trellis_coef1_##ctx_hi( ssd0[0], ssd1[0], cost_siglast, nodes_cur, nodes_prev, level_tree, levels_used, lambda2, level_state );\
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:815:18: note: ‘ssd0’ declared here
+  815 |         uint64_t ssd0[2], ssd1[2];\
+      |                  ^~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:852:27: warning: dangling pointer to ‘ssd1’ may be used [-Wdangling-pointer=]
+  852 |             levels_used = trellis_coef1_##ctx_hi( ssd0[0], ssd1[0], cost_siglast, nodes_cur, nodes_prev, level_tree, levels_used, lambda2, level_state );\
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:815:27: note: ‘ssd1’ declared here
+  815 |         uint64_t ssd0[2], ssd1[2];\
+      |                           ^~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:853:27: warning: dangling pointer to ‘ssd0’ may be used [-Wdangling-pointer=]
+  853 |             levels_used = trellis_coefn_##ctx_hi( q, ssd0[1], ssd1[1], cost_siglast, nodes_cur, nodes_prev, level_tree, levels_used, lambda2, level_state, levelgt1_ctx );\
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:815:18: note: ‘ssd0’ declared here
+  815 |         uint64_t ssd0[2], ssd1[2];\
+      |                  ^~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:853:27: warning: dangling pointer to ‘ssd1’ may be used [-Wdangling-pointer=]
+  853 |             levels_used = trellis_coefn_##ctx_hi( q, ssd0[1], ssd1[1], cost_siglast, nodes_cur, nodes_prev, level_tree, levels_used, lambda2, level_state, levelgt1_ctx );\
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:815:27: note: ‘ssd1’ declared here
+  815 |         uint64_t ssd0[2], ssd1[2];\
+      |                           ^~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:856:27: warning: dangling pointer to ‘ssd0’ may be used [-Wdangling-pointer=]
+  856 |             levels_used = trellis_coefn_##ctx_hi( q-1, ssd0[0], ssd1[0], cost_siglast, nodes_cur, nodes_prev, level_tree, levels_used, lambda2, level_state, levelgt1_ctx );\
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:815:18: note: ‘ssd0’ declared here
+  815 |         uint64_t ssd0[2], ssd1[2];\
+      |                  ^~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:856:27: warning: dangling pointer to ‘ssd1’ may be used [-Wdangling-pointer=]
+  856 |             levels_used = trellis_coefn_##ctx_hi( q-1, ssd0[0], ssd1[0], cost_siglast, nodes_cur, nodes_prev, level_tree, levels_used, lambda2, level_state, levelgt1_ctx );\
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:815:27: note: ‘ssd1’ declared here
+  815 |         uint64_t ssd0[2], ssd1[2];\
+      |                           ^~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c encoder/encoder.c -o encoder/encoder-10.o -DHIGH_BIT_DEPTH=1 -DBIT_DEPTH=10
+encoder/rdo.c:857:27: warning: dangling pointer to ‘ssd0’ may be used [-Wdangling-pointer=]
+  857 |             levels_used = trellis_coefn_##ctx_hi( q, ssd0[1], ssd1[1], cost_siglast, nodes_cur, nodes_prev, level_tree, levels_used, lambda2, level_state, levelgt1_ctx );\
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:815:18: note: ‘ssd0’ declared here
+  815 |         uint64_t ssd0[2], ssd1[2];\
+      |                  ^~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:857:27: warning: dangling pointer to ‘ssd1’ may be used [-Wdangling-pointer=]
+  857 |             levels_used = trellis_coefn_##ctx_hi( q, ssd0[1], ssd1[1], cost_siglast, nodes_cur, nodes_prev, level_tree, levels_used, lambda2, level_state, levelgt1_ctx );\
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+encoder/rdo.c:815:27: note: ‘ssd1’ declared here
+  815 |         uint64_t ssd0[2], ssd1[2];\
+      |                           ^~~~
+encoder/rdo.c:884:9: note: in expansion of macro ‘TRELLIS_LOOP’
+  884 |         TRELLIS_LOOP(1);
+      |         ^~~~~~~~~~~~
+In function ‘bs_realign’,
+    inlined from ‘x264_8_sei_buffering_period_write’ at encoder/set.c:633:5:
+./common/bitstream.h:120:23: warning: array subscript 0 is outside array bounds of ‘uint8_t[100]’ {aka ‘unsigned char[100]’} [-Warray-bounds]
+  120 |         s->cur_bits = endian_fix32( M32(s->p) );
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~~~
+encoder/set.c: In function ‘x264_8_sei_buffering_period_write’:
+encoder/set.c:629:24: note: at offset [-3, -1] into object ‘tmp_buf’ of size 100
+  629 |     ALIGNED_4( uint8_t tmp_buf[100] );
+      |                        ^~~~~~~
+./common/osdep.h:285:35: note: in definition of macro ‘DECLARE_ALIGNED’
+  285 | #define DECLARE_ALIGNED( var, n ) var __attribute__((aligned(n)))
+      |                                   ^~~
+encoder/set.c:629:5: note: in expansion of macro ‘ALIGNED_4’
+  629 |     ALIGNED_4( uint8_t tmp_buf[100] );
+      |     ^~~~~~~~~
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c encoder/lookahead.c -o encoder/lookahead-10.o -DHIGH_BIT_DEPTH=1 -DBIT_DEPTH=10
+In function ‘bs_realign’,
+    inlined from ‘x264_8_sei_pic_timing_write’ at encoder/set.c:655:5:
+./common/bitstream.h:120:23: warning: array subscript 0 is outside array bounds of ‘uint8_t[100]’ {aka ‘unsigned char[100]’} [-Warray-bounds]
+  120 |         s->cur_bits = endian_fix32( M32(s->p) );
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~~~
+encoder/set.c: In function ‘x264_8_sei_pic_timing_write’:
+encoder/set.c:651:24: note: at offset [-3, -1] into object ‘tmp_buf’ of size 100
+  651 |     ALIGNED_4( uint8_t tmp_buf[100] );
+      |                        ^~~~~~~
+./common/osdep.h:285:35: note: in definition of macro ‘DECLARE_ALIGNED’
+  285 | #define DECLARE_ALIGNED( var, n ) var __attribute__((aligned(n)))
+      |                                   ^~~
+encoder/set.c:651:5: note: in expansion of macro ‘ALIGNED_4’
+  651 |     ALIGNED_4( uint8_t tmp_buf[100] );
+      |     ^~~~~~~~~
+In function ‘bs_realign’,
+    inlined from ‘x264_8_sei_frame_packing_write’ at encoder/set.c:686:5:
+./common/bitstream.h:120:23: warning: array subscript 0 is outside array bounds of ‘uint8_t[100]’ {aka ‘unsigned char[100]’} [-Warray-bounds]
+  120 |         s->cur_bits = endian_fix32( M32(s->p) );
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~~~
+encoder/set.c: In function ‘x264_8_sei_frame_packing_write’:
+encoder/set.c:682:24: note: at offset [-3, -1] into object ‘tmp_buf’ of size 100
+  682 |     ALIGNED_4( uint8_t tmp_buf[100] );
+      |                        ^~~~~~~
+./common/osdep.h:285:35: note: in definition of macro ‘DECLARE_ALIGNED’
+  285 | #define DECLARE_ALIGNED( var, n ) var __attribute__((aligned(n)))
+      |                                   ^~~
+encoder/set.c:682:5: note: in expansion of macro ‘ALIGNED_4’
+  682 |     ALIGNED_4( uint8_t tmp_buf[100] );
+      |     ^~~~~~~~~
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c common/threadpool.c -o common/threadpool-10.o -DHIGH_BIT_DEPTH=1 -DBIT_DEPTH=10
+In function ‘bs_realign’,
+    inlined from ‘x264_8_sei_mastering_display_write’ at encoder/set.c:727:5:
+./common/bitstream.h:120:23: warning: array subscript 0 is outside array bounds of ‘uint8_t[100]’ {aka ‘unsigned char[100]’} [-Warray-bounds]
+  120 |         s->cur_bits = endian_fix32( M32(s->p) );
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~~~
+encoder/set.c: In function ‘x264_8_sei_mastering_display_write’:
+encoder/set.c:723:24: note: at offset [-3, -1] into object ‘tmp_buf’ of size 100
+  723 |     ALIGNED_4( uint8_t tmp_buf[100] );
+      |                        ^~~~~~~
+./common/osdep.h:285:35: note: in definition of macro ‘DECLARE_ALIGNED’
+  285 | #define DECLARE_ALIGNED( var, n ) var __attribute__((aligned(n)))
+      |                                   ^~~
+encoder/set.c:723:5: note: in expansion of macro ‘ALIGNED_4’
+  723 |     ALIGNED_4( uint8_t tmp_buf[100] );
+      |     ^~~~~~~~~
+In function ‘bs_realign’,
+    inlined from ‘x264_8_sei_content_light_level_write’ at encoder/set.c:752:5:
+./common/bitstream.h:120:23: warning: array subscript 0 is outside array bounds of ‘uint8_t[100]’ {aka ‘unsigned char[100]’} [-Warray-bounds]
+  120 |         s->cur_bits = endian_fix32( M32(s->p) );
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~~~
+encoder/set.c: In function ‘x264_8_sei_content_light_level_write’:
+encoder/set.c:748:24: note: at offset [-3, -1] into object ‘tmp_buf’ of size 100
+  748 |     ALIGNED_4( uint8_t tmp_buf[100] );
+      |                        ^~~~~~~
+./common/osdep.h:285:35: note: in definition of macro ‘DECLARE_ALIGNED’
+  285 | #define DECLARE_ALIGNED( var, n ) var __attribute__((aligned(n)))
+      |                                   ^~~
+encoder/set.c:748:5: note: in expansion of macro ‘ALIGNED_4’
+  748 |     ALIGNED_4( uint8_t tmp_buf[100] );
+      |     ^~~~~~~~~
+In function ‘bs_realign’,
+    inlined from ‘x264_8_sei_alternative_transfer_write’ at encoder/set.c:769:5:
+./common/bitstream.h:120:23: warning: array subscript 0 is outside array bounds of ‘uint8_t[100]’ {aka ‘unsigned char[100]’} [-Warray-bounds]
+  120 |         s->cur_bits = endian_fix32( M32(s->p) );
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~~~
+encoder/set.c: In function ‘x264_8_sei_alternative_transfer_write’:
+encoder/set.c:765:24: note: at offset [-3, -1] into object ‘tmp_buf’ of size 100
+  765 |     ALIGNED_4( uint8_t tmp_buf[100] );
+      |                        ^~~~~~~
+./common/osdep.h:285:35: note: in definition of macro ‘DECLARE_ALIGNED’
+  285 | #define DECLARE_ALIGNED( var, n ) var __attribute__((aligned(n)))
+      |                                   ^~~
+encoder/set.c:765:5: note: in expansion of macro ‘ALIGNED_4’
+  765 |     ALIGNED_4( uint8_t tmp_buf[100] );
+      |     ^~~~~~~~~
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c common/aarch64/asm-offsets.c -o common/aarch64/asm-offsets-10.o -DHIGH_BIT_DEPTH=1 -DBIT_DEPTH=10
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c common/aarch64/mc-c.c -o common/aarch64/mc-c-10.o -DHIGH_BIT_DEPTH=1 -DBIT_DEPTH=10
+gcc -Wno-maybe-uninitialized -Wshadow -O3 -ffast-math  -Wall -I. -I. -std=gnu99 -D_GNU_SOURCE -fPIC -fomit-frame-pointer -fno-tree-vectorize -fvisibility=hidden   -c common/aarch64/predict-c.c -o common/aarch64/predict-c-10.o -DHIGH_BIT_DEPTH=1 -DBIT_DEPTH=10
+In function ‘bs_realign’,
+    inlined from ‘x264_8_sei_dec_ref_pic_marking_write’ at encoder/set.c:797:5:
+./common/bitstream.h:120:23: warning: array subscript 0 is outside array bounds of ‘uint8_t[100]’ {aka ‘unsigned char[100]’} [-Warray-bounds]
+  120 |         s->cur_bits = endian_fix32( M32(s->p) );
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~~~
+encoder/set.c: In function ‘x264_8_sei_dec_ref_pic_marking_write’:
+encoder/set.c:793:24: note: at offset [-3, -1] into object ‘tmp_buf’ of size 100
+  793 |     ALIGNED_4( uint8_t tmp_buf[100] );
+      |                        ^~~~~~~
+./common/osdep.h:285:35: note: in definition of macro ‘DECLARE_ALIGNED’
+  285 | #define DECLARE_ALIGNED( var, n ) var __attribute__((aligned(n)))
+      |                                   ^~~
+encoder/set.c:793:5: note: in expansion of macro ‘ALIGNED_4’
+  793 |     ALIGNED_4( uint8_t tmp_buf[100] );
+      |     ^~~~~~~~~
+gcc -I. -I. -c -DSTACK_ALIGNMENT=16 -DPIC -o common/aarch64/bitstream-a-8.o common/aarch64/bitstream-a.S -DHIGH_BIT_DEPTH=0 -DBIT_DEPTH=8
+gcc -I. -I. -c -DSTACK_ALIGNMENT=16 -DPIC -o common/aarch64/cabac-a-8.o common/aarch64/cabac-a.S -DHIGH_BIT_DEPTH=0 -DBIT_DEPTH=8
+gcc -I. -I. -c -DSTACK_ALIGNMENT=16 -DPIC -o common/aarch64/dct-a-8.o common/aarch64/dct-a.S -DHIGH_BIT_DEPTH=0 -DBIT_DEPTH=8
+gcc -I. -I. -c -DSTACK_ALIGNMENT=16 -DPIC -o common/aarch64/deblock-a-8.o common/aarch64/deblock-a.S -DHIGH_BIT_DEPTH=0 -DBIT_DEPTH=8
+gcc -I. -I. -c -DSTACK_ALIGNMENT=16 -DPIC -o common/aarch64/mc-a-8.o common/aarch64/mc-a.S -DHIGH_BIT_DEPTH=0 -DBIT_DEPTH=8
+gcc -I. -I. -c -DSTACK_ALIGNMENT=16 -DPIC -o common/aarch64/pixel-a-8.o common/aarch64/pixel-a.S -DHIGH_BIT_DEPTH=0 -DBIT_DEPTH=8
+gcc -I. -I. -c -DSTACK_ALIGNMENT=16 -DPIC -o common/aarch64/predict-a-8.o common/aarch64/predict-a.S -DHIGH_BIT_DEPTH=0 -DBIT_DEPTH=8
+gcc -I. -I. -c -DSTACK_ALIGNMENT=16 -DPIC -o common/aarch64/quant-a-8.o common/aarch64/quant-a.S -DHIGH_BIT_DEPTH=0 -DBIT_DEPTH=8
+gcc -I. -I. -c -DSTACK_ALIGNMENT=16 -DPIC -o common/aarch64/dct-a-sve-8.o common/aarch64/dct-a-sve.S -DHIGH_BIT_DEPTH=0 -DBIT_DEPTH=8
+gcc -I. -I. -c -DSTACK_ALIGNMENT=16 -DPIC -o common/aarch64/deblock-a-sve-8.o common/aarch64/deblock-a-sve.S -DHIGH_BIT_DEPTH=0 -DBIT_DEPTH=8
+gcc -I. -I. -c -DSTACK_ALIGNMENT=16 -DPIC -o common/aarch64/mc-a-sve-8.o common/aarch64/mc-a-sve.S -DHIGH_BIT_DEPTH=0 -DBIT_DEPTH=8
+gcc -I. -I. -c -DSTACK_ALIGNMENT=16 -DPIC -o common/aarch64/pixel-a-sve-8.o common/aarch64/pixel-a-sve.S -DHIGH_BIT_DEPTH=0 -DBIT_DEPTH=8
+gcc -I. -I. -c -DSTACK_ALIGNMENT=16 -DPIC -o common/aarch64/dct-a-sve2-8.o common/aarch64/dct-a-sve2.S -DHIGH_BIT_DEPTH=0 -DBIT_DEPTH=8
+gcc -I. -I. -c -DSTACK_ALIGNMENT=16 -DPIC -o common/aarch64/bitstream-a-10.o common/aarch64/bitstream-a.S -DHIGH_BIT_DEPTH=1 -DBIT_DEPTH=10
+gcc -I. -I. -c -DSTACK_ALIGNMENT=16 -DPIC -o common/aarch64/cabac-a-10.o common/aarch64/cabac-a.S -DHIGH_BIT_DEPTH=1 -DBIT_DEPTH=10
+gcc -I. -I. -c -DSTACK_ALIGNMENT=16 -DPIC -o common/aarch64/dct-a-10.o common/aarch64/dct-a.S -DHIGH_BIT_DEPTH=1 -DBIT_DEPTH=10
+gcc -I. -I. -c -DSTACK_ALIGNMENT=16 -DPIC -o common/aarch64/deblock-a-10.o common/aarch64/deblock-a.S -DHIGH_BIT_DEPTH=1 -DBIT_DEPTH=10
+gcc -I. -I. -c -DSTACK_ALIGNMENT=16 -DPIC -o common/aarch64/mc-a-10.o common/aarch64/mc-a.S -DHIGH_BIT_DEPTH=1 -DBIT_DEPTH=10
+gcc -I. -I. -c -DSTACK_ALIGNMENT=16 -DPIC -o common/aarch64/pixel-a-10.o common/aarch64/pixel-a.S -DHIGH_BIT_DEPTH=1 -DBIT_DEPTH=10
+gcc -I. -I. -c -DSTACK_ALIGNMENT=16 -DPIC -o common/aarch64/predict-a-10.o common/aarch64/predict-a.S -DHIGH_BIT_DEPTH=1 -DBIT_DEPTH=10
+gcc -I. -I. -c -DSTACK_ALIGNMENT=16 -DPIC -o common/aarch64/quant-a-10.o common/aarch64/quant-a.S -DHIGH_BIT_DEPTH=1 -DBIT_DEPTH=10
+gcc -I. -I. -c -DSTACK_ALIGNMENT=16 -DPIC -o common/aarch64/dct-a-sve-10.o common/aarch64/dct-a-sve.S -DHIGH_BIT_DEPTH=1 -DBIT_DEPTH=10
+gcc -I. -I. -c -DSTACK_ALIGNMENT=16 -DPIC -o common/aarch64/deblock-a-sve-10.o common/aarch64/deblock-a-sve.S -DHIGH_BIT_DEPTH=1 -DBIT_DEPTH=10
+gcc -I. -I. -c -DSTACK_ALIGNMENT=16 -DPIC -o common/aarch64/mc-a-sve-10.o common/aarch64/mc-a-sve.S -DHIGH_BIT_DEPTH=1 -DBIT_DEPTH=10
+gcc -I. -I. -c -DSTACK_ALIGNMENT=16 -DPIC -o common/aarch64/pixel-a-sve-10.o common/aarch64/pixel-a-sve.S -DHIGH_BIT_DEPTH=1 -DBIT_DEPTH=10
+gcc -I. -I. -c -DSTACK_ALIGNMENT=16 -DPIC -o common/aarch64/dct-a-sve2-10.o common/aarch64/dct-a-sve2.S -DHIGH_BIT_DEPTH=1 -DBIT_DEPTH=10
+In file included from ./common/common.h:122,
+                 from encoder/set.c:27:
+In function ‘bs_realign’,
+    inlined from ‘x264_10_sei_recovery_point_write’ at encoder/set.c:581:5:
+./common/bitstream.h:120:23: warning: array subscript 0 is outside array bounds of ‘uint8_t[100]’ {aka ‘unsigned char[100]’} [-Warray-bounds]
+  120 |         s->cur_bits = endian_fix32( M32(s->p) );
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ./common/base.h:43,
+                 from ./common/common.h:30:
+encoder/set.c: In function ‘x264_10_sei_recovery_point_write’:
+encoder/set.c:577:24: note: at offset [-3, -1] into object ‘tmp_buf’ of size 100
+  577 |     ALIGNED_4( uint8_t tmp_buf[100] );
+      |                        ^~~~~~~
+./common/osdep.h:285:35: note: in definition of macro ‘DECLARE_ALIGNED’
+  285 | #define DECLARE_ALIGNED( var, n ) var __attribute__((aligned(n)))
+      |                                   ^~~
+encoder/set.c:577:5: note: in expansion of macro ‘ALIGNED_4’
+  577 |     ALIGNED_4( uint8_t tmp_buf[100] );
+      |     ^~~~~~~~~
+In function ‘bs_realign’,
+    inlined from ‘x264_10_sei_buffering_period_write’ at encoder/set.c:633:5:
+./common/bitstream.h:120:23: warning: array subscript 0 is outside array bounds of ‘uint8_t[100]’ {aka ‘unsigned char[100]’} [-Warray-bounds]
+  120 |         s->cur_bits = endian_fix32( M32(s->p) );
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~~~
+encoder/set.c: In function ‘x264_10_sei_buffering_period_write’:
+encoder/set.c:629:24: note: at offset [-3, -1] into object ‘tmp_buf’ of size 100
+  629 |     ALIGNED_4( uint8_t tmp_buf[100] );
+      |                        ^~~~~~~
+./common/osdep.h:285:35: note: in definition of macro ‘DECLARE_ALIGNED’
+  285 | #define DECLARE_ALIGNED( var, n ) var __attribute__((aligned(n)))
+      |                                   ^~~
+encoder/set.c:629:5: note: in expansion of macro ‘ALIGNED_4’
+  629 |     ALIGNED_4( uint8_t tmp_buf[100] );
+      |     ^~~~~~~~~
+In function ‘bs_realign’,
+    inlined from ‘x264_10_sei_pic_timing_write’ at encoder/set.c:655:5:
+./common/bitstream.h:120:23: warning: array subscript 0 is outside array bounds of ‘uint8_t[100]’ {aka ‘unsigned char[100]’} [-Warray-bounds]
+  120 |         s->cur_bits = endian_fix32( M32(s->p) );
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~~~
+encoder/set.c: In function ‘x264_10_sei_pic_timing_write’:
+encoder/set.c:651:24: note: at offset [-3, -1] into object ‘tmp_buf’ of size 100
+  651 |     ALIGNED_4( uint8_t tmp_buf[100] );
+      |                        ^~~~~~~
+./common/osdep.h:285:35: note: in definition of macro ‘DECLARE_ALIGNED’
+  285 | #define DECLARE_ALIGNED( var, n ) var __attribute__((aligned(n)))
+      |                                   ^~~
+encoder/set.c:651:5: note: in expansion of macro ‘ALIGNED_4’
+  651 |     ALIGNED_4( uint8_t tmp_buf[100] );
+      |     ^~~~~~~~~
+In function ‘bs_realign’,
+    inlined from ‘x264_10_sei_frame_packing_write’ at encoder/set.c:686:5:
+./common/bitstream.h:120:23: warning: array subscript 0 is outside array bounds of ‘uint8_t[100]’ {aka ‘unsigned char[100]’} [-Warray-bounds]
+  120 |         s->cur_bits = endian_fix32( M32(s->p) );
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~~~
+encoder/set.c: In function ‘x264_10_sei_frame_packing_write’:
+encoder/set.c:682:24: note: at offset [-3, -1] into object ‘tmp_buf’ of size 100
+  682 |     ALIGNED_4( uint8_t tmp_buf[100] );
+      |                        ^~~~~~~
+./common/osdep.h:285:35: note: in definition of macro ‘DECLARE_ALIGNED’
+  285 | #define DECLARE_ALIGNED( var, n ) var __attribute__((aligned(n)))
+      |                                   ^~~
+encoder/set.c:682:5: note: in expansion of macro ‘ALIGNED_4’
+  682 |     ALIGNED_4( uint8_t tmp_buf[100] );
+      |     ^~~~~~~~~
+In function ‘bs_realign’,
+    inlined from ‘x264_10_sei_mastering_display_write’ at encoder/set.c:727:5:
+./common/bitstream.h:120:23: warning: array subscript 0 is outside array bounds of ‘uint8_t[100]’ {aka ‘unsigned char[100]’} [-Warray-bounds]
+  120 |         s->cur_bits = endian_fix32( M32(s->p) );
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~~~
+encoder/set.c: In function ‘x264_10_sei_mastering_display_write’:
+encoder/set.c:723:24: note: at offset [-3, -1] into object ‘tmp_buf’ of size 100
+  723 |     ALIGNED_4( uint8_t tmp_buf[100] );
+      |                        ^~~~~~~
+./common/osdep.h:285:35: note: in definition of macro ‘DECLARE_ALIGNED’
+  285 | #define DECLARE_ALIGNED( var, n ) var __attribute__((aligned(n)))
+      |                                   ^~~
+encoder/set.c:723:5: note: in expansion of macro ‘ALIGNED_4’
+  723 |     ALIGNED_4( uint8_t tmp_buf[100] );
+      |     ^~~~~~~~~
+In function ‘bs_realign’,
+    inlined from ‘x264_10_sei_content_light_level_write’ at encoder/set.c:752:5:
+./common/bitstream.h:120:23: warning: array subscript 0 is outside array bounds of ‘uint8_t[100]’ {aka ‘unsigned char[100]’} [-Warray-bounds]
+  120 |         s->cur_bits = endian_fix32( M32(s->p) );
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~~~
+encoder/set.c: In function ‘x264_10_sei_content_light_level_write’:
+encoder/set.c:748:24: note: at offset [-3, -1] into object ‘tmp_buf’ of size 100
+  748 |     ALIGNED_4( uint8_t tmp_buf[100] );
+      |                        ^~~~~~~
+./common/osdep.h:285:35: note: in definition of macro ‘DECLARE_ALIGNED’
+  285 | #define DECLARE_ALIGNED( var, n ) var __attribute__((aligned(n)))
+      |                                   ^~~
+encoder/set.c:748:5: note: in expansion of macro ‘ALIGNED_4’
+  748 |     ALIGNED_4( uint8_t tmp_buf[100] );
+      |     ^~~~~~~~~
+In function ‘bs_realign’,
+    inlined from ‘x264_10_sei_alternative_transfer_write’ at encoder/set.c:769:5:
+./common/bitstream.h:120:23: warning: array subscript 0 is outside array bounds of ‘uint8_t[100]’ {aka ‘unsigned char[100]’} [-Warray-bounds]
+  120 |         s->cur_bits = endian_fix32( M32(s->p) );
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~~~
+encoder/set.c: In function ‘x264_10_sei_alternative_transfer_write’:
+encoder/set.c:765:24: note: at offset [-3, -1] into object ‘tmp_buf’ of size 100
+  765 |     ALIGNED_4( uint8_t tmp_buf[100] );
+      |                        ^~~~~~~
+./common/osdep.h:285:35: note: in definition of macro ‘DECLARE_ALIGNED’
+  285 | #define DECLARE_ALIGNED( var, n ) var __attribute__((aligned(n)))
+      |                                   ^~~
+encoder/set.c:765:5: note: in expansion of macro ‘ALIGNED_4’
+  765 |     ALIGNED_4( uint8_t tmp_buf[100] );
+      |     ^~~~~~~~~
+In function ‘bs_realign’,
+    inlined from ‘x264_10_sei_dec_ref_pic_marking_write’ at encoder/set.c:797:5:
+./common/bitstream.h:120:23: warning: array subscript 0 is outside array bounds of ‘uint8_t[100]’ {aka ‘unsigned char[100]’} [-Warray-bounds]
+  120 |         s->cur_bits = endian_fix32( M32(s->p) );
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~~~
+encoder/set.c: In function ‘x264_10_sei_dec_ref_pic_marking_write’:
+encoder/set.c:793:24: note: at offset [-3, -1] into object ‘tmp_buf’ of size 100
+  793 |     ALIGNED_4( uint8_t tmp_buf[100] );
+      |                        ^~~~~~~
+./common/osdep.h:285:35: note: in definition of macro ‘DECLARE_ALIGNED’
+  285 | #define DECLARE_ALIGNED( var, n ) var __attribute__((aligned(n)))
+      |                                   ^~~
+encoder/set.c:793:5: note: in expansion of macro ‘ALIGNED_4’
+  793 |     ALIGNED_4( uint8_t tmp_buf[100] );
+      |     ^~~~~~~~~
+rm -f libx264.a
+gcc-ar rc libx264.a common/osdep.o common/base.o common/cpu.o common/tables.o encoder/api.o common/mc-8.o common/predict-8.o common/pixel-8.o common/macroblock-8.o common/frame-8.o common/dct-8.o common/cabac-8.o common/common-8.o common/rectangle-8.o common/set-8.o common/quant-8.o common/deblock-8.o common/vlc-8.o common/mvpred-8.o common/bitstream-8.o encoder/analyse-8.o encoder/me-8.o encoder/ratecontrol-8.o encoder/set-8.o encoder/macroblock-8.o encoder/cabac-8.o encoder/cavlc-8.o encoder/encoder-8.o encoder/lookahead-8.o common/threadpool-8.o common/aarch64/asm-offsets-8.o common/aarch64/mc-c-8.o common/aarch64/predict-c-8.o common/opencl-8.o encoder/slicetype-cl-8.o common/mc-10.o common/predict-10.o common/pixel-10.o common/macroblock-10.o common/frame-10.o common/dct-10.o common/cabac-10.o common/common-10.o common/rectangle-10.o common/set-10.o common/quant-10.o common/deblock-10.o common/vlc-10.o common/mvpred-10.o common/bitstream-10.o encoder/analyse-10.o encoder/me-10.o encoder/ratecontrol-10.o encoder/set-10.o encoder/macroblock-10.o encoder/cabac-10.o encoder/cavlc-10.o encoder/encoder-10.o encoder/lookahead-10.o common/threadpool-10.o common/aarch64/asm-offsets-10.o common/aarch64/mc-c-10.o common/aarch64/predict-c-10.o common/aarch64/bitstream-a-8.o common/aarch64/cabac-a-8.o common/aarch64/dct-a-8.o common/aarch64/deblock-a-8.o common/aarch64/mc-a-8.o common/aarch64/pixel-a-8.o common/aarch64/predict-a-8.o common/aarch64/quant-a-8.o common/aarch64/dct-a-sve-8.o common/aarch64/deblock-a-sve-8.o common/aarch64/mc-a-sve-8.o common/aarch64/pixel-a-sve-8.o common/aarch64/dct-a-sve2-8.o common/aarch64/bitstream-a-10.o common/aarch64/cabac-a-10.o common/aarch64/dct-a-10.o common/aarch64/deblock-a-10.o common/aarch64/mc-a-10.o common/aarch64/pixel-a-10.o common/aarch64/predict-a-10.o common/aarch64/quant-a-10.o common/aarch64/dct-a-sve-10.o common/aarch64/deblock-a-sve-10.o common/aarch64/mc-a-sve-10.o common/aarch64/pixel-a-sve-10.o common/aarch64/dct-a-sve2-10.o
+gcc-ranlib libx264.a
+gcc -o x264 x264.o autocomplete.o input/input.o input/timecode.o input/raw.o input/y4m.o output/raw.o output/matroska.o output/matroska_ebml.o output/flv.o output/flv_bytestream.o filters/filters.o filters/video/video.o filters/video/source.o filters/video/internal.o filters/video/resize.o filters/video/fix_vfr_pts.o filters/video/select_every.o filters/video/crop.o input/avs.o filters/video/cache-8.o filters/video/depth-8.o input/thread-8.o filters/video/cache-10.o filters/video/depth-10.o input/thread-10.o libx264.a -ldl  -lm -lpthread -ldl 
+install -d /tmp/x264_build_sooZzm/install/bin
+install x264 /tmp/x264_build_sooZzm/install/bin
+install -d /tmp/x264_build_sooZzm/install/include
+install -d /tmp/x264_build_sooZzm/install/lib/pkgconfig
+install -m 644 ./x264.h x264_config.h /tmp/x264_build_sooZzm/install/include
+install -m 644 x264.pc /tmp/x264_build_sooZzm/install/lib/pkgconfig
+install -d /tmp/x264_build_sooZzm/install/lib
+install -m 644 libx264.a /tmp/x264_build_sooZzm/install/lib
+gcc-ranlib /tmp/x264_build_sooZzm/install/lib/libx264.a
+[PHASE1] Verifying x264 binary...
+x264 0.164.x
+built on Aug  7 2026, gcc: 12.3.1 (openEuler 12.3.1-105.oe2403sp3)
+x264 configuration: --chroma-format=all
+libx264 configuration: --chroma-format=all
+x264 license: GPL version 2 or later
+[PHASE1] Generating test YUV (1280x720, 50 frames)...
+[GEN_YUV] Generated 1280x720 I420, 50 frames, 69120000 bytes (65.9 MB) -> /tmp/x264_build_sooZzm/test_1280x720.yuv
+[PHASE1] Build phase complete
+[PHASE2] === Phase 2: Collect Version Info ===
+[PHASE2] Version info saved (x264: x264 0.164.x)
+[PHASE3] === Phase 3: Run Benchmarks ===
+[PHASE3A] Running H.264 encode preset sweep...
+[BENCHMARK_ENCODE] Running preset ultrafast...
+[BENCHMARK_ENCODE] Running preset fast...
+[BENCHMARK_ENCODE] Running preset medium...
+[BENCHMARK_ENCODE] Running preset slow...
+[BENCHMARK_ENCODE] Running preset veryslow...
+[BENCHMARK_ENCODE] Output written to /root/tian/Tian/tests/x264/results/rolling/benchmark_encode.json (5 presets)
+[PHASE3B] Running micro benchmark...
+[BENCHMARK_MICRO] 320x240: 459.37 fps
+[BENCHMARK_MICRO] 1280x720: 67.97 fps
+[BENCHMARK_MICRO] 1920x1080: 35.94 fps
+[BENCHMARK_MICRO] threads 1: 19.43 fps
+[BENCHMARK_MICRO] threads 2: 28.89 fps
+[BENCHMARK_MICRO] threads 4: 37.03 fps
+[BENCHMARK_MICRO] threads 8: 52.4 fps
+[BENCHMARK_MICRO] threads all: 0.0 fps
+[BENCHMARK_MICRO] Output written to /root/tian/Tian/tests/x264/results/rolling/micro_benchmark.json
+[PHASE4] === Phase 4: Aggregate & Report ===
+[PHASE4] Reports generated:
+[PHASE4]   JSON: /root/tian/Tian/tests/x264/results/rolling/results.json
+[PHASE4]   TXT:  /root/tian/Tian/tests/x264/results/rolling/results.txt
+[PHASE4]   LOG:  /root/tian/Tian/tests/x264/results/rolling/results.log
+[BUILD] Cleaning up: /tmp/x264_build_sooZzm

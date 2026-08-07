@@ -1,0 +1,63 @@
+{
+  "benchmark": "micro_operations",
+  "description": "x264 micro: resolution scaling + thread scaling on ARM64",
+  "reference": "https://www.videolan.org/developers/x264.html",
+  "software": "x264",
+  "version": "rolling",
+  "architecture": "arm64",
+  "timestamp": "2026-08-07T07:41:34Z",
+  "performance_metrics": {
+    "fps": {
+      "unit": "fps",
+      "description": "Encoding frames per second"
+    }
+  },
+  "parameters": {
+    "resolutions": [
+      "320x240",
+      "1280x720",
+      "1920x1080"
+    ],
+    "thread_counts": [
+      "1",
+      "2",
+      "4",
+      "8",
+      "all"
+    ],
+    "iterations": 1
+  },
+  "results": {
+    "resolution_scaling": {
+      "320x240": {
+        "fps": 459.37,
+        "encode_time_s": 0.0218
+      },
+      "1280x720": {
+        "fps": 67.97,
+        "encode_time_s": 0.1471
+      },
+      "1920x1080": {
+        "fps": 35.94,
+        "encode_time_s": 0.2782
+      }
+    },
+    "thread_scaling": {
+      "threads_1": {
+        "fps": 19.43
+      },
+      "threads_2": {
+        "fps": 28.89
+      },
+      "threads_4": {
+        "fps": 37.03
+      },
+      "threads_8": {
+        "fps": 52.4
+      },
+      "threads_all": {
+        "fps": 0.0
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "benchmark": "encode",
+  "description": "x264 H.264 encoding preset sweep (1280x720, 50 frames) on ARM64",
+  "reference": "https://www.videolan.org/developers/x264.html",
+  "software": "x264",
+  "version": "rolling",
+  "architecture": "arm64",
+  "timestamp": "2026-08-07T07:41:29Z",
+  "performance_metrics": {
+    "fps": {
+      "unit": "fps",
+      "description": "Encoding frames per second"
+    },
+    "bitrate_kbps": {
+      "unit": "kb/s",
+      "description": "Output bitrate"
+    },
+    "psnr_db": {
+      "unit": "dB",
+      "description": "Peak signal-to-noise ratio"
+    },
+    "encode_time_s": {
+      "unit": "s",
+      "description": "Total encode time"
+    }
+  },
+  "parameters": {
+    "resolution": "1280x720",
+    "frames": 50,
+    "iterations": 1,
+    "presets": [
+      "ultrafast",
+      "fast",
+      "medium",
+      "slow",
+      "veryslow"
+    ]
+  },
+  "results_summary": {
+    "preset_ultrafast": {
+      "preset": "ultrafast",
+      "fps": 670.67,
+      "bitrate_kbps": 6929.04,
+      "psnr_db": 0.0,
+      "encode_time_s": 0.0746,
+      "frames": 50
+    },
+    "preset_fast": {
+      "preset": "fast",
+      "fps": 152.65,
+      "bitrate_kbps": 2421.02,
+      "psnr_db": 0.0,
+      "encode_time_s": 0.3275,
+      "frames": 50
+    },
+    "preset_medium": {
+      "preset": "medium",
+      "fps": 118.67,
+      "bitrate_kbps": 2252.93,
+      "psnr_db": 0.0,
+      "encode_time_s": 0.4213,
+      "frames": 50
+    },
+    "preset_slow": {
+      "preset": "slow",
+      "fps": 88.49,
+      "bitrate_kbps": 2366.64,
+      "psnr_db": 0.0,
+      "encode_time_s": 0.565,
+      "frames": 50
+    },
+    "preset_veryslow": {
+      "preset": "veryslow",
+      "fps": 32.44,
+      "bitrate_kbps": 1507.66,
+      "psnr_db": 0.0,
+      "encode_time_s": 1.5413,
+      "frames": 50
+    }
+  }
+}
