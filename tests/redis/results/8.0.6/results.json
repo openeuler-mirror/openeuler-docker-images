@@ -1,0 +1,402 @@
+{
+  "test_time": "2026-08-10T02:48:29Z",
+  "environment": {
+    "test_time": "2026-08-10T02:48:29Z",
+    "Model": "Kunpeng-920",
+    "architecture": "aarch64",
+    "kernel": "6.6.0-132.0.0.111.oe2403sp3.aarch64",
+    "os": "openEuler 24.03 SP3",
+    "cpu_model": "ARM64 CPU (32 cores)",
+    "cpu_cores": 32,
+    "software_name": "redis",
+    "software_version": "8.0.6",
+    "python_version": "Python 3.11.6",
+    "gcc_version": "12.3.1"
+  },
+  "benchmarks": {
+    "primary": {
+      "benchmark": "redis_ops",
+      "description": "Redis in-memory KV operations benchmark (commands \u00d7 concurrency levels) on ARM64",
+      "reference": "https://github.com/redis/redis",
+      "software": "redis",
+      "version": "8.0.6",
+      "architecture": "arm64",
+      "timestamp": "2026-08-10T02:49:54Z",
+      "performance_metrics": {
+        "qps": {
+          "unit": "ops/sec",
+          "description": "Queries per second throughput"
+        },
+        "avg_latency_ms": {
+          "unit": "ms",
+          "description": "Average latency per request"
+        },
+        "p99_latency_ms": {
+          "unit": "ms",
+          "description": "99th percentile latency"
+        }
+      },
+      "parameters": {
+        "commands": [
+          "SET",
+          "GET",
+          "INCR",
+          "LPUSH",
+          "LRANGE_100",
+          "SADD",
+          "HSET",
+          "ZADD"
+        ],
+        "concurrency_levels": [
+          1,
+          10,
+          50,
+          100,
+          200
+        ],
+        "num_requests": 100000,
+        "iterations": 1,
+        "persistence": "none (in-memory only)"
+      },
+      "results_summary": {
+        "SET": {
+          "concurrency_1": {
+            "qps": 28694.41,
+            "avg_latency_ms": 0.031,
+            "p99_latency_ms": 0.047
+          },
+          "concurrency_10": {
+            "qps": 90415.91,
+            "avg_latency_ms": 0.068,
+            "p99_latency_ms": 0.111
+          },
+          "concurrency_50": {
+            "qps": 87260.03,
+            "avg_latency_ms": 0.302,
+            "p99_latency_ms": 0.551
+          },
+          "concurrency_100": {
+            "qps": 72727.27,
+            "avg_latency_ms": 0.707,
+            "p99_latency_ms": 1.023
+          },
+          "concurrency_200": {
+            "qps": 74294.21,
+            "avg_latency_ms": 1.363,
+            "p99_latency_ms": 1.855
+          }
+        },
+        "GET": {
+          "concurrency_1": {
+            "qps": 28868.36,
+            "avg_latency_ms": 0.03,
+            "p99_latency_ms": 0.047
+          },
+          "concurrency_10": {
+            "qps": 84245.99,
+            "avg_latency_ms": 0.072,
+            "p99_latency_ms": 0.119
+          },
+          "concurrency_50": {
+            "qps": 84530.86,
+            "avg_latency_ms": 0.311,
+            "p99_latency_ms": 0.551
+          },
+          "concurrency_100": {
+            "qps": 90991.81,
+            "avg_latency_ms": 0.565,
+            "p99_latency_ms": 0.919
+          },
+          "concurrency_200": {
+            "qps": 83472.46,
+            "avg_latency_ms": 1.213,
+            "p99_latency_ms": 1.615
+          }
+        },
+        "INCR": {
+          "concurrency_1": {
+            "qps": 28661.51,
+            "avg_latency_ms": 0.031,
+            "p99_latency_ms": 0.047
+          },
+          "concurrency_10": {
+            "qps": 79239.3,
+            "avg_latency_ms": 0.075,
+            "p99_latency_ms": 0.119
+          },
+          "concurrency_50": {
+            "qps": 79113.92,
+            "avg_latency_ms": 0.334,
+            "p99_latency_ms": 0.527
+          },
+          "concurrency_100": {
+            "qps": 87565.68,
+            "avg_latency_ms": 0.587,
+            "p99_latency_ms": 0.879
+          },
+          "concurrency_200": {
+            "qps": 80906.16,
+            "avg_latency_ms": 1.251,
+            "p99_latency_ms": 1.735
+          }
+        },
+        "LPUSH": {
+          "concurrency_1": {
+            "qps": 27173.91,
+            "avg_latency_ms": 0.033,
+            "p99_latency_ms": 0.055
+          },
+          "concurrency_10": {
+            "qps": 82169.27,
+            "avg_latency_ms": 0.078,
+            "p99_latency_ms": 0.135
+          },
+          "concurrency_50": {
+            "qps": 76335.88,
+            "avg_latency_ms": 0.35,
+            "p99_latency_ms": 0.647
+          },
+          "concurrency_100": {
+            "qps": 69396.25,
+            "avg_latency_ms": 0.741,
+            "p99_latency_ms": 1.039
+          },
+          "concurrency_200": {
+            "qps": 84459.46,
+            "avg_latency_ms": 1.205,
+            "p99_latency_ms": 1.655
+          }
+        },
+        "LRANGE_100": {
+          "concurrency_1": {
+            "qps": 20742.58,
+            "avg_latency_ms": 0.036,
+            "p99_latency_ms": 0.063
+          },
+          "concurrency_10": {
+            "qps": 40983.61,
+            "avg_latency_ms": 0.143,
+            "p99_latency_ms": 0.327
+          },
+          "concurrency_50": {
+            "qps": 46533.27,
+            "avg_latency_ms": 0.547,
+            "p99_latency_ms": 0.751
+          },
+          "concurrency_100": {
+            "qps": 37778.62,
+            "avg_latency_ms": 1.553,
+            "p99_latency_ms": 4.063
+          },
+          "concurrency_200": {
+            "qps": 41649.31,
+            "avg_latency_ms": 2.411,
+            "p99_latency_ms": 2.783
+          }
+        },
+        "SADD": {
+          "concurrency_1": {
+            "qps": 28628.69,
+            "avg_latency_ms": 0.031,
+            "p99_latency_ms": 0.055
+          },
+          "concurrency_10": {
+            "qps": 80321.28,
+            "avg_latency_ms": 0.083,
+            "p99_latency_ms": 0.183
+          },
+          "concurrency_50": {
+            "qps": 55991.04,
+            "avg_latency_ms": 0.646,
+            "p99_latency_ms": 1.231
+          },
+          "concurrency_100": {
+            "qps": 70126.23,
+            "avg_latency_ms": 0.84,
+            "p99_latency_ms": 6.367
+          },
+          "concurrency_200": {
+            "qps": 78003.12,
+            "avg_latency_ms": 1.297,
+            "p99_latency_ms": 1.775
+          }
+        },
+        "HSET": {
+          "concurrency_1": {
+            "qps": 28801.84,
+            "avg_latency_ms": 0.03,
+            "p99_latency_ms": 0.047
+          },
+          "concurrency_10": {
+            "qps": 91324.2,
+            "avg_latency_ms": 0.069,
+            "p99_latency_ms": 0.103
+          },
+          "concurrency_50": {
+            "qps": 83963.05,
+            "avg_latency_ms": 0.314,
+            "p99_latency_ms": 0.535
+          },
+          "concurrency_100": {
+            "qps": 79936.05,
+            "avg_latency_ms": 0.642,
+            "p99_latency_ms": 0.927
+          },
+          "concurrency_200": {
+            "qps": 83333.33,
+            "avg_latency_ms": 1.216,
+            "p99_latency_ms": 1.671
+          }
+        },
+        "ZADD": {
+          "concurrency_1": {
+            "qps": 28336.64,
+            "avg_latency_ms": 0.031,
+            "p99_latency_ms": 0.047
+          },
+          "concurrency_10": {
+            "qps": 90252.7,
+            "avg_latency_ms": 0.069,
+            "p99_latency_ms": 0.103
+          },
+          "concurrency_50": {
+            "qps": 91996.32,
+            "avg_latency_ms": 0.287,
+            "p99_latency_ms": 0.431
+          },
+          "concurrency_100": {
+            "qps": 83963.05,
+            "avg_latency_ms": 0.613,
+            "p99_latency_ms": 0.927
+          },
+          "concurrency_200": {
+            "qps": 85616.44,
+            "avg_latency_ms": 1.19,
+            "p99_latency_ms": 1.615
+          }
+        }
+      }
+    },
+    "micro": {
+      "benchmark": "micro_operations",
+      "description": "Redis micro: data size sweep, thread scaling, persistence mode sweep on ARM64",
+      "reference": "https://github.com/redis/redis",
+      "software": "redis",
+      "version": "8.0.6",
+      "architecture": "arm64",
+      "timestamp": "2026-08-10T02:50:16Z",
+      "performance_metrics": {
+        "qps": {
+          "unit": "ops/sec",
+          "description": "Queries per second"
+        },
+        "latency": {
+          "unit": "ms",
+          "description": "Latency"
+        }
+      },
+      "parameters": {
+        "data_sizes": [
+          64,
+          256,
+          1024,
+          4096
+        ],
+        "thread_counts": [
+          "1",
+          "10",
+          "50",
+          "100",
+          "all"
+        ],
+        "max_threads": 32,
+        "persistence_modes": [
+          "none",
+          "aof",
+          "rdb"
+        ],
+        "iterations": 1
+      },
+      "results": {
+        "data_size_sweep": {
+          "data_size_64": {
+            "qps": 83472.46,
+            "avg_latency_ms": 0.314,
+            "p99_latency_ms": 0.551
+          },
+          "data_size_256": {
+            "qps": 93896.71,
+            "avg_latency_ms": 0.282,
+            "p99_latency_ms": 0.519
+          },
+          "data_size_1024": {
+            "qps": 90252.7,
+            "avg_latency_ms": 0.293,
+            "p99_latency_ms": 0.503
+          },
+          "data_size_4096": {
+            "qps": 75414.78,
+            "avg_latency_ms": 0.348,
+            "p99_latency_ms": 0.551
+          }
+        },
+        "thread_scaling": {
+          "threads_1": {
+            "qps": 27144.41,
+            "avg_latency_ms": 0.032,
+            "p99_latency_ms": 0.047
+          },
+          "threads_10": {
+            "qps": 68306.01,
+            "avg_latency_ms": 0.085,
+            "p99_latency_ms": 0.135
+          },
+          "threads_50": {
+            "qps": 71326.68,
+            "avg_latency_ms": 0.364,
+            "p99_latency_ms": 0.599
+          },
+          "threads_100": {
+            "qps": 73152.89,
+            "avg_latency_ms": 0.698,
+            "p99_latency_ms": 1.015
+          },
+          "threads_32": {
+            "qps": 79872.2,
+            "avg_latency_ms": 0.213,
+            "p99_latency_ms": 0.343
+          }
+        },
+        "persistence_sweep": {
+          "persistence_none": {
+            "qps": 87642.41,
+            "avg_latency_ms": 0.301,
+            "p99_latency_ms": 0.543
+          },
+          "persistence_aof": {
+            "qps": 92678.41,
+            "avg_latency_ms": 0.298,
+            "p99_latency_ms": 0.551
+          },
+          "persistence_rdb": {
+            "qps": 93632.96,
+            "avg_latency_ms": 0.282,
+            "p99_latency_ms": 0.503
+          }
+        }
+      }
+    }
+  },
+  "summary": {
+    "avg_qps": 66720.1,
+    "max_qps": 91996.32,
+    "set_qps_c50": 87260.03,
+    "get_qps_c50": 84530.86,
+    "avg_latency_ms": 0.5349,
+    "max_p99_latency_ms": 6.367,
+    "thread_scaling_ratio": 2.94,
+    "aof_vs_none_qps_ratio": 1.06
+  },
+  "software": "redis",
+  "version": "8.0.6"
+}

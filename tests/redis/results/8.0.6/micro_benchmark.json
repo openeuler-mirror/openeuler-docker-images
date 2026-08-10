@@ -1,0 +1,109 @@
+{
+  "benchmark": "micro_operations",
+  "description": "Redis micro: data size sweep, thread scaling, persistence mode sweep on ARM64",
+  "reference": "https://github.com/redis/redis",
+  "software": "redis",
+  "version": "8.0.6",
+  "architecture": "arm64",
+  "timestamp": "2026-08-10T02:50:16Z",
+  "performance_metrics": {
+    "qps": {
+      "unit": "ops/sec",
+      "description": "Queries per second"
+    },
+    "latency": {
+      "unit": "ms",
+      "description": "Latency"
+    }
+  },
+  "parameters": {
+    "data_sizes": [
+      64,
+      256,
+      1024,
+      4096
+    ],
+    "thread_counts": [
+      "1",
+      "10",
+      "50",
+      "100",
+      "all"
+    ],
+    "max_threads": 32,
+    "persistence_modes": [
+      "none",
+      "aof",
+      "rdb"
+    ],
+    "iterations": 1
+  },
+  "results": {
+    "data_size_sweep": {
+      "data_size_64": {
+        "qps": 83472.46,
+        "avg_latency_ms": 0.314,
+        "p99_latency_ms": 0.551
+      },
+      "data_size_256": {
+        "qps": 93896.71,
+        "avg_latency_ms": 0.282,
+        "p99_latency_ms": 0.519
+      },
+      "data_size_1024": {
+        "qps": 90252.7,
+        "avg_latency_ms": 0.293,
+        "p99_latency_ms": 0.503
+      },
+      "data_size_4096": {
+        "qps": 75414.78,
+        "avg_latency_ms": 0.348,
+        "p99_latency_ms": 0.551
+      }
+    },
+    "thread_scaling": {
+      "threads_1": {
+        "qps": 27144.41,
+        "avg_latency_ms": 0.032,
+        "p99_latency_ms": 0.047
+      },
+      "threads_10": {
+        "qps": 68306.01,
+        "avg_latency_ms": 0.085,
+        "p99_latency_ms": 0.135
+      },
+      "threads_50": {
+        "qps": 71326.68,
+        "avg_latency_ms": 0.364,
+        "p99_latency_ms": 0.599
+      },
+      "threads_100": {
+        "qps": 73152.89,
+        "avg_latency_ms": 0.698,
+        "p99_latency_ms": 1.015
+      },
+      "threads_32": {
+        "qps": 79872.2,
+        "avg_latency_ms": 0.213,
+        "p99_latency_ms": 0.343
+      }
+    },
+    "persistence_sweep": {
+      "persistence_none": {
+        "qps": 87642.41,
+        "avg_latency_ms": 0.301,
+        "p99_latency_ms": 0.543
+      },
+      "persistence_aof": {
+        "qps": 92678.41,
+        "avg_latency_ms": 0.298,
+        "p99_latency_ms": 0.551
+      },
+      "persistence_rdb": {
+        "qps": 93632.96,
+        "avg_latency_ms": 0.282,
+        "p99_latency_ms": 0.503
+      }
+    }
+  }
+}
