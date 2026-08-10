@@ -1,0 +1,59 @@
+{
+  "benchmark": "kv_ops",
+  "description": "RocksDB LSM-tree KV operations benchmark (100000 keys, 16B key, 1024B value, snappy compression) on ARM64",
+  "reference": "https://github.com/facebook/rocksdb",
+  "software": "rocksdb",
+  "version": "11.8.0",
+  "architecture": "arm64",
+  "timestamp": "2026-08-10T02:21:30Z",
+  "performance_metrics": {
+    "ops_per_sec": {
+      "unit": "ops/sec",
+      "description": "Operations per second"
+    },
+    "micros_per_op": {
+      "unit": "us",
+      "description": "Microseconds per operation"
+    },
+    "mb_per_sec": {
+      "unit": "MB/s",
+      "description": "Throughput in megabytes per second"
+    }
+  },
+  "parameters": {
+    "num_keys": 100000,
+    "key_size": 16,
+    "value_size": 1024,
+    "compression": "snappy",
+    "threads": 1,
+    "iterations": 1,
+    "workloads": [
+      "fillseq",
+      "readrandom",
+      "overwrite",
+      "readwhilewriting"
+    ]
+  },
+  "results_summary": {
+    "fillseq": {
+      "ops_per_sec": 169663.0,
+      "micros_per_op": 5.89,
+      "mb_per_sec": 168.3
+    },
+    "readrandom": {
+      "ops_per_sec": 147181.0,
+      "micros_per_op": 6.79,
+      "mb_per_sec": 146.0
+    },
+    "overwrite": {
+      "ops_per_sec": 138535.0,
+      "micros_per_op": 7.22,
+      "mb_per_sec": 137.4
+    },
+    "readwhilewriting": {
+      "ops_per_sec": 65328.0,
+      "micros_per_op": 15.3,
+      "mb_per_sec": 64.8
+    }
+  }
+}
