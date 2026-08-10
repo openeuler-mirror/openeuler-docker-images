@@ -1,0 +1,260 @@
+{
+  "test_time": "2026-08-10T04:35:20Z",
+  "environment": {
+    "test_time": "2026-08-10T04:35:20Z",
+    "Model": "Kunpeng-920",
+    "architecture": "aarch64",
+    "kernel": "6.6.0-132.0.0.111.oe2403sp3.aarch64",
+    "os": "openEuler 24.03 SP3",
+    "cpu_model": "ARM64 CPU (32 cores)",
+    "cpu_cores": 32,
+    "software_name": "oceanbase",
+    "software_version": "5.7.25-OceanBase_CE-v4.3.5.6",
+    "python_version": "Python 3.11.6",
+    "gcc_version": "sysbench 1.0.20"
+  },
+  "benchmarks": {
+    "primary": {
+      "benchmark": "oltp",
+      "description": "OceanBase OLTP benchmark via sysbench (4 tables \u00d7 10000 rows, 10s per test) on ARM64",
+      "reference": "https://github.com/oceanbase/oceanbase",
+      "software": "oceanbase",
+      "version": "4.3.5.6",
+      "architecture": "arm64",
+      "timestamp": "2026-08-10T04:37:42Z",
+      "performance_metrics": {
+        "tps": {
+          "unit": "trans/sec",
+          "description": "Transactions per second"
+        },
+        "qps": {
+          "unit": "queries/sec",
+          "description": "Queries per second"
+        },
+        "avg_latency_ms": {
+          "unit": "ms",
+          "description": "Average latency per transaction"
+        },
+        "p95_latency_ms": {
+          "unit": "ms",
+          "description": "95th percentile latency"
+        }
+      },
+      "parameters": {
+        "workloads": [
+          "oltp_point_select",
+          "oltp_read_write",
+          "oltp_read_only",
+          "oltp_write_only"
+        ],
+        "thread_levels": [
+          1,
+          4,
+          16,
+          32
+        ],
+        "tables": 4,
+        "table_size": 10000,
+        "time_per_test": 10,
+        "iterations": 1,
+        "connection": "root@127.0.0.1:2881/sbtest"
+      },
+      "results_summary": {
+        "oltp_point_select": {
+          "threads_1": {
+            "tps": 7057.46,
+            "qps": 7057.46,
+            "avg_latency_ms": 0.14,
+            "p95_latency_ms": 0.17
+          },
+          "threads_4": {
+            "tps": 28685.44,
+            "qps": 28685.44,
+            "avg_latency_ms": 0.14,
+            "p95_latency_ms": 0.18
+          },
+          "threads_16": {
+            "tps": 104330.19,
+            "qps": 104330.19,
+            "avg_latency_ms": 0.15,
+            "p95_latency_ms": 0.21
+          },
+          "threads_32": {
+            "tps": 139137.52,
+            "qps": 139137.52,
+            "avg_latency_ms": 0.23,
+            "p95_latency_ms": 0.44
+          }
+        },
+        "oltp_read_write": {
+          "threads_1": {
+            "tps": 163.3,
+            "qps": 3265.97,
+            "avg_latency_ms": 6.12,
+            "p95_latency_ms": 7.04
+          },
+          "threads_4": {
+            "tps": 473.72,
+            "qps": 9474.44,
+            "avg_latency_ms": 8.44,
+            "p95_latency_ms": 11.87
+          },
+          "threads_16": {
+            "tps": 1273.38,
+            "qps": 25467.61,
+            "avg_latency_ms": 12.55,
+            "p95_latency_ms": 19.29
+          },
+          "threads_32": {
+            "tps": 0.0,
+            "qps": 0.0,
+            "avg_latency_ms": 0.0,
+            "p95_latency_ms": 0.0
+          }
+        },
+        "oltp_read_only": {
+          "threads_1": {
+            "tps": 184.41,
+            "qps": 2950.59,
+            "avg_latency_ms": 5.42,
+            "p95_latency_ms": 8.58
+          },
+          "threads_4": {
+            "tps": 885.61,
+            "qps": 14169.84,
+            "avg_latency_ms": 4.51,
+            "p95_latency_ms": 6.32
+          },
+          "threads_16": {
+            "tps": 3557.47,
+            "qps": 56919.47,
+            "avg_latency_ms": 4.49,
+            "p95_latency_ms": 6.09
+          },
+          "threads_32": {
+            "tps": 4789.37,
+            "qps": 76629.85,
+            "avg_latency_ms": 6.68,
+            "p95_latency_ms": 10.46
+          }
+        },
+        "oltp_write_only": {
+          "threads_1": {
+            "tps": 256.27,
+            "qps": 1537.62,
+            "avg_latency_ms": 3.9,
+            "p95_latency_ms": 5.57
+          },
+          "threads_4": {
+            "tps": 672.53,
+            "qps": 4035.2,
+            "avg_latency_ms": 5.94,
+            "p95_latency_ms": 11.24
+          },
+          "threads_16": {
+            "tps": 0.0,
+            "qps": 0.0,
+            "avg_latency_ms": 0.0,
+            "p95_latency_ms": 0.0
+          },
+          "threads_32": {
+            "tps": 0.0,
+            "qps": 0.0,
+            "avg_latency_ms": 0.0,
+            "p95_latency_ms": 0.0
+          }
+        }
+      }
+    },
+    "micro": {
+      "benchmark": "micro_operations",
+      "description": "OceanBase micro: thread scaling + table count sweep on ARM64",
+      "reference": "https://github.com/oceanbase/oceanbase",
+      "software": "oceanbase",
+      "version": "4.3.5.6",
+      "architecture": "arm64",
+      "timestamp": "2026-08-10T04:42:29Z",
+      "performance_metrics": {
+        "qps": {
+          "unit": "queries/sec",
+          "description": "Queries per second"
+        },
+        "p95_latency_ms": {
+          "unit": "ms",
+          "description": "95th percentile latency"
+        }
+      },
+      "parameters": {
+        "thread_scale_levels": [
+          1,
+          4,
+          8,
+          16,
+          32,
+          64
+        ],
+        "table_counts": [
+          1,
+          4,
+          10
+        ],
+        "table_size": 10000,
+        "time_per_test": 30,
+        "iterations": 1
+      },
+      "results": {
+        "thread_scaling": {
+          "threads_1": {
+            "qps": 6045.32,
+            "p95_latency_ms": 0.21
+          },
+          "threads_4": {
+            "qps": 23678.13,
+            "p95_latency_ms": 0.21
+          },
+          "threads_8": {
+            "qps": 51598.93,
+            "p95_latency_ms": 0.2
+          },
+          "threads_16": {
+            "qps": 96674.63,
+            "p95_latency_ms": 0.23
+          },
+          "threads_32": {
+            "qps": 127681.78,
+            "p95_latency_ms": 0.49
+          },
+          "threads_64": {
+            "qps": 176961.87,
+            "p95_latency_ms": 0.83
+          }
+        },
+        "table_count_sweep": {
+          "tables_1": {
+            "qps": 98890.53,
+            "p95_latency_ms": 0.23
+          },
+          "tables_4": {
+            "qps": 98088.71,
+            "p95_latency_ms": 0.23
+          },
+          "tables_10": {
+            "qps": 90782.28,
+            "p95_latency_ms": 0.24
+          }
+        }
+      }
+    }
+  },
+  "summary": {
+    "avg_tps": 22420.51,
+    "max_tps": 139137.52,
+    "avg_qps": 36435.48,
+    "max_qps": 139137.52,
+    "read_write_tps_t16": 1273.38,
+    "point_select_qps_t16": 104330.19,
+    "thread_scaling_ratio": 29.27
+  },
+  "software": "oceanbase",
+  "version": "5.7.25-OceanBase_CE-v4.3.5.6"
+}

@@ -1,0 +1,79 @@
+{
+  "benchmark": "micro_operations",
+  "description": "OceanBase micro: thread scaling + table count sweep on ARM64",
+  "reference": "https://github.com/oceanbase/oceanbase",
+  "software": "oceanbase",
+  "version": "4.3.5.6",
+  "architecture": "arm64",
+  "timestamp": "2026-08-10T04:42:29Z",
+  "performance_metrics": {
+    "qps": {
+      "unit": "queries/sec",
+      "description": "Queries per second"
+    },
+    "p95_latency_ms": {
+      "unit": "ms",
+      "description": "95th percentile latency"
+    }
+  },
+  "parameters": {
+    "thread_scale_levels": [
+      1,
+      4,
+      8,
+      16,
+      32,
+      64
+    ],
+    "table_counts": [
+      1,
+      4,
+      10
+    ],
+    "table_size": 10000,
+    "time_per_test": 30,
+    "iterations": 1
+  },
+  "results": {
+    "thread_scaling": {
+      "threads_1": {
+        "qps": 6045.32,
+        "p95_latency_ms": 0.21
+      },
+      "threads_4": {
+        "qps": 23678.13,
+        "p95_latency_ms": 0.21
+      },
+      "threads_8": {
+        "qps": 51598.93,
+        "p95_latency_ms": 0.2
+      },
+      "threads_16": {
+        "qps": 96674.63,
+        "p95_latency_ms": 0.23
+      },
+      "threads_32": {
+        "qps": 127681.78,
+        "p95_latency_ms": 0.49
+      },
+      "threads_64": {
+        "qps": 176961.87,
+        "p95_latency_ms": 0.83
+      }
+    },
+    "table_count_sweep": {
+      "tables_1": {
+        "qps": 98890.53,
+        "p95_latency_ms": 0.23
+      },
+      "tables_4": {
+        "qps": 98088.71,
+        "p95_latency_ms": 0.23
+      },
+      "tables_10": {
+        "qps": 90782.28,
+        "p95_latency_ms": 0.24
+      }
+    }
+  }
+}
