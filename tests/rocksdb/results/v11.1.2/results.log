@@ -1,0 +1,698 @@
+[START] rocksdb Source Build & Performance Benchmark vv11.1.2
+[CHECK] Python3 OK: Python 3.11.6
+[CHECK] G++ OK: g++ (GCC) 12.3.1 (openEuler 12.3.1-105.oe2403sp3)
+[CHECK] CMake OK: cmake version 3.27.9
+[CHECK] Git OK: git version 2.43.0
+[CHECK] json_helper.py OK
+[CHECK] OS: openEuler 24.03 SP3 (openEuler)
+[CHECK] Architecture: aarch64
+[CHECK] Build method: source_build (cmake, C++20, ARM64 NEON)
+[SETUP] Downloading shUnit2 to /tmp/shunit2_sky5dN...
+[SETUP] shUnit2 downloaded successfully
+[START] rocksdb Source Build & Performance Benchmark - vv11.1.2
+[START] OS: openEuler 24.03 SP3 (openEuler), Build: source_build
+[CHECK] Python3 OK: Python 3.11.6
+[CHECK] G++ OK: g++ (GCC) 12.3.1 (openEuler 12.3.1-105.oe2403sp3)
+[CHECK] CMake OK: cmake version 3.27.9
+[CHECK] Git OK: git version 2.43.0
+[CHECK] json_helper.py OK
+[CHECK] OS: openEuler 24.03 SP3 (openEuler)
+[CHECK] Architecture: aarch64
+[CHECK] Build method: source_build (cmake, C++20, ARM64 NEON)
+[PHASE1] === Phase 1: Source Build RocksDB vv11.1.2 ===
+[BUILD] Created temp build dir: /tmp/rocksdb_build_WOUvuh
+[PHASE1] Preparing env on openEuler...
+Last metadata expiration check: 0:52:13 ago on Mon 10 Aug 2026 01:34:57 AM UTC.
+Package gcc-12.3.1-105.oe2403sp3.aarch64 is already installed.
+Package gcc-c++-12.3.1-105.oe2403sp3.aarch64 is already installed.
+Package cmake-3.27.9-8.oe2403sp3.aarch64 is already installed.
+Package make-1:4.4.1-2.oe2403sp3.aarch64 is already installed.
+Package git-2.43.0-11.oe2403sp3.aarch64 is already installed.
+Package gflags-2.2.2-4.oe2403sp3.aarch64 is already installed.
+Package gflags-devel-2.2.2-4.oe2403sp3.aarch64 is already installed.
+Package snappy-1.1.10-3.oe2403sp3.aarch64 is already installed.
+Package snappy-devel-1.1.10-3.oe2403sp3.aarch64 is already installed.
+Package zstd-devel-1.5.5-3.oe2403sp3.aarch64 is already installed.
+Package zlib-devel-1.2.13-5.oe2403sp3.aarch64 is already installed.
+Package libatomic-12.3.1-105.oe2403sp3.aarch64 is already installed.
+Dependencies resolved.
+Nothing to do.
+Complete!
+[PHASE1] Cloning RocksDB tag v11.1.2...
+Cloning into '/tmp/rocksdb_build_WOUvuh/rocksdb_src'...
+Note: switching to '3b446089141659fad25328c5ea3e7ed283df46e4'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+[PHASE1] Configuring CMake...
+-- The CXX compiler identification is GNU 12.3.1
+-- The C compiler identification is GNU 12.3.1
+-- The ASM compiler identification is GNU
+-- Found assembler: /usr/bin/cc
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- CMAKE_BUILD_TYPE is set to Release
+-- Found ZLIB: /usr/lib64/libz.so (found version "1.2.13")  
+-- Found zstd: /lib64/libzstd.so  
+-- Performing Test HAVE_OMIT_LEAF_FRAME_POINTER
+-- Performing Test HAVE_OMIT_LEAF_FRAME_POINTER - Success
+-- Performing Test HAS_ARMV8_CRC
+-- Performing Test HAS_ARMV8_CRC - Success
+--  HAS_ARMV8_CRC yes
+-- Performing Test BUILTIN_ATOMIC
+-- Performing Test BUILTIN_ATOMIC - Failed
+-- Could NOT find uring (missing: uring_LIBRARIES uring_INCLUDE_DIR) 
+-- Enabling RTTI in Debug builds only (default)
+-- Performing Test HAVE_FALLOCATE
+-- Performing Test HAVE_FALLOCATE - Success
+-- Performing Test HAVE_SYNC_FILE_RANGE_WRITE
+-- Performing Test HAVE_SYNC_FILE_RANGE_WRITE - Success
+-- Performing Test HAVE_PTHREAD_MUTEX_ADAPTIVE_NP
+-- Performing Test HAVE_PTHREAD_MUTEX_ADAPTIVE_NP - Success
+-- Looking for malloc_usable_size
+-- Looking for malloc_usable_size - found
+-- Looking for sched_getcpu
+-- Looking for sched_getcpu - found
+-- Looking for getauxval
+-- Looking for getauxval - found
+-- Looking for F_FULLFSYNC
+-- Looking for F_FULLFSYNC - not found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- ROCKSDB_PLUGINS: 
+-- ROCKSDB PLUGINS TO BUILD 
+-- Found Git: /usr/bin/git (found version "2.43.0") 
+-- JNI library is disabled
+-- Configuring done (2.2s)
+-- Generating done (0.1s)
+-- Build files have been written to: /tmp/rocksdb_build_WOUvuh/build
+[PHASE1] Compiling RocksDB (db_bench target)...
+[  0%] Building CXX object CMakeFiles/rocksdb-shared.dir/cache/cache.cc.o
+[  0%] Building CXX object CMakeFiles/rocksdb-shared.dir/cache/cache_entry_roles.cc.o
+[  0%] Building CXX object CMakeFiles/rocksdb-shared.dir/cache/cache_helpers.cc.o
+[  0%] Building CXX object CMakeFiles/rocksdb-shared.dir/cache/charged_cache.cc.o
+[  0%] Building CXX object CMakeFiles/rocksdb-shared.dir/cache/cache_key.cc.o
+[  0%] Building CXX object CMakeFiles/rocksdb-shared.dir/cache/cache_reservation_manager.cc.o
+[  0%] Building CXX object CMakeFiles/rocksdb-shared.dir/cache/clock_cache.cc.o
+[  2%] Building CXX object CMakeFiles/rocksdb-shared.dir/cache/secondary_cache.cc.o
+[  2%] Building CXX object CMakeFiles/rocksdb-shared.dir/cache/compressed_secondary_cache.cc.o
+[  2%] Building CXX object CMakeFiles/rocksdb-shared.dir/cache/secondary_cache_adapter.cc.o
+[  2%] Building CXX object CMakeFiles/rocksdb-shared.dir/cache/lru_cache.cc.o
+[  2%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/blob/blob_fetcher.cc.o
+[  2%] Building CXX object CMakeFiles/rocksdb-shared.dir/cache/sharded_cache.cc.o
+[  2%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/arena_wrapped_db_iter.cc.o
+[  2%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/attribute_group_iterator_impl.cc.o
+[  4%] Building CXX object CMakeFiles/rocksdb-shared.dir/cache/tiered_secondary_cache.cc.o
+[  4%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/blob/blob_contents.cc.o
+[  4%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/blob/blob_file_builder.cc.o
+[  4%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/blob/blob_file_addition.cc.o
+[  4%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/blob/blob_file_garbage.cc.o
+[  4%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/blob/blob_file_cache.cc.o
+[  6%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/blob/blob_file_reader.cc.o
+[  6%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/blob/blob_log_format.cc.o
+[  6%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/blob/blob_file_meta.cc.o
+[  6%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/blob/blob_log_sequential_reader.cc.o
+[  6%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/blob/blob_log_writer.cc.o
+[  6%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/blob/blob_garbage_meter.cc.o
+[  6%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/blob/prefetch_buffer_collection.cc.o
+[  6%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/blob/blob_source.cc.o
+[  8%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/c.cc.o
+[  8%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/builder.cc.o
+[  8%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/coalescing_iterator.cc.o
+[  8%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/column_family.cc.o
+[  8%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/compaction/compaction.cc.o
+[  8%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/compaction/compaction_iterator.cc.o
+[  8%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/compaction/compaction_picker.cc.o
+[  8%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/compaction/compaction_job.cc.o
+[  8%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/compaction/compaction_picker_fifo.cc.o
+[ 10%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/compaction/compaction_picker_level.cc.o
+[ 10%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/compaction/compaction_picker_universal.cc.o
+[ 10%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/compaction/compaction_service_job.cc.o
+[ 10%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/compaction/compaction_state.cc.o
+[ 10%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/compaction/compaction_outputs.cc.o
+[ 10%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/compaction/sst_partitioner.cc.o
+[ 10%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/compaction/subcompaction_state.cc.o
+[ 10%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/convenience.cc.o
+[ 13%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/db_filesnapshot.cc.o
+[ 13%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/db_impl/compacted_db_impl.cc.o
+[ 13%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/db_impl/db_impl.cc.o
+[ 13%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/db_impl/db_impl_write.cc.o
+[ 13%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/db_impl/db_impl_compaction_flush.cc.o
+[ 13%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/db_impl/db_impl_files.cc.o
+[ 13%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/db_impl/db_impl_follower.cc.o
+[ 13%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/db_impl/db_impl_open.cc.o
+[ 15%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/db_impl/db_impl_debug.cc.o
+[ 15%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/db_impl/db_impl_experimental.cc.o
+[ 15%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/db_impl/db_impl_readonly.cc.o
+[ 15%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/db_impl/db_impl_secondary.cc.o
+[ 15%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/db_info_dumper.cc.o
+[ 15%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/db_iter.cc.o
+[ 15%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/dbformat.cc.o
+[ 17%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/error_handler.cc.o
+[ 17%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/event_helpers.cc.o
+[ 17%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/experimental.cc.o
+[ 17%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/external_sst_file_ingestion_job.cc.o
+[ 17%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/file_indexer.cc.o
+[ 17%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/flush_job.cc.o
+[ 17%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/flush_scheduler.cc.o
+[ 17%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/forward_iterator.cc.o
+[ 19%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/import_column_family_job.cc.o
+[ 19%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/internal_stats.cc.o
+[ 19%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/logs_with_prep_tracker.cc.o
+[ 19%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/log_reader.cc.o
+[ 19%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/log_writer.cc.o
+[ 19%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/malloc_stats.cc.o
+[ 19%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/manifest_ops.cc.o
+[ 19%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/memtable.cc.o
+[ 21%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/memtable_list.cc.o
+[ 21%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/merge_helper.cc.o
+[ 21%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/merge_operator.cc.o
+[ 21%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/multi_scan.cc.o
+[ 21%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/output_validator.cc.o
+[ 21%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/periodic_task_scheduler.cc.o
+[ 21%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/range_del_aggregator.cc.o
+[ 21%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/range_tombstone_fragmenter.cc.o
+[ 23%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/repair.cc.o
+[ 23%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/seqno_to_time_mapping.cc.o
+[ 23%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/snapshot_impl.cc.o
+[ 23%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/table_cache.cc.o
+[ 23%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/table_properties_collector.cc.o
+[ 23%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/transaction_log_impl.cc.o
+[ 23%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/trim_history_scheduler.cc.o
+[ 23%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/version_builder.cc.o
+[ 26%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/version_edit.cc.o
+[ 26%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/version_edit_handler.cc.o
+[ 26%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/version_set.cc.o
+[ 26%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/version_util.cc.o
+[ 26%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/wal_edit.cc.o
+[ 26%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/wal_manager.cc.o
+[ 26%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/wide/wide_column_serialization.cc.o
+[ 28%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/wide/wide_columns.cc.o
+[ 28%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/wide/wide_columns_helper.cc.o
+[ 28%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/write_batch.cc.o
+[ 28%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/write_batch_base.cc.o
+[ 28%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/write_controller.cc.o
+[ 28%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/write_stall_stats.cc.o
+[ 28%] Building CXX object CMakeFiles/rocksdb-shared.dir/db/write_thread.cc.o
+[ 28%] Building CXX object CMakeFiles/rocksdb-shared.dir/db_stress_tool/db_stress_compression_manager.cc.o
+[ 30%] Building CXX object CMakeFiles/rocksdb-shared.dir/env/composite_env.cc.o
+[ 30%] Building CXX object CMakeFiles/rocksdb-shared.dir/env/env.cc.o
+[ 30%] Building CXX object CMakeFiles/rocksdb-shared.dir/env/env_chroot.cc.o
+[ 30%] Building CXX object CMakeFiles/rocksdb-shared.dir/env/env_encryption.cc.o
+[ 30%] Building CXX object CMakeFiles/rocksdb-shared.dir/env/file_system.cc.o
+[ 30%] Building CXX object CMakeFiles/rocksdb-shared.dir/env/file_system_tracer.cc.o
+[ 30%] Building CXX object CMakeFiles/rocksdb-shared.dir/env/fs_on_demand.cc.o
+[ 30%] Building CXX object CMakeFiles/rocksdb-shared.dir/env/fs_remap.cc.o
+[ 32%] Building CXX object CMakeFiles/rocksdb-shared.dir/env/mock_env.cc.o
+[ 32%] Building CXX object CMakeFiles/rocksdb-shared.dir/env/unique_id_gen.cc.o
+[ 32%] Building CXX object CMakeFiles/rocksdb-shared.dir/file/delete_scheduler.cc.o
+[ 32%] Building CXX object CMakeFiles/rocksdb-shared.dir/file/file_prefetch_buffer.cc.o
+[ 32%] Building CXX object CMakeFiles/rocksdb-shared.dir/file/file_util.cc.o
+[ 32%] Building CXX object CMakeFiles/rocksdb-shared.dir/file/filename.cc.o
+[ 32%] Building CXX object CMakeFiles/rocksdb-shared.dir/file/line_file_reader.cc.o
+[ 32%] Building CXX object CMakeFiles/rocksdb-shared.dir/file/random_access_file_reader.cc.o
+[ 34%] Building CXX object CMakeFiles/rocksdb-shared.dir/file/read_write_util.cc.o
+[ 34%] Building CXX object CMakeFiles/rocksdb-shared.dir/file/readahead_raf.cc.o
+[ 34%] Building CXX object CMakeFiles/rocksdb-shared.dir/file/sequence_file_reader.cc.o
+[ 34%] Building CXX object CMakeFiles/rocksdb-shared.dir/file/sst_file_manager_impl.cc.o
+[ 34%] Building CXX object CMakeFiles/rocksdb-shared.dir/file/writable_file_writer.cc.o
+[ 34%] Building CXX object CMakeFiles/rocksdb-shared.dir/logging/auto_roll_logger.cc.o
+[ 34%] Building CXX object CMakeFiles/rocksdb-shared.dir/logging/event_logger.cc.o
+[ 34%] Building CXX object CMakeFiles/rocksdb-shared.dir/logging/log_buffer.cc.o
+[ 36%] Building CXX object CMakeFiles/rocksdb-shared.dir/memory/arena.cc.o
+[ 36%] Building CXX object CMakeFiles/rocksdb-shared.dir/memory/concurrent_arena.cc.o
+[ 36%] Building CXX object CMakeFiles/rocksdb-shared.dir/memory/jemalloc_nodump_allocator.cc.o
+[ 36%] Building CXX object CMakeFiles/rocksdb-shared.dir/memory/memkind_kmem_allocator.cc.o
+[ 36%] Building CXX object CMakeFiles/rocksdb-shared.dir/memory/memory_allocator.cc.o
+[ 36%] Building CXX object CMakeFiles/rocksdb-shared.dir/memtable/alloc_tracker.cc.o
+[ 36%] Building CXX object CMakeFiles/rocksdb-shared.dir/memtable/hash_linklist_rep.cc.o
+[ 39%] Building CXX object CMakeFiles/rocksdb-shared.dir/memtable/hash_skiplist_rep.cc.o
+[ 39%] Building CXX object CMakeFiles/rocksdb-shared.dir/memtable/skiplistrep.cc.o
+[ 39%] Building CXX object CMakeFiles/rocksdb-shared.dir/memtable/vectorrep.cc.o
+[ 39%] Building CXX object CMakeFiles/rocksdb-shared.dir/memtable/wbwi_memtable.cc.o
+[ 39%] Building CXX object CMakeFiles/rocksdb-shared.dir/memtable/write_buffer_manager.cc.o
+[ 39%] Building CXX object CMakeFiles/rocksdb-shared.dir/monitoring/histogram.cc.o
+[ 39%] Building CXX object CMakeFiles/rocksdb-shared.dir/monitoring/histogram_windowing.cc.o
+[ 39%] Building CXX object CMakeFiles/rocksdb-shared.dir/monitoring/in_memory_stats_history.cc.o
+[ 41%] Building CXX object CMakeFiles/rocksdb-shared.dir/monitoring/instrumented_mutex.cc.o
+[ 41%] Building CXX object CMakeFiles/rocksdb-shared.dir/monitoring/iostats_context.cc.o
+[ 41%] Building CXX object CMakeFiles/rocksdb-shared.dir/monitoring/perf_context.cc.o
+[ 41%] Building CXX object CMakeFiles/rocksdb-shared.dir/monitoring/perf_level.cc.o
+[ 41%] Building CXX object CMakeFiles/rocksdb-shared.dir/monitoring/persistent_stats_history.cc.o
+[ 41%] Building CXX object CMakeFiles/rocksdb-shared.dir/monitoring/statistics.cc.o
+[ 41%] Building CXX object CMakeFiles/rocksdb-shared.dir/monitoring/thread_status_impl.cc.o
+[ 41%] Building CXX object CMakeFiles/rocksdb-shared.dir/monitoring/thread_status_updater.cc.o
+[ 43%] Building CXX object CMakeFiles/rocksdb-shared.dir/monitoring/thread_status_util.cc.o
+[ 43%] Building CXX object CMakeFiles/rocksdb-shared.dir/monitoring/thread_status_util_debug.cc.o
+[ 43%] Building CXX object CMakeFiles/rocksdb-shared.dir/options/cf_options.cc.o
+[ 43%] Building CXX object CMakeFiles/rocksdb-shared.dir/options/configurable.cc.o
+[ 43%] Building CXX object CMakeFiles/rocksdb-shared.dir/options/customizable.cc.o
+[ 43%] Building CXX object CMakeFiles/rocksdb-shared.dir/options/db_options.cc.o
+[ 43%] Building CXX object CMakeFiles/rocksdb-shared.dir/options/offpeak_time_info.cc.o
+[ 43%] Building CXX object CMakeFiles/rocksdb-shared.dir/options/options.cc.o
+[ 45%] Building CXX object CMakeFiles/rocksdb-shared.dir/options/options_helper.cc.o
+[ 45%] Building CXX object CMakeFiles/rocksdb-shared.dir/options/options_parser.cc.o
+[ 45%] Building CXX object CMakeFiles/rocksdb-shared.dir/port/mmap.cc.o
+[ 45%] Building CXX object CMakeFiles/rocksdb-shared.dir/port/stack_trace.cc.o
+[ 45%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/adaptive/adaptive_table_factory.cc.o
+[ 45%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/block_based/binary_search_index_reader.cc.o
+[ 45%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/block_based/block.cc.o
+[ 45%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/block_based/block_based_table_builder.cc.o
+[ 47%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/block_based/block_based_table_factory.cc.o
+[ 47%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/block_based/block_based_table_iterator.cc.o
+[ 47%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/block_based/multi_scan_index_iterator.cc.o
+[ 47%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/block_based/block_based_table_reader.cc.o
+[ 47%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/block_based/block_builder.cc.o
+[ 47%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/block_based/block_cache.cc.o
+[ 47%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/block_based/block_prefetcher.cc.o
+[ 50%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/block_based/block_prefix_index.cc.o
+[ 50%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/block_based/data_block_hash_index.cc.o
+In file included from /usr/include/c++/12/string:40,
+                 from /usr/include/c++/12/stdexcept:39,
+                 from /usr/include/c++/12/system_error:41,
+                 from /usr/include/c++/12/bits/std_mutex.h:39,
+                 from /usr/include/c++/12/bits/atomic_wait.h:49,
+                 from /usr/include/c++/12/bits/atomic_base.h:41,
+                 from /usr/include/c++/12/atomic:41,
+                 from /tmp/rocksdb_build_WOUvuh/rocksdb_src/include/rocksdb/configurable.h:11,
+                 from /tmp/rocksdb_build_WOUvuh/rocksdb_src/include/rocksdb/customizable.h:11,
+                 from /tmp/rocksdb_build_WOUvuh/rocksdb_src/options/customizable.cc:6:
+In static member function ‘static constexpr std::char_traits<char>::char_type* std::char_traits<char>::copy(char_type*, const char_type*, std::size_t)’,
+    inlined from ‘static constexpr void std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::_S_copy(_CharT*, const _CharT*, size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:431:21,
+    inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Allocator>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::_M_replace(size_type, size_type, const _CharT*, size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.tcc:532:22,
+    inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Alloc>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::assign(const _CharT*) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:1655:19,
+    inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Alloc>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::operator=(const _CharT*) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:823:28,
+    inlined from ‘static rocksdb::Status rocksdb::Customizable::GetOptionsMap(const rocksdb::ConfigOptions&, const rocksdb::Customizable*, const std::string&, std::string*, std::unordered_map<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> >*)’ at /tmp/rocksdb_build_WOUvuh/rocksdb_src/options/customizable.cc:106:28:
+/usr/include/c++/12/bits/char_traits.h:435:56: warning: ‘void* __builtin_memcpy(void*, const void*, long unsigned int)’ accessing 9223372036854775810 or more bytes at offsets -4611686018427387902 and [-4611686018427387903, 4611686018427387904] may overlap up to 9223372036854775813 bytes at offset -3 [-Wrestrict]
+  435 |         return static_cast<char_type*>(__builtin_memcpy(__s1, __s2, __n));
+      |                                        ~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+[ 50%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/block_based/data_block_footer.cc.o
+[ 50%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/block_based/filter_block_reader_common.cc.o
+In file included from /usr/include/c++/12/string:40,
+                 from /usr/include/c++/12/stdexcept:39,
+                 from /usr/include/c++/12/system_error:41,
+                 from /usr/include/c++/12/bits/std_mutex.h:39,
+                 from /usr/include/c++/12/bits/atomic_wait.h:49,
+                 from /usr/include/c++/12/bits/atomic_base.h:41,
+                 from /usr/include/c++/12/atomic:41,
+                 from /tmp/rocksdb_build_WOUvuh/rocksdb_src/include/rocksdb/configurable.h:11,
+                 from /tmp/rocksdb_build_WOUvuh/rocksdb_src/options/configurable.cc:6:
+In static member function ‘static constexpr std::char_traits<char>::char_type* std::char_traits<char>::copy(char_type*, const char_type*, std::size_t)’,
+    inlined from ‘static constexpr void std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::_S_copy(_CharT*, const _CharT*, size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:431:21,
+    inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Allocator>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::_M_replace(size_type, size_type, const _CharT*, size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.tcc:532:22,
+    inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Alloc>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::assign(const _CharT*) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:1655:19,
+    inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Alloc>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::operator=(const _CharT*) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:823:28,
+    inlined from ‘static rocksdb::Status rocksdb::ConfigurableHelper::GetOption(const rocksdb::ConfigOptions&, const rocksdb::Configurable&, const std::string&, std::string*)’ at /tmp/rocksdb_build_WOUvuh/rocksdb_src/options/configurable.cc:527:26:
+/usr/include/c++/12/bits/char_traits.h:435:56: warning: ‘void* __builtin_memcpy(void*, const void*, long unsigned int)’ accessing 9223372036854775810 or more bytes at offsets -4611686018427387902 and [-4611686018427387903, 4611686018427387904] may overlap up to 9223372036854775813 bytes at offset -3 [-Wrestrict]
+  435 |         return static_cast<char_type*>(__builtin_memcpy(__s1, __s2, __n));
+      |                                        ~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+[ 50%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/block_based/filter_policy.cc.o
+[ 50%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/block_based/flush_block_policy.cc.o
+[ 50%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/block_based/full_filter_block.cc.o
+[ 50%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/block_based/hash_index_reader.cc.o
+[ 52%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/block_based/index_builder.cc.o
+[ 52%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/block_based/index_reader_common.cc.o
+[ 52%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/block_based/parsed_full_filter_block.cc.o
+[ 52%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/block_based/partitioned_filter_block.cc.o
+[ 52%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/block_based/partitioned_index_iterator.cc.o
+[ 52%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/block_based/partitioned_index_reader.cc.o
+[ 52%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/block_based/reader_common.cc.o
+[ 52%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/block_based/uncompression_dict_reader.cc.o
+[ 54%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/block_fetcher.cc.o
+[ 54%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/cuckoo/cuckoo_table_builder.cc.o
+[ 54%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/cuckoo/cuckoo_table_factory.cc.o
+[ 54%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/cuckoo/cuckoo_table_reader.cc.o
+[ 54%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/external_table.cc.o
+[ 54%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/format.cc.o
+[ 54%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/get_context.cc.o
+[ 54%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/iterator.cc.o
+[ 56%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/merging_iterator.cc.o
+[ 56%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/compaction_merging_iterator.cc.o
+[ 56%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/meta_blocks.cc.o
+[ 56%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/persistent_cache_helper.cc.o
+[ 56%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/plain/plain_table_bloom.cc.o
+[ 56%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/plain/plain_table_builder.cc.o
+[ 56%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/plain/plain_table_factory.cc.o
+[ 56%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/plain/plain_table_index.cc.o
+[ 58%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/plain/plain_table_key_coding.cc.o
+[ 58%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/plain/plain_table_reader.cc.o
+In file included from /usr/include/c++/12/string:40,
+                 from /tmp/rocksdb_build_WOUvuh/rocksdb_src/options/db_options.h:8,
+                 from /tmp/rocksdb_build_WOUvuh/rocksdb_src/options/db_options.cc:6:
+In static member function ‘static constexpr std::char_traits<char>::char_type* std::char_traits<char>::copy(char_type*, const char_type*, std::size_t)’,
+    inlined from ‘static constexpr void std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::_S_copy(_CharT*, const _CharT*, size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:431:21,
+    inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Allocator>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::_M_replace(size_type, size_type, const _CharT*, size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.tcc:532:22,
+    inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Alloc>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::assign(const _CharT*) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:1655:19,
+    inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Alloc>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::operator=(const _CharT*) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:823:28,
+    inlined from ‘rocksdb::<lambda(const rocksdb::ConfigOptions&, const std::string&, const void*, std::string*)>’ at /tmp/rocksdb_build_WOUvuh/rocksdb_src/options/db_options.cc:564:34,
+    inlined from ‘constexpr _Res std::__invoke_impl(__invoke_other, _Fn&&, _Args&& ...) [with _Res = rocksdb::Status; _Fn = rocksdb::<lambda(const rocksdb::ConfigOptions&, const string&, const void*, string*)>&; _Args = {const rocksdb::ConfigOptions&, const __cxx11::basic_string<char, char_traits<char>, allocator<char> >&, const void*, __cxx11::basic_string<char, char_traits<char>, allocator<char> >*}]’ at /usr/include/c++/12/bits/invoke.h:61:67,
+    inlined from ‘constexpr std::enable_if_t<is_invocable_r_v<_Res, _Callable, _Args ...>, _Res> std::__invoke_r(_Callable&&, _Args&& ...) [with _Res = rocksdb::Status; _Callable = rocksdb::<lambda(const rocksdb::ConfigOptions&, const string&, const void*, string*)>&; _Args = {const rocksdb::ConfigOptions&, const __cxx11::basic_string<char, char_traits<char>, allocator<char> >&, const void*, __cxx11::basic_string<char, char_traits<char>, allocator<char> >*}]’ at /usr/include/c++/12/bits/invoke.h:116:38,
+    inlined from ‘static _Res std::_Function_handler<_Res(_ArgTypes ...), _Functor>::_M_invoke(const std::_Any_data&, _ArgTypes&& ...) [with _Res = rocksdb::Status; _Functor = rocksdb::<lambda(const rocksdb::ConfigOptions&, const std::string&, const void*, std::string*)>; _ArgTypes = {const rocksdb::ConfigOptions&, const std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, const void*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*}]’ at /usr/include/c++/12/bits/std_function.h:291:44:
+/usr/include/c++/12/bits/char_traits.h:435:56: warning: ‘void* __builtin_memcpy(void*, const void*, long unsigned int)’ accessing 9223372036854775810 or more bytes at offsets -4611686018427387902 and [-4611686018427387903, 4611686018427387904] may overlap up to 9223372036854775813 bytes at offset -3 [-Wrestrict]
+  435 |         return static_cast<char_type*>(__builtin_memcpy(__s1, __s2, __n));
+      |                                        ~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+[ 58%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/sst_file_dumper.cc.o
+[ 58%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/sst_file_reader.cc.o
+[ 58%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/sst_file_writer.cc.o
+In file included from /usr/include/c++/12/string:40,
+                 from /tmp/rocksdb_build_WOUvuh/rocksdb_src/options/cf_options.h:8,
+                 from /tmp/rocksdb_build_WOUvuh/rocksdb_src/options/cf_options.cc:6:
+In static member function ‘static constexpr std::char_traits<char>::char_type* std::char_traits<char>::copy(char_type*, const char_type*, std::size_t)’,
+    inlined from ‘static constexpr void std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::_S_copy(_CharT*, const _CharT*, size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:431:21,
+    inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Allocator>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::_M_replace(size_type, size_type, const _CharT*, size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.tcc:532:22,
+    inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Alloc>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::assign(const _CharT*) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:1655:19,
+    inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Alloc>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::operator=(const _CharT*) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:823:28,
+    inlined from ‘rocksdb::Status rocksdb::SerializeVector(const ConfigOptions&, const OptionTypeInfo&, char, const std::string&, const std::vector<_RealType>&, std::string*) [with T = FileTemperatureAge]’ at /tmp/rocksdb_build_WOUvuh/rocksdb_src/include/rocksdb/utilities/options_type.h:1186:22:
+/usr/include/c++/12/bits/char_traits.h:435:56: warning: ‘void* __builtin_memcpy(void*, const void*, long unsigned int)’ accessing 9223372036854775810 or more bytes at offsets -4611686018427387902 and [-4611686018427387903, 4611686018427387904] may overlap up to 9223372036854775813 bytes at offset -3 [-Wrestrict]
+  435 |         return static_cast<char_type*>(__builtin_memcpy(__s1, __s2, __n));
+      |                                        ~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+In static member function ‘static constexpr std::char_traits<char>::char_type* std::char_traits<char>::copy(char_type*, const char_type*, std::size_t)’,
+    inlined from ‘static constexpr void std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::_S_copy(_CharT*, const _CharT*, size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:431:21,
+    inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Allocator>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::_M_replace(size_type, size_type, const _CharT*, size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.tcc:532:22,
+    inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Alloc>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::assign(const _CharT*) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:1655:19,
+    inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Alloc>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::operator=(const _CharT*) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:823:28,
+    inlined from ‘rocksdb::Status rocksdb::SerializeVector(const ConfigOptions&, const OptionTypeInfo&, char, const std::string&, const std::vector<_RealType>&, std::string*) [with T = int]’ at /tmp/rocksdb_build_WOUvuh/rocksdb_src/include/rocksdb/utilities/options_type.h:1186:22:
+/usr/include/c++/12/bits/char_traits.h:435:56: warning: ‘void* __builtin_memcpy(void*, const void*, long unsigned int)’ accessing 9223372036854775810 or more bytes at offsets -4611686018427387902 and [-4611686018427387903, 4611686018427387904] may overlap up to 9223372036854775813 bytes at offset -3 [-Wrestrict]
+  435 |         return static_cast<char_type*>(__builtin_memcpy(__s1, __s2, __n));
+      |                                        ~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+In static member function ‘static constexpr std::char_traits<char>::char_type* std::char_traits<char>::copy(char_type*, const char_type*, std::size_t)’,
+    inlined from ‘static constexpr void std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::_S_copy(_CharT*, const _CharT*, size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:431:21,
+    inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Allocator>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::_M_replace(size_type, size_type, const _CharT*, size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.tcc:532:22,
+    inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Alloc>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::assign(const _CharT*) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:1655:19,
+    inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Alloc>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::operator=(const _CharT*) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:823:28,
+    inlined from ‘rocksdb::Status rocksdb::SerializeVector(const ConfigOptions&, const OptionTypeInfo&, char, const std::string&, const std::vector<_RealType>&, std::string*) [with T = CompressionType]’ at /tmp/rocksdb_build_WOUvuh/rocksdb_src/include/rocksdb/utilities/options_type.h:1186:22:
+/usr/include/c++/12/bits/char_traits.h:435:56: warning: ‘void* __builtin_memcpy(void*, const void*, long unsigned int)’ accessing 9223372036854775810 or more bytes at offsets -4611686018427387902 and [-4611686018427387903, 4611686018427387904] may overlap up to 9223372036854775813 bytes at offset -3 [-Wrestrict]
+  435 |         return static_cast<char_type*>(__builtin_memcpy(__s1, __s2, __n));
+      |                                        ~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+In static member function ‘static constexpr std::char_traits<char>::char_type* std::char_traits<char>::copy(char_type*, const char_type*, std::size_t)’,
+    inlined from ‘static constexpr void std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::_S_copy(_CharT*, const _CharT*, size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:431:21,
+    inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Allocator>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::_M_replace(size_type, size_type, const _CharT*, size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.tcc:532:22,
+    inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Alloc>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::assign(const _CharT*) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:1655:19,
+    inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Alloc>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::operator=(const _CharT*) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:823:28,
+    inlined from ‘rocksdb::Status rocksdb::SerializeVector(const ConfigOptions&, const OptionTypeInfo&, char, const std::string&, const std::vector<_RealType>&, std::string*) [with T = std::shared_ptr<TablePropertiesCollectorFactory>]’ at /tmp/rocksdb_build_WOUvuh/rocksdb_src/include/rocksdb/utilities/options_type.h:1186:22:
+/usr/include/c++/12/bits/char_traits.h:435:56: warning: ‘void* __builtin_memcpy(void*, const void*, long unsigned int)’ accessing 9223372036854775810 or more bytes at offsets -4611686018427387902 and [-4611686018427387903, 4611686018427387904] may overlap up to 9223372036854775813 bytes at offset -3 [-Wrestrict]
+  435 |         return static_cast<char_type*>(__builtin_memcpy(__s1, __s2, __n));
+      |                                        ~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+[ 58%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/table_factory.cc.o
+[ 58%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/table_properties.cc.o
+In file included from /usr/include/c++/12/string:40,
+                 from /tmp/rocksdb_build_WOUvuh/rocksdb_src/include/rocksdb/iterator.h:21,
+                 from /tmp/rocksdb_build_WOUvuh/rocksdb_src/table/iterator.cc:10:
+In static member function ‘static constexpr std::char_traits<char>::char_type* std::char_traits<char>::copy(char_type*, const char_type*, std::size_t)’,
+    inlined from ‘static constexpr void std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::_S_copy(_CharT*, const _CharT*, size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:431:21,
+    inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Allocator>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::_M_replace(size_type, size_type, const _CharT*, size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.tcc:532:22,
+    inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Alloc>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::assign(const _CharT*) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:1655:19,
+    inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Alloc>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::operator=(const _CharT*) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:823:28,
+    inlined from ‘virtual rocksdb::Status rocksdb::Iterator::GetProperty(std::string, std::string*)’ at /tmp/rocksdb_build_WOUvuh/rocksdb_src/table/iterator.cc:23:13:
+/usr/include/c++/12/bits/char_traits.h:435:56: warning: ‘void* __builtin_memcpy(void*, const void*, long unsigned int)’ accessing 9223372036854775810 or more bytes at offsets -4611686018427387902 and [-4611686018427387903, 4611686018427387904] may overlap up to 9223372036854775813 bytes at offset -3 [-Wrestrict]
+  435 |         return static_cast<char_type*>(__builtin_memcpy(__s1, __s2, __n));
+      |                                        ~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+In static member function ‘static constexpr std::char_traits<char>::char_type* std::char_traits<char>::copy(char_type*, const char_type*, std::size_t)’,
+    inlined from ‘static constexpr void std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::_S_copy(_CharT*, const _CharT*, size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:431:21,
+    inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Allocator>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::_M_replace(size_type, size_type, const _CharT*, size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.tcc:532:22,
+    inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Alloc>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::assign(const _CharT*) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:1655:19,
+    inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Alloc>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::operator=(const _CharT*) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:823:28,
+    inlined from ‘virtual rocksdb::Status rocksdb::Iterator::GetProperty(std::string, std::string*)’ at /tmp/rocksdb_build_WOUvuh/rocksdb_src/table/iterator.cc:27:13:
+/usr/include/c++/12/bits/char_traits.h:435:56: warning: ‘void* __builtin_memcpy(void*, const void*, long unsigned int)’ accessing 9223372036854775810 or more bytes at offsets -4611686018427387902 and [-4611686018427387903, 4611686018427387904] may overlap up to 9223372036854775813 bytes at offset -3 [-Wrestrict]
+  435 |         return static_cast<char_type*>(__builtin_memcpy(__s1, __s2, __n));
+      |                                        ~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+[ 60%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/two_level_iterator.cc.o
+[ 60%] Building CXX object CMakeFiles/rocksdb-shared.dir/table/unique_id.cc.o
+[ 60%] Building CXX object CMakeFiles/rocksdb-shared.dir/test_util/sync_point.cc.o
+[ 60%] Building CXX object CMakeFiles/rocksdb-shared.dir/test_util/sync_point_impl.cc.o
+[ 60%] Building CXX object CMakeFiles/rocksdb-shared.dir/test_util/testutil.cc.o
+In file included from /usr/include/c++/12/ios:40,
+                 from /usr/include/c++/12/ostream:38,
+                 from /usr/include/c++/12/bits/unique_ptr.h:41,
+                 from /usr/include/c++/12/memory:75,
+                 from /tmp/rocksdb_build_WOUvuh/rocksdb_src/include/rocksdb/filter_policy.h:25,
+                 from /tmp/rocksdb_build_WOUvuh/rocksdb_src/table/block_based/filter_policy.cc:10:
+In static member function ‘static constexpr std::char_traits<char>::char_type* std::char_traits<char>::copy(char_type*, const char_type*, std::size_t)’,
+    inlined from ‘static constexpr void std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::_S_copy(_CharT*, const _CharT*, size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:431:21,
+    inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Allocator>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::_M_replace(size_type, size_type, const _CharT*, size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.tcc:532:22,
+    inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Alloc>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::replace(size_type, size_type, const _CharT*, size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:2179:19,
+    inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Alloc>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::insert(size_type, const _CharT*) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:1936:22,
+    inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Allocator> std::operator+(const _CharT*, __cxx11::basic_string<_CharT, _Traits, _Allocator>&&) [with _CharT = char; _Traits = char_traits<char>; _Alloc = allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:3549:36,
+    inlined from ‘std::string rocksdb::BloomLikeFilterPolicy::GetBitsPerKeySuffix() const’ at /tmp/rocksdb_build_WOUvuh/rocksdb_src/table/block_based/filter_policy.cc:1579:66:
+/usr/include/c++/12/bits/char_traits.h:435:56: warning: ‘void* __builtin_memcpy(void*, const void*, long unsigned int)’ accessing 9223372036854775810 or more bytes at offsets [2, 9223372036854775807] and 1 may overlap up to 9223372036854775813 bytes at offset -3 [-Wrestrict]
+  435 |         return static_cast<char_type*>(__builtin_memcpy(__s1, __s2, __n));
+      |                                        ~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+[ 60%] Building CXX object CMakeFiles/rocksdb-shared.dir/test_util/transaction_test_util.cc.o
+[ 60%] Building CXX object CMakeFiles/rocksdb-shared.dir/tools/block_cache_analyzer/block_cache_trace_analyzer.cc.o
+[ 60%] Building CXX object CMakeFiles/rocksdb-shared.dir/tools/dump/db_dump_tool.cc.o
+[ 63%] Building CXX object CMakeFiles/rocksdb-shared.dir/tools/io_tracer_parser_tool.cc.o
+[ 63%] Building CXX object CMakeFiles/rocksdb-shared.dir/tools/ldb_cmd.cc.o
+[ 63%] Building CXX object CMakeFiles/rocksdb-shared.dir/tools/ldb_tool.cc.o
+[ 63%] Building CXX object CMakeFiles/rocksdb-shared.dir/tools/sst_dump_tool.cc.o
+[ 63%] Building CXX object CMakeFiles/rocksdb-shared.dir/tools/trace_analyzer_tool.cc.o
+[ 63%] Building CXX object CMakeFiles/rocksdb-shared.dir/trace_replay/block_cache_tracer.cc.o
+[ 63%] Building CXX object CMakeFiles/rocksdb-shared.dir/trace_replay/io_tracer.cc.o
+[ 63%] Building CXX object CMakeFiles/rocksdb-shared.dir/trace_replay/trace_record_handler.cc.o
+[ 65%] Building CXX object CMakeFiles/rocksdb-shared.dir/trace_replay/trace_record_result.cc.o
+[ 65%] Building CXX object CMakeFiles/rocksdb-shared.dir/trace_replay/trace_record.cc.o
+[ 65%] Building CXX object CMakeFiles/rocksdb-shared.dir/trace_replay/trace_replay.cc.o
+[ 65%] Building CXX object CMakeFiles/rocksdb-shared.dir/util/async_file_reader.cc.o
+[ 65%] Building CXX object CMakeFiles/rocksdb-shared.dir/util/auto_tune_compressor.cc.o
+[ 65%] Building CXX object CMakeFiles/rocksdb-shared.dir/util/cleanable.cc.o
+[ 65%] Building CXX object CMakeFiles/rocksdb-shared.dir/util/coding.cc.o
+[ 65%] Building CXX object CMakeFiles/rocksdb-shared.dir/util/compaction_job_stats_impl.cc.o
+[ 67%] Building CXX object CMakeFiles/rocksdb-shared.dir/util/comparator.cc.o
+[ 67%] Building CXX object CMakeFiles/rocksdb-shared.dir/util/compression.cc.o
+[ 67%] Building CXX object CMakeFiles/rocksdb-shared.dir/util/simple_mixed_compressor.cc.o
+[ 67%] Building CXX object CMakeFiles/rocksdb-shared.dir/util/compression_context_cache.cc.o
+[ 67%] Building CXX object CMakeFiles/rocksdb-shared.dir/util/concurrent_task_limiter_impl.cc.o
+[ 67%] Building CXX object CMakeFiles/rocksdb-shared.dir/util/crc32c.cc.o
+[ 67%] Building CXX object CMakeFiles/rocksdb-shared.dir/util/data_structure.cc.o
+[ 67%] Building CXX object CMakeFiles/rocksdb-shared.dir/util/dynamic_bloom.cc.o
+[ 69%] Building CXX object CMakeFiles/rocksdb-shared.dir/util/hash.cc.o
+In file included from /usr/include/c++/12/string:40,
+                 from /tmp/rocksdb_build_WOUvuh/rocksdb_src/table/plain/plain_table_builder.h:10,
+                 from /tmp/rocksdb_build_WOUvuh/rocksdb_src/table/plain/plain_table_builder.cc:6:
+In static member function ‘static constexpr std::char_traits<char>::char_type* std::char_traits<char>::copy(char_type*, const char_type*, std::size_t)’,
+    inlined from ‘static constexpr void std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::_S_copy(_CharT*, const _CharT*, size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:431:21,
+    inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Allocator>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::_M_replace(size_type, size_type, const _CharT*, size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.tcc:532:22,
+    inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Alloc>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::assign(const _CharT*) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:1655:19,
+    inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Alloc>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::operator=(const _CharT*) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:823:28,
+    inlined from ‘rocksdb::PlainTableBuilder::PlainTableBuilder(const rocksdb::ImmutableOptions&, const rocksdb::MutableCFOptions&, const rocksdb::InternalTblPropCollFactories*, uint32_t, int, rocksdb::WritableFileWriter*, uint32_t, rocksdb::EncodingType, size_t, uint32_t, const std::string&, uint32_t, size_t, double, bool, const std::string&, const std::string&, uint64_t)’ at /tmp/rocksdb_build_WOUvuh/rocksdb_src/table/plain/plain_table_builder.cc:85:9:
+/usr/include/c++/12/bits/char_traits.h:435:56: warning: ‘void* __builtin_memcpy(void*, const void*, long unsigned int)’ accessing 9223372036854775810 or more bytes at offsets -4611686018427387902 and [-4611686018427387903, 4611686018427387904] may overlap up to 9223372036854775813 bytes at offset -3 [-Wrestrict]
+  435 |         return static_cast<char_type*>(__builtin_memcpy(__s1, __s2, __n));
+      |                                        ~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+[ 69%] Building CXX object CMakeFiles/rocksdb-shared.dir/util/io_dispatcher_imp.cc.o
+[ 69%] Building CXX object CMakeFiles/rocksdb-shared.dir/util/murmurhash.cc.o
+[ 69%] Building CXX object CMakeFiles/rocksdb-shared.dir/util/random.cc.o
+[ 69%] Building CXX object CMakeFiles/rocksdb-shared.dir/util/rate_limiter.cc.o
+[ 69%] Building CXX object CMakeFiles/rocksdb-shared.dir/util/ribbon_config.cc.o
+[ 69%] Building CXX object CMakeFiles/rocksdb-shared.dir/util/slice.cc.o
+[ 71%] Building CXX object CMakeFiles/rocksdb-shared.dir/util/file_checksum_helper.cc.o
+[ 71%] Building CXX object CMakeFiles/rocksdb-shared.dir/util/status.cc.o
+[ 71%] Building CXX object CMakeFiles/rocksdb-shared.dir/util/stderr_logger.cc.o
+[ 71%] Building CXX object CMakeFiles/rocksdb-shared.dir/util/string_util.cc.o
+[ 71%] Building CXX object CMakeFiles/rocksdb-shared.dir/util/thread_local.cc.o
+[ 71%] Building CXX object CMakeFiles/rocksdb-shared.dir/util/threadpool_imp.cc.o
+[ 71%] Building CXX object CMakeFiles/rocksdb-shared.dir/util/udt_util.cc.o
+[ 71%] Building CXX object CMakeFiles/rocksdb-shared.dir/util/write_batch_util.cc.o
+[ 73%] Building CXX object CMakeFiles/rocksdb-shared.dir/util/xxhash.cc.o
+[ 73%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/agg_merge/agg_merge.cc.o
+[ 73%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/backup/backup_engine.cc.o
+[ 73%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/blob_db/blob_compaction_filter.cc.o
+[ 73%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/blob_db/blob_db.cc.o
+[ 73%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/blob_db/blob_db_impl.cc.o
+[ 73%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/blob_db/blob_db_impl_filesnapshot.cc.o
+[ 73%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/blob_db/blob_dump_tool.cc.o
+[ 76%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/blob_db/blob_file.cc.o
+[ 76%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/cache_dump_load.cc.o
+[ 76%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/cache_dump_load_impl.cc.o
+[ 76%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/cassandra/cassandra_compaction_filter.cc.o
+[ 76%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/cassandra/format.cc.o
+[ 76%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/cassandra/merge_operator.cc.o
+[ 76%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/checkpoint/checkpoint_impl.cc.o
+[ 76%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/compaction_filters.cc.o
+In file included from /usr/include/c++/12/string:40,
+                 from /tmp/rocksdb_build_WOUvuh/rocksdb_src/include/rocksdb/slice.h:26,
+                 from /tmp/rocksdb_build_WOUvuh/rocksdb_src/util/slice.cc:10:
+In static member function ‘static constexpr std::char_traits<char>::char_type* std::char_traits<char>::copy(char_type*, const char_type*, std::size_t)’,
+    inlined from ‘static constexpr void std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::_S_copy(_CharT*, const _CharT*, size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:431:21,
+    inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Allocator>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::_M_replace(size_type, size_type, const _CharT*, size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.tcc:532:22,
+    inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Alloc>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::assign(const _CharT*) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:1655:19,
+    inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Alloc>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::operator=(const _CharT*) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:823:28,
+    inlined from ‘std::string rocksdb::SliceTransform::AsString() const’ at /tmp/rocksdb_build_WOUvuh/rocksdb_src/util/slice.cc:235:22:
+/usr/include/c++/12/bits/char_traits.h:435:56: warning: ‘void* __builtin_memcpy(void*, const void*, long unsigned int)’ accessing 9223372036854775810 or more bytes at offsets -4611686018427387902 and [-4611686018427387903, 4611686018427387904] may overlap up to 9223372036854775813 bytes at offset -3 [-Wrestrict]
+  435 |         return static_cast<char_type*>(__builtin_memcpy(__s1, __s2, __n));
+      |                                        ~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+[ 78%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/compaction_filters/remove_emptyvalue_compactionfilter.cc.o
+[ 78%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/counted_fs.cc.o
+[ 78%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/debug.cc.o
+[ 78%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/env_mirror.cc.o
+[ 78%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/env_timed.cc.o
+[ 78%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/fault_injection_env.cc.o
+[ 78%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/fault_injection_fs.cc.o
+[ 78%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/fault_injection_secondary_cache.cc.o
+[ 80%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/leveldb_options/leveldb_options.cc.o
+[ 80%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/memory/memory_util.cc.o
+[ 80%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/merge_operators.cc.o
+[ 80%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/merge_operators/bytesxor.cc.o
+[ 80%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/merge_operators/max.cc.o
+[ 80%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/merge_operators/put.cc.o
+[ 80%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/merge_operators/sortlist.cc.o
+In file included from /usr/include/c++/12/ios:40,
+                 from /usr/include/c++/12/ostream:38,
+                 from /usr/include/c++/12/bits/unique_ptr.h:41,
+                 from /usr/include/c++/12/memory:75,
+                 from /tmp/rocksdb_build_WOUvuh/rocksdb_src/utilities/blob_db/blob_dump_tool.h:7,
+                 from /tmp/rocksdb_build_WOUvuh/rocksdb_src/utilities/blob_db/blob_dump_tool.cc:6:
+In static member function ‘static constexpr std::char_traits<char>::char_type* std::char_traits<char>::copy(char_type*, const char_type*, std::size_t)’,
+    inlined from ‘static constexpr void std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::_S_copy(_CharT*, const _CharT*, size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:431:21,
+    inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Allocator>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::_M_replace(size_type, size_type, const _CharT*, size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.tcc:532:22,
+    inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Alloc>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::replace(size_type, size_type, const _CharT*, size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:2179:19,
+    inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Alloc>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::insert(size_type, const _CharT*) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:1936:22,
+    inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Allocator> std::operator+(const _CharT*, __cxx11::basic_string<_CharT, _Traits, _Allocator>&&) [with _CharT = char; _Traits = char_traits<char>; _Alloc = allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:3549:36,
+    inlined from ‘std::string rocksdb::blob_db::BlobDumpTool::GetString(std::pair<_FIter, _FIter>) [with T = long unsigned int]’ at /tmp/rocksdb_build_WOUvuh/rocksdb_src/utilities/blob_db/blob_dump_tool.cc:283:76:
+/usr/include/c++/12/bits/char_traits.h:435:56: warning: ‘void* __builtin_memcpy(void*, const void*, long unsigned int)’ accessing 9223372036854775810 or more bytes at offsets [2, 9223372036854775807] and 1 may overlap up to 9223372036854775813 bytes at offset -3 [-Wrestrict]
+  435 |         return static_cast<char_type*>(__builtin_memcpy(__s1, __s2, __n));
+      |                                        ~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+[ 82%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/merge_operators/string_append/stringappend.cc.o
+[ 82%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/merge_operators/string_append/stringappend2.cc.o
+[ 82%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/object_registry.cc.o
+[ 82%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/merge_operators/uint64add.cc.o
+[ 82%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/options/options_util.cc.o
+[ 82%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/option_change_migration/option_change_migration.cc.o
+[ 82%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/persistent_cache/block_cache_tier.cc.o
+[ 82%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/persistent_cache/block_cache_tier_file.cc.o
+[ 84%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/persistent_cache/block_cache_tier_metadata.cc.o
+[ 84%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/persistent_cache/persistent_cache_tier.cc.o
+[ 84%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/persistent_cache/volatile_tier_impl.cc.o
+[ 84%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/secondary_index/secondary_index_iterator.cc.o
+[ 84%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/secondary_index/simple_secondary_index.cc.o
+[ 84%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/simulator_cache/cache_simulator.cc.o
+[ 84%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/simulator_cache/sim_cache.cc.o
+[ 84%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/table_properties_collectors/compact_for_tiering_collector.cc.o
+[ 86%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/table_properties_collectors/compact_on_deletion_collector.cc.o
+[ 86%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/trace/file_trace_reader_writer.cc.o
+[ 86%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/trace/replayer_impl.cc.o
+[ 86%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/transactions/lock/lock_manager.cc.o
+[ 86%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/transactions/lock/point/point_lock_tracker.cc.o
+[ 86%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/transactions/lock/point/point_lock_manager.cc.o
+[ 86%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/transactions/lock/range/range_tree/range_tree_lock_manager.cc.o
+[ 86%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/transactions/lock/range/range_tree/range_tree_lock_tracker.cc.o
+[ 89%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/transactions/optimistic_transaction_db_impl.cc.o
+[ 89%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/transactions/optimistic_transaction.cc.o
+[ 89%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/transactions/pessimistic_transaction.cc.o
+[ 89%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/transactions/pessimistic_transaction_db.cc.o
+[ 89%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/transactions/snapshot_checker.cc.o
+[ 89%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/transactions/transaction_base.cc.o
+[ 89%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/transactions/transaction_db_mutex_impl.cc.o
+[ 89%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/transactions/transaction_util.cc.o
+[ 91%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/transactions/write_prepared_txn.cc.o
+[ 91%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/transactions/write_prepared_txn_db.cc.o
+[ 91%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/transactions/write_unprepared_txn.cc.o
+[ 91%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/transactions/write_unprepared_txn_db.cc.o
+[ 91%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/trie_index/bitvector.cc.o
+[ 91%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/trie_index/louds_trie.cc.o
+[ 91%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/trie_index/trie_index_factory.cc.o
+[ 93%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/types_util.cc.o
+[ 93%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/ttl/db_ttl_impl.cc.o
+[ 93%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/wal_filter.cc.o
+[ 93%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/write_batch_with_index/write_batch_with_index.cc.o
+[ 93%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/write_batch_with_index/write_batch_with_index_internal.cc.o
+[ 93%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/transactions/lock/range/range_tree/lib/locktree/concurrent_tree.cc.o
+[ 93%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/transactions/lock/range/range_tree/lib/locktree/keyrange.cc.o
+[ 93%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/transactions/lock/range/range_tree/lib/locktree/lock_request.cc.o
+[ 95%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/transactions/lock/range/range_tree/lib/locktree/locktree.cc.o
+[ 95%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/transactions/lock/range/range_tree/lib/locktree/manager.cc.o
+[ 95%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/transactions/lock/range/range_tree/lib/locktree/range_buffer.cc.o
+[ 95%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/transactions/lock/range/range_tree/lib/locktree/treenode.cc.o
+[ 95%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/transactions/lock/range/range_tree/lib/locktree/txnid_set.cc.o
+[ 95%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/transactions/lock/range/range_tree/lib/locktree/wfg.cc.o
+[ 95%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/transactions/lock/range/range_tree/lib/standalone_port.cc.o
+[ 95%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/transactions/lock/range/range_tree/lib/util/dbt.cc.o
+[ 97%] Building CXX object CMakeFiles/rocksdb-shared.dir/utilities/transactions/lock/range/range_tree/lib/util/memarena.cc.o
+[ 97%] Building CXX object CMakeFiles/rocksdb-shared.dir/util/crc32c_arm64.cc.o
+[ 97%] Building CXX object CMakeFiles/rocksdb-shared.dir/port/port_posix.cc.o
+[ 97%] Building CXX object CMakeFiles/rocksdb-shared.dir/env/env_posix.cc.o
+[ 97%] Building CXX object CMakeFiles/rocksdb-shared.dir/env/fs_posix.cc.o
+[ 97%] Building CXX object CMakeFiles/rocksdb-shared.dir/env/io_posix.cc.o
+[ 97%] Building CXX object CMakeFiles/rocksdb-shared.dir/build_version.cc.o
+In file included from /usr/include/c++/12/string:40,
+                 from /usr/include/c++/12/stdexcept:39,
+                 from /usr/include/c++/12/system_error:41,
+                 from /usr/include/c++/12/bits/std_mutex.h:39,
+                 from /usr/include/c++/12/bits/atomic_wait.h:49,
+                 from /usr/include/c++/12/bits/atomic_base.h:41,
+                 from /usr/include/c++/12/atomic:41,
+                 from /tmp/rocksdb_build_WOUvuh/rocksdb_src/env/io_posix.h:27,
+                 from /tmp/rocksdb_build_WOUvuh/rocksdb_src/env/io_posix.cc:11:
+In static member function ‘static constexpr std::char_traits<char>::char_type* std::char_traits<char>::copy(char_type*, const char_type*, std::size_t)’,
+    inlined from ‘static constexpr void std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::_S_copy(_CharT*, const _CharT*, size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:431:21,
+    inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Allocator>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::_M_replace(size_type, size_type, const _CharT*, size_type) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.tcc:532:22,
+    inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Alloc>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::assign(const _CharT*) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:1655:19,
+    inlined from ‘constexpr std::__cxx11::basic_string<_CharT, _Traits, _Alloc>& std::__cxx11::basic_string<_CharT, _Traits, _Alloc>::operator=(const _CharT*) [with _CharT = char; _Traits = std::char_traits<char>; _Alloc = std::allocator<char>]’ at /usr/include/c++/12/bits/basic_string.h:823:28,
+    inlined from ‘size_t rocksdb::LogicalBlockSizeCache::GetLogicalBlockSize(const std::string&, int)’ at /tmp/rocksdb_build_WOUvuh/rocksdb_src/env/io_posix.cc:443:11:
+/usr/include/c++/12/bits/char_traits.h:435:56: warning: ‘void* __builtin_memcpy(void*, const void*, long unsigned int)’ accessing 9223372036854775810 or more bytes at offsets [2, 9223372036854775807] and 1 may overlap up to 9223372036854775813 bytes at offset -3 [-Wrestrict]
+  435 |         return static_cast<char_type*>(__builtin_memcpy(__s1, __s2, __n));
+      |                                        ~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+[ 97%] Linking CXX shared library librocksdb.so
+[ 97%] Built target rocksdb-shared
+[ 97%] Building CXX object CMakeFiles/db_bench.dir/tools/simulated_hybrid_file_system.cc.o
+[ 97%] Building CXX object CMakeFiles/db_bench.dir/tools/db_bench_tool.cc.o
+[ 97%] Building CXX object CMakeFiles/db_bench.dir/tools/db_bench.cc.o
+[100%] Building CXX object CMakeFiles/db_bench.dir/tools/tool_hooks.cc.o
+[100%] Linking CXX executable db_bench
+[100%] Built target db_bench
+[PHASE1] Finding db_bench binary...
+[PHASE1] db_bench found at /tmp/rocksdb_build_WOUvuh/build/db_bench
+[PHASE1] Build phase complete
+[PHASE2] === Phase 2: Collect Version Info ===
+[PHASE2] Version info saved (OS: openEuler 24.03 SP3, GCC: 12.3.1)
+[PHASE3] === Phase 3: Run Benchmarks ===
+[PHASE3A] Running KV operations benchmark...
+[BENCHMARK_KV] Iteration 1/1, DB: /tmp/rocksdb_bench_9u4w8c5q
+[BENCHMARK_KV] Output written to /root/tian/Tian/tests/rocksdb/results/v11.1.2/benchmark_kv.json (4 workloads)
+[BENCHMARK_KV] fillseq: ops/sec=180375.0, latency=5.54us, throughput=178.9MB/s
+[BENCHMARK_KV] readrandom: ops/sec=152020.0, latency=6.58us, throughput=150.8MB/s
+[BENCHMARK_KV] overwrite: ops/sec=143449.0, latency=6.97us, throughput=142.3MB/s
+[BENCHMARK_KV] readwhilewriting: ops/sec=73328.0, latency=13.64us, throughput=72.7MB/s
+[PHASE3B] Running micro benchmark...
+[MICRO] Running thread_scaling...
+[MICRO] thread threads_1: {'ops_per_sec': 1598363.0}
+[MICRO] thread threads_2: {'ops_per_sec': 3190199.0}
+[MICRO] thread threads_4: {'ops_per_sec': 6356975.0}
+[MICRO] thread threads_8: {'ops_per_sec': 12718803.0}
+[MICRO] thread threads_32: {'ops_per_sec': 38109302.0}
+[MICRO] Running compression_sweep...
+[MICRO] compression_none: {'ops_per_sec': 181165.0, 'mb_per_sec': 179.7}
+[MICRO] compression_snappy: {'ops_per_sec': 176787.0, 'mb_per_sec': 175.3}
+[MICRO] compression_zstd: {'ops_per_sec': 177941.0, 'mb_per_sec': 176.5}
+[MICRO] Running value_size_sweep...
+[MICRO] value_size_64: {'ops_per_sec': 243444.0, 'mb_per_sec': 18.6}
+[MICRO] value_size_256: {'ops_per_sec': 231962.0, 'mb_per_sec': 60.2}
+[MICRO] value_size_1024: {'ops_per_sec': 178952.0, 'mb_per_sec': 177.5}
+[MICRO] value_size_4096: {'ops_per_sec': 93641.0, 'mb_per_sec': 367.2}
+[MICRO] Output written to /root/tian/Tian/tests/rocksdb/results/v11.1.2/micro_benchmark.json
+[PHASE4] === Phase 4: Aggregate & Report ===
+[PHASE4] Reports generated:
+[PHASE4]   JSON: /root/tian/Tian/tests/rocksdb/results/v11.1.2/results.json
+[PHASE4]   TXT:  /root/tian/Tian/tests/rocksdb/results/v11.1.2/results.txt
+[PHASE4]   LOG:  /root/tian/Tian/tests/rocksdb/results/v11.1.2/results.log
+[BUILD] Cleaning up: /tmp/rocksdb_build_WOUvuh

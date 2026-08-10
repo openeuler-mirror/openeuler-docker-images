@@ -1,0 +1,185 @@
+{
+  "test_time": "2026-08-10T02:21:26Z",
+  "environment": {
+    "test_time": "2026-08-10T02:21:26Z",
+    "Model": "Kunpeng-920",
+    "architecture": "aarch64",
+    "kernel": "6.6.0-132.0.0.111.oe2403sp3.aarch64",
+    "os": "openEuler 24.03 SP3",
+    "cpu_model": "ARM64 CPU (32 cores)",
+    "cpu_cores": 32,
+    "software_name": "rocksdb",
+    "software_version": "11.8.0",
+    "python_version": "Python 3.11.6",
+    "gcc_version": "12.3.1"
+  },
+  "benchmarks": {
+    "primary": {
+      "benchmark": "kv_ops",
+      "description": "RocksDB LSM-tree KV operations benchmark (100000 keys, 16B key, 1024B value, snappy compression) on ARM64",
+      "reference": "https://github.com/facebook/rocksdb",
+      "software": "rocksdb",
+      "version": "11.8.0",
+      "architecture": "arm64",
+      "timestamp": "2026-08-10T02:21:30Z",
+      "performance_metrics": {
+        "ops_per_sec": {
+          "unit": "ops/sec",
+          "description": "Operations per second"
+        },
+        "micros_per_op": {
+          "unit": "us",
+          "description": "Microseconds per operation"
+        },
+        "mb_per_sec": {
+          "unit": "MB/s",
+          "description": "Throughput in megabytes per second"
+        }
+      },
+      "parameters": {
+        "num_keys": 100000,
+        "key_size": 16,
+        "value_size": 1024,
+        "compression": "snappy",
+        "threads": 1,
+        "iterations": 1,
+        "workloads": [
+          "fillseq",
+          "readrandom",
+          "overwrite",
+          "readwhilewriting"
+        ]
+      },
+      "results_summary": {
+        "fillseq": {
+          "ops_per_sec": 169663.0,
+          "micros_per_op": 5.89,
+          "mb_per_sec": 168.3
+        },
+        "readrandom": {
+          "ops_per_sec": 147181.0,
+          "micros_per_op": 6.79,
+          "mb_per_sec": 146.0
+        },
+        "overwrite": {
+          "ops_per_sec": 138535.0,
+          "micros_per_op": 7.22,
+          "mb_per_sec": 137.4
+        },
+        "readwhilewriting": {
+          "ops_per_sec": 65328.0,
+          "micros_per_op": 15.3,
+          "mb_per_sec": 64.8
+        }
+      }
+    },
+    "micro": {
+      "benchmark": "micro_operations",
+      "description": "RocksDB micro: thread scaling, compression type sweep, value size sweep on ARM64",
+      "reference": "https://github.com/facebook/rocksdb",
+      "software": "rocksdb",
+      "version": "11.8.0",
+      "architecture": "arm64",
+      "timestamp": "2026-08-10T02:21:39Z",
+      "performance_metrics": {
+        "ops_per_sec": {
+          "unit": "ops/sec",
+          "description": "Operations per second"
+        },
+        "mb_per_sec": {
+          "unit": "MB/s",
+          "description": "Throughput in MB/s"
+        }
+      },
+      "parameters": {
+        "num_keys": 100000,
+        "key_size": 16,
+        "value_size": 1024,
+        "max_threads": 32,
+        "iterations": 1,
+        "thread_counts": [
+          "1",
+          "2",
+          "4",
+          "8",
+          "all"
+        ],
+        "compression_types": [
+          "none",
+          "snappy",
+          "zstd"
+        ],
+        "value_sizes": [
+          64,
+          256,
+          1024,
+          4096
+        ]
+      },
+      "results": {
+        "thread_scaling": {
+          "threads_1": {
+            "ops_per_sec": 1444064.0
+          },
+          "threads_2": {
+            "ops_per_sec": 2887294.0
+          },
+          "threads_4": {
+            "ops_per_sec": 5729017.0
+          },
+          "threads_8": {
+            "ops_per_sec": 11474304.0
+          },
+          "threads_32": {
+            "ops_per_sec": 40676759.0
+          }
+        },
+        "compression_sweep": {
+          "compression_none": {
+            "ops_per_sec": 172016.0,
+            "mb_per_sec": 170.6
+          },
+          "compression_snappy": {
+            "ops_per_sec": 171369.0,
+            "mb_per_sec": 170.0
+          },
+          "compression_zstd": {
+            "ops_per_sec": 172100.0,
+            "mb_per_sec": 170.7
+          }
+        },
+        "value_size_sweep": {
+          "value_size_64": {
+            "ops_per_sec": 231907.0,
+            "mb_per_sec": 17.7
+          },
+          "value_size_256": {
+            "ops_per_sec": 217656.0,
+            "mb_per_sec": 56.5
+          },
+          "value_size_1024": {
+            "ops_per_sec": 173893.0,
+            "mb_per_sec": 172.5
+          },
+          "value_size_4096": {
+            "ops_per_sec": 91749.0,
+            "mb_per_sec": 359.8
+          }
+        }
+      }
+    }
+  },
+  "summary": {
+    "fillseq_ops_per_sec": 169663.0,
+    "readrandom_ops_per_sec": 147181.0,
+    "overwrite_ops_per_sec": 138535.0,
+    "readwhilewriting_ops_per_sec": 65328.0,
+    "avg_write_ops_per_sec": 154099.0,
+    "max_write_ops_per_sec": 169663.0,
+    "avg_read_ops_per_sec": 106254.5,
+    "max_read_ops_per_sec": 147181.0,
+    "zstd_vs_none_ops_ratio": 1.0
+  },
+  "software": "rocksdb",
+  "version": "11.8.0"
+}
