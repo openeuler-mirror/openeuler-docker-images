@@ -1,0 +1,152 @@
+{
+  "benchmark": "oltp",
+  "description": "MySQL OLTP benchmark via sysbench (4 tables x 10000 rows, 60s per test) on ARM64",
+  "reference": "https://github.com/mysql/mysql-server",
+  "software": "mysql",
+  "version": "8.0",
+  "architecture": "arm64",
+  "timestamp": "2026-08-10T08:05:00Z",
+  "performance_metrics": {
+    "tps": {
+      "unit": "trans/sec",
+      "description": "Transactions per second"
+    },
+    "qps": {
+      "unit": "queries/sec",
+      "description": "Queries per second"
+    },
+    "avg_latency_ms": {
+      "unit": "ms",
+      "description": "Average latency"
+    },
+    "p95_latency_ms": {
+      "unit": "ms",
+      "description": "95th percentile latency"
+    }
+  },
+  "parameters": {
+    "workloads": [
+      "oltp_point_select",
+      "oltp_read_write",
+      "oltp_read_only",
+      "oltp_write_only"
+    ],
+    "thread_levels": [
+      1,
+      4,
+      16,
+      32
+    ],
+    "tables": 4,
+    "table_size": 10000,
+    "time_per_test": 60,
+    "iterations": 1,
+    "connection": "root@127.0.0.1:3306/sbtest"
+  },
+  "results_summary": {
+    "oltp_point_select": {
+      "threads_1": {
+        "tps": 6057.48,
+        "qps": 6057.48,
+        "avg_latency_ms": 0.16,
+        "p95_latency_ms": 0.21
+      },
+      "threads_4": {
+        "tps": 26622.1,
+        "qps": 26622.1,
+        "avg_latency_ms": 0.15,
+        "p95_latency_ms": 0.18
+      },
+      "threads_16": {
+        "tps": 103208.47,
+        "qps": 103208.47,
+        "avg_latency_ms": 0.15,
+        "p95_latency_ms": 0.19
+      },
+      "threads_32": {
+        "tps": 154720.37,
+        "qps": 154720.37,
+        "avg_latency_ms": 0.21,
+        "p95_latency_ms": 0.36
+      }
+    },
+    "oltp_read_write": {
+      "threads_1": {
+        "tps": 124.91,
+        "qps": 2498.2,
+        "avg_latency_ms": 8.0,
+        "p95_latency_ms": 10.27
+      },
+      "threads_4": {
+        "tps": 396.89,
+        "qps": 7937.85,
+        "avg_latency_ms": 10.08,
+        "p95_latency_ms": 14.21
+      },
+      "threads_16": {
+        "tps": 1269.96,
+        "qps": 25400.94,
+        "avg_latency_ms": 12.6,
+        "p95_latency_ms": 19.65
+      },
+      "threads_32": {
+        "tps": 2038.08,
+        "qps": 40768.53,
+        "avg_latency_ms": 15.7,
+        "p95_latency_ms": 27.66
+      }
+    },
+    "oltp_read_only": {
+      "threads_1": {
+        "tps": 364.88,
+        "qps": 5838.16,
+        "avg_latency_ms": 2.74,
+        "p95_latency_ms": 3.07
+      },
+      "threads_4": {
+        "tps": 1422.94,
+        "qps": 22767.04,
+        "avg_latency_ms": 2.81,
+        "p95_latency_ms": 3.13
+      },
+      "threads_16": {
+        "tps": 5558.51,
+        "qps": 88936.18,
+        "avg_latency_ms": 2.88,
+        "p95_latency_ms": 3.13
+      },
+      "threads_32": {
+        "tps": 8929.06,
+        "qps": 142864.91,
+        "avg_latency_ms": 3.58,
+        "p95_latency_ms": 5.99
+      }
+    },
+    "oltp_write_only": {
+      "threads_1": {
+        "tps": 172.26,
+        "qps": 1033.55,
+        "avg_latency_ms": 5.8,
+        "p95_latency_ms": 9.39
+      },
+      "threads_4": {
+        "tps": 500.75,
+        "qps": 3004.51,
+        "avg_latency_ms": 7.98,
+        "p95_latency_ms": 14.21
+      },
+      "threads_16": {
+        "tps": 1297.95,
+        "qps": 7788.22,
+        "avg_latency_ms": 12.32,
+        "p95_latency_ms": 31.37
+      },
+      "threads_32": {
+        "tps": 1763.42,
+        "qps": 10581.58,
+        "avg_latency_ms": 18.14,
+        "p95_latency_ms": 46.63
+      }
+    }
+  }
+}
