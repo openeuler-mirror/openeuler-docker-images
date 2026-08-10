@@ -1,0 +1,229 @@
+{
+  "benchmark": "ann_search",
+  "description": "Approximate Nearest Neighbor search benchmark following ann-benchmarks methodology for ScaNN",
+  "reference": "https://github.com/google-research/google-research/tree/master/scann",
+  "timestamp": "2026-08-10T01:57:59.261985",
+  "performance_metrics": {
+    "qps": {
+      "unit": "queries/sec",
+      "description": "Queries per second throughput at different leaves_to_search values"
+    },
+    "recall_at_k": {
+      "unit": "ratio (0-1)",
+      "description": "Recall@10 - fraction of true nearest neighbors found"
+    },
+    "build_time": {
+      "unit": "seconds",
+      "description": "Time to train ScaNN AH index and create searcher"
+    },
+    "latency_per_query": {
+      "unit": "microseconds",
+      "description": "Average latency per single query"
+    }
+  },
+  "dataset_info": {
+    "name": "synthetic_random_float32",
+    "size": "100K vectors x 128 dimensions",
+    "source": "numpy random uniform distribution"
+  },
+  "parameters": {
+    "num_vectors": 100000,
+    "dimension": 128,
+    "num_queries": 10000,
+    "k": 10,
+    "iterations": 1,
+    "leaves_to_search_values": [
+      10,
+      50,
+      100,
+      200,
+      500
+    ],
+    "index_configs": {
+      "ScaNN_L2_AH": {
+        "distance": "squared_l2",
+        "description": "ScaNN asymmetric hashing (AH) tree, squared L2 distance"
+      },
+      "ScaNN_IP_AH": {
+        "distance": "dot_product",
+        "description": "ScaNN asymmetric hashing (AH) tree, inner product (dot) distance"
+      }
+    }
+  },
+  "results_summary": {
+    "ScaNN_L2_AH": {
+      "avg_build_time_s": 6.5123,
+      "avg_leaves_sweep": {
+        "10": {
+          "search_time_s": 0.7251,
+          "qps": 13790.72,
+          "latency_per_query_us": 72.51,
+          "recall_at_10": 0.1133,
+          "leaves_to_search": 10.0
+        },
+        "50": {
+          "search_time_s": 1.6282,
+          "qps": 6141.9,
+          "latency_per_query_us": 162.82,
+          "recall_at_10": 0.3147,
+          "leaves_to_search": 50.0
+        },
+        "100": {
+          "search_time_s": 2.6065,
+          "qps": 3836.59,
+          "latency_per_query_us": 260.65,
+          "recall_at_10": 0.4606,
+          "leaves_to_search": 100.0
+        },
+        "200": {
+          "search_time_s": 4.4196,
+          "qps": 2262.67,
+          "latency_per_query_us": 441.95,
+          "recall_at_10": 0.6428,
+          "leaves_to_search": 200.0
+        },
+        "500": {
+          "search_time_s": 9.3071,
+          "qps": 1074.45,
+          "latency_per_query_us": 930.71,
+          "recall_at_10": 0.8816,
+          "leaves_to_search": 500.0
+        }
+      }
+    },
+    "ScaNN_IP_AH": {
+      "avg_build_time_s": 3.5443,
+      "avg_leaves_sweep": {
+        "10": {
+          "search_time_s": 0.5184,
+          "qps": 19291.31,
+          "latency_per_query_us": 51.84,
+          "recall_at_10": 0.1073,
+          "leaves_to_search": 10.0
+        },
+        "50": {
+          "search_time_s": 0.9826,
+          "qps": 10177.21,
+          "latency_per_query_us": 98.26,
+          "recall_at_10": 0.2989,
+          "leaves_to_search": 50.0
+        },
+        "100": {
+          "search_time_s": 1.487,
+          "qps": 6724.98,
+          "latency_per_query_us": 148.7,
+          "recall_at_10": 0.4475,
+          "leaves_to_search": 100.0
+        },
+        "200": {
+          "search_time_s": 2.3747,
+          "qps": 4211.07,
+          "latency_per_query_us": 237.47,
+          "recall_at_10": 0.6427,
+          "leaves_to_search": 200.0
+        },
+        "500": {
+          "search_time_s": 4.8881,
+          "qps": 2045.77,
+          "latency_per_query_us": 488.81,
+          "recall_at_10": 0.9001,
+          "leaves_to_search": 500.0
+        }
+      }
+    }
+  },
+  "results_detailed": {
+    "ScaNN_L2_AH": [
+      {
+        "iteration": 1,
+        "build_time_s": 6.5123,
+        "num_leaves": 1000,
+        "leaves_sweep": {
+          "10": {
+            "search_time_s": 0.725125,
+            "qps": 13790.72,
+            "latency_per_query_us": 72.51,
+            "recall_at_10": 0.1133,
+            "leaves_to_search": 10
+          },
+          "50": {
+            "search_time_s": 1.628161,
+            "qps": 6141.9,
+            "latency_per_query_us": 162.82,
+            "recall_at_10": 0.3147,
+            "leaves_to_search": 50
+          },
+          "100": {
+            "search_time_s": 2.606485,
+            "qps": 3836.59,
+            "latency_per_query_us": 260.65,
+            "recall_at_10": 0.4606,
+            "leaves_to_search": 100
+          },
+          "200": {
+            "search_time_s": 4.41955,
+            "qps": 2262.67,
+            "latency_per_query_us": 441.95,
+            "recall_at_10": 0.6428,
+            "leaves_to_search": 200
+          },
+          "500": {
+            "search_time_s": 9.307072,
+            "qps": 1074.45,
+            "latency_per_query_us": 930.71,
+            "recall_at_10": 0.8816,
+            "leaves_to_search": 500
+          }
+        },
+        "num_vectors": 100000,
+        "num_queries": 10000
+      }
+    ],
+    "ScaNN_IP_AH": [
+      {
+        "iteration": 1,
+        "build_time_s": 3.5443,
+        "num_leaves": 1000,
+        "leaves_sweep": {
+          "10": {
+            "search_time_s": 0.518368,
+            "qps": 19291.31,
+            "latency_per_query_us": 51.84,
+            "recall_at_10": 0.1073,
+            "leaves_to_search": 10
+          },
+          "50": {
+            "search_time_s": 0.982588,
+            "qps": 10177.21,
+            "latency_per_query_us": 98.26,
+            "recall_at_10": 0.2989,
+            "leaves_to_search": 50
+          },
+          "100": {
+            "search_time_s": 1.486994,
+            "qps": 6724.98,
+            "latency_per_query_us": 148.7,
+            "recall_at_10": 0.4475,
+            "leaves_to_search": 100
+          },
+          "200": {
+            "search_time_s": 2.374694,
+            "qps": 4211.07,
+            "latency_per_query_us": 237.47,
+            "recall_at_10": 0.6427,
+            "leaves_to_search": 200
+          },
+          "500": {
+            "search_time_s": 4.888141,
+            "qps": 2045.77,
+            "latency_per_query_us": 488.81,
+            "recall_at_10": 0.9001,
+            "leaves_to_search": 500
+          }
+        },
+        "num_vectors": 100000,
+        "num_queries": 10000
+      }
+    ]
+  }
+}

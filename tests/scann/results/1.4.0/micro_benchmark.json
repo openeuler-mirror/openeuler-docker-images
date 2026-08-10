@@ -1,0 +1,97 @@
+{
+  "benchmark": "micro_operations",
+  "description": "Micro-level benchmarks for core ScaNN operations on ARM64",
+  "reference": "ScaNN library (https://github.com/google-research/google-research/tree/master/scann)",
+  "timestamp": "2026-08-10T01:45:39.458603",
+  "performance_metrics": {
+    "add_rate": {
+      "unit": "vectors/sec",
+      "description": "Vector processing rate during ScaNN AH index training"
+    },
+    "search_qps": {
+      "unit": "queries/sec",
+      "description": "Batch search throughput at different thread counts"
+    },
+    "recall": {
+      "unit": "ratio (0-1)",
+      "description": "Search accuracy at different leaves_to_search values"
+    },
+    "serialization_time": {
+      "unit": "seconds",
+      "description": "Searcher serialize/deserialize time"
+    }
+  },
+  "dataset_info": {
+    "name": "synthetic_random_float32",
+    "size": "100K vectors x 128 dimensions",
+    "source": "numpy random uniform distribution"
+  },
+  "parameters": {
+    "num_vectors": 100000,
+    "dimension": 128,
+    "iterations": 1
+  },
+  "results": {
+    "index_construction": {
+      "avg_time_s": 6.6835,
+      "add_rate_per_sec": 14962.27
+    },
+    "batch_search_multithread": {
+      "threads_1": {
+        "avg_time_s": 2.7238,
+        "avg_qps": 3671.4
+      },
+      "threads_2": {
+        "avg_time_s": 2.7341,
+        "avg_qps": 3657.57
+      },
+      "threads_4": {
+        "avg_time_s": 2.7487,
+        "avg_qps": 3638.1
+      },
+      "threads_8": {
+        "avg_time_s": 2.7272,
+        "avg_qps": 3666.76
+      },
+      "threads_all": {
+        "avg_time_s": 2.6833,
+        "avg_qps": 3726.82
+      }
+    },
+    "leaves_parameter_sweep": {
+      "leaves_10": {
+        "avg_qps": 13042.93,
+        "avg_recall": 0.1129
+      },
+      "leaves_20": {
+        "avg_qps": 10195.98,
+        "avg_recall": 0.1794
+      },
+      "leaves_50": {
+        "avg_qps": 5987.47,
+        "avg_recall": 0.3153
+      },
+      "leaves_100": {
+        "avg_qps": 3657.76,
+        "avg_recall": 0.4639
+      },
+      "leaves_200": {
+        "avg_qps": 2168.4,
+        "avg_recall": 0.6436
+      },
+      "leaves_500": {
+        "avg_qps": 1006.03,
+        "avg_recall": 0.8823
+      },
+      "leaves_1000": {
+        "avg_qps": 560.53,
+        "avg_recall": 0.9669
+      }
+    },
+    "serialization_save_load": {
+      "avg_save_time_s": 0.5948,
+      "avg_load_time_s": 0.0734,
+      "avg_file_size_bytes": 59059498
+    }
+  }
+}
