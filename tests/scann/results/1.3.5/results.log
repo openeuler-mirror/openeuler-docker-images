@@ -1,0 +1,66 @@
+[START] scann Performance Benchmark v1.3.5
+[CHECK] Python3 OK: Python 3.11.6
+[CHECK] json_helper.py OK
+[SETUP] Downloading shUnit2 to /tmp/shunit2_Qzo7qu...
+[START] scann Performance Benchmark - v1.3.5 (pip)
+[START] OS: openEuler 24.03 SP3 (openEuler), Build: pip
+[CHECK] Python3 OK: Python 3.11.6
+[CHECK] json_helper.py OK
+[PHASE1] === Phase 1: Install ScaNN v1.3.5 (method: pip) ===
+[PHASE1] ScaNN already importable, skipping install
+[PHASE2] === Phase 2: Collect Version Info ===
+[PHASE2] Version info saved (OS: openEuler 24.03 SP3)
+[PHASE3] === Phase 3: Run Benchmarks ===
+[PHASE3A] Running ANN benchmark...
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1786327027.944866 2499748 partitioner_factory_base.cc:59] Size of sampled dataset for training partition: 100000
+W0000 00:00:1786327028.066163 2499748 gmm_utils.cc:1012] Could not normalize centroid due to zero norm or empty or zero-weight partition.
+I0000 00:00:1786327028.665935 2499748 kmeans_tree_partitioner_utils.h:90] PartitionerFactory ran in 721.01268ms.
+I0000 00:00:1786327065.316614 2499748 partitioner_factory_base.cc:59] Size of sampled dataset for training partition: 100000
+I0000 00:00:1786327066.036882 2499748 kmeans_tree_partitioner_utils.h:90] PartitionerFactory ran in 720.20851ms.
+[ANN] Preparing data for ScaNN_L2_AH (distance=squared_l2)...
+[ANN] Computing ground truth for distance=squared_l2...
+[ANN] Benchmarking ScaNN_L2_AH: ScaNN asymmetric hashing (AH) tree, squared L2 distance
+[ANN] ScaNN_L2_AH iteration 1/1
+[ANN] Preparing data for ScaNN_IP_AH (distance=dot_product)...
+[ANN] Computing ground truth for distance=dot_product...
+[ANN] Benchmarking ScaNN_IP_AH: ScaNN asymmetric hashing (AH) tree, inner product (dot) distance
+[ANN] ScaNN_IP_AH iteration 1/1
+[ANN] Results saved to: /root/tian/Tian/tests/scann/results/1.3.5/benchmark_ann.json
+[ANN] ScaNN_L2_AH: Build=6.5123s
+[ANN]   leaves=10: QPS=13790.72, Recall@10=0.1133
+[ANN]   leaves=50: QPS=6141.9, Recall@10=0.3147
+[ANN]   leaves=100: QPS=3836.59, Recall@10=0.4606
+[ANN]   leaves=200: QPS=2262.67, Recall@10=0.6428
+[ANN]   leaves=500: QPS=1074.45, Recall@10=0.8816
+[ANN] ScaNN_IP_AH: Build=3.5443s
+[ANN]   leaves=10: QPS=19291.31, Recall@10=0.1073
+[ANN]   leaves=50: QPS=10177.21, Recall@10=0.2989
+[ANN]   leaves=100: QPS=6724.98, Recall@10=0.4475
+[ANN]   leaves=200: QPS=4211.07, Recall@10=0.6427
+[ANN]   leaves=500: QPS=2045.77, Recall@10=0.9001
+[ANN] Benchmark complete
+[PHASE3B] Running micro benchmark...
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1786327079.646670 2499929 partitioner_factory_base.cc:59] Size of sampled dataset for training partition: 100000
+W0000 00:00:1786327079.774113 2499929 gmm_utils.cc:1012] Could not normalize centroid due to zero norm or empty or zero-weight partition.
+I0000 00:00:1786327080.367954 2499929 kmeans_tree_partitioner_utils.h:90] PartitionerFactory ran in 721.2151ms.
+I0000 00:00:1786327086.197679 2499929 partitioner_factory_base.cc:59] Size of sampled dataset for training partition: 100000
+I0000 00:00:1786327086.912863 2499929 kmeans_tree_partitioner_utils.h:90] PartitionerFactory ran in 715.13381ms.
+[MICRO] Generating 100000 vectors of dimension 128...
+[MICRO] Running index_construction...
+[MICRO] Building searcher for search benchmarks...
+[MICRO] Running batch_search_multithread...
+[MICRO] Running leaves_parameter_sweep...
+[MICRO] Running serialization_save_load...
+[MICRO] Results saved to: /root/tian/Tian/tests/scann/results/1.3.5/micro_benchmark.json
+[MICRO] index_construction: {'avg_time_s': 6.5472, 'add_rate_per_sec': 15273.59}
+[MICRO] batch_search_multithread: {'threads_1': {'avg_time_s': 2.643, 'avg_qps': 3783.54}, 'threads_2': {'avg_time_s': 2.6582, 'avg_qps': 3762.01}, 'threads_4': {'avg_time_s': 2.656, 'avg_qps': 3765.06}, 'threads_8': {'avg_time_s': 2.6453, 'avg_qps': 3780.29}, 'threads_all': {'avg_time_s': 2.6546, 'avg_qps': 3767.06}}
+[MICRO] leaves_parameter_sweep: {'leaves_10': {'avg_qps': 13844.22, 'avg_recall': 0.1131}, 'leaves_20': {'avg_qps': 10215.03, 'avg_recall': 0.1771}, 'leaves_50': {'avg_qps': 5972.26, 'avg_recall': 0.3129}, 'leaves_100': {'avg_qps': 3747.95, 'avg_recall': 0.4603}, 'leaves_200': {'avg_qps': 2165.9, 'avg_recall': 0.6445}, 'leaves_500': {'avg_qps': 875.97, 'avg_recall': 0.8819}, 'leaves_1000': {'avg_qps': 403.93, 'avg_recall': 0.9669}}
+[MICRO] serialization_save_load: {'avg_save_time_s': 0.7254, 'avg_load_time_s': 0.3038, 'avg_file_size_bytes': 59059498}
+[MICRO] Benchmark complete
+[PHASE4] === Phase 4: Aggregate & Report ===
+[PHASE4] Reports generated:
+[PHASE4]   JSON: /root/tian/Tian/tests/scann/results/1.3.5/results.json
+[PHASE4]   TXT:  /root/tian/Tian/tests/scann/results/1.3.5/results.txt
+[PHASE4]   LOG:  /root/tian/Tian/tests/scann/results/1.3.5/results.log

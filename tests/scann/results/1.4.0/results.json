@@ -1,0 +1,355 @@
+{
+  "test_time": "2026-08-10T01:42:49Z",
+  "environment": {
+    "test_time": "2026-08-10T01:42:49Z",
+    "Model": "Kunpeng-920",
+    "architecture": "aarch64",
+    "kernel": "6.6.0-132.0.0.111.oe2403sp3.aarch64",
+    "os": "openEuler 24.03 SP3",
+    "cpu_model": "ARM64 CPU (32 cores)",
+    "cpu_cores": 32,
+    "software_name": "scann",
+    "software_version": "1.4.0",
+    "python_version": "Python 3.11.6",
+    "numpy_version": "2.4.6"
+  },
+  "benchmarks": {
+    "ann": {
+      "benchmark": "ann_search",
+      "description": "Approximate Nearest Neighbor search benchmark following ann-benchmarks methodology for ScaNN",
+      "reference": "https://github.com/google-research/google-research/tree/master/scann",
+      "timestamp": "2026-08-10T01:44:09.690128",
+      "performance_metrics": {
+        "qps": {
+          "unit": "queries/sec",
+          "description": "Queries per second throughput at different leaves_to_search values"
+        },
+        "recall_at_k": {
+          "unit": "ratio (0-1)",
+          "description": "Recall@10 - fraction of true nearest neighbors found"
+        },
+        "build_time": {
+          "unit": "seconds",
+          "description": "Time to train ScaNN AH index and create searcher"
+        },
+        "latency_per_query": {
+          "unit": "microseconds",
+          "description": "Average latency per single query"
+        }
+      },
+      "dataset_info": {
+        "name": "synthetic_random_float32",
+        "size": "100K vectors x 128 dimensions",
+        "source": "numpy random uniform distribution"
+      },
+      "parameters": {
+        "num_vectors": 100000,
+        "dimension": 128,
+        "num_queries": 10000,
+        "k": 10,
+        "iterations": 1,
+        "leaves_to_search_values": [
+          10,
+          50,
+          100,
+          200,
+          500
+        ],
+        "index_configs": {
+          "ScaNN_L2_AH": {
+            "distance": "squared_l2",
+            "description": "ScaNN asymmetric hashing (AH) tree, squared L2 distance"
+          },
+          "ScaNN_IP_AH": {
+            "distance": "dot_product",
+            "description": "ScaNN asymmetric hashing (AH) tree, inner product (dot) distance"
+          }
+        }
+      },
+      "results_summary": {
+        "ScaNN_L2_AH": {
+          "avg_build_time_s": 6.507,
+          "avg_leaves_sweep": {
+            "10": {
+              "search_time_s": 0.7483,
+              "qps": 13362.75,
+              "latency_per_query_us": 74.83,
+              "recall_at_10": 0.1134,
+              "leaves_to_search": 10.0
+            },
+            "50": {
+              "search_time_s": 1.5909,
+              "qps": 6285.91,
+              "latency_per_query_us": 159.09,
+              "recall_at_10": 0.314,
+              "leaves_to_search": 50.0
+            },
+            "100": {
+              "search_time_s": 2.5448,
+              "qps": 3929.6,
+              "latency_per_query_us": 254.48,
+              "recall_at_10": 0.4625,
+              "leaves_to_search": 100.0
+            },
+            "200": {
+              "search_time_s": 4.4587,
+              "qps": 2242.79,
+              "latency_per_query_us": 445.87,
+              "recall_at_10": 0.6434,
+              "leaves_to_search": 200.0
+            },
+            "500": {
+              "search_time_s": 9.4914,
+              "qps": 1053.58,
+              "latency_per_query_us": 949.14,
+              "recall_at_10": 0.8821,
+              "leaves_to_search": 500.0
+            }
+          }
+        },
+        "ScaNN_IP_AH": {
+          "avg_build_time_s": 3.6386,
+          "avg_leaves_sweep": {
+            "10": {
+              "search_time_s": 0.5412,
+              "qps": 18476.29,
+              "latency_per_query_us": 54.12,
+              "recall_at_10": 0.0975,
+              "leaves_to_search": 10.0
+            },
+            "50": {
+              "search_time_s": 0.9992,
+              "qps": 10007.57,
+              "latency_per_query_us": 99.92,
+              "recall_at_10": 0.2785,
+              "leaves_to_search": 50.0
+            },
+            "100": {
+              "search_time_s": 1.4768,
+              "qps": 6771.44,
+              "latency_per_query_us": 147.68,
+              "recall_at_10": 0.4209,
+              "leaves_to_search": 100.0
+            },
+            "200": {
+              "search_time_s": 2.3861,
+              "qps": 4190.99,
+              "latency_per_query_us": 238.61,
+              "recall_at_10": 0.6169,
+              "leaves_to_search": 200.0
+            },
+            "500": {
+              "search_time_s": 4.9172,
+              "qps": 2033.66,
+              "latency_per_query_us": 491.72,
+              "recall_at_10": 0.8903,
+              "leaves_to_search": 500.0
+            }
+          }
+        }
+      },
+      "results_detailed": {
+        "ScaNN_L2_AH": [
+          {
+            "iteration": 1,
+            "build_time_s": 6.507,
+            "num_leaves": 1000,
+            "leaves_sweep": {
+              "10": {
+                "search_time_s": 0.748349,
+                "qps": 13362.75,
+                "latency_per_query_us": 74.83,
+                "recall_at_10": 0.1134,
+                "leaves_to_search": 10
+              },
+              "50": {
+                "search_time_s": 1.59086,
+                "qps": 6285.91,
+                "latency_per_query_us": 159.09,
+                "recall_at_10": 0.314,
+                "leaves_to_search": 50
+              },
+              "100": {
+                "search_time_s": 2.54479,
+                "qps": 3929.6,
+                "latency_per_query_us": 254.48,
+                "recall_at_10": 0.4625,
+                "leaves_to_search": 100
+              },
+              "200": {
+                "search_time_s": 4.458736,
+                "qps": 2242.79,
+                "latency_per_query_us": 445.87,
+                "recall_at_10": 0.6434,
+                "leaves_to_search": 200
+              },
+              "500": {
+                "search_time_s": 9.49143,
+                "qps": 1053.58,
+                "latency_per_query_us": 949.14,
+                "recall_at_10": 0.8821,
+                "leaves_to_search": 500
+              }
+            },
+            "num_vectors": 100000,
+            "num_queries": 10000
+          }
+        ],
+        "ScaNN_IP_AH": [
+          {
+            "iteration": 1,
+            "build_time_s": 3.6386,
+            "num_leaves": 1000,
+            "leaves_sweep": {
+              "10": {
+                "search_time_s": 0.541234,
+                "qps": 18476.29,
+                "latency_per_query_us": 54.12,
+                "recall_at_10": 0.0975,
+                "leaves_to_search": 10
+              },
+              "50": {
+                "search_time_s": 0.999243,
+                "qps": 10007.57,
+                "latency_per_query_us": 99.92,
+                "recall_at_10": 0.2785,
+                "leaves_to_search": 50
+              },
+              "100": {
+                "search_time_s": 1.47679,
+                "qps": 6771.44,
+                "latency_per_query_us": 147.68,
+                "recall_at_10": 0.4209,
+                "leaves_to_search": 100
+              },
+              "200": {
+                "search_time_s": 2.386069,
+                "qps": 4190.99,
+                "latency_per_query_us": 238.61,
+                "recall_at_10": 0.6169,
+                "leaves_to_search": 200
+              },
+              "500": {
+                "search_time_s": 4.917249,
+                "qps": 2033.66,
+                "latency_per_query_us": 491.72,
+                "recall_at_10": 0.8903,
+                "leaves_to_search": 500
+              }
+            },
+            "num_vectors": 100000,
+            "num_queries": 10000
+          }
+        ]
+      }
+    },
+    "micro": {
+      "benchmark": "micro_operations",
+      "description": "Micro-level benchmarks for core ScaNN operations on ARM64",
+      "reference": "ScaNN library (https://github.com/google-research/google-research/tree/master/scann)",
+      "timestamp": "2026-08-10T01:45:39.458603",
+      "performance_metrics": {
+        "add_rate": {
+          "unit": "vectors/sec",
+          "description": "Vector processing rate during ScaNN AH index training"
+        },
+        "search_qps": {
+          "unit": "queries/sec",
+          "description": "Batch search throughput at different thread counts"
+        },
+        "recall": {
+          "unit": "ratio (0-1)",
+          "description": "Search accuracy at different leaves_to_search values"
+        },
+        "serialization_time": {
+          "unit": "seconds",
+          "description": "Searcher serialize/deserialize time"
+        }
+      },
+      "dataset_info": {
+        "name": "synthetic_random_float32",
+        "size": "100K vectors x 128 dimensions",
+        "source": "numpy random uniform distribution"
+      },
+      "parameters": {
+        "num_vectors": 100000,
+        "dimension": 128,
+        "iterations": 1
+      },
+      "results": {
+        "index_construction": {
+          "avg_time_s": 6.6835,
+          "add_rate_per_sec": 14962.27
+        },
+        "batch_search_multithread": {
+          "threads_1": {
+            "avg_time_s": 2.7238,
+            "avg_qps": 3671.4
+          },
+          "threads_2": {
+            "avg_time_s": 2.7341,
+            "avg_qps": 3657.57
+          },
+          "threads_4": {
+            "avg_time_s": 2.7487,
+            "avg_qps": 3638.1
+          },
+          "threads_8": {
+            "avg_time_s": 2.7272,
+            "avg_qps": 3666.76
+          },
+          "threads_all": {
+            "avg_time_s": 2.6833,
+            "avg_qps": 3726.82
+          }
+        },
+        "leaves_parameter_sweep": {
+          "leaves_10": {
+            "avg_qps": 13042.93,
+            "avg_recall": 0.1129
+          },
+          "leaves_20": {
+            "avg_qps": 10195.98,
+            "avg_recall": 0.1794
+          },
+          "leaves_50": {
+            "avg_qps": 5987.47,
+            "avg_recall": 0.3153
+          },
+          "leaves_100": {
+            "avg_qps": 3657.76,
+            "avg_recall": 0.4639
+          },
+          "leaves_200": {
+            "avg_qps": 2168.4,
+            "avg_recall": 0.6436
+          },
+          "leaves_500": {
+            "avg_qps": 1006.03,
+            "avg_recall": 0.8823
+          },
+          "leaves_1000": {
+            "avg_qps": 560.53,
+            "avg_recall": 0.9669
+          }
+        },
+        "serialization_save_load": {
+          "avg_save_time_s": 0.5948,
+          "avg_load_time_s": 0.0734,
+          "avg_file_size_bytes": 59059498
+        }
+      }
+    }
+  },
+  "summary": {
+    "avg_qps_leaves50": 8146.74,
+    "max_qps_leaves50": 10007.57,
+    "avg_recall_leaves200": 0.6301,
+    "avg_latency_us_leaves50": 129.5,
+    "max_latency_us_leaves50": 159.09,
+    "avg_index_construction_rate": 14962.27,
+    "multithread_scaling_ratio": 1.02
+  },
+  "software": "scann",
+  "version": "1.4.0"
+}
