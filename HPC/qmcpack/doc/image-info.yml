@@ -49,7 +49,7 @@ dependency:
   - blas
   - lapack
 
-homepage: https://www.qmcpack.org
+homepage: https://github.com/QMCPACK/qmcpack
 upstream:
   version_url: QMCPACK/qmcpack
   backend: GitHub
