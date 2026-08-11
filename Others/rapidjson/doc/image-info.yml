@@ -1,0 +1,102 @@
+name: rapidjson
+category: others
+description: RapidJSON 是一个快速的 C++ JSON 解析器/生成器，同时支持 SAX 和 DOM 风格的 API。它是一个轻量级且完整的头文件库，无需依赖外部库（如 BOOST），甚至无需依赖 STL。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  rapidjson镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.1.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/rapidjson/1.1.0/24.03-lts-sp4/Dockerfile) | rapidjson 1.1.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/rapidjson:{Tag}
+  ```
+
+usage: |
+  - 拉取镜像
+
+    根据需求选择对应的 `{Tag}`。
+    ```
+    docker pull openeuler/rapidjson:{Tag}
+    ```
+
+  - 使用交互式Shell运行
+
+    启动一个带交互式Shell的容器，使用RapidJSON编写和运行自己的C++程序。
+    ```
+    docker run -it --rm openeuler/rapidjson:{Tag} bash
+    ```
+
+  - 示例代码
+
+    以下简单示例取自官方 `simpledom` 示例，将JSON字符串解析为文档（DOM），对DOM做简单修改，最后将DOM序列化为JSON字符串。
+
+    test.cpp
+    ```
+    #include "rapidjson/document.h"
+    #include "rapidjson/writer.h"
+    #include "rapidjson/stringbuffer.h"
+    #include <iostream>
+
+    using namespace rapidjson;
+
+    int main() {
+        const char* json = "{\"project\":\"rapidjson\",\"stars\":10}";
+        Document d;
+        d.Parse(json);
+
+        Value& s = d["stars"];
+        s.SetInt(s.GetInt() + 1);
+
+        StringBuffer buffer;
+        Writer<StringBuffer> writer(buffer);
+        d.Accept(writer);
+
+        std::cout << buffer.GetString() << std::endl;
+        return 0;
+    }
+    ```
+
+  - 编译并运行
+
+    ```
+    g++ -std=c++11 test.cpp -o test
+    ./test
+    ```
+
+    预期输出:
+    ```
+    {"project":"rapidjson","stars":11}
+    ```
+
+  - 查看容器日志
+
+    ```
+    docker logs <container>
+    ```
+
+  - 进入运行中的容器
+
+    ```
+    docker exec -it <container> bash
+    ```
+
+license: MIT License
+similar_packages:
+  - RapidXml: RapidJSON 的灵感来源，一个快速的 C++ XML 解析库
+dependency:
+  - gcc-c++
+homepage: https://github.com/Tencent/rapidjson
+upstream:
+  backend: GitHub
+  version_url: Tencent/rapidjson
+  version_prefix: v
+  version_filter: alpha;rc;candidate;beta;pre
+  version_scheme: RPM
