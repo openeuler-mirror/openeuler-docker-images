@@ -1,0 +1,96 @@
+name: eigen-git-mirror
+category: others
+description: Eigen 是一个用于线性代数的 C++ 模板库：包括矩阵、向量、数值求解器以及相关算法。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  eigen-git-mirror镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[3.3.7-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/eigen-git-mirror/3.3.7/24.03-lts-sp4/Dockerfile) | Eigen 3.3.7 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/eigen-git-mirror:{Tag}
+  ```
+
+usage: |
+  - 使用交互式Shell运行
+
+    启动一个带交互式Shell的容器，使用Eigen编译并运行自己的代码。
+    ```
+    docker run -it --rm --name my-eigen openeuler/eigen-git-mirror:{Tag} bash
+    ```
+
+  - 示例代码
+
+    test.cpp
+    ```
+    #include <iostream>
+    #include <Eigen/Dense>
+
+    using Eigen::MatrixXd;
+
+    int main()
+    {
+      MatrixXd m(2,2);
+      m(0,0) = 3;
+      m(1,0) = 2.5;
+      m(0,1) = -1;
+      m(1,1) = m(1,0) + m(0,1);
+      std::cout << m << std::endl;
+    }
+    ```
+
+  - 编译指令
+
+    使用已安装Eigen头文件的include路径编译程序：
+    ```
+    g++ -I/usr/local/include/eigen3 test.cpp -o test_eigen
+    ```
+
+  - 运行程序
+
+    ```
+    ./test_eigen
+    ```
+
+    预期输出:
+    ```
+      3  -1
+    2.5 1.5
+    ```
+
+  - 查看容器运行日志
+
+    ```
+    docker logs -f my-eigen
+    ```
+
+  - 在运行中的容器内获取交互式Shell
+
+    ```
+    docker exec -it my-eigen /bin/bash
+    ```
+
+license: MPL-2.0
+similar_packages:
+  - Armadillo: 一个基于 C++ 的线性代数库，提供类似 MATLAB 风格的矩阵运算接口
+  - Blaze: 一个高性能的 C++ 数学库，专注于稠密和稀疏线性代数运算
+
+dependency:
+  - gcc-c++
+  - cmake
+
+homepage: https://eigen.tuxfamily.org/
+upstream:
+  backend: GitHub
+  version_url: eigenteam/eigen-git-mirror
+  version_prefix:
+  version_filter: alpha;rc;candidate;beta;pre
+  version_scheme: RPM
