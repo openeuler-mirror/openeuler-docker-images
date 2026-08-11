@@ -1,0 +1,92 @@
+name: maca-sdk
+category: ai
+description: MACA（MetaX Accelerated Computing Architecture，亦称 MXMACA）是沐曦（MetaX）面向自研曦云（XiYun / C500）系列通用计算 GPU 打造的异构计算软件栈，提供运行时、编译器、算子库与工具链，支撑 AI 训练、推理及 HPC 应用在沐曦 GPU 上的高效开发与运行。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  maca-sdk镜像的Tag由其SDK版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[3.7-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/maca-sdk/3.7/24.03-lts-sp3/Dockerfile) | MACA SDK 3.7.0.38 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/maca-sdk:{Tag}
+  ```
+
+usage: |
+  - 前置条件：启动容器前，宿主机须已安装沐曦 GPU 驱动（mxdriver）与管理工具 `mx-smi`，并在宿主机上执行 `mx-smi` 能正常识别到 GPU。
+
+  - 启动容器
+    ```
+    docker run -it \
+      --device /dev/dri \
+      --device /dev/mxcd \
+      --device /dev/fuse \
+      --cap-add SYS_ADMIN \
+      --group-add video \
+      --network=host \
+      -v /sys/kernel/debug:/sys/kernel/debug \
+      -v /opt/mxdriver:/opt/mxdriver \
+      -v /usr/bin/mx-smi:/usr/bin/mx-smi \
+      --name mxsdk \
+      openeuler/maca-sdk:{Tag}
+    ```
+    用户可根据自身需求选择对应版本的`{Tag}`以及容器启动的其他参数配置。
+
+  - 参数说明
+    | 配置项 | 描述 |
+    |--|--|
+    | `--name mxsdk` | 容器名称。|
+    | `--device /dev/dri` | 映射 DRM 渲染节点，使容器可访问 GPU 图形/计算上下文。 |
+    | `--device /dev/mxcd` | 映射沐曦计算设备 `mxcd`，MACA 向 GPU 提交计算任务的入口。 |
+    | `--device /dev/fuse` | 映射 FUSE 设备，使容器可使用基于 FUSE 的文件系统。 |
+    | `--cap-add SYS_ADMIN` | 授予容器内挂载 FUSE 文件系统所需的 `SYS_ADMIN` 能力，仅在可信容器中使用。 |
+    | `--group-add video` | 将容器用户加入宿主机 `video` 组，以获取访问 `/dev/dri/*` 所需的权限。 |
+    | `--network=host` | 共享宿主机网络命名空间，部分分布式训练与 RPC 后端需要；如使用桥接网络可移除。 |
+    | `-v /sys/kernel/debug:/sys/kernel/debug` | 挂载宿主机 debugfs，便于采集驱动/运行时诊断信息（如性能分析工具）。 |
+    | `-v /opt/mxdriver:/opt/mxdriver` | 将宿主机沐曦驱动目录挂载到容器中，容器内 MACA 运行时须与宿主机驱动版本匹配。 |
+    | `-v /usr/bin/mx-smi:/usr/bin/mx-smi` | 将宿主机 `mx-smi`（沐曦系统管理接口）工具挂载到容器中，便于在容器内查询 GPU 状态。 |
+    | `-it` | 以交互模式启动容器。 |
+    | `openeuler/maca-sdk:{Tag}` | 指定要运行的镜像为 `openeuler/maca-sdk`，其中 `{Tag}` 是需要替换的镜像标签。 |
+
+  - 可选：InfiniBand/RDMA 支持。如需启用，先在宿主机执行 `ls -1 /dev/infiniband` 查看存在的设备节点，再按需在上述命令中追加，典型 RDMA 负载使用：
+    ```
+    --device /dev/infiniband/rdma_cm \
+    --device /dev/infiniband/uverbs0
+    ```
+    多 RDMA 设备的主机还需映射相应的 user-verbs 节点（如 `/dev/infiniband/uverbs1`）；管理类工具可能额外需要 `/dev/infiniband/umad0` 或 `/dev/infiniband/issm0`（及其编号变体）。请勿映射宿主机上不存在的节点。
+
+  - 容器测试
+
+    验证容器内可识别到 GPU
+    ```
+    mx-smi
+    ```
+
+    查看运行日志
+    ```
+    docker logs -f mxsdk
+    ```
+
+    使用shell交互
+    ```
+    docker exec -it mxsdk /bin/bash
+    ```
+
+license: Apache-2.0 license
+similar_packages:
+  - CANN: CANN 是华为针对 AI 场景推出的异构计算架构，对上支持多种 AI 框架，对下服务 AI 处理器与编程，是提升昇腾 AI 处理器计算效率的关键平台。
+  - CUDA: CUDA 是英伟达公司设计研发的一种并行计算平台和编程模型，包含 CUDA 指令集架构以及 GPU 内部的并行计算引擎。
+dependency:
+  - util-linux
+  - xz
+  - make
+  - gcc
+  - gcc-c++
+  - maca-sdk
