@@ -1,0 +1,114 @@
+{
+  "benchmark": "micro_operations",
+  "description": "CPython micro: timeit operations + GIL thread scaling on ARM64",
+  "reference": "https://github.com/python/cpython",
+  "software": "python",
+  "version": "3.14.7",
+  "architecture": "arm64",
+  "timestamp": "2026-08-10T06:27:31Z",
+  "performance_metrics": {
+    "ops_per_sec": {
+      "unit": "ops/sec",
+      "description": "Operations per second"
+    },
+    "seconds_per_op": {
+      "unit": "s",
+      "description": "Seconds per operation"
+    }
+  },
+  "parameters": {
+    "micro_ops": [
+      "list_comprehension",
+      "dict_get",
+      "string_concat",
+      "json_parse"
+    ],
+    "thread_counts": [
+      "1",
+      "2",
+      "4",
+      "8",
+      "all"
+    ],
+    "max_threads": 32,
+    "iterations": 1
+  },
+  "results": {
+    "micro_ops": {
+      "list_comprehension": {
+        "size_1000": {
+          "seconds_per_op": 5.47e-05,
+          "ops_per_sec": 18280.02
+        },
+        "size_10000": {
+          "seconds_per_op": 0.00060317,
+          "ops_per_sec": 1657.92
+        },
+        "size_100000": {
+          "seconds_per_op": 0.00786819,
+          "ops_per_sec": 127.09
+        }
+      },
+      "dict_get": {
+        "size_1000": {
+          "seconds_per_op": 6e-08,
+          "ops_per_sec": 15979608.81
+        },
+        "size_10000": {
+          "seconds_per_op": 6e-08,
+          "ops_per_sec": 15757993.88
+        },
+        "size_100000": {
+          "seconds_per_op": 6e-08,
+          "ops_per_sec": 16103027.53
+        }
+      },
+      "string_concat": {
+        "size_100": {
+          "seconds_per_op": 0.0,
+          "ops_per_sec": 0
+        },
+        "size_1000": {
+          "seconds_per_op": 0.0,
+          "ops_per_sec": 0
+        },
+        "size_10000": {
+          "seconds_per_op": 0.0,
+          "ops_per_sec": 0
+        }
+      },
+      "json_parse": {
+        "size_1000": {
+          "seconds_per_op": 0.0,
+          "ops_per_sec": 0
+        },
+        "size_10000": {
+          "seconds_per_op": 0.0,
+          "ops_per_sec": 0
+        }
+      }
+    },
+    "thread_scaling": {
+      "threads_1": {
+        "seconds_per_op": 0.00060386,
+        "ops_per_sec": 1656.0
+      },
+      "threads_2": {
+        "seconds_per_op": 0.00060667,
+        "ops_per_sec": 1648.35
+      },
+      "threads_4": {
+        "seconds_per_op": 0.0006026,
+        "ops_per_sec": 1659.47
+      },
+      "threads_8": {
+        "seconds_per_op": 0.00060183,
+        "ops_per_sec": 1661.61
+      },
+      "threads_all": {
+        "seconds_per_op": 0.00060128,
+        "ops_per_sec": 1663.11
+      }
+    }
+  }
+}
