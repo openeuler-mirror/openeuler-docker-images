@@ -1,0 +1,76 @@
+name: taskflow
+category: others
+description: Taskflow 帮助您以高编程效率快速编写高性能的任务并行程序。与许多现有的任务编程库相比，它更快、更具表现力、代码行数更少，并且更易于直接集成。Taskflow 是头文件库，无需繁琐的安装过程。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  taskflow镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[4.1.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/taskflow/4.1.0/24.03-lts-sp4/Dockerfile) | taskflow 4.1.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/taskflow:{Tag}
+  ```
+
+usage: |
+  创建名为 simple.cpp 的 Taskflow 程序文件，内容如下
+  ```cpp
+  #include <taskflow/taskflow.hpp>
+
+  int main(){
+
+    tf::Executor executor;
+    tf::Taskflow taskflow;
+
+    auto [A, B, C, D] = taskflow.emplace(  // create four tasks
+      [] () { std::cout << "TaskA\n"; },
+      [] () { std::cout << "TaskB\n"; },
+      [] () { std::cout << "TaskC\n"; },
+      [] () { std::cout << "TaskD\n"; }
+    );
+
+    A.precede(B, C);  // A runs before B and C
+    D.succeed(B, C);  // D runs after  B and C
+
+    executor.run(taskflow).wait();
+
+    return 0;
+  }
+  ```
+  在容器内编译程序
+  ```
+  docker run --rm -v $(pwd):/workspace openeuler/taskflow:{Tag} g++ -std=c++20 -O2 -pthread /workspace/simple.cpp -o /workspace/simple
+  ```
+  运行编译后的程序
+  ```
+  docker run --rm -v $(pwd):/workspace openeuler/taskflow:{Tag} /workspace/simple
+  ```
+  查看容器日志
+  ```
+  docker run --rm --name taskflow-test openeuler/taskflow:{Tag} /workspace/simple
+  docker logs taskflow-test
+  ```
+  打开交互式 shell
+  ```
+  docker run -it --rm -v $(pwd):/workspace openeuler/taskflow:{Tag} bash
+  ```
+
+license: MIT
+similar_packages:
+  - N/A
+dependency:
+  -
+homepage: https://taskflow.github.io
+upstream:
+  backend: GitHub
+  version_url: taskflow/taskflow
+  version_prefix: v
+  version_filter: alpha;rc;candidate;beta;pre
+  version_scheme: RPM
