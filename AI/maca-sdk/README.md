@@ -37,7 +37,7 @@ In this usage, users can select the corresponding `{Tag}` and `container startup
 - Start a maca-sdk instance
 
     ```bash
-    docker run -it --rm \
+    docker run -it \
       --device /dev/dri \
       --device /dev/mxcd \
       --device /dev/fuse \
@@ -79,7 +79,6 @@ In this usage, users can select the corresponding `{Tag}` and `container startup
     | `-v /opt/mxdriver:/opt/mxdriver` | Mounts the host MetaX driver directory into the container. The MACA runtime must match the driver version installed on the host. |
     | `-v /usr/bin/mx-smi:/usr/bin/mx-smi` | Mounts the host `mx-smi` (MetaX System Management Interface) tool so you can query GPU status from inside the container. |
     | `-it` | Starts the container in interactive mode with a terminal. |
-    | `--rm` | Automatically removes the container when it exits. |
     | `openeuler/maca-sdk:{Tag}` | Specifies the Docker image to run, replace `{Tag}` with the specific version or tag of the `openeuler/maca-sdk` image you want to use. |
 
 - Verify that the GPU is visible inside the container
