@@ -20,7 +20,10 @@ Once the official images are released, they will be synchronized and pushed to v
 The {repository/name} for the base image on third-party image hubs is `openeuler/openeuler`
 
 ### 2. Supported Tags
-- [24.03-lts-sp2, 24.03, latest](https://repo.openeuler.org/openEuler-24.03-LTS-SP1/docker_img/)
+- [24.03-lts-sp4, 24.03, latest](https://repo.openeuler.org/openEuler-24.03-LTS-SP4/docker_img/)
+- [24.03-lts-sp3](https://repo.openeuler.org/openEuler-24.03-LTS-SP3/docker_img/)
+- [25.09](https://repo.openeuler.org/openEuler-25.09/docker_img/)
+- [24.03-lts-sp2](https://repo.openeuler.org/openEuler-24.03-LTS-SP2/docker_img/)
 - [25.03](https://repo.openeuler.org/openEuler-25.03/docker_img/)
 - [24.03-lts-sp1](https://repo.openeuler.org/openEuler-24.03-LTS-SP1/docker_img/)
 - [24.03-lts](https://repo.openeuler.org/openEuler-24.03-LTS/docker_img/)
