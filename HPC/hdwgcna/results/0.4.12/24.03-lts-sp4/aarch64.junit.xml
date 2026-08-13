@@ -1,0 +1,2 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuite name="hdwgcna-aarch64" tests="1" failures="0" errors="0" time="614.302"><testcase classname="native-image-validation" name="build-runtime-tests" time="614.302" /></testsuite>
