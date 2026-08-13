@@ -1,0 +1,60 @@
+name: nco
+category: hpc
+description: NCO（netCDF Operators，netCDF 操作工具）是一组独立的命令行程序，以 netCDF、HDF 和/或 DAP 文件为输入，进行派生新数据、统计计算、打印、子区域提取、元数据操作和重网格化等操作，并将结果输出到屏幕或文件中。NCO 利用 CF（Climate & Forecast）元数据约定、UDUnits 物理维度转换、OPeNDAP 网络透明访问、HDF 存储特性以及 GSL 科学计算库的多种数学与统计算法，支持网格化与非结构化的科学数据分析。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  nco镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[5.4.0-alpha04-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/nco/5.4.0-alpha04/24.03-lts-sp4/Dockerfile) | nco 5.4.0-alpha04 on openEuler 24.03-lts-sp4 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/nco:{Tag}
+  ```
+
+usage: |
+  - 打印当前工作目录下 netCDF 文件 in.nc 的元数据：
+    ```
+    docker run --rm -v $(pwd):/data openeuler/nco:{Tag} ncks -m in.nc
+    ```
+
+  - 将变量 lat 从 in.nc 复制到 out.nc：
+    ```
+    docker run --rm -v $(pwd):/data openeuler/nco:{Tag} ncks -v lat -O in.nc out.nc
+    ```
+
+  - 对多个记录文件求平均：
+    ```
+    docker run --rm -v $(pwd):/data openeuler/nco:{Tag} ncra -O in.nc avg.nc
+    ```
+
+  - 交互式进入容器依次执行多个操作符：
+    ```
+    docker run -it --rm -v $(pwd):/data openeuler/nco:{Tag} /bin/bash
+    ```
+
+license: 3-Clause BSD License
+similar_packages:
+  - ncl: NCAR Command Language，气候和天气数据处理与可视化工具
+
+dependency:
+  - netcdf
+  - hdf5
+  - gsl
+  - antlr-C++
+  - perl
+
+homepage: http://nco.sf.net
+upstream:
+  backend: GitHub
+  version_url: nco/nco
+  version_prefix:
+  version_filter: rc;candidate;beta;pre
+  version_scheme: RPM
