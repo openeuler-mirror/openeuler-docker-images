@@ -1,0 +1,48 @@
+name: triton
+category: others
+description: Triton 是一种面向并行编程的语言和编译器。它旨在提供一个基于 Python 的编程环境，用于高效地编写自定义 DNN 计算内核，并能在现代 GPU 硬件上以最大吞吐量运行。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  triton镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[3.7.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/triton/3.7.1/24.03-lts-sp4/Dockerfile) | triton 3.7.1 on openEuler 24.03-lts-sp4 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/triton:{Tag}
+  ```
+
+usage: |
+  启动 triton 容器实例
+  ```
+  docker run --rm openeuler/triton:{Tag}
+  ```
+  triton容器启动后会显示已安装的 triton 版本信息。
+
+  启动交互式 Python shell 使用 triton 库
+  ```
+  docker run -it --rm openeuler/triton:{Tag} python3
+  ```
+
+license: MIT
+similar_packages:
+  - TVM: 用于优化深度学习模型的编译器框架，可自动生成并优化 GPU 内核
+  - Halide: 一种调度语言，用于高性能图像处理和线性代数计算
+
+dependency:
+  -
+
+homepage: https://github.com/triton-lang/triton
+upstream:
+  backend: GitHub
+  version_url: triton-lang/triton
+  version_prefix: v
+  version_filter: alpha;rc;candidate;beta;pre
+  version_scheme: RPM

@@ -1,0 +1,2 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuite name="triton-x86_64" tests="1" failures="0" errors="0" time="81.553"><testcase classname="native-image-validation" name="build-runtime-tests" time="81.553" /></testsuite>
