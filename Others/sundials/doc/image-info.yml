@@ -1,0 +1,70 @@
+name: sundials
+category: others
+description: SUNDIALS是一系列软件包的集合，提供稳健高效的时间积分器和非线性求解器，可轻松集成到现有的仿真代码中。该库主要使用C语言编写，并提供C++、Fortran和Python（测试版）接口，支持串行、线程化、分布式和GPU加速计算。这些软件包的设计要求用户提供最少的信息，允许用户提供自己的底层数据结构，并支持与用户提供或第三方的代数求解器和预处理器进行接口连接。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  sundials镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[7.8.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/sundials/7.8.0/24.03-lts-sp4/Dockerfile) | SUNDIALS 7.8.0 on openEuler 24.03-lts-sp4 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/sundials:{Tag}
+  ```
+
+usage: |
+  - 拉取 openeuler/sundials 镜像
+
+    ```
+    docker pull openeuler/sundials:{Tag}
+    ```
+
+  - 启动 sundials 容器
+
+    ```
+    docker run -it --rm --name my-sundials openeuler/sundials:{Tag} /bin/bash
+    ```
+
+  - 运行串行 CVODE 示例以验证 SUNDIALS 安装
+
+    ```
+    cd /usr/local/sundials/examples/cvode/serial
+    ./cvRoberts_dns
+    ```
+
+  - 查看容器运行日志
+
+    ```
+    docker logs -f my-sundials
+    ```
+
+  - 获取运行中容器的交互式 Shell
+
+    ```
+    docker exec -it my-sundials /bin/bash
+    ```
+
+license: BSD-3-Clause
+similar_packages:
+  - PETSc: 可移植可扩展的科学计算工具包，SUNDIALS 可与其接口连接作为第三方求解器
+  - hypre: LLNL 开发的并行可扩展线性求解器库，SUNDIALS 可与其接口连接作为预处理器
+
+dependency:
+  - gcc
+  - cmake
+  - make
+
+homepage: https://computing.llnl.gov/projects/sundials
+upstream:
+  backend: GitHub
+  version_url: llnl/sundials
+  version_prefix: v
+  version_filter: alpha;rc;candidate;beta;pre
+  version_scheme: RPM
