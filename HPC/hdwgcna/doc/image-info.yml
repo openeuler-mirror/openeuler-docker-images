@@ -1,0 +1,58 @@
+name: hdwgcna
+category: hpc
+description: hdWGCNA 是一个 R 包，用于在高维转录组数据（如单细胞 RNA-seq 或空间转录组）中进行加权基因共表达网络分析（WGCNA）。hdWGCNA 高度模块化，可以在细胞和空间层次上构建特定背景的共表达网络。hdWGCNA 识别高度共表达基因的模块，并通过统计检验和生物学知识源为这些模块提供背景信息。hdWGCNA 使用格式化为 Seurat 对象的数据集。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  hdwgcna镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[0.4.12-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/hdwgcna/0.4.12/24.03-lts-sp4/Dockerfile) | hdwgcna 0.4.12 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/hdwgcna:{Tag}
+  ```
+
+usage: |
+  - 确保已安装 Docker 环境。
+  - 从 DockerHub 获取 hdwgcna 镜像:
+    ```
+    docker pull openeuler/hdwgcna:{Tag}
+    ```
+  - 启动容器进入 hdwgcna R 环境
+    ```
+    docker run -it openeuler/hdwgcna:{Tag}
+    ```
+  - 查看运行中容器的日志
+    ```
+    docker logs <container>
+    ```
+  - 在运行中的容器内打开交互式 shell
+    ```
+    docker exec -it <container> bash
+    ```
+  - 在容器内验证安装
+    ```
+    R -e "library(hdWGCNA); packageVersion('hdWGCNA')"
+    ```
+
+license: GPL-3.0
+similar_packages:
+  - WGCNA: 加权基因共表达网络分析的原始 R 包，适用于批量转录组数据
+  - Seurat: 单细胞 RNA 测序数据分析与可视化的主流 R 包
+dependency:
+  - R (>=2.10)
+  - R包: WGCNA, Seurat, harmony, igraph, enrichR, ggraph 等
+homepage: https://smorabit.github.io/hdWGCNA/
+upstream:
+  backend: GitHub
+  version_url: smorabit/hdWGCNA
+  version_prefix: v
+  version_filter:
+  version_scheme: RPM
