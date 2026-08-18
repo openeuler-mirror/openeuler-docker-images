@@ -109,3 +109,4 @@ images:
   sundials: sundials
   taskflow: taskflow
   protobuf: protobuf
+  eigen-git-mirror: eigen-git-mirror
