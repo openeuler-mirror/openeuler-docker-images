@@ -111,3 +111,4 @@ images:
   protobuf: protobuf
   eigen-git-mirror: eigen-git-mirror
   rapidjson: rapidjson
+  onednn: onednn
