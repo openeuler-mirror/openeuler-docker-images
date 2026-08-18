@@ -110,3 +110,4 @@ images:
   taskflow: taskflow
   protobuf: protobuf
   eigen-git-mirror: eigen-git-mirror
+  rapidjson: rapidjson
