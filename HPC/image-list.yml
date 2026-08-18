@@ -86,3 +86,4 @@ images:
   rsem: rsem
   pysam: pysam
   survivor: survivor
+  moose: moose

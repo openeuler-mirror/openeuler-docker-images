@@ -1,0 +1,53 @@
+name: moose
+category: hpc
+description: moose 镜像提供 Taskflow，一个 C++ 通用任务并行编程系统。Taskflow 帮助开发者以高编程生产力快速编写高性能任务并行程序，它比许多现有任务编程库更快、更具表现力、代码更少，且更易于即插即用集成。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  moose镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[4.1.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/moose/4.1.0/24.03-lts-sp4/Dockerfile) | moose 4.1.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/moose:{Tag}
+  ```
+
+usage: |
+  - 启动 moose 容器并编译 Taskflow 程序
+    ```
+    docker run -it --name my-moose -v $(pwd):/workspace -w /workspace openeuler/moose:{Tag} bash
+    ```
+  - 编写 simple.cpp，在容器内编译并运行：
+    ```
+    g++ -std=c++20 simple.cpp -I/usr/local/include -O2 -pthread -o simple
+    ./simple
+    ```
+  - 查看容器运行日志
+    ```
+    docker logs -f my-moose
+    ```
+  - 进入交互式 shell
+    ```
+    docker exec -it my-moose /bin/bash
+    ```
+
+license: MIT
+similar_packages:
+
+dependency:
+  - gcc-c++
+
+homepage: https://taskflow.github.io/
+upstream:
+  backend: GitHub
+  version_url: taskflow/taskflow
+  version_prefix: v
+  version_filter: alpha;rc;candidate;beta;pre
+  version_scheme: semantic
