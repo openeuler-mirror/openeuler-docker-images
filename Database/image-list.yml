@@ -16,3 +16,4 @@ images:
   neo4j: neo4j
   oceanbase: oceanbase
   milvus: milvus
+  kvrocks: kvrocks

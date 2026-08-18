@@ -1,0 +1,15 @@
+port:
+  tcp:6666:
+    listening: true
+process:
+  kvrocks:
+    running: true
+file:
+  /usr/local/bin/kvrocks:
+    exists: true
+    mode: "0755"
+  /etc/kvrocks/kvrocks.conf:
+    exists: true
+user:
+  kvrocks:
+    exists: true

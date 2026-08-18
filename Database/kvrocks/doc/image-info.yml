@@ -1,0 +1,71 @@
+name: kvrocks
+category: database
+description: Apache Kvrocks是一个分布式键值NoSQL数据库，使用RocksDB作为存储引擎，并兼容Redis协议。与Redis相比，Kvrocks旨在降低内存成本并提高容量。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  kvrocks镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[2.16.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/kvrocks/2.16.0/24.03-lts-sp4/Dockerfile) | kvrocks 2.16.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/kvrocks:{Tag}
+  ```
+
+usage: |
+  - 启动kvrocks实例
+
+    ```bash
+    docker run -d --name my-kvrocks -p 6666:6666 openeuler/kvrocks:{Tag}
+    ```
+
+  - 使用持久化存储
+
+    创建docker volume，并将数据目录挂载到容器上
+    ```bash
+    docker volume create kvrocks_data
+    docker run -d --name my-kvrocks -p 6666:6666 --volume kvrocks_data:/var/lib/kvrocks openeuler/kvrocks:{Tag}
+    ```
+
+  - 连接kvrocks实例
+
+    ```bash
+    redis-cli -p 6666
+    ```
+
+  - 容器测试
+
+    查看运行日志
+    ```
+    docker logs -f my-kvrocks
+    ```
+
+    使用shell交互
+    ```
+    docker exec -it my-kvrocks /bin/bash
+    ```
+
+license: Apache-2.0 license
+similar_packages:
+  - Redis: Redis是开源的内存数据库。Kvrocks与Redis协议兼容，用户可以通过任何Redis客户端访问Apache Kvrocks。
+dependency:
+  - gcc
+  - cmake
+  - openssl-devel
+  - libstdc++-static
+  - libatomic
+
+homepage: https://github.com/apache/kvrocks
+upstream:
+  version_url: apache/kvrocks
+  version_prefix: v
+  version_filter:
+  backend: GitHub
+  version_scheme: RPM
