@@ -84,3 +84,4 @@ images:
   ncview: ncview
   hdwgcna: hdwgcna
   rsem: rsem
+  pysam: pysam
