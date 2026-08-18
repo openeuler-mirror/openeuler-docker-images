@@ -1,0 +1,13 @@
+{
+  "Model": "x86_64=oe-image-x86; aarch64=oe-image-arm64",
+  "architecture": "x86_64,aarch64",
+  "cpu_cores": 32,
+  "cpu_model": "x86_64=0; aarch64=0",
+  "kernel": "x86_64=6.6.0-159.4.3.154.oe2403sp4.x86_64; aarch64=6.6.0-132.0.0.111.oe2403sp3.aarch64",
+  "numpy_version": "x86_64=not-installed; aarch64=not-installed",
+  "os": "x86_64=openEuler 24.03 (LTS-SP4); aarch64=openEuler 24.03 (LTS-SP3)",
+  "python_version": "x86_64=3.11.6; aarch64=3.11.6",
+  "software_name": "rsem",
+  "software_version": "1.3.3",
+  "test_time": "2026-08-12T13:56:21Z"
+}
