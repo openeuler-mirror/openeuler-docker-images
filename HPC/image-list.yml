@@ -85,3 +85,4 @@ images:
   hdwgcna: hdwgcna
   rsem: rsem
   pysam: pysam
+  survivor: survivor
