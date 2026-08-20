@@ -1,5 +1,5 @@
 name: ambertools
-category: HPC
+category: hpc
 description: AmberTools由多个独立开发的包组成，这些包可以单独运行，也可以与Amber24一起使用。该套件还可以用于进行完整的分子动力学模拟，使用显式水或广义Born溶剂模型。
 environment: |
   本应用在Docker环境中运行，安装Docker执行如下命令

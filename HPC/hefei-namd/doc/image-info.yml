@@ -1,5 +1,5 @@
 name: hefei-namd
-category: HPC
+category: hpc
 description: Hefei-NAMD是一款从头算非绝热分子动力学程序，用于模拟分子系统中的非绝热过程。它实现了表面跳跃方法，用于研究激发态动力学和电子转移过程。
 environment: |
   本应用在Docker环境中运行，安装Docker执行如下命令

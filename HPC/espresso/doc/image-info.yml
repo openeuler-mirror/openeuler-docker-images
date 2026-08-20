@@ -1,5 +1,5 @@
 name: espresso
-category: HPC
+category: hpc
 description: ESPResSo是一个高度通用的分子动力学模拟软件包，用于软物质研究中的粗粒化珠-弹簧模型的科学多粒子模拟分析和执行。可用于模拟聚合物、液晶、胶体、铁流体以及DNA和脂质膜等生物系统。
 environment: |
   本应用在Docker环境中运行，安装Docker执行如下命令

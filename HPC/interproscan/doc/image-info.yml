@@ -1,5 +1,5 @@
 name: interproscan
-category: HPC
+category: hpc
 description: InterProScan是基因组规模的蛋白质功能分类工具，由EBI（欧洲生物信息学研究所）开发。InterProScan将多个蛋白质功能预测数据库（包括Pfam、SMART、ProSite、Gene3D等）的扫描算法集成在一起，对用户提交的FASTA格式蛋白质或核酸序列进行功能注释。InterProScan提供序列匹配计算、蛋白质家族归属识别、功能域和位点检测、多种输出格式支持等功能，广泛应用于蛋白质功能注释、基因组分析和生物信息学研究。
 environment: |
   本应用在Docker环境中运行,安装Docker执行如下命令

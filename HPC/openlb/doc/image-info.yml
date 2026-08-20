@@ -1,5 +1,5 @@
 name: openlb
-category: HPC
+category: hpc
 description: OpenLB是Lattice-Boltzmann方法（LBM）面向对象的实现。它是与开源社区（GPLv2）共享的第一个通用平台实现的LBM程序。
 environment: |
   本应用在Docker环境中运行，安装Docker执行如下命令

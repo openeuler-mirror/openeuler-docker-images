@@ -1,5 +1,5 @@
 name: nemo
-category: HPC
+category: hpc
 description: Nemo 是 Linux 系统上的一款 图形化文件管理器，由 Cinnamon 桌面环境 开发团队维护。
 environment: |
   本应用在Docker环境中运行，安装Docker执行如下命令

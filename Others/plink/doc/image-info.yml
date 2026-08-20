@@ -1,5 +1,5 @@
 name: plink
-category: Others
+category: others
 description: PLINK是一款免费开源的全基因组关联分析工具集，旨在以计算高效的方式执行大规模基本基因组分析。PLINK 2.0支持VCF文件和剂量数据处理，提供关联分析、LD计算、主成分分析、聚合测试等多种功能，广泛应用于基因组学和生物信息学研究。
 environment: |
   本应用在Docker环境中运行,安装Docker执行如下命令

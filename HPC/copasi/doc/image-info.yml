@@ -1,5 +1,5 @@
 name: copasi
-category: HPC
+category: hpc
 description: COPASI是一个生化网络模拟与分析软件，支持SBML标准的模型导入，提供ODE数值模拟和Gillespie随机模拟算法，具备稳态分析、代谢控制分析、参数估计与优化、敏感性分析、时间序列扫描等功能，广泛应用于系统生物学、生物化学和计算生物学研究。
 environment: |
   本应用在Docker环境中运行,安装Docker执行如下命令

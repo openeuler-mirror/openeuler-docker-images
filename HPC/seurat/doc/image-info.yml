@@ -1,5 +1,5 @@
 name: seurat
-category: HPC
+category: hpc
 description: Seurat是一个R语言单细胞基因组学分析工具包，由Satija Lab开发和维护。Seurat提供了单细胞RNA测序数据的完整分析流程，包括数据质量控制、归一化、特征选择、降维（PCA/UMAP）、聚类分析、差异表达分析等功能。Seurat v5引入了空间转录组学、多模态分析和可扩展单细胞分析的新功能，广泛应用于基因组学、生物信息学和计算生物学领域的单细胞数据挖掘与可视化研究。
 environment: |
   本应用在Docker环境中运行,安装Docker执行如下命令

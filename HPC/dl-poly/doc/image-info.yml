@@ -1,5 +1,5 @@
 name: dl-poly
-category: HPC
+category: hpc
 description: DL_POLY是一款由英国Daresbury实验室开发的通用经典分子动力学（MD）模拟软件，自1992年以来持续发展。支持串行和MPI并行两种模式，特别适合大规模材料模拟计算。
 environment: |
   本应用在Docker环境中运行，安装Docker执行如下命令
