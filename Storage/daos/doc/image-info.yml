@@ -60,3 +60,11 @@ dependency:
   - libfabric
   - raft
   - mercury
+
+homepage: https://github.com/daos-stack/daos
+upstream:
+  backend: GitHub
+  version_url: daos-stack/daos
+  version_prefix: v
+  version_filter: rc;p;pt;alpha;beta;pre
+  version_scheme: RPM

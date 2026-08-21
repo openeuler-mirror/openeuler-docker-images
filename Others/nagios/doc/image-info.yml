@@ -1,6 +1,6 @@
 name: nagios
 category: others
-description: Nagios 是一款开源的 IT基础设施监控系统，用于检测网络、服务器、应用和服务的运行状态。当系统或服务出现故障时，Nagios 会通过邮件、短信等方式通知管理员，帮助快速响应问题，保障业务连续性。
+description: Nagios 是一款开源的 IT 基础设施监控系统，用于检测网络、服务器、应用和服务的运行状态。当系统或服务出现故障时，Nagios 会通过邮件、短信等方式通知管理员，帮助快速响应问题，保障业务连续性。
 environment: |
   本应用在Docker环境中运行，安装Docker执行如下命令
   ```
@@ -57,3 +57,11 @@ dependency:
   - perl
   - openssl
   - glibc
+
+homepage: https://github.com/NagiosEnterprises/nagioscore
+upstream:
+  backend: GitHub
+  version_url: NagiosEnterprises/nagioscore
+  version_prefix: nagios-
+  version_filter: rc;alpha;beta
+  version_scheme: RPM

@@ -20,7 +20,8 @@ Learn more at [code_saturne](https://github.com/code-saturne/code_saturne).
 The tag of each code_saturne docker image is consist of the version of code_saturne and the version of basic image. The details are as follows:
 | Tags | Currently | Architectures |
 |------|-----------|---------------|
-|[8.2-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/code-saturne/8.2/24.03-lts-sp3/Dockerfile) | code_saturne 8.2 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[8.0.5-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/code-saturne/8.0.5/24.03-lts-sp3/Dockerfile) | code_saturne 8.0.5 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[8.0.5-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/code-saturne/8.0.5/24.03-lts-sp4/Dockerfile) | code_saturne 8.0.5 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 # Usage
 - Ensure that you have Docker installed, or are using Docker for Linux containers if on Windows.

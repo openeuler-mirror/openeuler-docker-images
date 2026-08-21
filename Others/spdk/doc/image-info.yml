@@ -42,3 +42,11 @@ dependency:
   - librdmacm
   - libibverbs
   - libaio
+
+homepage: https://github.com/spdk/spdk
+upstream:
+  backend: GitHub
+  version_url: spdk/spdk
+  version_prefix: v
+  version_filter: pre;rc;alpha;beta
+  version_scheme: RPM

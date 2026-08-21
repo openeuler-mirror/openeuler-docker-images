@@ -78,3 +78,11 @@ dependency:
   - libtool
   - jemalloc
   - libunwind
+
+homepage: https://github.com/varnishcache/varnish-cache
+upstream:
+  backend: GitHub
+  version_url: varnishcache/varnish-cache
+  version_prefix: varnish-
+  version_filter: rc
+  version_scheme: RPM

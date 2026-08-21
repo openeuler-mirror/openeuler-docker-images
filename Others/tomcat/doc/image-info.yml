@@ -57,3 +57,11 @@ similar_packages:
   - Jetty: 一个轻量级的 Java Servlet 容器，和 Tomcat 类似，但更灵活嵌入式。
 dependency:
   - openjdk
+
+homepage: https://github.com/apache/tomcat
+upstream:
+  backend: GitHub
+  version_url: apache/tomcat
+  version_prefix: 
+  version_filter: 
+  version_scheme: RPM

@@ -109,3 +109,11 @@ dependency:
   - zlib
   - libffi
   - python3
+
+homepage: https://github.com/unbit/uwsgi
+upstream:
+  backend: GitHub
+  version_url: unbit/uwsgi
+  version_prefix: 
+  version_filter: rc
+  version_scheme: RPM

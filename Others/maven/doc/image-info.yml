@@ -1,0 +1,41 @@
+name: maven
+category: others
+description: Apache Maven 是一个软件项目管理和构建工具，基于项目对象模型（POM）概念，用于管理项目的构建、报告和文档。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  maven镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[3.6.3-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/maven/3.6.3/24.03-lts-sp4/Dockerfile)| maven 3.6.3 on openEuler 24.03-lts-sp4 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/maven:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+    ```
+    docker run -it openeuler/maven:{Tag} bash
+    ```
+
+license: Apache-2.0
+similar_packages:
+  -
+
+dependency:
+  -
+
+homepage: https://github.com/apache/maven
+upstream:
+  backend: GitHub
+  version_url: apache/maven
+  version_prefix: maven-
+  version_filter: rc;candidate
+  version_scheme: RPM

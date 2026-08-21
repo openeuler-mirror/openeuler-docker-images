@@ -51,3 +51,11 @@ dependency:
   - perl
   - iproute
   - busybox
+
+homepage: https://github.com/apache/druid
+upstream:
+  backend: GitHub
+  version_url: apache/druid
+  version_prefix: druid-
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM

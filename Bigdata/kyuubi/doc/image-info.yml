@@ -94,3 +94,11 @@ dependency:
   - Hive
   - Java
   - Zookeeper
+
+homepage: https://github.com/apache/kyuubi
+upstream:
+  backend: GitHub
+  version_url: apache/kyuubi
+  version_prefix: v
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM

@@ -74,3 +74,11 @@ similar_packages:
 dependency:
   - kernel-headers
   - bison
+
+homepage: https://sourceware.org/glibc/
+upstream:
+  backend: GNU project
+  version_url: https://ftp.gnu.org/gnu/glibc/
+  version_prefix: 
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM

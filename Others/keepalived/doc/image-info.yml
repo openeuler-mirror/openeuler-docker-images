@@ -85,3 +85,11 @@ dependency:
   - net-snmp
   - libnl3
   - openssl
+
+homepage: https://github.com/acassen/keepalived
+upstream:
+  backend: GitHub
+  version_url: acassen/keepalived
+  version_prefix: v
+  version_filter: rc;alpha;beta
+  version_scheme: RPM

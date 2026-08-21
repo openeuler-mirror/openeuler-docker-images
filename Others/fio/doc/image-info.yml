@@ -54,3 +54,11 @@ dependency:
   - libaio
   - cairo
   - gtk3
+
+homepage: https://github.com/axboe/fio
+upstream:
+  backend: GitHub
+  version_url: axboe/fio
+  version_prefix: fio-
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM

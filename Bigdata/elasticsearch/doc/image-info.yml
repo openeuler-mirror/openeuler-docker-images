@@ -37,3 +37,11 @@ similar_packages:
   - N/A
 dependency:
   - N/A
+
+homepage: https://github.com/elastic/elasticsearch
+upstream:
+  backend: GitHub
+  version_url: elastic/elasticsearch
+  version_prefix: v
+  version_filter: rc;alpha;candidate
+  version_scheme: RPM

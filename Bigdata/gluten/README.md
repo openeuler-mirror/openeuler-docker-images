@@ -13,7 +13,8 @@ Gluten is a native acceleration plugin for Apache Spark and Flink that provides 
 The tag of each gluten docker image is consist of the version of gluten and the version of basic image. The details are as follows
 | Tags | Currently | Architectures |
 |--|--|--|
-|[1.6.0-24.03-lts-sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Bigdata/gluten/1.6.0/24.03-lts-sp3/Dockerfile)| gluten 1.6.0 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+|[1.6.0-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Bigdata/gluten/1.6.0/24.03-lts-sp3/Dockerfile)| gluten 1.6.0 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+|[1.6.0-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Bigdata/gluten/1.6.0/24.03-lts-sp4/Dockerfile)| gluten 1.6.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements. Build artifacts are placed under `/opt/gluten/dist` inside the image:

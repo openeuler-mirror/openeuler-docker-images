@@ -19,6 +19,7 @@ The tag of each `edk2` docker image is consist of the version of `edk2` and the 
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
 |[202502-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/edk2/202502/24.03-lts-sp1/Dockerfile)| EDK II 202502 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[202505-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/edk2/202505/24.03-lts-sp4/Dockerfile)| EDK II 202505 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.

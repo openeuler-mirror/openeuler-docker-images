@@ -81,3 +81,11 @@ dependency:
   - perl
   - libserverframe
   - libfastcommon
+
+homepage: https://github.com/happyfish100/fastdfs
+upstream:
+  backend: GitHub
+  version_url: happyfish100/fastdfs
+  version_prefix: V
+  version_filter: rc;alpha;beta;pre
+  version_scheme: RPM

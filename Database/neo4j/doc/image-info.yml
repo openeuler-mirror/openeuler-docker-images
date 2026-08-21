@@ -37,3 +37,11 @@ similar_packages:
 dependency:
   - N/A
   
+
+homepage: https://github.com/neo4j/neo4j
+upstream:
+  backend: GitHub
+  version_url: neo4j/neo4j
+  version_prefix: 
+  version_filter: rc;alpha;beta;candidate
+  version_scheme: RPM

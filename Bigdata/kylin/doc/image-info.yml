@@ -82,3 +82,11 @@ dependency:
   - hive
   - zookeeper
   - mariadb
+
+homepage: https://github.com/apache/kylin
+upstream:
+  backend: GitHub
+  version_url: apache/kylin
+  version_prefix: kylin-
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM

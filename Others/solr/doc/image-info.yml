@@ -35,3 +35,11 @@ similar_packages:
   - N/A
 dependency:
   - N/A
+
+homepage: https://github.com/apache/solr
+upstream:
+  backend: GitHub
+  version_url: apache/solr
+  version_prefix: releases/solr/
+  version_filter: rc;alpha;beta
+  version_scheme: RPM

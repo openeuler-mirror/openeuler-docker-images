@@ -19,6 +19,8 @@ The tag of each `tensorflow` docker image is consist of the version of `tensorfl
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
 |[2.19.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/tensorflow/2.19.0/24.03-lts-sp1/Dockerfile)| TensorFlow 2.19.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[2.20.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/tensorflow/2.20.0/24.03-lts-sp1/Dockerfile)| TensorFlow 2.20.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[2.20.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/tensorflow/2.20.0/24.03-lts-sp4/Dockerfile)| TensorFlow 2.20.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.

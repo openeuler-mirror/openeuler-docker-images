@@ -34,3 +34,11 @@ similar_packages:
   - N/A
 dependency:
   - N/A
+
+homepage: https://github.com/apache/ranger
+upstream:
+  backend: GitHub
+  version_url: apache/ranger
+  version_prefix: release-
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM

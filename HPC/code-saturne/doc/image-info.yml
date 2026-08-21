@@ -10,7 +10,9 @@ tags: |
   code-saturne镜像的Tag由其版本信息和基础镜像版本信息组成,详细内容如下
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
-  |[8.2-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/code-saturne/8.2/24.03-lts-sp3/Dockerfile) | code_saturne 8.2 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+  |[8.0.5-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/code-saturne/8.0.5/24.03-lts-sp3/Dockerfile) | code_saturne 8.0.5 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+  |[8.0.5-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/code-saturne/8.0.5/24.03-lts-sp4/Dockerfile) | code_saturne 8.0.5 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+
 download: |
   拉取镜像到本地
   ```
@@ -47,10 +49,11 @@ dependency:
   - BLAS/LAPACK
   - libxml2
   - autotools (autoconf, automake, libtool)
+
 homepage: https://github.com/code-saturne/code_saturne
 upstream:
   backend: GitHub
   version_url: code-saturne/code_saturne
   version_prefix: v
-  version_filter:
+  version_filter: rc;alpha;beta;candidate
   version_scheme: RPM

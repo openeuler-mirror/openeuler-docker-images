@@ -16,7 +16,9 @@ The tag of each `openvswitch` docker image is consist of the version of `openvsw
 
 | Tag                                                                                                                                           | Currently                                     | Architectures |
 |-----------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------|---------------|
-| [3.5.0-oe2403sp1](https://gitee.com/openeuler/openeuler-openvswitch-images/blob/master/Cloud/openvswitch/3.5.0/24.03-lts-sp1/openvswitchfile) | Open vSwitch 3.5.0 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+| [3.5.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/openvswitch/3.5.1/24.03-lts-sp4/Dockerfile) | Open vSwitch 3.5.1 on openEuler 24.03-LTS-SP4 | amd64, arm64  |
+| [3.5.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/openvswitch/3.5.1/24.03-lts-sp1/Dockerfile) | Open vSwitch 3.5.1 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+| [3.5.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/openvswitch/3.5.0/24.03-lts-sp1/Dockerfile) | Open vSwitch 3.5.0 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.

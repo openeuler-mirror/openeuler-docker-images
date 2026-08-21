@@ -104,3 +104,11 @@ similar_packages:
   - Spring Scheduler: Spring Scheduler 是 Spring 框架内置的轻量级任务调度模块，通过简单的注解即可实现定时任务，无需额外依赖。
 dependency:
   - openjdk
+
+homepage: https://github.com/quartz-scheduler/quartz
+upstream:
+  backend: GitHub
+  version_url: quartz-scheduler/quartz
+  version_prefix: v
+  version_filter: rc;beta
+  version_scheme: RPM

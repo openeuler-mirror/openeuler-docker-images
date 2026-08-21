@@ -12,6 +12,8 @@ tags: |
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
   |[1.21.2-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/drill/1.21.2/24.03-lts-sp1/Dockerfile)| Apache Drill 1.21.2 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+  |[1.22.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/drill/1.22.0/24.03-lts-sp1/Dockerfile)| Apache Drill 1.22.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+  |[1.22.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/drill/1.22.0/24.03-lts-sp4/Dockerfile)| Apache Drill 1.22.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 download: |
   拉取镜像到本地
@@ -61,3 +63,11 @@ similar_packages:
   - Apache Hive: Hadoop 上经典的数据仓库，支持批处理和 HiveQL（类 SQL），但传统 Hive 使用 MapReduce 速度较慢，需与 Tez/Spark 集成加速。
 dependency:
   - openjdk
+
+homepage: https://github.com/apache/drill
+upstream:
+  backend: GitHub
+  version_url: apache/drill
+  version_prefix: drill-
+  version_filter: rc;alpha;beta;pre
+  version_scheme: RPM

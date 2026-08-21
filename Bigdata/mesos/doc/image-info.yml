@@ -54,3 +54,11 @@ similar_packages:
   - N/A
 dependency:
   - N/A
+
+homepage: https://github.com/apache/mesos
+upstream:
+  backend: GitHub
+  version_url: apache/mesos
+  version_prefix: 
+  version_filter: RC;alpha;rc;candidate
+  version_scheme: RPM

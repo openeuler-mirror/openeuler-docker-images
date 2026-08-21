@@ -86,3 +86,11 @@ dependency:
   - zlib
   - lua
   - openssl
+
+homepage: https://github.com/haproxy/haproxy
+upstream:
+  backend: GitHub
+  version_url: haproxy/haproxy
+  version_prefix: v
+  version_filter: dev;alpha;rc;candidate
+  version_scheme: RPM

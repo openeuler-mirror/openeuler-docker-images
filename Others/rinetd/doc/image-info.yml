@@ -62,3 +62,11 @@ similar_packages:
   - iptables: Linux 内核自带的防火墙工具，通过 NAT 规则实现端口转发，功能强大，灵活性高，但配置相对复杂。
 dependency:
   - glibc
+
+homepage: https://github.com/samhocevar/rinetd
+upstream:
+  backend: GitHub
+  version_url: samhocevar/rinetd
+  version_prefix: v
+  version_filter: rc;alpha;beta
+  version_scheme: RPM

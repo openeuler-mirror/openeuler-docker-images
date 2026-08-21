@@ -48,3 +48,12 @@ dependency:
   - libXext
   - libXt
   - zlib
+
+homepage: https://ambermd.org/AmberTools.php
+upstream:
+  backend: custom
+  version_url: https://ambermd.org/AmberTools.php
+  version_prefix:
+  version_filter:
+  version_scheme: RPM
+  regex: AmberTools\s*(\d+)
