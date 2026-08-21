@@ -19,6 +19,7 @@ The tag of each `clickhouse` docker image is consist of the version of `clickhou
 |----------|-------------|------------------|
 |[25.3.1.2703-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/clickhouse/25.3.1.2703/24.03-lts-sp1/Dockerfile)| Clickhouse 25.3.1.2703 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 |[25.7.5.34-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/clickhouse/25.7.5.34/24.03-lts-sp2/Dockerfile)| Clickhouse 25.7.5.34 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[25.7.5.34-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/clickhouse/25.7.5.34/24.03-lts-sp4/Dockerfile)| Clickhouse 25.7.5.34 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 # Usage
 
