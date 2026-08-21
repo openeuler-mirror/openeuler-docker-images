@@ -1,5 +1,5 @@
 name: blat
-category: HPC
+category: hpc
 description: blat是BLAT序列比对工具的集群并行版本，支持MPI和多线程混合并行计算模式，能够在集群环境中高效执行大规模基因组序列比对任务。blat继承了BLAT的高速比对特性，同时通过并行化显著提升了处理吞吐量，广泛应用于基因组学、生物信息学和计算生物学领域的序列映射与比对研究。
 environment: |
   本应用在Docker环境中运行,安装Docker执行如下命令

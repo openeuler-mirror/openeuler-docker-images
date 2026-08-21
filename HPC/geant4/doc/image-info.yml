@@ -1,5 +1,5 @@
 name: geant4
-category: HPC
+category: hpc
 description: Geant4是一套用于模拟粒子在物质中传输的工具包，广泛应用于高能物理、核物理、加速器物理以及医学和空间科学等领域。
 environment: |
   本应用在Docker环境中运行，安装Docker执行如下命令

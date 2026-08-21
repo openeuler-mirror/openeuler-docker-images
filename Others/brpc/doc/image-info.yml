@@ -1,5 +1,5 @@
 name: brpc
-category: Others
+category: others
 description: Apache brpc是一款工业级C++ RPC框架，常用于搜索、存储、机器学习、广告推荐等高性能系统。"brpc"意为"better RPC"，支持在同一端口上提供多种协议服务，包括HTTP/HTTPS、gRPC、Redis、Memcached、Thrift等，并提供内置的调试服务和性能分析工具。
 environment: |
   本应用在Docker环境中运行,安装Docker执行如下命令

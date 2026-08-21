@@ -1,5 +1,5 @@
 name: slurm
-category: HPC
+category: hpc
 description: Slurm是一款免费开源的集群资源管理和作业调度系统，被全球众多超级计算机和计算集群广泛使用。它提供资源分配、作业执行监控和调度冲突仲裁三大核心功能。
 environment: |
   本应用在Docker环境中运行,安装Docker执行如下命令

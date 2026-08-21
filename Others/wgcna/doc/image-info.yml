@@ -1,5 +1,5 @@
 name: wgcna
-category: Others
+category: others
 description: wgcna（High Dimensional Weighted Gene Co-expression Network Analysis）是WGCNA方法在高维单细胞转录组数据上的扩展，专为单细胞RNA测序和空间转录组学数据设计。wgcna提供基因共表达网络构建、模块识别与注释、跨细胞类型的网络比较、空间模式分析等功能，广泛应用于基因调控网络分析、单细胞生物学和空间转录组学研究。
 environment: |
   本应用在Docker环境中运行,安装Docker执行如下命令

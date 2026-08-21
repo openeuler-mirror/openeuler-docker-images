@@ -1,5 +1,5 @@
 name: qmcpack
-category: HPC
+category: hpc
 description: QMCPACK（Quantum Monte Carlo Package）是一款开源的生产级多体从头算量子蒙特卡罗代码，用于计算原子、分子和固体的电子结构，支持GPU加速和大规模并行计算。
 environment: |
   本应用在Docker环境中运行，安装Docker执行如下命令

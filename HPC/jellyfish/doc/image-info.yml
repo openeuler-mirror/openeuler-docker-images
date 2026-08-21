@@ -1,5 +1,5 @@
 name: jellyfish
-category: HPC
+category: hpc
 description: Jellyfish是一个快速、内存高效的多线程k-mer计数工具，用于DNA序列中k-mer（长度为k的子串）的计数。Jellyfish通过高效的哈希表编码和利用CPU的"compare-and-swap"指令实现高并行度，在内存使用和速度上比其他k-mer计数工具低一个数量级。Jellyfish支持FASTA和多FASTA格式输入，提供k-mer计数、查询、转储等功能，并提供Ruby、Python和Perl的绑定接口，广泛应用于基因组分析、序列组装和生物信息学研究。
 environment: |
   本应用在Docker环境中运行,安装Docker执行如下命令

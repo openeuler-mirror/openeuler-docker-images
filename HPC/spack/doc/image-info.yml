@@ -1,5 +1,5 @@
 name: Spack
-category: HPC
+category: hpc
 description: Spack是一款多平台包管理器，支持构建和安装多种版本和配置的软件。它可在Linux、macOS、Windows及众多超级计算机上运行。Spack采用非破坏性安装方式，新版本不会破坏已有安装，因此同一软件的多种配置可以共存。
 environment: |
   本应用在Docker环境中运行,安装Docker执行如下命令

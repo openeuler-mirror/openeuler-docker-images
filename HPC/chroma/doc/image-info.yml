@@ -1,5 +1,5 @@
 name: chroma
-category: HPC
+category: hpc
 description: Chroma是Jefferson Lab开发的格点量子色动力学(QCD)软件系统，用于在离散时空格点上模拟夸克和胶子的相互作用。
 environment: |
   本应用在Docker环境中运行，安装Docker执行如下命令

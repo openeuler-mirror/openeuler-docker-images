@@ -1,5 +1,5 @@
 name: lammps
-category: HPC
+category: hpc
 description: LAMMPS（全称：Large-scale Atomic/Molecular Massively Parallel Simulator）是一款由美国桑迪亚国家实验室（Sandia National Laboratories）主导开发的开源分子动力学（MD）模拟软件。
 environment: |
   本应用在Docker环境中运行，安装Docker执行如下命令

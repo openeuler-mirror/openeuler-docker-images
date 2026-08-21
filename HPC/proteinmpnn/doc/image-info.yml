@@ -1,5 +1,5 @@
 name: proteinmpnn
-category: HPC
+category: hpc
 description: ProteinMPNN是一种基于深度学习的蛋白质序列设计方法，能够根据给定的蛋白质骨架结构生成高精度的蛋白质序列。
 environment: |
   本应用在Docker环境中运行，安装Docker执行如下命令
