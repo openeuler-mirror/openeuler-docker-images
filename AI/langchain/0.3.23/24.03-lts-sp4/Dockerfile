@@ -1,9 +1,11 @@
 ARG BASE=openeuler/openeuler:24.03-lts-sp4
 FROM ${BASE}
 
+ARG VERSION=0.3.23
+
 LABEL author="ls" description="langchain"
 
 RUN dnf install -y python3-pip
 
-RUN pip install --no-cache-dir langchain[all]==0.3.23 \
+RUN pip install --no-cache-dir langchain[all]==${VERSION} \
     -i https://mirrors.aliyun.com/pypi/simple/
