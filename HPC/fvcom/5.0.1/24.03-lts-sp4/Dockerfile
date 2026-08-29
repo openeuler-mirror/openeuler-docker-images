@@ -20,8 +20,8 @@ RUN curl -L https://github.com/Unidata/netcdf-fortran/archive/refs/tags/v${NETCD
     cmake -DCMAKE_INSTALL_PREFIX=/usr \
           -DCMAKE_Fortran_COMPILER=mpif90 \
           -DCMAKE_C_COMPILER=mpicc \
-          -DCMAKE_LIBRARY_PATH=/usr/lib64/mpich/lib \
-          -DCMAKE_INCLUDE_PATH=/usr/include/mpich-aarch64 \
+          -DCMAKE_LIBRARY_PATH=$(/usr/lib64/mpich/bin/nc-config --libdir) \
+          -DCMAKE_INCLUDE_PATH=$(/usr/lib64/mpich/bin/nc-config --includedir) \
           -DENABLE_PARALLEL_TESTS=OFF \
           -DnetCDF_DIR=/usr/lib64/mpich .. && \
     make -j$(nproc) && make install && \
