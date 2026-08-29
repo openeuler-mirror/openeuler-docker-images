@@ -1,0 +1,59 @@
+name: fvcom
+category: hpc
+description: |
+  FVCOM（Finite-Volume Community Ocean Model，有限体积海洋数值模式）是由麻省大学达特茅斯分校（UMASSD）与伍兹霍尔海洋研究所（WHOI）联合开发的非结构化网格、有限体积、自由表面、三维原始方程海岸海洋数值模式。FVCOM采用非结构化三角网格，能够精确拟合复杂海岸线并支持局部加密，垂直方向支持sigma及广义地形跟随坐标。FVCOM支持基于MPI和METIS的并行分区计算，NetCDF4/HDF5数据I/O，并集成了水动力、生态（生物）模型、沉积物输运、海冰、波浪-流耦合、资料同化及拉格朗日粒子追踪等模块，广泛用于海岸海洋动力学、近岸环流、风暴潮、河口及海湾生态模拟研究。
+environment: |
+  本应用在Docker环境中运行,安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  fvcom镜像的Tag由其版本信息和基础镜像版本信息组成,详细内容如下
+  |    Tag   |  Currently  |  Architectures  |
+  |----------|-------------|------------------|
+  |[5.0.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/fvcom/5.0.1/24.03-lts-sp4/Dockerfile) | FVCOM 5.0.1 on openEuler 24.03-LTS-SP4 | arm64 |
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/fvcom:{Tag}
+  ```
+usage: |
+  - 确保已安装 Docker 环境。
+  - 从 DockerHub 获取 FVCOM 镜像:
+    ```
+    docker pull openeuler/fvcom:{Tag}
+    ```
+  - 启动容器进入 FVCOM 环境
+    ```
+    docker run -it openeuler/fvcom:{Tag}
+    ```
+  - 在容器内验证安装
+    ```
+    which fvcom
+    ```
+  - 构建并运行FVCOM算例:
+    ```
+    mkdir run && cd run
+    fvcom --create_namelist=CASENAME > /dev/null   # 生成 CASENAME_run.nml
+    # 编辑 CASENAME_run.nml 并准备输入文件后运行
+    ./fvcom --casename=CASENAME                 # 单机运行
+    mpirun -np N ./fvcom --casename=CASENAME    # 并行运行
+    ```
+license: MIT
+similar_packages:
+  - ROMS: 正交曲线网格区域海洋模式，适用于陆架及区域海洋模拟
+  - NEMO: 欧洲开发的海洋核心模式，支持海洋、海冰和生物地球化学耦合
+  - ADCIRC: 有限元海岸/河口风暴潮模式，适用于强非线性近岸过程模拟
+dependency:
+  - Fortran compiler (gfortran)
+  - MPI (MPICH)
+  - NetCDF-C 与 NetCDF-Fortran
+  - METIS
+  - Julian 库
+homepage: https://github.com/FVCOM-GitHub/FVCOM
+upstream:
+  backend: GitHub
+  version_url: FVCOM-GitHub/FVCOM
+  version_prefix: release-v
+  version_filter: 
+  version_scheme: RPM
