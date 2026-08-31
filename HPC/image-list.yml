@@ -15,6 +15,7 @@ images:
   mne: mne
   nemo: nemo
   lammps: lammps
+  minighost: minighost
   lumpy: lumpy
   busco: busco
   eman: eman
