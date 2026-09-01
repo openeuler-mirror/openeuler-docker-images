@@ -1,0 +1,49 @@
+name: hycom
+category: hpc
+description: HYCOM（HYbrid Coordinate Ocean Model，混合坐标海洋模型）是一个用于模拟全球与区域海洋环流的三维海洋数值模式。它通过等密度面坐标、z 坐标和 σ 坐标的混合垂向坐标系统，在浅海准均匀区域退化为 z/σ 坐标，在深海层结区域退化为等密度面坐标，从而兼顾计算精度与效率。HYCOM 支持 MPI 并行、潮汐与海冰过程、数据同化，广泛应用于大洋环流、海域动力过程及气候模拟研究。
+environment: |
+  本应用在Docker环境中运行,安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  hycom镜像的Tag由其版本信息和基础镜像版本信息组成,详细内容如下
+  |    Tag   |  Currently  |  Architectures  |
+  |----------|-------------|------------------|
+  |[2.3.01-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/hycom/2.3.01/24.03-lts-sp4/Dockerfile) | HYCOM 2.3.01 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/hycom:{Tag}
+  ```
+usage: |
+  - 确保已安装 Docker 环境。
+  - 从 DockerHub 获取 hycom 镜像:
+    ```
+    docker pull openeuler/hycom:{Tag}
+    ```
+  - 启动容器进入 HYCOM 环境
+    ```
+    docker run -it openeuler/hycom:{Tag}
+    ```
+  - 在容器内验证安装
+    ```
+    which hycom
+    ```
+license: Apache-2.0
+similar_packages:
+  - ROMS: 区域海洋模式，采用地形追随坐标，与 HYCOM 同为三维海洋动力模拟工具
+  - NEMO: 欧洲开发的海洋核心模式，支持海洋、海冰和生物地球化学耦合
+  - MOM: GFDL 开发的地球物理流体动力学海洋模式，面向全球与区域海洋模拟
+dependency:
+  - Fortran compiler (gfortran)
+  - OpenMPI
+  - GNU make
+  - Git
+homepage: https://github.com/HYCOM/HYCOM-src
+upstream:
+  backend: GitHub
+  version_url: HYCOM/HYCOM-src
+  version_prefix: ''
+  version_filter:
+  version_scheme: RPM

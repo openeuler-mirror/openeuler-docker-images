@@ -1,0 +1,24 @@
+#
+# HYCOM generic GNU/Linux + OpenMPI, MPI, real*8, relocatable
+#
+FC            = mpif90
+FCFFLAGS      = -fPIC -fno-second-underscore -O2 -fdefault-real-8 -fdefault-double-8 -fallow-argument-mismatch
+CC            = mpicc
+CCFLAGS       = -O
+CPP           = cpp -P
+CPPFLAGS      = -DREAL8 -DMPI -DENDIAN_IO -DTIMER -DRELO -DEOS_SIG0 -DEOS_7T $(CPP_EXTRAS)
+LD            = $(FC)
+LDFLAGS       = $(FCFFLAGS)
+EXTRALIBS     =
+
+#
+# generic make definitions
+#
+SHELL         = /bin/sh
+RM            = \rm -f
+
+.c.o:
+	$(CC) $(CPPFLAGS) $(CCFLAGS) -c $*.c
+
+.F90.o:
+	$(FC) $(CPPFLAGS) $(FCFFLAGS) -c $*.F90
