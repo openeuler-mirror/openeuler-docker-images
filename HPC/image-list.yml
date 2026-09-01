@@ -15,6 +15,7 @@ images:
   mne: mne
   nemo: nemo
   lammps: lammps
+  minighost: minighost
   lumpy: lumpy
   busco: busco
   eman: eman
@@ -89,3 +90,4 @@ images:
   moose: moose
   nco: nco
   hycom: hycom
+  qp2: qp2

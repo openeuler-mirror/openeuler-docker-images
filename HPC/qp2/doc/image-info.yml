@@ -1,0 +1,62 @@
+name: qp2
+category: hpc
+description: qp2(Quantum Package 2)是一个用于波函数方法的开源量子化学编程环境，专门设计用于行列式驱动的选择配置相互作用(sCI)方法和多参考二阶微扰理论(PT2)。基于CIPSI算法，提供变分能量和PT2修正。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  qp2镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[2.1.2-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/qp2/2.1.2/24.03-lts-sp3/Dockerfile)| qp2 2.1.2 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+  |[2.1.2-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/qp2/2.1.2/24.03-lts-sp4/Dockerfile)| qp2 2.1.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/qp2:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+    ```
+    docker run -it --rm openeuler/qp2:{Tag}
+    ```
+  
+  - 创建EZFIO数据库并运行计算示例
+    ```
+    docker run -it --rm -v $PWD:/data openeuler/qp2:{Tag} qp_create -o h2o h2o.xyz
+    docker run -it --rm -v $PWD:/data openeuler/qp2:{Tag} qp_run scf h2o
+    ```
+
+license: AGPL-3.0 license
+
+similar_packages:
+  - name: cp2k
+    description: CP2K是一个量子化学和固体物理软件包，可执行原子尺度模拟。
+    homepage: https://www.cp2k.org/
+  - name: yambo
+    description: Yambo实现了多体扰动理论方法，如GW和BSE。
+    homepage: https://www.yambo-code.eu/
+
+dependency:
+  - gfortran
+  - python3
+  - blas
+  - lapack
+  - zeromq
+  - ocaml
+  - ninja
+  - irpf90
+  - ezfio
+
+homepage: https://github.com/QuantumPackage/qp2
+upstream:
+  backend: GitHub
+  version_url: QuantumPackage/qp2
+  version_prefix: ''
+  version_filter: beta
+  version_scheme: RPM

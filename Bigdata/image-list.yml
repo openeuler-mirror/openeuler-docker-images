@@ -30,7 +30,6 @@ images:
   lucene: lucene
   atlas: atlas
   kylin: kylin
-  kylin-e2e-test: kylin-e2e-test
   gluten: gluten
   auron: auron
   ray: ray

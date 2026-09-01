@@ -1,0 +1,53 @@
+name: minighost
+category: hpc
+description: miniGhost是一个3D halo交换通信迷你应用程序，来自Mantevo项目套件。它模拟了HPC代码中常见的3D最近邻halo交换通信，用于实现边界交换的差分模板计算，采用批量同步并行(BSP)模型。miniGhost可用于HPC系统基准测试和通信性能评估。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  minighost镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.0.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/minighost/1.0.0/24.03-lts-sp3/Dockerfile) | miniGhost 1.0.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+  |[1.0.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/minighost/1.0.0/24.03-lts-sp4/Dockerfile) | miniGhost 1.0.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/minighost:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+    ```
+    docker run -it --rm openeuler/minighost:{Tag}
+    ```
+    使用如下命令进行简单可用性测试
+    ```
+    mpirun -np 4 ./miniGhost.x
+    ```
+    输出类似如下结果则说明miniGhost可用
+    ```
+    miniGhost: Mini-App for Ghost Exchange
+    ...
+    ```
+
+license: LGPL-3.0 license 
+
+similar_packages:
+  - N/A
+
+dependency:
+  - openmpi
+  - gfortran
+
+homepage: https://github.com/Mantevo/miniGhost
+upstream:
+  version_url: Mantevo/miniGhost
+  backend: GitHub
+  version_scheme: master
+  version_prefix: 
+  version_filter:
