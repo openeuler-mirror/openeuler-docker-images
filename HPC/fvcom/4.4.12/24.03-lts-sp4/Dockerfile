@@ -14,7 +14,9 @@ RUN yum install -y --disablerepo=update --disablerepo=update-source \
         libcurl-devel && \
     yum clean all && rm -rf /var/cache/yum
 
-RUN curl -fsSL https://github.com/Unidata/netcdf-fortran/archive/refs/tags/v${NETCDF_FORTRAN_VERSION}.tar.gz -o netcdf-fortran.tgz && \
+RUN curl -fSL --retry 5 --retry-delay 5 --retry-all-errors \
+        https://github.com/Unidata/netcdf-fortran/archive/refs/tags/v${NETCDF_FORTRAN_VERSION}.tar.gz \
+        -o netcdf-fortran.tgz && \
     tar xzf netcdf-fortran.tgz && \
     cd netcdf-fortran-${NETCDF_FORTRAN_VERSION} && \
     mkdir build && cd build && \
@@ -24,8 +26,12 @@ RUN curl -fsSL https://github.com/Unidata/netcdf-fortran/archive/refs/tags/v${NE
     cd / && rm -rf netcdf-fortran-${NETCDF_FORTRAN_VERSION} netcdf-fortran.tgz
 
 
-RUN git clone --depth=1 --branch ${FVCOM_VERSION} \
-        https://github.com/FVCOM-GitHub/FVCOM.git /fvcom
+RUN for i in $(seq 1 5); do \
+        git clone --depth=1 --branch ${FVCOM_VERSION} \
+            https://github.com/FVCOM-GitHub/FVCOM.git /fvcom && exit 0; \
+        echo "git clone failed (attempt $i/5), retrying..."; \
+        rm -rf /fvcom; sleep 5; \
+    done; echo "git clone failed after 5 attempts"; exit 1
 
 
 COPY make.inc /fvcom/src/make.inc
