@@ -51,6 +51,7 @@ images:
   wavewatch: wavewatch
   petsc: petsc
   kb_python: kb_python
+  kobas: kobas
   code-saturne: code-saturne
   dealii: dealii
   swmm: swmm
