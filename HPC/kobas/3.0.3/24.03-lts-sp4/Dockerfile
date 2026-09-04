@@ -23,7 +23,10 @@ RUN if [ "$TARGETARCH" = "amd64" ]; then \
     && bash /tmp/miniconda.sh -b -p /opt/conda \
     && rm -f /tmp/miniconda.sh
 
-RUN /opt/conda/bin/conda config --add channels bioconda \
+# Accept the Anaconda Terms of Service non-interactively (matches the pattern
+# used by other HPC images, e.g. meep) so conda create below won't prompt.
+RUN /opt/conda/bin/conda tos accept \
+    && /opt/conda/bin/conda config --add channels bioconda \
     && /opt/conda/bin/conda config --add channels conda-forge \
     && /opt/conda/bin/conda create -y -n kobas python=2.7 r-base rpy2>=2.8.5 blast numpy pandas biopython sqlite bioconductor-qvalue \
     && /opt/conda/bin/conda clean -a -y
