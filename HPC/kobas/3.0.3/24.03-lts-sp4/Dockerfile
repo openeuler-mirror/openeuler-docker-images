@@ -13,7 +13,6 @@ RUN dnf install -y \
     openssl-devel libpng-devel libxml2-devel libjpeg-devel \
     wget tar gcc make perl-core \
     ncbi-blast+ \
-    git \
     && dnf clean all \
     && rm -rf /var/cache/dnf
 
