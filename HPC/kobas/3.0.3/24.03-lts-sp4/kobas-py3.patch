@@ -1,0 +1,2084 @@
+diff -ruN '--exclude=__pycache__' da/kobas/annot.py db/kobas/annot.py
+--- da/kobas/annot.py	2026-09-07 17:24:38.784177272 +0800
++++ db/kobas/annot.py	2026-09-07 17:24:38.788177309 +0800
+@@ -1,8 +1,9 @@
+-from StringIO import StringIO
+-
+-from Bio.Blast import NCBIXML, Applications
+-
++import os
++import subprocess
+ import sys
++from io import StringIO
++
++from Bio.Blast import NCBIXML
+ 
+ from kobas import config, dbutils
+ 
+@@ -20,7 +21,7 @@
+     try:
+         query, slinks = line[:-1].split('\t')
+     except ValueError:
+-	sys.exit('Error message:\nBad format of the input file. You may do annotation first or check your input file. The input file should be the output of annotate.')
++        sys.exit('Error message:\nBad format of the input file. You may do annotation first or check your input file. The input file should be the output of annotate.')
+     if slinks != 'None':
+         slinks = slinks.split('!')
+         for slink in slinks:
+@@ -53,9 +54,9 @@
+     def __iter__(self):
+         return self
+ 
+-    def next(self):
++    def __next__(self):
+         while True:
+-            line = self._handle.next()
++            line = next(self._handle)
+             if line.startswith('-' * 20):
+                 self.flag = 0
+             if (self.flag == 1 and is_info(line)):
+@@ -88,9 +89,18 @@
+ class BlastProgReader(BlastoutXMLReader):
+ 
+     def __init__(self, program, blastcmd, infile, database, nCPUs):
+-        cline = getattr(Applications, 'Ncbi' + program + 'Commandline')(cmd = blastcmd, query = infile, db = database, outfmt = 5, num_threads = nCPUs)
+-        blastout, blasterr = cline()
+-        BlastoutXMLReader.__init__(self, StringIO(blastout))
++        exe = blastcmd
++        if not os.path.isfile(exe):
++            exe = os.path.join(blastcmd, program)
++        if not os.path.isfile(exe):
++            exe = program
++        cmd = [exe, '-query', infile, '-db', database,
++               '-outfmt', '5', '-num_threads', str(nCPUs)]
++        proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
++        blastout, blasterr = proc.communicate()
++        if proc.returncode:
++            raise RuntimeError('Failed to run %s: %s' % (exe, blasterr.decode('utf-8', 'replace')))
++        BlastoutXMLReader.__init__(self, StringIO(blastout.decode('utf-8')))
+ 
+ class BlastoutTabReader(Reader):
+ 
+@@ -100,27 +110,32 @@
+             if (line[0] != '#' and line.split() != []):
+                 record = line.split('\t')
+                 records.setdefault(record[0], []).append(record[1:])
+-        self.parse = records.items().__iter__()
++        self.parse = list(records.items()).__iter__()
+ 
+     def __iter__(self):
+         return self.parse
+ 
+-class IdMappingReader(file):
++class IdMappingReader(object):
+ 
+     def __init__(self, speciesdb, species, infile, dbtype):
+         self.speciesdb = speciesdb
+         self.species = species
+-        file.__init__(self, infile)
++        self._handle = open(infile)
+         self.dbtype = dbtype
+ 
+-    def next(self):
+-        dblink_id = file.next(self).strip()
+-        while dblink_id == '':    ##remove blank lines
+-            dblink_id = file.next(self).strip()
+-        if self.species == 'ko':
+-            return (dblink_id, self.speciesdb.koids_from_dblink_id(dblink_id, self.dbtype))
+-        else:
+-            return (dblink_id, self.speciesdb.gids_from_dblink_id(dblink_id, self.dbtype))
++    def __iter__(self):
++        return self
++
++    def __next__(self):
++        for line in self._handle:
++            dblink_id = line.strip()
++            if dblink_id == '':
++                continue
++            if self.species == 'ko':
++                return (dblink_id, self.speciesdb.koids_from_dblink_id(dblink_id, self.dbtype))
++            else:
++                return (dblink_id, self.speciesdb.gids_from_dblink_id(dblink_id, self.dbtype))
++        raise StopIteration
+ 
+ class Selector(object):
+ 
+diff -ruN '--exclude=__pycache__' da/kobas/config.py db/kobas/config.py
+--- da/kobas/config.py	2026-09-07 17:24:38.784177272 +0800
++++ db/kobas/config.py	2026-09-07 17:24:38.788177309 +0800
+@@ -1,12 +1,12 @@
+ #!/usr/bin/env python
+ 
+ import os, sys
+-from ConfigParser import ConfigParser
++from configparser import ConfigParser
+ 
+ def getrc():
+     rc = KOBASRC()
+ 
+-    if os.environ.has_key('HOME'):
++    if 'HOME' in os.environ:
+         rcfg_file = os.environ['HOME'] + '/.kobasrc'
+     else:
+         rcfg_file = ''
+@@ -23,8 +23,8 @@
+     elif rcbg_filep:
+         return rc.read(rcbg_file)
+     else:
+-        print 'Warning: configuration file does not exist. Please create ' \
+-            'the file or provide the options through command line parameters.'
++        print('Warning: configuration file does not exist. Please create ' \
++            'the file or provide the options through command line parameters.')
+         kobasrc = {}
+         kobasrc['kobas_home'] = ''
+         kobasrc['blast_home'] = ''
+@@ -41,7 +41,7 @@
+         rcparser = ConfigParser()
+         rcparser.read(rc_file)
+ 
+-        for option, value in rcparser.defaults().items():
++        for option, value in list(rcparser.defaults().items()):
+             rc[option] = value
+ 
+         for section in rcparser.sections():
+diff -ruN '--exclude=__pycache__' da/kobas/dbutils.py db/kobas/dbutils.py
+--- da/kobas/dbutils.py	2026-09-07 17:24:38.784177272 +0800
++++ db/kobas/dbutils.py	2026-09-07 17:24:38.788177309 +0800
+@@ -43,10 +43,10 @@
+     ##redundant SQL sentences in koids_from_gid, koids_from_entrez_gene_id, koids_from_gi, koids_from_uniprotkb_ac, and koids_from_ensembl_gene_id are for dealing with mistakes in KEGG raw data files
+     def koids_from_gid(self, gid):
+         try:
+-	    result=self.con.execute('SELECT Kos.koid FROM Kos, KoGenes WHERE KoGenes.gid = ? AND KoGenes.koid = Kos.koid', (gid, ))
+-	except TypeError:
+-	    sys.exit('Error message:\nBad blastout format. You can choose to input the FASTA file directly (-t fasta:nuc or fasta:pro) or run blast+ locally against FASTA sequence file in the latest backend databases of KOBAS 2.0. Please refer to instructions(http://kobas.cbi.pku.edu.cn/download.do) for details')
+-	return result
++            result=self.con.execute('SELECT Kos.koid FROM Kos, KoGenes WHERE KoGenes.gid = ? AND KoGenes.koid = Kos.koid', (gid, ))
++        except TypeError:
++            sys.exit('Error message:\nBad blastout format. You can choose to input the FASTA file directly (-t fasta:nuc or fasta:pro) or run blast+ locally against FASTA sequence file in the latest backend databases of KOBAS 2.0. Please refer to instructions(http://kobas.cbi.pku.edu.cn/download.do) for details')
++        return result
+ 
+     def koids_from_entrez_gene_id(self, query):
+         return self.con.execute('SELECT Kos.koid FROM Kos, KoEntrezGeneIds WHERE KoEntrezGeneIds.entrez_gene_id = ? AND KoEntrezGeneIds.koid = Kos.koid', (query, ))
+@@ -84,12 +84,12 @@
+         if abbr == 'ko':
+             return [('K', 'KEGG PATHWAY')]
+         elif abbr == 'hsa':
+-            return P.items() + D.items() + G.items()
++            return list(P.items()) + list(D.items()) + list(G.items())
+         else:
+             databases = [(database[0], P[database[0]]) for database in self.con.execute('SELECT DISTINCT db FROM Pathways')]
+             count = self.con.execute('SELECT COUNT(*) FROM Gos').fetchone()[0]
+             if count:
+-                databases += G.items()
++                databases += list(G.items())
+             return databases
+ 
+     def genes(self, name = False):
+@@ -148,7 +148,7 @@
+         try:
+             result=self.con.execute('SELECT name FROM Genes WHERE gid = ?', (gid, )).fetchone()[0]
+         except TypeError:
+-	    sys.exit('Error message:\nBad blastout format. You can choose to input the FASTA file directly (-t fasta:nuc or fasta:pro) or run blast+ locally against FASTA sequence file in the latest backend databases of KOBAS 2.0. Please refer to instructions(http://kobas.cbi.pku.edu.cn/download.do) for details')
++            sys.exit('Error message:\nBad blastout format. You can choose to input the FASTA file directly (-t fasta:nuc or fasta:pro) or run blast+ locally against FASTA sequence file in the latest backend databases of KOBAS 2.0. Please refer to instructions(http://kobas.cbi.pku.edu.cn/download.do) for details')
+         return result
+ 
+     def gids_from_entrez_gene_id(self, query):
+@@ -218,7 +218,7 @@
+         if not temp:
+             return None
+         else:
+-            return set(map(lambda ids:ids[0].split(':')[0], temp))
++            return set([ids[0].split(':')[0] for ids in temp])
+ #new for goslim
+     def goslims_from_gid(self,gid):
+         return self.con.execute('SELECT Goslims.goid, Goslims.name FROM GeneGoslims, Goslims WHERE GeneGoslims.gid = ? AND GeneGoslims.goid = Goslims.goid', (gid, ))
+diff -ruN '--exclude=__pycache__' da/kobas/discover.py db/kobas/discover.py
+--- da/kobas/discover.py	2026-09-07 17:24:38.784177272 +0800
++++ db/kobas/discover.py	2026-09-07 17:24:38.788177309 +0800
+@@ -1,4 +1,5 @@
+ import sys,os
++from functools import cmp_to_key
+ from kobas import config, dbutils, exception, annot
+ 
+ import rpy2.robjects as robjects
+@@ -14,7 +15,7 @@
+         return dict.get(self, key, set())
+ 
+     def __setitem__(self, key, val):
+-        if self.has_key(key):
++        if key in self:
+             self[key].add(val)
+         else:
+             dict.__setitem__(self, key, set([val]))
+@@ -39,12 +40,12 @@
+             self.gnum = int(speciesdb.gnum_from_dbtype(idmapping))
+ 
+ def remove_small_terms(distr, small_num):
+-    for term in distr.keys():
++    for term in list(distr.keys()):
+         if len(distr[term]) < small_num:
+             distr.pop(term)
+ 
+ def remove_small_terms2(distr, small_num):
+-    for term in distr.keys():
++    for term in list(distr.keys()):
+         if distr[term] < small_num:
+             distr.pop(term)
+ 
+@@ -60,7 +61,7 @@
+                     distr[(term['name'], db, term['pid'])] = item[0]
+                     odistr[term['pid']] = koid
+ 
+-    elif db in dbutils.P.keys():
++    elif db in list(dbutils.P.keys()):
+         for item in items:
+             terms = speciesdb.pathways_from_gid(item[1][0], db)
+             for term in terms:
+@@ -68,13 +69,13 @@
+                 if db == 'K':
+                     odistr[term['id']] = item[1][0]
+ 
+-    elif db in dbutils.D.keys():
++    elif db in list(dbutils.D.keys()):
+         for item in items:
+             terms = speciesdb.diseases_from_gid(item[1][0], db)
+             for term in terms:
+                 distr[(term['name'], db, term['id'])] = item[0]
+ 
+-    elif db in dbutils.G.keys():
++    elif db in list(dbutils.G.keys()):
+         for item in items:
+             terms = speciesdb.gos_from_gid(item[1][0])
+             for term in terms:
+@@ -108,23 +109,23 @@
+     else:
+         gids = speciesdb.genes()
+         for gid in gids:
+-            if db in dbutils.P.keys():
++            if db in list(dbutils.P.keys()):
+                 terms = speciesdb.pathways_from_gid(gid['gid'], db)
+-            elif db in dbutils.D.keys():
++            elif db in list(dbutils.D.keys()):
+                 terms = speciesdb.diseases_from_gid(gid['gid'], db)
+-            elif db in dbutils.G.keys():
++            elif db in list(dbutils.G.keys()):
+                 terms = speciesdb.gos_from_gid(gid['gid'])
+ 
+             if idmapping:
+                 dblink_ids = [dblink_id[0] for dblink_id in speciesdb.dblink_ids_from_gid(gid['gid'], idmapping)]
+-            if db in dbutils.P.keys() + dbutils.D.keys():
++            if db in list(dbutils.P.keys()) + list(dbutils.D.keys()):
+                 for term in terms:
+                     if idmapping:
+                         distr[(term['name'], db, term['id'])] = distr.get((term['name'], db, term['id']), 0) + len(dblink_ids)
+                     else:
+                         distr[(term['name'], db, term['id'])] = distr.get((term['name'], db, term['id']), 0) + 1
+ 
+-            elif db in dbutils.G.keys():
++            elif db in list(dbutils.G.keys()):
+                 for term in terms:
+                     if idmapping:
+                         distr[(term['name'], db, term['goid'])] = distr.get((term['name'], db, term['goid']), 0) + len(dblink_ids)
+@@ -220,8 +221,8 @@
+ 
+     def __init__(self, *samples):
+         if len(samples) != 2:
+-            raise TypeError, '%s expects 2 arguments, but gets %d' \
+-                % (self.__class__, len(*samples))
++            raise TypeError('%s expects 2 arguments, but gets %d' \
++                % (self.__class__, len(*samples)))
+         OneSampleTest.__init__(self, *samples)
+ 
+     def calc_pvalue(self, m1, n1, m2, n2):
+@@ -230,20 +231,20 @@
+     def __call__(self, result = None):
+         sample1, sample2 = self.samples[:2]
+         if isinstance(sample2.dis, Distr):
+-            for term in sample1.dis.keys():
+-                if not sample2.dis.has_key(term):
++            for term in list(sample1.dis.keys()):
++                if term not in sample2.dis:
+                     sample1.dis.pop(term)
+             n1, n2 = sample1.gnum, sample2.gnum
+-            for term, queries in sample1.dis.items():
++            for term, queries in list(sample1.dis.items()):
+                 m1, m2 = len(queries), len(sample2.dis[term])
+                 result.append(list(term) + ['%d' % m1, '%d' % m2, self.calc_pvalue(m1, n1, m2, n2), '|'.join(queries)])
+         else:
+-            for term in sample1.dis.keys():
+-                if not term in sample2.dis.keys():
++            for term in list(sample1.dis.keys()):
++                if not term in list(sample2.dis.keys()):
+                     sample1.dis.pop(term)
+             n1, n2 = sample1.gnum, sample2.gnum
+              
+-            for term, queries in sample1.dis.items():
++            for term, queries in list(sample1.dis.items()):
+                 m1, m2 = len(queries), sample2.dis[term]
+                 try:
+                     result.append(list(term) + ['%d' % m1, '%d' % m2, self.calc_pvalue(m1, n1, m2, n2), '|'.join(queries)])
+@@ -266,14 +267,14 @@
+ 
+     def calc_pvalue(self, m1, n1, m2, n2, **kargs):
+         if m1 > m2:
+-            raise exception.StatError, 'Input is not a subset of background. Try binomial test.'
++            raise exception.StatError('Input is not a subset of background. Try binomial test.')
+         return improved_chisq_test(m1, n1, m2, n2, **kargs)
+ 
+ class FisherTest(TwoSampleTest):
+ 
+     def calc_pvalue(self, m1, n1, m2, n2, **kargs):
+         if m1 > m2:
+-            raise exception.StatError, 'Input is not a subset of background. Try binomial test.'
++            raise exception.StatError('Input is not a subset of background. Try binomial test.')
+         return fisher_test(m1, n1, m2, n2, **kargs)
+ 
+ class TestResult:
+@@ -327,7 +328,7 @@
+         self.result.reverse()
+ 
+     def sort(self, key = -1, order = 0):
+-        self.result.sort(list_cmp(key))
++        self.result.sort(key = cmp_to_key(list_cmp(key)))
+         if order:
+             self.result.reverse()
+ 
+diff -ruN '--exclude=__pycache__' da/kobas/fasta.py db/kobas/fasta.py
+--- da/kobas/fasta.py	2026-09-07 17:24:38.784177272 +0800
++++ db/kobas/fasta.py	2026-09-07 17:24:38.788177309 +0800
+@@ -4,7 +4,7 @@
+ 
+ from Bio.Blast import NCBIXML
+ 
+-from exception import *
++from .exception import *
+ 
+ MaxSeqNo = 500
+ 
+@@ -12,10 +12,10 @@
+     fasta = SeqIO.parse(handle,'fasta')
+ #    try:
+ #        records=list(fasta)
+-#    	if not records:
++#       if not records:
+ #            raise FastaErr, 'Error message:\nBad fasta format. Please check your input file or change the input type.'
+ #    except FastaErr, e:
+-#	sys.exit(e)
++#       sys.exit(e)
+     try:
+         count = 0
+         for rec in fasta:
+@@ -27,12 +27,12 @@
+                 pass
+                 #raise FastaIOError, '''The sequences you have submitted exceed the MAXIMUM LIMIT of %d sequences. Too many sequences may overburden KOBAS 2.0 web server. It is recommended to run it locally using <a href="http://kobas.cbi.pku.edu.cn/download.do">KOBAS 2.0 Standalone programs</a>.''' % MaxSeqNo
+         if count == 0:
+-            raise FastaErr, 'Error message:\nBad fasta format. Please check your input file or change the input type.'
+-    except FastaErr, e:
++            raise FastaErr('Error message:\nBad fasta format. Please check your input file or change the input type.')
++    except FastaErr as e:
+         sys.exit(e)
+-    except FastaIOError, e:
++    except FastaIOError as e:
+         raise
+-    except Exception, args:
++    except Exception as args:
+         seq = locals().get('rec', 'the first')
+         if seq.id:
+             label = locals().get('rec', 'the first').id
+@@ -40,22 +40,22 @@
+         else:
+             label = '\n%s\n' % str(seq)
+             msg = 'Bad fasta format after " %s " sequence' % label
+-        raise IOError, msg
++        raise IOError(msg)
+ 
+ def blastoutxml(handle):
+     try:
+         for record in NCBIXML.parse(handle):
+-	    test=record
++            test=record
+     except ValueError:
+-	sys.exit('Error message:\nBad blastout xml format. Please check your input file.')
++        sys.exit('Error message:\nBad blastout xml format. Please check your input file.')
+ 
+ def blastouttab(handle):
+     for line in handle:
+         if (line[0] != '#' and line.split() != []):
+-	    lines=line.split('\t')
+-	    colums=len(lines)
+-	    try:
+-	        if not colums==12:
+-		    raise TabformatErr,'Error message:\nBad blastout tabular format. Please check your input file.'
+-	    except TabformatErr, e:
++            lines=line.split('\t')
++            colums=len(lines)
++            try:
++                if not colums==12:
++                    raise TabformatErr('Error message:\nBad blastout tabular format. Please check your input file.')
++            except TabformatErr as e:
+                 sys.exit(e)
+diff -ruN '--exclude=__pycache__' da/kobas/gsea.py db/kobas/gsea.py
+--- da/kobas/gsea.py	2026-09-07 17:24:38.784177272 +0800
++++ db/kobas/gsea.py	2026-09-07 17:24:38.788177309 +0800
+@@ -24,18 +24,18 @@
+         while line :
+             words = line.rstrip('\n').split('\t')
+             if len(words)<3 :
+-                raise exception.GmtformatErr, "Error Message:\nBad gene set database format. Please check your gene set database format, only gmt file, a tab delimited file are allowed. \nAbout file format, please click www.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats "
++                raise exception.GmtformatErr("Error Message:\nBad gene set database format. Please check your gene set database format, only gmt file, a tab delimited file are allowed. \nAbout file format, please click www.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats ")
+ 
+             if words[0] in gset_name:
+-                raise exception.GmtformatErr, "Error Message:\nBad gene set database format. Please check your gene set database format, only gmt file are allowed.\nDuplicate gene set names are not allowed. \nAbout file format, please click www.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats "
++                raise exception.GmtformatErr("Error Message:\nBad gene set database format. Please check your gene set database format, only gmt file are allowed.\nDuplicate gene set names are not allowed. \nAbout file format, please click www.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats ")
+ 
+             gset_name.append(words[0])
+             gset_des.append(words[1])
+             gset_genes.append(tuple(words[2:],))
+             line = gmt_file.readline()
+         gmt_file.close()
+-    except IOError,e:
+-        print "Error Message:\nBad gene set database format. Please check your gene set database format, only gmt file are allowed."
++    except IOError as e:
++        print("Error Message:\nBad gene set database format. Please check your gene set database format, only gmt file are allowed.")
+         gmt_file.close()
+         sys.exit(e)
+     gset_name = np.array(tuple(gset_name))
+@@ -70,7 +70,7 @@
+             hit_m.append(hit_array)
+         hit_matrix = np.array(hit_m)
+         if not 1 in hit_matrix:
+-            raise exception.GmtformatErr,"Error Message:\nNone of genes in input file(gct file) was matched with genes in gene sets. \nPlease check the gct file(-e), the gmt file(-g), the idtype(-i), the database type(-d)."
++            raise exception.GmtformatErr("Error Message:\nNone of genes in input file(gct file) was matched with genes in gene sets. \nPlease check the gct file(-e), the gmt file(-g), the idtype(-i), the database type(-d).")
+ 
+         hitsum = hit_matrix.sum(1)
+         delindex = np.where((hitsum<min_size) | (hitsum>max_size))[0]
+@@ -80,8 +80,8 @@
+         gset_name_filtered = np.delete(np.array(gset_name),delindex,axis=0)
+         gset_des_filtered = np.delete(gset_des,delindex,axis=0)
+         if len(hit_matrix_filtered)==0:
+-            raise exception.GmtvalueErr,"Error Message:\nAll gene sets"+repr(len(hit_matrix))+"have been filtered. \nPlease check the threshold and ceil of gene set size (values of min_size and max_size). "
+-    except ValueError,e:
++            raise exception.GmtvalueErr("Error Message:\nAll gene sets"+repr(len(hit_matrix))+"have been filtered. \nPlease check the threshold and ceil of gene set size (values of min_size and max_size). ")
++    except ValueError as e:
+         sys.exit(e)
+     return hit_matrix_filtered, hit_genes_filterd, hit_sum_filtered, gset_name_filtered, gset_des_filtered
+ 
+@@ -95,7 +95,7 @@
+     try:
+         dbcatg = dbtype.split(':')[0]
+         if not dbcatg in ['P','D','G']:
+-            raise exception.GmtdatabaseErr,"Error Message: This database category you input is not allowed. Please choose 'P','D','G' for database category."
++            raise exception.GmtdatabaseErr("Error Message: This database category you input is not allowed. Please choose 'P','D','G' for database category.")
+ 
+         records =[]
+         gset_num = 0
+@@ -107,10 +107,10 @@
+                 avail_dbs[database[0]] = database[1]
+             dbs = input_dbs.intersection(set(avail_dbs.keys()))
+             if dbs:
+-                print  "Databases: %s"  % ', '.join([avail_dbs[db] for db in dbs])
++                print("Databases: %s"  % ', '.join([avail_dbs[db] for db in dbs]))
+             else:
+-                raise exception.GmtdatabaseErr, "No supported databases are selected. Supported databases are %s, but your input databases are: %s." % \
+-                ('/'.join(avail_dbs.keys()), dbtype)
++                raise exception.GmtdatabaseErr("No supported databases are selected. Supported databases are %s, but your input databases are: %s." % \
++                ('/'.join(list(avail_dbs.keys())), dbtype))
+ 
+ 
+             for db in dbs:
+@@ -119,7 +119,7 @@
+                 records += tmp
+                 gset_num += num
+             if gset_num ==0 :
+-                raise exception.GmtdatabaseErr,"Error Message: \nFail to get information from gene set database."
++                raise exception.GmtdatabaseErr("Error Message: \nFail to get information from gene set database.")
+ 
+             i = 0
+             hit_matrix = np.array([[0.0 for s in range(len(gene_list))] for m in range(gset_num)])
+@@ -140,21 +140,21 @@
+                 hit_genes.append(hgene)
+                 i+=1
+             if not 1 in hit_matrix:
+-                raise exception.GmtdatabaseErr,"Error Message:\nNone of genes in input file(gct file) was matched with genes in gene sets. \nPlease check the gct file(-e), the species(-s), the idtype(-i), the database type(-d)."
++                raise exception.GmtdatabaseErr("Error Message:\nNone of genes in input file(gct file) was matched with genes in gene sets. \nPlease check the gct file(-e), the species(-s), the idtype(-i), the database type(-d).")
+         
+         elif dbcatg=='D':
+             input_dbs = set(dbtype.split(':')[1].split('/'))
+             avail_dbs = {}
+             if species != 'hsa':
+-                raise exception.GmtdatabaseErr,"Error Message: Disease is only supported for Homo Sapiens(-s hsa), not supported for this species. Please choose another database category, e.g. 'P','G'"
++                raise exception.GmtdatabaseErr("Error Message: Disease is only supported for Homo Sapiens(-s hsa), not supported for this species. Please choose another database category, e.g. 'P','G'")
+             dbs = input_dbs.intersection(set(D.keys()))
+ 
+            # if dbs:
+            #     print  'Databases: %s'  % ', '.join([avail_dbs[db] for db in dbs])
+            # else:
+             if not dbs:
+-                raise exception.GmtdatabaseErr, 'No supported databases are selected. Supported databases are %s, but your input databases are: %s.' % \
+-                ('/'.join(avail_dbs.keys()), dbtype)
++                raise exception.GmtdatabaseErr('No supported databases are selected. Supported databases are %s, but your input databases are: %s.' % \
++                ('/'.join(list(avail_dbs.keys())), dbtype))
+             
+             for db in dbs:
+                 tmp = speciesdb.alldiseases(db).fetchall()
+@@ -162,7 +162,7 @@
+                 records += tmp
+                 gset_num += num
+             if gset_num == 0:
+-                raise exception.GmtdatabaseErr,"Error Message: \nFail to get information from gene set database."
++                raise exception.GmtdatabaseErr("Error Message: \nFail to get information from gene set database.")
+ 
+             i = 0
+             hit_matrix = np.array([[0.0 for s in range(len(gene_list))] for m in range(gset_num)])
+@@ -187,7 +187,7 @@
+                 hit_genes.append(hgene)
+                 i+=1
+             if not 1 in hit_matrix:
+-                raise exception.GmtdatabaseErr,"Error Message:\nNone of genes in input file(gct file) was matched with genes in gene sets. \nPlease check the gct file(-e), the species(-s), the idtype(-i), the database type(-d)."
++                raise exception.GmtdatabaseErr("Error Message:\nNone of genes in input file(gct file) was matched with genes in gene sets. \nPlease check the gct file(-e), the species(-s), the idtype(-i), the database type(-d).")
+ 
+         else :
+             records = speciesdb.allgoterms().fetchall()
+@@ -211,7 +211,7 @@
+                 hit_genes.append(hgene)
+                 i+=1
+             if not 1 in hit_matrix:
+-                raise exception.GmtdatabaseErr,"Error Message:\nNone of genes in input file(gct file) was matched with genes in gene sets. \nPlease check the gct file(-e), the species(-s), the idtype(-i), the database type(-d)."
++                raise exception.GmtdatabaseErr("Error Message:\nNone of genes in input file(gct file) was matched with genes in gene sets. \nPlease check the gct file(-e), the species(-s), the idtype(-i), the database type(-d).")
+ 
+         gset_name = np.array(tuple(gset_name))
+         gset_des = np.array(gset_des)
+@@ -224,8 +224,8 @@
+         gset_name_filtered = np.delete(np.array(gset_name),delindex,axis=0)
+         gset_des_filtered = np.delete(gset_des,delindex,axis=0)
+         if len(hit_matrix_filtered)==0 and len(gset_name_filtered)==0 and len(gset_des_filtered)==0 and len(hit_genes_filterd)==0 :
+-            raise exception.GmtvalueErr,"Error Message:\nAll gene sets"+repr(len(hit_matrix))+"have been filtered. \nPlease check the threshold and ceil of gene set size (values of min_size and max_size). "
+-    except ValueError,e:
++            raise exception.GmtvalueErr("Error Message:\nAll gene sets"+repr(len(hit_matrix))+"have been filtered. \nPlease check the threshold and ceil of gene set size (values of min_size and max_size). ")
++    except ValueError as e:
+         sys.exit(e)
+     return gset_num, hit_matrix_filtered, hit_genes_filterd, hit_sum_filtered, gset_name_filtered, gset_des_filtered
+ 
+@@ -235,18 +235,18 @@
+     rec = cls_file.readlines()
+     try :
+         if len(rec)!=3:
+-            raise exception.ClsformatErr,"Error Message:\nBad phenotype data formats. Please check format of cls file, only \".cls\" format file with a pair of categorical phenotype labels is allowed. \nAbout file format, please click www.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats  "
++            raise exception.ClsformatErr("Error Message:\nBad phenotype data formats. Please check format of cls file, only \".cls\" format file with a pair of categorical phenotype labels is allowed. \nAbout file format, please click www.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats  ")
+ 
+         line0 = rec[0].rstrip().split()
+         if int(line0[1])!=2 :
+-            raise exception.ClsvalueErr,"Error Message: \nSorry, only two categorical phenotype labels are allowed."
++            raise exception.ClsvalueErr("Error Message: \nSorry, only two categorical phenotype labels are allowed.")
+         sample_num = int(line0[0])
+         line1 = rec[1].rstrip().split()
+         phnameA = line1[1]
+         phnameB = line1[2]
+         line2 = rec[2].rstrip().split()
+         if len(line2)!=sample_num:
+-            raise exception.ClsvalueErr,"Error Message: \nThe total of phenotype labels doesn't match with the total of samples as you described at the first line. Please check this cls file."
++            raise exception.ClsvalueErr("Error Message: \nThe total of phenotype labels doesn't match with the total of samples as you described at the first line. Please check this cls file.")
+         assert phnameA in line2
+ #            raise exception.ClsvalueErr,"Error Message:\nThe type name in 3rd line must be same with 2nd line."
+         labels = []
+@@ -264,7 +264,7 @@
+ #                raise exception.ClsvalueErr,"Error Message:\nSorry, we don't support more than 2 phenotype labels."
+         cls_file.close()
+ 
+-    except ValueError,e:
++    except ValueError as e:
+         sys.exit(e)
+         cls_file.close()
+     return labels,phnameA,phnameB,sample_num,sample0,sample1
+@@ -274,7 +274,7 @@
+     title = txt_file.readline()
+     cols = title.rstrip().split('\t')
+     if len(cols)-2 != sample_num :
+-        raise exception.FormatErr, "Error Message: \nThe total of samples does not match with total of samples in CLS file.\n"
++        raise exception.FormatErr("Error Message: \nThe total of samples does not match with total of samples in CLS file.\n")
+     try:
+         lines = txt_file.readlines()
+         gene_num = len(lines)
+@@ -291,7 +291,7 @@
+         txt_file.close()
+ #        gene_list = tuple(gene_list)
+ 
+-    except IOError, e:
++    except IOError as e:
+         sys.exit(e)
+     return gene_list, gene_num, expr_data,title
+ 
+@@ -303,16 +303,16 @@
+         gct_file.readline()
+         num_info = gct_file.readline().rstrip().split('\t')
+         if int(num_info[1])!=sample_num:
+-            raise exception.GctvalueErr,"Error Message: \nThe total samples in gct file doen't match with the total samples in cls file.Please check gct file and cls file."
++            raise exception.GctvalueErr("Error Message: \nThe total samples in gct file doen't match with the total samples in cls file.Please check gct file and cls file.")
+         gene_num = int(num_info[0])
+         title = gct_file.readline()
+         header = title.rstrip().split('\t')
+         if len(header)!=sample_num+2 and not header[0] in ('NAME','Name','name') :
+-            raise exception.GctformatErr,"Error Message: \nBad expression data format. Only TXT and GCT format is allowed. \nAbout file format, please click www.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats "
++            raise exception.GctformatErr("Error Message: \nBad expression data format. Only TXT and GCT format is allowed. \nAbout file format, please click www.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats ")
+ 
+         lines = gct_file.readlines()
+         if len(lines)!=gene_num :
+-            raise exception.GctvalueErr,"Error Message: \nThe total gene probes doesn't match with information described in the second line."
++            raise exception.GctvalueErr("Error Message: \nThe total gene probes doesn't match with information described in the second line.")
+ 
+         counter = 0
+         expr_data = np.array([[0.0 for i in range(sample_num)] for j in range(gene_num)])
+@@ -326,7 +326,7 @@
+             counter +=1
+         gct_file.close()
+ #        gene_list = tuple(gene_list)
+-    except IOError,e:
++    except IOError as e:
+         sys.exit(e)
+     return gene_list,gene_num,expr_data,title
+ 
+@@ -352,11 +352,11 @@
+     if len(gene_list) < gene_num :
+         warnings.warn("Warning Messgae: \nSome of your genes can not be annotated, so we removed them for analysis. The genes for analysis are writed in file \" Genes_Used_In_Analysis.txt\" in the output directory. The annotation of each gene according to KEGG GENE is put in 2nd column of this file. The genes abandoned are writed in file  \"Genes_abandoned.txt\". \n") 
+     if len(gene_list) != len(expr_data):
+-        raise Exception, "Error Message: The gene num is not equal to expr_data length\n "
++        raise Exception("Error Message: The gene num is not equal to expr_data length\n ")
+     else:
+         gene_num = len(gene_list)
+     if len(gene_list) == 0 :
+-        raise Exception, "Error Message: None of genes are annotated. Please check -e (expression file) -s (species) -i (idtype) \n"
++        raise Exception("Error Message: None of genes are annotated. Please check -e (expression file) -s (species) -i (idtype) \n")
+     
+     return gene_list, gene_num, expr_data
+ 
+@@ -410,13 +410,13 @@
+         tmp = np.absolute(sort_arr) ** weighted_score_type * hitm
+ 
+     NR = np.sum(tmp, axis=1)
+-    hit_score = np.array(map(np.divide,tmp,NR))
++    hit_score = np.array(list(map(np.divide,tmp,NR)))
+     miss_score = 1.0/(gene_num - len(hitm)) *missm
+     pre_score = hit_score + miss_score
+ 
+     RES = np.cumsum(pre_score,axis=1)
+     es_idx = lambda x: np.where(abs(x.max()) > abs(x.min()), (x.max(), x.argmax()), (x.min(), x.argmin()))
+-    re = np.array(map(es_idx,RES))
++    re = np.array(list(map(es_idx,RES)))
+     es = np.array(re[:,0])
+     idx = np.array(re[:,1],dtype = np.int64)
+     return es,idx,RES
+@@ -467,19 +467,19 @@
+         tmp = np.absolute(sort_arr) ** weighted_score_type * hitm
+ 
+     NR = np.sum(tmp, axis=1)
+-    hit_score = np.array(map(np.divide,tmp,NR))
++    hit_score = np.array(list(map(np.divide,tmp,NR)))
+     miss_score = 1.0/(gene_num - len(hitm)) *missm
+     RES = np.cumsum(hit_score + miss_score,axis=1)
+     get_es = lambda x: np.where(abs(x.max()) > abs(x.min()), x.max(), x.min())
+-    es = np.array(map(get_es,RES))
++    es = np.array(list(map(get_es,RES)))
+     return es
+ 
+ 
+ def ES_null(lb, times, method, sample0,sample1, hit_matrix_filtered, weighted_score_type,expr_data,gene_num):
+     lb_matrix = np.array([lb for i in range(times)])
+-    ran_labels = np.array(map(lambda x: np.random.permutation(x), lb_matrix))
++    ran_labels = np.array([np.random.permutation(x) for x in lb_matrix])
+     def_get_es_null = lambda x: ES_for_permutation(x,method, sample0, sample1, hit_matrix_filtered,weighted_score_type,expr_data,gene_num)
+-    es_null = np.array(map(def_get_es_null,ran_labels)).T
++    es_null = np.array(list(map(def_get_es_null,ran_labels))).T
+     return es_null
+ 
+ 
+@@ -488,7 +488,7 @@
+     es_all = np.column_stack((es_null,es))
+     def_pval = lambda x: sum(x[:-1] >= x[-1])/float(sum(x[:-1] >=0)) if (x[-1]>=0) else sum(x[:-1] <= x[-1])/float(sum(x[:-1] <=0))
+     #def_pval = lambda x: where(x[-1]>=0, sum(x[:-1] >= x[-1])/float(sum(x[:-1]) >=0), sum(x[:-1] <= x[-1])/float(sum(x[:-1]) <=0))
+-    r = map(def_pval,es_all)
++    r = list(map(def_pval,es_all))
+     pval = np.array([r]).T     #m*1 array  m: num of filter gene sets
+     return pval
+ 
+@@ -498,16 +498,16 @@
+     def_mean_neg = lambda x : np.mean(abs(x[x<=0]))
+     def_nor = lambda x : np.where(x[:-2]>=0, x[:-2]/x[-2], x[:-2]/x[-1])
+ 
+-    mean_p = np.array(map(def_mean_pos, es_null))
++    mean_p = np.array(list(map(def_mean_pos, es_null)))
+     mean_p = mean_p.reshape(len(mean_p),1)          # shape=(m,1)
+-    mean_n = np.array(map(def_mean_neg, es_null))
++    mean_n = np.array(list(map(def_mean_neg, es_null)))
+     mean_n = mean_n.reshape(len(mean_n),1)
+ 
+     es_null_mean = np.column_stack((es_null,mean_p,mean_n))
+-    nes_null = np.array(map(def_nor, es_null_mean))
++    nes_null = np.array(list(map(def_nor, es_null_mean)))
+ 
+     es_mean = np.column_stack((es,mean_p, mean_n))
+-    nes_obs = np.array(map(def_nor, es_mean))
++    nes_obs = np.array(list(map(def_nor, es_mean)))
+     return nes_obs,nes_null
+ 
+ def fdr_cal(nes_obs, nes_null):
+@@ -527,12 +527,12 @@
+     #def_top = lambda x : where(x>=0, sum(nes_null >= x)/float(nullmore0), sum(nes_null <= x)/float(nullless0))
+     #def_down = lambda x : where(x>=0, sum(nes>= x)/float(obsmore0), sum(nes <= x)/float(obsless0))
+ 
+-    top = np.array(map(def_top, nes_obs))
++    top = np.array(list(map(def_top, nes_obs)))
+     nes = nes_obs.copy()
+-    down = np.array(map(def_down, nes_obs))
++    down = np.array(list(map(def_down, nes_obs)))
+     cal = np.column_stack((top,down))
+     def_fdr = lambda x : np.where(x[0]/x[1] <1, x[0]/x[1], 1)
+-    fdr = np.array(map(def_fdr,cal))
++    fdr = np.array(list(map(def_fdr,cal)))
+     return fdr
+ 
+ def output_set(result_path, phnameA, phnameB, gset_name_filtered, gset_des_filtered, hit_matrix_filtered, ES, NES, nompval, FDR):
+diff -ruN '--exclude=__pycache__' da/kobas/kb/biocyc/col.py db/kobas/kb/biocyc/col.py
+--- da/kobas/kb/biocyc/col.py	2026-09-07 17:24:38.784177272 +0800
++++ db/kobas/kb/biocyc/col.py	2026-09-07 17:24:38.788177309 +0800
+@@ -44,7 +44,7 @@
+                 pname = re.sub('&(.+?);', lambda mo: mo.group(1), pname)
+ 
+             for gene_id in gene_ids:
+-                if bcids.has_key(gene_id):
++                if gene_id in bcids:
+                     pathways.add((pid, 'B', paid, pname))
+                     gids = bcids[gene_id]
+                     for gid in gids:
+@@ -64,14 +64,14 @@
+     pathways, gene_pathways = parse(open(sys.argv[1]), open(sys.argv[2]), \
+         dbutils.KOBASDB(config.getrc()['kobasdb'] + sys.argv[3] + '.db'))
+ 
+-    print len(pathways), len(gene_pathways)
++    print(len(pathways), len(gene_pathways))
+ 
+     g, p = set(), set()
+     for gp in gene_pathways:
+         g.add(gp[0])
+         p.add(gp[1])
+ 
+-    print len(g), len(p)
++    print(len(g), len(p))
+ 
+     pprint(pathways[:5])
+     pprint(gene_pathways[:5])
+diff -ruN '--exclude=__pycache__' da/kobas/kb/fundo/do_lite.py db/kobas/kb/fundo/do_lite.py
+--- da/kobas/kb/fundo/do_lite.py	2026-09-07 17:24:38.784177272 +0800
++++ db/kobas/kb/fundo/do_lite.py	2026-09-07 17:24:38.788177309 +0800
+@@ -26,7 +26,7 @@
+     for gene_disease in gene_diseases:
+         dids.add(gene_disease[1])
+ 
+-    for disease in diseases.items():
++    for disease in list(diseases.items()):
+         if disease[1][0] not in dids:
+             diseases.pop(disease[0])
+ 
+@@ -44,14 +44,14 @@
+     diseases, gene_diseases = parse(open(sys.argv[1]), open(sys.argv[2]), \
+         dbutils.KOBASDB(config.getrc()['kobasdb'] + 'hsa.db'))
+ 
+-    print len(diseases), len(gene_diseases)
++    print(len(diseases), len(gene_diseases))
+ 
+     g, d = set(), set()
+     for gd in gene_diseases:
+         g.add(gd[0])
+         d.add(gd[1])
+ 
+-    print len(g), len(d)
++    print(len(g), len(d))
+ 
+     pprint(diseases[:5])
+     pprint(gene_diseases[:5])
+diff -ruN '--exclude=__pycache__' da/kobas/kb/gad/gad_all.py db/kobas/kb/gad/gad_all.py
+--- da/kobas/kb/gad/gad_all.py	2026-09-07 17:24:38.784177272 +0800
++++ db/kobas/kb/gad/gad_all.py	2026-09-07 17:24:38.788177309 +0800
+@@ -32,7 +32,7 @@
+                         if dname.endswith('.'):
+                             dname = dname[:-1]
+                         if dname:
+-                            if not diseases.has_key(dname):
++                            if dname not in diseases:
+                                 count += 1
+                                 diseases[dname] = [count * 10 + 4, 'g', '']
+ 
+@@ -52,14 +52,14 @@
+     diseases, gene_diseases = parse(open(sys.argv[1]), \
+         dbutils.KOBASDB(config.getrc()['kobasdb'] + 'hsa.db'))
+ 
+-    print len(diseases), len(gene_diseases)
++    print(len(diseases), len(gene_diseases))
+ 
+     g, d = set(), set()
+     for gd in gene_diseases:
+         g.add(gd[0])
+         d.add(gd[1])
+ 
+-    print len(g), len(d)
++    print(len(g), len(d))
+ 
+     pprint(diseases[:5])
+     pprint(gene_diseases[:5])
+diff -ruN '--exclude=__pycache__' da/kobas/kb/go/association.py db/kobas/kb/go/association.py
+--- da/kobas/kb/go/association.py	2026-09-07 17:24:38.784177272 +0800
++++ db/kobas/kb/go/association.py	2026-09-07 17:24:38.788177309 +0800
+@@ -30,7 +30,7 @@
+             info = line[:-1].split('\t')
+             if 'not' not in info[3].lower():    ##if 'not' in column 4, discard the annotation
+                 tid = info[12].split('|')[0][6:]    ##if '|' in column 13, only the first organism encodes the gene or gene product
+-                if tid_abbrs.has_key(tid):
++                if tid in tid_abbrs:
+                     abbr = tid_abbrs[tid]
+                     gpid = info[1].split(':')[-1]    ##column 2 is DB Object ID
+                     if organism[1] != 'not_need':
+@@ -52,6 +52,6 @@
+     multi_uniprotkb_ac_gos = parse(config.getrc()['kobas_home'], ('gene_association.ecocyc', 'not_need', '83333', 'eco'))
+ #    multi_uniprotkb_ac_gos = parse(config.getrc()['kobas_home'], ('gene_association.goa_human', 'not_need', '9606', 'hsa'))
+ 
+-    print len(multi_uniprotkb_ac_gos)
+-    print len(multi_uniprotkb_ac_gos['eco'])
++    print(len(multi_uniprotkb_ac_gos))
++    print(len(multi_uniprotkb_ac_gos['eco']))
+     pprint(tuple(multi_uniprotkb_ac_gos['eco'])[:5])
+diff -ruN '--exclude=__pycache__' da/kobas/kb/go/go.py db/kobas/kb/go/go.py
+--- da/kobas/kb/go/go.py	2026-09-07 17:24:38.784177272 +0800
++++ db/kobas/kb/go/go.py	2026-09-07 17:24:38.788177309 +0800
+@@ -12,7 +12,7 @@
+     for organism in go_organisms.go_organisms:
+ #    for organism in (('gene_association.sgd', 'gp2protein.sgd', '559292', 'sce'), \
+ #          ('gene_association.ecocyc', 'not_need', '83333', 'eco')):
+-        print organism
++        print(organism)
+     #for organism in (('gene_association.goa_human', 'not_need', '9606', 'hsa'), \
+     #     ('gene_association.mgi', 'gp2protein.mgi', '10090', 'mmu')):
+         multi_uniprotkb_ac_gos = association.parse(kobasdir, organism)
+@@ -22,13 +22,13 @@
+             speciesdb = dbutils.KOBASDB(kobasrc['kobasdb'] + abbr + '.db')
+             gos, gene_gos = set(), set()
+             for uniprotkb_ac_go in multi_uniprotkb_ac_gos[abbr]:
+-                if (uniprotkb_ac_go[1] not in go_categories) and (uniprotkb_ac_go[1] in go_terms.keys()):
++                if (uniprotkb_ac_go[1] not in go_categories) and (uniprotkb_ac_go[1] in list(go_terms.keys())):
+                     gids = speciesdb.gids_from_uniprotkb_ac(uniprotkb_ac_go[0])
+                     for gid in gids:
+                         gene_gos.add((gid[0], uniprotkb_ac_go[1]))
+                         gos.add((uniprotkb_ac_go[1], go_terms[uniprotkb_ac_go[1]]))
+                         for goid in go_inferreds[uniprotkb_ac_go[1]]:
+-                            if (goid not in go_categories) and (goid in go_terms.keys()):
++                            if (goid not in go_categories) and (goid in list(go_terms.keys())):
+                                 gene_gos.add((gid[0], goid))
+                                 gos.add((goid, go_terms[goid]))
+ 
+diff -ruN '--exclude=__pycache__' da/kobas/kb/go/obo.py db/kobas/kb/go/obo.py
+--- da/kobas/kb/go/obo.py	2026-09-07 17:24:38.784177272 +0800
++++ db/kobas/kb/go/obo.py	2026-09-07 17:24:38.788177309 +0800
+@@ -27,7 +27,7 @@
+ 
+ def get_inferred(inferred, former_rels, go_relations):
+     for former_rel in former_rels:
+-        if go_relations.has_key(former_rel[1]):
++        if former_rel[1] in go_relations:
+             relations = set()
+             for latter_rel in go_relations[former_rel[1]]:
+                 relation_type = reasoning(former_rel[0], latter_rel[0])
+@@ -63,7 +63,7 @@
+                 go_relations[go_term.goid] = go_term.relations
+                 go_term = None
+ 
+-    for (goid, relations) in go_relations.items():
++    for (goid, relations) in list(go_relations.items()):
+         inferred = set([relation[1] for relation in relations])
+         get_inferred(inferred, relations, go_relations)
+         go_inferreds[goid] = inferred
+@@ -76,6 +76,6 @@
+ 
+     go_terms, go_inferreds = parse(open(sys.argv[1]))
+ 
+-    print len(go_terms), len(go_inferreds)
+-    pprint(go_terms.items()[:5])
+-    pprint(go_inferreds.items()[:5])
++    print(len(go_terms), len(go_inferreds))
++    pprint(list(go_terms.items())[:5])
++    pprint(list(go_inferreds.items())[:5])
+diff -ruN '--exclude=__pycache__' da/kobas/kb/kegg/br08402_gene.py db/kobas/kb/kegg/br08402_gene.py
+--- da/kobas/kb/kegg/br08402_gene.py	2026-09-07 17:24:38.784177272 +0800
++++ db/kobas/kb/kegg/br08402_gene.py	2026-09-07 17:24:38.788177309 +0800
+@@ -15,14 +15,14 @@
+             diseases[adname] = [count * 10 + 2, 'k', '']
+         if line.startswith('B'):
+             bdname = line[:-1].split(None, 1)[1]
+-            if not diseases.has_key(bdname):
++            if bdname not in diseases:
+                 count += 1
+                 diseases[bdname] = [count * 10 + 2, 'k', '']
+         if line.startswith('C'):
+             cdiid, cdname = line.split('[')[0].strip().split(None, 2)[1:]
+             if '-' in cdiid:
+                 cdiid = ''
+-            if not diseases.has_key(cdname):
++            if cdname not in diseases:
+                 count += 1
+                 diseases[cdname] = [count * 10 + 2, 'k', cdiid]
+         if line.startswith('D'):
+@@ -38,7 +38,7 @@
+     for gene_disease in gene_diseases:
+         dids.add(gene_disease[1])
+ 
+-    for disease in diseases.items():
++    for disease in list(diseases.items()):
+         if disease[1][0] not in dids:
+             diseases.pop(disease[0])
+ 
+@@ -53,14 +53,14 @@
+ 
+     diseases, gene_diseases = parse(open(sys.argv[1]))
+ 
+-    print len(diseases), len(gene_diseases)
++    print(len(diseases), len(gene_diseases))
+ 
+     g, d = set(), set()
+     for gd in gene_diseases:
+         g.add(gd[0])
+         d.add(gd[1])
+ 
+-    print len(g), len(d)
++    print(len(g), len(d))
+ 
+     pprint(diseases[:5])
+     pprint(gene_diseases[:5])
+diff -ruN '--exclude=__pycache__' da/kobas/kb/kegg/ent.py db/kobas/kb/kegg/ent.py
+--- da/kobas/kb/kegg/ent.py	2026-09-07 17:24:38.784177272 +0800
++++ db/kobas/kb/kegg/ent.py	2026-09-07 17:24:38.788177309 +0800
+@@ -38,7 +38,7 @@
+         if is_pathway:
+             line = re.sub('PATHWAY', '', line)
+             paid, pname = line[:-1].split(None, 1)
+-            if not pathways.has_key(pname):
++            if pname not in pathways:
+                 count += 1
+                 pathways[pname] = [count * 10 + 1, 'K', paid]
+             gene_pathways.append((gid, pathways[pname][0]))
+@@ -90,16 +90,16 @@
+     ko_entrez_gene_ids, ko_gis, ko_uniprotkb_acs, ko_ensembl_gene_ids \
+     = parse(open(sys.argv[1]), sys.argv[2])
+ 
+-    print len(genes), len(pathways), len(gene_pathways), len(ko_genes)
+-    print len(gene_entrez_gene_ids), len(gene_gis), len(gene_uniprotkb_acs), len(gene_ensembl_gene_ids)
+-    print len(ko_entrez_gene_ids), len(ko_gis), len(ko_uniprotkb_acs), len(ko_ensembl_gene_ids)
++    print(len(genes), len(pathways), len(gene_pathways), len(ko_genes))
++    print(len(gene_entrez_gene_ids), len(gene_gis), len(gene_uniprotkb_acs), len(gene_ensembl_gene_ids))
++    print(len(ko_entrez_gene_ids), len(ko_gis), len(ko_uniprotkb_acs), len(ko_ensembl_gene_ids))
+ 
+     g, p = set(), set()
+     for gp in gene_pathways:
+         g.add(gp[0])
+         p.add(gp[1])
+ 
+-    print len(g), len(p)
++    print(len(g), len(p))
+ 
+     pprint(genes[:5])
+     pprint(pathways[:5])
+diff -ruN '--exclude=__pycache__' da/kobas/kb/kegg/ko.py db/kobas/kb/kegg/ko.py
+--- da/kobas/kb/kegg/ko.py	2026-09-07 17:24:38.784177272 +0800
++++ db/kobas/kb/kegg/ko.py	2026-09-07 17:24:38.788177309 +0800
+@@ -23,12 +23,12 @@
+         if is_pathway:
+             line = re.sub('PATHWAY', '', line)
+             pid, pname = line[:-1].split(None, 1)
+-            if not pathways.has_key(pid):
++            if pid not in pathways:
+                 pathways[pid] = pname
+             ko_pathways.append((koid, pid))
+ 
+     kos = utils.list_to_tuple(kos)
+-    pathways = pathways.items()
++    pathways = list(pathways.items())
+     ko_pathways = utils.list_to_tuple(ko_pathways)
+ 
+     return (kos, pathways, ko_pathways)
+@@ -39,14 +39,14 @@
+ 
+     kos, pathways, ko_pathways = parse(open(sys.argv[1]))
+ 
+-    print len(kos), len(pathways), len(ko_pathways)
++    print(len(kos), len(pathways), len(ko_pathways))
+ 
+     k, p = set(), set()
+     for kp in ko_pathways:
+         k.add(kp[0])
+         p.add(kp[1])
+ 
+-    print len(k), len(p)
++    print(len(k), len(p))
+ 
+     pprint(kos[:5])
+     pprint(pathways[:5])
+diff -ruN '--exclude=__pycache__' da/kobas/kb/nhgri/gene_info.py db/kobas/kb/nhgri/gene_info.py
+--- da/kobas/kb/nhgri/gene_info.py	2026-09-07 17:24:38.784177272 +0800
++++ db/kobas/kb/nhgri/gene_info.py	2026-09-07 17:24:38.788177309 +0800
+@@ -14,13 +14,13 @@
+             for synonym in synonyms:
+                 synonym_geneids.setdefault(synonym, set()).add(geneid)
+ 
+-    for symbol_geneid in symbol_geneids.items():
++    for symbol_geneid in list(symbol_geneids.items()):
+         if len(symbol_geneid[1]) > 1:
+             symbol_geneids.pop(symbol_geneid[0])
+         else:
+             symbol_geneids[symbol_geneid[0]] = list(symbol_geneid[1])[0]
+ 
+-    for synonym_geneid in synonym_geneids.items():
++    for synonym_geneid in list(synonym_geneids.items()):
+         if len(synonym_geneid[1]) > 1:
+             synonym_geneids.pop(synonym_geneid[0])
+         else:
+diff -ruN '--exclude=__pycache__' da/kobas/kb/nhgri/gwascatalog.py db/kobas/kb/nhgri/gwascatalog.py
+--- da/kobas/kb/nhgri/gwascatalog.py	2026-09-07 17:24:38.784177272 +0800
++++ db/kobas/kb/nhgri/gwascatalog.py	2026-09-07 17:24:38.788177309 +0800
+@@ -15,17 +15,17 @@
+         if len(line) >= 14:
+             dname, symbols = line[7].strip(), line[13].strip()
+             dname = dname.replace("&beta;", "beta")
+-            if correction.correction.has_key(symbols):
++            if symbols in correction.correction:
+                 symbols = correction.correction[symbols]
+ 
+             if dname:
+                 for symbol in symbols.split(','):
+                     symbol = symbol.strip()
+-                    if entrez_gene_id_from_symbol.has_key(symbol):
++                    if symbol in entrez_gene_id_from_symbol:
+                         entrez_gene_id = entrez_gene_id_from_symbol[symbol]
+                         gids = kobasdb.gids_from_entrez_gene_id(entrez_gene_id)
+                         for gid in gids:
+-                            if not diseases.has_key(dname):
++                            if dname not in diseases:
+                                 count += 1
+                                 diseases[dname] = [count * 10 + 5, 'N', '']
+ 
+@@ -45,14 +45,14 @@
+     diseases, gene_diseases = parse(open(sys.argv[1]), open(sys.argv[2]), \
+         dbutils.KOBASDB(config.getrc()['kobasdb'] + 'hsa.db'))
+ 
+-    print len(diseases), len(gene_diseases)
++    print(len(diseases), len(gene_diseases))
+ 
+     g, d = set(), set()
+     for gd in gene_diseases:
+         g.add(gd[0])
+         d.add(gd[1])
+ 
+-    print len(g), len(d)
++    print(len(g), len(d))
+ 
+     pprint(diseases[:5])
+     pprint(gene_diseases[:5])
+diff -ruN '--exclude=__pycache__' da/kobas/kb/omim/morbidmap.py db/kobas/kb/omim/morbidmap.py
+--- da/kobas/kb/omim/morbidmap.py	2026-09-07 17:24:38.784177272 +0800
++++ db/kobas/kb/omim/morbidmap.py	2026-09-07 17:24:38.788177309 +0800
+@@ -10,7 +10,7 @@
+     disorder_genes = {}
+     for line in omim_handle:
+         line = line.strip()
+-        if correction.correction.has_key(line):
++        if line in correction.correction:
+             line = correction.correction[line]
+         disorder, tmp, gene = line.split('|')[:3]
+ 
+@@ -34,7 +34,7 @@
+             gene_entrez_gene_ids[gene] = entrez_gene_id
+ 
+     count = 0
+-    for item in diseases.items():
++    for item in list(diseases.items()):
+         count += 1
+         dnames = list(item[1])
+         diseases[item[0]] = [count * 10 + 1, 'o', dnames[0]]
+@@ -42,10 +42,10 @@
+             if len(dname) < len(diseases[item[0]][2]):
+                 diseases[item[0]][2] = dname
+ 
+-        if disorder_genes.has_key(item[0]):
++        if item[0] in disorder_genes:
+             genes = disorder_genes[item[0]]
+             for gene in genes:
+-                if gene_entrez_gene_ids.has_key(gene):
++                if gene in gene_entrez_gene_ids:
+                     entrez_gene_id = gene_entrez_gene_ids[gene]
+                     gids = kobasdb.gids_from_entrez_gene_id(entrez_gene_id)
+                     for gid in gids:
+@@ -55,7 +55,7 @@
+     for gene_disease in gene_diseases:
+         dids.add(gene_disease[1])
+ 
+-    for disease in diseases.items():
++    for disease in list(diseases.items()):
+         if disease[1][0] not in dids:
+             diseases.pop(disease[0])
+ 
+@@ -73,14 +73,14 @@
+     diseases, gene_diseases = parse(open(sys.argv[1]), open(sys.argv[2]), \
+         dbutils.KOBASDB(config.getrc()['kobasdb'] + 'hsa.db'))
+ 
+-    print len(diseases), len(gene_diseases)
++    print(len(diseases), len(gene_diseases))
+ 
+     g, d = set(), set()
+     for gd in gene_diseases:
+         g.add(gd[0])
+         d.add(gd[1])
+ 
+-    print len(g), len(d)
++    print(len(g), len(d))
+ 
+     pprint(diseases[:5])
+     pprint(gene_diseases[:5])
+diff -ruN '--exclude=__pycache__' da/kobas/kb/orthology/tsv.py db/kobas/kb/orthology/tsv.py
+--- da/kobas/kb/orthology/tsv.py	2026-09-07 17:24:38.784177272 +0800
++++ db/kobas/kb/orthology/tsv.py	2026-09-07 17:24:38.788177309 +0800
+@@ -34,7 +34,7 @@
+     for gid in gids:
+         geids = speciesdb.ensembl_gene_ids_from_gid(gid)
+         for geid in geids:
+-            if geid_oeids.has_key(geid[0]):
++            if geid[0] in geid_oeids:
+                 for oeid, ospecies in geid_oeids[geid[0]]:
+                     ospeciedb = dbutils.KOBASDB(kobasrc['kobasdb'] + ospecies + '.db')
+                     oids = ospeciedb.gids_from_ensembl_gene_id(oeid)
+@@ -53,5 +53,5 @@
+     orthologydir = kobasrc['kobas_home'] + '/orthology/'
+     orthologs = parse(kobasrc, orthologydir, 'hsa')
+ 
+-    print len(orthologs)
++    print(len(orthologs))
+     pprint(orthologs[:5])
+diff -ruN '--exclude=__pycache__' da/kobas/kb/panther/sap.py db/kobas/kb/panther/sap.py
+--- da/kobas/kb/panther/sap.py	2026-09-07 17:24:38.784177272 +0800
++++ db/kobas/kb/panther/sap.py	2026-09-07 17:24:38.788177309 +0800
+@@ -9,7 +9,7 @@
+         paid, pname, tmp1, tmp2, gene = line.split('\t')[:5]
+ 
+         sname = gene.split('|')[0]
+-        if sname not in panther_organisms.panther_organisms.keys():
++        if sname not in list(panther_organisms.panther_organisms.keys()):
+         # if sname not in ['HUMAN', 'MOUSE']:
+             continue
+         abbr = panther_organisms.panther_organisms[sname]
+@@ -25,27 +25,27 @@
+             continue
+ 
+         for gid in gids:
+-            if not pathways.setdefault(abbr, {}).has_key(pname):
++            if pname not in pathways.setdefault(abbr, {}):
+                 pathways[abbr][pname] = [0, paid]
+             gene_pathways.setdefault(abbr, set()).add((gid[0], pname))
+ 
+-    for abbr in pathways.keys():
++    for abbr in list(pathways.keys()):
+         speciesdb = dbutils.KOBASDB(kobasrc['kobasdb'] + abbr + '.db')
+ 
+         count = 0
+-        for pname in pathways[abbr].keys():
++        for pname in list(pathways[abbr].keys()):
+             count += 1
+             pathways[abbr][pname][0] = count * 10 + 6
+ 
+             if __name__ == '__main__':
+-                print pathways[abbr][pname][0], 'p', pathways[abbr][pname][1], pname
++                print(pathways[abbr][pname][0], 'p', pathways[abbr][pname][1], pname)
+             else:
+                 speciesdb.con.execute('INSERT OR IGNORE INTO Pathways VALUES (?, ?, ?, ?)', \
+                     (pathways[abbr][pname][0], 'p', pathways[abbr][pname][1], pname))
+ 
+         for gene_pathway in gene_pathways[abbr]:
+             if __name__ == '__main__':
+-                print gene_pathway[0], pathways[abbr][gene_pathway[1]][0]
++                print(gene_pathway[0], pathways[abbr][gene_pathway[1]][0])
+             else:
+                 speciesdb.con.execute('INSERT OR IGNORE INTO GenePathways VALUES (?, ?)', \
+                     (gene_pathway[0], pathways[abbr][gene_pathway[1]][0]))
+diff -ruN '--exclude=__pycache__' da/kobas/kb/pid/pid_xml.py db/kobas/kb/pid/pid_xml.py
+--- da/kobas/kb/pid/pid_xml.py	2026-09-07 17:24:38.784177272 +0800
++++ db/kobas/kb/pid/pid_xml.py	2026-09-07 17:24:38.788177309 +0800
+@@ -109,14 +109,14 @@
+     pathways, gene_pathways = parse(open(sys.argv[1]), \
+         dbutils.KOBASDB(config.getrc()['kobasdb'] + 'hsa.db'))
+ 
+-    print len(pathways), len(gene_pathways)
++    print(len(pathways), len(gene_pathways))
+ 
+     g, p = set(), set()
+     for gp in gene_pathways:
+         g.add(gp[0])
+         p.add(gp[1])
+ 
+-    print len(g), len(p)
++    print(len(g), len(p))
+ 
+     pprint(pathways[:5])
+     pprint(gene_pathways[:5])
+diff -ruN '--exclude=__pycache__' da/kobas/kb/reactome/reactome.py db/kobas/kb/reactome/reactome.py
+--- da/kobas/kb/reactome/reactome.py	2026-09-07 17:24:38.784177272 +0800
++++ db/kobas/kb/reactome/reactome.py	2026-09-07 17:24:38.788177309 +0800
+@@ -10,7 +10,7 @@
+ 
+     for line in handle:
+         uniprotkb_ac, paid, url, pname, ec, sname = line[:-1].split('\t')
+-        if sname not in reactome_organisms.reactome_organisms.keys():
++        if sname not in list(reactome_organisms.reactome_organisms.keys()):
+         #if sname not in ['Homo sapiens', 'Mus musculus']:
+             continue
+         abbr = reactome_organisms.reactome_organisms[sname]
+@@ -18,27 +18,27 @@
+ 
+         gids = speciesdb.gids_from_uniprotkb_ac(uniprotkb_ac)
+         for gid in gids:
+-            if not pathways.setdefault(abbr, {}).has_key(pname):
++            if pname not in pathways.setdefault(abbr, {}):
+                 pathways[abbr][pname] = [0, paid]
+             gene_pathways.setdefault(abbr, set()).add((gid[0], pname))
+         
+-    for abbr in pathways.keys():
++    for abbr in list(pathways.keys()):
+         speciesdb = dbutils.KOBASDB(kobasrc['kobasdb'] + abbr + '.db')
+ 
+         count = 0
+-        for pname in pathways[abbr].keys():
++        for pname in list(pathways[abbr].keys()):
+             count += 1
+             pathways[abbr][pname][0] = count * 10 + 4
+ 
+             if __name__ == '__main__':
+-                print pathways[abbr][pname][0], 'R', pathways[abbr][pname][1], pname
++                print(pathways[abbr][pname][0], 'R', pathways[abbr][pname][1], pname)
+             else:
+                 speciesdb.con.execute('INSERT OR IGNORE INTO Pathways VALUES (?, ?, ?, ?)', \
+                     (pathways[abbr][pname][0], 'R', pathways[abbr][pname][1], pname))
+ 
+         for gene_pathway in gene_pathways[abbr]:
+             if __name__ == '__main__':
+-                print gene_pathway[0], pathways[abbr][gene_pathway[1]][0]
++                print(gene_pathway[0], pathways[abbr][gene_pathway[1]][0])
+             else:
+                 speciesdb.con.execute('INSERT OR IGNORE INTO GenePathways VALUES (?, ?)', \
+                     (gene_pathway[0], pathways[abbr][gene_pathway[1]][0]))
+diff -ruN '--exclude=__pycache__' da/kobas/kb/reactome/uniprot_2_pathways.py db/kobas/kb/reactome/uniprot_2_pathways.py
+--- da/kobas/kb/reactome/uniprot_2_pathways.py	2026-09-07 17:24:38.784177272 +0800
++++ db/kobas/kb/reactome/uniprot_2_pathways.py	2026-09-07 17:24:38.788177309 +0800
+@@ -11,13 +11,13 @@
+     stids = {}
+     for line in stid_handle:
+         uniprotkb_ac, paid, pname = line.split('\t')[:3]
+-        if not stids.has_key((uniprotkb_ac, pname)):
++        if (uniprotkb_ac, pname) not in stids:
+             stids[(uniprotkb_ac, pname)] = paid
+ 
+     for line in map_handle:
+         uniprotkb_ac, tmp1, pnames, tmp2, sname = line[:-1].split('\t')
+ 
+-        if sname not in reactome_organisms.reactome_organisms.keys():
++        if sname not in list(reactome_organisms.reactome_organisms.keys()):
+         # if sname not in ['Homo sapiens', 'Mus musculus']:
+             continue
+         abbr = reactome_organisms.reactome_organisms[sname]
+@@ -28,32 +28,32 @@
+         for gid in gids:
+             for pname in pnames:
+                 pname = re.sub(' IEA$', '', pname)
+-                if stids.has_key((uniprotkb_ac, pname)):
++                if (uniprotkb_ac, pname) in stids:
+                     paid = stids[(uniprotkb_ac, pname)]
+                 else:
+                     paid = ''
+ 
+-                if not pathways.setdefault(abbr, {}).has_key(pname):
++                if pname not in pathways.setdefault(abbr, {}):
+                     pathways[abbr][pname] = [0, paid]
+                 gene_pathways.setdefault(abbr, set()).add((gid[0], pname))
+ 
+-    for abbr in pathways.keys():
++    for abbr in list(pathways.keys()):
+         speciesdb = dbutils.KOBASDB(kobasrc['kobasdb'] + abbr + '.db')
+ 
+         count = 0
+-        for pname in pathways[abbr].keys():
++        for pname in list(pathways[abbr].keys()):
+             count += 1
+             pathways[abbr][pname][0] = count * 10 + 4
+ 
+             if __name__ == '__main__':
+-                print pathways[abbr][pname][0], 'R', pathways[abbr][pname][1], pname
++                print(pathways[abbr][pname][0], 'R', pathways[abbr][pname][1], pname)
+             else:
+                 speciesdb.con.execute('INSERT INTO Pathways VALUES (?, ?, ?, ?)', \
+                     (pathways[abbr][pname][0], 'R', pathways[abbr][pname][1], pname))
+ 
+         for gene_pathway in gene_pathways[abbr]:
+             if __name__ == '__main__':
+-                print gene_pathway[0], pathways[abbr][gene_pathway[1]][0]
++                print(gene_pathway[0], pathways[abbr][gene_pathway[1]][0])
+             else:
+                 speciesdb.con.execute('INSERT INTO GenePathways VALUES (?, ?)', \
+                     (gene_pathway[0], pathways[abbr][gene_pathway[1]][0]))
+diff -ruN '--exclude=__pycache__' da/kobas/output.py db/kobas/output.py
+--- da/kobas/output.py	2026-09-07 17:24:38.784177272 +0800
++++ db/kobas/output.py	2026-09-07 17:24:38.788177309 +0800
+@@ -1,6 +1,6 @@
+ #!/usr/bin/env python
+ 
+-import dbutils, discover
++from . import dbutils, discover
+ 
+ from kobas.kb.biocyc import biocyc_organisms
+ 
+@@ -22,15 +22,15 @@
+                 slinks.append(slink)
+         else:
+             slinks.append('None')
+-        print '%s\t%s' % (item.query, '!'.join(slinks))
++        print('%s\t%s' % (item.query, '!'.join(slinks)))
+ 
+ def annotate_text(items, species, speciesdb):
+-    print '\n' + '-' * 20 + '\n'
+-    print '////'    ##for webserver
++    print('\n' + '-' * 20 + '\n')
++    print('////')    ##for webserver
+ 
+     for item in items:
+         query = item.query
+-        print 'Query:' + ' ' * (20 - len('Query:')) + '\t' + query
++        print('Query:' + ' ' * (20 - len('Query:')) + '\t' + query)
+ 
+         if species == 'ko':
+             kos = item.links
+@@ -39,71 +39,71 @@
+                 line_no = 1
+                 for ko in kos:
+                     if line_no == 1:
+-                        print 'KO:' + ' ' * (20 - len('KO:')) + '\t' + ko[0] + '\t' + ko[1]
++                        print('KO:' + ' ' * (20 - len('KO:')) + '\t' + ko[0] + '\t' + ko[1])
+                         line_no += 1
+                     else:
+-                        print ' ' * 20 + '\t' + ko[0] + '\t' + ko[1]
++                        print(' ' * 20 + '\t' + ko[0] + '\t' + ko[1])
+                     for pathway in speciesdb.pathways_from_koid(ko[0]):
+                         pathways.add('\t'.join([pathway['name'], dbutils.P['K'], pathway['pid']]))
+                 if pathways:
+                     line_no = 1
+                     for pathway in pathways:
+                         if line_no == 1:
+-                            print 'Pathway:' + ' ' * (20 - len('Pathway:')) + '\t' + pathway
++                            print('Pathway:' + ' ' * (20 - len('Pathway:')) + '\t' + pathway)
+                             line_no += 1
+                         else:
+-                            print ' ' * 20 + '\t' + pathway
++                            print(' ' * 20 + '\t' + pathway)
+         else:
+             if len(item.links) == 1:
+                 gene = item.links.pop()
+-                print 'Gene:' + ' ' * (20 - len('Gene:')) + '\t' + gene[0] + '\t' + gene[1]
++                print('Gene:' + ' ' * (20 - len('Gene:')) + '\t' + gene[0] + '\t' + gene[1])
+ 
+                 entrez_gene_id = speciesdb.entrez_gene_ids_from_gid(gene[0]).fetchone()
+                 if entrez_gene_id:
+-                    print 'Entrez Gene ID:' + ' ' * (20 - len('Entrez Gene ID:')) + ' \t' + entrez_gene_id[0]
++                    print('Entrez Gene ID:' + ' ' * (20 - len('Entrez Gene ID:')) + ' \t' + entrez_gene_id[0])
+ 
+                 pathways = speciesdb.pathways_from_gid(gene[0])
+                 line_no = 1
+                 for pathway in pathways:
+                     pathway = '\t'.join([pathway['name'], dbutils.P[pathway['db']], pathway['id']])
+                     if line_no == 1:
+-                        print 'Pathway:' + ' ' * (20 - len('Pathway:')) + '\t' + pathway
++                        print('Pathway:' + ' ' * (20 - len('Pathway:')) + '\t' + pathway)
+                         line_no += 1
+                     else:
+-                        print ' ' * 20 + '\t' + pathway
++                        print(' ' * 20 + '\t' + pathway)
+ 
+                 diseases = speciesdb.diseases_from_gid(gene[0])
+                 line_no = 1
+                 for disease in diseases:
+                     disease = '\t'.join([disease['name'], dbutils.D[disease['db']], disease['id']])
+                     if line_no == 1:
+-                        print 'Disease:' + ' ' * (20 - len('Disease:')) + '\t' + disease
++                        print('Disease:' + ' ' * (20 - len('Disease:')) + '\t' + disease)
+                         line_no += 1
+                     else:
+-                        print ' ' * 20 + '\t' + disease
++                        print(' ' * 20 + '\t' + disease)
+ 
+                 gos = speciesdb.gos_from_gid(gene[0])
+                 line_no = 1
+                 for go in gos:
+                     go = '\t'.join([go['name'], dbutils.G['G'], go['goid']])
+                     if line_no == 1:
+-                        print 'GO:' + ' ' * (20 - len('GO:')) + '\t' + go
++                        print('GO:' + ' ' * (20 - len('GO:')) + '\t' + go)
+                         line_no += 1
+                     else:
+-                        print ' ' * 20 + '\t' + go
++                        print(' ' * 20 + '\t' + go)
+ 
+                 goslims = speciesdb.goslims_from_gid(gene[0])
+                 line_no = 1
+                 for goslim in goslims:
+                     goslim = '\t'.join([goslim['name'], dbutils.G['S'], goslim['goid']])
+                     if line_no == 1:
+-                        print 'GOslim:' + ' ' * (20 - len('GOslim:')) + '\t' + goslim
++                        print('GOslim:' + ' ' * (20 - len('GOslim:')) + '\t' + goslim)
+                         line_no += 1
+                     else:
+-                        print ' ' * 20 + '\t' + goslim
++                        print(' ' * 20 + '\t' + goslim)
+ 
+ 
+-        print '////'
++        print('////')
+ 
+ def identify(res, abbr, odistr):
+     res_p = discover.TestResult(res.title + ['Hyperlink'])
+@@ -111,23 +111,23 @@
+     res_g = discover.TestResult(res.title + ['Hyperlink'])
+ 
+     for row in res:
+-        if row[1] in dbutils.P.keys():
++        if row[1] in list(dbutils.P.keys()):
+             res_p.add_row([row[0], dbutils.P[row[1]]] + row[2:] + [get_hyperlink(row[1], row[2], abbr, odistr)])
+-        elif row[1] in dbutils.D.keys():
++        elif row[1] in list(dbutils.D.keys()):
+             res_d.add_row([row[0], dbutils.D[row[1]]] + row[2:] + [get_hyperlink(row[1], row[2])])
+-        elif row[1] in dbutils.G.keys():
++        elif row[1] in list(dbutils.G.keys()):
+             res_g.add_row([row[0], dbutils.G[row[1]]] + row[2:] + [get_hyperlink(row[1], row[2], abbr)])
+ 
+     res_p = group(res_p)
+     res_d = group(res_d)
+ 
+-    print
+-    print res_p
+-    print '-' * 20 + '\n'
+-    print res_d
+-    print '-' * 20 + '\n'
+-    print res_g
+-    print '-' * 20
++    print()
++    print(res_p)
++    print('-' * 20 + '\n')
++    print(res_d)
++    print('-' * 20 + '\n')
++    print(res_g)
++    print('-' * 20)
+ 
+ def get_hyperlink(dbtype, dbid, abbr = None, odistr = None):
+     if dbid:
+diff -ruN '--exclude=__pycache__' da/kobas/scripts/annotate.py db/kobas/scripts/annotate.py
+--- da/kobas/scripts/annotate.py	2026-09-07 17:24:38.784177272 +0800
++++ db/kobas/scripts/annotate.py	2026-09-07 17:24:38.788177309 +0800
+@@ -20,7 +20,7 @@
+     p.add_option(
+         '-t', '--intype', dest = 'intype', default = 'fasta:pro', action = 'store',
+         type = 'string', help = 'input type (%s, blastout:xml, blastout:tab, %s), default fasta:pro' %
+-            (', '.join(PROGRAMS.keys()), ', '.join(DBLINKS.keys())))
++            (', '.join(list(PROGRAMS.keys())), ', '.join(list(DBLINKS.keys()))))
+     p.add_option(
+         '-s', '--species', dest = 'species', action = 'store',
+         type = 'string', help = 'species abbreviation (for example: ko for KEGG Orthology, hsa for Homo sapiens, mmu for Mus musculus, dme for Drosophila melanogaster, ath for Arabidopsis thaliana, sce for Saccharomyces cerevisiae and eco for Escherichia coli K-12 MG1655)')
+@@ -102,15 +102,15 @@
+ 
+ if opt.list:
+     if opt.species:
+-        print 'Available databases for %s:' % opt.species
++        print('Available databases for %s:' % opt.species)
+         databases = speciesdb.databases_from_abbr(opt.species)
+         for database in databases:
+-            print '\t'.join(database)
++            print('\t'.join(database))
+     else:
+-        print 'Available species: \nko\tKEGG Orthology'
++        print('Available species: \nko\tKEGG Orthology')
+         species = organismdb.organisms(name = True)
+         for specie in species:
+-            print '\t'.join(specie)
++            print('\t'.join(specie))
+     sys.exit()
+ 
+ if opt.infile:
+@@ -126,7 +126,7 @@
+     old_stdout = sys.stdout
+     sys.stdout = open(opt.outfile, 'w')
+ 
+-if opt.intype in PROGRAMS.keys():
++if opt.intype in list(PROGRAMS.keys()):
+     ##verify fasta file
+     try:
+         f = open(args[0])
+@@ -134,7 +134,7 @@
+             fasta.verify(f)
+         finally:
+             f.close()
+-    except exception.FastaIOError, msg:
++    except exception.FastaIOError as msg:
+         exception.error(msg)
+         sys.exit(1)
+     ##key step
+@@ -162,14 +162,14 @@
+     annotator = annot.Annotator(
+         reader = annot.BlastoutTabReader(open(args[0])),
+         selector = annot.BlastoutTabSelector(speciesdb, opt.species, [opt.rank, opt.evalue]))
+-elif opt.intype in DBLINKS.keys():
++elif opt.intype in list(DBLINKS.keys()):
+     dbtype = DBLINKS[opt.intype]
+     annotator = annot.Annotator(
+         reader = annot.IdMappingReader(speciesdb, opt.species, args[0], dbtype),
+         selector = annot.IdMappingSelector(speciesdb, opt.species))
+ else:
+     sys.exit('%s input is not supported yet. Only %s, blastout:xml, blastout:tab, %s are supported.' %
+-        (opt.intype, ', '.join(PROGRAMS.keys()), ', '.join(DBLINKS.keys())))
++        (opt.intype, ', '.join(list(PROGRAMS.keys())), ', '.join(list(DBLINKS.keys()))))
+ 
+ ##if query ids are same, only keep the first one
+ items, item_querys = [item for item in annotator.annotate()], []
+@@ -180,7 +180,7 @@
+         items.remove(item)
+ 
+ ##orthology
+-if (opt.intype in PROGRAMS.keys() and opt.species != 'ko' and opt.ortholog != 'NO'):
++if (opt.intype in list(PROGRAMS.keys()) and opt.species != 'ko' and opt.ortholog != 'NO'):
+     ospeciesdb = dbutils.KOBASDB(kobasrc['kobasdb'] + opt.ortholog + '.db')
+     ##run BLAST for the species itself
+     annotator = annot.Annotator(
+@@ -190,7 +190,7 @@
+     ##filter with ortholog
+     orthologs = {}
+     for item in annotator.annotate():
+-        if not orthologs.has_key(item.query):
++        if item.query not in orthologs:
+             orthologs[item.query] = item.links
+     for item in items:
+         if not (item.links != set() and orthologs[item.query] != set() and speciesdb.is_ortholog(list(item.links)[0][0], list(orthologs[item.query])[0][0])):
+@@ -216,22 +216,22 @@
+ #print '##Time\t%s (UTC)' % gmttime
+ #print '##Program version: December 1st, 2013  Database version: March 20th, 2014'
+ if opt.species == 'ko':
+-    print '##ko\tKEGG Orthology'
++    print('##ko\tKEGG Orthology')
+ else:
+     species_name = organismdb.name_from_abbr(opt.species)
+-    print '##%s\t%s' % (opt.species, species_name)
++    print('##%s\t%s' % (opt.species, species_name))
+ if opt.intype in ('fasta:pro', 'fasta:nuc', 'blastout:xml', 'blastout:tab'):
+     if opt.species == 'ko':
+-        print '##Method: BLAST\tOptions: evalue <= %s; rank <= %s' % (str(opt.evalue), str(opt.rank))
++        print('##Method: BLAST\tOptions: evalue <= %s; rank <= %s' % (str(opt.evalue), str(opt.rank)))
+     else:
+-        print '##Method: BLAST\tOptions: evalue <= %s' % str(opt.evalue)
+-elif opt.intype in DBLINKS.keys():
+-    print '##Method: ID mapping (%s)' % dbtype
+-print '##Summary:\t%d succeed, %d fail' % (num_genes_has_annot, num_genes_hasnot_annot)
++        print('##Method: BLAST\tOptions: evalue <= %s' % str(opt.evalue))
++elif opt.intype in list(DBLINKS.keys()):
++    print('##Method: ID mapping (%s)' % dbtype)
++print('##Summary:\t%d succeed, %d fail' % (num_genes_has_annot, num_genes_hasnot_annot))
+ if opt.species == 'ko':
+-    print '\n#Query\tKO ID|KO name|Hyperlink'
++    print('\n#Query\tKO ID|KO name|Hyperlink')
+ else:
+-    print '\n#Query\tGene ID|Gene name|Hyperlink'
++    print('\n#Query\tGene ID|Gene name|Hyperlink')
+ 
+ output.annotate_table(items, opt.species)
+ output.annotate_text(items, opt.species, speciesdb)
+diff -ruN '--exclude=__pycache__' da/kobas/scripts/cluster.py db/kobas/scripts/cluster.py
+--- da/kobas/scripts/cluster.py	2026-09-07 17:24:38.784177272 +0800
++++ db/kobas/scripts/cluster.py	2026-09-07 17:24:38.788177309 +0800
+@@ -35,7 +35,7 @@
+     if os.access(file_name, os.F_OK):
+         return open(file_name)
+     else:
+-        print 'file %s does not exist' % file_name
++        print('file %s does not exist' % file_name)
+         sys.exit(1)
+ 
+ def print_output(X, Xmatrix, threshold):
+@@ -50,14 +50,14 @@
+     allclus.sort(key = lambda x:sim.calculateScore(x, X), reverse = True)
+ #    print 'sortTime: %s'%(time.time()-sortTime)
+     for i in range(len(allclus)):
+-        print '##Cluster: %d\tScore: %s'%(i + 1, sim.calculateScore(allclus[i], X))
+-        print '#' + '\t'.join(COLUMN)
++        print('##Cluster: %d\tScore: %s'%(i + 1, sim.calculateScore(allclus[i], X)))
++        print('#' + '\t'.join(COLUMN))
+         allclus[i].sort(key = lambda x:float(X[x]['P-Value']))
+         for term in allclus[i]:
+             para = []
+             for j in COLUMN:
+                 para.append(X[term][j])
+-            print '\t'.join(para)
++            print('\t'.join(para))
+ #    print '-'*20
+ 
+ ##process opt.fgfile
+diff -ruN '--exclude=__pycache__' da/kobas/scripts/identify.py db/kobas/scripts/identify.py
+--- da/kobas/scripts/identify.py	2026-09-07 17:24:38.784177272 +0800
++++ db/kobas/scripts/identify.py	2026-09-07 17:24:38.788177309 +0800
+@@ -64,7 +64,7 @@
+     if os.access(file_name, os.F_OK):
+         return open(file_name)
+     else:
+-        print 'file %s does not exist' % file_name
++        print('file %s does not exist' % file_name)
+         sys.exit(1)
+ 
+ def get_items(handle):
+@@ -98,8 +98,8 @@
+     abbr, idmapping, fgnum = annot.get_args(fg_handle)
+     fg_items = get_items(fg_handle)
+ ##process opt.method
+-if opt.method not in METHODS.keys():
+-    opt_parser.error('%s method is not supported yet, only %s are supported now.\n' % (opt.method, ', '.join(METHODS.keys())))
++if opt.method not in list(METHODS.keys()):
++    opt_parser.error('%s method is not supported yet, only %s are supported now.\n' % (opt.method, ', '.join(list(METHODS.keys()))))
+ 
+ ##process opt.bgfile
+ if len(opt.bgfile) in [3, 4]:
+@@ -152,10 +152,10 @@
+     avail_dbs[database[0]] = database[1]
+ dbs = input_dbs.intersection(set(avail_dbs.keys()))
+ if dbs:
+-    print '##Databases: %s' % ', '.join([avail_dbs[db] for db in dbs])
++    print('##Databases: %s' % ', '.join([avail_dbs[db] for db in dbs]))
+ else:
+     opt_parser.error('No supported databases are selected. Supported databases are %s, but your input databases are: %s.' % \
+-        ('/'.join(avail_dbs.keys()), opt.db))
++        ('/'.join(list(avail_dbs.keys())), opt.db))
+ 
+ odistr = discover.Distr()
+ 
+@@ -168,7 +168,7 @@
+         else:
+             fdistr = discover.distr_from_file(fg_items, db, speciesdb, abbr)
+         total_num = fdistr.size()
+-        for (term, queries) in fdistr.items():
++        for (term, queries) in list(fdistr.items()):
+             num = len(queries)
+             proportion = float(num) / total_num
+             res.add_row(list(term) + ['%d' % num, '%.3g' % proportion, '|'.join(list(queries))])
+@@ -191,7 +191,7 @@
+             else:
+                 bdistr = discover.distr_from_file(bg_items, db, speciesdb, abbr, opt.cutoff)
+                 res = find_terms(res=res, test_method=opt.method, fdistr=fdistr, bdistr=bdistr, fgnum=fgnum, bgnum=bgnum)
+-        except ArithmeticError, msg:
++        except ArithmeticError as msg:
+             exception.error(msg)
+             sys.exit(1)
+     res.sort(key = -2)
+@@ -199,16 +199,16 @@
+     if opt.fdr != 'None':
+         try:
+             res.add_fdr(method = opt.fdr)
+-        except ArithmeticError, msg:
++        except ArithmeticError as msg:
+             exception.error(msg)
+             sys.exit(1)
+-        except TypeError, msg:
++        except TypeError as msg:
+             exception.error(msg)
+             sys.exit(1)
+ 
+ ##report identification result
+-    print '##Statistical test method: %s' % FULLNAMES[opt.method]
++    print('##Statistical test method: %s' % FULLNAMES[opt.method])
+     if opt.fdr != 'None':
+-        print '##FDR correction method: %s' % FULLNAMES[opt.fdr]
++        print('##FDR correction method: %s' % FULLNAMES[opt.fdr])
+ 
+ output.identify(res, abbr, odistr)
+diff -ruN '--exclude=__pycache__' da/kobas/scripts/run_gsea.py db/kobas/scripts/run_gsea.py
+--- da/kobas/scripts/run_gsea.py	2026-09-07 17:24:38.784177272 +0800
++++ db/kobas/scripts/run_gsea.py	2026-09-07 17:24:38.788177309 +0800
+@@ -14,7 +14,7 @@
+     p.add_option('-d','--dbtype',dest = 'dbtype',action = 'store', default = 'P:K/n/b/R/B/p', type = 'string',
+                  help = 'databases for selection, Database category: Database type; Database category(P, for pathway; D, for disease when -s hsa; G for Gene Ontology), Database type: 1-letter abbreviation separated by "/": K for KEGG PATHWAY, n for PID, b for BioCarta, R for Reactome, B for BioCyc, p for PANTHER, o for OMIM, k for KEGG DISEASE, f for FunDO, and G for Gene Ontology. Only one database category is allowed. [P:K/n/b/R/B/p] [D:o/k/f] [G] Default: P:K/n/b/R/B/p, e.g. D:k/o')
+     p.add_option('-i','--idtype',dest = 'idtype',action = 'store',default = 'id:ncbigene',
+-                 type = 'string',help = 'choose idtype if species but not gmt file is assigned. Options: %s , default: id:ncbigene. e.g. -i id:uniprot' % (', '.join(DBLINKS.keys())))
++                 type = 'string',help = 'choose idtype if species but not gmt file is assigned. Options: %s , default: id:ncbigene. e.g. -i id:uniprot' % (', '.join(list(DBLINKS.keys()))))
+     p.add_option('-n','--npermutation',dest = 'nperm',action = 'store',default = 1000,
+                  type = 'int',help = 'Times of random permutations to perform')
+     p.add_option('-w','--weighted_score_type',dest = 'wst',action = 'store',default = 1.0,
+@@ -48,7 +48,7 @@
+         gct = exp_file
+         (gene_list,gene_num,expr_data,title) = gsea.read_gct_file(gct=gct, sample_num = sample_num)
+     else:
+-        raise exception.FormatErr, "Error Message: \nWrong format. Only TXT and GCT format is allowed, which is same as GSEA."
++        raise exception.FormatErr("Error Message: \nWrong format. Only TXT and GCT format is allowed, which is same as GSEA.")
+     return gene_list,gene_num,expr_data,title 
+ 
+ opt_parser, opt, args = config_option()
+diff -ruN '--exclude=__pycache__' da/kobas/scripts/run_kobas.py db/kobas/scripts/run_kobas.py
+--- da/kobas/scripts/run_kobas.py	2026-09-07 17:24:38.784177272 +0800
++++ db/kobas/scripts/run_kobas.py	2026-09-07 17:24:38.788177309 +0800
+@@ -20,7 +20,7 @@
+     p.add_option(
+         '-t', '--intype', dest = 'intype', default = 'fasta:pro', action = 'store',
+         type = 'string', help = 'input type (%s, blastout:xml, blastout:tab, %s), default fasta:pro' %
+-            (', '.join(PROGRAMS.keys()), ', '.join(DBLINKS.keys())))
++            (', '.join(list(PROGRAMS.keys())), ', '.join(list(DBLINKS.keys()))))
+     p.add_option(
+         '-s', '--species', dest = 'species', action = 'store',
+         type = 'string', help = 'species abbreviation (for example: ko for KEGG Orthology, hsa for Homo sapiens, mmu for Mus musculus, dme for Drosophila melanogaster, ath for Arabidopsis thaliana, sce for Saccharomyces cerevisiae and eco for Escherichia coli K-12 MG1655)')
+@@ -138,7 +138,7 @@
+ cline_i+=clinekeys_i
+ 
+ if(opt.list):
+-    print os.popen(cline_a).read(),
++    print(os.popen(cline_a).read(), end=' ')
+     sys.exit()
+ 
+ with tempfile.NamedTemporaryFile('wt') as temp1:
+diff -ruN '--exclude=__pycache__' da/kobas/scripts/run_mulmds.py db/kobas/scripts/run_mulmds.py
+--- da/kobas/scripts/run_mulmds.py	2026-09-07 17:24:38.784177272 +0800
++++ db/kobas/scripts/run_mulmds.py	2026-09-07 17:24:38.788177309 +0800
+@@ -18,19 +18,19 @@
+     usage = 'Usage: %prog -e expression_file -t datatype -p phenotype_file -o output_directory -s species [-d dbtype] [-i idtype] [-r normalize] [-m methods] [-n permuation_num] [-u min_size] [-l max_size] [-k kobas_home]'
+     p = OptionParser(usage)
+     p.add_option('-e', '--exp_file', dest = 'exp', action = 'store',type = 'string', 
+-    	help = 'Expression matrix. A tab delimited text file format that contains expression values. Columns correspond to samples,rows correspond to genes; Header=\'Genes\'\\t \\t sample names ,  Row names = gene ID. The type of the id should be assigned using -i .')
++        help = 'Expression matrix. A tab delimited text file format that contains expression values. Columns correspond to samples,rows correspond to genes; Header=\'Genes\'\\t \\t sample names ,  Row names = gene ID. The type of the id should be assigned using -i .')
+     p.add_option('-t', '--data_type', dest = 'datatype', action = 'store', type = 'string', 
+-    	help = 'Expression data type.  Use \'ma\' for microarray and \'rseq\' for RNA-seq data.')
++        help = 'Expression data type.  Use \'ma\' for microarray and \'rseq\' for RNA-seq data.')
+     p.add_option('-r', '--normalize', dest = 'norm', action = 'store', default='n' ,type = 'string', 
+         help = 'If you need normalization for expression data, \'-r y\', else \'-r n\' . Default \'n\', kobas supposes your data has not been normalized. Normalization is executed before differential expression, so this function is adapt to microarray data. Please note that normalization will not be done if your data type is RNA-Seq .')
+     p.add_option('-p', '--phenotype_file',dest = 'phe',action = 'store',type = 'string', 
+-    	help = 'Phenotype data. One column file containing annotation information for the samples in expression matrix. The number of rows/samples in this file should match the number of columns/samples of the expression matrix. The column is reserved for a *BINARY* group assignment.  Use \'0\' and \'1\'for unaffected (controls) and affected (cases) sample class, respectively.')
++        help = 'Phenotype data. One column file containing annotation information for the samples in expression matrix. The number of rows/samples in this file should match the number of columns/samples of the expression matrix. The column is reserved for a *BINARY* group assignment.  Use \'0\' and \'1\'for unaffected (controls) and affected (cases) sample class, respectively.')
+     p.add_option('-o','--output_directory', dest='out',action = 'store',type = 'string',help = 'Directory of output files, must be existed, e.g. -o /path/to/output/')
+     p.add_option('-s', '--species', dest = 'species', action='store', type = 'string',help = 'Input species abbreviation. For example: hsa for Homo sapiens, mmu for Mus musculus, dme for Drosophila melanogaster, ath for Arabidopsis thaliana, sce for Saccharomyces cerevisiae and eco for Escherichia coli K-12 MG1655, e.g. -s hsa')
+     p.add_option('-d','--dbtype',dest = 'dbtype',action = 'store', default = 'K', type = 'string',
+         help = 'Databases for selection, [K/R/B/p/k/G/S] 1-letter abbreviation, each time only run 1 kind of database. K for KEGG PATHWAY, R for Reactome, B for BioCyc, p for PANTHER, k for KEGG DISEASE, and G for Gene Ontology, S for GO slim. Default: K .')
+     p.add_option('-i','--idtype',dest = 'idtype',action = 'store',default = 'ncbigene',
+-        type = 'string',help = 'Type of gene id in first column of expression matrix. Options: %s . Default: ncbigene. e.g. -i ncbigene' % (', '.join(DBLINKS.keys())))
++        type = 'string',help = 'Type of gene id in first column of expression matrix. Options: %s . Default: ncbigene. e.g. -i ncbigene' % (', '.join(list(DBLINKS.keys()))))
+     p.add_option('-m', '--methods', dest = 'methods', action = 'store' , default = 'GB/GS/GSA/P/GP/S/C/GA/PL', type='string',
+             help='Methods to do enrichment analysis. Input 2-3 letter abbreviation separated by "/": GA for gage, GB for globaltest, GS for GSEA, GSA for gsa, P for padog, PL for plage, GP for GANPA, C for cepa, S for SAFE. Gene set-based methods: GA/GB/GS/GSA/P/PL/S; net-based methods: GP/C. Default: [GB/GS/GSA/P/GP/GE/C/GA/PL] .')
+     p.add_option('-n','--npermutation',dest = 'nperm',action = 'store',default = 1000.0,
+@@ -77,8 +77,8 @@
+ #    dbs = opt.dbtype.split('/')
+ #    gmtfiles = []
+ #    for db in dbs:
+-#    	gmtfile = kobasrc['kobas_home'] +'/gmt/' + ('.').join([opt.species, db, DBLINKS[opt.idtype],'gmt'])
+-#    	gmtfiles.append(gmtfile)
++#       gmtfile = kobasrc['kobas_home'] +'/gmt/' + ('.').join([opt.species, db, DBLINKS[opt.idtype],'gmt'])
++#       gmtfiles.append(gmtfile)
+ else :
+     opt_parser.error('Option -s -d -i must be assigned. \n')
+ 
+@@ -108,22 +108,22 @@
+ gs_dict = {}  # each value is a r list contain genes of gene sets
+ for gmt in gmtfiles:
+     gset_des, gset_genes = snbea.read_gmt_file(gmt)
+-    gmt_dict[gmt] = pd.DataFrame({'GENE.SET':gset_des.keys(), 'TITLE':gset_des.values()})
+-    genes = [ robjects.StrVector(tuple(x)) for x in gset_genes.values() ]
+-    gs_dict[gmt] = pandas2ri.ListVector(dict(zip(gset_genes.keys(), genes)))     
++    gmt_dict[gmt] = pd.DataFrame({'GENE.SET':list(gset_des.keys()), 'TITLE':list(gset_des.values())})
++    genes = [ robjects.StrVector(tuple(x)) for x in list(gset_genes.values()) ]
++    gs_dict[gmt] = pandas2ri.ListVector(dict(list(zip(list(gset_genes.keys()), genes))))     
+     gmt_dict[gmt], gs_dict[gmt] = snbea.filter_gsets(gmt_dict[gmt], gs_dict[gmt], opt.min_size, opt.max_size) 
+ 
+-gset_df = pd.concat(gmt_dict.values())
++gset_df = pd.concat(list(gmt_dict.values()))
+ if len(gs_dict) >1 :
+-    gsets = r['append'](*gs_dict.values())
++    gsets = r['append'](*list(gs_dict.values()))
+ else:
+-    gsets = gs_dict.values()[0]
++    gsets = list(gs_dict.values())[0]
+ 
+ expdata = snbea.read_exp_file(exp=opt.exp)
+ pdata = snbea.get_pdata(phe=opt.phe, expdata=expdata)
+-print 'Normalize and Do differently expressed gene analysis... \n'
++print('Normalize and Do differently expressed gene analysis... \n')
+ exset = snbea.get_exset(expdata,pdata, opt.datatype, opt.norm)
+-print 'Output the differently expressed genes file named as \'degenes.tsv\' \n'
++print('Output the differently expressed genes file named as \'degenes.tsv\' \n')
+ snbea.output_de_genes(exset, opt.out)
+ 
+ 
+@@ -132,38 +132,38 @@
+ 
+ for sbea_md in sbea_mds:
+     try:
+-        print '#'*20
+-        print ' '*5+sbea_md
+-        print '#'*20
++        print('#'*20)
++        print(' '*5+sbea_md)
++        print('#'*20)
+         res[sbea_md] = enbrowser.sbea(method=sbea_md, eset=exset, gs=gsets, alpha=0.999, perm=opt.nperm, out_dir=opt.out)
+         tbl[sbea_md] = snbea.enres_add_annotation(res[sbea_md], gset_df)
+         tbl[sbea_md] = tbl[sbea_md].sort_values(by=['P.VALUE'])
+         filenm = opt.out + sbea_md+ '.tsv'
+         tbl[sbea_md].to_csv(filenm, sep="\t", header=True, index=False)
+     except:
+-        print 'Error: '+ sbea_md +' have not successfully run.'
++        print('Error: '+ sbea_md +' have not successfully run.')
+         pass
+ 
+ for nbea_md in nbea_mds:
+     try :        
+-        print '#'*20
+-        print ' '*5+nbea_md
+-        print '#'*20
++        print('#'*20)
++        print(' '*5+nbea_md)
++        print('#'*20)
+         res[nbea_md] = enbrowser.nbea(method=nbea_md, eset=exset, gs=gsets, alpha=0.9999, grn=grn, out_dir=opt.out, perm=opt.nperm)
+         tbl[nbea_md] = snbea.enres_add_annotation(res[nbea_md], gset_df)
+         tbl[nbea_md] = tbl[nbea_md].sort_values(by=['P.VALUE'])
+         filenm = opt.out + nbea_md+ '.tsv'
+         tbl[nbea_md].to_csv(filenm, sep="\t", header=True, index=False)
+     except:
+-        print 'Error: '+ nbea_md + ' have not successfully run.'
++        print('Error: '+ nbea_md + ' have not successfully run.')
+         pass        
+ 
+ 
+ for other_md in other_mds:
+     try:
+-        print '#'*20
+-        print ' '*5+ other_md
+-        print '#'*20
++        print('#'*20)
++        print(' '*5+ other_md)
++        print('#'*20)
+         if other_md == 'gage':
+             tbl[other_md] = snbea.run_gage(exset, gsets, gset_df)
+         if other_md == 'plage':
+@@ -171,7 +171,7 @@
+         filenm = opt.out + other_md + '.tsv'
+         tbl[other_md].to_csv(filenm, sep="\t", header=True, index=False)
+     except:
+-        print 'Error: '+ other_md + ' have not successfully run.'
++        print('Error: '+ other_md + ' have not successfully run.')
+         pass
+ 
+ 
+@@ -231,5 +231,5 @@
+     rank_out.to_csv(opt.out +'combination_results.tsv',  sep="\t", header=True, index=False)
+ 
+ else:
+-    print 'Warning: Sorry, it is not able to do multiple methods results combination with these input methods. All of these methods results are required. ' + ', '.join(svc_mds)
++    print('Warning: Sorry, it is not able to do multiple methods results combination with these input methods. All of these methods results are required. ' + ', '.join(svc_mds))
+ 
+diff -ruN '--exclude=__pycache__' da/kobas/sim.py db/kobas/sim.py
+--- da/kobas/sim.py	2026-09-07 17:24:38.784177272 +0800
++++ db/kobas/sim.py	2026-09-07 17:24:38.788177309 +0800
+@@ -17,12 +17,12 @@
+     if os.access(file_name, os.F_OK):
+         return open(file_name)
+     else:
+-        print 'file %s does not exist' % file_name
++        print('file %s does not exist' % file_name)
+         sys.exit(1)
+ 
+ def oneTerm(line):
+     cont = line.split('\t')
+-    term = dict(zip(COLUMN, cont))
++    term = dict(list(zip(COLUMN, cont)))
+     return term
+     
+ def cut(handle):
+@@ -62,20 +62,20 @@
+     '''
+     i, j = 0, 0
+     while(i < lenA and j < lenB):
+-	if termA[i] < termB[j]:
+-	    matrix[1] += 1
+-	    i += 1
+-	elif termA[i] == termB[j]:
++        if termA[i] < termB[j]:
++            matrix[1] += 1
++            i += 1
++        elif termA[i] == termB[j]:
+             matrix[0] += 1
+             i += 1
+-	    j += 1
+-	else:
+-	    matrix[2] += 1
++            j += 1
++        else:
++            matrix[2] += 1
+             j += 1
+     if i == lenA:
+-	matrix[2] += (lenB - j)
++        matrix[2] += (lenB - j)
+     if j == lenB:
+-	matrix[1] += (lenA - i)
++        matrix[1] += (lenA - i)
+     matrix[3] = num - sum(matrix[:3])
+     return matrix'''
+     matrix[0] = len(set(termA) & set(termB))
+diff -ruN '--exclude=__pycache__' da/kobas/snbea.py db/kobas/snbea.py
+--- da/kobas/snbea.py	2026-09-07 17:24:38.784177272 +0800
++++ db/kobas/snbea.py	2026-09-07 17:24:38.788177309 +0800
+@@ -15,9 +15,9 @@
+     nbea_mds = []
+     other_mds = []
+     for md in mds:
+-    	if md in all_sbea_mds:
+-	    sbea_mds.append(md)
+-	elif md in all_nbea_mds:
++        if md in all_sbea_mds:
++            sbea_mds.append(md)
++        elif md in all_nbea_mds:
+             nbea_mds.append(md)
+         else:
+             other_mds.append(md)
+@@ -40,23 +40,23 @@
+     try :
+         while line :
+             if '#' in line:
+-            	line = gmt_file.readline()
+-            	continue
++                line = gmt_file.readline()
++                continue
+             words = line.rstrip('\n').split('\t')
+ 
+             if len(words)<3 :
+-                raise exception.GmtformatErr, "Error Message:\nBad gene set database format. Please check your gene set database format, only gmt file, a tab delimited file are allowed. \nAbout file format, please click www.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats "
++                raise exception.GmtformatErr("Error Message:\nBad gene set database format. Please check your gene set database format, only gmt file, a tab delimited file are allowed. \nAbout file format, please click www.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats ")
+ 
+-            if words[0] in gset_des.keys():
++            if words[0] in list(gset_des.keys()):
+                 continue
+-                print "Warning Message from KOBAS: \n These are at leaset two gene sets share the same gene set ID. Please check. We only use the gene set first emerges."
++                print("Warning Message from KOBAS: \n These are at leaset two gene sets share the same gene set ID. Please check. We only use the gene set first emerges.")
+         
+             gset_des[words[0]] = words[1]
+             gset_genes[words[0]] = words[2:]
+             line = gmt_file.readline()
+         gmt_file.close()
+-    except IOError,e:
+-        print "Error Message:\nBad gene set database format. Please check your gene set database format, only gmt file are allowed."
++    except IOError as e:
++        print("Error Message:\nBad gene set database format. Please check your gene set database format, only gmt file are allowed.")
+         gmt_file.close()
+         sys.exit(e)
+     return gset_des, gset_genes
+@@ -94,7 +94,7 @@
+     ltlist = list(gset_size.ro > min_size)
+     mtlist = list(gset_size.ro < max_size)
+     func = lambda x,y : True if x and y else False
+-    adjpy = map(func, ltlist, mtlist)
++    adjpy = list(map(func, ltlist, mtlist))
+     adjr  = robjects.BoolVector(adjpy)
+     gmt = gmt[adjpy]
+     gs = gs.rx(adjr)
+@@ -110,18 +110,18 @@
+ def get_exset(expdata,pdata,datype,norm):
+     ### differently express genes #######
+     if datype=='ma':
+-        print "-"*20
+-        print "Microarray data"
+-        print "-"*20
++        print("-"*20)
++        print("Microarray data")
++        print("-"*20)
+         exset = biobase.ExpressionSet(assayData=expdata, phenoData=pdata)
+         # normalize:
+         if norm =='y':
+-            print "Doing Normalization"
++            print("Doing Normalization")
+             exset = enbrowser.normalize(exset, data_type=datype)
+     if datype=='rseq':
+-        print "-"*20
+-        print "RNA-SEQ"
+-        print "-"*20
++        print("-"*20)
++        print("RNA-SEQ")
++        print("-"*20)
+         if norm != 'y':
+             expdata = r['log2'](expdata.ro + 1.0)
+         else:
+@@ -154,7 +154,7 @@
+     phdata = biobase.pData(exset)
+     phdata = phdata.rx(2)
+     phdata_py = pandas2ri.ri2py_dataframe(phdata)
+-    phdata_py.index = range(len(phdata_py))
++    phdata_py.index = list(range(len(phdata_py)))
+     phdata_py.index = phdata_py.index + 1
+     ctrl = phdata_py.iloc[:,0] == 0
+     ctrl_num = pandas2ri.IntVector(ctrl[ctrl].index)
+@@ -163,7 +163,7 @@
+         gage_res = gagepkg.gage(exprs=expdata, gsets = gsets, ref=ctrl_num, samp=case_num, same_dir=False)
+     else:
+         gage_res = gagepkg.gage(exprs=expdata, gsets = gsets, ref=ctrl_num, samp=case_num, same_dir=False, compare='unpaired')
+-    gage_res_dict = dict(zip(gage_res.names, list(gage_res))) 
++    gage_res_dict = dict(list(zip(gage_res.names, list(gage_res)))) 
+     gage_res_rdf = gage_res_dict['greater']
+     gage_res_rdf = r['data.frame'](gage_res_rdf)
+     gage_res_df = pandas2ri.ri2py_dataframe(gage_res_rdf)
+@@ -173,7 +173,7 @@
+     return gage_final
+ 
+ 
+-##### output de genes	
++##### output de genes   
+ def output_de_genes(exset, outpath):
+     fdata = biobase.fData(exset)
+     fdata = pandas2ri.ri2py_dataframe(fdata)
+@@ -183,7 +183,7 @@
+ 
+ 
+ def enres_add_annotation(res, gset_df) :
+-    res_dict = dict(zip(res.names, list(res)))
++    res_dict = dict(list(zip(res.names, list(res))))
+     tbl = res_dict['res.tbl']
+     tbl = r['data.frame'](tbl, stringsAsFactors=False)
+ ### add title to pathways
+diff -ruN '--exclude=__pycache__' da/kobas/utils.py db/kobas/utils.py
+--- da/kobas/utils.py	2026-09-07 17:24:38.784177272 +0800
++++ db/kobas/utils.py	2026-09-07 17:24:38.788177309 +0800
+@@ -9,14 +9,14 @@
+ 
+ def dict_to_list(rows):
+     nrows = set()
+-    for row in rows.items():
++    for row in list(rows.items()):
+         nrows.add(tuple(row[1] + [row[0]]))
+ 
+     return list(nrows)
+ 
+ def dict_to_list_reorder(rows):
+     nrows = set()
+-    for row in rows.items():
++    for row in list(rows.items()):
+         row[1].insert(2, row[0])
+         nrows.add(tuple(row[1]))
+ 
+@@ -24,7 +24,7 @@
+ 
+ def split_values(rows):
+     nrows = set()
+-    for row in rows.items():
++    for row in list(rows.items()):
+         for value in row[1]:
+             nrows.add((row[0], value))
+ 
+@@ -32,9 +32,9 @@
+ 
+ def combine_dicts(frows, srows):
+     nrows = set()
+-    for frow in frows.items():
++    for frow in list(frows.items()):
+         for fvalue in frow[1]:
+-            if srows.has_key(fvalue):
++            if fvalue in srows:
+                 for svalue in srows[fvalue]:
+                     nrows.add((frow[0], svalue))
+ 
