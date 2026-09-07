@@ -1,7 +1,7 @@
 ARG BASE=openeuler/openeuler:24.03-lts-sp4
 FROM $BASE
 
-ARG HYCOM_VERSION=2.3.01
+ARG VERSION=2.3.01
 
 ENV PATH=/usr/lib64/openmpi/bin:$PATH \
     LD_LIBRARY_PATH=/usr/lib64/openmpi/lib
@@ -11,7 +11,7 @@ RUN yum install -y \
     yum clean all && rm -rf /var/cache/yum
 
 RUN git clone --recursive https://github.com/HYCOM/HYCOM-src.git /src && \
-    cd /src && git checkout ${HYCOM_VERSION}
+    cd /src && git checkout ${VERSION}
 
 COPY config/generic-gnu-relo_mpi /src/config/generic-gnu-relo_mpi
 
