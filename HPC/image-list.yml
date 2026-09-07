@@ -51,6 +51,7 @@ images:
   wavewatch: wavewatch
   petsc: petsc
   kb_python: kb_python
+  vaspkit: vaspkit
   code-saturne: code-saturne
   dealii: dealii
   swmm: swmm
