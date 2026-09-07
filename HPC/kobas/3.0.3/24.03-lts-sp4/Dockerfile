@@ -27,7 +27,7 @@ RUN /opt/conda/bin/conda tos accept --override-channels --channel https://repo.a
     && /opt/conda/bin/conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r \
     && /opt/conda/bin/conda config --add channels bioconda \
     && /opt/conda/bin/conda config --add channels conda-forge \
-    && /opt/conda/bin/conda create -y -n kobas python=2.7 r-base rpy2>=2.8.5 blast numpy pandas biopython sqlite bioconductor-qvalue \
+    && /opt/conda/bin/conda create -y -n kobas python=2.7.15 r-base rpy2>=2.7.0 blast numpy pandas biopython sqlite bioconductor-qvalue \
     && /opt/conda/bin/conda clean -a -y
 
 SHELL ["/opt/conda/bin/conda", "run", "-n", "kobas", "/bin/bash", "-c"]
