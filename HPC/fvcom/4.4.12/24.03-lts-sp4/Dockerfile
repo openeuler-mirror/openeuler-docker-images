@@ -26,12 +26,8 @@ RUN curl -fSL --retry 5 --retry-delay 5 --retry-all-errors \
     cd / && rm -rf netcdf-fortran-${NETCDF_FORTRAN_VERSION} netcdf-fortran.tgz
 
 
-RUN for i in $(seq 1 5); do \
-        git clone --depth=1 --branch release-v${VERSION} \
-            https://github.com/FVCOM-GitHub/FVCOM.git /fvcom && exit 0; \
-        echo "git clone failed (attempt $i/5), retrying..."; \
-        rm -rf /fvcom; sleep 5; \
-    done; echo "git clone failed after 5 attempts"; exit 1
+RUN git clone --depth=1 --branch release-v${VERSION} \
+        https://github.com/FVCOM-GitHub/FVCOM.git /fvcom
 
 
 COPY make.inc /fvcom/src/make.inc
