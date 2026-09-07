@@ -10,7 +10,8 @@ RUN dnf install -y wget tar gcc gcc-c++ make perl grep findutils && \
     dnf clean all && \
     rm -rf /var/cache/dnf
 
-eRUN if [ "$TARGETARCH" = "amd64" ]; then \
+# Install Miniconda as the base runtime/environment manager.
+RUN if [ "$TARGETARCH" = "amd64" ]; then \
         BUILDARCH="x86_64"; \
     elif [ "$TARGETARCH" = "arm64" ]; then \
         BUILDARCH="aarch64"; \
