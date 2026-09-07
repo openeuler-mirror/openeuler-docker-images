@@ -1,74 +1,62 @@
 ARG BASE=openeuler/openeuler:24.03-lts-sp4
 FROM ${BASE} AS builder
 
-ARG TARGETPLATFORM
+ARG TARGETARCH
 ARG KOBAS_VERSION=3.0.3
 
 WORKDIR /opt/kobas
 
-RUN dnf install -y \
-    sqlite sqlite-devel \
-    python2 python2-devel \
-    R R-devel \
-    openssl-devel libpng-devel libxml2-devel libjpeg-devel \
-    wget tar gcc make perl-core \
-    ncbi-blast+ \
-    && dnf clean all \
-    && rm -rf /var/cache/dnf
+RUN dnf install -y wget tar gcc gcc-c++ make perl grep findutils && \
+    dnf clean all && \
+    rm -rf /var/cache/dnf
 
-RUN curl -sO https://bootstrap.pypa.io/pip/2.7/get-pip.py && \
-    python2 get-pip.py && \
-    rm -f get-pip.py
+eRUN if [ "$TARGETARCH" = "amd64" ]; then \
+        BUILDARCH="x86_64"; \
+    elif [ "$TARGETARCH" = "arm64" ]; then \
+        BUILDARCH="aarch64"; \
+    else \
+        echo "Unsupported architecture: $TARGETARCH"; exit 1; \
+    fi; \
+    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-${BUILDARCH}.sh -O /tmp/miniconda.sh && \
+    bash /tmp/miniconda.sh -b -p /opt/conda && \
+    rm -f /tmp/miniconda.sh
 
-RUN pip2 install pysqlite \
-                 egenix-mx-base \
-                 numpy \
-                 pandas==0.20 \
-                 rpy2==2.7.0
+# Accept the Anaconda TOS and tune network retries/timeouts to avoid
+# intermittent downloads from anaconda.org channels.
+RUN /opt/conda/bin/conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main && \
+    /opt/conda/bin/conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r && \
+    /opt/conda/bin/conda config --set remote_connect_timeout_secs 120 && \
+    /opt/conda/bin/conda config --set remote_read_timeout_secs 120 && \
+    /opt/conda/bin/conda config --set remote_max_retries 5
 
-RUN wget http://biopython.org/DIST/biopython-1.44.tar.gz && \
-    tar zxf biopython-1.44.tar.gz && \
-    cd biopython-1.44 && \
-    python2 setup.py install && \
-    cd /opt/kobas && rm -rf biopython-1.44*
+# Create the kobas environment with Python 3.
+RUN /opt/conda/bin/conda create -y -n kobas python=3 \
+    && /opt/conda/bin/conda clean -a -y
 
-RUN Rscript -e "install.packages('BiocManager', repos='https://cran.r-project.org')" && \
-    Rscript -e "library(BiocManager); \
-                BiocManager::install(c('qvalue','Biobase','GSEABase','pathview', \
-                                       'ComplexHeatmap','DESeq2','EDASeq','GO.db', \
-                                       'ReportingTools','SPIA','biocGraph','safe', \
-                                       'topGO','GSVA','gage'), \
-                                     update=FALSE, ask=FALSE)"
+SHELL ["/opt/conda/bin/conda", "run", "-n", "kobas", "/bin/bash", "-c"]
 
-RUN wget https://bioconductor.org/packages/3.14/bioc/src/contrib/Rgraphviz_2.38.0.tar.gz && \
-    tar -xf Rgraphviz_2.38.0.tar.gz && \
-    cd Rgraphviz && \
-    R CMD INSTALL . && \
-    cd /opt/kobas && rm -rf Rgraphviz*
+# KOBAS and its dependencies are all installed from conda channels:
+# pandas, BLAST, R, rpy2, biopython and the bioconda qvalue package.
+RUN /opt/conda/bin/conda install -y -n kobas -c conda-forge -c bioconda \
+    pandas \
+    blast \
+    r-base \
+    rpy2 \
+    biopython \
+    bioconductor-qvalue \
+    && /opt/conda/bin/conda clean -a -y
 
-RUN wget http://bioinfo.org/kobas/tcm/download/?file_path=/home/jingdu/JINGD/data/www/kobas-${KOBAS_VERSION}.tar.gz -O kobas.tar.gz \
-    && tar -xzf kobas.tar.gz \
-    && rm -f kobas.tar.gz \
-    && python2 setup.py install \
-    && rm -rf ./kobas-${KOBAS_VERSION}
-
-ENV PYTHONPATH=/opt/kobas/kobas-${KOBAS_VERSION}
-RUN echo "export KOBAS_HOME=/opt/kobas/kobas-${KOBAS_VERSION}" > /root/.kobasrc && \
-    echo "export PATH=\$KOBAS_HOME/bin:\$PATH" >> /root/.kobasrc && \
-    echo "source /root/.kobasrc" >> /root/.bashrc
+# Download and install the KOBAS 3.0.3 noarch (py_3) conda package.
+RUN wget "https://anaconda.org/bioconda/kobas/3.0.3/download/noarch/kobas-3.0.3-py_3.tar.bz2" -O /tmp/kobas.tar.bz2 \
+    && /opt/conda/bin/conda install -y -n kobas /tmp/kobas.tar.bz2 \
+    && rm -f /tmp/kobas.tar.bz2 \
+    && /opt/conda/bin/conda clean -a -y
 
 FROM ${BASE}
 
-COPY --from=builder /usr/local /usr/local
-COPY --from=builder /opt/kobas /opt/kobas
-COPY --from=builder /root/.kobasrc /root/.kobasrc
-COPY --from=builder /root/.bashrc /root/.bashrc
+COPY --from=builder /opt/conda /opt/conda
 
-ENV PYTHONPATH=/opt/kobas/kobas-${KOBAS_VERSION}
-ENV KOBAS_HOME=/opt/kobas/kobas-${KOBAS_VERSION}
-ENV PATH=${KOBAS_HOME}/bin:/usr/local/bin:${PATH}
-ENV LD_LIBRARY_PATH=/usr/local/lib:${LD_LIBRARY_PATH}
+ENV PATH=/opt/conda/envs/kobas/bin:/opt/conda/bin:${PATH}
+ENV LD_LIBRARY_PATH=/opt/conda/envs/kobas/lib:${LD_LIBRARY_PATH}
 
-WORKDIR /opt/kobas/kobas-${KOBAS_VERSION}
-
-CMD ["/bin/bash"]
+CMD ["kobas-annotate", "-h"]
