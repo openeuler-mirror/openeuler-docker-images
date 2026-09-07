@@ -47,8 +47,8 @@ RUN /opt/conda/bin/conda install -y -n kobas -c conda-forge -c bioconda \
     bioconductor-qvalue \
     && /opt/conda/bin/conda clean -a -y
 
-# Download and install the KOBAS 3.0.3 noarch (py_3) conda package.
-RUN wget "https://anaconda.org/bioconda/kobas/3.0.3/download/noarch/kobas-3.0.3-py_3.tar.bz2" -O /tmp/kobas.tar.bz2 \
+# Download and install the KOBAS ${KOBAS_VERSION} noarch (py_3) conda package.
+RUN wget "https://anaconda.org/bioconda/kobas/${KOBAS_VERSION}/download/noarch/kobas-${KOBAS_VERSION}-py_3.tar.bz2" -O /tmp/kobas.tar.bz2 \
     && /opt/conda/bin/conda install -y -n kobas /tmp/kobas.tar.bz2 \
     && rm -f /tmp/kobas.tar.bz2 \
     && /opt/conda/bin/conda clean -a -y
