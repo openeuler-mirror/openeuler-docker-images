@@ -27,6 +27,9 @@ RUN /opt/conda/bin/conda tos accept --override-channels --channel https://repo.a
     && /opt/conda/bin/conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r \
     && /opt/conda/bin/conda config --add channels bioconda \
     && /opt/conda/bin/conda config --add channels conda-forge \
+    && /opt/conda/bin/conda config --set remote_connect_timeout_secs 120 \
+    && /opt/conda/bin/conda config --set remote_read_timeout_secs 120 \
+    && /opt/conda/bin/conda config --set remote_max_retries 5 \
     && /opt/conda/bin/conda create -y -n kobas python=2.7 \
     && /opt/conda/bin/conda install -y -n kobas blast \
     && /opt/conda/bin/conda clean -a -y
