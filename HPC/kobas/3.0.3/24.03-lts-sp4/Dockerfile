@@ -39,9 +39,12 @@ SHELL ["/opt/conda/bin/conda", "run", "-n", "kobas", "/bin/bash", "-c"]
 # releases of the Python libraries are pip-installed instead.
 # Install in stages so numpy is already present when pandas builds, otherwise
 # pandas' setup_requires fetches an incompatible release to satisfy its dep.
+# All versions below are pinned to Python 2.7 compatible releases; otherwise pip
+# resolves the newest (Python 3 only) releases of the transitive deps.
 RUN pip install --no-cache-dir "numpy==1.16.6" \
-    && pip install --no-cache-dir "pandas==0.24.2" \
-    && pip install --no-cache-dir "biopython==1.76" "rpy2==2.9.4"
+    && pip install --no-cache-dir "pandas==0.24.2" "python-dateutil==2.8.1" "pytz==2020.1" "six==1.15.0" \
+    && pip install --no-cache-dir "biopython==1.76" \
+    && pip install --no-cache-dir "rpy2==2.9.4"
 # Install the Bioconductor qvalue package (used by KOBAS enrichment) via R
 RUN R -e "install.packages('BiocManager', repos='https://cloud.r-project.org'); BiocManager::install('qvalue', ask=FALSE, update=FALSE, checkBuilt=TRUE)"
 RUN cd /tmp \
