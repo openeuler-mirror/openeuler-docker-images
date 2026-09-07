@@ -2,7 +2,7 @@ ARG BASE=openeuler/openeuler:24.03-lts-sp4
 
 FROM $BASE AS builder
 
-ARG FVCOM_VERSION=release-v4.4.12
+ARG VERSION=4.4.12
 ARG NETCDF_FORTRAN_VERSION=4.6.1
 
 ENV PATH=/usr/lib64/openmpi/bin:$PATH \
@@ -27,7 +27,7 @@ RUN curl -fSL --retry 5 --retry-delay 5 --retry-all-errors \
 
 
 RUN for i in $(seq 1 5); do \
-        git clone --depth=1 --branch ${FVCOM_VERSION} \
+        git clone --depth=1 --branch release-v${VERSION} \
             https://github.com/FVCOM-GitHub/FVCOM.git /fvcom && exit 0; \
         echo "git clone failed (attempt $i/5), retrying..."; \
         rm -rf /fvcom; sleep 5; \
