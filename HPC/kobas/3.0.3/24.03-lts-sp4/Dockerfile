@@ -27,10 +27,13 @@ RUN /opt/conda/bin/conda tos accept --override-channels --channel https://repo.a
     && /opt/conda/bin/conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r \
     && /opt/conda/bin/conda config --add channels bioconda \
     && /opt/conda/bin/conda config --add channels conda-forge \
-    && /opt/conda/bin/conda create -y -n kobas python=2.7 r-base rpy2>=2.7.0 blast numpy pandas biopython sqlite \
+    && /opt/conda/bin/conda create -y -n kobas python=2.7 r-base blast numpy pandas biopython sqlite \
     && /opt/conda/bin/conda clean -a -y
 
 SHELL ["/opt/conda/bin/conda", "run", "-n", "kobas", "/bin/bash", "-c"]
+# rpy2 (Python 2 compatible release) is installed via pip because conda's rpy2
+# builds no longer satisfy the Python 2.7 runtime.
+RUN pip install --no-cache-dir "rpy2==2.9.4"
 # Install the Bioconductor qvalue package (used by KOBAS enrichment) via R
 RUN R -e "install.packages('BiocManager', repos='https://cloud.r-project.org'); BiocManager::install('qvalue', ask=FALSE, update=FALSE, checkBuilt=TRUE)"
 RUN cd /tmp \
