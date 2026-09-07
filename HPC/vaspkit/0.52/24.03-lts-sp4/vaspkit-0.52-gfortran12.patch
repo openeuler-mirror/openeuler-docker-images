@@ -1,0 +1,45 @@
+--- a/src/eos.f90
++++ b/src/eos.f90
+@@ -488,7 +488,7 @@
+ end if
+ ! evaluate the function at each vertex
+ do i=1,n+1
+-  f(i)=fmin_nm(x(1,i))
++  f(i)=fmin_nm(x(:,i))
+ end do
+ iter=0
+ 10 continue
+@@ -551,11 +551,11 @@
+ ! shrinkage
+ do j=1,il-1
+   x(:,j)=x(:,il)+sigma*(x(:,j)-x(:,il))
+-  f(j)=fmin_nm(x(1,j))
++  f(j)=fmin_nm(x(:,j))
+ end do
+ do j=il+1,n+1
+   x(:,j)=x(:,il)+sigma*(x(:,j)-x(:,il))
+-  f(j)=fmin_nm(x(1,j))
++  f(j)=fmin_nm(x(:,j))
+ end do
+ goto 10
+ return
+@@ -570,7 +570,7 @@
+ use eosmod
+ implicit none
+ ! arguments
+-real(8), intent(in) :: x
++real(8), intent(in) :: x(nparam)
+ ! local variables
+ integer i
+ real(8) sum
+--- a/src/writerho.f90
++++ b/src/writerho.f90
+@@ -29,7 +29,7 @@
+                                 NGX),J=1,NGY),K=1,NGZ)
+      CLOSE(13)
+      OPEN(UNIT=13,FILE='SPIN.DW'//VASPSUFF)
+-     CALL WRITEPOS(INFILE)
++     CALL WRITEPOS
+      WRITE(13,*)
+      WRITE(13,'(3I5)') NGX,NGY,NGZ
+      WRITE(13,'(5E17.8E2)') (((((CHGRHO(I,J,K)-SPINRHO(I,J,K))/2.0),I=1, &
