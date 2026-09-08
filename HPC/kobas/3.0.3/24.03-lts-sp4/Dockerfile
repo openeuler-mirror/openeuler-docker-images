@@ -9,7 +9,6 @@ SHELL ["/bin/bash", "-lc"]
 RUN conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main && \
     conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r
 
-# Create the empty kobas environment first.
 RUN conda create -y -n kobas && \
     conda clean -a -y
 
@@ -31,8 +30,6 @@ RUN conda activate kobas && pip install --no-cache-dir \
 RUN conda install -y -n kobas -c conda-forge -c bioconda r-base && \
     conda clean -a -y
 
-# crypt.h:conda 交叉编译器只搜 conda 的 include/sysroot,不读 /usr/include,
-# glibc-devel 装好后把宿主 crypt.h 复制进 env include(-isystem 已包含该目录)。
 RUN dnf install -y glibc-devel \
     && cp /usr/include/crypt.h /opt/conda/envs/kobas/include/crypt.h \
     && dnf clean all \
