@@ -1,90 +1,58 @@
-ARG BASE=openeuler/openeuler:24.03-lts-sp4
-FROM ${BASE} AS builder
+# 复刻 conda-dev 容器中 KOBAS 3.0.3 的安装过程
+# 架构:linux/aarch64(conda-forge/bioconda 均按 aarch64 解析,与源容器一致)
+# 构建前需把预构建的 conda 包 kobas-3.0.3-py_3.tar.bz2 放到本文件同目录(build context)
+FROM openeuler/miniconda:24.03-lts-sp4
 
-ARG TARGETARCH
-ARG KOBAS_VERSION=3.0.3
+# 便于在 RUN 中激活 conda 环境
+RUN echo '. /opt/conda/etc/profile.d/conda.sh' >> /root/.bashrc
 
-WORKDIR /opt/kobas
+SHELL ["/bin/bash", "-lc"]
 
-RUN dnf install -y wget tar gcc gcc-c++ make perl grep findutils patch && \
-    dnf clean all && \
-    rm -rf /var/cache/dnf
+# 1) 建空环境并装 Python 2.7.15(KOBAS 3.0.3 仅支持 python2)
+RUN conda create -y -n kobas \
+    && conda install -y -n kobas -c conda-forge -c bioconda python==2.7.15
 
-# Install Miniconda as the base runtime/environment manager.
-RUN if [ "$TARGETARCH" = "amd64" ]; then \
-        BUILDARCH="x86_64"; \
-    elif [ "$TARGETARCH" = "arm64" ]; then \
-        BUILDARCH="aarch64"; \
-    else \
-        echo "Unsupported architecture: $TARGETARCH"; exit 1; \
-    fi; \
-    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-${BUILDARCH}.sh -O /tmp/miniconda.sh && \
-    bash /tmp/miniconda.sh -b -p /opt/conda && \
-    rm -f /tmp/miniconda.sh
+# 2) 装 pandas(numpy/six 随之而来)
+RUN conda install -y -n kobas -c conda-forge -c bioconda pandas
 
-# Accept the Anaconda TOS and tune network retries/timeouts to avoid
-# intermittent downloads from anaconda.org channels.
-RUN /opt/conda/bin/conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main && \
-    /opt/conda/bin/conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r && \
-    /opt/conda/bin/conda config --set remote_connect_timeout_secs 120 && \
-    /opt/conda/bin/conda config --set remote_read_timeout_secs 120 && \
-    /opt/conda/bin/conda config --set remote_max_retries 5
+# 3) 纯 Python 依赖:KOBAS 本地 web 服务(flask 系)及占位包 blast
+#    blast==0.3.0(pypi)用于让后续 conda 解析 run 依赖 `blast` 时不至于去装 aarch64 上没有的 ncbi-blast
+RUN conda activate kobas && pip install --no-cache-dir \
+        flask==1.1.4 \
+        jinja2==2.11.3 \
+        werkzeug==1.0.1 \
+        click==7.1.2 \
+        itsdangerous==1.1.0 \
+        markupsafe==1.1.1 \
+        blast==0.3.0
 
-# Create the kobas environment with Python 3.
-RUN /opt/conda/bin/conda create -y -n kobas python=3 \
-    && /opt/conda/bin/conda clean -a -y
+# 4) 装 R(rpy2 编译和 bioconductor-qvalue 都需要)
+RUN conda install -y -n kobas -c conda-forge -c bioconda r-base
 
-SHELL ["/opt/conda/bin/conda", "run", "-n", "kobas", "/bin/bash", "-c"]
+# 5) 补齐缺失的 crypt.h:rpy2 源码编译时需要 <crypt.h>,
+#    openEuler 上该头文件由 libxcrypt-devel 提供,`dnf install -y glibc-devel` 会连带装上
+RUN dnf install -y glibc-devel \
+    && dnf clean all
 
-# KOBAS and its dependencies are all installed from conda channels:
-# pandas, BLAST, R, rpy2, biopython and the bioconda qvalue package.
-# Retry the whole install because this host has flaky connectivity to
-# anaconda.org and downloads can die mid-stream.
-RUN ok=0; \
-    for i in $(seq 1 8); do \
-        if /opt/conda/bin/conda install -y -n kobas -c conda-forge -c bioconda \
-            pandas \
-            blast \
-            r-base \
-            rpy2 \
-            biopython \
-            bioconductor-qvalue; then \
-            ok=1; \
-            break; \
-        fi; \
-        echo "conda install attempt $i failed, retrying..."; \
-        sleep 15; \
-    done; \
-    if [ "$ok" != "1" ]; then \
-        echo "conda install failed after 8 attempts"; \
-        exit 1; \
-    fi; \
-    /opt/conda/bin/conda clean -a -y
+# 6) pip 编译安装 rpy2(需 R + crypt.h),并装 biopython/singledispatch
+RUN conda activate kobas && pip install --no-cache-dir \
+        rpy2==2.8.5 \
+        biopython==1.75 \
+        singledispatch==3.7.0
 
-# Download and install the KOBAS ${KOBAS_VERSION} noarch (py_3) conda package.
-# NOTE: the "-py_3" suffix is only the conda build number, not a Python 3
-# build -- the package actually ships Python 2 code (it declares "python <3"
-# and KOBAS 3.0.3 predates Python 3). The Python 3 environment created above
-# is kept, and kobas-py3.patch (a 2to3-based conversion plus a few manual
-# fixes) is applied to make the installed code run under Python 3.
-RUN wget "https://anaconda.org/bioconda/kobas/${KOBAS_VERSION}/download/noarch/kobas-${KOBAS_VERSION}-py_3.tar.bz2" -O /tmp/kobas.tar.bz2 \
-    && /opt/conda/bin/conda install -y -n kobas /tmp/kobas.tar.bz2 \
-    && rm -f /tmp/kobas.tar.bz2 \
-    && /opt/conda/bin/conda clean -a -y
+# 7) 装 R 包 qvalue(KOBAS 富集分析用)
+RUN conda install -y -n kobas -c conda-forge -c bioconda bioconductor-qvalue
 
-COPY kobas-py3.patch /tmp/kobas-py3.patch
+# 8) 用本地 conda 包安装 KOBAS 本体
+#    conda 26 默认开启 pip-interop,前面 pip 装的 biopython/rpy2/blast 可满足 run 依赖
+COPY kobas-3.0.3-py_3.tar.bz2 /tmp/kobas-3.0.3-py_3.tar.bz2
+RUN conda install -y -n kobas --use-local /tmp/kobas-3.0.3-py_3.tar.bz2
 
-RUN SP=$(python -c 'import site; print(site.getsitepackages()[0])') \
-    && patch -d "$SP" -p1 < /tmp/kobas-py3.patch \
-    && rm -f /tmp/kobas-py3.patch \
-    && python -m compileall -q "$SP/kobas" \
-    && /opt/conda/bin/conda clean -a -y
+# 9) 验证
+RUN conda run -n kobas kobas-annotate -h \
+    && conda run -n kobas kobas-identify -h \
+    && conda run -n kobas kobas-run -h
 
-FROM ${BASE}
+ENV PATH=/opt/conda/envs/kobas/bin:$PATH
 
-COPY --from=builder /opt/conda /opt/conda
-
-ENV PATH=/opt/conda/envs/kobas/bin:/opt/conda/bin:${PATH}
-ENV LD_LIBRARY_PATH=/opt/conda/envs/kobas/lib:${LD_LIBRARY_PATH}
-
-CMD ["kobas-annotate", "-h"]
+CMD ["/bin/bash"]
