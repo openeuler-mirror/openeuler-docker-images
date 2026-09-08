@@ -1,6 +1,22 @@
-ARG BASE=openeuler/miniconda:24.03-lts-sp4
+ARG BASE=openeuler/openeuler:24.03-lts-sp4
 FROM ${BASE}
+ARG TARGETARCH
 ARG VERSION=3.0.3
+
+RUN dnf install -y wget tar gcc gcc-c++ make perl grep findutils patch && \
+    dnf clean all && \
+    rm -rf /var/cache/dnf
+
+RUN if [ "$TARGETARCH" = "amd64" ]; then \
+        BUILDARCH="x86_64"; \
+    elif [ "$TARGETARCH" = "arm64" ]; then \
+        BUILDARCH="aarch64"; \
+    else \
+        echo "Unsupported architecture: $TARGETARCH"; exit 1; \
+    fi; \
+    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-${BUILDARCH}.sh -O /tmp/miniconda.sh && \
+    bash /tmp/miniconda.sh -b -p /opt/conda && \
+    rm -f /tmp/miniconda.sh
 
 RUN echo '. /opt/conda/etc/profile.d/conda.sh' >> /root/.bashrc
 
