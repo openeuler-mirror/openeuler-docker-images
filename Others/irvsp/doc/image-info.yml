@@ -1,0 +1,59 @@
+name: irvsp
+category: others
+description: IRVSP是一款用于计算电子态波矢不可约表示（irreps）的Fortran程序包，服务于DFT计算软件VASP。它通过读取VASP计算的WAVECAR文件，计算包含非简单空间群（non-symmorphic）和磁空间群（magnetic space groups）在内的小群不可约表示，输出tqc.txt和tqc.data文件，可上传至中国材料基因组工程（CMGE）平台进行基本能带表示（eBR）/原子能带表示（aBR）分解。此外还提供配套工具vasp2trace，用于计算电子表示迹并生成trace.txt供Bilbao晶体学服务器（BCS）使用。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  irvsp镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[2.0-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/irvsp/2.0/24.03-lts-sp4/Dockerfile) | IRVSP 2.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/irvsp:{Tag}
+  ```
+
+usage: |
+  - 启动容器，进入IRVSP环境
+    ```
+    docker run -it --rm openeuler/irvsp:{Tag}
+    ```
+  - 在容器内验证安装
+    ```
+    which irvsp
+    irvsp -h
+    ```
+  - 挂载VASP工作目录进行不可约表示计算
+    ```
+    docker run -it -v $PWD:/workspace openeuler/irvsp:{Tag}
+    irvsp -sg xxx -nb xx xx > outir2
+    ```
+
+license: GPL-3.0
+similar_packages:
+  - VASPKIT: VASP前后处理命令行程序，用于生成VASP输入文件并分析输出结果。
+  - vasp2trace: IRVSP的配套工具，用于计算电子表示迹并生成trace.txt。
+dependency:
+  - gcc-gfortran
+  - gcc
+  - gcc-c++
+  - make
+  - which
+  - wget
+  - tar
+  - openblas-devel
+  - lapack-devel
+
+homepage: https://github.com/zjwang11/irvsp
+upstream:
+  backend: GitHub
+  version_url: zjwang11/irvsp
+  version_prefix:
+  version_filter: rc;alpha;beta;candidate;pre
+  version_scheme: RPM
