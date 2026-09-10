@@ -13,6 +13,7 @@ opencode is an open-source AI programming assistant that provides code completio
 The tag of each opencode docker image is consist of the version of opencode and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[1.18.30-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/opencode/1.18.30/24.03-lts-sp4/Dockerfile) | opencode 1.18.30 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[1.1.48-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/opencode/1.1.48/24.03-lts-sp4/Dockerfile) | opencode 1.1.48 on openEuler 24.03-lts-sp4 | amd64, arm64 |
 |[1.1.48-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/opencode/1.1.48/24.03-lts/Dockerfile) | opencode 1.1.48 on openEuler 24.03-lts | amd64, arm64 |
 
