@@ -17,6 +17,7 @@ Learn more on [Apache Kvrocks™ | Apache Kvrocks™](https://kvrocks.apache.org
 The tag of each `kvrocks` docker image is consist of the version of `kvrocks` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[2.17.0-rc1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/kvrocks/2.17.0-rc1/24.03-lts-sp4/Dockerfile) | kvrocks 2.17.0-rc1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[2.16.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/kvrocks/2.16.0/24.03-lts-sp4/Dockerfile) | kvrocks 2.16.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 # Usage
