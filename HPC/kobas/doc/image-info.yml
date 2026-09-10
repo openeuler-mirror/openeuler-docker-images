@@ -1,0 +1,49 @@
+name: kobas
+category: hpc
+description: KOBAS（KEGG Orthology Based Annotation System）是一个基于KEGG通路的基因集注释与富集分析平台，由北京大学研发。KOBAS支持对高通量生物学数据（如基因列表）进行KEGG通路富集分析，提供基因的功能注释、通路映射以及统计检验，广泛应用于转录组、蛋白组等组学数据的生物学功能解析与通路富集分析等科研领域。
+environment: |
+  本应用在Docker环境中运行,安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  kobas镜像的Tag由其版本信息和基础镜像版本信息组成,详细内容如下
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[3.0.3-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/kobas/3.0.3/24.03-lts-sp4/Dockerfile) | KOBAS 3.0.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/kobas:{Tag}
+  ```
+usage: |
+  - 确保已安装 Docker 环境。
+  - 从 DockerHub 获取 KOBAS 镜像:
+    ```
+    docker pull openeuler/kobas:{Tag}
+    ```
+  - 启动容器进入 KOBAS 环境
+    ```
+    docker run -it openeuler/kobas:{Tag}
+    ```
+  - 在容器内验证安装
+    ```
+    kobas-annotate -h
+    ```
+license: GPL-3.0
+similar_packages:
+  - DAVID: 基因功能注释与富集分析工具
+  - clusterProfiler: R语言富集分析包
+  - g:Profiler: 基因列表功能富集分析工具
+dependency:
+  - Python 2.7
+  - Miniconda
+  - R
+  - BLAST
+homepage: http://kobas.cbi.pku.edu.cn
+upstream:
+  backend: bioconda
+  version_url: bioconda/kobas
+  version_prefix:
+  version_filter:
+  version_scheme: RPM
