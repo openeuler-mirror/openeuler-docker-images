@@ -1,0 +1,76 @@
+name: percona
+category: database
+description: Percona Server for MySQL是一个免费、完全兼容、增强型且开源的MySQL无缝替代品，提供卓越的性能、可扩展性和可观测性。它在保留MySQL原有功能的基础上，增强了性能监控、安全审计、备份恢复等功能，广泛应用于生产环境中的关系型数据库场景。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  percona镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[8.4.10-10-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/percona/8.4.10-10/24.03-lts-sp4/Dockerfile) | Percona Server 8.4.10-10 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/percona:{Tag}
+  ```
+
+usage: |
+  - 启动percona实例
+    ```
+    docker run -d --name my-percona -p 3306:3306 -e MYSQL_ROOT_PASSWORD=openEuler:S3cr3t/ openeuler/percona:{Tag}
+    ```
+    `my-percona`启动之后，通过`http://localhost:3306`访问Percona Server服务。
+
+  - 启动参数
+
+    |    Parameter   |  Description  |
+    |----------------|---------------|
+    | -p 3306:3306 | 暴露Percona Server端口 |
+    | -e MYSQL_ROOT_PASSWORD | 设置root用户密码，必填且不能为空 |
+    | -e MYSQL_USER | 创建一个具有超级用户权限的新用户 |
+    | -e MYSQL_DATABASE | 设置默认数据库的名称 |
+    | -e MYSQL_ALLOW_EMPTY_PASSWORD=yes | 设置允许无密码访问root用户 |
+    | -e MYSQL_RANDOM_ROOT_PASSWORD=yes | 为root用户生成一个随机初始密码 |
+    | -e MYSQL_ONETIME_PASSWORD=yes | 初始化完成后将root用户设置为过期，强制首次登录时更改密码 |
+    | -v /path/to/data:/usr/local/percona/data/ | 用于保留运行数据，避免每次启动容器重新初始化数据库 |
+
+  - 容器测试
+
+    查看运行日志
+    ```
+    docker logs -f my-percona
+    ```
+
+    使用shell交互
+    ```
+    docker exec -it my-percona /bin/bash
+    ```
+
+license: GPL-2.0 license
+similar_packages:
+  - MySQL: Percona Server是基于MySQL的开源增强版替代品，完全兼容MySQL。
+  - MariaDB: 社区开发的MySQL服务器分支。
+dependency:
+  - g++
+  - make
+  - cmake
+  - ncurses-devel
+  - openssl
+  - zlib-devel
+  - libaio-devel
+  - libtirpc-devel
+  - bison
+  - m4
+
+homepage: https://github.com/percona/percona-server
+upstream:
+  backend: GitHub
+  version_url: percona/percona-server
+  version_prefix: Percona-Server-
+  version_filter:
+  version_scheme: RPM
