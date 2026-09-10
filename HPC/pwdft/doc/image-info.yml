@@ -1,4 +1,4 @@
-name: PWDFT
+name: pwdft
 category: hpc
 description: PWDFT（平面波密度泛函理论）是一个面向百亿亿次材料发现的自主平面波DFT引擎，为NWChemEx电子结构软件提供密度泛函理论计算功能，可用于材料科学和电子结构计算。
 environment: |

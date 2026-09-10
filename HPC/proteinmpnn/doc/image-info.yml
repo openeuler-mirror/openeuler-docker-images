@@ -75,8 +75,8 @@ dependency:
 
 homepage: https://github.com/dauparas/ProteinMPNN
 upstream:
-  version_url: https://github.com/dauparas/ProteinMPNN/releases
-  backend: github
+  version_url: dauparas/ProteinMPNN
+  backend: Github
   version_scheme: Semantic
   version_filter:
   regex: 'v(\d+\.\d+\.\d+)'
