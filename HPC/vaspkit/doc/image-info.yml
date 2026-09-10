@@ -1,0 +1,50 @@
+name: vaspkit
+category: hpc
+description: VASPKIT是一款面向VASP（Vienna Ab initio Simulation Package）的命令行与交互式前后处理程序，旨在辅助高通量第一性原理计算。它提供VASP输入文件（POSCAR、KPOINTS、POTCAR、INCAR）生成等前处理工具，以及能带结构、态密度、电荷密度、光学性质、弹性常数等后处理分析工具，并内置类bash的交互式命令界面。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  vaspkit镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[0.52-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/vaspkit/0.52/24.03-lts-sp4/Dockerfile) | VASPKIT 0.52 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/vaspkit:{Tag}
+  ```
+
+usage: |
+  - 启动容器，进入VASPKIT环境
+    ```
+    docker run -it --rm openeuler/vaspkit:{Tag}
+    ```
+  - 在容器内验证安装
+    ```
+    vaspkit --help
+    ```
+
+license: Academic Free License (AFL)
+similar_packages:
+  - VASP: 维也纳大学开发的从头算量子力学分子动力学软件包，VASPKIT是其前后处理工具。
+  - WannierTools: 基于紧束缚模型研究拓扑材料的开源软件包，常与VASP计算结果配合使用。
+  - Quantum ESPRESSO: 开源第一性原理计算软件包，同样可用于电子结构计算。
+dependency:
+  - gcc-gfortran
+  - make
+  - wget
+  - libgfortran
+  - libquadmath
+
+homepage: https://vaspkit.com
+upstream:
+  backend: custom
+  version_url: https://sourceforge.net/projects/vaspkit/files/Src/
+  version_prefix:
+  version_filter:
+  version_scheme: RPM

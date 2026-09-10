@@ -52,6 +52,7 @@ images:
   petsc: petsc
   kb_python: kb_python
   kobas: kobas
+  vaspkit: vaspkit
   code-saturne: code-saturne
   dealii: dealii
   swmm: swmm
@@ -93,3 +94,4 @@ images:
   hycom: hycom
   qp2: qp2
   fvcom: fvcom
+  qp2: qp2
