@@ -1,0 +1,55 @@
+{
+  "architectures": {
+    "aarch64": {
+      "checks": {
+        "dgoss": true,
+        "native_build": true,
+        "shared_tests": true
+      },
+      "duration_seconds": 122.301,
+      "environment": {
+        "Model": "oe-image-arm64",
+        "architecture": "aarch64",
+        "cpu_cores": 8,
+        "cpu_model": "0",
+        "kernel": "6.6.0-132.0.0.111.oe2403sp3.aarch64",
+        "numpy_version": "not-installed",
+        "os": "openEuler 24.03 (LTS-SP3)",
+        "python_version": "3.11.6",
+        "software_name": "kvrocks",
+        "software_version": "2.16.0",
+        "test_time": "2026-08-07T10:24:03Z"
+      },
+      "image_id": "sha256:9f458a5229f0261244c204903808cc6421f3f0ec2efe84270a43ef85fbf236f8",
+      "platform": "linux/arm64"
+    },
+    "x86_64": {
+      "checks": {
+        "dgoss": true,
+        "native_build": true,
+        "shared_tests": true
+      },
+      "duration_seconds": 97.989,
+      "environment": {
+        "Model": "oe-image-x86",
+        "architecture": "x86_64",
+        "cpu_cores": 8,
+        "cpu_model": "0",
+        "kernel": "6.6.0-159.4.3.154.oe2403sp4.x86_64",
+        "numpy_version": "not-installed",
+        "os": "openEuler 24.03 (LTS-SP4)",
+        "python_version": "3.11.6",
+        "software_name": "kvrocks",
+        "software_version": "2.16.0",
+        "test_time": "2026-08-07T10:22:45Z"
+      },
+      "image_id": "sha256:612c8bdcec715b188a4d7b02b463163e3f8e6cee1402faafc4b83ffe4ed0b651",
+      "platform": "linux/amd64"
+    }
+  },
+  "artifact_url": "https://github.com/Meihan-chen/openeuler-docker-images-workflow/actions/runs/31166786892",
+  "schema_version": 1,
+  "status": "passed",
+  "task_id": "new-image-database-kvrocks-2.16.0-24.03-lts-sp4",
+  "validated_run_id": "31166786892"
+}
