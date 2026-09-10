@@ -1,0 +1,2 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuite name="kvrocks-aarch64" tests="1" failures="0" errors="0" time="122.301"><testcase classname="native-image-validation" name="build-runtime-tests" time="122.301" /></testsuite>
