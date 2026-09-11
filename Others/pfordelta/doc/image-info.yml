@@ -1,0 +1,49 @@
+name: pfordelta
+category: others
+description: pfordelta 是一个用 C 语言编写的整数数组压缩算法库，衍生自 Poly IR Toolkit。它实现了 Simple16 和 PForDelta 两种有序整数数组压缩算法，常用作搜索引擎倒排索引 posting list 等整数序列的压缩方案。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  pfordelta镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[master-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/pfordelta/master/24.03-lts-sp4/Dockerfile) | pfordelta master on openEuler 24.03-lts-sp4 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/pfordelta:{Tag}
+  ```
+
+usage: |
+  运行内置示例可执行文件 howtouse：
+  ```
+  docker run --rm openeuler/pfordelta:{Tag} howtouse
+  ```
+
+  启动交互式环境查看源码与头文件：
+  ```
+  docker run -it --rm openeuler/pfordelta:{Tag} /bin/bash
+  ```
+
+license: Apache-2.0
+similar_packages:
+  - fastpfor: 快速的整数压缩算法库
+  - TurboPFor: 高速整数压缩库
+
+dependency:
+  - git
+  - gcc
+  - make
+
+homepage: https://github.com/diegocaro/compression
+upstream:
+  backend: GitHub
+  version_url: diegocaro/compression
+  version_prefix:
+  version_filter: alpha;rc;candidate;beta;pre
+  version_scheme: RPM
