@@ -1,0 +1,51 @@
+name: fvcom
+category: hpc
+description: FVCOM（Finite Volume Community Ocean Model，有限体积近岸海洋模式）是一个求解三维原始方程的海洋数值模式，由马萨诸塞大学达特茅斯分校海洋生态系统动力学建模实验室联合伍兹霍尔海洋研究所（WHOI）开发。FVCOM采用非结构三角网格与有限体积法，具备优异的岸线贴合与局部加密能力，离散格式严格保证质量与能量守恒，并支持干湿网格处理；支持MPI并行计算，输入输出基于NetCDF，内置海冰、泥沙、波浪、水质、生态及数据同化等多种物理模块，兼容笛卡尔坐标与球面坐标，广泛应用于近岸海洋动力学、潮汐、环流及生态系统模拟研究。
+environment: |
+  本应用在Docker环境中运行,安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  fvcom镜像的Tag由其版本信息和基础镜像版本信息组成,详细内容如下
+  |    Tag   |  Currently  |  Architectures  |
+  |----------|-------------|------------------|
+  |[4.4.12-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/fvcom/4.4.12/24.03-lts-sp4/Dockerfile) | FVCOM 4.4.12 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/fvcom:{Tag}
+  ```
+usage: |
+  - 确保已安装 Docker 环境。
+  - 从 DockerHub 获取 FVCOM 镜像:
+    ```
+    docker pull openeuler/fvcom:{Tag}
+    ```
+  - 启动容器进入 FVCOM 环境
+    ```
+    docker run -it openeuler/fvcom:{Tag}
+    ```
+  - 在容器内验证安装
+    ```
+    which fvcom
+    ```
+license: MIT/X
+similar_packages:
+  - ROMS: 区域海洋模式，采用地形追随坐标，同为三维海洋动力模拟工具
+  - NEMO: 欧洲开发的海洋核心模式，支持海洋、海冰和生物地球化学耦合
+  - HYCOM: 混合坐标海洋模式，适用于全球海洋预报和数据同化
+  - MOM6: GFDL 开发的地球物理流体动力学海洋模式，面向全球与区域海洋模拟
+dependency:
+  - Fortran compiler (gfortran)
+  - OpenMPI
+  - NetCDF-Fortran
+  - HDF5
+  - CMake / GNU Make
+homepage: http://fvcom.smast.umassd.edu/
+upstream:
+  backend: GitHub
+  version_url: FVCOM-GitHub/FVCOM
+  version_prefix: release-v
+  version_filter:
+  version_scheme: RPM
