@@ -4,3 +4,6 @@
   path: 25.7.5.34/24.03-lts-sp2/Dockerfile
 25.7.5.34-oe2403sp4:
   path: 25.7.5.34/24.03-lts-sp4/Dockerfile
+
+26.7.7.92-oe2403sp4:
+  path: 26.7.7.92/24.03-lts-sp4/Dockerfile
