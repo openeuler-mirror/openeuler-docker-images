@@ -38,6 +38,7 @@ RUN mkdir -p /workspace/buildSIMULATeQCD && \
     CUDACXX="${CUDA_HOME}/bin/nvcc" cmake ../SIMULATeQCD \
         -DARCHITECTURE="${ARCHITECTURE}" \
         -DCMAKE_CUDA_ARCHITECTURES="${ARCHITECTURE}" \
+        -DCMAKE_CUDA_FLAGS="-D__builtin_ia32_prefetch=__builtin_prefetch" \
         -DUSE_GPU_AWARE_MPI=ON \
         -DUSE_GPU_P2P=ON
 
