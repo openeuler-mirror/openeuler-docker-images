@@ -18,6 +18,7 @@ The tag of each `kata-containers` docker image is consist of the version of `kat
 
 | Tag | Currently | Architectures |
 |-----|-----------|---------------|
+|[4.2.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/kata-containers/4.2.0/24.03-lts-sp4/Dockerfile) | kata 4.2.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 | [3.31.0-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/kata-containers/3.31.0/24.03-lts-sp4/Dockerfile) | Kata Containers 3.31.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 | [3.31.0-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/kata-containers/3.31.0/24.03-lts-sp3/Dockerfile) | Kata Containers 3.31.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
