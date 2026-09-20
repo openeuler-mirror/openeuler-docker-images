@@ -4,3 +4,6 @@
   path: 4.3.5_CE_BP3/24.03-lts-sp2/Dockerfile
 4.3.5_CE_BP3-oe2403sp4:
   path: 4.3.5_CE_BP3/24.03-lts-sp4/Dockerfile
+
+4.4.2_CE_BP3-oe2403sp4:
+  path: 4.4.2_CE_BP3/24.03-lts-sp4/Dockerfile
