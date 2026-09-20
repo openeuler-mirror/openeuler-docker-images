@@ -1,0 +1,13 @@
+diff --git a/bin/get-properties.sh b/bin/get-properties.sh
+index 031db36f3e..e657a2abd8 100755
+--- a/bin/get-properties.sh
++++ b/bin/get-properties.sh
+@@ -71,7 +71,7 @@ function runTool() {
+   fi
+ 
+   mkdir -p "${KYLIN_HOME}"/logs
+-  local result=$(java ${KYLIN_KERBEROS_OPTS} -Dlog4j.configurationFile=${kylin_tools_log4j} -Dkylin.hadoop.conf.dir=${kylin_hadoop_conf_dir} -Dhdp.version=current -cp "${kylin_hadoop_conf_dir}:${KYLIN_HOME}/lib/ext/*:${KYLIN_HOME}/server/jars/*:${SPARK_HOME}/jars/*" "$@" 2>>${KYLIN_HOME}/logs/shell.stderr)
++  local result=$(java ${KYLIN_KERBEROS_OPTS} -Dlog4j.configurationFile=${kylin_tools_log4j} -Dkylin.hadoop.conf.dir=${kylin_hadoop_conf_dir} -Dhdp.version=current -cp "${kylin_hadoop_conf_dir}:${KYLIN_HOME}/lib/ext/*:${KYLIN_HOME}/server/jars/*:${SPARK_HOME}/jars/*:$HADOOP_HOME/share/hadoop/hdfs/*:$HADOOP_HOME/share/hadoop/common/*:$HADOOP_HOME/share/hadoop/common/lib/*" "$@" 2>>${KYLIN_HOME}/logs/shell.stderr)
+   echo "$result"
+ }
+ 
