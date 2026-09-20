@@ -16,6 +16,7 @@ Learn more on [hive website](https://hive.apache.org/).
 The tag of each hive docker image is consist of the version of hive and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[4.2.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/hive/4.2.1/24.03-lts-sp4/Dockerfile) | hive 4.2.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[4.0.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/hive/4.0.1/24.03-lts-sp1/Dockerfile)| Apache hive 4.0.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
