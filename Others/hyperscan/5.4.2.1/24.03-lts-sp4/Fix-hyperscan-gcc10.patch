@@ -1,0 +1,37 @@
+From f6f765b3c022cbf01c86dac7f9875cf18e9f9980 Mon Sep 17 00:00:00 2001
+From: sdlzx <hdu_sdlzx@163.com>
+Date: Wed, 6 Oct 2021 10:25:36 +0800
+Subject: [PATCH] Fix hyperscan build error
+
+The command "gcc -Q --help=target" outputs nothing during obs build,
+so we manually set "GNUCC_ARCH" to "native" to avoid string manipulation errors.
+
+Signed-off-by: sdlzx <hdu_sdlzx@163.com>
+---
+ CMakeLists.txt | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b5f8fb4..5cf41ef 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -197,9 +197,13 @@ else()
+             execute_process(COMMAND ${CMAKE_C_COMPILER} ${EXEC_ARGS}
+                 OUTPUT_VARIABLE _GCC_OUTPUT)
+             string(FIND "${_GCC_OUTPUT}" "march" POS)
+-            string(SUBSTRING "${_GCC_OUTPUT}" ${POS} -1 _GCC_OUTPUT)
+-            string(REGEX REPLACE "march=[ \t]*([^ \n]*)[ \n].*" "\\1"
+-                GNUCC_ARCH "${_GCC_OUTPUT}")
++            if (POS EQUAL -1)
++                set (GNUCC_ARCH "native")
++            else()
++                string(SUBSTRING "${_GCC_OUTPUT}" ${POS} -1 _GCC_OUTPUT)
++                string(REGEX REPLACE "march=[ \t]*([^ \n]*)[ \n].*" "\\1"
++                    GNUCC_ARCH "${_GCC_OUTPUT}")
++            endif()
+
+             # test the parsed flag
+             set (EXEC_ARGS ${CC_ARG1} -E - -mtune=${GNUCC_ARCH})
+--
+2.31.1
+
