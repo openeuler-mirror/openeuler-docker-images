@@ -17,6 +17,7 @@ Learn more on [Welcome to Triton's documentation! — Triton documentation](http
 The tag of each `triton` docker image is consist of the version of `triton` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[3.8.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/triton/3.8.0/24.03-lts-sp4/Dockerfile) | triton 3.8.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[3.7.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/triton/3.7.1/24.03-lts-sp4/Dockerfile) | triton 3.7.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 # Usage
