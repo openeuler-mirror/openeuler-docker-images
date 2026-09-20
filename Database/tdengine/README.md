@@ -17,6 +17,7 @@ The tag of each tdengine docker image is consist of the version of tdengine and 
 
 | Tags                                                                                                                                   | Currently                                   | Architectures |
 |----------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------|---------------|
+|[3.4.1.9-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/tdengine/3.4.1.9/24.03-lts-sp4/Dockerfile) | tdengine 3.4.1.9 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[3.4.1.7-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/tdengine/3.4.1.7/24.03-lts-sp4/Dockerfile) | tdengine 3.4.1.7 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[3.4.1.7-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/tdengine/3.4.1.7/24.03-lts-sp3/Dockerfile) | tdengine 3.4.1.7 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 |[3.3.8.3-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/tdengine/3.3.8.3/24.03-lts-sp2/Dockerfile) | tdengine 3.3.8.3 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
