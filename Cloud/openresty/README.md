@@ -22,6 +22,7 @@ Features:
 The tag of each `openresty` docker image is consist of the version of `openresty` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[1.31.1.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/openresty/1.31.1.1/24.03-lts-sp4/Dockerfile) | openresty 1.31.1.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[1.21.4.1-oe2203sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/openresty/1.21.4.1/22.03-lts-sp2/Dockerfile)| openresty 1.21.4.1 on openEuler 22.03-LTS-SP2 | amd64, arm64 |
 |[1.21.4.1-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/openresty/1.21.4.1/22.03-lts-sp3/Dockerfile)| openresty 1.21.4.1 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
 |[1.25.3.1-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/openresty/1.25.3.1/22.03-lts-sp3/Dockerfile)| openresty 1.25.3.1 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
