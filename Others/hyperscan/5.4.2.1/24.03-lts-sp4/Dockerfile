@@ -8,6 +8,7 @@ RUN dnf install -y \
     boost-devel \
     cmake \
     pcre-devel \
+    openssl-devel \
     python3 \
     ragel \
     sqlite-devel \
