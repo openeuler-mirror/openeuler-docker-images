@@ -17,6 +17,7 @@ Learn more at [ROMS](https://github.com/myroms/roms).
 The tag of each ROMS docker image is consist of the version of ROMS and the version of basic image. The details are as follows:
 | Tags | Currently | Architectures |
 |------|-----------|---------------|
+|[4.2-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/roms/4.2/24.03-lts-sp4/Dockerfile) | roms 4.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[4.2-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/roms/4.2/24.03-lts-sp3/Dockerfile) | ROMS 4.2 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 # Usage
