@@ -6,3 +6,6 @@
   path: 1.18.0/24.03-lts-sp2/Dockerfile
 1.18.0-oe2403sp4:
   path: 1.18.0/24.03-lts-sp4/Dockerfile
+
+1.18.1-oe2403sp4:
+  path: 1.18.1/24.03-lts-sp4/Dockerfile
