@@ -9,3 +9,6 @@
   path: 6.6.1/24.03-lts-sp2/Dockerfile
 6.6.1-oe2403sp4:
   path: 6.6.1/24.03-lts-sp4/Dockerfile
+
+6.7.7-unstable-oe2403sp4:
+  path: 6.7.7-unstable/24.03-lts-sp4/Dockerfile
