@@ -1,0 +1,59 @@
+name: eino
+category: cloud
+description: Eino 是一个 Go 语言的 LLM 应用开发框架，参考了 LangChain、Google ADK 等开源框架，并遵循 Go 语言的设计惯例。本镜像包含 Go 工具链以及固定版本的 Eino 框架源码，可在容器内构建和运行 Eino 应用。Eino 提供组件（Components）：如 ChatModel、Tool、Retriever、ChatTemplate 等可复用构建块；智能体开发套件（ADK）：支持工具调用、多智能体协作、上下文管理、人机交互的中断/恢复；编排（Composition）：将组件连接为图和工作流；以及示例（Examples）。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  docker镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[0.10.0-alpha.34-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/eino/0.10.0-alpha.34/24.03-lts-sp4/Dockerfile) | Eino 0.10.0-alpha.34 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/eino:{Tag}
+  ```
+
+usage: |
+  - 启动Eino开发容器
+
+    ```
+    docker run -dit --name my-eino -v $(pwd):/workspace -w /workspace openeuler/eino:{Tag} bash
+    ```
+
+  - 构建并运行Eino应用
+
+    ```
+    docker exec -it my-eino go run .
+    ```
+
+  - 查看容器运行日志
+
+    ```
+    docker logs -f my-eino
+    ```
+
+  - 获取交互式Shell
+
+    ```
+    docker exec -it my-eino /bin/bash
+    ```
+
+license: Apache-2.0 license
+similar_packages:
+  - LangChain: 面向大语言模型应用开发的框架，Eino 在设计上参考了它。
+  - Google ADK: Google 的智能体开发套件，Eino 在设计上参考了它。
+dependency:
+  - golang
+homepage: https://github.com/cloudwego/eino
+upstream:
+  version_url: cloudwego/eino
+  version_prefix: v
+  version_filter: rc;alpha;beta
+  backend: GitHub
+  version_scheme: RPM
