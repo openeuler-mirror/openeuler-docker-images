@@ -9,3 +9,5 @@
 
 0.5.19-oe2403sp4:
   path: 0.5.19/24.03-lts-sp4/Dockerfile
+0.5.20-oe2403sp4:
+  path: 0.5.20/24.03-lts-sp4/Dockerfile
