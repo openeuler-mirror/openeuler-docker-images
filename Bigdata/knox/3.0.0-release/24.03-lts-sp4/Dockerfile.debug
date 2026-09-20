@@ -4,7 +4,7 @@ FROM ${BASE}
 ARG VERSION=3.0.0
 
 RUN dnf update -y && \
-    dnf install -y git maven wget unzip shadow-utils java-17-openjdk-devel && \
+    dnf install -y git maven wget unzip shadow-utils java-11-openjdk-devel && \
     dnf clean all && rm -rf /var/cache/dnf
 
 ARG HADOOP_VERSION=3.4.1
@@ -23,12 +23,15 @@ RUN wget https://dlcdn.apache.org/knox/${VERSION}/knox-${VERSION}.zip && \
 
 WORKDIR /opt/knox-${VERSION}
 
-ENV JAVA_HOME=/usr/lib/jvm/java-17
+ENV JAVA_HOME=/usr/lib/jvm/java-11
 ENV PATH=${JAVA_HOME}/bin:${PATH}
 
-RUN ./bin/ldap.sh start && \
-    ./bin/knoxcli.sh create-master --force --master "$(tr -dc 'a-zA-Z0-9' < /dev/urandom | head -c 32)" && \
-    ./bin/knoxcli.sh create-cert --hostname localhost
+RUN ./bin/ldap.sh start; RC=$?; echo LDAP_RC=$RC; \
+    echo ---JAVA---; java -version 2>&1; echo JAVA_HOME=$JAVA_HOME; which java; \
+    echo ---LOGS---; find /opt/knox-3.0.0 -name "*.log" -o -name "*.out" 2>/dev/null | head -10; \
+    for f in $(find /opt/knox-3.0.0 -name "*.log" -o -name "*.out" 2>/dev/null | head -3); do echo "===== $f ====="; tail -50 "$f"; done; \
+    echo ---PROC---; ps aux | head -8; \
+    exit 1
 
 RUN useradd -m -s /bin/bash knoxuser && \
     chown -R knoxuser:knoxuser /opt/knox-${VERSION}
