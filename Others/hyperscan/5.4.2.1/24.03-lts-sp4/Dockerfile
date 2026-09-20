@@ -41,8 +41,7 @@ RUN patch -p1 < /opt/hyperscan-${VERSION}/hyperscan-aarch64-support.patch \
 
 WORKDIR /opt/hyperscan-${VERSION}/build
 
-RUN cmake -DBUILD_SHARED_LIBS=ON -DBUILD_STATIC_AND_SHARED=OFF .. \
+RUN sed -i -e "/add_subdirectory(unit)/d" -e "/add_subdirectory(tools)/d" ../CMakeLists.txt \
+    && cmake -DBUILD_SHARED_LIBS=ON -DBUILD_STATIC_AND_SHARED=OFF .. \
     && make -j$(nproc) \
     && make install
-
-CMD ["./bin/unit-hyperscan"]
