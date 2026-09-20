@@ -18,6 +18,7 @@ The tag of each `moose` docker image is consist of the version of `moose` and th
 
 | Tag                                                                                                                        | Currently                             | Architectures |
 |----------------------------------------------------------------------------------------------------------------------------|---------------------------------------|---------------|
+|[2.4.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/moose/2.4.0/24.03-lts-sp4/Dockerfile) | moose 2.4.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 | [4.1.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/moose/4.1.0/24.03-lts-sp4/Dockerfile) | moose 4.1.0 on openEuler 24.03-LTS-SP4 | amd64, arm64  |
 
 # Usage
