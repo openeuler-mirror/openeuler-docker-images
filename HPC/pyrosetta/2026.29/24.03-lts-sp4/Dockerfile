@@ -17,9 +17,14 @@ RUN git clone --depth 1 --branch ${VERSION} \
         --recurse-submodules --shallow-submodules \
         https://github.com/RosettaCommons/rosetta.git /opt/rosetta
 
+# binder 使用 LLVM 6.0.1(2018) 的 clang，无法自动定位 openEuler 的 GCC 12
+# libstdc++ 头文件（报错 'cstddef'/'bits/c++config.h' file not found）。
+# 需通过 --binder-llvm-options 显式注入 GCC 12 的 C++ 标准库头文件搜索路径。
+# 多架构子目录名通过 `gcc -dumpmachine` 动态获取（x86_64/aarch64 均适用）。
 RUN cd /opt/rosetta/source/src/python/PyRosetta \
+    && multiarch="$(gcc -dumpmachine)" \
     && python3 build.py -j$(nproc) \
-        --binder-llvm-options "-isystem /usr/include/c++/12 -isystem /usr/include/c++/12/x86_64-openEuler-linux -isystem /usr/include/c++/12/backward" \
+        --binder-llvm-options "-isystem /usr/include/c++/12 -isystem /usr/include/c++/12/${multiarch} -isystem /usr/include/c++/12/backward" \
         --create-package /opt/pyrosetta-package
 
 RUN python3 -m pip install --no-cache-dir --target /opt/pyrosite numpy \
