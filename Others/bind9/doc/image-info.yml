@@ -11,6 +11,7 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
+  |[9.21.26-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/bind9/9.21.26/24.03-lts-sp4/Dockerfile) | bind9 9.21.26 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[9.21.25-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/bind9/9.21.25/24.03-lts-sp4/Dockerfile) | bind9 9.21.25 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[9.21.23-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/bind9/9.21.23/24.03-lts-sp4/Dockerfile) | bind9 9.21.23 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[9.21.23-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/bind9/9.21.23/24.03-lts-sp3/Dockerfile) | bind9 9.21.23 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
