@@ -1,0 +1,58 @@
+name: wps
+category: hpc
+description: WRF Pre-Processing System (WPS) 是一组 Fortran 和 C 程序，用于为 WRF 的 real.exe 程序准备输入数据。WPS 包含三个主程序以及若干辅助程序：geogrid 定义模式水平区域、将静态数据水平插值到模式区域并按 WRF I/O API 输出；ungrib 解码 GRIB 第 1 版和第 2 版数据、根据变量表提取所需变量并输出中间格式文件；metgrid 读取静态数据和原始气象场、将气象场水平插值到模式区域并按 WRF I/O API 输出。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  wps镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  | Tag | Currently | Architectures |
+  |-----|-----------|---------------|
+  | [4.7.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/wps/4.7.0/24.03-lts-sp4/Dockerfile) | WPS 4.7.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/wps:{Tag}
+  ```
+
+usage: |
+  - 确保已安装 Docker 环境。
+  - 从 DockerHub 获取 wps 镜像:
+    ```
+    docker pull openeuler/wps:{Tag}
+    ```
+  - 启动容器进入 wps 环境
+    ```
+    docker run -it --name my-wps openeuler/wps:{Tag}
+    ```
+    启动之后会进入如下WPS目录，此时用户可以在该目录下执行WPS任务。
+  - 查看运行中容器的日志
+    ```
+    docker logs -f my-wps
+    ```
+  - 在运行中的容器内执行命令
+    ```
+    docker exec -it my-wps geogrid.exe
+    ```
+
+license: public domain
+similar_packages:
+  - WRF: WPS 为 WRF 模式准备输入数据，是 WRF 建模流程的配套预处理系统
+dependency:
+  - mpich
+  - hdf5
+  - netcdf
+  - jasper
+  - zlib
+  - libpng
+homepage: https://github.com/wrf-model/WPS
+upstream:
+  backend: GitHub
+  version_url: wrf-model/WPS
+  version_prefix: v
+  version_filter:
+  version_scheme: RPM
