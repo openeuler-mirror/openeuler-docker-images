@@ -1,0 +1,57 @@
+name: gradle
+category: base
+description: Gradle 是一款高度可扩展的构建自动化工具，能够处理从大型多项目企业级构建到各种语言的快速开发任务。Gradle 模块化、面向性能的架构可与开发环境无缝集成，是构建、测试和部署 Java、Kotlin、Scala、Android、Groovy、C++ 和 Swift 应用的理想选择。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  gradle镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[9.7.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Base/gradle/9.7.1/24.03-lts-sp4/Dockerfile)| Gradle 9.7.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/gradle:{Tag}
+  ```
+
+usage: |
+  `openeuler/gradle`镜像用于在openEuler环境中运行Gradle构建。
+
+  - 启动交互式Gradle容器
+    ```
+    docker run -it --name my-gradle openeuler/gradle:{Tag}
+    ```
+
+  - 对当前目录中的项目执行Gradle构建
+    ```
+    docker run --rm -v "$PWD":/workspace -w /workspace openeuler/gradle:{Tag} gradle build
+    ```
+
+  - 查看运行容器的日志
+    ```
+    docker logs -f my-gradle
+    ```
+
+  - 在运行中的容器内执行Gradle命令
+    ```
+    docker exec -it my-gradle gradle --version
+    ```
+
+license: Apache-2.0
+similar_packages:
+  - N/A
+dependency:
+  - java
+
+homepage: https://gradle.org/
+upstream:
+  backend: GitHub
+  version_url: gradle/gradle
+  version_prefix: v
+  version_filter: rc;RC;m;M
+  version_scheme: RPM
