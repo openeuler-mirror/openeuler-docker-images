@@ -1,0 +1,54 @@
+name: mfem
+category: hpc
+description: MFEM是一个模块化的并行C++有限元方法库，旨在支持从笔记本电脑到超级计算机的各类平台上高性能、可扩展的有限元离散化研究与应用程序开发。MFEM提供任意高阶的H1协调、间断（L2）、H(div)协调、H(curl)协调以及NURBS有限元空间（2D和3D），并支持在这些空间上定义的各种双线性、线性和非线性形式。它支持三角形、四边形、四面体和六面体等多种网格类型，以及曲面网格和拓扑周期网格，并具有网格细分能力，包括局部协调和非协调（AMR）自适应细分。MFEM支持基于MPI的并行计算，可作为可扩展的非结构化有限元问题生成器，并集成了hypre库中的线性求解器。此外，MFEM还全面支持包括PETSc和SUNDIALS在内的外部软件包，提供更多线性/非线性求解器、预条件子和时间积分器。MFEM采用BSD-3许可证分发。
+environment: |
+  本应用在Docker环境中运行,安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  mfem镜像的Tag由其版本信息和基础镜像版本信息组成,详细内容如下
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[4.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/mfem/4.1/24.03-lts-sp4/Dockerfile) | MFEM 4.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/mfem:{Tag}
+  ```
+usage: |
+  - 确保已安装 Docker 环境。
+  - 从 DockerHub 拉取 MFEM 镜像:
+    ```
+    docker pull openeuler/mfem:{Tag}
+    ```
+  - 启动容器进入 MFEM 交互环境
+    ```
+    docker run -it --name my-mfem openeuler/mfem:{Tag}
+    ```
+  - 在禁用 GLVis 可视化的情况下运行 MFEM 示例 1
+    ```
+    docker run --rm openeuler/mfem:{Tag} /usr/local/share/mfem/examples/ex1 -no-vis -m /usr/local/share/mfem/data/star.mesh
+    ```
+  - 查看运行中容器的日志
+    ```
+    docker logs -f my-mfem
+    ```
+  - 在运行中的容器内执行 MFEM 示例
+    ```
+    docker exec -it my-mfem /usr/local/share/mfem/examples/ex1 -no-vis -m /usr/local/share/mfem/data/star.mesh
+    ```
+license: BSD-3-Clause
+similar_packages:
+  - PETSc: 面向大规模科学计算的可扩展非线性与线性求解器库
+  - SUNDIALS: 用于时间积分与微分/代数方程求解的求解器套件
+dependency:
+  - C++ compiler (gcc-c++)
+  - GNU make
+homepage: https://mfem.org
+upstream:
+  backend: GitHub
+  version_url: mfem/mfem
+  version_prefix: v
+  version_filter: 
+  version_scheme: semantic
