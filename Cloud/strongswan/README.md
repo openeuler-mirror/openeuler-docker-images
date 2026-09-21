@@ -18,6 +18,7 @@ The tag of each `strongSwan` docker image is consist of the version of `strongSw
 
 | Tag                                                                                                                                | Currently                                   | Architectures |
 |------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------|---------------|
+|[6.1.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/strongswan/6.1.0/24.03-lts-sp4/Dockerfile) | strongswan 6.1.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[6.0.3-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/strongswan/6.0.3/24.03-lts-sp4/Dockerfile) | strongswan 6.0.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[6.0.3-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/strongswan/6.0.3/24.03-lts-sp2/Dockerfile) | strongswan 6.0.3 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[6.0.2-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/strongswan/6.0.2/24.03-lts-sp2/Dockerfile) | strongswan 6.0.2 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
