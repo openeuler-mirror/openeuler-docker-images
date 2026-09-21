@@ -1,0 +1,50 @@
+name: pyrosetta
+category: hpc
+description: PyRosetta是一个基于Python的交互式蛋白质计算设计与建模平台，构建于Rosetta生物大分子建模套件之上，提供蛋白质结构预测、设计和分析等分子建模算法接口。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  pyrosetta镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[2026.29-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/pyrosetta/2026.29/24.03-lts-sp4/Dockerfile)| PyRosetta 2026.29 on openEuler 24.03-LTS-SP4 | amd64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/pyrosetta:{Tag}
+  ```
+
+usage: |
+  - 启动pyrosetta实例
+
+    ```
+    docker run -it --name pyrosetta openeuler/pyrosetta:{Tag}
+    ```
+
+  - 在容器中导入 PyRosetta
+
+    ```
+    docker run -it --rm openeuler/pyrosetta:{Tag} python3 -c "import pyrosetta; print(pyrosetta.version())"
+    ```
+
+    `openeuler/pyrosetta`镜像用于验证上游PyRosetta版本和openEuler的集成。
+
+license: PyRosetta Non-Commercial License
+similar_packages:
+  - MODELLER: 用于蛋白质同源建模与结构预测的科学程序。
+  - Rosetta: 蛋白质结构预测与设计的核心C++建模套件。
+dependency:
+  - Python 3.11
+  - pip
+
+homepage: https://www.pyrosetta.org
+upstream:
+  version_url: https://west.rosettacommons.org/pyrosetta/quarterly/release/
+  backend: custom
+  version_scheme: custom
+  version_filter:
