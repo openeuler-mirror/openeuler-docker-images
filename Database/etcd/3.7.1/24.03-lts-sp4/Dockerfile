@@ -8,7 +8,7 @@ RUN yum install -y curl tar gzip && yum clean all && rm -rf /var/cache/yum
 WORKDIR /opt
 RUN curl -fSL -o etcd.tar.gz https://github.com/etcd-io/etcd/releases/download/v${VERSION}/etcd-v${VERSION}-linux-${TARGETARCH}.tar.gz && \
     tar -xzf etcd.tar.gz && \
-    mv etcd-${VERSION}-linux-${TARGETARCH} /etcd
+    mv etcd-v${VERSION}-linux-${TARGETARCH} /etcd
 
 FROM openeuler/distroless-static:1.0.0-oe2403lts
 
