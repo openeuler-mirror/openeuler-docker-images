@@ -116,3 +116,4 @@ images:
   pfordelta: pfordelta
   jemalloc: jemalloc
   hnswlib: hnswlib
+  perl: perl
