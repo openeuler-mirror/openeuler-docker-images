@@ -101,3 +101,4 @@ images:
   gatk: gatk
   tinker: tinker
   jvarkit: jvarkit
+  mfem: mfem
