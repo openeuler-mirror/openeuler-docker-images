@@ -1,0 +1,54 @@
+name: ruby
+category: others
+description: Ruby 是一种解释型、面向对象的编程语言，常用于 Web 开发，也提供丰富的脚本功能，可用于处理纯文本和序列化文件，或管理系统任务。它语法简洁、易于扩展。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  ruby镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[4.0.7-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/ruby/4.0.7/24.03-lts-sp4/Dockerfile) | ruby 4.0.7 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+
+  注意，以下`{Tag}`的值按照需求，替换为上述表格中的tag内容。
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/ruby:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+    ```
+    docker run -it --name my-ruby openeuler/ruby:{Tag}
+    ```
+  - 在容器中运行Ruby脚本
+    ```
+    docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp openeuler/ruby:{Tag} ruby your-daemon-or-script.rb
+    ```
+  - 查看容器运行日志
+    ```
+    docker logs -f my-ruby
+    ```
+  - 进入交互式shell
+    ```
+    docker exec -it my-ruby /bin/bash
+    ```
+
+license: Ruby
+similar_packages:
+  - python
+dependency:
+  - N/A
+
+homepage: https://www.ruby-lang.org/en/
+upstream:
+  backend: GitHub
+  version_url: ruby/ruby
+  version_prefix: v
+  version_filter: preview;rc
+  version_scheme: RPM
