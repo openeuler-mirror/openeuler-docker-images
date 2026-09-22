@@ -1,0 +1,27 @@
+diff --git a/SuperBuild/External_curl.cmake b/SuperBuild/External_curl.cmake
+index 9febc487fe..4f863dd641 100644
+--- a/SuperBuild/External_curl.cmake
++++ b/SuperBuild/External_curl.cmake
+@@ -97,7 +97,7 @@ if((NOT DEFINED CURL_INCLUDE_DIR
+       -DCURL_DISABLE_DICT:BOOL=ON
+       -DCURL_DISABLE_FILE:BOOL=ON
+       -DCURL_DISABLE_TFTP:BOOL=ON
+-      -DHAVE_LIBIDN2:BOOL=OFF
++      -DUSE_LIBIDN2:BOOL=OFF
+       -DCURL_BROTLI:STRING=OFF  # Available options are "OFF", "ON", and "AUTO" (CURL's default)
+       -DCURL_USE_LIBPSL:BOOL=OFF
+       -DCURL_USE_LIBSSH:BOOL=OFF
+diff --git a/SuperBuild/External_python-dicom-requirements.cmake b/SuperBuild/External_python-dicom-requirements.cmake
+index bb6c14ff2a..e84d9e2f11 100644
+--- a/SuperBuild/External_python-dicom-requirements.cmake
++++ b/SuperBuild/External_python-dicom-requirements.cmake
+@@ -85,7 +85,8 @@ if(NOT Slicer_USE_SYSTEM_${proj})
+   dcmqi==0.4.0 --hash=sha256:2138fc78e79c28449348572eb7ff0483f98f6a71c821814ca3cf28e3357ad848 \
+                --hash=sha256:60f6a9e4d4828c5399e932f44b500e4619becbe27dd4e4574cc94a802cbdcd00 \
+                --hash=sha256:1721bf1308fa416b00d3f9895c99b2376524a9982a408f15cf281ceef159df5b \
+-               --hash=sha256:c3cc2c32f196e96017e08b27550c4b05ac84fde411ef743f882eb8e00ab5709a
++               --hash=sha256:c3cc2c32f196e96017e08b27550c4b05ac84fde411ef743f882eb8e00ab5709a \
++               --hash=sha256:d93c819e79801ca8c2b481b95f3a0023e45c3a82d568321bd3eac9abd17fb4d9
+   # [/dcmqi]
+   # [highdicom]
+   # Pure-Python package for creating/reading complex DICOM objects (SR, SEG, PM, etc.)
