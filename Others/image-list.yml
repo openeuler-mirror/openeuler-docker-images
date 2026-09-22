@@ -118,3 +118,4 @@ images:
   hnswlib: hnswlib
   perl: perl
   erlang: erlang
+  wannier90: wannier90
