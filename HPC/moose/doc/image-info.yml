@@ -1,6 +1,6 @@
 name: moose
 category: hpc
-description: moose 镜像提供 Taskflow，一个 C++ 通用任务并行编程系统。Taskflow 帮助开发者以高编程生产力快速编写高性能任务并行程序，它比许多现有任务编程库更快、更具表现力、代码更少，且更易于即插即用集成。
+description: moose 镜像提供 MOOSE（Multiphysics Object Oriented Simulation Environment），一个开源、并行的有限元框架，用于求解耦合多物理场问题。镜像基于 libMesh、PETSc 与 SLEPc 构建，包含框架库与头文件（用于构建基于 MOOSE 的应用），以及 moose_test 应用、exodiff 与 hit 工具。
 environment: |
   本应用在Docker环境中运行，安装Docker执行如下命令
   ```
@@ -11,7 +11,7 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
-  |[2.4.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/moose/2.4.0/24.03-lts-sp4/Dockerfile) | moose 2.4.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[2025.09.05-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/moose/2025.09.05/24.03-lts-sp4/Dockerfile) | moose 2025.09.05 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[4.1.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/moose/4.1.0/24.03-lts-sp4/Dockerfile) | moose 4.1.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 download: |
@@ -21,14 +21,13 @@ download: |
   ```
 
 usage: |
-  - 启动 moose 容器并编译 Taskflow 程序
+  - 启动 moose 容器并运行 MOOSE 输入文件
     ```
     docker run -it --name my-moose -v $(pwd):/workspace -w /workspace openeuler/moose:{Tag} bash
     ```
-  - 编写 simple.cpp，在容器内编译并运行：
+  - 在容器内运行输入文件
     ```
-    g++ -std=c++20 simple.cpp -I/usr/local/include -O2 -pthread -o simple
-    ./simple
+    moose_test-opt -i diffusion.i
     ```
   - 查看容器运行日志
     ```
@@ -39,16 +38,20 @@ usage: |
     docker exec -it my-moose /bin/bash
     ```
 
-license: MIT
+license: LGPL-2.1
 similar_packages:
-
+  - FEniCS: 开源有限元求解平台，用于求解偏微分方程
+  - deal.II: 支持自适应网格的 C++ 有限元库
 dependency:
-  - gcc-c++
-
-homepage: https://taskflow.github.io/
+  - openmpi
+  - openblas
+  - petsc
+  - slepc
+  - libtirpc
+homepage: https://mooseframework.inl.gov/
 upstream:
   backend: GitHub
-  version_url: taskflow/taskflow
-  version_prefix: v
-  version_filter: alpha;rc;candidate;beta;pre
-  version_scheme: semantic
+  version_url: idaholab/moose
+  version_prefix:
+  version_filter:
+  version_scheme: RPM

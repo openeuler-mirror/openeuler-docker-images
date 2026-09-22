@@ -6,116 +6,92 @@ set -euo pipefail
 WORKDIR="$(mktemp -d "${TMPDIR:-/tmp}/moose-test.XXXXXX")"
 trap 'rm -rf "${WORKDIR}"' EXIT
 
-CXX="g++"
-CXXFLAGS=(-std=c++20 -O2 -pthread -I/usr/local/include)
-
-build_probe() {
-    local src="$1" bin="$2"
-    "${CXX}" "${CXXFLAGS[@]}" "${src}" -o "${bin}"
-}
+MOOSE_BIN="/usr/bin/moose_test-opt"
+VERSION_FILE="/usr/share/moose_test/VERSION"
 
 test_version() {
-    local src="$WORKDIR/version_check.cpp"
-    local bin="$WORKDIR/version_check"
+    local reported
+
+    if [[ ! -x "${MOOSE_BIN}" ]]; then
+        printf 'FAIL: moose_test-opt not found at %s\n' "${MOOSE_BIN}" >&2
+        return 1
+    fi
+
+    if [[ ! -f "${VERSION_FILE}" ]]; then
+        printf 'FAIL: version file not found: %s\n' "${VERSION_FILE}" >&2
+        return 1
+    fi
+
+    reported="$(< "${VERSION_FILE}")"
+    if [[ "${reported}" != "${EXPECTED_VERSION}" ]]; then
+        printf 'FAIL: version mismatch: expected=<%s> actual=<%s>\n' \
+            "${EXPECTED_VERSION}" "${reported}" >&2
+        return 1
+    fi
+
+    printf 'PASS: exact version: %s\n' "${reported}"
+}
+
+test_diffusion() {
+    local input="${WORKDIR}/diffusion.i"
     local output rc
 
-    if ! command -v g++ >/dev/null 2>&1; then
-        printf 'FAIL: g++ (gcc-c++) not found in runtime image\n' >&2
-        return 1
-    fi
+    cat > "${input}" <<'EOF'
+[Mesh]
+  type = GeneratedMesh
+  dim = 1
+  nx = 5
+[]
 
-    cat > "${src}" <<'EOF'
-#include <taskflow/taskflow.hpp>
-#include <iostream>
+[Variables]
+  [u]
+  []
+[]
 
-int main() {
-  std::cout << tf::version() << std::endl;
-  return 0;
-}
+[Kernels]
+  [diff]
+    type = Diffusion
+    variable = u
+  []
+[]
+
+[BCs]
+  [left]
+    type = DirichletBC
+    variable = u
+    boundary = left
+    value = 0
+  []
+  [right]
+    type = DirichletBC
+    variable = u
+    boundary = right
+    value = 1
+  []
+[]
+
+[Executioner]
+  type = Steady
+[]
+
+[Outputs]
+  console = true
+  exodus = false
+[]
 EOF
 
-    if ! build_probe "${src}" "${bin}"; then
-        printf 'FAIL: failed to compile Taskflow version probe with g++ (see output above)\n' >&2
-        return 1
-    fi
-
-    if ! output="$("${bin}")"; then
+    if ! output="$("${MOOSE_BIN}" -i "${input}" --n-threads=1 2>&1)"; then
         rc=$?
-        printf 'FAIL: Taskflow version probe exited %s\n' "${rc}" >&2
+        printf 'FAIL: moose_test-opt exited with status %s\n%s\n' "${rc}" "${output}" >&2
         return 1
     fi
 
-    if [[ "${output}" != "${EXPECTED_VERSION}" ]]; then
-        printf 'FAIL: version mismatch: expected=<%s> actual=<%s>\n' \
-            "${EXPECTED_VERSION}" "${output}" >&2
+    if ! grep -q "Solve Converged!" <<< "${output}"; then
+        printf 'FAIL: expected "Solve Converged!" in moose output:\n%s\n' "${output}" >&2
         return 1
     fi
 
-    printf 'PASS: exact version: %s\n' "${output}"
-}
-
-test_task_graph() {
-    local src="$WORKDIR/graph_check.cpp"
-    local bin="$WORKDIR/graph_check"
-    local output rc expected="A B C D"
-
-    cat > "${src}" <<'EOF'
-#include <taskflow/taskflow.hpp>
-#include <chrono>
-#include <future>
-#include <iostream>
-#include <string>
-#include <vector>
-
-int main() {
-  std::vector<std::string> order;
-
-  tf::Executor executor(4);
-  tf::Taskflow taskflow;
-
-  auto A = taskflow.emplace([&]() { order.push_back("A"); });
-  auto B = taskflow.emplace([&]() { order.push_back("B"); });
-  auto C = taskflow.emplace([&]() { order.push_back("C"); });
-  auto D = taskflow.emplace([&]() { order.push_back("D"); });
-
-  A.precede(B);
-  B.precede(C);
-  C.precede(D);
-
-  auto future = executor.run(taskflow);
-  if (future.wait_for(std::chrono::seconds(30)) == std::future_status::timeout) {
-    std::cerr << "TIMEOUT: task graph did not complete within 30s" << std::endl;
-    return 2;
-  }
-
-  for (const auto& t : order) {
-    std::cout << t << ' ';
-  }
-  std::cout << std::endl;
-  return 0;
-}
-EOF
-
-    if ! build_probe "${src}" "${bin}"; then
-        printf 'FAIL: failed to compile Taskflow graph probe with g++ (see output above)\n' >&2
-        return 1
-    fi
-
-    if ! output="$("${bin}")"; then
-        rc=$?
-        printf 'FAIL: Taskflow graph probe exited %s\n' "${rc}" >&2
-        return 1
-    fi
-
-    output="${output%"${output##*[![:space:]]}"}"
-
-    if [[ "${output}" != "${expected}" ]]; then
-        printf 'FAIL: graph execution mismatch: expected=<%s> actual=<%s>\n' \
-            "${expected}" "${output}" >&2
-        return 1
-    fi
-
-    printf 'PASS: task graph dependency chain executed in order\n'
+    printf 'PASS: steady diffusion example converged\n'
 }
 
 main() {
@@ -124,7 +100,7 @@ main() {
     if ! test_version; then
         failures=$((failures + 1))
     fi
-    if ! test_task_graph; then
+    if ! test_diffusion; then
         failures=$((failures + 1))
     fi
 
