@@ -76,6 +76,16 @@ cmake \
   -S $source_dir \
   -B $build_dir
 
+# VTK contains large template-instantiation translation units (e.g.
+# vtkArrayBulkInstantiate_*.cxx) which are very memory-hungry. Building them
+# with full parallelism exhausts memory and the compiler (cc1plus) is killed.
+# Build the VTK external project first with limited parallelism, then build the
+# rest of Slicer with full parallelism.
+cmake \
+  --build $build_dir \
+  --target VTK \
+  --parallel 2
+
 cmake \
   --build $build_dir \
   --parallel $NUMBER_OF_PHYSICAL_CORES
