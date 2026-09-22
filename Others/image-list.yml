@@ -117,3 +117,4 @@ images:
   jemalloc: jemalloc
   hnswlib: hnswlib
   perl: perl
+  erlang: erlang
