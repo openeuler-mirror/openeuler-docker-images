@@ -98,3 +98,6 @@ images:
   rhmc: rhmc
   wps: wps
   pyrosetta: pyrosetta
+  gatk: gatk
+  tinker: tinker
+  jvarkit: jvarkit

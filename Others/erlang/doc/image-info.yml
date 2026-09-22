@@ -1,0 +1,82 @@
+name: erlang
+category: others
+description: Erlang 是一种编程语言和运行时系统，用于构建对高可用性有要求的大规模可扩展软实时系统。OTP 是一组 Erlang 库，由 Erlang 运行时系统、若干主要用 Erlang 编写的即用组件以及一套 Erlang 程序设计原则组成。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  Erlang镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[29.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/erlang/29.1/24.03-lts-sp4/Dockerfile) | erlang 29.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/erlang:{Tag}
+  ```
+
+usage: |
+  启动 Erlang shell
+
+  ```bash
+  docker run -it --name my-erlang openeuler/erlang:{Tag}
+  ```
+
+  编译并运行 Erlang 模块
+
+  将以下示例保存为 `hello.erl`：
+
+  ```erlang
+  -module(hello).
+  -export([world/0]).
+
+  world() -> io:format("Hello, world\n").
+  ```
+
+  然后挂载当前目录启动容器并打开 Erlang shell：
+
+  ```
+  docker run -it --rm -v "$PWD":/workspace -w /workspace openeuler/erlang:{Tag}
+  ```
+
+  在 shell 中编译并运行该模块：
+
+  ```
+  1> c(hello).
+  {ok,hello}
+  2> hello:world().
+  Hello, world
+  ok
+  ```
+
+  查看容器运行日志
+
+  ```
+  docker logs -f my-erlang
+  ```
+
+  获取交互式 shell
+
+  ```
+  docker exec -it my-erlang /bin/bash
+  ```
+
+license: Apache-2.0
+similar_packages:
+  - N/A
+dependency:
+  - openssl
+  - ncurses
+  - glibc
+
+homepage: https://github.com/erlang/otp
+upstream:
+  version_url: erlang/otp
+  backend: GitHub
+  version_scheme: RPM
+  version_prefix: OTP-
+  version_filter: rc

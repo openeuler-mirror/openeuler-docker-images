@@ -1,0 +1,60 @@
+name: perl
+category: others
+description: Perl 是一种通用编程语言，最初为文本处理而开发，如今广泛用于系统管理、Web 开发、网络编程、GUI 开发等众多任务。该语言注重实用（易用、高效、完整），而非小巧、优雅或极简。其主要特性包括易于使用、同时支持过程式和面向对象（OO）编程、对文本处理有强大的内建支持，以及拥有世界上最令人印象深刻的第三方模块集合之一。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  perl镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[5.45.2-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/perl/5.45.2/24.03-lts-sp4/Dockerfile) | perl 5.45.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/perl:{Tag}
+  ```
+
+usage: |
+  - 运行 Perl 单行命令
+    ```
+    docker run --rm openeuler/perl:{Tag} perl -e 'print "Hello, Perl!\n"'
+    ```
+  - 运行 Perl 脚本
+    创建 hello.pl 文件，内容如下
+    ```perl
+    print "Hello, Perl!\n";
+    ```
+    挂载当前目录并运行脚本
+    ```
+    docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp openeuler/perl:{Tag} perl hello.pl
+    ```
+  - 启动交互式 Perl 容器
+    ```
+    docker run -it --name my-perl openeuler/perl:{Tag}
+    ```
+  - 查看容器日志
+    ```
+    docker logs -f my-perl
+    ```
+  - 进入容器交互式 shell
+    ```
+    docker exec -it my-perl /bin/bash
+    ```
+
+license: Artistic-1.0-Perl OR GPL-1.0-or-later
+similar_packages:
+  - N/A
+dependency:
+  - N/A
+homepage: https://www.perl.org/
+upstream:
+  backend: GitHub
+  version_url: Perl/perl5
+  version_prefix: v
+  version_filter: RC
+  version_scheme: RPM

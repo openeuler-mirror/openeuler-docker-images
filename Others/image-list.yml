@@ -114,3 +114,7 @@ images:
   onednn: onednn
   irvsp: irvsp
   pfordelta: pfordelta
+  jemalloc: jemalloc
+  hnswlib: hnswlib
+  perl: perl
+  erlang: erlang

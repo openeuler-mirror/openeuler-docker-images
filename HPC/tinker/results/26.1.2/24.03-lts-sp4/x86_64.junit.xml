@@ -1,0 +1,2 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuite name="tinker-x86_64" tests="1" failures="0" errors="0" time="129.531"><testcase classname="native-image-validation" name="build-runtime-tests" time="129.531" /></testsuite>
