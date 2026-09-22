@@ -115,3 +115,4 @@ images:
   irvsp: irvsp
   pfordelta: pfordelta
   jemalloc: jemalloc
+  hnswlib: hnswlib
