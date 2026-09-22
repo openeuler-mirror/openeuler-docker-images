@@ -1,0 +1,57 @@
+name: tinker
+category: hpc
+description: Tinker是一个完整的通用分子力学与分子动力学软件包，对生物聚合物有专门支持。Tinker可以使用多种常见参数集，例如Amber（ff94、ff96、ff98、ff99、ff99SB、ff14SB、ff19SB）、CHARMM（19、22、27、36m）、Allinger MM（MM2-1991和MM3-2000）、OPLS（OPLS-UA、OPLS-AA、OPLS-AA/L）、Merck分子力场（MMFF94、MMFF94s）、Liam Dang的可极化模型，以及AMOEBA、AMOEBA+和HIPPO可极化原子多极力场。Tinker包含丰富的算法，如柔性分子动力学（MD）模拟、支持显式偶极可极化性的原子多极静电、多种连续溶剂化处理（含广义Born模型与AMOEBA的广义Kirkwood隐式溶剂化）、用于Poisson-Boltzmann计算的APBS接口、高效截断牛顿（TNCG）局部优化、Alpha shapes表面面积与体积及其导数、基于Bennett接受比（BAR）方法的自由能计算、简正模式振动分析、笛卡尔/扭转/刚体空间的最小化、用于高效MD的辛RESPA多时间步积分、速度Verlet随机动力学、温度与压力控制的多种恒温器与恒压器、成对近邻列表与样条球面能量截断方法、用于部分电荷与可极化多极的粒子网格Ewald（PME）求和、长程静电的新型反应场处理、快速距离几何度量化、Elber反应路径算法、全局优化的势能平滑搜索（PSS）方法、势能面扫描的蒙特卡罗最小化（MCM），以及将静电势、多极与极化模型拟合到QM数据的力场参数化工具等。
+environment: |
+  本应用在Docker环境中运行,安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  tinker镜像的Tag由其版本信息和基础镜像版本信息组成,详细内容如下
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[26.1.2-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/tinker/26.1.2/24.03-lts-sp4/Dockerfile) | Tinker 26.1.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/tinker:{Tag}
+  ```
+usage: |
+  - 确保已安装 Docker 环境。
+  - 从 DockerHub 获取 Tinker 镜像:
+    ```
+    docker pull openeuler/tinker:{Tag}
+    ```
+  - 启动容器进入 Tinker 环境
+    ```
+    docker run -it openeuler/tinker:{Tag}
+    ```
+  - 查看运行中容器的日志
+    ```
+    docker logs <container>
+    ```
+  - 在运行中的容器内打开交互式 shell
+    ```
+    docker exec -it <container> bash
+    ```
+  - 在容器内验证安装
+    ```
+    which analyze
+    ```
+license: Tinker License Agreement (free for academic and non-profit use)
+similar_packages:
+  - OpenMM: 高性能分子模拟库，Tinker-OpenMM基于其库构建以支持GPU加速
+  - CHARMM: 经典分子力学与动力学程序，Tinker通过MSCALE接口与其交互
+  - APBS: 面向Poisson-Boltzmann方程的静电计算软件，Tinker提供与其的接口
+dependency:
+  - gfortran
+  - cmake
+  - FFTW3
+  - OpenMP
+homepage: https://dasher.wustl.edu/tinker/
+upstream:
+  backend: GitHub
+  version_url: TinkerTools/tinker
+  version_prefix: v
+  version_filter: 
+  version_scheme: RPM
