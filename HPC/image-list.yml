@@ -103,3 +103,4 @@ images:
   jvarkit: jvarkit
   mfem: mfem
   espressomd: espressomd
+  eccodes: eccodes
