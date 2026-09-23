@@ -8,3 +8,5 @@
 
 202608-oe2403sp4:
   path: 202608/24.03-lts-sp4/Dockerfile
+202508.01-oe2403sp4:
+  path: 202508.01/24.03-lts-sp4/Dockerfile
