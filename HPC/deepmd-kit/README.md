@@ -13,6 +13,7 @@ DeePMD-kit is an open-source package for deep learning based molecular simulatio
 The tag of each DeePMD-kit docker image is consist of the version of DeePMD-kit and the version of basic image. The details are as follows
 | Tags | Currently | Architectures |
 |--|--|--|
+|[3.2.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/deepmd-kit/3.2.0/24.03-lts-sp4/Dockerfile) | deepmd 3.2.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[3.2.0b0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/deepmd-kit/3.2.0b0/24.03-lts-sp4/Dockerfile) | deepmd 3.2.0b0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[3.1.3-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/deepmd-kit/3.1.3/24.03-lts-sp3/Dockerfile)| DeePMD-kit 3.1.3 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
