@@ -13,6 +13,7 @@ The RaBitQ Library provides efficient and lightweight implementations of the RaB
 The tag of each rabitq-library docker image is consist of the version of rabitq-library and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[0.3.8-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/rabitq-library/0.3.8/24.03-lts-sp4/Dockerfile) | rabitq 0.3.8 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[0.3.6-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/rabitq-library/0.3.6/24.03-lts-sp4/Dockerfile) | rabitq 0.3.6 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[7c2d0d7-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/rabitq-library/7c2d0d7/24.03-lts-sp4/Dockerfile) | rabitq-library 7c2d0d7 on openEuler 24.03-lts-sp4 | amd64, arm64 |
 |[7c2d0d7-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/rabitq-library/7c2d0d7/24.03-lts-sp3/Dockerfile) | rabitq-library 7c2d0d7 on openEuler 24.03-lts-sp3 | amd64, arm64 |
