@@ -16,6 +16,7 @@ Learn more on [accumulo website](https://accumulo.apache.org/).
 The tag of each accumulo docker image is consist of the version of accumulo and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[2.1.6-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/accumulo/2.1.6/24.03-lts-sp4/Dockerfile) | accumulo 2.1.6 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[2.1.3-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/accumulo/2.1.3/24.03-lts-sp1/Dockerfile)| Apache accumulo 2.1.3 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 |[3.0.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/accumulo/3.0.0/24.03-lts-sp4/Dockerfile)| Apache accumulo 3.0.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
