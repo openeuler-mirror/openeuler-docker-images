@@ -1,0 +1,59 @@
+diff --git a/WORKSPACE b/WORKSPACE
+index a84c52ec..3efdb3c8 100644
+--- a/WORKSPACE
++++ b/WORKSPACE
+@@ -105,8 +105,7 @@ git_repository(
+     name = "com_github_apache_brpc",
+     remote = "https://github.com/apache/incubator-brpc",
+     commit = "1b9e00641cbec1c8803da6a1f7f555398c954cb0",
+-    patches = ["//:thirdparties/brpc/brpc.patch", "//:thirdparties/brpc/arm64.patch",
+-               "//:thirdparties/brpc/root_BUILD.patch"],
++    patches = ["//:thirdparties/brpc/brpc.patch", "//:thirdparties/brpc/arm64.patch", "//:thirdparties/brpc/fix-gcc11.patch", "//:thirdparties/brpc/root_BUILD.patch"],
+     patch_args = ["-p1"],
+ )
+
+diff --git a/mk-tar.sh b/mk-tar.sh
+index 7d0b3b74..fd58e463 100644
+--- a/mk-tar.sh
++++ b/mk-tar.sh
+@@ -127,7 +127,7 @@ then
+     echo "please install bazel 0.17.2 first"
+     exit
+ fi
+-if [ ${bazel_version} != "0.17.2" ]
++if [ ${bazel_version} != "0.17.2" ] && [ ${bazel_version} != "0.17.2-" ]
+ then
+     echo "bazel version must 0.17.2"
+     echo "now version is ${bazel_version}"
+@@ -195,7 +195,7 @@ then
+     echo "build phase1 failed"
+     exit
+ fi
+-bash ./curvefs_python/configure.sh python2
++bash ./curvefs_python/configure.sh python3
+ if [ $? -ne 0 ]
+ then
+     echo "configure failed"
+@@ -222,7 +222,7 @@ then
+     echo "build phase1 failed"
+     exit
+ fi
+-bash ./curvefs_python/configure.sh python2
++bash ./curvefs_python/configure.sh python3
+ if [ $? -ne 0 ]
+ then
+     echo "configure failed"
+
+diff --git a/nbd/src/main.cpp b/nbd/src/main.cpp
+index 0a565510..789cfa32 100644
+--- a/nbd/src/main.cpp
++++ b/nbd/src/main.cpp
+@@ -63,7 +63,7 @@ static void HandleSignal(int signum) {
+         return;
+     }
+
+-    std::cout << "Got signal " << sys_siglist[signum] << "\n"
++    std::cout << "Got signal " << strsignal(signum) << "\n"
+               << ", disconnect now" << std::endl;
+
+     ret = nbdTool->Disconnect(nbdConfig.get());
