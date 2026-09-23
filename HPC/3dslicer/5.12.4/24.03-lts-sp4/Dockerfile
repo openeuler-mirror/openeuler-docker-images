@@ -12,6 +12,13 @@ RUN yum install -y \
         qt5-qtbase-private-devel libXt-devel openssl-devel hwloc hwloc-devel && \
     yum clean all
 
+# PythonQt's wrapper generator uses its own preprocessor, which needs the
+# system include directory to resolve glibc headers referenced by Qt's
+# qconfig.h (e.g. <bits/wordsize.h>). Without it the generator silently emits
+# zero classes and the generated wrapper sources are missing when PythonQt is
+# configured, failing with "PythonQt: missing generated wrapper sources".
+ENV PYTHONQT_INCLUDE=/usr/include
+
 COPY build-tbb.sh /opt/
 COPY build-Slicer.sh /opt/
 COPY build-CTKAppLauncher.sh /opt/
