@@ -121,3 +121,4 @@ images:
   wannier90: wannier90
   lua: lua
   ruby: ruby
+  log4cpp: log4cpp
