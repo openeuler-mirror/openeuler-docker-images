@@ -66,9 +66,41 @@ echo "Found $NUMBER_OF_PHYSICAL_CORES CPU cores"
 # Several translation units (e.g. Slicer's Libs/vtkITK and VTK itself) are very
 # memory-hungry. Building them with full parallelism exhausts memory and the
 # compiler (cc1plus) is OOM-killed. Cap the number of parallel jobs using the
-# available memory (~4 GiB per compiler job) and never exceed the CPU count.
-TOTAL_MEMORY_MB=$(awk '/^MemTotal:/ {printf "%d", $2 / 1024}' /proc/meminfo)
-PARALLEL_JOBS=$(( TOTAL_MEMORY_MB / 4096 ))
+# memory actually available to the build container and never exceed the CPU
+# count.
+#
+# /proc/meminfo reports the host MemTotal, which can be far larger than the
+# cgroup limit enforced on the container, so it must not be trusted inside a
+# build container. Prefer the cgroup v2 (memory.max) or cgroup v1
+# (memory/memory.limit_in_bytes) limit and only fall back to /proc/meminfo when
+# no finite limit is set.
+detect_memory_limit_mb() {
+  local limit
+  for f in /sys/fs/cgroup/memory.max \
+           /sys/fs/cgroup/memory/memory.limit_in_bytes; do
+    if [ -r "$f" ]; then
+      limit=$(cat "$f")
+      case "$limit" in
+        ''|max|*[!0-9]*) continue ;;
+      esac
+      # Values at/near the 64-bit maximum mean "unlimited".
+      if [ "$limit" -lt 9223372036854771712 ]; then
+        echo $(( limit / 1048576 ))
+        return
+      fi
+    fi
+  done
+  awk '/^MemTotal:/ {printf "%d", $2 / 1024}' /proc/meminfo
+}
+
+TOTAL_MEMORY_MB=$(detect_memory_limit_mb)
+echo "Detected available memory: ${TOTAL_MEMORY_MB} MiB"
+
+# Reserve 8 GiB per compiler job: single cc1plus processes compiling the
+# VTK/vtkITK template-heavy translation units regularly exceed 4 GiB at peak,
+# so the previous ~4 GiB estimate was too optimistic.
+MEMORY_PER_JOB_MB=8192
+PARALLEL_JOBS=$(( TOTAL_MEMORY_MB / MEMORY_PER_JOB_MB ))
 if [ "$PARALLEL_JOBS" -gt "$NUMBER_OF_PHYSICAL_CORES" ]; then
   PARALLEL_JOBS=$NUMBER_OF_PHYSICAL_CORES
 fi
@@ -96,6 +128,14 @@ cmake \
 cmake \
   --build $build_dir \
   --target VTK \
+  --parallel 2
+
+# Build the Slicer vtkITK library separately and with limited parallelism as
+# well: its ITK/VTK template instantiations (e.g. vtkITKGrowCut.cxx) are known
+# to OOM-kill cc1plus when compiled alongside the rest of the build.
+cmake \
+  --build $build_dir \
+  --target vtkITK \
   --parallel 2
 
 cmake \
