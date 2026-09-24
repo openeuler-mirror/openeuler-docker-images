@@ -63,6 +63,20 @@ fi
 NUMBER_OF_PHYSICAL_CORES=$(grep -c ^processor /proc/cpuinfo)
 echo "Found $NUMBER_OF_PHYSICAL_CORES CPU cores"
 
+# Several translation units (e.g. Slicer's Libs/vtkITK and VTK itself) are very
+# memory-hungry. Building them with full parallelism exhausts memory and the
+# compiler (cc1plus) is OOM-killed. Cap the number of parallel jobs using the
+# available memory (~4 GiB per compiler job) and never exceed the CPU count.
+TOTAL_MEMORY_MB=$(awk '/^MemTotal:/ {printf "%d", $2 / 1024}' /proc/meminfo)
+PARALLEL_JOBS=$(( TOTAL_MEMORY_MB / 4096 ))
+if [ "$PARALLEL_JOBS" -gt "$NUMBER_OF_PHYSICAL_CORES" ]; then
+  PARALLEL_JOBS=$NUMBER_OF_PHYSICAL_CORES
+fi
+if [ "$PARALLEL_JOBS" -lt 1 ]; then
+  PARALLEL_JOBS=1
+fi
+echo "Using $PARALLEL_JOBS parallel job(s)"
+
 #-----------------------------------------------------------------------------
 cmake \
   -DCMAKE_BUILD_TYPE:STRING=$build_type \
@@ -76,11 +90,9 @@ cmake \
   -S $source_dir \
   -B $build_dir
 
-# VTK contains large template-instantiation translation units (e.g.
-# vtkArrayBulkInstantiate_*.cxx) which are very memory-hungry. Building them
-# with full parallelism exhausts memory and the compiler (cc1plus) is killed.
-# Build the VTK external project first with limited parallelism, then build the
-# rest of Slicer with full parallelism.
+# Build the VTK external project first with limited parallelism: its large
+# template-instantiation translation units (e.g. vtkArrayBulkInstantiate_*.cxx)
+# are especially memory-hungry.
 cmake \
   --build $build_dir \
   --target VTK \
@@ -88,4 +100,4 @@ cmake \
 
 cmake \
   --build $build_dir \
-  --parallel $NUMBER_OF_PHYSICAL_CORES
+  --parallel $PARALLEL_JOBS
