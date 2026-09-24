@@ -130,14 +130,10 @@ cmake \
   --target VTK \
   --parallel 2
 
-# Build the Slicer vtkITK library separately and with limited parallelism as
-# well: its ITK/VTK template instantiations (e.g. vtkITKGrowCut.cxx) are known
-# to OOM-kill cc1plus when compiled alongside the rest of the build.
-cmake \
-  --build $build_dir \
-  --target vtkITK \
-  --parallel 2
-
+# Build the rest of Slicer (including the memory-hungry inner Libs/vtkITK
+# targets, e.g. vtkITKGrowCut.cxx) with the memory-capped parallelism computed
+# above. The inner build is not available as a standalone target in this
+# superbuild directory, so it must be built through the default target.
 cmake \
   --build $build_dir \
   --parallel $PARALLEL_JOBS
