@@ -18,7 +18,7 @@ WORKDIR /opt
 
 COPY Export-CACHED_UUID-and-CACHED_LABEL.patch .
 
-RUN git clone --depth 1 --branch bcache-tools-${VERSION} https://git.kernel.org/pub/scm/linux/kernel/git/colyli/bcache-tools.git /opt/bcache-tools-${VERSION}
+RUN git clone --depth 1 --branch bcache-tools-1.1 https://git.kernel.org/pub/scm/linux/kernel/git/colyli/bcache-tools.git /opt/bcache-tools-${VERSION}
 
 WORKDIR /opt/bcache-tools-${VERSION}
 
