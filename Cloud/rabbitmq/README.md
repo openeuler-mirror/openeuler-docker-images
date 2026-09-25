@@ -13,6 +13,7 @@ RabbitMQ is a powerful, enterprise grade open source messaging and streaming bro
 The tag of each rabbitmq docker image is consist of the version of rabbitmq and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[4.3.6-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/rabbitmq/4.3.6/24.03-lts-sp4/Dockerfile) | rabbitmq 4.3.6 on openEuler 24.03-lts-sp4 | amd64, arm64 |
 |[3.9.10-oe2203lts](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/rabbitmq/3.9.10/22.03-lts/Dockerfile) | rabbitmq 3.9.10 on openEuler 22.03-lts | amd64, arm64 |
 |[3.9.10-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/rabbitmq/3.9.10/24.03-lts-sp4/Dockerfile) | rabbitmq 3.9.10 on openEuler 24.03-lts-sp4 | amd64, arm64 |
 
