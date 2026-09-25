@@ -7,5 +7,5 @@ RUN dnf install -y git && dnf clean all
 
 WORKDIR /workspace
 RUN git clone https://github.com/VectorDB-NTU/RaBitQ-Library.git && \
-    cd RaBitQ-Library && git checkout ${VERSION} && \
+    cd RaBitQ-Library && git checkout v${VERSION} && \
     cp -r include /usr/local/include/rabitq
