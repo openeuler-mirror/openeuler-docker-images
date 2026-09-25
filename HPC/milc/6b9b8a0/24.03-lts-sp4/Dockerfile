@@ -15,8 +15,9 @@ RUN dnf -y update && \
 
 WORKDIR /opt
 
-RUN git clone --depth 1 --branch 6b9b8a0 https://github.com/milc-qcd/milc_qcd.git ${MILC_HOME} && \
+RUN git clone https://github.com/milc-qcd/milc_qcd.git ${MILC_HOME} && \
     cd ${MILC_HOME} && \
+    git checkout ${VERSION} && \
     mkdir -p build && cd build && \
     cmake .. -DMPP=ON -DOMP=ON -DSUBDIR=ks_imp_rhmc -DPRECISION=2 && \
     cmake --build . -j$(nproc) --target su3_rhmd_hisq
