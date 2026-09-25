@@ -18,7 +18,7 @@ ENV PATH=$PATH:/usr/local/maven/bin
 WORKDIR /build
 RUN git clone --branch release-${VERSION} --depth 1 https://github.com/apache/hudi.git .
 
-RUN mvn clean package -DskipTests -Dspark3.5 -Dscala-2.12
+RUN mvn clean package -DskipTests -Dspark3.5 -Dscala-2.12 -pl packaging/hudi-cli-bundle,packaging/hudi-spark-bundle -am
 
 
 FROM ${BASE}
