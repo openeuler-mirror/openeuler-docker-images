@@ -1,9 +1,13 @@
 ARG BASE=openeuler/openeuler:24.03-lts-sp4
+ARG VERSION=9.5.4
+
+FROM elastic/logstash:${VERSION} AS env2yaml
+
 FROM ${BASE}
 
 ARG TARGETARCH
 ARG BUILDARCH
-ARG VERSION=9.5.4
+ARG VERSION
 
 RUN yum install -y shadow procps findutils tar gzip glibc-langpack-en
 RUN groupadd -g 1000 logstash && \
@@ -36,9 +40,10 @@ COPY entrypoint.sh /usr/local/bin/
 COPY config/logstash-full.yml config/logstash.yml
 COPY config/pipelines.yml config/log4j2.properties config/log4j2.file.properties config/
 COPY config/default.conf pipeline/logstash.conf
-COPY env2yaml/env2yaml-${TARGETARCH} /usr/local/bin/env2yaml
+COPY --from=env2yaml /usr/local/bin/env2yaml /usr/local/bin/env2yaml
+COPY --from=env2yaml /usr/share/logstash/env2yaml /usr/share/logstash/env2yaml
 
-RUN chown --recursive logstash:root config/ pipeline/
+RUN chown --recursive logstash:root config/ pipeline/ /usr/share/logstash/env2yaml
 RUN chmod 0755 /usr/local/bin/entrypoint.sh && \
     chmod 0755 /usr/local/bin/env2yaml
 
