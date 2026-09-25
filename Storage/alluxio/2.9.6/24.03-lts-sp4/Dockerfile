@@ -2,7 +2,7 @@ ARG BASE=openeuler/openeuler:24.03-lts-sp4
 FROM ${BASE}
 
 
-ARG VERSION="2.9.6"
+ARG VERSION="2.9.5"
 ENV ALLUXIO_HOME=/opt/alluxio \
     ALLUXIO_CONF_DIR=/etc/alluxio \
     ALLUXIO_LOGS_DIR=/var/log/alluxio
