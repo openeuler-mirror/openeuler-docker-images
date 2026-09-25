@@ -3,7 +3,7 @@ FROM $BASE
 
 ARG VERSION=1.10.1
 
-RUN curl -fSL -o flume.tar.gz https://dlcdn.apache.org/flume/${VERSION}/apache-flume-${VERSION}-bin.tar.gz; \
+RUN curl -fSL -o flume.tar.gz https://archive.apache.org/dist/flume/${VERSION}/apache-flume-${VERSION}-bin.tar.gz; \
     mkdir -p /usr/local/flume && \
     tar -zxf flume.tar.gz -C /usr/local/flume --strip-components=1 && \
     rm -rf flume.tar.gz
