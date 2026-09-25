@@ -1,6 +1,6 @@
 ARG BASE=openeuler/openeuler:24.03-lts-sp4
 FROM ${BASE}
-ARG VERSION=2026.77159
+ARG VERSION=12.7.0
 
 RUN dnf update -y \
     && dnf install -y gcc ninja-build meson libxml2-devel yajl-devel systemd-devel libcap-ng-devel libnl3-devel \

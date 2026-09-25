@@ -22,7 +22,7 @@ The tag of each `libvirt` docker image is consist of the version of `libvirt` an
 
 | Tag                                                                                                                               | Currently                                 | Architectures |
 |-----------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------|---------------|
-|[2026.77159-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/libvirt/2026.77159/24.03-lts-sp4/Dockerfile) | libvirt 2026.77159 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[12.7.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/libvirt/2026.77159/24.03-lts-sp4/Dockerfile) | libvirt 12.7.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[12.7.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/libvirt/12.7.0/24.03-lts-sp4/Dockerfile) | libvirt 12.7.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[12.4.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/libvirt/12.4.0/24.03-lts-sp4/Dockerfile) | libvirt 12.4.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[12.4.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/libvirt/12.4.0/24.03-lts-sp3/Dockerfile) | libvirt 12.4.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
