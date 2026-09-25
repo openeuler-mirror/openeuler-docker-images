@@ -5,7 +5,8 @@ ARG PREFIX_DIR=/opt/guacamole
 ARG UID=1000
 ARG GID=1000
 ARG GUACAMOLE_SERVER_OPTS="\
-    --disable-guaclog"
+    --disable-guaclog \
+    --enable-allow-freerdp-snapshots"
 RUN yum install -y git ffmpeg ffmpeg-devel openssl openssl-devel freerdp-plugins java-1.8.0-openjdk \
     libvncserver-devel vim libxkbfile-devel libX11-devel libXrandr-devel libXi-devel libXrender-devel \
 	libXext-devel libXinerama-devel libXfixes-devel libXcursor-devel libXv-devel libXdamage-devel \
