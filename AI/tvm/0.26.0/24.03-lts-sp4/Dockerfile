@@ -9,7 +9,9 @@ RUN yum install -y \
         python3-devel python3-pip && \
     yum clean all && rm -rf /var/cache/yum
 
-RUN git clone --recursive -b v${VERSION} https://github.com/apache/tvm.git /tvm
+RUN git clone --recursive -b v${VERSION} https://github.com/apache/tvm.git /tvm && \
+    sed -i 's/"-isystem"/"-I"/' /tvm/cmake/modules/LLVM.cmake && \
+    grep -q 'TVM_LLVM_INCLUDE_FLAGS "-I"' /tvm/cmake/modules/LLVM.cmake
 
 WORKDIR /tvm/build
 RUN cp /tvm/cmake/config.cmake . && \
