@@ -2,7 +2,7 @@ ARG BASE=openeuler/openeuler:24.03-lts-sp4
 FROM ${BASE} AS builder
 
 ARG TARGETARCH
-ARG VERSION=4.2.0
+ARG VERSION=1.2.12
 
 RUN dnf install -y \
       python3-pip && \
