@@ -25,8 +25,8 @@ RUN wget https://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz -O /tm
     cd openssl-${OPENSSL_VERSION} && \
     ./config shared --openssldir=${OPENSSL_ROOT_DIR} --prefix=${OPENSSL_ROOT_DIR} && \
     make -j$(nproc) && make install && \
-    ln -s ${OPENSSL_ROOT_DIR}/lib/libssl.so.1.1 /usr/lib64/libssl.so.1.1 && \
-    ln -s ${OPENSSL_ROOT_DIR}/lib/libcrypto.so.1.1 /usr/lib64/libcrypto.so.1.1 && \
+    ln -sf ${OPENSSL_ROOT_DIR}/lib/libssl.so.1.1 /usr/lib64/libssl.so.1.1 && \
+    ln -sf ${OPENSSL_ROOT_DIR}/lib/libcrypto.so.1.1 /usr/lib64/libcrypto.so.1.1 && \
     rm -rf /tmp/*
 
 ARG OPENLDAP_VERSION=2.4.47
