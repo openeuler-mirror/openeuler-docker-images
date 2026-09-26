@@ -1,7 +1,7 @@
 ARG BASE=openeuler/openeuler:24.03-lts-sp4
 FROM ${BASE}
 
-ARG VERSION=d36068b
+ARG VERSION=1.4.2
 
 RUN dnf install -y \
       gcc gcc-c++ make wget \
