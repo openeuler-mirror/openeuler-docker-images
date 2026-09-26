@@ -3,7 +3,8 @@ FROM $BASE
 ARG VERSION=1.4.2
 ARG TAG=v${VERSION}
 RUN yum install -y \
-        git gcc gcc-c++ make which && \
+        git gcc gcc-c++ make which \
+        zlib-devel bzip2-devel xz-devel libcurl-devel openssl-devel && \
     yum clean all && rm -rf /var/cache/yum
 RUN git clone --recursive -b ${TAG} https://github.com/marbl/meryl.git /meryl
 WORKDIR /meryl/src
