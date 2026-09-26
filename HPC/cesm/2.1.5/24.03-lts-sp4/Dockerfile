@@ -64,21 +64,11 @@ RUN echo 'export CESMDATAROOT=${HOME}' | tee /etc/profile.d/escomp.sh && \
     echo 'ulimit -s unlimited' | tee -a /etc/profile.d/escomp.sh && \
     echo 'export PATH=${PATH}:/opt/ncar/cesm2/cime/scripts' | tee -a /etc/profile.d/escomp.sh
 
-# Get config files
+# Get config files (CESM 2.1 series, see ESCOMP-Containers CESM/2.1/Dockerfile)
 RUN git clone https://github.com/ESCOMP/ESCOMP-Containers.git /containers && \
-    cp -rf /containers/CESM/2.2/Files/config_machines.xml /opt/ncar/cesm2/cime/config/cesm/machines/ && \
-    cp -rf /containers/CESM/2.2/Files/config_inputdata.xml /opt/ncar/cesm2/cime/config/cesm/ && \
-    cp -rf /containers/CESM/2.2/Files/case_setup.py /opt/ncar/cesm2/cime/scripts/lib/CIME/case/case_setup.py && \
-    cp -rf /containers/CESM/2.2/Files/config_compsets.xml /opt/ncar/cesm2/cime_config/ && \
-    cp -rf /containers/CESM/2.2/Files/config_pes.xml /opt/ncar/cesm2/cime_config/ && \
-    cp -rf /containers/CESM/2.2/Files/configs/cam/config_pes.xml /opt/ncar/cesm2/components/cam/cime_config/ && \
-    cp -rf /containers/CESM/2.2/Files/configs/cice/config_pes.xml /opt/ncar/cesm2/components/cice/cime_config/ && \
-    cp -rf /containers/CESM/2.2/Files/configs/cism/config_pes.xml /opt/ncar/cesm2/components/cism/cime_config/ && \
-    cp -rf /containers/CESM/2.2/Files/configs/pop/config_pes.xml /opt/ncar/cesm2/components/pop/cime_config/ && \
-    cp -rf /containers/CESM/2.2/Files/configs/clm/config_pes.xml /opt/ncar/cesm2/components/clm/cime_config/ && \
-    cp -rf /containers/CESM/2.2/Files/micro_mg3_0.F90 /opt/ncar/cesm2/components/cam/src/physics/pumas/micro_mg3_0.F90 && \
-    cp -rf /containers/CESM/2.2/Files/scam_shell_commands /opt/ncar/cesm2/components/cam/cime_config/usermods_dirs/scam_mandatory/shell_commands && \
-    cp -rf /containers/CESM/2.2/Files/create_scam6_iop /opt/ncar/cesm2/components/cam/bld/scripts && \
+    cp -rf /containers/CESM/2.1/Files/config_machines.xml /opt/ncar/cesm2/cime/config/cesm/machines/ && \
+    cp -rf /containers/CESM/2.1/Files/config_inputdata.xml /opt/ncar/cesm2/cime/config/cesm/ && \
+    cp -rf /containers/CESM/2.1/Files/case_setup.py /opt/ncar/cesm2/cime/scripts/lib/CIME/case/case_setup.py && \
     rm -rf /containers
 
 COPY config_compilers.xml /opt/ncar/cesm2/cime/config/cesm/machines/
