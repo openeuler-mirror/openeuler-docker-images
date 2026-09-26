@@ -1,7 +1,7 @@
 ARG BASE=openeuler/openeuler:24.03-lts-sp4
 FROM ${BASE}
 
-ARG VERSION=5.0.1
+ARG VERSION=5.0.1_CE
 ARG TARGETARCH
 
 RUN dnf install -y \
