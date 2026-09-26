@@ -15,10 +15,10 @@ RUN git clone -b v${VERSION} --depth 1 https://github.com/spdk/spdk \
 
 WORKDIR /opt/spdk
 
-# Workaround: pip 26.0 removed PackageFinder.allow_all_prereleases used by
-# pip-tools 7.5.2 in pkgdep.sh. Remove --upgrade-deps to keep venv pip at
-# the compatible version bundled with system Python.
-RUN sed -i 's/--upgrade-deps //' scripts/pkgdep/rhel.sh
+# SPDK v26.09 generates include/spdk_internal/rpc_autogen.h during `make`,
+# which runs scripts/genrpc.py (imports pyyaml, jinja2, tabulate). pkgdep.sh
+# installs those into its Python venv, so make the venv active for the build.
+ENV PATH="/var/spdk/dependencies/pip/bin:${PATH}"
 
 RUN ./scripts/pkgdep.sh \
     && ./configure \
