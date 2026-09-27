@@ -5,3 +5,5 @@
 
 master-oe2403sp4:
   path: master/24.03-lts-sp4/Dockerfile
+98dc362-oe2403sp4:
+  path: 98dc362/24.03-lts-sp4/Dockerfile
