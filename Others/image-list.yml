@@ -125,3 +125,4 @@ images:
   php: php
   libconfig: libconfig
   log4cpp: log4cpp
+  lz4: lz4
