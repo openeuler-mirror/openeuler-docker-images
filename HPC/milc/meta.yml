@@ -5,3 +5,5 @@
 
 develop-oe2403sp4:
   path: develop/24.03-lts-sp4/Dockerfile
+6b9b8a0-oe2403sp4:
+  path: 6b9b8a0/24.03-lts-sp4/Dockerfile
