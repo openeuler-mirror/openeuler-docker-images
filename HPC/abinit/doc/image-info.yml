@@ -1,0 +1,62 @@
+name: abinit
+category: hpc
+description: ABINIT是一套用于计算材料光学、力学、振动及其他可观测性质的软件套件。它以密度泛函理论的量子方程为起点，可进一步使用基于DFT的微扰理论以及多体格林函数方法（GW和DMFT）构建高级应用。ABINIT可以计算任意化学组成的分子、纳米结构和固体，并附带多套完整且稳健的原子势表。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  abinit镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  | Tag | Currently | Architectures |
+  |-----|-----------|---------------|
+  |[10.8.3-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/abinit/10.8.3/24.03-lts-sp4/Dockerfile)| ABINIT 10.8.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/abinit:{Tag}
+  ```
+
+usage: |
+  - 启动容器验证ABINIT版本
+    ```
+    docker run --rm openeuler/abinit:{Tag} abinit --version
+    ```
+  - 运行ABINIT计算
+    ABINIT通过`.abi`输入文件读取计算参数。挂载包含输入文件和赝势的工作目录后运行计算：
+    ```
+    docker run --rm -v $PWD:/workspace -w /workspace openeuler/abinit:{Tag} abinit run.abi
+    ```
+  - 使用MPI并行运行
+    ```
+    docker run --rm -v $PWD:/workspace -w /workspace openeuler/abinit:{Tag} mpirun -np 4 abinit run.abi
+    ```
+    其中`4`为使用的MPI进程数。
+  - 查看运行中容器的日志
+    ```
+    docker logs <container>
+    ```
+  - 在运行中的容器内打开交互式shell
+    ```
+    docker exec -it <container> bash
+    ```
+
+license: GNU General Public License v2.0 or later (GPL-2.0-or-later)
+similar_packages:
+  - N/A
+dependency:
+  - openmpi
+  - openblas
+  - fftw
+  - hdf5
+  - netcdf
+  - netcdf-fortran
+  - libxc
+homepage: https://www.abinit.org/
+upstream:
+  backend: GitHub
+  version_url: abinit/abinit
+  version_filter: alpha;beta;rc;candidate
+  version_scheme: semver

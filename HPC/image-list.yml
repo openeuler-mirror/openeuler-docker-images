@@ -46,7 +46,6 @@ images:
   milc: milc
   geant4: geant4
   hefei-namd: hefei-namd
-  ambertools: ambertools
   dl-poly: dl-poly
   wavewatch: wavewatch
   petsc: petsc
@@ -94,7 +93,6 @@ images:
   hycom: hycom
   qp2: qp2
   fvcom: fvcom
-  qp2: qp2
   rhmc: rhmc
   wps: wps
   pyrosetta: pyrosetta
@@ -104,3 +102,4 @@ images:
   mfem: mfem
   espressomd: espressomd
   eccodes: eccodes
+  abinit: abinit
