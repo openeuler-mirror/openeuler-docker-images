@@ -15,6 +15,7 @@ Learn more at [PLINK](https://www.cog-genomics.org/plink/2.0/).
 The tag of each PLINK docker image is consist of the version of PLINK and the version of basic image. The details are as follows:
 | Tags | Currently | Architectures |
 |------|-----------|---------------|
+|[2.0.0-a.7.9-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/plink/2.0.0-a.7.9/24.03-lts-sp4/Dockerfile) | plink 2.0.0-a.7.9 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[2.0.0-a.7.1-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/plink/2.0.0-a.7.1/24.03-lts-sp3/Dockerfile)| plink2 2.0.0-a.7.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 # Usage
