@@ -22,6 +22,7 @@ The tag of each Erlang docker image is consist of the version of Erlang and the 
 
 | Tags | Currently | Architectures |
 |--|--|--|
+|[29.1.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/erlang/29.1.1/24.03-lts-sp4/Dockerfile) | erlang 29.1.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[29.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/erlang/29.1/24.03-lts-sp4/Dockerfile) | erlang 29.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 # Usage
