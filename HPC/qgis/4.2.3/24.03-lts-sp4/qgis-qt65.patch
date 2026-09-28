@@ -1,0 +1,39 @@
+diff --git a/src/app/3d/qgs3dicongenerator.cpp b/src/app/3d/qgs3dicongenerator.cpp
+index 4db95343..2db06c2a 100644
+--- a/src/app/3d/qgs3dicongenerator.cpp
++++ b/src/app/3d/qgs3dicongenerator.cpp
+@@ -84,7 +84,7 @@ void Qgs3DIconGenerator::generateIcon( QgsStyle *style, QgsStyle::StyleEntity ty
+       // capturing 3d thumbnails involves event looping -- we don't want to trigger an event loop immediately here,
+       // as this method may have been called while painting a widget (eg a list widget showing the style model), and
+       // processing the event loop while drawing a widget is a VERY BAD THING
+-      QMetaObject::invokeMethod( this, &Qgs3DIconGenerator::generateThumbnailForMaterial, Qt::QueuedConnection, style, name );
++      QMetaObject::invokeMethod( this, [this, style, name]() { generateThumbnailForMaterial( style, name ); }, Qt::QueuedConnection );
+       break;
+     }
+   }
+diff --git a/src/core/geometry/qgsgeos.cpp b/src/core/geometry/qgsgeos.cpp
+index 30b9b12f..62e55bc1 100644
+--- a/src/core/geometry/qgsgeos.cpp
++++ b/src/core/geometry/qgsgeos.cpp
+@@ -2296,7 +2296,7 @@ std::unique_ptr<QgsAbstractGeometry> QgsGeos::concaveHullOfPolygons( double leng
+ {
+ #if GEOS_VERSION_MAJOR == 3 && GEOS_VERSION_MINOR < 11
+   ( void ) allowHoles;
+-  ( void ) targetPercent;
++  ( void ) lengthRatio;
+   ( void ) errorMsg;
+   throw QgsNotSupportedException( QObject::tr( "Calculating concaveHullOfPolygons requires a QGIS build based on GEOS 3.11 or later" ) );
+ #else
+diff --git a/src/core/qgsconnectionpool.h b/src/core/qgsconnectionpool.h
+index c537a1bc..8dc1bf53 100644
+--- a/src/core/qgsconnectionpool.h
++++ b/src/core/qgsconnectionpool.h
+@@ -105,7 +105,7 @@ template<typename T> class QgsConnectionPoolGroup
+       QgsDebugMsgLevel( u"Trying to acquire connection"_s, 2 );
+       const int requiredFreeConnectionCount = requestMayBeNested ? 1 : 3;
+       // we are going to acquire a resource - if no resource is available, we will block here
+-      if ( !sem.tryAcquire( requiredFreeConnectionCount, QDeadlineTimer( timeout ) ) )
++      if ( !sem.tryAcquire( requiredFreeConnectionCount, timeout ) )
+       {
+         QgsDebugMsgLevel( u"Failed to acquire semaphore"_s, 2 );
+         return nullptr;
