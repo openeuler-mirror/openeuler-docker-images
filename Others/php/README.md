@@ -17,6 +17,7 @@ Learn more on [PHP](https://www.php.net/).
 The tag of each PHP docker image is consist of the version of PHP and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[8.5.11-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/php/8.5.11/24.03-lts-sp4/Dockerfile) | php 8.5.11 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[8.5.10-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/php/8.5.10/24.03-lts-sp4/Dockerfile) | php 8.5.10 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 # Usage
