@@ -18,6 +18,7 @@ The tag of each `gradle` docker image is consist of the version of `gradle` and 
 
 | Tags | Currently | Architectures |
 |------|-----------|---------------|
+|[9.8.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Base/gradle/9.8.0/24.03-lts-sp4/Dockerfile) | gradle 9.8.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 | [9.7.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Base/gradle/9.7.1/24.03-lts-sp4/Dockerfile) | Gradle 9.7.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 # Usage
