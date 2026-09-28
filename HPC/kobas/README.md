@@ -18,6 +18,7 @@ The tag of each `kobas` docker image is consist of the version of `kobas` and th
 
 | Tag                                                                                                            | Currently                          | Architectures |
 |----------------------------------------------------------------------------------------------------------------|------------------------------------|---------------|
+| [8c81da9-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/kobas/8c81da9/24.03-lts-sp4/Dockerfile) | KOBAS 8c81da9 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 | [3.0.3-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/kobas/3.0.3/24.03-lts-sp4/Dockerfile) | KOBAS 3.0.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 | [3.0.3-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/kobas/3.0.3/24.03-lts-sp3/Dockerfile) | KOBAS 3.0.3 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
@@ -40,7 +41,11 @@ In this usage, users can select the corresponding `{Tag}` and `container startup
 - Run a simple example
 
 	```bash
-	# Show the annotation help inside the container
+	# 8c81da9: KOBAS provides a unified `kobas` command
+	kobas --help
+	kobas annotate -h
+
+	# 3.0.3: the legacy per-task commands
 	kobas-annotate -h
 	```
 
