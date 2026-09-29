@@ -9,12 +9,13 @@ blat is the cluster parallel version of BLAT (BLAST-Like Alignment Tool), a fast
 - Multi-thread hybrid parallel mode for improved throughput on single nodes.
 - High-speed sequence mapping and alignment inherited from BLAT.
 - Support for various input formats including FASTA and PSL.
-Learn more at [blat](https://github.com/icebert/pblat-cluster/).
+Learn more at [blat](https://github.com/icebert/pblat/).
 
 # Supported tags and respective Dockerfile links
 The tag of each blat docker image is consist of the version of blat and the version of basic image. The details are as follows:
 | Tags | Currently | Architectures |
 |------|-----------|---------------|
+|[2.5.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/blat/2.5.1/24.03-lts-sp4/Dockerfile) | blat 2.5.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[1.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/blat/1.1/24.03-lts-sp4/Dockerfile) | blat 1.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[1.1-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/blat/1.1/24.03-lts-sp3/Dockerfile) | blat 1.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
