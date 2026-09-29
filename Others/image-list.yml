@@ -130,3 +130,4 @@ images:
   harbor: harbor
   libyuv-android: libyuv-android
   ansible: ansible
+  scala: scala

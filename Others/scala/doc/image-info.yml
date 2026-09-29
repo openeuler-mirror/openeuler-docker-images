@@ -1,0 +1,61 @@
+name: scala
+category: others
+description: Scala 2 标准库、编译器以及语言规范。该镜像包含 Scala 2.13.18 的 scala（交互式 REPL）、scalac（编译器）、scaladoc（API 文档生成器）和 scalap（类文件解析器）等工具，运行在 Java 虚拟机之上。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  scala镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[2.13.18-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/scala/2.13.18/24.03-lts-sp4/Dockerfile) | scala 2.13.18 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/scala:{Tag}
+  ```
+
+usage: |
+  - 启动 Scala 交互式 shell（REPL）容器
+    ```
+    docker run -it --name my-scala openeuler/scala:{Tag}
+    ```
+  - 编译并运行 Scala 程序
+
+    创建名为 `Hello.scala` 的文件：
+    ```scala
+    object Hello {
+      def main(args: Array[String]): Unit = println("Hello, Scala!")
+    }
+    ```
+    然后挂载当前目录并编译、运行：
+    ```
+    docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp openeuler/scala:{Tag} scalac Hello.scala
+    docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp openeuler/scala:{Tag} scala Hello
+    ```
+  - 查看容器运行日志
+    ```
+    docker logs -f my-scala
+    ```
+  - 进入容器交互式 shell
+    ```
+    docker exec -it my-scala /bin/bash
+    ```
+
+license: Apache-2.0
+similar_packages:
+  - N/A
+dependency:
+  - java-17-openjdk
+
+homepage: https://github.com/scala/scala
+upstream:
+  backend: GitHub
+  version_url: scala/scala
+  version_prefix: v
+  version_filter: rc
+  version_scheme: RPM
