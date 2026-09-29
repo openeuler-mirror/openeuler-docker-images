@@ -1,0 +1,41 @@
+name: o3de
+category: cloud
+description: Open 3D Engine（O3DE）是一个开源的模块化 3D 引擎，用于开发 AAA 级游戏和高保真模拟。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  o3de镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[2605.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/o3de/2605.0/24.03-lts-sp4/Dockerfile) | o3de 2605.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[2409.2-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/o3de/2409.2/24.03-lts-sp1/Dockerfile) | O3DE 2409.2 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/o3de:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+
+    ```
+    docker run -it --rm openeuler/o3de:{Tag} bash
+    ```
+    `openeuler/o3de`镜像用于验证上游o3de版本和openEuler的集成，引擎源码及构建配置位于容器内`/o3de`目录。
+
+license: Apache-2.0 license
+similar_packages:
+  - N/A
+dependency:
+  - N/A
+
+homepage: https://github.com/o3de/o3de
+upstream:
+  version_url: o3de/o3de
+  backend: GitHub
+  version_scheme: RPM
