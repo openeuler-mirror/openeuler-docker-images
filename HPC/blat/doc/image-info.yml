@@ -39,10 +39,10 @@ similar_packages:
   - Bowtie2: 高速且内存高效的短读段比对工具,适用于大规模测序数据
 dependency:
   - MPI
-homepage: https://github.com/icebert/pblat-cluster/
+homepage: https://github.com/icebert/pblat/
 upstream:
   backend: GitHub
-  version_url: icebert/blat-cluster
+  version_url: icebert/pblat
   version_prefix: 
   version_filter: 
   version_scheme: RPM
