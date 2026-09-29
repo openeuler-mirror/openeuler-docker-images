@@ -21,9 +21,9 @@ RUN git clone --depth 1 --branch v${VERSION} ${GLU_REPO} ${GLU_HOME}
 WORKDIR ${GLU_HOME}
 
 RUN if [ -x ./build/mvn ]; then \
-		./build/mvn -DskipTests -T1C package; \
+		./build/mvn -Pspark-3.5 -DskipTests -T1C package; \
 	else \
-		mvn -DskipTests -T1C package; \
+		mvn -Pspark-3.5 -DskipTests -T1C package; \
 	fi
 
 RUN mkdir -p /opt/gluten/dist/jars /opt/gluten/dist/lib && \
