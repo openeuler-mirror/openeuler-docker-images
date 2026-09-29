@@ -5,7 +5,7 @@ ARG VERSION=2d01261
 
 RUN dnf install -y \
       git gcc gcc-c++ make cmake ninja-build patch \
-      libstdc++-static glibc-static \
+      libstdc++-static glibc-static libquadmath-devel \
       curl \
       python3-pip && \
     dnf clean all
