@@ -11,7 +11,7 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
-  |[2026.29-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/pyrosetta/2026.29/24.03-lts-sp4/Dockerfile)| PyRosetta 2026.29 on openEuler 24.03-LTS-SP4 | amd64 |
+  |[2026.29-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/pyrosetta/2026.29/24.03-lts-sp4/Dockerfile)| PyRosetta 2026.29 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 download: |
   拉取镜像到本地

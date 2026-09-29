@@ -17,7 +17,7 @@ Learn more on [PyRosetta official site](https://www.pyrosetta.org/).
 The tag of each `pyrosetta` docker image is consist of the version of `pyrosetta` and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
-|[2026.29-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/pyrosetta/2026.29/24.03-lts-sp4/Dockerfile) | PyRosetta 2026.29 on openEuler 24.03-LTS-SP4 | amd64 |
+|[2026.29-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/pyrosetta/2026.29/24.03-lts-sp4/Dockerfile) | PyRosetta 2026.29 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` and `container startup options` based on their requirements.
