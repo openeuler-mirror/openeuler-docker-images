@@ -1,0 +1,55 @@
+name: junit5
+category: others
+description: JUnit 6 是当前一代的 JUnit 测试框架，为 JVM 上的开发者侧测试提供了现代化的基础。它要求 Java 17 和 Kotlin 2.1 或更高版本，并支持多种不同的测试风格。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  junit5镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[6.1.3-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/junit5/6.1.3/24.03-lts-sp4/Dockerfile) | JUnit 6.1.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/junit5:{Tag}
+  ```
+
+usage: |
+  - 使用 JUnit Platform Console Launcher 运行测试
+    ```
+    docker run --rm -v "$PWD":/workspace -w /workspace openeuler/junit5:{Tag} execute --class-path target/test-classes --scan-class-path
+    ```
+
+  - 启动 JUnit 容器
+    ```
+    docker run -it --name my-junit --entrypoint /bin/bash openeuler/junit5:{Tag}
+    ```
+
+  - 查看容器运行日志
+    ```
+    docker logs -f my-junit
+    ```
+
+  - 进入交互式 shell
+    ```
+    docker exec -it my-junit /bin/bash
+    ```
+
+license: EPL-2.0
+similar_packages:
+  - N/A
+dependency:
+  - openjdk
+
+homepage: https://github.com/junit-team/junit-framework
+upstream:
+  backend: GitHub
+  version_url: junit-team/junit-framework
+  version_prefix: r
+  version_filter: M;RC
+  version_scheme: RPM
