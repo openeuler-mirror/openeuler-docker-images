@@ -18,6 +18,7 @@ The tag of each `mfem` docker image is consist of the version of `mfem` and the 
 
 | Tags | Currently | Architectures |
 |------|-----------|---------------|
+|[4.10-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/mfem/4.10/24.03-lts-sp4/Dockerfile) | mfem 4.10 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 | [4.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/mfem/4.1/24.03-lts-sp4/Dockerfile) | MFEM 4.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 # Usage
