@@ -4,7 +4,7 @@ FROM ${BASE} AS build
 ARG VERSION=2026.2
 
 RUN yum update -y && \
-    yum install -y gcc g++ gfortran openssh-clients bzip2 \
+    yum install -y gcc g++ gfortran openssh-clients bzip2 xz \
         ca-certificates git make patch pkgconfig unzip wget zlib-devel m4 && \
     yum clean all
 
