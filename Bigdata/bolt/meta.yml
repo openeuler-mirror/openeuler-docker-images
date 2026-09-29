@@ -1,2 +1,5 @@
 6b54e46-oe2403sp3:
   path: 6b54e46/24.03-lts-sp3/Dockerfile
+
+2d01261-oe2403sp4:
+  path: 2d01261/24.03-lts-sp4/Dockerfile

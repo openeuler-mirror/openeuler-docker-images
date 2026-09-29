@@ -13,6 +13,7 @@ Bolt is a C++ acceleration library providing composable, extensible and performa
 The tag of each bolt docker image is consist of the version of bolt and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[2d01261-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/bolt/2d01261/24.03-lts-sp4/Dockerfile) | bolt 2d01261 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[6b54e46-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Bigdata/bolt/6b54e46/24.03-lts-sp3/Dockerfile) | bolt 6b54e46 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 
