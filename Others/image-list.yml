@@ -128,3 +128,4 @@ images:
   lz4: lz4
   junit5: junit5
   harbor: harbor
+  libyuv-android: libyuv-android
