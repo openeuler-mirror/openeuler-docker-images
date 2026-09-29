@@ -1,2 +1,4 @@
 0.10.0-alpha.34-oe2403sp4:
   path: 0.10.0-alpha.34/24.03-lts-sp4/Dockerfile
+0.9.21-oe2403sp4:
+  path: 0.9.21/24.03-lts-sp4/Dockerfile

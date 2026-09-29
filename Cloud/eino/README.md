@@ -24,6 +24,7 @@ The tag of each `eino` docker image is consist of the version of `eino` and the 
 
 | Tag | Currently | Architectures |
 |-----|-----------|---------------|
+|[0.9.21-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/eino/0.9.21/24.03-lts-sp4/Dockerfile) | eino 0.9.21 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[0.10.0-alpha.34-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/eino/0.10.0-alpha.34/24.03-lts-sp4/Dockerfile) | Eino 0.10.0-alpha.34 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 # Usage
