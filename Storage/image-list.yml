@@ -19,3 +19,4 @@ images:
   mooncake: mooncake
   juicefs: juicefs
   reedsolomon: reedsolomon
+  drbd-kernel: drbd-kernel

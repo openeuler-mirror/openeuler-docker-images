@@ -1,0 +1,52 @@
+name: drbd-kernel
+category: storage
+description: DRBD 是 LINBIT 开发的分布式复制块设备，通过 TCP/IP 或 RDMA 在多个节点之间同步块设备，实现类似 RAID 1 的高可用与软件定义存储，无需共享 SCSI 总线或光纤通道等专用硬件。本镜像提供 DRBD 9 的内核侧：drbd 内核模块以及 tcp、rdma、lb-tcp 三个传输模块，针对本发行版自带的 kernel-devel 编译；用户态管理工具（drbdadm 等）由 drbd 镜像提供。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  drbd-kernel镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[9.3.4-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/drbd-kernel/9.3.4/24.03-lts-sp4/Dockerfile)| DRBD kernel module 9.3.4 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/drbd-kernel:{Tag}
+  ```
+
+usage: |
+  - 查看镜像内编译好的 DRBD 模块信息（任意宿主机内核下都能运行）
+
+    ```
+    docker run --rm openeuler/drbd-kernel:{Tag}
+    ```
+
+  - 在运行同版本内核的宿主机上加载模块（需要 --privileged 并挂载宿主机的 /lib/modules）
+
+    ```
+    docker run --rm --privileged -v /lib/modules:/lib/modules openeuler/drbd-kernel:{Tag} modprobe drbd
+    ```
+
+    模块装在 `/lib/modules/<内核版本>/updates/` 下，是按本发行版自带的 kernel-devel 编译的，因此宿主机内核必须与模块的 vermagic 一致（`modinfo` 会打印该字段）。`openeuler/drbd-kernel` 镜像用于验证上游 DRBD 内核模块版本和 openEuler 的集成。
+
+license: GPL-2.0 license
+similar_packages:
+  - drbd：DRBD 的用户空间管理工具集（drbdadm、drbdsetup 等），即本仓库的 drbd-utils 包。
+dependency:
+  - kernel-devel
+  - kernel-headers
+  - kmod
+  - elfutils-libelf-devel
+
+homepage: https://github.com/LINBIT/drbd
+upstream:
+  backend: GitHub
+  version_url: LINBIT/drbd
+  version_prefix: drbd-
+  version_filter: rc;alpha;beta
+  version_scheme: RPM
