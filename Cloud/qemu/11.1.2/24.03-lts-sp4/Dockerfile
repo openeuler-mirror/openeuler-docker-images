@@ -2,7 +2,7 @@ ARG BASE=openeuler/openeuler:24.03-lts-sp4
 FROM ${BASE}
 
 ARG TARGETARCH
-ARG VERSION=11.1.1
+ARG VERSION=11.1.2
 
 RUN dnf update -y \
     && dnf install -y wget fuse3-devel  daxctl-devel \
