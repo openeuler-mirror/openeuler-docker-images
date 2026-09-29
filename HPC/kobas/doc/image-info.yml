@@ -10,6 +10,7 @@ tags: |
   kobas镜像的Tag由其版本信息和基础镜像版本信息组成,详细内容如下
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
+  |[8c81da9-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/kobas/8c81da9/24.03-lts-sp4/Dockerfile) | KOBAS 8c81da9 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[3.0.3-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/kobas/3.0.3/24.03-lts-sp4/Dockerfile) | KOBAS 3.0.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 download: |
   拉取镜像到本地
@@ -28,6 +29,10 @@ usage: |
     ```
   - 在容器内验证安装
     ```
+    # 8c81da9 及之后的镜像使用统一的 kobas 命令
+    kobas --help
+    kobas annotate -h
+    # 3.0.3 镜像使用旧的按功能划分的命令
     kobas-annotate -h
     ```
 license: GPL-3.0
