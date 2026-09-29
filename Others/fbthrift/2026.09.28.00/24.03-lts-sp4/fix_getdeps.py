@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 import re
 
-# 1. 修复 openEuler 发行版识别
+# 1. 修复 openEuler 发行版识别（新版 getdeps 使用 DISTRO_FAMILIES 字典）
 f = 'build/fbcode_builder/getdeps/getdeps_platform.py'
 c = open(f).read()
 c = c.replace(
-    '("fedora", "centos", "centos_stream", "rocky", "alma")',
-    '("fedora", "centos", "centos_stream", "rocky", "alma", "openeuler")'
+    '"rhel": ("rhel", "centos", "centos_stream", "alma", "rocky"),',
+    '"rhel": ("rhel", "centos", "centos_stream", "alma", "rocky", "openeuler"),'
 )
 open(f, 'w').write(c)
 
