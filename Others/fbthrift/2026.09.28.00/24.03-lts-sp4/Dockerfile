@@ -20,6 +20,6 @@ RUN git clone -b ${VERSION} --depth 1 https://github.com/facebook/fbthrift.git /
     mkdir -p /tmp/fbcode_builder_getdeps-ZbuildZbuildZfbcode_builder-root/downloads && \
     cp /tmp/libaio.tar.gz /tmp/fbcode_builder_getdeps-ZbuildZbuildZfbcode_builder-root/downloads/libaio-libaio-libaio-0.3.113.tar.gz && \
     python3 /tmp/fix_getdeps.py && \
-    ./build/fbcode_builder/getdeps.py --allow-system-packages --install-prefix /usr/local build fbthrift
+    ./build/fbcode_builder/getdeps.py --allow-system-packages --install-prefix /usr/local build --no-tests fbthrift
 
 ENV PATH=/usr/local/fbthrift/bin:$PATH
