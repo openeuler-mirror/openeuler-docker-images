@@ -19,6 +19,7 @@ Learn more on [The Perl Programming Language - www.perl.org](https://www.perl.or
 The tag of each Perl docker image is consist of the version of Perl and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[5.45.3-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/perl/5.45.3/24.03-lts-sp4/Dockerfile) | perl 5.45.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[5.45.2-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/perl/5.45.2/24.03-lts-sp4/Dockerfile) | perl 5.45.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 # Usage
