@@ -1,0 +1,48 @@
+name: harbor
+category: others
+description: Harbor 是一个开源的可信云原生镜像仓库项目，用于存储、签名和扫描内容。Harbor 扩展了开源的 Docker Distribution，增加了用户通常需要的安全、身份和管理功能，例如镜像复制、用户管理、访问控制和活动审计。Harbor 由云原生计算基金会（CNCF）托管。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  harbor镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[2.15.2-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/harbor/2.15.2/24.03-lts-sp4/Dockerfile)| Harbor 2.15.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/harbor:{Tag}
+  ```
+
+usage: |
+  本镜像提供 Harbor 的核心服务（core service），即 Harbor 的主要 API 与认证服务。完整的 Harbor 部署还需要 PostgreSQL、Redis、registry、jobservice 和 portal 等组件协同工作，详见官方《Harbor Installation and Configuration Guide》。
+
+  - **启动 harbor core 服务**
+
+    ```bash
+    docker run -d --name my-harbor -p 8080:8080 openeuler/harbor:{Tag}
+    ```
+
+  - **查看日志**
+
+    ```bash
+    docker logs -f my-harbor
+    ```
+
+  - **在容器内执行命令**
+
+    ```bash
+    docker exec -it my-harbor /bin/sh
+    ```
+
+license: Apache-2.0
+similar_packages:
+  - Docker Distribution
+dependency:
+  - PostgreSQL
+  - Redis
