@@ -29,6 +29,8 @@ RUN git clone -b v${VERSION} https://github.com/cryoem/eman2.git && \
         sed -i "s/-m64/-mabi=lp64/g" CMakeLists.txt; \
     fi
 RUN source /root/.bashrc && \
+    conda tos accept --channel https://repo.anaconda.com/pkgs/main && \
+    conda tos accept --channel https://repo.anaconda.com/pkgs/r && \
     conda create -n eman2 -y python=3.12 && \
     conda activate eman2 && \
     conda install -y -c conda-forge \
