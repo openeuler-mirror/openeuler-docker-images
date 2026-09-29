@@ -14,6 +14,7 @@ Learn more at [IRVSP](https://github.com/zjwang11/irvsp).
 The tag of each IRVSP docker image is consist of the version of IRVSP and the version of basic image. The details are as follows:
 | Tags | Currently | Architectures |
 |------|-----------|---------------|
+|[3dd4dad-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/irvsp/3dd4dad/24.03-lts-sp4/Dockerfile) | IRVSP 3dd4dad on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[2.0-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/irvsp/2.0/24.03-lts-sp4/Dockerfile) | IRVSP 2.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 # Usage
