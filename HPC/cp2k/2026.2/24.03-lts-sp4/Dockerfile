@@ -21,34 +21,32 @@ RUN /bin/bash -c -o pipefail \
      --with-gcc=system \
      --with-openmpi=install \
      --with-sirius=no --with-elpa=no --with-plumed=no \
+     --with-ace=no --with-gauxc=no \
      --with-libvori=no --with-cosma=no --with-libsmeagol=no \
      --with-dftd4=no --with-tblite=no --with-trexio=no \
      --with-greenx=no --with-gmp=no \
      --with-spfft=no --with-spla=no --with-gsl=no \
      --with-spglib=no --with-hdf5=no --with-libvdwxc=no"
 
-WORKDIR /opt/cp2k
+WORKDIR /opt/cp2k/tools/toolchain
 RUN /bin/bash -c -o pipefail \
-    "cp ./tools/toolchain/install/arch/local.psmp ./arch/; \
-     source ./tools/toolchain/install/setup; \
-     make -j "$(nproc)" ARCH=local VERSION=psmp"
+    "./build_cp2k.sh --build-static -j "$(nproc)""
 
 RUN /bin/bash -c -o pipefail \
-    "mkdir -p /toolchain/install /toolchain/scripts; \
-     for libdir in \$(ldd ./exe/local/cp2k.psmp | \
+    "source /opt/cp2k/tools/toolchain/install/setup; \
+     mkdir -p /toolchain/install /toolchain/scripts; \
+     for libdir in \$(ldd /opt/cp2k/install/bin/cp2k.psmp | \
                       grep /opt/cp2k/tools/toolchain/install | \
                       awk '{print \$3}' | cut -d/ -f7 | \
                       sort | uniq) setup; do \
         cp -ar /opt/cp2k/tools/toolchain/install/\${libdir} /toolchain/install; \
      done; \
-     cp /opt/cp2k/tools/toolchain/scripts/tool_kit.sh /toolchain/scripts; \
-     unlink ./exe/local/cp2k.popt; \
-     unlink ./exe/local/cp2k_shell.psmp"
+     cp /opt/cp2k/tools/toolchain/scripts/tool_kit.sh /toolchain/scripts"
 
 FROM ${BASE}
 RUN yum install -y gcc g++ gfortran openssh-clients && \
     yum clean all
-COPY --from=build /opt/cp2k/exe/local/ /opt/cp2k/exe/local/
+COPY --from=build /opt/cp2k/install/ /opt/cp2k/install/
 COPY --from=build /opt/cp2k/tests/ /opt/cp2k/tests/
 COPY --from=build /opt/cp2k/tools/regtesting/ /opt/cp2k/tools/regtesting/
 COPY --from=build /opt/cp2k/src/grid/sample_tasks/ /opt/cp2k/src/grid/sample_tasks/
@@ -57,12 +55,12 @@ COPY --from=build /toolchain/ /opt/cp2k/tools/toolchain/
 
 RUN /bin/bash -c -o pipefail \
     "for binary in cp2k dumpdcd graph xyz2dcd; do \
-        ln -sf /opt/cp2k/exe/local/\${binary}.psmp \
+        ln -sf /opt/cp2k/install/bin/\${binary}.psmp \
                /usr/local/bin/\${binary}; \
      done; \
-     ln -sf /opt/cp2k/exe/local/cp2k.psmp \
+     ln -sf /opt/cp2k/install/bin/cp2k.psmp \
             /usr/local/bin/cp2k_shell; \
-     ln -sf /opt/cp2k/exe/local/cp2k.psmp \
+     ln -sf /opt/cp2k/install/bin/cp2k.psmp \
             /usr/local/bin/cp2k.popt"
 
 # generate entrypoint.sh
@@ -73,13 +71,13 @@ export OMPI_ALLOW_RUN_AS_ROOT=1\n\
 export OMPI_ALLOW_RUN_AS_ROOT_CONFIRM=1\n\
 export OMPI_MCA_btl_vader_single_copy_mechanism=none\n\
 export OMP_STACKSIZE=16M\n\
-export PATH=/opt/cp2k/exe/local:\${PATH}\n\
+export PATH=/opt/cp2k/install/bin:\${PATH}\n\
 source /opt/cp2k/tools/toolchain/install/setup\n\
 \"\$@\"" \
 >/usr/local/bin/entrypoint.sh && chmod 755 /usr/local/bin/entrypoint.sh
 
 # Create shortcut for regression test
-RUN printf "/opt/cp2k/tests/do_regtest.py --mpiexec \"mpiexec --bind-to none\" --maxtasks 8 --workbasedir /mnt \$* local psmp" \
+RUN printf "/opt/cp2k/tests/do_regtest.py --mpiexec \"mpiexec --bind-to none\" --maxtasks 8 --workbasedir /mnt \$* /opt/cp2k/install/bin psmp" \
 >/usr/local/bin/run_tests && chmod 755 /usr/local/bin/run_tests
 
 # Define entrypoint
