@@ -8,7 +8,8 @@ RUN yum update -y && \
         ca-certificates git make patch pkgconfig unzip wget zlib-devel m4 && \
     yum clean all
 
-RUN git clone -b support/v${VERSION} --recursive https://github.com/cp2k/cp2k.git /opt/cp2k 
+RUN git clone -b support/v${VERSION} --recursive https://github.com/cp2k/cp2k.git /opt/cp2k && \
+    rm -rf /opt/cp2k/.git
 
 WORKDIR /opt/cp2k/tools/toolchain
 RUN /bin/bash -c -o pipefail \
