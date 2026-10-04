@@ -1,6 +1,6 @@
 ARG BASE=openeuler/openeuler:24.03-lts-sp4
 FROM ${BASE}
-ARG VERSION=0.2.0
+ARG VERSION=0.3.2
 
 RUN dnf install -y \
     wget \
