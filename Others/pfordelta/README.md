@@ -13,6 +13,7 @@ pfordelta is a C library containing algorithms to compress sorted arrays of inte
 The tag of each pfordelta docker image is consist of the version of pfordelta and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[df38c01-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/pfordelta/df38c01/24.03-lts-sp4/Dockerfile) | pfordelta df38c01 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[master-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/pfordelta/master/24.03-lts-sp4/Dockerfile) | pfordelta master on openEuler 24.03-lts-sp4 | amd64, arm64 |
 
 
