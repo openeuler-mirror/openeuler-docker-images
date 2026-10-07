@@ -5,3 +5,5 @@
 
 d36068b-oe2403sp4:
   path: d36068b/24.03-lts-sp4/Dockerfile
+e49bbfe-oe2403sp4:
+  path: e49bbfe/24.03-lts-sp4/Dockerfile
