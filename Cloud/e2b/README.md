@@ -18,6 +18,7 @@ The tag of each `e2b` docker image is consist of the version of `e2b` and the ve
 
 | Tag | Currently | Architectures |
 |-----|-----------|---------------|
+|[2.53.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/e2b/2.53.1/24.03-lts-sp4/Dockerfile) | e2b 2.53.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[2.52.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/e2b/2.52.1/24.03-lts-sp4/Dockerfile) | e2b 2.52.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[2.51.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/e2b/2.51.0/24.03-lts-sp4/Dockerfile) | e2b 2.51.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[2.49.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/e2b/2.49.0/24.03-lts-sp4/Dockerfile) | e2b 2.49.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
