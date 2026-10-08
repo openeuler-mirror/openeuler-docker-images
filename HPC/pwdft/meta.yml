@@ -9,3 +9,5 @@ dabe15a-oe2403sp4:
   path: dabe15a/24.03-lts-sp4/Dockerfile
 dacb3dc-oe2403sp4:
   path: dacb3dc/24.03-lts-sp4/Dockerfile
+d7fef2d-oe2403sp4:
+  path: d7fef2d/24.03-lts-sp4/Dockerfile

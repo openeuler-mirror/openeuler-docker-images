@@ -17,6 +17,7 @@ Learn more on [PWDFT](https://github.com/ebylaska/PWDFT).
 The tag of each `PWDFT` docker image is consist of the version of `PWDFT` and the version of basic image. The details are as follows
 | Tags | Currently | Architectures |
 |--|--|--|
+|[d7fef2d-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/pwdft/d7fef2d/24.03-lts-sp4/Dockerfile) | pwdft d7fef2d on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[dacb3dc-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/pwdft/dacb3dc/24.03-lts-sp4/Dockerfile) | pwdft dacb3dc on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[dabe15a-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/pwdft/dabe15a/24.03-lts-sp4/Dockerfile) | pwdft dabe15a on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[784e13d-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/pwdft/784e13d/24.03-lts-sp4/Dockerfile) | pwdft 784e13d on openEuler 24.03-LTS-SP4 | amd64, arm64 |
