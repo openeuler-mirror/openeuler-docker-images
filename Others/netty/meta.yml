@@ -17,3 +17,5 @@
 
 4.2.18-oe2403sp4:
   path: 4.2.18/24.03-lts-sp4/Dockerfile
+4.2.19-oe2403sp4:
+  path: 4.2.19/24.03-lts-sp4/Dockerfile
