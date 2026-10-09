@@ -15,6 +15,7 @@ Learn more on [Wannier90](https://www.wannier.org).
 The tag of each wannier90 docker image is consist of the version of wannier90 and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[4.0.3-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/wannier90/4.0.3/24.03-lts-sp4/Dockerfile) | wannier90 4.0.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[4.0.2-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/wannier90/4.0.2/24.03-lts-sp4/Dockerfile) | wannier90 4.0.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 # Usage
