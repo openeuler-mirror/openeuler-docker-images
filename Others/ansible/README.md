@@ -18,6 +18,7 @@ The tag of each `ansible` docker image is consist of the version of `ansible-cor
 
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[2.21.5-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/ansible/2.21.5/24.03-lts-sp4/Dockerfile) | ansible-core 2.21.5 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[2.21.4-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/ansible/2.21.4/24.03-lts-sp4/Dockerfile) | ansible-core 2.21.4 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 # Usage
