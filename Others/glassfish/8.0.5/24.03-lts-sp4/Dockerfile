@@ -7,7 +7,7 @@ ARG VERSION=8.0.5
 RUN yum install -y java-21-openjdk-devel git && \
     yum clean all && \
     cd / && \
-    curl -fSL -o apache-maven.tar.gz https://repo.huaweicloud.com/apache/maven/maven-3/3.9.3/binaries/apache-maven-3.9.3-bin.tar.gz && \
+    curl -fSL -o apache-maven.tar.gz https://repo.huaweicloud.com/apache/maven/maven-3/3.9.16/binaries/apache-maven-3.9.16-bin.tar.gz && \
     mkdir -p /usr/local/maven && \
     tar -zxf apache-maven.tar.gz -C /usr/local/maven --strip-components=1 && \
     rm -rf apache-maven.tar.gz
