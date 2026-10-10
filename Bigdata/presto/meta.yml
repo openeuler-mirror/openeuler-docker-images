@@ -7,3 +7,5 @@
 
 0.299-oe2403sp4:
   path: 0.299/24.03-lts-sp4/Dockerfile
+0.300-oe2403sp4:
+  path: 0.300/24.03-lts-sp4/Dockerfile
