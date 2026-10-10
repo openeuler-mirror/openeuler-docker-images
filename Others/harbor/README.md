@@ -19,6 +19,7 @@ The tag of each `harbor` docker image is consist of the version of `harbor` and 
 
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[2.15.4-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/harbor/2.15.4/24.03-lts-sp4/Dockerfile)| Harbor 2.15.4 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[2.15.2-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/harbor/2.15.2/24.03-lts-sp4/Dockerfile)| Harbor 2.15.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 # Usage
