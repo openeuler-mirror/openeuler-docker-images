@@ -11,7 +11,7 @@ RUN yum update -y && \
         ca-certificates \
         gcc-toolset-14-gcc* \
         gcc-toolset-14-binutils* \
-        gcc-toolset-14-c++* \
+        gcc-toolset-14-gcc-c++ \
         python3-devel \
         python3-pip \
         python3-setuptools \
@@ -20,13 +20,14 @@ RUN yum update -y && \
         python3-flatbuffers \
         python3-packaging \
         python3-protobuf \
-        git && \
+        git \
+        patch && \
     yum clean all && \
     rm -rf /var/cache/yum
 
 RUN pip install --upgrade pip && \
     pip install --no-cache-dir \
-        cmake==3.28
+        cmake==3.28.1
 
 ARG ONNXRUNTIME_REPO=https://github.com/microsoft/onnxruntime.git
 
