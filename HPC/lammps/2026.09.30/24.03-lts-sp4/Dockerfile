@@ -1,7 +1,7 @@
 ARG BASE=openeuler/openeuler:24.03-lts-sp4
 FROM ${BASE} AS builder
 
-ARG VERSION=2026.09.30
+ARG VERSION=30Sep2026
 
 RUN dnf update -y \
     && dnf install -y wget vim gcc-c++ make openmpi-devel mpich-devel \
