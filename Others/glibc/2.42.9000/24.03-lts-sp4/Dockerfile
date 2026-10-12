@@ -1,6 +1,6 @@
 ARG BASE=openeuler/openeuler:24.03-lts-sp4
 FROM ${BASE} as BUILDER
-ARG VERSION=2.42.9000
+ARG VERSION=2.42
 
 RUN dnf update -y && \
     dnf install -y \
