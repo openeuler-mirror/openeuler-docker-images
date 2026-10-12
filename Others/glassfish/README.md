@@ -18,6 +18,7 @@ The tag of each `glassfish` docker image is consist of the version of `glassfish
 
 | Tag                                                                                                                                  | Currently                                   | Architectures |
 |--------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------|---------------|
+|[8.0.5-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/glassfish/8.0.5/24.03-lts-sp4/Dockerfile) | glassfish 8.0.5 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[8.0.4-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/glassfish/8.0.4/24.03-lts-sp4/Dockerfile) | glassfish 8.0.4 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[710-20250515-before-cpenv-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/glassfish/710-20250515-before-cpenv/24.03-lts-sp4/Dockerfile) | glassfish 710-20250515-before-cpenv on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[710-20250515-before-cpenv-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/glassfish/710-20250515-before-cpenv/24.03-lts-sp3/Dockerfile) | glassfish 710-20250515-before-cpenv on openEuler 24.03-LTS-SP3 | amd64, arm64 |
