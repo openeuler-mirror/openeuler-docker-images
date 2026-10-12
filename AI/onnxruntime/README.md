@@ -17,6 +17,7 @@ Learn more about on [ONNX Runtime Website](https://www.onnxruntime.ai/).
 The tag of each `ONNX Runtime` docker image is consist of the complete software stack version. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[1.31.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/onnxruntime/1.31.0/24.03-lts-sp4/Dockerfile) | onnxruntime 1.31.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[1.22.1-oe2403sp2](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/onnxruntime/1.22.1/24.03-lts-sp2/Dockerfile)| ONNX Runtime 1.22.1 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 
 # Usage
