@@ -20,6 +20,7 @@ The tag of each `maven` docker image is consist of the version of `maven` and th
 |-----|-----------|---------------|
 | [3.6.3-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/maven/3.6.3/24.03-lts-sp1/Dockerfile) | Apache Maven 3.6.3 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 | [3.6.3-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/maven/3.6.3/24.03-lts-sp4/Dockerfile) | Apache Maven 3.6.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+| [3.10.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/maven/3.10.0/24.03-lts-sp4/Dockerfile) | Apache Maven 3.10.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.
