@@ -1,0 +1,28 @@
+diff --git a/bin/bootstrap_toolchain.py b/bin/bootstrap_toolchain.py
+index 593744abd..275e477cd 100755
+--- a/bin/bootstrap_toolchain.py
++++ b/bin/bootstrap_toolchain.py
+@@ -475,7 +475,7 @@ def get_toolchain_downloads():
+       ["avro", "binutils", "boost", "breakpad", "bzip2", "calloncehack", "cctz",
+        "cloudflarezlib", "cmake", "crcutil", "curl", "flatbuffers", "gdb", "gflags",
+        "glog", "gperftools", "jwt-cpp", "libev", "libunwind", "lz4", "mold",
+-       "openldap", "orc", "protobuf", "python", "rapidjson", "re2", "snappy", "tpc-h",
++       "orc", "protobuf", "python", "rapidjson", "re2", "snappy", "tpc-h",
+        "tpc-ds", "zlib", "zstd"]]
+   python3_package = ToolchainPackage(
+       "python", explicit_version=os.environ.get("IMPALA_PYTHON3_VERSION"))
+diff --git a/buildall.sh b/buildall.sh
+index bca291789..bd0406086 100755
+--- a/buildall.sh
++++ b/buildall.sh
+@@ -442,6 +442,10 @@ bootstrap_dependencies() {
+   else
+     echo ">>> Downloading and extracting toolchain dependencies."
+     "$IMPALA_HOME/bin/bootstrap_toolchain.py"
++    rm -rf $IMPALA_HOME/toolchain/toolchain-packages-gcc$IMPALA_GCC_VERSION/binutils-$IMPALA_BINUTILS_VERSION/bin/ld
++    ln -s /usr/bin/ld $IMPALA_HOME/toolchain/toolchain-packages-gcc$IMPALA_GCC_VERSION/binutils-$IMPALA_BINUTILS_VERSION/bin/ld
++    mkdir -p $IMPALA_HOME/toolchain/toolchain-packages-gcc$IMPALA_GCC_VERSION/openldap-$IMPALA_OPENLDAP_VERSION/
++    cp -rf /usr/local/openldap-$IMPALA_OPENLDAP_VERSION  $IMPALA_HOME/toolchain/toolchain-packages-gcc$IMPALA_GCC_VERSION/
+     echo "Toolchain bootstrap complete."
+   fi
+   # Use prebuilt Hadoop native binaries for aarch64
