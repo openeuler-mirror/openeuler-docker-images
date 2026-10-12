@@ -2,7 +2,7 @@ ARG BASE=openeuler/openeuler:24.03-lts-sp4
 FROM ${BASE}
 
 ARG TARGETARCH
-ARG VERSION=3.9.7
+ARG VERSION=3.9.6
 
 RUN yum -y install java && \
     yum clean all
