@@ -1,6 +1,6 @@
 ARG BASE=openeuler/openeuler:24.03-lts-sp4
 FROM ${BASE}
-ARG VERSION=20260907
+ARG VERSION=2606
 
 WORKDIR /opt
 RUN yum install -y wget m4 flex clang make gcc g++ cmake openmpi-devel zlib-devel texinfo \
@@ -8,14 +8,14 @@ RUN yum install -y wget m4 flex clang make gcc g++ cmake openmpi-devel zlib-deve
     libpng-devel libXrandr-devel libXi-devel libXft-devel libjpeg-turbo-devel \
     libXcursor-devel readline-devel ncurses-devel mpfr-devel gmp-devel libmpc*
 
-RUN wget https://sourceforge.net/projects/openfoam/files/v${VERSION}/ThirdParty-v${VERSION}.tgz && \
+RUN wget https://sourceforge.net/projects/openfoam/files/v${VERSION}/ThirdParty-v${VERSION}.tar.gz && \
     wget https://sourceforge.net/projects/openfoam/files/v${VERSION}/OpenFOAM-v${VERSION}.tgz && \
-    tar -xvf ThirdParty-v${VERSION}.tgz && \
+    tar -xvf ThirdParty-v${VERSION}.tar.gz && \
     tar -xvf OpenFOAM-v${VERSION}.tgz && \
     cd OpenFOAM-v${VERSION} && \
     source etc/bashrc && \
     ./Allwmake -j -k -s -q && \
-    rm -rf ThirdParty-v${VERSION}.tgz && \
+    rm -rf ThirdParty-v${VERSION}.tar.gz && \
     rm -rf OpenFOAM-v${VERSION}.tgz
 
 WORKDIR /opt/OpenFOAM-v${VERSION}
