@@ -35,3 +35,5 @@
   path: 2.584/24.03-lts-sp4/Dockerfile
 2.585-oe2403sp4:
   path: 2.585/24.03-lts-sp4/Dockerfile
+2.586-oe2403sp4:
+  path: 2.586/24.03-lts-sp4/Dockerfile
