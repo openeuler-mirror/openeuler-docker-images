@@ -13,12 +13,13 @@ fbthrift is Facebook's branch of Apache Thrift, including a new C++ server. It i
 The tag of each fbthrift docker image is consist of the version of fbthrift and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
-|[2026.10.05.00-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/fbthrift/2026.10.05.00/24.03-lts-sp4/Dockerfile) | fbthrift 2026.10.05.00 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[2026.09.28.00-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/fbthrift/2026.09.28.00/24.03-lts-sp4/Dockerfile) | fbthrift 2026.09.28.00 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[2026.09.21.00-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/fbthrift/2026.09.21.00/24.03-lts-sp4/Dockerfile) | fbthrift 2026.09.21.00 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[2026.09.14.00-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/fbthrift/2026.09.14.00/24.03-lts-sp4/Dockerfile) | fbthrift 2026.09.14.00 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[2026.06.22.00-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/fbthrift/2026.06.22.00/24.03-lts-sp3/Dockerfile) | fbthrift 2026.06.22.00 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[2026.05.18.00-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/fbthrift/2026.05.18.00/24.03-lts-sp3/Dockerfile) | fbthrift 2026.05.18.00 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+|[2026.10.12.00-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/fbthrift/2026.10.12.00/24.03-lts-sp4/Dockerfile) | fbthrift 2026.10.12.00 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[2026.10.05.00-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/fbthrift/2026.10.05.00/24.03-lts-sp4/Dockerfile) | fbthrift 2026.10.05.00 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[2026.09.28.00-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/fbthrift/2026.09.28.00/24.03-lts-sp4/Dockerfile) | fbthrift 2026.09.28.00 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[2026.09.21.00-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/fbthrift/2026.09.21.00/24.03-lts-sp4/Dockerfile) | fbthrift 2026.09.21.00 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[2026.09.14.00-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/fbthrift/2026.09.14.00/24.03-lts-sp4/Dockerfile) | fbthrift 2026.09.14.00 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[2026.06.22.00-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/fbthrift/2026.06.22.00/24.03-lts-sp3/Dockerfile) | fbthrift 2026.06.22.00 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[2026.05.18.00-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/fbthrift/2026.05.18.00/24.03-lts-sp3/Dockerfile) | fbthrift 2026.05.18.00 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 
 # Usage
@@ -43,4 +44,4 @@ thrift1 --gen py example.thrift
 ```
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://atomgit.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).
