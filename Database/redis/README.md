@@ -38,19 +38,20 @@ The tag of each redis docker image is consist of the version of redis and the ve
 
 | Tags                                                                                                                             | Currently                              | Architectures |
 |----------------------------------------------------------------------------------------------------------------------------------|----------------------------------------|---------------|
-|[8.6.4-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/redis/5.4.1/24.03-lts-sp4/Dockerfile) | redis 8.6.4 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[8.6.4-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/redis/5.4.1/24.03-lts-sp3/Dockerfile) | redis 8.6.4 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-| [8.2.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/redis/8.2.1/24.03-lts-sp1/Dockerfile) | redis 8.2.1 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
-| [8.2.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/redis/8.2.0/24.03-lts-sp1/Dockerfile) | redis 8.2.0 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
-| [8.0.2-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/redis/8.0.2/24.03-lts-sp1/Dockerfile) | redis 8.0.2 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
-| [6.2.7-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/redis/6.2.7/22.03-lts/Dockerfile)     | Redis 6.2.7 on openEuler 22.03-LTS     | amd64, arm64  |
-| [7.2.4-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/redis/7.2.4/22.03-lts-sp3/Dockerfile) | Redis 7.2.4 on openEuler 22.03-LTS-SP3 | amd64, arm64  |
-| [7.2.5-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/redis/7.2.5/22.03-lts-sp3/Dockerfile) | Redis 7.2.5 on openEuler 22.03-LTS-SP3 | amd64, arm64  |
-| [7.4.1-oe2003sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/redis/7.4.1/20.03-lts-sp4/Dockerfile) | Redis 7.4.1 on openEuler 20.03-LTS-SP4 | amd64, arm64  |
-| [7.4.1-oe2203sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/redis/7.4.1/22.03-lts-sp1/Dockerfile) | Redis 7.4.1 on openEuler 22.03-LTS-SP1 | amd64, arm64  |
-| [7.4.1-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/redis/7.4.1/22.03-lts-sp3/Dockerfile) | Redis 7.4.1 on openEuler 22.03-LTS-SP3 | amd64, arm64  |
-| [7.4.1-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/redis/7.4.1/22.03-lts-sp4/Dockerfile) | Redis 7.4.1 on openEuler 22.03-LTS-SP4 | amd64, arm64  |
-| [7.4.1-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/redis/7.4.1/24.03-lts/Dockerfile)     | Redis 7.4.1 on openEuler 24.03-LTS     | amd64, arm64  |
+|[6.0.20-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/redis/6.0.20/24.03-lts-sp4/Dockerfile) | redis 6.0.20 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[8.6.4-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/redis/5.4.1/24.03-lts-sp4/Dockerfile) | redis 8.6.4 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[8.6.4-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/redis/5.4.1/24.03-lts-sp3/Dockerfile) | redis 8.6.4 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+| [8.2.1-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/redis/8.2.1/24.03-lts-sp1/Dockerfile) | redis 8.2.1 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+| [8.2.0-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/redis/8.2.0/24.03-lts-sp1/Dockerfile) | redis 8.2.0 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+| [8.0.2-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/redis/8.0.2/24.03-lts-sp1/Dockerfile) | redis 8.0.2 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+| [6.2.7-oe2203lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/redis/6.2.7/22.03-lts/Dockerfile)     | Redis 6.2.7 on openEuler 22.03-LTS     | amd64, arm64  |
+| [7.2.4-oe2203sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/redis/7.2.4/22.03-lts-sp3/Dockerfile) | Redis 7.2.4 on openEuler 22.03-LTS-SP3 | amd64, arm64  |
+| [7.2.5-oe2203sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/redis/7.2.5/22.03-lts-sp3/Dockerfile) | Redis 7.2.5 on openEuler 22.03-LTS-SP3 | amd64, arm64  |
+| [7.4.1-oe2003sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/redis/7.4.1/20.03-lts-sp4/Dockerfile) | Redis 7.4.1 on openEuler 20.03-LTS-SP4 | amd64, arm64  |
+| [7.4.1-oe2203sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/redis/7.4.1/22.03-lts-sp1/Dockerfile) | Redis 7.4.1 on openEuler 22.03-LTS-SP1 | amd64, arm64  |
+| [7.4.1-oe2203sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/redis/7.4.1/22.03-lts-sp3/Dockerfile) | Redis 7.4.1 on openEuler 22.03-LTS-SP3 | amd64, arm64  |
+| [7.4.1-oe2203sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/redis/7.4.1/22.03-lts-sp4/Dockerfile) | Redis 7.4.1 on openEuler 22.03-LTS-SP4 | amd64, arm64  |
+| [7.4.1-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/redis/7.4.1/24.03-lts/Dockerfile)     | Redis 7.4.1 on openEuler 24.03-LTS     | amd64, arm64  |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` and `container startup options` based on their requirements.
@@ -113,4 +114,4 @@ In this usage, users can select the corresponding `{Tag}` and `container startup
 	```
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).
