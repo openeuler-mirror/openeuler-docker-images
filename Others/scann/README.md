@@ -13,6 +13,7 @@ ScaNN (Scalable Nearest Neighbors) is a method for efficient vector similarity s
 The tag of each scann docker image is consist of the version of scann and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[07eaa25-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/scann/07eaa25/24.03-lts-sp4/Dockerfile) | scann 07eaa25 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[5b381db-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/scann/5b381db/24.03-lts-sp4/Dockerfile) | scann 5b381db on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[6e6b1ff-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/scann/6e6b1ff/24.03-lts-sp4/Dockerfile) | scann 6e6b1ff on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[a1e7371-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/scann/a1e7371/24.03-lts-sp4/Dockerfile) | scann a1e7371 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
