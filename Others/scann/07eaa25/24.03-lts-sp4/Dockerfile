@@ -5,7 +5,7 @@ ARG VERSION=1.4.2
 
 RUN dnf install -y \
       gcc gcc-c++ make wget \
-      openssl-devel bzip2-devel zlib-devel && \
+      openssl-devel bzip2-devel zlib-devel libffi-devel && \
     dnf clean all
 
 RUN wget -q https://www.python.org/ftp/python/3.9.19/Python-3.9.19.tgz \
@@ -18,4 +18,4 @@ RUN wget -q https://www.python.org/ftp/python/3.9.19/Python-3.9.19.tgz \
 
 ENV PATH=/opt/python39/bin:$PATH
 
-RUN /opt/python39/bin/pip3 install --no-cache-dir -i https://pypi.tuna.tsinghua.edu.cn/simple scann==${VERSION}
+RUN /opt/python39/bin/pip3 install --no-cache-dir -i https://pypi.tuna.tsinghua.edu.cn/simple --extra-index-url https://repo.huaweicloud.com/repository/pypi/simple/ scann==${VERSION}
