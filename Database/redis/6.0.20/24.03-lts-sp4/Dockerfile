@@ -5,7 +5,7 @@ ARG TARGETARCH
 ARG VERSION=6.0.20
 
 RUN yum -y update; \
-	yum -y install findutils wget gcc make glibc-devel openssl-devel ca-certificates shadow-utils g++; \
+	yum -y install findutils wget gcc make glibc-devel openssl-devel ca-certificates shadow-utils g++ libatomic; \
     groupadd -r -g 909 redis; \
 	useradd -r -g redis -u 909 redis
 
@@ -31,7 +31,29 @@ RUN wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/downloa
     make -C /redis -j "$(nproc)" all MALLOC=libc; \
     make -C /redis install
 
-COPY entrypoint.sh /
+COPY <<'ENTRYPOINT_EOF' /entrypoint.sh
+#!/bin/sh
+set -e
+
+# first arg is `-f` or `--some-option`
+# or first arg is `something.conf`
+if [ "${1#-}" != "$1" ] || [ "${1%.conf}" != "$1" ]; then
+	set -- redis-server "$@"
+fi
+
+# allow the container to be started with `--user`
+if [ "$1" = 'redis-server' -a "$(id -u)" = '0' ]; then
+	find . \! -user redis -exec chown redis '{}' +
+	exec gosu redis "$0" "$@"
+fi
+
+um="$(umask)"
+if [ "$um" = '0022' ]; then
+	umask 0077
+fi
+
+exec "$@"
+ENTRYPOINT_EOF
 RUN serverMd5="$(md5sum /usr/local/bin/redis-server | cut -d' ' -f1)"; export serverMd5; \
     find /usr/local/bin/redis* -maxdepth 0 \
         -type f -not -name redis-server \
