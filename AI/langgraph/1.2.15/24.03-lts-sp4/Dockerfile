@@ -8,4 +8,4 @@ RUN dnf install -y \
       python3-pip && \
     dnf clean all
 
-RUN pip install --no-cache-dir -i https://pypi.tuna.tsinghua.edu.cn/simple langgraph==${VERSION}
+RUN pip install --no-cache-dir -i https://pypi.tuna.tsinghua.edu.cn/simple --extra-index-url https://mirrors.aliyun.com/pypi/simple langgraph==${VERSION}
