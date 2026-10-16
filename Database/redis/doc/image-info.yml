@@ -11,11 +11,8 @@ tags: |
 
   | Tags                                                                                                                             | Currently                              | Architectures |
   |----------------------------------------------------------------------------------------------------------------------------------|----------------------------------------|---------------|
-<<<<<<< fix/5176
-=======
   |[8.10.2-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/redis/8.10.2/24.03-lts-sp4/Dockerfile) | redis 8.10.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[6.0.20-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/redis/6.0.20/24.03-lts-sp4/Dockerfile) | redis 6.0.20 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
->>>>>>> master
   |[8.6.4-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/redis/5.4.1/24.03-lts-sp4/Dockerfile) | redis 8.6.4 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[8.6.4-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/redis/5.4.1/24.03-lts-sp3/Dockerfile) | redis 8.6.4 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
   | [8.2.1-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/redis/8.2.1/24.03-lts-sp1/Dockerfile) | redis 8.2.1 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
