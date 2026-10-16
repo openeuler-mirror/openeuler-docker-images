@@ -1,7 +1,7 @@
 ARG BASE=openeuler/openeuler:24.03-lts-sp4
 FROM ${BASE}
 
-ARG VERSION=9.6
+ARG VERSION=1.2.11
 
 RUN dnf install -y curl bzip2 && \
     ARCH=$(uname -m) && \
