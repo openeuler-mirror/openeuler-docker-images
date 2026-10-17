@@ -11,6 +11,7 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
+  |[3ef5211-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/scann/3ef5211/24.03-lts-sp4/Dockerfile) | scann 3ef5211 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[07eaa25-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/scann/07eaa25/24.03-lts-sp4/Dockerfile) | scann 07eaa25 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[5b381db-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/scann/5b381db/24.03-lts-sp4/Dockerfile) | scann 5b381db on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[6e6b1ff-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/scann/6e6b1ff/24.03-lts-sp4/Dockerfile) | scann 6e6b1ff on openEuler 24.03-LTS-SP4 | amd64, arm64 |
