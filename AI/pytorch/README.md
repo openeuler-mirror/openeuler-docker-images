@@ -21,9 +21,10 @@ Learn more about on [PyTorch Website](https://pytorch.org/docs/stable/index.html
 The tag of each `pytorch` docker image is consist of the complete software stack version. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
-|[pytorch2.1.0.a1-cann7.0.RC1.alpha002-oe2203sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/pytorch/2.1.0.a1-cann7.0.RC1.alpha002/22.03-lts-sp2/Dockerfile)| pyTorch 2.1.0.a1 with cann 7.0.RC1.alpha002 on openEuler 22.03-LTS-SP2 | arm64 |
-|[2.2.0-cann8.0.RC1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/pytorch/2.2.0-cann8.0.RC1/24.03-lts-sp4/Dockerfile)| PyTorch 2.2.0 with CANN 8.0.RC1 on openEuler 22.03-LTS-SP4 | arm64,amd64 |
-|[2.2.0-cann8.0.RC1-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/pytorch/2.2.0-cann8.0.RC1/22.03-lts-sp4/Dockerfile)| PyTorch 2.2.0 with CANN 8.0.RC1 on openEuler 22.03-LTS-SP4 | arm64,amd64 |
+|[2.14.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/pytorch/2.14.1/24.03-lts-sp4/Dockerfile)| PyTorch 2.14.1 on openEuler 24.03-LTS-SP4 | arm64,amd64 |
+|[pytorch2.1.0.a1-cann7.0.RC1.alpha002-oe2203sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/pytorch/2.1.0.a1-cann7.0.RC1.alpha002/22.03-lts-sp2/Dockerfile)| pyTorch 2.1.0.a1 with cann 7.0.RC1.alpha002 on openEuler 22.03-LTS-SP2 | arm64 |
+|[2.2.0-cann8.0.RC1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/pytorch/2.2.0-cann8.0.RC1/24.03-lts-sp4/Dockerfile)| PyTorch 2.2.0 with CANN 8.0.RC1 on openEuler 22.03-LTS-SP4 | arm64,amd64 |
+|[2.2.0-cann8.0.RC1-oe2203sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/pytorch/2.2.0-cann8.0.RC1/22.03-lts-sp4/Dockerfile)| PyTorch 2.2.0 with CANN 8.0.RC1 on openEuler 22.03-LTS-SP4 | arm64,amd64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` and `container startup options` based on their requirements.
@@ -81,4 +82,4 @@ In this usage, users can select the corresponding `{Tag}` and `container startup
 	```
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).
