@@ -15,3 +15,5 @@ a1e7371-oe2403sp4:
   path: 5b381db/24.03-lts-sp4/Dockerfile
 07eaa25-oe2403sp4:
   path: 07eaa25/24.03-lts-sp4/Dockerfile
+3ef5211-oe2403sp4:
+  path: 3ef5211/24.03-lts-sp4/Dockerfile
