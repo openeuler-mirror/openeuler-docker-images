@@ -19,6 +19,7 @@ The tag of each spark docker image is consist of the version of spark and the ve
 |--|--|--|
 |[3.4.3-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.4.3/24.03-lts-sp4/Dockerfile) | spark 3.4.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[3.3.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.3.1/24.03-lts-sp4/Dockerfile) | spark 3.3.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[3.5.2-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.5.2/24.03-lts-sp4/Dockerfile) | spark 3.5.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[3.1.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.1.1/24.03-lts-sp4/Dockerfile) | spark 3.1.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[4.2.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/4.2.0/24.03-lts-sp4/Dockerfile) | spark 4.2.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[4.1.2-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/4.1.2/24.03-lts-sp4/Dockerfile) | spark 4.1.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
