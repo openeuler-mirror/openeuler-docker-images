@@ -32,11 +32,13 @@ require_command() {
 }
 
 # Exact release identity per upstream revision. The installed headers are copied
-# byte-for-byte from the pinned upstream archive, so a SHA-256 fingerprint of
-# hnswlib.h uniquely identifies the release and rejects any other version.
+# byte-for-byte from the pinned upstream archive, so a SHA-256 fingerprint of the
+# installed hnswlib.h rejects any version whose header differs from it.
+# Note: hnswlib.h is byte-identical in 0.8.0 and 0.9.0; the two releases differ in
+# hnswalg.h and bruteforce.h only.
 expected_header_sha256() {
     case "$1" in
-        0.9.0)
+        0.8.0|0.9.0)
             printf '%s\n' "54403db81f55fd28246114c5c9f683e663a2a55ad64903b56578c73e6db5ad2c"
             ;;
         *)

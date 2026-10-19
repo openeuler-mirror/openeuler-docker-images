@@ -19,6 +19,7 @@ The tag of each `hnswlib` docker image is consist of the version of `hnswlib` an
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
 |[0.9.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/hnswlib/0.9.0/24.03-lts-sp4/Dockerfile) | hnswlib 0.9.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[0.8.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/hnswlib/0.8.0/24.03-lts-sp4/Dockerfile) | hnswlib 0.8.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.
