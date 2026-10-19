@@ -16,13 +16,14 @@ The tag of each `nemo` docker image is consist of the version of `nemo` and the 
 
 | Tag                                                                                                                        | Currently                             | Architectures |
 |----------------------------------------------------------------------------------------------------------------------------|---------------------------------------|---------------|
-|[6.7.8-unstable-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/nemo/6.7.8-unstable/24.03-lts-sp4/Dockerfile) | nemo 6.7.8-unstable on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[6.7.7-unstable-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/nemo/6.7.7-unstable/24.03-lts-sp4/Dockerfile) | nemo 6.7.7-unstable on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[6.6.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/nemo/6.6.1/24.03-lts-sp4/Dockerfile) | nemo 6.6.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[6.6.1-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/nemo/6.6.1/24.03-lts-sp2/Dockerfile) | nemo 6.6.1 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-|[6.6.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/nemo/6.6.0/24.03-lts-sp2/Dockerfile) | nemo 6.6.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-|[6.4.5-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/nemo/6.4.5/24.03-lts-sp2/Dockerfile) | nemo 6.4.5 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-| [6.4.5-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/nemo/6.4.5/24.03-lts-sp1/Dockerfile) | Nemo 6.4.5 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+|[6.7.9-unstable-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/nemo/6.7.9-unstable/24.03-lts-sp4/Dockerfile) | nemo 6.7.9-unstable on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[6.7.8-unstable-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/nemo/6.7.8-unstable/24.03-lts-sp4/Dockerfile) | nemo 6.7.8-unstable on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[6.7.7-unstable-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/nemo/6.7.7-unstable/24.03-lts-sp4/Dockerfile) | nemo 6.7.7-unstable on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[6.6.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/nemo/6.6.1/24.03-lts-sp4/Dockerfile) | nemo 6.6.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[6.6.1-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/nemo/6.6.1/24.03-lts-sp2/Dockerfile) | nemo 6.6.1 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[6.6.0-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/nemo/6.6.0/24.03-lts-sp2/Dockerfile) | nemo 6.6.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[6.4.5-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/nemo/6.4.5/24.03-lts-sp2/Dockerfile) | nemo 6.4.5 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+| [6.4.5-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/nemo/6.4.5/24.03-lts-sp1/Dockerfile) | Nemo 6.4.5 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.
