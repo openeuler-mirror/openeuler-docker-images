@@ -1,0 +1,70 @@
+name: openviking
+category: ai
+description: OpenViking 是面向 AI Agent 的自进化上下文数据库，把 Agent 记忆、知识 RAG 与技能统一到一个服务中，并提供 Web 控制台（OpenViking Studio）、网关与 CLI。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  openviking镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[0.5.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/openviking/0.5.0/24.03-lts-sp4/Dockerfile) | openviking 0.5.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/openviking:{Tag}
+  ```
+
+usage: |
+  - 初始化配置（写入 `~/.openviking/ov.conf`）
+
+    ```
+    docker run -it --rm -v ~/.openviking:/root/.openviking openeuler/openviking:{Tag} openviking-server init
+    ```
+
+  - 启动 OpenViking 服务
+
+    ```
+    docker run -itd --name my-openviking -p 1933:1933 -v ~/.openviking:/root/.openviking openeuler/openviking:{Tag}
+    ```
+
+    服务监听 `1933` 端口，随镜像一起打包的 OpenViking Studio 控制台也由该端口提供。
+
+  - 使用 OpenViking CLI
+
+    ```
+    docker exec -it my-openviking ov --help
+    ```
+
+  - 查看容器运行日志
+
+    ```
+    docker logs -f my-openviking
+    ```
+
+  - 获取交互式 shell
+
+    ```
+    docker exec -it my-openviking /bin/bash
+    ```
+
+license: AGPL-3.0
+similar_packages:
+  - Zilliz/Milvus: 面向向量检索的分布式数据库，常用于构建 RAG 的向量与知识存储。
+  - Chroma: 轻量级开源向量数据库，常用于 AI 应用的记忆与知识检索。
+dependency:
+  - python3-pip
+  - libstdc++
+  - libgcc
+
+homepage: https://github.com/volcengine/OpenViking
+upstream:
+  backend: GitHub
+  version_url: volcengine/OpenViking
+  version_prefix: v
+  version_filter: rc;alpha;beta;dev
+  version_scheme: RPM
