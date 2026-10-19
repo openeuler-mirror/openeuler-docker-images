@@ -1,0 +1,99 @@
+name: rocksdb
+category: database
+description: RocksDB 是 Meta 开发的高性能嵌入式键值存储引擎，基于 Log-Structured Merge Tree（LSM-Tree），面向快速存储介质优化，被 Kvrocks、TiDB、MyRocks 等数据库用作底层存储引擎。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  rocksdb镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[11.8.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/rocksdb/11.8.1/24.03-lts-sp4/Dockerfile) | rocksdb 11.8.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/rocksdb:{Tag}
+  ```
+
+usage: |
+  - 使用镜像内已安装的 RocksDB 库编译程序
+
+    将以下示例保存为 `rocksdb_example.cpp`：
+
+    ```cpp
+    #include <cassert>
+    #include <string>
+    #include <rocksdb/db.h>
+
+    int main() {
+        rocksdb::DB* db;
+        rocksdb::Options options;
+        options.create_if_missing = true;
+        rocksdb::Status status = rocksdb::DB::Open(options, "/tmp/testdb", &db);
+        assert(status.ok());
+
+        const std::string key = "hello";
+        const std::string value = "openEuler";
+        status = db->Put(rocksdb::WriteOptions(), key, value);
+        assert(status.ok());
+
+        std::string result;
+        status = db->Get(rocksdb::ReadOptions(), key, &result);
+        assert(status.ok() && result == value);
+
+        delete db;
+        return 0;
+    }
+    ```
+
+    在容器内编译并运行：
+
+    ```
+    docker run --rm -v $(pwd):/workspace openeuler/rocksdb:{Tag} \
+        g++ -std=c++17 -O2 /workspace/rocksdb_example.cpp -o /workspace/rocksdb_example \
+        -I/usr/local/include -L/usr/local/lib -lrocksdb -lsnappy -lzstd -lz -lpthread
+    ```
+
+    ```
+    docker run --rm -v $(pwd):/workspace openeuler/rocksdb:{Tag} /workspace/rocksdb_example
+    ```
+
+  - 运行镜像内自带的 `db_bench` 基准测试
+
+    ```
+    docker run --rm openeuler/rocksdb:{Tag} db_bench --benchmarks=fillseq,readrandom --num=100000
+    ```
+
+  - 查看容器运行日志
+
+    ```
+    docker logs -f my-rocksdb
+    ```
+
+  - 获取交互式 shell
+
+    ```
+    docker run -it --rm openeuler/rocksdb:{Tag} bash
+    ```
+
+license: Apache-2.0
+similar_packages:
+  - LevelDB: Google 开源的嵌入式键值存储库，RocksDB 即由 LevelDB 分支发展而来。
+  - LMDB: 基于内存映射文件的高性能嵌入式键值数据库。
+dependency:
+  - snappy
+  - zstd
+  - zlib
+  - gflags
+
+homepage: https://github.com/facebook/rocksdb
+upstream:
+  backend: GitHub
+  version_url: facebook/rocksdb
+  version_prefix: v
+  version_filter: rc;alpha;beta
+  version_scheme: RPM

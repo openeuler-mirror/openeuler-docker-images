@@ -18,3 +18,4 @@ images:
   milvus: milvus
   kvrocks: kvrocks
   percona: percona
+  rocksdb: rocksdb
