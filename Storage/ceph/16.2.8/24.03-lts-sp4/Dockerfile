@@ -36,8 +36,11 @@ WORKDIR /opt
 # -DWITH_SYSTEM_BOOST=ON：ceph 的 WITH_SYSTEM_BOOST 默认为 OFF，会走 cmake/modules/BuildBoost.cmake
 # 用 ExternalProject 从源码编 Boost，其产物 boost/lib/libboost_thread.a 没有声明 BUILD_BYPRODUCTS，
 # ninja 加载依赖图时会报 "missing and no known rule to make it"。改用 openEuler 自带的 boost-devel(1.83) 即可。
+# 再用系统 boost 1.83 的瘦身后发现 src/include/buffer.h 用了 std::unique_ptr 却没包含 <memory>，
+# 旧版 libstdc++ / bundled boost 会间接带上该头文件，这里显式补上。
 RUN git clone -b v${VERSION} --recursive --depth 1 https://github.com/ceph/ceph.git \
     && cd ceph \
+    && sed -i 's|^#define CEPH_BUFFER_H$|#define CEPH_BUFFER_H\n#include <memory>|' src/include/buffer.h \
     && ./do_cmake.sh -DCMAKE_BUILD_TYPE=Release -DWITH_TESTS=OFF \
         -DWITH_SYSTEM_BOOST=ON -GNinja \
     && cd build \
