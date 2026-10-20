@@ -1,0 +1,82 @@
+name: x264
+category: others
+description: x264 是一个开源 H.264/AVC 视频编码器，提供命令行工具和编码库。本镜像包含命令行编码器、共享库、头文件及 pkg-config 元数据。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  x264镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[0480cb05-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/x264/0480cb05/24.03-lts-sp4/Dockerfile) | x264 0480cb05 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/x264:{Tag}
+  ```
+
+usage: |
+  用户可根据自身需求选择对应版本的 `{Tag}`。
+
+  - 拉取镜像
+
+    ```
+    docker pull openeuler/x264:{Tag}
+    ```
+
+  - 查看编码器版本
+
+    ```
+    docker run --rm openeuler/x264:{Tag} x264 --version
+    ```
+
+  - 编码视频
+
+    在当前目录准备一个名为 `input.yuv` 的 8 位 I420 原始视频文件，根据输入文件调整分辨率和帧率。编码结果保存为当前目录下的 `output.h264`。
+
+    ```
+    docker run --rm -v "$PWD:/workspace" openeuler/x264:{Tag} \
+      x264 --input-res 1920x1080 --fps 30 \
+      --preset faster --frames 30 --output output.h264 input.yuv
+    ```
+
+  - 运行简单编码测试
+
+    生成 10 帧 I420 测试数据并编码，检查输出文件是否非空。
+
+    ```
+    docker run --rm openeuler/x264:{Tag} bash -c \
+      'dd if=/dev/zero of=/tmp/input.yuv bs=6144 count=10 &&
+       x264 --input-res 64x64 --fps 25 --frames 10 \
+         --preset ultrafast --threads 1 --output /tmp/output.h264 /tmp/input.yuv &&
+       test -s /tmp/output.h264'
+    ```
+
+  - 进入容器交互式终端
+
+    ```
+    docker run -it --rm openeuler/x264:{Tag} bash
+    ```
+
+license: GPL-2.0-or-later
+similar_packages:
+  - x265: 开源 H.265/HEVC 视频编码器。
+  - OpenH264: 开源 H.264/AVC 视频编解码库。
+dependency:
+  - gcc
+  - make
+  - git
+  - diffutils
+  - nasm (x86_64)
+
+homepage: https://code.videolan.org/videolan/x264
+upstream:
+  backend: Github
+  version_url: videolan/x264
+  version_prefix:
+  version_filter: alpha;rc;candidate;beta;pre
+  version_scheme: RPM
