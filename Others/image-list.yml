@@ -131,3 +131,4 @@ images:
   libyuv-android: libyuv-android
   ansible: ansible
   scala: scala
+  x265: x265
