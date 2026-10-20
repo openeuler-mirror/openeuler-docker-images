@@ -18,10 +18,11 @@ The tag of each `ceph` docker image is consist of the version of `ceph` and the 
 
 | Tag                                                                                                                              | Currently                              | Architectures |
 |----------------------------------------------------------------------------------------------------------------------------------|----------------------------------------|---------------|
-|[21.3.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/ceph/21.3.0/24.03-lts-sp4/Dockerfile) | ceph 21.3.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[20.3.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/ceph/20.3.0/24.03-lts-sp4/Dockerfile) | ceph 20.3.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[20.3.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/ceph/20.3.0/24.03-lts-sp2/Dockerfile) | ceph 20.3.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-| [20.3.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/ceph/20.3.0/24.03-lts-sp1/Dockerfile) | Ceph 20.3.0 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+|[21.3.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Storage/ceph/21.3.0/24.03-lts-sp4/Dockerfile) | ceph 21.3.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[20.3.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Storage/ceph/20.3.0/24.03-lts-sp4/Dockerfile) | ceph 20.3.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[20.3.0-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Storage/ceph/20.3.0/24.03-lts-sp2/Dockerfile) | ceph 20.3.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+| [20.3.0-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Storage/ceph/20.3.0/24.03-lts-sp1/Dockerfile) | Ceph 20.3.0 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+|[16.2.8-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Storage/ceph/16.2.8/24.03-lts-sp4/Dockerfile) | ceph 16.2.8 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.
