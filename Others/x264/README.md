@@ -38,6 +38,8 @@ In this usage, users can select the corresponding `{Tag}` based on their require
     docker run --rm openeuler/x264:{Tag} x264 --version
     ```
 
+    The source archive has no Git history, so the encoder reports `0.165.x`. The image tag identifies source commit `0480cb05`.
+
 - Encode a video
 
     Place an 8-bit I420 raw video named `input.yuv` in the current directory. Adjust the resolution and frame rate to match the input. The encoded video is saved as `output.h264` in the same directory.

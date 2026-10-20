@@ -34,6 +34,8 @@ usage: |
     docker run --rm openeuler/x264:{Tag} x264 --version
     ```
 
+    源码压缩包不包含 Git 历史，因此编码器显示版本为 `0.165.x`；镜像标签对应源码提交 `0480cb05`。
+
   - 编码视频
 
     在当前目录准备一个名为 `input.yuv` 的 8 位 I420 原始视频文件，根据输入文件调整分辨率和帧率。编码结果保存为当前目录下的 `output.h264`。
@@ -69,7 +71,9 @@ similar_packages:
 dependency:
   - gcc
   - make
-  - git
+  - curl
+  - tar
+  - gzip
   - diffutils
   - nasm (x86_64)
 
