@@ -132,3 +132,4 @@ images:
   ansible: ansible
   scala: scala
   x265: x265
+  snappy: snappy
