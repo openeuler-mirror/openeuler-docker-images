@@ -14,7 +14,7 @@ RUN dnf update -y \
         libev-devel fuse3-devel bash-completion \
         ocaml-findlib python3-devel golang rust cargo \
         libaio libaio-devel sqlite sqlite-devel \
-        snappy snappy-devel lz4 lz4-devel curl-devel \
+        snappy snappy-devel lz4 lz4-devel curl-devel leveldb-devel \
         expat-devel liboath liboath-devel lttng-ust lttng-ust-devel \
         babeltrace libbabeltrace-devel libicu libicu-devel \
         thrift-devel libcap-devel lua-devel \
