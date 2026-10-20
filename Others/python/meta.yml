@@ -23,3 +23,5 @@
 
 3.14.7-oe2403sp4:
   path: 3.14.7/24.03-lts-sp4/Dockerfile
+3.15.0-oe2403sp4:
+  path: 3.15.0/24.03-lts-sp4/Dockerfile
