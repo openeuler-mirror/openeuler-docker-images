@@ -13,6 +13,7 @@ tags: |
   |----------|-------------|------------------|
   |[11.8.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/rocksdb/11.8.1/24.03-lts-sp4/Dockerfile) | rocksdb 11.8.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[8.3.3-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/rocksdb/8.3.3/24.03-lts-sp4/Dockerfile) | rocksdb 8.3.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[7.9.2-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/rocksdb/7.9.2/24.03-lts-sp4/Dockerfile) | rocksdb 7.9.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 download: |
   拉取镜像到本地
