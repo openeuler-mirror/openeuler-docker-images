@@ -1,6 +1,6 @@
 name: x264
 category: others
-description: x264 是一个开源 H.264/AVC 视频编码器，提供命令行工具和编码库。本镜像包含命令行编码器、共享库、头文件及 pkg-config 元数据。
+description: x264 是一个开源 H.264/AVC 视频编码器，提供命令行工具和编码库。本镜像包含命令行编码器、共享库、头文件及 pkg-config 元数据，源码取自 GitHub 镜像 mirror/x264 的 0480cb05 提交，并进行 SHA-256 校验。
 environment: |
   本应用在Docker环境中运行，安装Docker执行如下命令
   ```
@@ -77,10 +77,10 @@ dependency:
   - diffutils
   - nasm (x86_64)
 
-homepage: https://code.videolan.org/videolan/x264
+homepage: https://github.com/mirror/x264
 upstream:
-  backend: Github
-  version_url: videolan/x264
+  backend: GitHub
+  version_url: mirror/x264
   version_prefix:
   version_filter: alpha;rc;candidate;beta;pre
   version_scheme: RPM

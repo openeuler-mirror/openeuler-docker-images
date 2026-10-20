@@ -12,7 +12,7 @@ Current x264 docker images are built on the [openEuler](https://repo.openeuler.o
 
 x264 is an H.264/AVC video encoder that provides a command-line encoder and a library for video encoding. This image includes the command-line encoder, shared library, headers, and pkg-config metadata.
 
-Learn more on [x264](https://code.videolan.org/videolan/x264).
+Source code is downloaded from the [x264 GitHub mirror](https://github.com/mirror/x264) at commit `0480cb05`, with SHA-256 verification.
 
 # Supported tags and respective Dockerfile links
 

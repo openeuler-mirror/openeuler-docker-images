@@ -8,7 +8,8 @@ RUN dnf install -y gcc make curl tar gzip diffutils && \
     dnf clean all
 
 RUN curl -fSL --connect-timeout 30 --retry 3 -o /tmp/x264.tar.gz \
-      https://code.videolan.org/videolan/x264/-/archive/${VERSION}/x264-${VERSION}.tar.gz && \
+      https://github.com/mirror/x264/archive/${VERSION}.tar.gz && \
+    echo "d0967a1348c85dfde363bb52610403be898171493100561efa0dd05d5fd1ae50  /tmp/x264.tar.gz" | sha256sum -c - && \
     mkdir -p /x264 && \
     tar -xzf /tmp/x264.tar.gz -C /x264 --strip-components=1 && \
     rm -f /tmp/x264.tar.gz
