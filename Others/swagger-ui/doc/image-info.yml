@@ -11,6 +11,7 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
+  |[5.34.0-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/swagger-ui/5.34.0/24.03-lts-sp4/Dockerfile) | swagger 5.34.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[5.33.3-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/swagger-ui/5.33.3/24.03-lts-sp4/Dockerfile) | swagger 5.33.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[5.33.2-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/swagger-ui/5.33.2/24.03-lts-sp4/Dockerfile) | swagger 5.33.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[5.33.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/swagger-ui/5.33.1/24.03-lts-sp4/Dockerfile) | swagger 5.33.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
