@@ -31,9 +31,11 @@ WORKDIR /opt
 # 注意：与仓库里较新的 ceph 镜像（20.3.0 / 21.3.0）不同，ceph 16.2.8 不依赖 libnbd ——
 # v16.2.8 中 src/tools/rbd_nbd 是基于内核 netlink（nl::genl）实现的，
 # CMakeLists.txt 与 cmake/modules 中都没有任何 libnbd 引用。因此这里刻意不做 libnbd 源码构建。
+# 另外，v16.2.8 的 do_cmake.sh 不会自动加 -G Ninja（20.3.0 才默认 -GNinja），
+# 不显式指定会生成 Unix Makefiles，导致后面的 ninja 找不到 build.ninja。
 RUN git clone -b v${VERSION} --recursive --depth 1 https://github.com/ceph/ceph.git \
     && cd ceph \
-    && ./do_cmake.sh -DCMAKE_BUILD_TYPE=Release -DWITH_TESTS=OFF \
+    && ./do_cmake.sh -DCMAKE_BUILD_TYPE=Release -DWITH_TESTS=OFF -GNinja \
     && cd build \
     && ninja -j$(nproc) \
     && ninja install
