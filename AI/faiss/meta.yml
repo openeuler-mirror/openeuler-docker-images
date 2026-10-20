@@ -8,3 +8,5 @@
 
 1.15.1-oe2403sp4:
   path: 1.15.1/24.03-lts-sp4/Dockerfile
+1.8.0-oe2403sp4:
+  path: 1.8.0/24.03-lts-sp4/Dockerfile
