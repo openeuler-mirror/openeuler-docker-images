@@ -14,7 +14,7 @@ RUN dnf update -y \
         libev-devel fuse3-devel bash-completion \
         ocaml-findlib python3-devel golang rust cargo \
         libaio libaio-devel sqlite sqlite-devel \
-        snappy snappy-devel lz4 lz4-devel curl-devel leveldb-devel \
+        snappy snappy-devel lz4 lz4-devel curl-devel leveldb-devel boost-devel \
         expat-devel liboath liboath-devel lttng-ust lttng-ust-devel \
         babeltrace libbabeltrace-devel libicu libicu-devel \
         thrift-devel libcap-devel lua-devel \
@@ -33,9 +33,13 @@ WORKDIR /opt
 # CMakeLists.txt 与 cmake/modules 中都没有任何 libnbd 引用。因此这里刻意不做 libnbd 源码构建。
 # 另外，v16.2.8 的 do_cmake.sh 不会自动加 -G Ninja（20.3.0 才默认 -GNinja），
 # 不显式指定会生成 Unix Makefiles，导致后面的 ninja 找不到 build.ninja。
+# -DWITH_SYSTEM_BOOST=ON：ceph 的 WITH_SYSTEM_BOOST 默认为 OFF，会走 cmake/modules/BuildBoost.cmake
+# 用 ExternalProject 从源码编 Boost，其产物 boost/lib/libboost_thread.a 没有声明 BUILD_BYPRODUCTS，
+# ninja 加载依赖图时会报 "missing and no known rule to make it"。改用 openEuler 自带的 boost-devel(1.83) 即可。
 RUN git clone -b v${VERSION} --recursive --depth 1 https://github.com/ceph/ceph.git \
     && cd ceph \
-    && ./do_cmake.sh -DCMAKE_BUILD_TYPE=Release -DWITH_TESTS=OFF -GNinja \
+    && ./do_cmake.sh -DCMAKE_BUILD_TYPE=Release -DWITH_TESTS=OFF \
+        -DWITH_SYSTEM_BOOST=ON -GNinja \
     && cd build \
     && ninja -j$(nproc) \
     && ninja install
