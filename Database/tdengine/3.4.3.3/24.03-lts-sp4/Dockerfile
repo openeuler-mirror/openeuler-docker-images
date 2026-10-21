@@ -9,11 +9,9 @@ RUN yum install -y git cmake gcc gcc-c++ make pkgconfig openssl-devel maven gola
 
 RUN git clone -b ver-${VERSION} https://github.com/taosdata/TDengine.git
 
-COPY build.sh /TDengine/build.sh
-COPY cmake_curl.patch /TDengine/cmake_curl.patch
-
 WORKDIR TDengine
 
-RUN patch -Np1 < cmake_curl.patch && \
-    chmod 755 build.sh && \
-    ./build.sh
+RUN mkdir -p debug && \
+    cd debug && \
+    cmake .. -DBUILD_TOOLS=true -DBUILD_CONTRIB=true && \
+    make -j4
