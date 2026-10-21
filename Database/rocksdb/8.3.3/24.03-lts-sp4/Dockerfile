@@ -20,6 +20,7 @@ RUN curl -fSL --connect-timeout 30 --retry 3 -o /tmp/rocksdb.tar.gz \
 RUN cmake -S /rocksdb -B /rocksdb/build \
       -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_INSTALL_PREFIX=/usr/local \
+      -DCMAKE_INSTALL_LIBDIR=lib \
       -DFAIL_ON_WARNINGS=OFF \
       -DWITH_SNAPPY=ON \
       -DWITH_ZSTD=ON \
