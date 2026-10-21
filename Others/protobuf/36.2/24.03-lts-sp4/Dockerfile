@@ -74,6 +74,16 @@ RUN mkdir -p /tmp/check \
 
 FROM ${BASE}
 
+# The image is also used to compile and run C++ programs that link against
+# libprotobuf, so the toolchain has to survive into the final stage. Only the
+# /usr/local tree is copied from the builder, hence install the packages again.
+RUN dnf install -y \
+      gcc-c++ \
+      make \
+      cmake \
+      && dnf clean all \
+      && rm -rf /var/cache/dnf
+
 COPY --from=builder /usr/local /usr/local
 
 RUN printf '/usr/local/lib\n/usr/local/lib64\n' > /etc/ld.so.conf.d/protobuf.conf \
