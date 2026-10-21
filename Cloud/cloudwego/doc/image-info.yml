@@ -1,6 +1,6 @@
 name: cloudwego
 category: cloud
-description: CloudWeGo 是字节跳动开源的企业级云原生微服务框架生态，提供高性能、强扩展性的Go微服务框架。本镜像包含核心代码生成工具：kitex（RPC框架代码生成工具）和 hz（Hertz HTTP框架代码生成工具）。
+description: CloudWeGo 是字节跳动开源的云原生微服务框架生态。0.16.4-oe2403sp4 镜像使用 Kitex v0.16.4、Hertz v0.10.6、Volo volo-thrift-0.12.2 和 Eino v0.9.22 源码标签。上游 CLI 内置版本号分别显示为 kitex v0.16.3、hz v0.9.7、volo 0.12.1。Eino 源码位于 /eino，不提供独立命令。
 environment: |
   本应用在Docker环境中运行，安装Docker执行如下命令
   ```
@@ -11,6 +11,7 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
+  |[0.16.4-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/cloudwego/0.16.4/24.03-lts-sp4/Dockerfile) | CloudWeGo (Kitex 0.16.4 + Hertz 0.10.6 + Volo 0.12.2 + Eino 0.9.22) on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[0.16.4-grpc-identify-cascade-cancel-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/cloudwego/0.16.4-grpc-identify-cascade-cancel/24.03-lts-sp4/Dockerfile) | cloudwego 0.16.4-grpc-identify-cascade-cancel on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[0.16.2-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/cloudwego/0.16.2/24.03-lts-sp4/Dockerfile) | CloudWeGo (kitex 0.16.2 + hz 0.10.5) on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[0.16.2-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/cloudwego/0.16.2/24.03-lts-sp3/Dockerfile) | CloudWeGo (kitex 0.16.2 + hz 0.10.5) on openEuler 24.03-LTS-SP3 | amd64, arm64 |
@@ -34,6 +35,18 @@ usage: |
     ```
     docker run --rm -v $(pwd):/workspace openeuler/cloudwego:{Tag} \
         hz new -module example.com/myproject
+    ```
+
+  - 查看 volo 工具版本
+
+    ```
+    docker run --rm openeuler/cloudwego:0.16.4-oe2403sp4 volo --version
+    ```
+
+  - 构建镜像内的 Eino 库
+
+    ```
+    docker run --rm -w /eino openeuler/cloudwego:0.16.4-oe2403sp4 go build ./...
     ```
 
 license: Apache-2.0 license
