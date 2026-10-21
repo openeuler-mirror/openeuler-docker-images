@@ -23,8 +23,11 @@ RUN dnf update -y \
         numactl-devel make python nasm \
     && dnf clean all
 
+# 注意：ceph 16.2.8 的 .pyx（rbd/rados/cephfs）是给 Cython 0.29 写的，Cython 3 收紧了异常值/noexcept
+# 规则会导致 pyx 编译失败（如 rbd.pyx: Cannot assign type '... except? -1' to
+# 'librbd_progress_fn_t' (alias of '... noexcept')），因此把 Cython 钉在 3 以下。
 RUN python3 -m pip install --upgrade pip \
-    && python3 -m pip install cython prettytable
+    && python3 -m pip install 'cython<3' prettytable
 
 WORKDIR /opt
 
