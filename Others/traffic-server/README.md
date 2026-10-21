@@ -18,6 +18,7 @@ The tag of each `traffic-server` docker image is consist of the version of `traf
 
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[10.2.1-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/traffic-server/10.2.1/24.03-lts-sp4/Dockerfile) | traffic 10.2.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[10.2.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/traffic-server/10.2.0/24.03-lts-sp4/Dockerfile) | traffic 10.2.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[10.1.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/traffic-server/10.1.0/24.03-lts-sp4/Dockerfile) | traffic 10.1.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[10.1.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/traffic-server/10.1.0/24.03-lts-sp2/Dockerfile) | traffic 10.1.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
