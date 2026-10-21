@@ -17,6 +17,7 @@ Learn more about clickhouse at [https://clickhouse.com/](https://clickhouse.com/
 The tag of each `clickhouse` docker image is consist of the version of `clickhouse` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[26.9.23.15-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Database/clickhouse/26.9.23.15/24.03-lts-sp4/Dockerfile) | clickhouse 26.9.23.15 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[26.9.22.3-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Database/clickhouse/26.9.22.3/24.03-lts-sp4/Dockerfile) | clickhouse 26.9.22.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[26.9.21.9-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Database/clickhouse/26.9.21.9/24.03-lts-sp4/Dockerfile) | clickhouse 26.9.21.9 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[26.9.20.23-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Database/clickhouse/26.9.20.23/24.03-lts-sp4/Dockerfile) | clickhouse 26.9.20.23 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
