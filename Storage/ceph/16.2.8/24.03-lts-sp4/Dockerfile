@@ -40,10 +40,20 @@ WORKDIR /opt
 # 旧版 libstdc++ / bundled boost 会间接带上该头文件，这里显式补上；
 # src/rgw/rgw_string.h 同理（用了 std::string / std::invalid_argument，rgw_string.cc 用了 tolower）。
 # 上游 16.2.15 起已为 buffer.h 补 <memory>、为 rgw_string.h 补 <string>/<stdexcept>，这里做等价回移。
+# 另外 rgw_asio_client.cc 对 Boost.Beast 的 string_view 调了 to_string()，该成员在 Boost 1.81 起被移除
+# （beast 的 string_view 变成了 boost::core::basic_string_view），上游 19.2.0 起改成了 std::string(...)，这里同样回移。
 RUN git clone -b v${VERSION} --recursive --depth 1 https://github.com/ceph/ceph.git \
     && cd ceph \
     && sed -i 's|^#define CEPH_BUFFER_H$|#define CEPH_BUFFER_H\n#include <memory>|' src/include/buffer.h \
     && sed -i 's|^#define CEPH_RGW_STRING_H$|#define CEPH_RGW_STRING_H\n#include <cctype>\n#include <stdexcept>\n#include <string>|' src/rgw/rgw_string.h \
+    && sed -i \
+        -e 's/\bvalue\.to_string()/std::string(value)/g' \
+        -e 's/\bquery\.to_string()/std::string(query)/g' \
+        -e 's/\burl\.to_string()/std::string(url)/g' \
+        -e 's/\buri\.to_string()/std::string(uri)/g' \
+        -e 's/\brequest\.method_string()\.to_string()/std::string(request.method_string())/g' \
+        -e 's/\brequest\.target()\.to_string()/std::string(request.target())/g' \
+        src/rgw/rgw_asio_client.cc \
     && ./do_cmake.sh -DCMAKE_BUILD_TYPE=Release -DWITH_TESTS=OFF \
         -DWITH_SYSTEM_BOOST=ON -GNinja \
     && cd build \
