@@ -56,7 +56,6 @@ dependency:
   - libunwind
   - libdwarf
   - libaio
-  - liburing
 
 homepage: https://github.com/facebook/folly
 upstream:
