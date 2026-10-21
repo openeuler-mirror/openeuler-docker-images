@@ -30,7 +30,7 @@ RUN echo "/usr/local/python3.12/lib" > /etc/ld.so.conf.d/python3.12.conf \
 
 ENV PATH=/usr/local/python3.12/bin:$PATH
 
-RUN pip3 install --no-cache-dir -i https://pypi.tuna.tsinghua.edu.cn/simple jax==${VERSION} jaxlib
+RUN pip3 install --no-cache-dir -i https://pypi.tuna.tsinghua.edu.cn/simple --extra-index-url https://pypi.org/simple jax==${VERSION} jaxlib
 
 FROM ${BASE}
 
