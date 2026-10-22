@@ -3,7 +3,8 @@ FROM ${BASE} AS builder
 
 ARG VERSION=1.1.7
 
-RUN dnf install -y \
+RUN sed -i '/^meta/ s/^\(.*\)$/#\1/g' /etc/yum.repos.d/openEuler.repo \
+    && dnf install -y \
       gcc-c++ cmake make \
     && dnf clean all \
     && rm -rf /var/cache/dnf
