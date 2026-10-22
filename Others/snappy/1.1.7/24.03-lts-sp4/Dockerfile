@@ -33,10 +33,13 @@ ARG VERSION=1.1.7
 
 COPY --from=builder /opt/snappy/usr/local/ /usr/local/
 
-RUN printf '/usr/local/lib\n' > /etc/ld.so.conf.d/snappy.conf \
+# snappy installs via GNUInstallDirs, which resolves to lib64 on openEuler
+# (RedHat-style layout for both amd64 and arm64), so the runtime loader path
+# and pkg-config search path must follow lib64 as well.
+RUN printf '/usr/local/lib64\n' > /etc/ld.so.conf.d/snappy.conf \
     && ldconfig
 
-ENV PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+ENV PKG_CONFIG_PATH=/usr/local/lib64/pkgconfig
 
 USER root
 
