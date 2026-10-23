@@ -20,6 +20,7 @@ The tag of each `spring-framework` docker image is consist of the version of `sp
 
 | Tag                                                                                                                                         | Currently                                          | Architectures |
 |---------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------|---------------|
+|[7.0.10-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/spring-framework/7.0.10/24.03-lts-sp4/Dockerfile) | spring 7.0.10 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[7.0.9-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/spring-framework/7.0.9/24.03-lts-sp4/Dockerfile) | spring-framework 7.0.9 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[7.0.3-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/spring-framework/7.0.3/24.03-lts-sp4/Dockerfile) | spring 7.0.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[7.0.3-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/spring-framework/7.0.3/24.03-lts-sp3/Dockerfile) | spring 7.0.3 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
