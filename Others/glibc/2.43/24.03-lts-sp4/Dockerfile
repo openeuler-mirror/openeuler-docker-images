@@ -15,7 +15,7 @@ RUN dnf update -y && \
 
 WORKDIR /opt
 
-RUN wget https://mirrors.tuna.tsinghua.edu.cn/gnu/glibc/glibc-${VERSION}.tar.xz \
+RUN wget https://mirrors.aliyun.com/gnu/glibc/glibc-${VERSION}.tar.xz \
     && tar -xvf  glibc-${VERSION}.tar.xz \
     && rm -f glibc-${VERSION}.tar.xz
 
