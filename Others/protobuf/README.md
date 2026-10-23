@@ -17,6 +17,7 @@ Learn more on [Protocol Buffers Documentation](https://protobuf.dev/).
 The tag of each `protobuf` docker image is consist of the version of `protobuf` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[36.2-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/protobuf/36.2/24.03-lts-sp4/Dockerfile) | protobuf 36.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[36.0-rc2-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/protobuf/36.0-rc2/24.03-lts-sp4/Dockerfile) | protobuf 36.0-rc2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 # Usage
@@ -56,6 +57,22 @@ In this usage, users can select the corresponding `{Tag}` based on their require
 	```
 
 	The generated files `person.pb.h` and `person.pb.cc` are written to the current directory.
+
+- Link against `libprotobuf` from CMake
+
+	From the `36.2` tag on, the image also ships `libprotobuf` and its CMake package (`protobuf-config.cmake`), so C++ projects can resolve it with `find_package`:
+
+	```cmake
+	cmake_minimum_required(VERSION 3.16)
+	project(demo CXX)
+
+	find_package(protobuf CONFIG REQUIRED)
+
+	add_executable(demo main.cc person.pb.cc)
+	target_link_libraries(demo PRIVATE protobuf::libprotobuf)
+	```
+
+	The headers and libraries are installed under `/usr/local`, which is part of the default CMake search path, and the library directory is registered with the dynamic linker.
 
 - Start a long-running container for exploration
 
