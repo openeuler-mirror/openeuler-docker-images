@@ -1,0 +1,62 @@
+name: zstd
+category: hpc
+description: Zstandard（zstd）是一种快速无损压缩算法，面向实时压缩场景，在提供与zlib相当或更高压缩比的同时具备更快的压缩与解压速度，同时以通用压缩库的形式对外提供libzstd。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  zstd镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  | Tag | Currently | Architectures |
+  |-----|-----------|---------------|
+  |[1.5.7-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/zstd/1.5.7/24.03-lts-sp4/Dockerfile)| zstd 1.5.7 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/zstd:{Tag}
+  ```
+
+usage: |
+  - 启动容器查看zstd版本
+    ```
+    docker run --rm openeuler/zstd:{Tag} zstd --version
+    ```
+  - 压缩文件
+    ```
+    docker run --rm -v "$(pwd)":/work -w /work openeuler/zstd:{Tag} \
+        zstd -f input.txt -o input.txt.zst
+    ```
+  - 解压文件
+    ```
+    docker run --rm -v "$(pwd)":/work -w /work openeuler/zstd:{Tag} \
+        zstd -d -f input.txt.zst -o input.txt
+    ```
+  - 校验压缩文件完整性
+    ```
+    docker run --rm -v "$(pwd)":/work -w /work openeuler/zstd:{Tag} \
+        zstd -t input.txt.zst
+    ```
+  - 镜像内已安装libzstd及其头文件与`libzstd.pc`，可通过pkg-config编译依赖zstd的程序
+    ```
+    gcc example.c -o example $(pkg-config --cflags --libs libzstd)
+    ```
+
+license: BSD-3-Clause
+similar_packages:
+  - zlib: 广泛使用的DEFLATE压缩库，压缩比与速度均低于zstd
+  - lz4: 以极致压缩/解压速度见长的无损压缩算法
+  - brotli: 面向Web文本的高压缩比无损压缩算法
+
+dependency:
+  -
+
+homepage: https://facebook.github.io/zstd/
+upstream:
+  backend: GitHub
+  version_url: facebook/zstd
+  version_prefix: v
+  version_filter: alpha;beta;rc;pre
+  version_scheme: RPM
