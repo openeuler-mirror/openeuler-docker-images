@@ -18,6 +18,7 @@ The tag of each `istio` docker image is consist of the version of `istio` and th
 
 | Tag                                                                                                                             | Currently                               | Architectures |
 |---------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|---------------|
+|[1.31.3-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/istio/1.31.3/24.03-lts-sp4/Dockerfile) | istio 1.31.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[1.31.2-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/istio/1.31.2/24.03-lts-sp4/Dockerfile) | istio 1.31.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[1.31.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/istio/1.31.1/24.03-lts-sp4/Dockerfile) | istio 1.31.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[1.31.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/istio/1.31.0/24.03-lts-sp4/Dockerfile) | istio 1.31.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
