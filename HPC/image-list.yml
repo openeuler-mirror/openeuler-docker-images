@@ -106,3 +106,4 @@ images:
   qgis: qgis
   gulp: gulp
   zstd: zstd
+  folly: folly

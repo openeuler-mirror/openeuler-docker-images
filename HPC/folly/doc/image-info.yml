@@ -1,0 +1,66 @@
+name: folly
+category: hpc
+description: Folly是Facebook开源并广泛使用的C++基础库，汇集了大量高性能、可复用的组件，用于补充C++标准库与Boost，涵盖字符串处理、内存管理、并发与异步、容器、编码与序列化、文件与IO等功能。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  folly镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  | Tag | Currently | Architectures |
+  |-----|-----------|---------------|
+  |[2026.10.12.00-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/folly/2026.10.12.00/24.03-lts-sp4/Dockerfile)| Folly 2026.10.12.00 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/folly:{Tag}
+  ```
+
+usage: |
+  - 启动容器并进入交互式shell
+    ```
+    docker run -it --rm openeuler/folly:{Tag} bash
+    ```
+  - Folly已安装在`/usr/local`目录下，编译依赖Folly的程序
+    ```
+    g++ -std=c++20 example.cpp -o example -lfolly -lglog -lgflags -lfmt -lpthread
+    ./example
+    ```
+  - 查看已安装的Folly头文件与库
+    ```
+    ls /usr/local/include/folly
+    ls /usr/local/lib*/libfolly*
+    ```
+
+license: Apache-2.0
+similar_packages:
+  - Abseil: Google开源的高质量C++基础库集合
+  - Boost: 广泛使用的C++通用库集合
+  - oneTBB: Intel开源的C++并行编程库
+
+dependency:
+  - boost
+  - gflags
+  - glog
+  - fmt
+  - libevent
+  - openssl
+  - zlib
+  - zstd
+  - snappy
+  - lz4
+  - libsodium
+  - libunwind
+  - libdwarf
+  - libaio
+
+homepage: https://github.com/facebook/folly
+upstream:
+  backend: GitHub
+  version_url: facebook/folly
+  version_prefix: v
+  version_filter: alpha;rc;candidate;beta;pre
+  version_scheme: RPM
