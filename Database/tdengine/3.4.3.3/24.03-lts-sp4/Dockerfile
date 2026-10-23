@@ -1,0 +1,17 @@
+ARG BASE=openeuler/openeuler:24.03-lts-sp4
+FROM ${BASE}
+ARG VERSION=3.4.3.3
+
+RUN yum install -y git cmake gcc gcc-c++ make pkgconfig openssl-devel maven golang \
+    zlib-devel zlib-static snappy-devel xz-devel jansson-devel \
+    libatomic-static libstdc++-static tree autoconf automake patch && \
+    yum clean all
+
+RUN git clone -b ver-${VERSION} https://github.com/taosdata/TDengine.git
+
+WORKDIR TDengine
+
+RUN mkdir -p debug && \
+    cd debug && \
+    cmake .. -DBUILD_TOOLS=true -DBUILD_CONTRIB=true && \
+    make -j4
