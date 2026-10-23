@@ -16,6 +16,7 @@ Learn more on [consul website](https://www.consul.io/).
 The tag of each consul docker image is consist of the version of consul and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[2.1.0-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Bigdata/consul/2.1.0/24.03-lts-sp4/Dockerfile) | consul 2.1.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[2.0.4-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/consul/2.0.4/24.03-lts-sp4/Dockerfile) | consul 2.0.4 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[1.22.3-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/consul/1.22.3/24.03-lts-sp4/Dockerfile) | consul 1.22.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[1.22.3-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/consul/1.22.3/24.03-lts-sp3/Dockerfile) | consul 1.22.3 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
