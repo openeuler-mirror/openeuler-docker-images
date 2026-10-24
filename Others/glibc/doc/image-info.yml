@@ -11,6 +11,7 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
+  |[2.43-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/glibc/2.43/24.03-lts-sp4/Dockerfile) | glibc 2.43 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[2.34-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/glibc/2.34/24.03-lts-sp4/Dockerfile) | glibc 2.34 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[2.42.9000-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/glibc/2.42.9000/24.03-lts-sp4/Dockerfile) | glibc 2.42.9000 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[2.42-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/glibc/2.42/24.03-lts-sp4/Dockerfile) | glibc 2.42 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
