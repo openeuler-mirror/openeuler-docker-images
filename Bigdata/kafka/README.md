@@ -17,6 +17,7 @@ Learn more on [Kafka website](https://kafka.apache.org/).
 The tag of each kafka docker image is consist of the version of kafka and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[4.4.0-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kafka/4.4.0/24.03-lts-sp4/Dockerfile) | kafka 4.4.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[4.3.2-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kafka/4.3.2/24.03-lts-sp4/Dockerfile) | kafka 4.3.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[4.3.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kafka/4.3.1/24.03-lts-sp4/Dockerfile) | kafka 4.3.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[4.1.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kafka/4.1.0/24.03-lts-sp4/Dockerfile) | kafka 4.1.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
