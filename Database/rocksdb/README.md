@@ -16,6 +16,7 @@ Learn more on [RocksDB](http://rocksdb.org/).
 The tag of each `rocksdb` docker image is consist of the version of `rocksdb` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[11.12-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Database/rocksdb/11.12/24.03-lts-sp4/Dockerfile) | rocksdb 11.12 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[11.8.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/rocksdb/11.8.1/24.03-lts-sp4/Dockerfile) | rocksdb 11.8.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[8.3.3-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/rocksdb/8.3.3/24.03-lts-sp4/Dockerfile) | rocksdb 8.3.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[7.9.2-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/rocksdb/7.9.2/24.03-lts-sp4/Dockerfile) | rocksdb 7.9.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
