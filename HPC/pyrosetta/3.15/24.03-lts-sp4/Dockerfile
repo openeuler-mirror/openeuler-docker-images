@@ -71,10 +71,10 @@ RUN dnf install -y --setopt=install_weak_deps=False \
         python3 python3-pip libstdc++ zlib \
     && dnf clean all && rm -rf /var/cache/dnf
 
-COPY --from=builder /out/*.whl /tmp/pyrosetta.whl
+COPY --from=builder /out/*.whl /tmp/wheels/
 RUN python3 -m venv /opt/pyrosetta \
-    && /opt/pyrosetta/bin/pip install --no-cache-dir /tmp/pyrosetta.whl \
-    && rm -f /tmp/pyrosetta.whl
+    && /opt/pyrosetta/bin/pip install --no-cache-dir /tmp/wheels/*.whl \
+    && rm -rf /tmp/wheels
 
 ENV PATH=/opt/pyrosetta/bin:${PATH}
 
