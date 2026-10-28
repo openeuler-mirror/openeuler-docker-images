@@ -1,55 +1,83 @@
 ARG BASE=openeuler/openeuler:24.03-lts-sp4
+
 FROM ${BASE} AS builder
 
-# RosettaCommons/rosetta publishes the 3.15 release as tag "v3.15"
-# (commit df75a9c48e763e52a7aa3f5dfba077f4da88dbf5). The auto-generated
-# "v3.15-dev*" tag used by the upgrade bot does not exist.
-ARG VERSION=v3.15
+ARG VERSION=3.15
+ARG ROSETTA_REPO=https://github.com/RosettaCommons/rosetta.git
+ARG JOBS=
 
-RUN dnf update -y \
-    && dnf install -y \
-        git gcc gcc-c++ make cmake ninja-build clang llvm \
-        python3 python3-devel python3-pip python3-setuptools \
-        xz zlib-devel wget which findutils \
-    && dnf clean all \
-    && rm -rf /var/cache/dnf
+ENV GIT_TERMINAL_PROMPT=0
+ENV LANG=C.UTF-8
 
-WORKDIR /opt
+RUN dnf install -y --setopt=install_weak_deps=False \
+        gcc gcc-c++ make \
+        ca-certificates git curl xz tar which gawk \
+        clang \
+        cmake \
+        python3 python3-devel python3-pip \
+    && dnf clean all && rm -rf /var/cache/dnf \
+    && test "$(cmake --version | head -1 | awk '{print $3}' | cut -d. -f1)" -lt 4 \
+    && cmajor="$(clang --version | head -1 | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -1 | cut -d. -f1)" \
+    && test "$cmajor" -lt 20 \
+    && clang++ --version >/dev/null \
+    && python3 -c 'import sys; assert (3,8) <= sys.version_info[:2] <= (3,13), sys.version'
 
-RUN git clone --depth 1 --branch ${VERSION} \
-        --recurse-submodules --shallow-submodules \
-        https://github.com/RosettaCommons/rosetta.git /opt/rosetta
+RUN python3 -m venv /opt/pyrosetta \
+    && /opt/pyrosetta/bin/pip install --no-cache-dir -U pip setuptools wheel ninja
+
+ENV PATH=/opt/pyrosetta/bin:${PATH}
+
+WORKDIR /src
+RUN git clone --depth 1 --branch "v${VERSION}" "${ROSETTA_REPO}" rosetta \
+    && git -C rosetta describe --tags --exact-match \
+    && git -C rosetta rev-parse --short HEAD
+
+WORKDIR /src/rosetta/source/src/python/PyRosetta
 
 # binder uses LLVM 6.0.1's clang and cannot locate openEuler GCC 12's
 # libstdc++ headers automatically ("cstddef"/"bits/c++config.h" not found).
-# Inject the GCC 12 C++ include paths explicitly; the multiarch subdirectory
-# is resolved dynamically so the same Dockerfile works on x86_64 and aarch64.
-RUN cd /opt/rosetta/source/src/python/PyRosetta \
-    && multiarch="$(gcc -dumpmachine)" \
-    && python3 build.py -j$(nproc) \
-        --binder-llvm-options "-isystem /usr/include/c++/12 -isystem /usr/include/c++/12/${multiarch} -isystem /usr/include/c++/12/backward" \
-        --create-package /opt/pyrosetta-package
+# Resolve the GCC major version and the multiarch triplet dynamically so the
+# same Dockerfile works on both amd64 and arm64.
+RUN set -eux; \
+    PY_INC="$(python3 -c 'import sysconfig; print(sysconfig.get_paths()["include"])')"; \
+    PY_LIB="$(python3 -c 'import sysconfig, os; print(os.path.join(sysconfig.get_config_var("LIBDIR") or "/usr/lib64", sysconfig.get_config_var("LDLIBRARY") or ("libpython" + sysconfig.get_config_var("VERSION") + ".so")))')"; \
+    GCC_MAJOR="$(gcc -dumpversion | cut -d. -f1)"; \
+    TRIPLET="$(gcc -dumpmachine)"; \
+    test -f "$PY_INC/Python.h"; \
+    test -f "$PY_LIB"; \
+    test -f "/usr/include/c++/${GCC_MAJOR}/cstddef"; \
+    mkdir -p /out; \
+    python build.py -j"${JOBS}" \
+        --python-include-dir="$PY_INC" \
+        --python-lib="$PY_LIB" \
+        --binder-llvm-options "-isystem /usr/include/c++/${GCC_MAJOR} -isystem /usr/include/c++/${GCC_MAJOR}/${TRIPLET} -isystem /usr/include/c++/${GCC_MAJOR}/backward"
 
-# Pin the Python package metadata to 3.15 and skip ez_setup: the base image's
-# setuptools no longer provides pkg_resources, so ez_setup would try to download
-# setuptools 3.3, which does not work on Python 3.11.
-RUN sed -i '/ez_setup/d' /opt/pyrosetta-package/setup/setup.py \
-    && printf '{"version": "3.15"}\n' > /opt/pyrosetta-package/version.json
+# Build the wheel separately so the package metadata can be pinned to 3.15.
+# ez_setup is removed because it would otherwise download setuptools 3.3,
+# which is incompatible with Python 3.11 and modern setuptools.
+RUN sed -i '/ez_setup/d' src/setup.py \
+    && BUILD_DIR="$(find /src/rosetta/source/build/PyRosetta -type d -path '*/release/build' | head -n 1)" \
+    && test -n "$BUILD_DIR" \
+    && printf '{"version": "3.15"}\n' > /src/rosetta/source/.version.json \
+    && printf '{"version": "3.15"}\n' > "$(dirname "$BUILD_DIR")/version.json" \
+    && cd "$BUILD_DIR" \
+    && python setup.py bdist_wheel -d /out
 
-RUN python3 -m pip install --no-cache-dir --target /opt/pyrosite numpy \
-    && python3 -m pip install --no-cache-dir --target /opt/pyrosite /opt/pyrosetta-package/setup
+FROM ${BASE} AS runtime
 
-FROM ${BASE}
+ENV LANG=C.UTF-8
 
-RUN dnf update -y \
-    && dnf install -y python3 zlib \
-    && dnf clean all \
-    && rm -rf /var/cache/dnf
+RUN dnf install -y --setopt=install_weak_deps=False \
+        python3 python3-pip libstdc++ zlib \
+    && dnf clean all && rm -rf /var/cache/dnf
 
-COPY --from=builder /opt/pyrosite /opt/pyrosite
+COPY --from=builder /out/*.whl /tmp/pyrosetta.whl
+RUN python3 -m venv /opt/pyrosetta \
+    && /opt/pyrosetta/bin/pip install --no-cache-dir /tmp/pyrosetta.whl \
+    && rm -f /tmp/pyrosetta.whl
 
-ENV PYTHONPATH=/opt/pyrosite
+ENV PATH=/opt/pyrosetta/bin:${PATH}
 
-WORKDIR /workspace
+RUN python -c "import pyrosetta, pyrosetta.rosetta; print('PyRosetta OK:', pyrosetta.__file__)"
 
-CMD ["/bin/bash"]
+CMD ["python"]
