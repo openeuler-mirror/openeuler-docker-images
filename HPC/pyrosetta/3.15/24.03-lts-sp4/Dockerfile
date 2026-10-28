@@ -10,7 +10,7 @@ ENV GIT_TERMINAL_PROMPT=0
 ENV LANG=C.UTF-8
 
 RUN dnf install -y --setopt=install_weak_deps=False \
-        gcc gcc-c++ make \
+        gcc gcc-c++ make zlib-devel findutils \
         ca-certificates git curl xz tar which gawk \
         clang \
         cmake \
