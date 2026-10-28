@@ -4,7 +4,9 @@ FROM ${BASE} AS builder
 
 ARG VERSION=3.15
 ARG ROSETTA_REPO=https://github.com/RosettaCommons/rosetta.git
-ARG JOBS=
+# Empty JOBS makes build.py omit -j, so ninja uses every core; on the shared
+# CI runners that exhausts memory (clang++ killed with exit code 137).
+ARG JOBS=8
 
 ENV GIT_TERMINAL_PROMPT=0
 ENV LANG=C.UTF-8
