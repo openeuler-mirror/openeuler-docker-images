@@ -4,9 +4,11 @@ FROM ${BASE} AS builder
 
 ARG VERSION=3.15
 ARG ROSETTA_REPO=https://github.com/RosettaCommons/rosetta.git
-# Empty JOBS makes build.py omit -j, so ninja uses every core; on the shared
-# CI runners that exhausts memory (clang++ killed with exit code 137).
-ARG JOBS=8
+# Leave JOBS empty to auto-detect a safe parallelism from the build
+# container's memory limit below. An empty value must not reach build.py:
+# build.py then omits -j and ninja uses every core, which OOMs on the
+# smaller shared CI runners (clang++ killed with exit code 137).
+ARG JOBS=
 
 ENV GIT_TERMINAL_PROMPT=0
 ENV LANG=C.UTF-8
@@ -48,6 +50,23 @@ RUN set -eux; \
     test -f "$PY_INC/Python.h"; \
     test -f "$PY_LIB"; \
     test -f "/usr/include/c++/${GCC_MAJOR}/cstddef"; \
+    if [ -z "${JOBS}" ]; then \
+        MEM_KB="$(awk '/MemTotal/ {print $2}' /proc/meminfo)"; \
+        MEM_LIMIT="$(cat /sys/fs/cgroup/memory.max 2>/dev/null || cat /sys/fs/cgroup/memory/memory.limit_in_bytes 2>/dev/null || true)"; \
+        case "${MEM_LIMIT}" in \
+            ''|*[!0-9]*) MEM_LIMIT=$((MEM_KB * 1024)) ;; \
+        esac; \
+        if [ "${MEM_LIMIT}" -lt "$((MEM_KB * 1024))" ]; then \
+            MEM_MB=$((MEM_LIMIT / 1024 / 1024)); \
+        else \
+            MEM_MB=$((MEM_KB / 1024)); \
+        fi; \
+        JOBS=$((MEM_MB / 6144)); \
+        if [ "${JOBS}" -gt "$(nproc)" ]; then JOBS="$(nproc)"; fi; \
+        if [ "${JOBS}" -gt 8 ]; then JOBS=8; fi; \
+        if [ "${JOBS}" -lt 1 ]; then JOBS=1; fi; \
+        echo "Auto-detected JOBS=${JOBS} (memory ${MEM_MB} MiB)"; \
+    fi; \
     mkdir -p /out; \
     python build.py -j"${JOBS}" \
         --python-include-dir="$PY_INC" \
