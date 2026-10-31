@@ -30,4 +30,3 @@ USER root
 
 CMD ["gulp", "--version"]
 
-# CI: trigger the aarch64 functional test flow (comment only, no functional change)
