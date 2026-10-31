@@ -31,4 +31,3 @@ USER root
 WORKDIR /workspace
 
 CMD ["gradle", "--version"]
-

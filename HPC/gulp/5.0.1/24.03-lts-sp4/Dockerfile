@@ -29,4 +29,3 @@ WORKDIR /workspace
 USER root
 
 CMD ["gulp", "--version"]
-
