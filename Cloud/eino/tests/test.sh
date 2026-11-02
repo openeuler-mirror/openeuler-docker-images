@@ -108,7 +108,7 @@ test_eino_module() {
         "${EINO_DIR}" "${EINO_MODULE}"
 }
 
-build_acceptance_module() {
+test_acceptance_module() {
     local output rc
 
     WORKDIR="$(mktemp -d)" || {
@@ -246,7 +246,7 @@ main() {
     if ! test_eino_module; then
         failures=$((failures + 1))
     fi
-    if ! build_acceptance_module; then
+    if ! test_acceptance_module; then
         failures=$((failures + 1))
     else
         if ! test_core_function; then
