@@ -111,4 +111,5 @@ images:
   tensorrt-llm: tensorrt-llm
   openviking: openviking
   dsh: dsh
-
+  mem0: mem0
+  st-embed: st-embed
