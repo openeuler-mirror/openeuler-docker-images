@@ -110,3 +110,5 @@ images:
   langgraph: langgraph
   tensorrt-llm: tensorrt-llm
   openviking: openviking
+  dsh: dsh
+
