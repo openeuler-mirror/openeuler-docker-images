@@ -92,3 +92,4 @@ RUN printf '/usr/local/lib\n/usr/local/lib64\n' > /etc/ld.so.conf.d/protobuf.con
 USER root
 
 CMD ["protoc", "--version"]
+
