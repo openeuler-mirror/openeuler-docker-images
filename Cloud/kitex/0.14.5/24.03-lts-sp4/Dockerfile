@@ -43,3 +43,4 @@ WORKDIR /workspace
 USER root
 
 CMD ["kitex", "--version"]
+
