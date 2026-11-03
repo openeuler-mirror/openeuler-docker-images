@@ -35,3 +35,4 @@ COPY --from=build /usr/local/sundials /usr/local/sundials
 ENV LD_LIBRARY_PATH=/usr/local/sundials/lib64:${LD_LIBRARY_PATH}
 
 USER root
+
