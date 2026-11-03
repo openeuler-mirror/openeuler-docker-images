@@ -5,7 +5,7 @@ ARG VERSION=0.24.0
 
 RUN dnf install -y python3-pip && dnf clean all
 
-RUN pip install --no-cache-dir -i https://pypi.tuna.tsinghua.edu.cn/simple pysam==${VERSION}
+RUN pip install --no-cache-dir pysam==${VERSION}
 
 USER root
 
