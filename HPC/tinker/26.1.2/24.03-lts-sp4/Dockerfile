@@ -42,3 +42,4 @@ WORKDIR /workspace
 USER root
 
 CMD ["/bin/bash"]
+
