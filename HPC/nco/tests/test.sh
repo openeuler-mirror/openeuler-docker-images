@@ -92,7 +92,7 @@ test_core_function() {
         printf 'FAIL: created attribute long_name="Temperature" not found in metadata:\n%s\n' "${output}" >&2
         return 1
     fi
-    printf 'PASS: ncatted write + ncks -m readback of attribute\n'
+    printf 'INFO: ncatted write + ncks -m readback of attribute\n'
 
     if ncap2 -s 'temp_sq=temp*temp' -O "${att_nc}" "${sq_nc}" 2>"${workdir}/ncap2.err"; then
         :
@@ -116,7 +116,7 @@ test_core_function() {
             return 1
         fi
     done
-    printf 'PASS: ncap2 computed temp_sq=temp*temp and ncks read back all values\n'
+    printf 'PASS: attribute round-trip and ncap2 computed temp_sq=temp*temp\n'
 
     rm -rf "${workdir}"
 }
