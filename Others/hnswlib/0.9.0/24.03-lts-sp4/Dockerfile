@@ -21,3 +21,4 @@ COPY --from=builder /tmp/hnswlib-${VERSION}/LICENSE /usr/local/share/licenses/hn
 USER root
 
 CMD ["bash"]
+
