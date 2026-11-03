@@ -13,16 +13,17 @@ WORKDIR="$(mktemp -d "${TMPDIR:-/tmp}/mfem-test.XXXXXX")"
 trap 'rm -rf "${WORKDIR}"' EXIT
 
 test_install_artifacts() {
-    local f missing=0
+    local f missing=()
 
     for f in "${MFEM_LIB}" "${MFEM_EX1}" "${MFEM_MESH}" "${MFEM_HEADER}"; do
         if [[ ! -e "${f}" ]]; then
-            printf 'FAIL: expected installed artifact missing: %s\n' "${f}" >&2
-            missing=1
+            missing+=("${f}")
         fi
     done
 
-    if (( missing )); then
+    if (( ${#missing[@]} )); then
+        printf 'FAIL: expected installed artifacts missing: %s\n' \
+            "${missing[*]}" >&2
         return 1
     fi
 
