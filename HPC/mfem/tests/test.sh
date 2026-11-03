@@ -5,6 +5,12 @@ set -euo pipefail
 
 PREFIX="/usr/local"
 MFEM_HEADER="${PREFIX}/include/mfem/config/config.hpp"
+# MFEM >= 4.7 keeps the version macros in _config.hpp and config.hpp only
+# includes it; older releases define them directly in config.hpp.
+MFEM_VERSION_HEADERS=(
+    "${PREFIX}/include/mfem/config/_config.hpp"
+    "${MFEM_HEADER}"
+)
 MFEM_LIB="${PREFIX}/lib/libmfem.a"
 MFEM_EX1="${PREFIX}/share/mfem/examples/ex1"
 MFEM_MESH="${PREFIX}/share/mfem/data/star.mesh"
@@ -13,16 +19,17 @@ WORKDIR="$(mktemp -d "${TMPDIR:-/tmp}/mfem-test.XXXXXX")"
 trap 'rm -rf "${WORKDIR}"' EXIT
 
 test_install_artifacts() {
-    local f missing=0
+    local f missing=()
 
     for f in "${MFEM_LIB}" "${MFEM_EX1}" "${MFEM_MESH}" "${MFEM_HEADER}"; do
         if [[ ! -e "${f}" ]]; then
-            printf 'FAIL: expected installed artifact missing: %s\n' "${f}" >&2
-            missing=1
+            missing+=("${f}")
         fi
     done
 
-    if (( missing )); then
+    if (( ${#missing[@]} )); then
+        printf 'FAIL: expected installed artifacts missing: %s\n' \
+            "${missing[*]}" >&2
         return 1
     fi
 
@@ -30,23 +37,29 @@ test_install_artifacts() {
 }
 
 test_version() {
-    local line reported="" found=0
+    local header line reported="" found=0
 
-    while IFS= read -r line; do
-        case "${line}" in
-            '#define MFEM_VERSION_STRING '*)
-                reported="${line##*MFEM_VERSION_STRING }"
-                reported="${reported%\"}"
-                reported="${reported#\"}"
-                found=1
-                break
-                ;;
-        esac
-    done < "${MFEM_HEADER}"
+    for header in "${MFEM_VERSION_HEADERS[@]}"; do
+        [[ -f "${header}" ]] || continue
+        while IFS= read -r line; do
+            case "${line}" in
+                '#define MFEM_VERSION_STRING '*)
+                    reported="${line##*MFEM_VERSION_STRING }"
+                    reported="${reported%\"}"
+                    reported="${reported#\"}"
+                    found=1
+                    break
+                    ;;
+            esac
+        done < "${header}"
+        if (( found )); then
+            break
+        fi
+    done
 
     if (( ! found )); then
         printf 'FAIL: no "#define MFEM_VERSION_STRING" entry in %s\n' \
-            "${MFEM_HEADER}" >&2
+            "${MFEM_VERSION_HEADERS[*]}" >&2
         return 1
     fi
 

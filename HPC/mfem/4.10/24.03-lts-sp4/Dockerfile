@@ -19,3 +19,4 @@ COPY --from=builder /usr/local /usr/local
 WORKDIR /workspace
 USER root
 CMD ["/bin/bash"]
+
