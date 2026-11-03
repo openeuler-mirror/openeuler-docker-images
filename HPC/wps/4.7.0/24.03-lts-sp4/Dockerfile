@@ -114,3 +114,4 @@ RUN printf "/usr/local/lib\n/usr/local/lib64\n" > /etc/ld.so.conf.d/wps-local.co
 
 WORKDIR /WPS
 USER root
+
