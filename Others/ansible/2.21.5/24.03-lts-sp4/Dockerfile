@@ -28,7 +28,6 @@ RUN curl -fSL --connect-timeout 30 --max-time 600 --retry 3 --retry-delay 5 \
 ENV PATH=/usr/local/python3.12/bin:$PATH
 
 RUN python3.12 -m pip install --no-cache-dir \
-      -i https://pypi.tuna.tsinghua.edu.cn/simple \
       ansible-core==${VERSION}
 
 FROM ${BASE}
@@ -43,3 +42,4 @@ ENV PATH=/usr/local/python3.12/bin:$PATH
 CMD ["bash"]
 
 USER root
+
