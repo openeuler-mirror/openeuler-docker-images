@@ -40,8 +40,6 @@ assert_release_version() {
         fail "${context}: version mismatch: expected=<${EXPECTED_RELEASE}> actual=<${reported}>"
         return 1
     fi
-
-    printf 'PASS: %s reports version %s\n' "${context}" "${reported}"
 }
 
 test_config_version() {
@@ -60,7 +58,11 @@ test_config_version() {
         return 1
     fi
 
-    assert_release_version "${output}" "jemalloc-config --version"
+    if ! assert_release_version "${output}" "jemalloc-config --version"; then
+        return 1
+    fi
+
+    printf 'PASS: jemalloc-config --version reports %s\n' "${output}"
 }
 
 test_allocator_api() {
