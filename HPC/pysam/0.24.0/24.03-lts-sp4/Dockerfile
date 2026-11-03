@@ -8,3 +8,4 @@ RUN dnf install -y python3-pip && dnf clean all
 RUN pip install --no-cache-dir -i https://pypi.tuna.tsinghua.edu.cn/simple pysam==${VERSION}
 
 USER root
+
