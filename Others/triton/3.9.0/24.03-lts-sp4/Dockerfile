@@ -17,3 +17,4 @@ ENV PATH=/opt/venv/bin:$PATH
 USER root
 
 CMD ["python3", "-c", "import triton; print('Triton', triton.__version__)"]
+
