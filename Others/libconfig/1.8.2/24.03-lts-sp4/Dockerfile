@@ -43,3 +43,4 @@ ENV PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 CMD ["bash"]
 
 USER root
+

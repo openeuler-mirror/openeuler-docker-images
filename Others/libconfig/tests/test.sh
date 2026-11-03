@@ -34,19 +34,21 @@ pkg_config() {
 }
 
 test_version() {
-    local module="$1" actual
+    local module actual
 
-    if ! actual="$(pkg_config --modversion "${module}" 2>&1)"; then
-        fail "pkg-config --modversion ${module} failed: ${actual}"
-        return 1
-    fi
+    for module in libconfig libconfig++; do
+        if ! actual="$(pkg_config --modversion "${module}" 2>&1)"; then
+            fail "pkg-config --modversion ${module} failed: ${actual}"
+            return 1
+        fi
 
-    if [[ "${actual}" != "${EXPECTED_VERSION}" ]]; then
-        fail "pkg-config ${module} version mismatch: expected=<${EXPECTED_VERSION}> actual=<${actual}>"
-        return 1
-    fi
+        if [[ "${actual}" != "${EXPECTED_VERSION}" ]]; then
+            fail "pkg-config ${module} version mismatch: expected=<${EXPECTED_VERSION}> actual=<${actual}>"
+            return 1
+        fi
+    done
 
-    printf 'PASS: pkg-config reports %s %s\n' "${module}" "${actual}"
+    printf 'PASS: pkg-config reports libconfig and libconfig++ %s\n' "${EXPECTED_VERSION}"
 }
 
 test_installed_files() {
@@ -221,10 +223,7 @@ main() {
         return 1
     }
 
-    if ! test_version libconfig; then
-        failures=$((failures + 1))
-    fi
-    if ! test_version libconfig++; then
+    if ! test_version; then
         failures=$((failures + 1))
     fi
     if ! test_installed_files; then
