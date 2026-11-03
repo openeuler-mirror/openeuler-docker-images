@@ -34,3 +34,4 @@ WORKDIR /data
 
 USER root
 CMD ["/bin/bash"]
+
