@@ -31,3 +31,4 @@ COPY --from=builder /usr/local/include/lua.h /usr/local/include/luaconf.h /usr/l
 USER root
 
 CMD ["lua"]
+
