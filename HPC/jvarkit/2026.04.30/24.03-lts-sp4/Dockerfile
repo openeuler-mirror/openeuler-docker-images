@@ -42,3 +42,4 @@ ENV JVARKIT_JAR=/opt/jvarkit/dist/jvarkit.jar
 USER root
 WORKDIR /data
 CMD ["/bin/bash"]
+
