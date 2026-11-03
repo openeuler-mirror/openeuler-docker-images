@@ -25,3 +25,4 @@ FROM ${BASE}
 COPY --from=builder /usr/local /usr/local
 
 USER root
+
