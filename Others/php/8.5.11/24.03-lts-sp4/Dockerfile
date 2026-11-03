@@ -67,3 +67,4 @@ RUN ldconfig
 USER root
 
 CMD ["php", "-a"]
+
