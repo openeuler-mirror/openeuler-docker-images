@@ -18,3 +18,4 @@ COPY --from=builder /tmp/taskflow-${VERSION}/taskflow /usr/local/include/taskflo
 COPY --from=builder /tmp/taskflow-${VERSION}/LICENSE /usr/local/share/licenses/taskflow/LICENSE
 
 USER root
+
