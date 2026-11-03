@@ -31,3 +31,4 @@ COPY --from=builder /usr/local /usr/local
 USER root
 
 CMD ["erl"]
+
