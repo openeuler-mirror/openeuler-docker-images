@@ -6,7 +6,7 @@ ARG VERSION=3.9.0
 
 RUN python3 -m venv /opt/venv && \
     /opt/venv/bin/pip install --no-cache-dir --timeout 60 --retries 3 \
-      -i https://pypi.tuna.tsinghua.edu.cn/simple triton==${VERSION}
+      -i https://pypi.org/simple triton==${VERSION}
 
 FROM ${BASE}
 
@@ -17,3 +17,4 @@ ENV PATH=/opt/venv/bin:$PATH
 USER root
 
 CMD ["python3", "-c", "import triton; print('Triton', triton.__version__)"]
+
