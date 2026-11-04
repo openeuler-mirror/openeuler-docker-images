@@ -30,7 +30,7 @@ download: |
 usage: |
   - 运行容器
     ```bash
-    docker run -d --name fbthrift openeuler/fbthrift:{Tag}
+    docker run -dit --name fbthrift openeuler/fbthrift:{Tag} /bin/bash
     ```
   
   - 使用 thrift 编译器
