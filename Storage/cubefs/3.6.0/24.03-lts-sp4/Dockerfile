@@ -24,3 +24,4 @@ COPY --from=builder /usr/local/go /usr/local/go
 COPY --from=builder /app/cubefs/build/bin/* /usr/local/bin/
 
 WORKDIR /usr/local/bin
+
