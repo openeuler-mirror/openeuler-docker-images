@@ -21,9 +21,9 @@ download: |
   ```
 
 usage: |
-  以下命令验证容器内软件版本是否和`{Tag}`指示一致:
+  CPMD 不支持 `--version`，以下命令确认容器内已安装 `cpmd.x`（版本以 `{Tag}` 为准）：
   ```
-  docker run openeuler/cpmd:{Tag} cpmd.x --version
+  docker run --rm openeuler/cpmd:{Tag} which cpmd.x
   ```
   
   以下示例使用MPI运行CPMD计算:
