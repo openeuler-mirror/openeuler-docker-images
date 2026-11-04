@@ -27,3 +27,4 @@ ENV HADOOP_HOME=/usr/local/hadoop/
 WORKDIR /usr/local/hive/bin
 EXPOSE 10000 10002 9083
 CMD ["hive"]
+
