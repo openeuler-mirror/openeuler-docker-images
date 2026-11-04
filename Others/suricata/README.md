@@ -17,6 +17,7 @@ the Open Information Security Foundation ([OISF](https://oisf.net/)). Suricata i
 The tag of each suricata docker image is consist of the version of suricata and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[8.0.8-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/suricata/8.0.8/24.03-lts-sp4/Dockerfile) | suricata 8.0.8 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[8.0.7-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/suricata/8.0.7/24.03-lts-sp4/Dockerfile) | suricata 8.0.7 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[8.0.4-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/suricata/8.0.4/24.03-lts-sp4/Dockerfile) | suricata 8.0.4 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[8.0.4-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/suricata/8.0.4/24.03-lts-sp3/Dockerfile) | suricata 8.0.4 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
