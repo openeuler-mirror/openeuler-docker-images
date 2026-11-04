@@ -35,7 +35,7 @@ usage: |
     ```
     docker run -d --name my-dotnet-aspnet -p 8080:8080 openeuler/dotnet-aspnet:{Tag}
     ```
-    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。`my-dotnet-aspnet`启动之后，通过`http://localhost:8080`访问服务。
+    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。`my-dotnet-aspnet` 是 ASP.NET 运行时基础镜像，直接启动会执行 `dotnet --info` 并退出；运行 Web 应用请参考下方 HelloWorld 示例。
   
   - 使用示例
 
