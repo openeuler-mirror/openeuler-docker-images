@@ -35,7 +35,7 @@ usage: |
     ```
     docker run -d --name my-bind9 -p 30053:53 openeuler/bind9:{Tag}
     ```
-    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。`my-bind9`启动之后，通过`http://localhost:30053`地址访问该实例。
+    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。`my-bind9`启动之后，可通过 `dig @127.0.0.1 -p 30053 <域名>` 验证 DNS 服务（53 端口为 DNS，不是 HTTP）。
   
   - 启动参数
 
