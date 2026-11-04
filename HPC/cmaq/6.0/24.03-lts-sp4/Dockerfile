@@ -79,3 +79,4 @@ ENV PATH=/usr/lib64/openmpi/bin:$PATH
 
 WORKDIR /opt/cmaq
 CMD ["bash"]
+
