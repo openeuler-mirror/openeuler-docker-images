@@ -42,7 +42,7 @@ usage: |
     ```
     docker run -d --name my-kafka -p 9092:9092 openeuler/kafka:{Tag}
     ```
-    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。`my-kafka`启动之后，通过`http://localhost:9092`访问服务。
+    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。`my-kafka`启动之后，通过 Kafka 客户端连接 `localhost:9092` 访问服务。
   
   - 启动参数
 
