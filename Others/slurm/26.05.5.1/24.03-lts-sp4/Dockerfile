@@ -21,3 +21,4 @@ RUN ./configure --prefix=/usr --sysconfdir=/etc/slurm \
 RUN mkdir -p /etc/slurm /var/log/slurm /var/spool/slurmctld /var/spool/slurmd
 WORKDIR /workspace
 CMD ["/bin/bash"]
+
