@@ -26,9 +26,9 @@ usage: |
   - 启动seaweedfs实例
 
     ```
-    docker run -it --name seaweedfs openeuler/seaweedfs:{Tag}
+    docker run -d --name seaweedfs -p 9333:9333 openeuler/seaweedfs:{Tag} server
     ```
-    `openeuler/seaweedfs`镜像用于验证上游seaweedfs版本和openEuler的集成。
+    `openeuler/seaweedfs` 镜像用于验证上游 seaweedfs 版本和 openEuler 的集成；`server` 会同时启动 master 和 volume，master 监听 `localhost:9333`。
   
 license: Apache-2.0 license
 similar_packages:
