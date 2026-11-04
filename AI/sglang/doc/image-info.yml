@@ -36,17 +36,17 @@ usage: |
 
   拉取镜像（示例）：
   ```
-  docker pull my-registry/sglang:0.5.11
+  docker pull openeuler/sglang:{Tag}
   ```
 
   列出镜像内的产物：
   ```
-  docker run --rm my-registry/sglang:0.5.11 bash -c "find /opt/sglang/dist -type f -maxdepth 3 -print"
+  docker run --rm openeuler/sglang:{Tag} bash -c "find /opt/sglang/dist -type f -maxdepth 3 -print"
   ```
 
   将产物提取到宿主机：
   ```
-  docker create --name tmp my-registry/sglang:0.5.11
+  docker create --name tmp openeuler/sglang:{Tag}
   docker cp tmp:/opt/sglang/dist ./sglang-dist
   docker rm -v tmp
   ```
@@ -79,7 +79,7 @@ usage: |
   ```yaml
   initContainers:
     - name: copy-sglang
-      image: my-registry/sglang:0.5.11
+      image: openeuler/sglang:{Tag}
       command: ["sh","-c","cp -r /opt/sglang/dist /artifacts && chown -R 1000:1000 /artifacts"]
       volumeMounts:
         - name: artifacts
