@@ -44,12 +44,12 @@ abs_diff() {
 
 prepare_inputs() {
     if [ ! -r "${EXAMPLE_DIR}/water.xyz" ]; then
-        printf 'FAIL: expected Tinker example missing: %s/water.xyz\n' \
+        printf 'ERROR: expected Tinker example missing: %s/water.xyz\n' \
             "${EXAMPLE_DIR}" >&2
         return 1
     fi
     if [ ! -r "${PARAMS_DIR}/water03.prm" ]; then
-        printf 'FAIL: expected parameter file missing: %s/water03.prm\n' \
+        printf 'ERROR: expected parameter file missing: %s/water03.prm\n' \
             "${PARAMS_DIR}" >&2
         return 1
     fi
@@ -153,7 +153,7 @@ test_core_function() {
             "${e0}" "${e1}" >&2
         return 1
     fi
-    printf 'PASS: energy invariant under rigid translation (%s vs %s)\n' \
+    printf 'INFO: energy invariant under rigid translation (%s vs %s)\n' \
         "${e0}" "${e1}"
 
     cat > "${TEST_DIR}/stretch.xyz" <<'EOF'
