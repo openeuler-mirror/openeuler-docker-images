@@ -18,6 +18,7 @@ For more information about Logstash, please visit [www.elastic.co/products/logst
 The tag of each logstash docker image is consist of the version of logstash and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[9.5.6-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Bigdata/logstash/9.5.6/24.03-lts-sp4/Dockerfile) | logstash 9.5.6 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[9.5.5-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/logstash/9.5.5/24.03-lts-sp4/Dockerfile) | logstash 9.5.5 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[9.5.4-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/logstash/9.5.4/24.03-lts-sp4/Dockerfile) | logstash 9.5.4 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[9.4.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/logstash/9.4.0/24.03-lts-sp4/Dockerfile) | logstash 9.4.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
