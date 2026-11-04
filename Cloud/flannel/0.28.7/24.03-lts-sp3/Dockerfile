@@ -33,3 +33,4 @@ RUN if [ ${TARGETARCH} = "amd64" ]; then \
 
 ENTRYPOINT ["/usr/bin/flannel"]
 CMD ["--help"]
+
