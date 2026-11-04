@@ -4,7 +4,7 @@ FROM ${BASE}
 ARG TARGETARCH
 ARG VERSION=4.1.7
 
-RUN dnf update -y && dnf install -y wget java-11-openjdk && dnf clean all
+RUN dnf update -y && dnf install -y wget java-11-openjdk util-linux && dnf clean all
 
 WORKDIR /opt/starrocks
 
