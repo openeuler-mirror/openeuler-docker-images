@@ -12,3 +12,4 @@ RUN if [ "$TARGETARCH" = "amd64" ]; then \
     curl -fSL -o doris.tar.gz https://apache-doris-releases.oss-accelerate.aliyuncs.com/apache-doris-${VERSION}-bin-${BUILDARCH}.tar.gz && \
     mkdir -p /usr/local/bin && \
     tar -zxf doris.tar.gz -C /usr/local/ --strip-components=1
+
