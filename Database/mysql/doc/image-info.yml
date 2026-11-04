@@ -32,7 +32,7 @@ usage: |
     ```
     docker run -d --name my-mysql -p 30306:3306 -e MYSQL_ROOT_PASSWORD=openEuler:S3cr3t/ openeuler/mysql:{Tag}
     ```
-    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。`my-mysql`启动之后，通过`http://localhost:30306`访问MySQL服务。
+    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。`my-mysql`启动之后，通过 MySQL 客户端连接 `localhost:30306` 访问服务。
   
   - 启动参数
 
