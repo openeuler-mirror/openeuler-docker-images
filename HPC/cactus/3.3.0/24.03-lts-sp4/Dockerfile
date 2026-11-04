@@ -29,3 +29,4 @@ RUN pip3 install --no-cache-dir -i https://pypi.tuna.tsinghua.edu.cn/simple -U -
 WORKDIR /data
 
 CMD ["cactus", "--help"]
+
