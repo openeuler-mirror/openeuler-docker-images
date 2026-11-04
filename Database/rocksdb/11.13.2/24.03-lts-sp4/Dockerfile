@@ -31,7 +31,7 @@ RUN cmake -S /rocksdb -B /rocksdb/build \
 
 FROM ${BASE}
 
-RUN dnf install -y snappy zstd zlib gflags libstdc++ libgcc && \
+RUN dnf install -y snappy zstd zlib gflags libstdc++ libgcc gcc-c++ && \
     dnf clean all
 
 COPY --from=builder /usr/local/lib /usr/local/lib
