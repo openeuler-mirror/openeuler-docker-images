@@ -39,3 +39,4 @@ RUN wget ${CANN_KERNELS_URL} -O ~/Ascend-cann-kernels.run && \
     chmod +x ~/Ascend-cann-kernels.run && \
     printf "Y\n" | ~/Ascend-cann-kernels.run --install && \
     rm -f ~/Ascend-cann-kernels.run
+
