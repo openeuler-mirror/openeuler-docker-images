@@ -32,7 +32,7 @@ download: |
 usage: |
   验证安装
   ```
-  docker run --rm openeuler/langgraph:{Tag} python3 -c "import langgraph; print(langgraph.__version__)"
+  docker run --rm openeuler/langgraph:{Tag} python3 -c "import importlib.metadata as m; print(m.version('langgraph'))"
   ```
 
 
