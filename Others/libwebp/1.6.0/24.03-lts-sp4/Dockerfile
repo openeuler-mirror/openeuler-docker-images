@@ -25,6 +25,7 @@ FROM ${BASE}
 COPY --from=builder /usr/local/bin /usr/local/bin
 COPY --from=builder /usr/local/lib /usr/local/lib
 COPY --from=builder /usr/local/include /usr/local/include
+COPY --from=builder /usr/lib64/libjpeg.so.62* /usr/lib64/
 
 RUN ldconfig
 
