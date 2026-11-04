@@ -73,7 +73,10 @@ test_build_info() {
         return 1
     fi
 
-    if ! printf '%s\n' "${output}" | grep -Eq 'Rust support:[[:space:]]+yes'; then
+    # Suricata 8 lists Rust support as the RUST compile-time feature on the
+    # "Features:" line; older releases advertise it via "Rust support: yes".
+    if ! printf '%s\n' "${output}" | \
+        grep -Eq 'Rust support:[[:space:]]+yes|(^|[[:space:]])RUST([[:space:]]|$)'; then
         printf 'FAIL: build info does not report Rust support:\n%s\n' \
             "${output}" >&2
         return 1
@@ -124,9 +127,10 @@ test_alert_on_pcap() {
     printf '\xd4\xc3\xb2\xa1\x02\x00\x04\x00' > "${pcap}"
     printf '\x00\x00\x00\x00\x00\x00\x00\x00' >> "${pcap}"
     printf '\xff\xff\x00\x00\x01\x00\x00\x00' >> "${pcap}"
-    # 16-byte record header: timestamp 0, captured/original length 90 bytes
+    # 16-byte record header, little-endian: timestamp 0, captured/original
+    # length 90 bytes (0x5a) must be stored as 5a 00 00 00, not 00 00 00 5a.
     printf '\x00\x00\x00\x00\x00\x00\x00\x00' >> "${pcap}"
-    printf '\x00\x00\x00\x5a\x00\x00\x00\x5a' >> "${pcap}"
+    printf '\x5a\x00\x00\x00\x5a\x00\x00\x00' >> "${pcap}"
     # Ethernet header
     printf '\x00\x11\x22\x33\x44\x55\x66\x77\x88\x99\xaa\xbb\x08\x00' >> "${pcap}"
     # IPv4 header: total length 76, TCP, TTL 64
