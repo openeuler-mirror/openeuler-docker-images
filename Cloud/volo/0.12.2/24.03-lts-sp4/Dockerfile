@@ -39,3 +39,4 @@ WORKDIR /workspace
 USER root
 
 CMD ["volo", "--version"]
+
