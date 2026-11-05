@@ -39,7 +39,7 @@ usage: |
     -e "POSTGRES_USER=kong" \
     -e "POSTGRES_DB=kong" \
     -e "POSTGRES_PASSWORD=kongpass" \
-    openeuler/postgres:{Tag}
+    openeuler/postgres:latest
     ```
 
   3. 准备 Kong 数据库：
