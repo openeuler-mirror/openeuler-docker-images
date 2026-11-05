@@ -11,9 +11,9 @@ RUN curl -fSL --retry 5 --retry-delay 5 --retry-all-errors -o hive.tar.gz https:
 ENV PATH=$PATH:/usr/local/hive/bin
 
 # install java env
-RUN yum install -y java-11-openjdk-devel findutils && \
+RUN yum install -y java-21-openjdk-devel findutils && \
     yum clean all
-ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 
 # install dependent hadoop
 ARG HADOOP_VERSION=3.4.1
