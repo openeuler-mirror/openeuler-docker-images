@@ -116,6 +116,26 @@ usage: |
     go version go1.22.5 linux/amd64
     ```
 
+
+  - 快速验证（编译并运行一个 Go 程序）
+
+    创建测试文件 `main.go`：
+    ```go
+    package main
+
+    import "fmt"
+
+    func main() {
+        fmt.Println("Hello from Go")
+    }
+    ```
+    初始化模块、编译并运行：
+    ```bash
+    docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp openeuler/go:{Tag} sh -c "go mod init example.com/hello && go build -v"
+    docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp openeuler/go:{Tag} ./hello
+    ```
+    预期输出：`Hello from Go`。
+
 license: BSD 3-Clause license
 similar_packages:
   - N/A
