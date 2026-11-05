@@ -34,6 +34,20 @@ usage: |
     ```
 
 
+
+  - 快速验证
+
+    查看帮助和版本：
+    ```bash
+    docker run --rm openeuler/seissol:{Tag} SeisSol --help
+    docker run --rm openeuler/seissol:{Tag} SeisSol --version
+    ```
+    完整模拟需要准备 `parameters.par` 和网格文件（如 PUML `.h5`），将算例目录挂载到 `/data`：
+    ```bash
+    docker run --rm -v /path/to/simulation:/data openeuler/seissol:{Tag} SeisSol parameters.par
+    ```
+    官方算例和网格生成脚本见 https://github.com/SeisSol/Examples。
+
 license: BSD-3-Clause
 similar_packages:
   - SPECFEM3D: 基于谱元法的三维地震波传播模拟软件
