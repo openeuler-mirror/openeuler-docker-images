@@ -12,7 +12,8 @@ RUN yum install -y java-17-openjdk-devel openssh openssh-clients sudo hostname &
     chmod 0400 /root/.ssh/authorized_keys && \
     chmod +x /entrypoint.sh
 
-RUN curl -fSL -o hadoop.tar.gz https://dlcdn.apache.org/hadoop/common/hadoop-${VERSION}/hadoop-${VERSION}.tar.gz; \
+RUN { curl -fSL --retry 5 --retry-delay 5 -o hadoop.tar.gz https://dlcdn.apache.org/hadoop/common/hadoop-${VERSION}/hadoop-${VERSION}.tar.gz || \
+      curl -fSL --retry 5 --retry-delay 5 -o hadoop.tar.gz https://archive.apache.org/dist/hadoop/common/hadoop-${VERSION}/hadoop-${VERSION}.tar.gz; } && \
     mkdir -p /usr/local/hadoop && \
     tar -zxf hadoop.tar.gz -C /usr/local/hadoop --strip-components=1 && \
     rm -rf hadoop.tar.gz
