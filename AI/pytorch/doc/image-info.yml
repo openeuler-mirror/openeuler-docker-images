@@ -68,6 +68,16 @@ usage: |
     docker exec -it my-pytorch /bin/bash
     ```
 
+
+  - 前置条件
+
+    示例使用 Ascend NPU 设备。运行前确认宿主机已安装 Ascend 驱动和固件：
+    ```bash
+    npu-smi info
+    ls /dev/davinci* /dev/davinci_manager /dev/devmm_svm /dev/hisi_hdc
+    ```
+    将 `${device}` 替换为实际 NPU 设备（例如 `/dev/davinci0`），并按文档挂载驱动目录。没有 NPU 时无法执行该示例。
+
 license: BSD 3-Clause license
 similar_packages:
   - TensorFlow: TensorFlow是一个基于数据流编程（dataflow programming）的符号数学系统，被广泛应用于各类机器学习（machine learning）算法的编程实现，其前身是谷歌的神经网络算法库DistBelief。
