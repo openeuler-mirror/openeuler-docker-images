@@ -34,7 +34,7 @@ usage: |
     ```
     docker run -d --name my-dotnet-runtime openeuler/dotnet-runtime:{Tag}
     ```
-    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。`my-dotnet-runtime`启动之后，通过`http://localhost:8080`访问服务。
+    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。`my-dotnet-runtime` 是 .NET 运行时基础镜像，直接启动会执行 `dotnet --info` 并退出；运行应用请参考下方 HelloWorld 示例。
   
   - 使用示例
 
