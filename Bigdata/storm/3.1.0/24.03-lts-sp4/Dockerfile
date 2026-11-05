@@ -19,7 +19,7 @@ ENV STORM_CONF_DIR=/conf
 ENV STORM_DATA_DIR=/data
 ENV STORM_LOG_DIR=/logs
 COPY entrypoint.sh /
-RUN yum install -y java-17-openjdk-devel shadow-utils && \
+RUN yum install -y java-25-openjdk-devel shadow-utils && \
     yum clean all && \
     chmod +x /entrypoint.sh && \
     groupadd -r storm --gid=1000; \
@@ -27,6 +27,6 @@ RUN yum install -y java-17-openjdk-devel shadow-utils && \
     mkdir -p "$STORM_CONF_DIR" "$STORM_DATA_DIR" "$STORM_LOG_DIR"; \
     chown -R storm:storm "$STORM_CONF_DIR" "$STORM_DATA_DIR" "$STORM_LOG_DIR"
 
-ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+ENV JAVA_HOME=/usr/lib/jvm/java-25-openjdk
 WORKDIR /usr/local/storm/
 ENTRYPOINT ["/entrypoint.sh"]
