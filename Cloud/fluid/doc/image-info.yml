@@ -46,6 +46,19 @@ usage: |
     ```
     `openeuler/fluid` 镜像用于验证上游 Fluid 版本和 openEuler 的集成。
 
+
+  - 前置条件
+
+    Fluid 控制器需要运行在 Kubernetes 集群中，并已安装 Fluid CRD。运行前确认：
+    ```bash
+    kubectl get nodes
+    kubectl get crd | grep fluid
+    ```
+    挂载 kubeconfig 后运行：
+    ```bash
+    docker run --rm -v "$HOME/.kube:/root/.kube:ro" openeuler/fluid:{Tag} dataset-controller start
+    ```
+
 license: Apache-2.0 license
 similar_packages:
   - JuiceFS: 面向云原生环境的分布式 POSIX 文件系统，支持多种存储后端。
