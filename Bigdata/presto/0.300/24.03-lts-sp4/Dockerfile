@@ -1,9 +1,10 @@
 ARG BASE=openeuler/openeuler:24.03-lts-sp4
 FROM ${BASE}
 
-ARG PRESTO_VERSION=0.299
+ARG PRESTO_VERSION=0.300
 
-RUN yum install -y java-1.8.0-openjdk python wget tar less
+RUN yum install -y java-17-openjdk python wget tar less
+ENV JAVA_HOME=/usr/lib/jvm/jre-17-openjdk
 
 RUN set -eux; \
     for base in \
