@@ -58,7 +58,7 @@ usage: |
     使用`openeuler/go`容器作为构建和运行时环境，可按照以下内容编译并运行项目
     ```
     # Dockerfile
-    FROM openeuler/go:1.22.5-oe2203sp4
+    FROM openeuler/go:{Tag}
 
     WORKDIR /usr/src/app
     COPY go.mod go.sum ./
@@ -78,23 +78,23 @@ usage: |
 
     在某些情况下，在容器内运行应用程序可能并不合适。要编译但不在Docker实例内运行应用程序，可采用如下方式：
     ```
-    docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp openeuler/go:1.22.5-oe2203sp4 go build -v
+    docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp openeuler/go:{Tag} go build -v
     ```
     这会将当前目录作为卷添加到容器中，将工作目录设置为该卷，然后运行执行`go build`编译项目中的代码，输出为可执行文件myapp。如果项目中包含Makefile编译文件，可以在容器内通过make命令编译:
     ```
-    docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp openeuler/go:1.22.5-oe2203sp4 make
+    docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp openeuler/go:{Tag} make
     ```
   
   - 交叉编译
 
     如果需要为除去linux/amd64之外的其他平台编译应用(例如：windows/386), 可采用如下方式：
     ```
-    docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp -e GOOS=windows -e GOARCH=386 openeuler/go:1.22.5-oe2203sp4 go build -v
+    docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp -e GOOS=windows -e GOARCH=386 openeuler/go:{Tag} go build -v
     ```
     或者，多平台同时构建如下：
     ```
     # 第一步， 运行Go容器
-    docker run --rm -it -v "$PWD":/usr/src/myapp -w /usr/src/myapp openeuler/go:1.22.5-oe2203sp4 bash
+    docker run --rm -it -v "$PWD":/usr/src/myapp -w /usr/src/myapp openeuler/go:{Tag} bash
 
     # 第二步，多平台构建应用
     for GOOS in darwin linux; do
@@ -111,9 +111,9 @@ usage: |
     ```
     docker run -it openeuler/go:{Tag} go --version
     ```
-    例如，`{Tag}`为`1.22.5-oe2203sp4`时，返回类似如下信息则证明环境正常：
+    返回类似如下信息则证明环境正常（版本和架构以实际 Tag 为准）：
     ```
-    go version go1.22.5 linux/amd64
+    go version go1.27.1 linux/arm64
     ```
 
 
