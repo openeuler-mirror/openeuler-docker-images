@@ -59,6 +59,21 @@ usage: |
     docker exec -it my-flannel /bin/bash
     ```
 
+
+  - 前置条件
+
+    文档中的 `--kube-subnet-mgr` 模式需要 Kubernetes 集群访问权限。运行前确认：
+    ```bash
+    kubectl get nodes
+    ```
+    容器内需要能读取 kubeconfig，或注入 `KUBERNETES_SERVICE_HOST` / `KUBERNETES_SERVICE_PORT`。挂载 kubeconfig 的示例：
+    ```bash
+    docker run -d --name my-flannel --cap-add NET_ADMIN --net=host \
+      -v "$HOME/.kube:/root/.kube:ro" \
+      openeuler/flannel:{Tag} --ip-masq --kube-subnet-mgr
+    ```
+    不使用 Kubernetes 时，请改用 etcd 后端并传入 `--etcd-endpoints`。
+
 license: Apache-2.0
 similar_packages:
   - Calico: 基于 BGP 的 Kubernetes 网络与网络策略方案，支持路由和 overlay 模式。
