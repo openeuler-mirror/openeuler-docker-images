@@ -36,7 +36,7 @@ RUN /usr/local/miniconda/bin/conda init bash && \
     /usr/local/miniconda/bin/conda create --name torch_npu -y python=3.8.11
 
 RUN source /root/.bashrc && conda activate torch_npu && \
-    pip3 install attrs decorator psutil numpy absl-py cloudpickle scipy synr==0.5.0 protobuf==3.19.0 tornado -i https://pypi.tuna.tsinghua.edu.cn/simple && \
+    pip3 install attrs decorator psutil numpy absl-py cloudpickle scipy synr==0.5.0 protobuf==3.19.0 tornado -i https://pypi.org/simple && \
     pip3 cache purge
 
 RUN ARCH=$(case "${TARGETARCH:-$(uname -m)}" in \
