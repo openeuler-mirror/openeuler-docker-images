@@ -15,3 +15,4 @@ RUN wget https://thekelleys.org.uk/dnsmasq/dnsmasq-${VERSION}.tar.gz \
     && make install
 
 CMD ["/usr/local/sbin/dnsmasq", "--help"]
+
