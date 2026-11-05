@@ -23,9 +23,9 @@ download: |
   ```
 
 usage: |
-  - 启动容器
+  - 启动容器（后台保持运行）
     ```
-    docker run -dit --name my-daos openeuler/daos:{Tag} /bin/bash
+    docker run -d --name my-daos openeuler/daos:{Tag} sleep infinity
     ```
     用户可根据自身需求选择对应版本的{Tag}。
   
@@ -36,9 +36,14 @@ usage: |
       docker logs -f my-daos
       ```
 
-    运行启动shell会话
+    进入容器 shell 会话
       ```
-      docker run -it --name my-daos openeuler/daos:{Tag} /bin/bash
+      docker exec -it my-daos bash
+      ```
+
+    或以前台交互方式运行
+      ```
+      docker run --rm -it openeuler/daos:{Tag} bash
       ```
 
 license: BSD-2-Clause
