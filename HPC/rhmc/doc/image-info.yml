@@ -27,6 +27,16 @@ usage: |
     ```
     `openeuler/rhmc`镜像用于验证上游SIMULATeQCD版本和openEuler的集成。
 
+
+  - 前置条件
+
+    示例使用 `--gpus all`，需要 NVIDIA GPU、驱动和 nvidia-container-toolkit。运行前确认：
+    ```bash
+    nvidia-smi
+    docker info | grep -i nvidia
+    ```
+    没有 GPU 时无法执行该示例。
+
 license: MIT license
 similar_packages:
   - MILC: 由MILC合作组开发的格点QCD计算代码，支持HMC和RHMC算法。
