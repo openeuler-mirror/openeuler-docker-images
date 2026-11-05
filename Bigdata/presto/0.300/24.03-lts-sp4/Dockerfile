@@ -40,6 +40,7 @@ COPY <<'EOF' /opt/presto/etc/jvm.config
 -XX:+ExplicitGCInvokesConcurrent
 -XX:+HeapDumpOnOutOfMemoryError
 -XX:+ExitOnOutOfMemoryError
+-Djdk.attach.allowAttachSelf=true
 EOF
 COPY <<'EOF' /opt/presto/etc/log.properties
 com.facebook.presto=INFO
