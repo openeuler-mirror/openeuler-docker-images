@@ -25,6 +25,7 @@ RUN curl -o /tmp/memcached.tar.gz https://www.memcached.org/files/memcached-${VE
 
 
 COPY entrypoint.sh /
+RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 
 USER memcache
