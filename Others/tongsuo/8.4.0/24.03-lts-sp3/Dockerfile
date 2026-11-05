@@ -19,7 +19,13 @@ FROM ${BASE}
 COPY --from=builder /usr/local/tongsuo /usr/local/tongsuo
 
 ENV PATH=$PATH:/usr/local/tongsuo/bin
-ENV LD_LIBRARY_PATH=/usr/local/tongsuo/lib64
-RUN cp -f /usr/local/tongsuo/lib64/libssl.so.3 /usr/local/tongsuo/lib64/libcrypto.so.3 /usr/lib64/ && ldconfig
+ENV LD_LIBRARY_PATH=/usr/local/tongsuo/lib64:/usr/local/tongsuo/lib
+RUN found=""; for d in /usr/local/tongsuo/lib64 /usr/local/tongsuo/lib; do \
+      if [ -f "$d/libssl.so.3" ] && [ -f "$d/libcrypto.so.3" ]; then \
+        cp -f "$d/libssl.so.3" "$d/libcrypto.so.3" /usr/lib64/; found=1; \
+      fi; \
+    done; \
+    if [ -z "$found" ]; then echo "tongsuo shared libraries not found"; exit 1; fi; \
+    ldconfig
 
 CMD ["tongsuo", "help"]
