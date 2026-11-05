@@ -5,7 +5,7 @@ ARG TARGETARCH
 ARG VERSION=4.1.7
 
 RUN dnf update -y && dnf install -y wget java-17-openjdk util-linux && dnf clean all
-ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+ENV JAVA_HOME=/usr/lib/jvm/jre-17-openjdk
 
 WORKDIR /opt/starrocks
 
@@ -15,5 +15,8 @@ RUN wget -O starrocks.tar.gz https://releases.starrocks.io/starrocks/StarRocks-$
 
 EXPOSE 8030 8040 9030
 
-ENTRYPOINT ["/opt/starrocks/fe/bin/start_fe.sh"]
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
 CMD ["--daemon"]
