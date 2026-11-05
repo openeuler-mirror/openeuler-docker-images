@@ -29,12 +29,12 @@ download: |
   ```
 
 usage: |
-  - 启动kubernetes实例
+  - 查看 kubeadm 版本
 
     ```
-    docker run -it --name kubernetes openeuler/kubernetes:{Tag}
+    docker run --rm openeuler/kubernetes:{Tag} ./_output/bin/kubeadm version
     ```
-    `openeuler/使用kubernetes`镜像用于验证上游kubernetes版本和openEuler的集成。
+    该镜像内置 kubeadm，默认执行 `kubeadm --help` 后退出，用于验证上游 Kubernetes 版本与 openEuler 的集成。
   
 
 license: Apache-2.0 license
