@@ -25,3 +25,4 @@ COPY --from=builder /app/cubefs/build/bin/* /usr/local/bin/
 
 WORKDIR /usr/local/bin
 
+
