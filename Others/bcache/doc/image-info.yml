@@ -22,12 +22,12 @@ download: |
   ```
 
 usage: |
-  - 启动bcache实例
+  - 验证 make-bcache 工具
 
     ```
-    docker run -it --name bcache openeuler/bcache:{Tag}
+    docker run --rm openeuler/bcache:{Tag} which make-bcache
     ```
-    `openeuler/使用bcache`镜像用于验证上游bcache版本和openEuler的集成。
+    `openeuler/bcache` 镜像提供 `make-bcache` 工具，用于验证上游 bcache 版本和 openEuler 的集成；实际格式化缓存设备时需要挂载块设备并传入设备路径。
 
 license: GPL-2.0 license
 
