@@ -1,7 +1,8 @@
 ARG BASE=openeuler/openeuler:24.03-lts-sp4
 ARG VERSION=9.5.6
+ARG TARGETPLATFORM
 
-FROM elastic/logstash:${VERSION} AS env2yaml
+FROM --platform=$TARGETPLATFORM elastic/logstash:${VERSION} AS env2yaml
 
 FROM ${BASE}
 
