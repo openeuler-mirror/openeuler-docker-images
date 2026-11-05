@@ -20,7 +20,7 @@ RUN wget https://downloads.apache.org/kyuubi/kyuubi-${KYUUBI_VERSION}/apache-kyu
     rm -f apache-kyuubi-${KYUUBI_VERSION}-bin.tgz
 
 # Download Spark (as mentioned in quick start for Spark engine)
-RUN wget https://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop3.tgz && \
+RUN wget -c --tries=5 --timeout=60 --waitretry=10 https://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop3.tgz && \
     tar -xzf spark-${SPARK_VERSION}-bin-hadoop3.tgz && \
     mv spark-${SPARK_VERSION}-bin-hadoop3 /opt/spark && \
     rm -f spark-${SPARK_VERSION}-bin-hadoop3.tgz
