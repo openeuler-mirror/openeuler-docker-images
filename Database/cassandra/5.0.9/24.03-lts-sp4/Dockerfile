@@ -4,7 +4,7 @@ FROM ${BASE}
 ARG TARGETARCH
 ARG VERSION=5.0.9
 
-RUN yum -y install java && \
+RUN yum -y install java util-linux && \
     yum clean all
 
 RUN groupadd --system --gid 1000 cassandra && \
