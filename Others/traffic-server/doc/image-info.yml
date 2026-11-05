@@ -52,7 +52,7 @@ usage: |
       --name traffic-server \
       -p 8081:8080 \
       -v $(pwd)/remap.config:/usr/local/trafficserver/etc/trafficserver/remap.config \
-      my-traffic-server-image
+      openeuler/traffic-server:{Tag}
     ```
     **可选:**
     * 如果你需要自定义 Traffic Server 的默认行为，可以修改默认的 [records.yaml](https://github.com/apache/trafficserver/blob/10.0.5/configs/records.yaml.default.in)，并在启动容器时挂载：
