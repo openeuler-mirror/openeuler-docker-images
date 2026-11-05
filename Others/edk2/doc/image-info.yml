@@ -88,6 +88,15 @@ usage: |
     ......
     ```
 
+
+  - 前置条件
+
+    示例使用 `--device /dev/kvm`，需要宿主机启用 KVM；在虚拟机中运行还需开启嵌套虚拟化。运行前确认：
+    ```bash
+    ls -l /dev/kvm
+    ```
+    如无 KVM，可去掉 `--device /dev/kvm` 执行步骤 2 的普通容器命令，但 QEMU 硬件加速不可用。
+
 license: BSD-2-Clause-Patent
 similar_packages:
   - N/A
