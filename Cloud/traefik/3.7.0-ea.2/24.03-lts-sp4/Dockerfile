@@ -17,3 +17,4 @@ COPY entrypoint.sh /
 EXPOSE 80
 ENTRYPOINT ["bash", "/entrypoint.sh"]
 CMD ["traefik"]
+
