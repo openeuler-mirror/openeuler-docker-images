@@ -19,6 +19,7 @@ FROM ${BASE}
 COPY --from=builder /usr/local/tongsuo /usr/local/tongsuo
 
 ENV PATH=$PATH:/usr/local/tongsuo/bin
-ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/tongsuo/lib64
+ENV LD_LIBRARY_PATH=/usr/local/tongsuo/lib64
+RUN cp -f /usr/local/tongsuo/lib64/libssl.so.3 /usr/local/tongsuo/lib64/libcrypto.so.3 /usr/lib64/ && ldconfig
 
 CMD ["tongsuo", "help"]
