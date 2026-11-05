@@ -33,7 +33,7 @@ RUN mvn -B clean install package \
 
 FROM ${BASE}
 
-RUN yum install -y java-17-openjdk java-17-openjdk-devel python3 && \
+RUN yum install -y java-17-openjdk java-17-openjdk-devel python3 python3-distro && \
     yum clean all
 
 COPY --from=builder /opt/ambari-src /opt/ambari
