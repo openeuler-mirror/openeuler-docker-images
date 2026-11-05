@@ -29,6 +29,7 @@ COPY --from=fdb /usr/lib/libfdb_c.so /usr/lib64/libfdb_c.so
 RUN curl -sL --retry 5 -o /tmp/fdb-headers.tar.gz https://github.com/apple/foundationdb/releases/download/${FDB_VERSION}/fdb-headers-${FDB_VERSION}.tar.gz && \
     mkdir -p /usr/include/foundationdb && \
     tar xzf /tmp/fdb-headers.tar.gz -C /usr/include/foundationdb/ && \
+    curl -sL --retry 5 -o /usr/include/foundationdb/fdb_c_types.h https://raw.githubusercontent.com/apple/foundationdb/${FDB_VERSION}/bindings/c/foundationdb/fdb_c_types.h && \
     rm -f /tmp/fdb-headers.tar.gz
 
 RUN git config --global http.postBuffer 524288000 && \
