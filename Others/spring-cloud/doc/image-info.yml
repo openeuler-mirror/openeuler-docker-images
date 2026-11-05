@@ -25,7 +25,7 @@ download: |
 usage: |
   - 启动容器
     ```
-    docker run -d --name my-spring-cloud openeuler/spring-cloud:{Tag}
+    docker run -it --rm openeuler/spring-cloud:{Tag} bash
     ```
   
   - Spring Cloud 组件: spring-cloud-starter-netflix-eureka-client简介
