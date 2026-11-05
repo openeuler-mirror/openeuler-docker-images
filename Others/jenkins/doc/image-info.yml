@@ -40,7 +40,7 @@ download: |
 usage: |
   - 启动容器
     ```
-    docker run -d --name my-jenkins -p 8080:80 openeuler/jenkins:{Tag}
+    docker run -d --name my-jenkins -p 8080:8080 openeuler/jenkins:{Tag}
     ```
     用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。`my-jenkins`启动之后，通过`http://localhost:8080`访问jenkins服务。
 
