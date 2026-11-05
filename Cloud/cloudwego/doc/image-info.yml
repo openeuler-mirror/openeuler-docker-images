@@ -49,6 +49,27 @@ usage: |
     docker run --rm -w /eino openeuler/cloudwego:0.16.4-oe2403sp4 go build ./...
     ```
 
+
+  - 快速验证（kitex 代码生成）
+
+    创建测试文件 `my.thrift`：
+    ```thrift
+    namespace go example
+
+    struct HelloReq {
+        1: required string name
+    }
+
+    service HelloService {
+        string Hello(1: HelloReq req)
+    }
+    ```
+    生成代码：
+    ```bash
+    docker run --rm -v "$PWD":/workspace -w /workspace openeuler/cloudwego:{Tag} kitex -module example.com/myservice my.thrift
+    ```
+    预期生成 `kitex_gen/` 目录，并输出 `[INFO] Code Generation is Done!`。
+
 license: Apache-2.0 license
 similar_packages:
   - grpc: gRPC Go框架
