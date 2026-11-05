@@ -20,3 +20,4 @@ EXPOSE 7000 7001 7199 9042 9160
 WORKDIR /tmp/apache-cassandra-${VERSION}/bin
 
 CMD ["./cassandra", "-f", "-R"] 
+
