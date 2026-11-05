@@ -41,6 +41,20 @@ usage: |
     docker run --rm -v $(pwd):/workdir -w /workdir openeuler/want:{Tag} wannier.x < wannier.in
     ```
 
+
+  - 快速验证
+
+    `kgrid.x` 从标准输入读取网格尺寸和偏移：
+    ```bash
+    printf '2 2 2\n0 0 0\n' | docker run --rm -i openeuler/want:{Tag} kgrid.x
+    ```
+    预期输出 8 个 k 点，每行包含 k 点坐标和权重 `0.25000000`。
+
+    完整 `wannier.x` 计算需要 WanT 输入文件以及配套的 `.eig`、`.mmn`、`.amn` 等数据文件，将输入目录挂载后运行：
+    ```bash
+    docker run --rm -v "$PWD":/workdir -w /workdir openeuler/want:{Tag} wannier.x < wannier.in
+    ```
+
 license: GPL-2.0
 similar_packages:
   - Wannier90: 最大局域化Wannier函数计算
