@@ -36,7 +36,7 @@ RUN sed -i 's/make_pair<Junction, JunctionStats>/make_pair/' src/tophat_reports.
 
 RUN curl -fSL https://github.com/BenLangmead/bowtie/archive/refs/tags/v1.3.1.tar.gz | tar xz -C /tmp && \
     make -C /tmp/bowtie-1.3.1 -j$(nproc) && \
-    install -m755 /tmp/bowtie-1.3.1/bowtie /tmp/bowtie-1.3.1/bowtie-build /tmp/bowtie-1.3.1/bowtie-inspect /usr/local/bin/ && \
+    cp -a /tmp/bowtie-1.3.1/bowtie* /usr/local/bin/ && \
     rm -rf /tmp/bowtie-1.3.1
 
 WORKDIR /data
