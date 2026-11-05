@@ -25,22 +25,28 @@ download: |
   ```
 
 usage: |
-  你可以通过在命令行中将命令作为参数传递来调用 BusyBox。例如，输入:
-     
-    busybox ls
-  
-  也会使 BusyBox 表现得像 ls 命令。
-  
-  当然，如果每次命令都要加上 /bin/busybox 会很麻烦。所以大多数人会通过为 BusyBox 创建链接（软链接）来使用它：
-  
-    ln -s /usr/local/busybox/bin/busybox ls
-    ./ls
-  
-  这将使 BusyBox 表现为 ls（前提是 ls 命令已被编译进 BusyBox）。
+  本镜像提供 BusyBox 工具集和交互式 shell。
 
-  一般来说，你不需要手动为每个命令创建这些链接，因为当你运行 make install 时，BusyBox 的构建系统会自动为你完成这些操作。
+  - 直接运行 BusyBox 命令（以 `ls /` 为例）：
+    ```
+    docker run --rm openeuler/busybox:{Tag} ls /
+    ```
 
-  如果你直接运行 BusyBox 而不带任何参数，它会列出该 BusyBox 可执行文件中已经编译进去的所有命令（即 applets）。
+  - 进入交互式 shell：
+    ```
+    docker run -it --rm openeuler/busybox:{Tag} sh
+    ```
+
+  - 不带参数运行时会列出镜像内置的全部 applets：
+    ```
+    docker run --rm openeuler/busybox:{Tag}
+    ```
+
+  - 也可以把 BusyBox 作为其他镜像的基础工具集：
+    ```
+    COPY --from=openeuler/busybox:{Tag} /usr/local/busybox/bin /usr/local/busybox/bin
+    ENV PATH=/usr/local/busybox/bin:$PATH
+    ```
 
 license: GPL-2.0 license
 similar_packages:
