@@ -32,6 +32,20 @@ usage: |
     docker run --rm openeuler/qdk:{Tag} qbuild --help
     ```
 
+
+  - 快速验证
+
+    使用镜像内置模板创建 QPKG 项目并填写必填字段：
+    ```bash
+    mkdir -p qdk-demo && cd qdk-demo
+    docker run --rm -v "$PWD":/workspace -w /workspace openeuler/qdk:{Tag} sh -c 'cp -r /usr/share/QDK/template/. . && sed -i "s/^QPKG_NAME=\"\"/QPKG_NAME=\"demo\"/; s/^QPKG_AUTHOR=\"\"/QPKG_AUTHOR=\"openEuler\"/" qpkg.cfg'
+    ```
+    构建：
+    ```bash
+    docker run --rm -v "$PWD":/workspace -w /workspace openeuler/qdk:{Tag} qbuild
+    ```
+    预期在 `build/` 目录生成 `demo_0.1_*.qpkg` 包。
+
 license: GPL
 similar_packages:
   - RPM build: RPM 包构建工具
