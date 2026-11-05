@@ -11,3 +11,4 @@ RUN { curl -fSL --connect-timeout 30 --retry 5 --retry-delay 5 --retry-connrefus
 ENV PATH=$PATH:/usr/local/parquet/bin
 
 CMD ["/bin/bash"]
+
