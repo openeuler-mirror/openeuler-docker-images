@@ -26,6 +26,23 @@ usage: |
   docker run --rm openeuler/multiwfn:{Tag} Multiwfn_noGUI
   ```
 
+
+  - 快速验证
+
+    创建测试文件 `water.xyz`：
+    ```text
+    3
+    water
+    O  0.000  0.000  0.000
+    H  0.757  0.586  0.000
+    H -0.757  0.586  0.000
+    ```
+    加载文件并退出：
+    ```bash
+    printf 'q\n' | docker run --rm -i -v "$PWD":/data -w /data openeuler/multiwfn:{Tag} Multiwfn_noGUI water.xyz
+    ```
+    预期输出包含 `Loaded water.xyz successfully!`，随后执行 `q` 正常退出。
+
 license: MIT
 similar_packages:
   - orca: 量子化学计算程序包
