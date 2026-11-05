@@ -26,6 +26,20 @@ usage: |
   docker run --rm -v /path/to/data:/data openeuler/foldseek:{Tag} foldseek easy-search /data/query.pdb /data/target_db /data/result tmp
   ```
 
+
+  - 快速验证
+
+    下载一个测试结构文件并创建临时目录：
+    ```bash
+    curl -LO https://files.rcsb.org/download/1CRN.pdb
+    mkdir -p tmp
+    ```
+    使用同一个结构做自比对：
+    ```bash
+    docker run --rm -v "$PWD":/data openeuler/foldseek:{Tag} foldseek easy-search /data/1CRN.pdb /data/1CRN.pdb /data/result /data/tmp
+    ```
+    预期 `result` 非空，包含 query/target 一致（`fident` 为 1.000）的命中行。
+
 license: GPL-3.0
 similar_packages:
   - MMseqs2: 超快速蛋白质序列搜索与聚类工具
