@@ -40,6 +40,19 @@ usage: |
         nettrace --drop
     ```
 
+
+  - 前置条件
+
+    `nettrace` 需要宿主机 debugfs 和特权模式。运行前确认：
+    ```bash
+    mount | grep debugfs
+    ```
+    如未挂载，先执行：
+    ```bash
+    mount -t debugfs debugfs /sys/kernel/debug
+    ```
+    运行时需要 `--privileged`，建议同时挂载 `/sys/kernel/debug` 和 `/lib/modules`。
+
 license: GPL-2.0 license
 similar_packages:
   - tcpdump: 网络抓包工具
