@@ -26,6 +26,9 @@ COPY --from=builder /usr/local/bin /usr/local/bin
 COPY --from=builder /usr/local/lib /usr/local/lib
 COPY --from=builder /usr/local/include /usr/local/include
 COPY --from=builder /usr/lib64/libjpeg.so.62* /usr/lib64/
+COPY --from=builder /usr/lib64/libtiff.so.6* /usr/lib64/
+COPY --from=builder /usr/lib64/libpng16.so.16* /usr/lib64/
+COPY --from=builder /usr/lib64/libgif.so.* /usr/lib64/
 
 RUN ldconfig
 
