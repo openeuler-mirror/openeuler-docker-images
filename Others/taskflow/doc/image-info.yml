@@ -22,6 +22,7 @@ download: |
 usage: |
   创建名为 simple.cpp 的 Taskflow 程序文件，内容如下
   ```cpp
+  #include <iostream>
   #include <taskflow/taskflow.hpp>
 
   int main(){
@@ -61,6 +62,9 @@ usage: |
   ```
   docker run -it --rm -v $(pwd):/workspace openeuler/taskflow:{Tag} bash
   ```
+
+
+  上述程序编译后运行，预期依次输出 `TaskA`、`TaskB`、`TaskC`、`TaskD`（B、C 顺序可能互换）。
 
 license: MIT
 similar_packages:
