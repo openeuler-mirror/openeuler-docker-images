@@ -28,7 +28,7 @@ download: |
 usage: |
   - 启动容器
     ```
-    docker run -d --name my-spring-framework openeuler/spring-framework:{Tag}
+    docker run -it --rm openeuler/spring-framework:{Tag} bash
     ```
 
   - 容器运行
