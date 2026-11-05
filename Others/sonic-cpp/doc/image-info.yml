@@ -23,8 +23,34 @@ download: |
 usage: |
   编译使用 sonic-cpp 的项目
   ```
-  docker run --rm -v $(pwd):/workspace openeuler/sonic-cpp:{Tag} g++ -I/usr/local/include -march=haswell --std=c++11 -O3 /workspace/example.cpp -o /workspace/example
+  docker run --rm -v $(pwd):/workspace openeuler/sonic-cpp:{Tag} g++ -I/usr/local/include/sonic -march=native --std=c++11 -O3 /workspace/example.cpp -o /workspace/example
   ```
+
+
+  - 快速验证
+
+    创建测试文件 `example.cpp`：
+    ```cpp
+    #include "sonic/sonic.h"
+    #include <string>
+    #include <iostream>
+
+    int main() {
+      std::string json = R"({"a": 1, "b": 2})";
+      sonic_json::Document doc;
+      doc.Parse(json);
+      sonic_json::WriteBuffer wb;
+      doc.Serialize(wb);
+      std::cout << wb.ToString() << std::endl;
+      return 0;
+    }
+    ```
+    编译并运行：
+    ```bash
+    docker run --rm -v "$PWD":/workspace openeuler/sonic-cpp:{Tag} g++ -I/usr/local/include/sonic -march=native --std=c++11 -O3 /workspace/example.cpp -o /workspace/example
+    docker run --rm -v "$PWD":/workspace openeuler/sonic-cpp:{Tag} /workspace/example
+    ```
+    预期输出：`{"a":1,"b":2}`。
 
 license: Apache-2.0
 similar_packages:
