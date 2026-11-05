@@ -31,7 +31,7 @@ usage: |
     ```
     docker run -d --name my-grpc-server -p 50051:50051 openeuler/grpc-server:{Tag}
     ```
-    `my-grpc-server`启动之后，通过`http://localhost:50051`访问服务。
+    `my-grpc-server`启动之后，通过 gRPC 客户端连接 `localhost:50051` 访问服务（50051 为 gRPC 端口，不是 HTTP）。
 
   - 容器测试
 
