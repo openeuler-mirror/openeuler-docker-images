@@ -105,14 +105,24 @@ usage: |
     }
     ```
   
-  - 运行服务器
+  - 运行镜像内置的 Echo 服务器
   
-    直接运行 EchoServer 类中的 main 方法即可。
+    ```
+    docker run -d --name my-netty -p 8080:8080 openeuler/netty:{Tag}
+    ```
+    查看日志，出现 `Echo server started on port 8080` 表示启动成功：
+    ```
+    docker logs -f my-netty
+    ```
     通过命令行连接测试：
     ```
     telnet localhost 8080
     ```
     输入的任何内容都会被服务器原样返回。
+
+  - 本地开发
+  
+    也可以直接运行上面 EchoServer 类中的 main 方法。
 
 license: Apache-2.0 license
 similar_packages:
