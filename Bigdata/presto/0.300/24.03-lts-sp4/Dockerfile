@@ -66,3 +66,4 @@ RUN set -eux; \
     chmod +x /usr/local/bin/presto
 
 ENTRYPOINT ./opt/presto/bin/launcher run
+
