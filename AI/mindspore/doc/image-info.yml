@@ -66,6 +66,16 @@ usage: |
     docker exec -it my-mindspore /bin/bash
     ```
 
+
+  - 前置条件
+
+    示例使用 Ascend NPU 设备。运行前确认宿主机已安装 Ascend 驱动和固件：
+    ```bash
+    npu-smi info
+    ls /dev/davinci* /dev/davinci_manager /dev/devmm_svm /dev/hisi_hdc
+    ```
+    将 `${device}` 替换为实际 NPU 设备（例如 `/dev/davinci0`），并按文档挂载驱动目录。没有 NPU 时无法执行该示例。
+
 license: Apache-2.0 license
 similar_packages:
   - PyTorch: PyTorch是一个开源的Python机器学习库，基于torch，用于自然语言处理等应用程序。PyTorch既可以看作加入了GPU支持的numpy，同时也可以看成一个拥有自动求导功能的强大的深度神经网络。
