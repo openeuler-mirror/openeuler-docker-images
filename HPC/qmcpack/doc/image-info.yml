@@ -37,6 +37,14 @@ usage: |
     `openeuler/qmcpack`镜像用于验证上游qmcpack版本和openEuler的集成。
   
 
+
+  - 快速验证（使用镜像内置测试用例）
+
+    ```bash
+    docker run --rm openeuler/qmcpack:{Tag} sh -c 'cd /opt/qmcpack/tests/molecules/Be_STO && mpirun --allow-run-as-root -np 1 /opt/qmcpack/bin/qmcpack be_sto_vmc.in.xml'
+    ```
+    预期输出 `QMCPACK execution completed successfully`。自定义算例可将输入 XML 和依赖文件挂载到容器后运行。
+
 license: UIUC/NCSA
 similar_packages:
   - VASP: 商业化的电子结构计算软件包
