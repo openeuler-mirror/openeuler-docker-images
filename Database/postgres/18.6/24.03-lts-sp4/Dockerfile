@@ -32,3 +32,4 @@ ENV PATH ${PATH}:/usr/local/pgsql/bin
 ENTRYPOINT ["/var/lib/pgsql/entrypoint.sh"]
 EXPOSE 5432
 CMD [ "postgres" ]
+
