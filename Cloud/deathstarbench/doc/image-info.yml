@@ -28,6 +28,24 @@ usage: |
     ```
     `openeuler/deathstarbench`镜像构建了hotelReservation微服务基准测试套件，并安装了所有服务二进制文件（frontend、geo、profile、rate、recommendation、reservation、search、user等）。
 
+
+  - 快速验证（启动 frontend）
+
+    创建最小配置文件 `config.json`：
+    ```json
+    {
+      "consulAddress": "127.0.0.1:8500",
+      "jaegerAddress": "127.0.0.1:6831",
+      "FrontendPort": "5000"
+    }
+    ```
+    启动 frontend 并检查 HTTP 状态：
+    ```bash
+    docker run -d --name dsb-frontend -v "$PWD/config.json:/app/config.json" -p 5000:5000 openeuler/deathstarbench:{Tag}
+    curl -s -o /dev/null -w '%{http_code}\n' http://localhost:5000/
+    ```
+    预期返回 `200`。完整 hotelReservation 基准还需要启动 consul、jaeger、mongodb、memcached 以及各微服务。
+
 license: Apache-2.0 license
 similar_packages:
   - N/A
