@@ -42,6 +42,19 @@ usage: |
     ```
     `openeuler/kuberay` 镜像用于验证上游 KubeRay 版本和 openEuler 的集成。
 
+
+  - 前置条件
+
+    Kuberay operator 需要 Kubernetes 集群，并已安装 Ray CRD。运行前确认：
+    ```bash
+    kubectl get nodes
+    kubectl get crd | grep ray
+    ```
+    挂载 kubeconfig 后运行：
+    ```bash
+    docker run --rm -v "$HOME/.kube:/root/.kube:ro" openeuler/kuberay:{Tag} kuberay-operator
+    ```
+
 license: Apache-2.0 license
 similar_packages:
   - Volcano: 面向 Kubernetes 的批量计算调度系统，支持机器学习和大数据工作负载。
