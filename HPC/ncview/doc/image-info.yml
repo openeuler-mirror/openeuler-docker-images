@@ -23,12 +23,12 @@ download: |
 usage: |
   - 查看帮助
     ```
-    docker run --rm openeuler/ncview:{Tag} --help
+    docker run --rm openeuler/ncview:{Tag} ncview --help
     ```
 
   - 浏览 NetCDF 文件
     ```
-    docker run --rm -v $(pwd):/data openeuler/ncview:{Tag} /data/sample.nc
+    docker run --rm -v $(pwd):/data openeuler/ncview:{Tag} ncview /data/sample.nc
     ```
 
 license: GPL-1.0
