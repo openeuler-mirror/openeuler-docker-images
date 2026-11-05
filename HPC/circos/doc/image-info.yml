@@ -39,6 +39,19 @@ usage: |
     docker run -it --rm -v $(pwd):/data -w /data openeuler/circos:{Tag} circos -conf circos.conf
     ```
 
+
+  - 快速验证（使用镜像内置教程数据）
+
+    ```bash
+    docker run --rm -v "$PWD":/output -w /opt/circos/tutorials/7/1 openeuler/circos:{Tag} sh -c 'circos -conf circos.conf && cp /tmp/circos-tutorial.png /output/'
+    ```
+    预期在当前目录生成 `circos-tutorial.png`。
+
+    使用自定义数据时，需要准备 `circos.conf`、karyotype 文件和数据文件，挂载到容器后执行：
+    ```bash
+    docker run --rm -v "$PWD":/data -w /data openeuler/circos:{Tag} circos -conf circos.conf
+    ```
+
 license: GPL-2.0
 similar_packages:
   - Circos: 圆形基因组数据可视化工具
