@@ -37,10 +37,9 @@ usage: |
 
   - 快速验证
 
-    查看帮助和版本：
+    查看帮助：
     ```bash
-    docker run --rm openeuler/seissol:{Tag} SeisSol --help
-    docker run --rm openeuler/seissol:{Tag} SeisSol --version
+    docker run --rm openeuler/seissol:{Tag} SeisSol -h
     ```
     完整模拟需要准备 `parameters.par` 和网格文件（如 PUML `.h5`），将算例目录挂载到 `/data`：
     ```bash
