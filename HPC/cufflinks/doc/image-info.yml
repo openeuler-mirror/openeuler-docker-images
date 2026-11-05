@@ -43,6 +43,21 @@ usage: |
     gtf_to_sam   — 将 GTF 转换为 SAM 格式
     ```
 
+
+  - 快速验证
+
+    下载 Cufflinks 官方测试 SAM，补齐参考序列头并转换为 BAM：
+    ```bash
+    curl -LO https://raw.githubusercontent.com/cole-trapnell-lab/cufflinks/v2.2.1/doc/html/downloads/test_data.sam
+    { printf '@HD\tVN:1.0\tSO:unsorted\n@SQ\tSN:test_chromosome\tLN:1000000\n'; cat test_data.sam; } > accepted_hits.sam
+    docker run --rm -v "$PWD":/data -w /data openeuler/cufflinks:{Tag} sh -c 'samtools view -bS accepted_hits.sam > accepted_hits.bam'
+    ```
+    运行 Cufflinks：
+    ```bash
+    docker run --rm -v "$PWD":/data -w /data openeuler/cufflinks:{Tag} cufflinks -o output accepted_hits.bam
+    ```
+    预期在 `output/` 下生成 `transcripts.gtf`、`genes.fpkm_tracking`、`isoforms.fpkm_tracking` 等文件。
+
 license: BSL-1.0
 similar_packages:
   - StringTie: 高效转录本组装和定量工具
