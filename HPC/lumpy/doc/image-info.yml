@@ -16,20 +16,20 @@ tags: |
 download: |
   拉取镜像到本地
   ```
-  docker pull openeuler/lumpy-sv:{Tag}
+  docker pull openeuler/lumpy:{Tag}
   ```
 usage: |
   - 拉取镜像
 
     ```
-    docker pull openeuler/lumpy-sv:{Tag}
+    docker pull openeuler/lumpy:{Tag}
     ```
     用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。
   
   - 运行容器
 
     ```
-    docker run -it --name my-lumpy-sv openeuler/lumpy-sv:{Tag}
+    docker run -it --name my-lumpy-sv openeuler/lumpy:{Tag}
     ```
     使用`lumpy --help`查看具体功能：
     ```
