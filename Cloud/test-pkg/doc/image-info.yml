@@ -46,6 +46,18 @@ usage: |
     docker run --rm -it --entrypoint /bin/bash openeuler/test-pkg:{Tag}
     ```
 
+
+  - 前置条件
+
+    该镜像提供 kubectl，需要可访问的 Kubernetes 集群。运行前确认：
+    ```bash
+    kubectl cluster-info
+    ```
+    运行容器时挂载 kubeconfig：
+    ```bash
+    docker run --rm -v "$HOME/.kube:/root/.kube:ro" openeuler/test-pkg:{Tag} get nodes
+    ```
+
 license: Apache-2.0
 similar_packages:
   - helm: Kubernetes 包管理器 CLI，用于安装和管理 Chart 应用。
