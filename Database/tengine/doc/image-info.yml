@@ -22,11 +22,11 @@ download: |
   ```
 
 usage: |
-  启动tdengine实例：
+  启动tengine实例：
   ```bash
-  docker run -it --name tdengine openeuler/tdengine:{Tag}
+  docker run -it --name tengine openeuler/tengine:{Tag}
   ```
-  `openeuler/tdengine`镜像用于验证上游tdengine版本和openEuler的集成, 用户需要自行配置tdengine。
+  `openeuler/tengine`镜像用于验证上游tengine版本和openEuler的集成, 用户需要自行配置tengine。
 
 license: BSD-2-Clause license
 similar_packages:
