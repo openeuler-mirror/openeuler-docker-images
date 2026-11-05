@@ -39,6 +39,7 @@ RUN git config --global http.postBuffer 524288000 && \
     bash -c "cd /tmp/3fs && ./patches/apply.sh" && \
     sed -i 's/-fcoroutines-ts//' /tmp/3fs/CMakeLists.txt && \
     sed -i 's|message(FATAL_ERROR "clang-format-14 not found")|message(STATUS "clang-format-14 not found, skipping format targets")|' /tmp/3fs/cmake/CLangFormat.cmake && \
+    sed -i '1a #include <fstream>' /tmp/3fs/tests/common/utils/TestShuffle.cc && \
     ARCH=$(uname -m) && \
     ln -sf /usr/lib64/libatomic.so.1 /usr/lib64/libatomic.so && \
     mkdir -p /usr/lib64/clang/17/lib/linux && \
