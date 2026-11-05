@@ -36,6 +36,20 @@ usage: |
         simple-decoder -data 4 -par 2 /data/myfile.dat
     ```
 
+
+  - 快速验证
+
+    生成 1 MiB 测试文件并编码：
+    ```bash
+    dd if=/dev/urandom of=myfile.dat bs=1M count=1
+    docker run --rm -v "$PWD":/data openeuler/reedsolomon:{Tag} simple-encoder -data 4 -par 2 /data/myfile.dat
+    ```
+    解码恢复：
+    ```bash
+    docker run --rm -v "$PWD":/data openeuler/reedsolomon:{Tag} simple-decoder -data 4 -par 2 /data/myfile.dat
+    ```
+    预期生成 `myfile.dat.0` 到 `myfile.dat.5` 共 6 个分片；解码输出 `No reconstruction needed` 并写回 `myfile.dat`。
+
 license: MIT
 similar_packages:
   - Ceph Erasure Code：Ceph 内置的纠删码插件，支持多种纠删码算法。
