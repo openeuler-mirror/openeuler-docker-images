@@ -59,4 +59,4 @@ WORKDIR ${KYUUBI_HOME}
 
 HEALTHCHECK --interval=30s --timeout=5s CMD curl -f http://localhost:10009/ || exit 1
 
-ENTRYPOINT ["bin/kyuubi", "start"]
+ENTRYPOINT ["/bin/bash", "-c", "bin/kyuubi start && exec tail -f /dev/null"]
