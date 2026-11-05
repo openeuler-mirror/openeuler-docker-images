@@ -40,7 +40,7 @@ download: |
 usage: |
   - 启动容器
     ```
-    docker run -d --name my-telegraf -p 8094:8094 -v /path/to/telegraf.conf:/etc/telegraf/telegraf.conf openeuler/telegraf:{Tag}
+    docker run -d --name my-telegraf -p 8094:8094 -v "$PWD/telegraf.conf":/etc/telegraf/telegraf.conf openeuler/telegraf:{Tag}
     ```
     用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。
     `my-telegraf`启动之后，通过`localhost:8094`访问telegraf服务。
@@ -50,7 +50,7 @@ usage: |
     |    Parameter   |  Description  |
     |----------------|---------------|
     | -p 8094:8094	 | 暴露telegraf服务端口 |
-    | -v /path/to/telegraf.conf:/etc/telegraf/telegraf.conf	 | 指定使用的`telegraf.conf`配置文件 |
+    | -v "$PWD/telegraf.conf":/etc/telegraf/telegraf.conf	 | 指定使用的`telegraf.conf`配置文件 |
  
   - 容器测试
 
@@ -63,6 +63,29 @@ usage: |
     ```
     docker exec -it my-telegraf /bin/bash
     ```
+
+
+  - 快速验证
+
+    创建最小配置文件 `telegraf.conf`：
+    ```toml
+    [agent]
+      interval = "1s"
+      flush_interval = "1s"
+      omit_hostname = true
+
+    [[inputs.cpu]]
+      percpu = false
+      totalcpu = true
+
+    [[outputs.file]]
+      files = ["stdout"]
+    ```
+    采集一次并打印到标准输出：
+    ```bash
+    docker run --rm -v "$PWD/telegraf.conf":/etc/telegraf/telegraf.conf:ro openeuler/telegraf:{Tag} telegraf --config /etc/telegraf/telegraf.conf --test
+    ```
+    预期输出包含 `cpu,cpu=cpu-total` 的指标行。
 
 license: MIT license
 similar_packages:
