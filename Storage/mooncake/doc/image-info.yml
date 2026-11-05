@@ -48,6 +48,15 @@ usage: |
         transfer_engine_validator --metadata_server=<metadata-ip>:2379
     ```
 
+
+  - 前置条件
+
+    `transfer_engine_bench` 需要可访问的 etcd/metadata 服务以及多节点 IP 配置。运行前确认：
+    ```bash
+    etcdctl --endpoints=<metadata-ip>:2379 endpoint health
+    ```
+    将 `<metadata-ip>` 替换为 etcd 地址，`<local-ip>` 替换为本机 IP；多节点测试需要在每个节点分别启动 initiator 和 target。
+
 license: Apache-2.0
 similar_packages:
   - UCX：通用通信框架，支持 RDMA、TCP、共享内存等多种传输方式。
