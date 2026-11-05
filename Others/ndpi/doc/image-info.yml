@@ -7,7 +7,7 @@ environment: |
   yum install -y docker
   ```
 tags: |
-  npdi镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+  ndpi镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
@@ -15,20 +15,20 @@ tags: |
   |[5.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/ndpi/5.0/24.03-lts-sp4/Dockerfile) | ndpi 5.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[5.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/ndpi/5.0/24.03-lts-sp3/Dockerfile) | ndpi 5.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
   |[4.14-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/ndpi/4.14/24.03-lts-sp2/Dockerfile) | ndpi 4.14 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-  | [4.1.2-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/npdi/4.1.2/24.03-lts-sp1/Dockerfile) | npdi 4.1.2 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+  | [4.1.2-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/ndpi/4.1.2/24.03-lts-sp1/Dockerfile) | ndpi 4.1.2 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 download: |
   拉取镜像到本地
   ```
-  docker pull openeuler/npdi:{Tag}
+  docker pull openeuler/ndpi:{Tag}
   ```
 
 usage: |
   - 以交互式Shell运行容器
 
-    通过交互式 Shell 启动容器，npdi：
+    通过交互式 Shell 启动容器，ndpi：
     ```
-    docker run -it --rm openeuler/npdi:{Tag} bash
+    docker run -it --rm openeuler/ndpi:{Tag} bash
     ```
   
   - 下载示例 PCAP 文件
