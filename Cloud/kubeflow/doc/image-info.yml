@@ -40,6 +40,18 @@ usage: |
     ```
     `openeuler/kubeflow` 镜像用于验证上游 Kubeflow 版本和 openEuler 的集成。
 
+
+  - 前置条件
+
+    `notebook-controller` 和 `profile-controller` 需要 Kubernetes 集群和 kubeconfig。运行前确认：
+    ```bash
+    kubectl get nodes
+    ```
+    挂载 kubeconfig 后运行：
+    ```bash
+    docker run --rm -v "$HOME/.kube:/root/.kube:ro" openeuler/kubeflow:{Tag} notebook-controller
+    ```
+
 license: Apache-2.0 license
 similar_packages:
   - MLflow: 开源的机器学习生命周期管理平台，支持实验追踪、模型注册和部署。
