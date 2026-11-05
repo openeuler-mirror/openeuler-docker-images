@@ -23,12 +23,12 @@ download: |
   ```
 
 usage: |
-  - 启动calico实例
+  - 验证 calicoctl 版本
 
     ```
-    docker run -it --name calico openeuler/calico:{Tag}
+    docker run --rm openeuler/calico:{Tag} version
     ```
-    `openeuler/calico`镜像用于验证上游calico版本和openEuler的集成。
+    `openeuler/calico` 镜像提供 `calicoctl`，用于验证上游 Calico 版本和 openEuler 的集成。
 
 license: Apache-2.0 license
 similar_packages:
