@@ -46,6 +46,20 @@ usage: |
     ```
     `openeuler/sriov-network-operator` 镜像用于验证上游 SR-IOV Network Operator 版本和 openEuler 的集成。
 
+
+  - 前置条件
+
+    需要 Kubernetes 集群、SR-IOV Network Operator CRD 以及支持 SR-IOV 的网卡。运行前确认：
+    ```bash
+    kubectl get nodes
+    kubectl get crd | grep sriov
+    lspci | grep -i ethernet
+    ```
+    挂载 kubeconfig 后运行：
+    ```bash
+    docker run --rm -v "$HOME/.kube:/root/.kube:ro" openeuler/sriov-network-operator:{Tag} sriov-network-operator
+    ```
+
 license: Apache-2.0 license
 similar_packages:
   - Multus CNI: 支持多网络接口的 Kubernetes CNI 插件。
