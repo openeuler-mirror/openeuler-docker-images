@@ -48,9 +48,11 @@ usage: |
   - 启动
   
     ```
-    docker run -d --name my-canal -p 30306:3306 openeuler/canal:{Tag}
+    docker run -d --name my-canal -p 11110:11110 -p 11111:11111 -p 11112:11112 openeuler/canal:1.1.8-oe2403sp4
     ```
     当 `my-canal` 实例启动后，你可以使用 `docker logs` 查看其运行日志。
+
+    > 说明：`1.1.8-oe2403sp1` 是源码构建镜像，未安装 canal deployer，也没有 `startup.sh`，不能直接运行；启动 canal 服务请使用 `1.1.8-oe2403sp4`（或 `1.1.8-oe2403sp2`）。
   
 
 license: Apache-2.0 license
