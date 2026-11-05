@@ -38,11 +38,29 @@ download: |
   ```
 
 usage: |
-  - 启动容器
+  - 启动交互式 spark-shell
+    ```
+    docker run -it --rm --name my-spark openeuler/spark:{Tag} /opt/spark/bin/spark-shell
+    ```
+    进入 spark-shell 后可直接执行 Scala 代码，例如 `sc.parallelize(1 to 10).sum()`，输入 `:quit` 退出。
+
+  - 提交 Spark 作业（前台运行，作业结束后容器退出）
+    ```
+    docker run --rm --name my-spark openeuler/spark:{Tag} driver /opt/spark/examples/src/main/python/pi.py 10
+    ```
+    镜像入口脚本会把 `driver` 及其后的参数转换为 `spark-submit --deploy-mode client ...` 执行。
+
+  - 保持容器常驻，便于后续 `docker exec` 调试（不启动前台 Spark 进程）
     ```
     docker run -dit --name my-spark openeuler/spark:{Tag} /bin/bash
     ```
-  用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。
+    或使用 keepalive 进程
+    ```
+    docker run -d --name my-spark openeuler/spark:{Tag} sleep infinity
+    ```
+
+  - 说明
+    直接执行 `docker run -d openeuler/spark:{Tag}` 时，镜像默认命令为 `driver`，`spark-submit` 没有可提交的应用，进程会立即退出；请按上面的方式显式启动 `spark-shell`、`spark-submit` 或 keepalive 进程。
 
   - 容器测试
 
