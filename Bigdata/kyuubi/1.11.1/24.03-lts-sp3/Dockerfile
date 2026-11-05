@@ -31,7 +31,8 @@ RUN if [ "$TARGETARCH" = "amd64" ]; then \
       BUILDARCH="aarch64"; \
     fi \
     && mkdir -p /usr/local/jre \
-    && wget -O jre.tar.gz https://mirrors.tuna.tsinghua.edu.cn/Adoptium/11/jre/${BUILDARCH}/linux/OpenJDK11U-jre_${BUILDARCH}_linux_hotspot_${JDK_VERSION}.tar.gz \
+    && JDK_TAG=$(echo "${JDK_VERSION}" | sed 's/_/%2B/g') \
+    && wget --tries=3 --timeout=30 -O jre.tar.gz "https://github.com/adoptium/temurin11-binaries/releases/download/jdk-${JDK_TAG}/OpenJDK11U-jre_${BUILDARCH}_linux_hotspot_${JDK_VERSION}.tar.gz" \
     && tar -zxvf jre.tar.gz --strip-components=1 -C /usr/local/jre \
     && rm -f jre.tar.gz
 
