@@ -10,10 +10,10 @@ RUN curl -fSL -o hbase.tar.gz https://dlcdn.apache.org/hbase/${VERSION}/hbase-${
 
 ENV PATH=$PATH:/usr/local/hbase/bin
 
-RUN yum install -y java-11-openjdk-devel findutils && \
+RUN yum install -y java-17-openjdk-devel findutils && \
     yum clean all
 
-ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
 
 EXPOSE 8080 8085 9090 9095 2181 16010
 ENTRYPOINT ["hbase", "version"]
