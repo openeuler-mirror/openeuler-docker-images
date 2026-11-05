@@ -40,6 +40,19 @@ usage: |
     docker run -it --rm -v $(pwd):/data openeuler/nco:{Tag} /bin/bash
     ```
 
+
+  - 快速验证
+
+    使用 `ncap2` 生成测试文件 `in.nc`：
+    ```bash
+    docker run --rm -v "$PWD":/data openeuler/nco:{Tag} ncap2 -O -s 'defdim("lat",3);lat[$lat]={10.,20.,30.};defdim("lon",2);lon[$lon]={100.,110.};v[$lat,$lon]=lat*lon;' /data/in.nc
+    ```
+    查看元数据：
+    ```bash
+    docker run --rm -v "$PWD":/data openeuler/nco:{Tag} ncks -m /data/in.nc
+    ```
+    预期输出包含 `lat = 3`、`lon = 2` 以及变量 `v(lat,lon)`。
+
 license: 3-Clause BSD License
 similar_packages:
   - ncl: NCAR Command Language，气候和天气数据处理与可视化工具
