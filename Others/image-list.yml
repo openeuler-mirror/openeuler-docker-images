@@ -16,6 +16,7 @@ images:
   suricata: suricata
   tomcat: tomcat
   maven: maven
+  gradle: gradle
   conda: conda
   pypi: pypi
   npmjs: npmjs
