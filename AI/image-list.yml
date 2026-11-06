@@ -14,6 +14,7 @@ images:
   kserve-storage-initializer: kserve/storage-initializer
   agent: opea/agent
   agent-ui: opea/agent-ui
+  mmengine: mmengine
   onnx: onnx
   onnxruntime: onnxruntime
   cann: cann
