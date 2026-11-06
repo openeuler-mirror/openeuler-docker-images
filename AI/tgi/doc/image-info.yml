@@ -1,0 +1,114 @@
+name: tgi
+category: ai
+description: TGI（Text Generation Inference）是大模型推理服务工具箱，由Rust启动器/路由器驱动Python服务端，支持动态批处理、张量并行与OpenAI兼容接口。本镜像从昇腾适配fork源码构建，基于torch_npu可在昇腾NPU上推理，支持HCCL张量并行。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  TGI镜像的Tag由其版本信息和软件栈版本信息组成，详细内容如下：
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[3.3.7-npu-torch_npu2.9.0-cann9.1.0-python3.12-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/tgi/3.3.7-npu-torch_npu2.9.0-cann9.1.0-python3.12/24.03-lts-sp4/Dockerfile)| TGI 3.3.7-npu（昇腾适配fork，torch_npu 2.9.0.post8，CANN 9.1.0）on openEuler 24.03-LTS-SP4 | arm64,amd64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/tgi:{Tag}
+  ```
+
+usage: |
+  - 前置条件
+
+    示例使用Ascend NPU设备。运行前确认宿主机已安装Ascend驱动和固件：
+    ```bash
+    npu-smi info
+    ls /dev/davinci* /dev/davinci_manager /dev/devmm_svm /dev/hisi_hdc
+    ```
+    将`${device}`替换为实际NPU设备（例如`/dev/davinci0`），并按文档挂载驱动目录。没有NPU时无法执行该示例。
+
+  - 启动容器
+    ```
+    docker run \
+        --name my-tgi \
+        --device ${device} \
+        --device /dev/davinci_manager \
+        --device /dev/devmm_svm \
+        --device /dev/hisi_hdc \
+        -v /usr/local/dcmi:/usr/local/dcmi \
+        -v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi \
+        -v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/ \
+        -v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info \
+        -v /etc/ascend_install.info:/etc/ascend_install.info \
+        -it openeuler/tgi:{Tag} bash
+    ```
+    用户可根据自身需求选择对应版本的`{Tag}`、对应的NPU设备`{device}`以及容器启动的选项。
+
+  - 参数说明
+    | 配置项 | 描述 |
+    |--|--|
+    | `--name my-tgi` | 容器名称。|
+    | `--device /dev/davinci1` | NPU设备，X是芯片物理ID号，例如davinci1。|
+    | `--device /dev/davinci_manager` | davinci相关的管理设备。|
+    | `--device /dev/devmm_svm` | 内存管理相关设备。|
+    | `--device /dev/hisi_hdc` | hdc相关管理设备。|
+    | `-v /usr/local/dcmi:/usr/local/dcmi` | 将宿主机dcmi的so和接口文件目录`/usr/local/dcmi`挂载到容器中，请根据实际情况修改。|
+    | `-v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi` | 将宿主机`npu-smi`工具`/usr/local/bin/npu-smi`挂载到容器中，请根据实际情况修改。|
+    | `-v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/` | 将宿主机目录`/usr/local/Ascend/driver/lib64/driver`挂载到容器中。请根据driver的驱动so所在路径修改。|
+    | `-v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info` | 将宿主机版本信息文件`/usr/local/Ascend/driver/version.info`挂载到容器中，请根据实际情况修改。|
+    | `-v /etc/ascend_install.info:/etc/ascend_install.info` | 将宿主机安装信息文件`/etc/ascend_install.info`挂载到容器中。|
+    | `-it` | 以交互模式启动容器。|
+    | `openeuler/tgi:{Tag}` | 指定要运行的镜像`openeuler/tgi`，其中`{Tag}`是需要替换的镜像标签。|
+
+  - 容器测试
+
+    进入容器后，先用ModelScope下载Qwen3-0.6B模型，再在单卡上启动TGI服务并发一次生成请求：
+    ```bash
+    docker exec -it my-tgi /bin/bash
+    python3 -c "from modelscope import snapshot_download; print(snapshot_download('Qwen/Qwen3-0.6B'))"
+    source /usr/local/Ascend/ascend-toolkit/set_env.sh
+    export ASCEND_VISIBLE_DEVICES=0
+    export PYTORCH_NPU_ALLOC_CONF=max_split_size_mb:256
+    text-generation-launcher \
+      --model-id "$(python3 -c "from modelscope import snapshot_download; print(snapshot_download('Qwen/Qwen3-0.6B'))")" \
+      --num-shard 1 --port 8080 \
+      --max-total-tokens 128 --max-input-tokens 100
+    ```
+
+    另开一个终端，等待`/info`就绪后发送一条生成请求（响应包含非空`generated_text`即成功）：
+    ```bash
+    curl -4fs http://127.0.0.1:8080/generate \
+      -H 'Content-Type: application/json' \
+      -d '{"inputs":"What is 1+1? Answer:","parameters":{"max_new_tokens":16,"do_sample":false}}'
+    ```
+
+    双卡时使用`--num-shard 2`与`ASCEND_VISIBLE_DEVICES=0,1`做HCCL张量并行；贪心解码下双卡回复应与单卡基线一致。
+
+    国内网络可通过ModelScope或hf-mirror加速模型下载：
+    ```bash
+    export HF_ENDPOINT=https://hf-mirror.com
+    ```
+
+license: Apache-2.0 license
+similar_packages:
+  - vllm-ascend: vllm-ascend是vLLM的昇腾NPU适配版本，提供高吞吐的OpenAI兼容推理服务。
+  - tgi-cpu: text-generation-inference-cpu是TGI面向CPU场景的发行版，支持x86与ARM服务器。
+dependency:
+  - python3
+  - torch
+  - torch_npu
+  - transformers
+  - accelerate
+  - kernels
+  - Rust toolchain
+  - protobuf-compiler
+
+homepage: https://github.com/VenusTZZ/text-generation-inference
+upstream:
+  backend: GitHub
+  version_url: VenusTZZ/text-generation-inference
+  version_prefix: v
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM
