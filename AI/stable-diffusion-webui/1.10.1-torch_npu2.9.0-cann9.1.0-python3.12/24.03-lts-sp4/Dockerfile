@@ -1,11 +1,9 @@
 FROM quay.io/ascend/torch-npu:2.9.0.post8-cann9.1.0-910b-openeuler24.03-py3.12
 
 ARG VERSION=1.10.1
-ARG PIP_INDEX_URL="https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"
 
 LABEL author="openEuler CloudNative SIG" description="stable-diffusion-webui (AUTOMATIC1111) with Ascend NPU support (torch_npu + CANN)"
 
-RUN pip config set global.index-url ${PIP_INDEX_URL}
 
 # rust/cargo build the tokenizers sdist pinned by upstream requirements.txt (transformers==4.30.2);
 # PYO3_USE_ABI3_FORWARD_COMPATIBILITY lets its pyo3 0.18 backend target Python 3.12
