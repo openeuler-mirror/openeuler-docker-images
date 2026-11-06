@@ -1,11 +1,9 @@
 FROM quay.io/ascend/torch-npu:2.9.0.post8-cann9.1.0-910b-openeuler24.03-py3.12
 
 ARG VERSION=0.5.6
-ARG PIP_INDEX_URL="https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"
 
 LABEL author="openEuler CloudNative SIG" description="LMCache with Ascend NPU support (torch_npu + CANN)"
 
-RUN pip config set global.index-url ${PIP_INDEX_URL}
 
 # Build and install LMCache from source with the Ascend build profile (skips CUDA-only deps)
 RUN python3 -m pip install --no-cache-dir ninja packaging wheel "setuptools>=77.0.3,<81.0.0" "setuptools_scm>=8" grpcio==1.78.0 grpcio-tools==1.78.0 && \
