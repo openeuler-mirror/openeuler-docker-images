@@ -23,6 +23,7 @@ images:
   euler-copilot-fast-inference-qwen: euler-copilot-fast-inference-qwen
   llm: llm
   llm-server: llm-server
+  openrlhf: openrlhf
   llvm-build-deps: llvm-build-deps
   mindspore: mindspore
   mlflow: mlflow
