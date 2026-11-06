@@ -1,0 +1,130 @@
+name: speculators
+category: ai
+description: Speculators是vLLM项目开源的推测解码（speculative decoding）训练与部署框架，支持DFlash、EAGLE、MTP等draft算法，训练产物可通过vLLM的--speculative-config直接挂载以加速推理。本镜像集成vLLM-Ascend推理栈与训练所需的hs_connectors组件，可在昇腾NPU上完成draft模型的转换、训练与部署。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  Speculators镜像的Tag由其版本信息和软件栈版本信息组成，详细内容如下：
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[0.9.0-torch_npu2.10.0-cann9.1.0-python3.12-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/speculators/0.9.0-torch_npu2.10.0-cann9.1.0-python3.12/24.03-lts-sp4/Dockerfile)| Speculators 0.9.0 (vLLM 0.23.0, vLLM-Ascend 0.23.0, torch_npu 2.10.0.post4, CANN 9.1.0) on openEuler 24.03-LTS-SP4 | arm64,amd64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/speculators:{Tag}
+  ```
+
+usage: |
+  - 前置条件
+
+    示例使用Ascend NPU设备。运行前确认宿主机已安装Ascend驱动和固件：
+    ```bash
+    npu-smi info
+    ls /dev/davinci* /dev/davinci_manager /dev/devmm_svm /dev/hisi_hdc
+    ```
+    将`${device}`替换为实际NPU设备（例如`/dev/davinci0`），并按文档挂载驱动目录。没有NPU时无法执行该示例。
+
+  - 启动容器
+    ```
+    docker run \
+        --name my-speculators \
+        --device ${device} \
+        --device /dev/davinci_manager \
+        --device /dev/devmm_svm \
+        --device /dev/hisi_hdc \
+        -v /usr/local/dcmi:/usr/local/dcmi \
+        -v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi \
+        -v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/ \
+        -v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info \
+        -v /etc/ascend_install.info:/etc/ascend_install.info \
+        -it openeuler/speculators:{Tag} bash
+    ```
+    用户可根据自身需求选择对应版本的`{Tag}`、对应的NPU设备`{device}`以及容器启动的选项。
+
+  - 参数说明
+    | 配置项 | 描述 |
+    |--|--|
+    | `--name my-speculators` | 容器名称。|
+    | `--device /dev/davinci1` | NPU设备，X是芯片物理ID号，例如davinci1。|
+    | `--device /dev/davinci_manager` | davinci相关的管理设备。|
+    | `--device /dev/devmm_svm` | 内存管理相关设备。|
+    | `--device /dev/hisi_hdc` | hdc相关管理设备。|
+    | `-v /usr/local/dcmi:/usr/local/dcmi` | 将宿主机dcmi的so和接口文件目录`/usr/local/dcmi`挂载到容器中，请根据实际情况修改。|
+    | `-v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi` | 将宿主机`npu-smi`工具`/usr/local/bin/npu-smi`挂载到容器中，请根据实际情况修改。|
+    | `-v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/` | 将宿主机目录`/usr/local/Ascend/driver/lib64/driver`挂载到容器中。请根据driver的驱动so所在路径修改。|
+    | `-v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info` | 将宿主机版本信息文件`/usr/local/Ascend/driver/version.info`挂载到容器中，请根据实际情况修改。|
+    | `-v /etc/ascend_install.info:/etc/ascend_install.info` | 将宿主机安装信息文件`/etc/ascend_install.info`挂载到容器中。|
+    | `-it` | 以交互模式启动容器。|
+    | `openeuler/speculators:{Tag}` | 指定要运行的镜像`openeuler/speculators`，其中`{Tag}`是需要替换的镜像标签。|
+
+  - 容器测试
+
+    进入容器后先验证NPU环境与speculators栈版本：
+    ```bash
+    docker exec -it my-speculators /bin/bash
+    python3 -c "import torch, torch_npu; print('is_available:', torch.npu.is_available())"
+    python3 -c "import importlib.metadata as m; print('speculators', m.version('speculators')); print('vllm', m.version('vllm')); print('vllm-ascend', m.version('vllm-ascend'))"
+    ```
+
+    验证编程式入口可在NPU环境中导入并实例化：
+    ```python
+    from speculators import VerifierConfig
+    from speculators.proposals.greedy import GreedyTokenProposalConfig
+
+    verifier = VerifierConfig(
+        name_or_path="Qwen/Qwen3-8B",
+        architectures=["Qwen3ForCausalLM"],
+    )
+    proposal = GreedyTokenProposalConfig(
+        proposal_type="greedy",
+        speculative_tokens=5,
+        verifier_accept_k=1,
+        accept_tolerance=0.0,
+    )
+    print("verifier:", verifier.name_or_path)
+    print("verifier architectures:", verifier.architectures)
+    print("proposal type:", proposal.proposal_type)
+    print("proposal speculative_tokens:", proposal.speculative_tokens)
+    ```
+
+    完整管线为：`speculators convert`按DFlash算法重映射draft权重，`speculators prepare-data`与`generate-offline-data`抽取训练数据，`torchrun -m speculators.train ... --speculator-type dflash --draft-attn-impl sdpa`离线训练draft，最后用`vllm serve`挂载draft做推测解码推理：
+    ```bash
+    vllm serve Qwen/Qwen3-8B \
+      --host 127.0.0.1 --port 8000 \
+      --served-model-name Qwen/Qwen3-8B \
+      --gpu-memory-utilization 0.85 \
+      --enforce-eager \
+      --speculative-config '{"method":"dflash","model":"/root/dflash-trained","num_speculative_tokens":5}'
+    ```
+
+    国内网络可通过ModelScope或hf-mirror加速模型下载：
+    ```bash
+    export HF_ENDPOINT=https://hf-mirror.com
+    ```
+
+license: Apache-2.0 license
+similar_packages:
+  - Medusa: Medusa是开源的多头推测解码框架，通过在模型上扩展多个解码头加速自回归生成。
+  - EAGLE: EAGLE是高接受率的自推测解码框架，通过draft模型预测特征实现解码加速。
+dependency:
+  - python3
+  - torch
+  - torch_npu
+  - vllm
+  - vllm-ascend
+  - transformers
+  - speculators
+  - modelscope
+
+homepage: https://github.com/vllm-project/speculators
+upstream:
+  backend: GitHub
+  version_url: vllm-project/speculators
+  version_prefix: v
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM

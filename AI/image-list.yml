@@ -42,6 +42,7 @@ images:
   codetrans-ui: opea/codetrans-ui
   codetrans: opea/codetrans
   graphrag: opea/graphrag
+  speculators: speculators
   graphrag-ui: opea/graphrag-ui
   graphrag-react-ui: opea/graphrag-react-ui
   dataprep: opea/dataprep  
