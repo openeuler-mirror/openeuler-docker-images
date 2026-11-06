@@ -57,7 +57,7 @@ usage: |
 
     使用以下方式验证镜像内安装的JAVA环境：
     ```
-    docker run -it openeuler/bisheng-jdk:{Tag} java --version
+    docker run --rm openeuler/bisheng-jdk:{Tag} java -version
     ```
     例如，`{Tag}`为`17.0.10-oe2203sp3`时，返回类似如下信息则证明环境正常：
     ```
