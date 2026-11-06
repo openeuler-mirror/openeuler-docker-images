@@ -109,7 +109,7 @@ usage: |
 
     使用以下方式验证镜像内安装的Go环境：
     ```
-    docker run -it openeuler/go:{Tag} go --version
+    docker run --rm openeuler/go:{Tag} go version
     ```
     返回类似如下信息则证明环境正常（版本和架构以实际 Tag 为准）：
     ```
@@ -119,8 +119,11 @@ usage: |
 
   - 快速验证（编译并运行一个 Go 程序）
 
-    创建测试文件 `main.go`：
-    ```go
+    以下命令在容器内创建临时目录和 `main.go`，不依赖宿主机当前目录，可直接复制执行：
+    ```bash
+    docker run --rm -i openeuler/go:{Tag} sh -s <<'EOF'
+    mkdir -p /tmp/hello && cd /tmp/hello
+    cat > main.go <<'GO'
     package main
 
     import "fmt"
@@ -128,13 +131,19 @@ usage: |
     func main() {
         fmt.Println("Hello from Go")
     }
-    ```
-    初始化模块、编译并运行：
-    ```bash
-    docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp openeuler/go:{Tag} sh -c "go mod init example.com/hello && go build -v"
-    docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp openeuler/go:{Tag} ./hello
+    GO
+    go mod init example.com/hello >/dev/null
+    go build -v
+    ./hello
+    EOF
     ```
     预期输出：`Hello from Go`。
+
+    如需编译宿主机上的项目，请先 `cd` 到包含 `main.go`、`go.mod` 的目录再挂载执行（仅 Linux/macOS 的 `$PWD` 可直接使用）：
+    ```bash
+    cd /path/to/your/go/project
+    docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp openeuler/go:{Tag} sh -c "go build -v && ./hello"
+    ```
 
 license: BSD 3-Clause license
 similar_packages:
