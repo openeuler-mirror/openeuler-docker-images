@@ -8,6 +8,7 @@ images:
   embedding-multimodal-bridgetower: opea/embedding-multimodal-bridgetower
   comps-base: opea/comps-base
   kserve-huggingfaceserver: kserve/huggingfaceserver
+  llm-compressor: llm-compressor
   kserve-controller: kserve/controller
   kserve-agent: kserve/agent
   kserve-router: kserve/router
