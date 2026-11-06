@@ -52,6 +52,7 @@ images:
   lvm: opea/lvm
   embedding-tei: opea/embedding-tei
   embedding: opea/embedding
+  tilelang: tilelang
   faqgen-ui: opea/faqgen-ui
   faqgen: opea/faqgen
   faqgen-react-ui: opea/faqgen-react-ui
