@@ -1,11 +1,9 @@
 FROM quay.io/ascend/torch-npu:2.10.0.post6-cann9.1.0-910b-openeuler24.03-py3.12
 
 ARG VERSION=0.8.0
-ARG PIP_INDEX_URL="https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"
 
 LABEL author="openEuler CloudNative SIG" description="AIBrix local mode inference backend (vLLM-Ascend) with Ascend NPU support (torch_npu + CANN)"
 
-RUN pip config set global.index-url ${PIP_INDEX_URL}
 
 # Install the vLLM-Ascend inference backend stack used by the AIBrix Ascend
 # quick start: vllm first, then vllm-ascend pins the torch/torch_npu 2.10.0
