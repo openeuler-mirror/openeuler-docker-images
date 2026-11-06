@@ -30,6 +30,7 @@ images:
   animation: opea/animation
   oneapi-basekit: oneapi-basekit
   oneapi-runtime: oneapi-runtime
+  whisper.cpp: whisper.cpp
   asr: opea/asr
   audioqna: opea/audioqna
   audioqna-ui: opea/audioqna-ui
