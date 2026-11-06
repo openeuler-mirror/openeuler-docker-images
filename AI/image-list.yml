@@ -51,6 +51,7 @@ images:
   docsum: opea/docsum
   lvm: opea/lvm
   embedding-tei: opea/embedding-tei
+  opencv: opencv
   embedding: opea/embedding
   faqgen-ui: opea/faqgen-ui
   faqgen: opea/faqgen
