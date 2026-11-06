@@ -1,12 +1,10 @@
 FROM quay.io/ascend/torch-npu:2.14.0-cann9.2.0-910b-openeuler24.03-py3.12
 
 ARG VERSION=0.4.0
-ARG PIP_INDEX_URL="https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"
 ARG TRITON_ASCEND_INDEX_URL="https://repo.huaweicloud.com/ascend/repos/pypi/test"
 
 LABEL author="openEuler CloudNative SIG" description="Torchtitan with Ascend NPU support (torch_npu + CANN)"
 
-RUN pip config set global.index-url ${PIP_INDEX_URL}
 
 # Install the Ascend Triton backend matching torch 2.14 / CANN 9.2.0 (with
 # --no-deps so the community CUDA triton does not shadow it), then torchtitan
