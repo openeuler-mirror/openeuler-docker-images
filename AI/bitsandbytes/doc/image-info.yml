@@ -1,0 +1,110 @@
+name: bitsandbytes
+category: ai
+description: bitsandbytes是广泛使用的大模型量化库，提供4-bit/8-bit量化层与8-bit优化器。本镜像基于torch_npu，其4-bit（NF4）量化权重可在昇腾NPU上完成前向推理（上游暂未官方支持昇腾）。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  bitsandbytes镜像的Tag由其版本信息和软件栈版本信息组成，详细内容如下：
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[0.50.2-torch_npu2.9.0-cann9.1.0-python3.12-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/bitsandbytes/0.50.2-torch_npu2.9.0-cann9.1.0-python3.12/24.03-lts-sp4/Dockerfile)| bitsandbytes 0.50.2 (torch_npu 2.9.0.post8, CANN 9.1.0) on openEuler 24.03-LTS-SP4 | arm64,amd64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/bitsandbytes:{Tag}
+  ```
+
+usage: |
+  - 前置条件
+
+    示例使用Ascend NPU设备。运行前确认宿主机已安装Ascend驱动和固件：
+    ```bash
+    npu-smi info
+    ls /dev/davinci* /dev/davinci_manager /dev/devmm_svm /dev/hisi_hdc
+    ```
+    将`${device}`替换为实际NPU设备（例如`/dev/davinci0`），并按文档挂载驱动目录。没有NPU时无法执行该示例。
+
+  - 启动容器
+    ```
+    docker run \
+        --name my-bitsandbytes \
+        --device ${device} \
+        --device /dev/davinci_manager \
+        --device /dev/devmm_svm \
+        --device /dev/hisi_hdc \
+        -v /usr/local/dcmi:/usr/local/dcmi \
+        -v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi \
+        -v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/ \
+        -v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info \
+        -v /etc/ascend_install.info:/etc/ascend_install.info \
+        -it openeuler/bitsandbytes:{Tag} bash
+    ```
+    用户可根据自身需求选择对应版本的`{Tag}`、对应的NPU设备`{device}`以及容器启动的选项。
+
+  - 参数说明
+    | 配置项 | 描述 |
+    |--|--|
+    | `--name my-bitsandbytes` | 容器名称。|
+    | `--device /dev/davinci1` | NPU设备，X是芯片物理ID号，例如davinci1。|
+    | `--device /dev/davinci_manager` | davinci相关的管理设备。|
+    | `--device /dev/devmm_svm` | 内存管理相关设备。|
+    | `--device /dev/hisi_hdc` | hdc相关管理设备。|
+    | `-v /usr/local/dcmi:/usr/local/dcmi` | 将宿主机dcmi的so和接口文件目录`/usr/local/dcmi`挂载到容器中，请根据实际情况修改。|
+    | `-v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi` | 将宿主机`npu-smi`工具`/usr/local/bin/npu-smi`挂载到容器中，请根据实际情况修改。|
+    | `-v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/` | 将宿主机目录`/usr/local/Ascend/driver/lib64/driver`挂载到容器中。请根据driver的驱动so所在路径修改。|
+    | `-v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info` | 将宿主机版本信息文件`/usr/local/Ascend/driver/version.info`挂载到容器中，请根据实际情况修改。|
+    | `-v /etc/ascend_install.info:/etc/ascend_install.info` | 将宿主机安装信息文件`/etc/ascend_install.info`挂载到容器中。|
+    | `-it` | 以交互模式启动容器。|
+    | `openeuler/bitsandbytes:{Tag}` | 指定要运行的镜像`openeuler/bitsandbytes`，其中`{Tag}`是需要替换的镜像标签。|
+
+  - 容器测试
+
+    进入容器后先验证NPU环境，再确认bitsandbytes版本：
+    ```bash
+    docker exec -it my-bitsandbytes /bin/bash
+    python3 -c "import torch, torch_npu; print('is_available:', torch.npu.is_available())"
+    python3 -c "import bitsandbytes as bnb; import bitsandbytes.cextension as ce; print('bitsandbytes', bnb.__version__); print('BNB_BACKEND', ce.BNB_BACKEND)"
+    ```
+
+    `BNB_BACKEND`打印`CPU`是上游默认后端在昇腾上的预期行为，不是安装失败；真正的NPU证据是前向输出的`out.device`。在CPU上构造`Linear4bit`，搬到`npu:0`量化后用float16输入做一次前向：
+    ```python
+    import torch
+    import torch_npu
+    import bitsandbytes as bnb
+
+    layer = bnb.nn.Linear4bit(
+        64, 32, bias=False, compute_dtype=torch.float16, quant_type="nf4",
+        compress_statistics=False,
+    )
+    layer = layer.to("npu:0")
+    x = torch.randn(4, 64, dtype=torch.float16, device="npu:0")
+    out = layer(x)
+    print("weight.device", layer.weight.device)
+    print("weight.bnb_quantized", layer.weight.bnb_quantized)
+    print("out.device", out.device)
+    print("out.shape", tuple(out.shape))
+    print("NF4 forward on Ascend NPU: OK")
+    ```
+
+license: MIT license
+similar_packages:
+  - GPTQModel: GPTQModel是开源的大模型后训练量化工具，支持GPTQ等多种算法，主要面向GPU场景。
+  - LLM Compressor: LLM Compressor是vLLM项目的大模型压缩工具库，支持多种量化算法，压缩模型可直接由vLLM部署。
+dependency:
+  - python3
+  - torch
+  - torch_npu
+  - numpy
+
+homepage: https://github.com/bitsandbytes-foundation/bitsandbytes
+upstream:
+  backend: GitHub
+  version_url: bitsandbytes-foundation/bitsandbytes
+  version_prefix:
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM
