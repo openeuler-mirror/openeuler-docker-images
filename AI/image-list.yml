@@ -27,6 +27,7 @@ images:
   mindspore: mindspore
   mlflow: mlflow
   wav2lip: opea/wav2lip
+  areal: areal
   animation: opea/animation
   oneapi-basekit: oneapi-basekit
   oneapi-runtime: oneapi-runtime
