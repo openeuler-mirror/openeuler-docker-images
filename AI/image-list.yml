@@ -15,6 +15,7 @@ images:
   agent: opea/agent
   agent-ui: opea/agent-ui
   onnx: onnx
+  deepspeed: deepspeed
   onnxruntime: onnxruntime
   cann: cann
   maca-sdk: maca-sdk
