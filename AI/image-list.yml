@@ -29,6 +29,7 @@ images:
   wav2lip: opea/wav2lip
   animation: opea/animation
   oneapi-basekit: oneapi-basekit
+  llama.cpp: llama.cpp
   oneapi-runtime: oneapi-runtime
   asr: opea/asr
   audioqna: opea/audioqna
