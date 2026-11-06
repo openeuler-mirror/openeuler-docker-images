@@ -25,3 +25,4 @@ COPY hadoop/* $HADOOP_HOME/etc/hadoop/
 EXPOSE 9870 8088 19888 50070 50075 50010 50020 50090
 ENTRYPOINT [ "/entrypoint.sh" ]
 CMD [ "start" ]
+
