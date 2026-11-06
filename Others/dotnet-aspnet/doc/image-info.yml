@@ -33,7 +33,7 @@ download: |
 usage: |
   - 验证镜像
     ```
-    docker run --rm openeuler/dotnet-aspnet:{Tag} dotnet --info
+    docker run --rm openeuler/dotnet-aspnet:{Tag} --info
     ```
     该镜像为 ASP.NET Core 运行时基础镜像，未内置任何应用，直接 `docker run -d` 会执行默认的 `dotnet --info` 并立即退出；上述命令可查看镜像内的 .NET 运行环境信息，运行 Web 应用请参考下方 HelloWorld 示例。
 
