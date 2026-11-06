@@ -30,7 +30,13 @@ download: |
 usage: |
   - 运行容器
     ```bash
-    docker run -dit --name fbthrift openeuler/fbthrift:{Tag} /bin/bash
+    # 后台常驻运行：sleep 作为前台进程保持容器存活，避免容器立即退出
+    docker run -d --name fbthrift openeuler/fbthrift:{Tag} sleep infinity
+    ```
+    
+    也可前台交互式运行，退出 shell 后容器停止：
+    ```bash
+    docker run -it --rm --name fbthrift openeuler/fbthrift:{Tag} /bin/bash
     ```
   
   - 使用 thrift 编译器
