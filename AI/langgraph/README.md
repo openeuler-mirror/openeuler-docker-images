@@ -13,6 +13,7 @@ LangGraph is a framework for building stateful, multi-actor applications with LL
 The tag of each langgraph docker image is consist of the version of langgraph and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[1.2.20-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/langgraph/1.2.20/24.03-lts-sp4/Dockerfile) | langgraph 1.2.20 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[1.2.19-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/langgraph/1.2.19/24.03-lts-sp4/Dockerfile) | langgraph 1.2.19 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[1.2.18-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/langgraph/1.2.18/24.03-lts-sp4/Dockerfile) | langgraph 1.2.18 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[1.2.17-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/langgraph/1.2.17/24.03-lts-sp4/Dockerfile) | langgraph 1.2.17 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
