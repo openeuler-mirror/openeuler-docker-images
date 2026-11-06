@@ -1,0 +1,115 @@
+name: roll
+category: ai
+description: ROLL是阿里巴巴开源的大规模强化学习训练框架，支持SFT、DPO、PPO/GRPO、蒸馏与agentic RL流水线，训练策略与推理引擎可插拔。本镜像基于torch_npu并内置vLLM-Ascend推理栈，可在昇腾NPU上直接运行后训练。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  ROLL镜像的Tag由其版本信息和软件栈版本信息组成，详细内容如下：
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[0.4.0-torch_npu2.10.0-cann9.1.0-python3.12-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/roll/0.4.0-torch_npu2.10.0-cann9.1.0-python3.12/24.03-lts-sp4/Dockerfile)| ROLL 0.4.0 (torch_npu 2.10.0.post6, CANN 9.1.0) on openEuler 24.03-LTS-SP4 | arm64,amd64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/roll:{Tag}
+  ```
+
+usage: |
+  - 前置条件
+
+    示例使用Ascend NPU设备。运行前确认宿主机已安装Ascend驱动和固件：
+    ```bash
+    npu-smi info
+    ls /dev/davinci* /dev/davinci_manager /dev/devmm_svm /dev/hisi_hdc
+    ```
+    将`${device}`替换为实际NPU设备（例如`/dev/davinci0`），并按文档挂载驱动目录。没有NPU时无法执行该示例。
+
+  - 启动容器
+    ```
+    docker run \
+        --name my-roll \
+        --device ${device} \
+        --device /dev/davinci_manager \
+        --device /dev/devmm_svm \
+        --device /dev/hisi_hdc \
+        -v /usr/local/dcmi:/usr/local/dcmi \
+        -v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi \
+        -v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/ \
+        -v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info \
+        -v /etc/ascend_install.info:/etc/ascend_install.info \
+        -it openeuler/roll:{Tag} bash
+    ```
+    用户可根据自身需求选择对应版本的`{Tag}`、对应的NPU设备`{device}`以及容器启动的选项。
+
+  - 参数说明
+    | 配置项 | 描述 |
+    |--|--|
+    | `--name my-roll` | 容器名称。|
+    | `--device /dev/davinci1` | NPU设备，X是芯片物理ID号，例如davinci1。|
+    | `--device /dev/davinci_manager` | davinci相关的管理设备。|
+    | `--device /dev/devmm_svm` | 内存管理相关设备。|
+    | `--device /dev/hisi_hdc` | hdc相关管理设备。|
+    | `-v /usr/local/dcmi:/usr/local/dcmi` | 将宿主机dcmi的so和接口文件目录`/usr/local/dcmi`挂载到容器中，请根据实际情况修改。|
+    | `-v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi` | 将宿主机`npu-smi`工具`/usr/local/bin/npu-smi`挂载到容器中，请根据实际情况修改。|
+    | `-v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/` | 将宿主机目录`/usr/local/Ascend/driver/lib64/driver`挂载到容器中。请根据driver的驱动so所在路径修改。|
+    | `-v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info` | 将宿主机版本信息文件`/usr/local/Ascend/driver/version.info`挂载到容器中，请根据实际情况修改。|
+    | `-v /etc/ascend_install.info:/etc/ascend_install.info` | 将宿主机安装信息文件`/etc/ascend_install.info`挂载到容器中。|
+    | `-it` | 以交互模式启动容器。|
+    | `openeuler/roll:{Tag}` | 指定要运行的镜像`openeuler/roll`，其中`{Tag}`是需要替换的镜像标签。|
+
+  - 容器测试
+
+    进入容器后先验证NPU与vLLM-Ascend推理栈，再运行FrozenLake agentic强化学习快速开始：
+    ```bash
+    docker exec -it my-roll /bin/bash
+    python3 -c "import torch, torch_npu, vllm, vllm_ascend, triton; print('is_available:', torch.npu.is_available())"
+    ```
+
+    将README中的`quick_start_npu.yaml`保存到`/opt/ROLL/examples/agentic_frozen_lake_npu/`（关键项：`strategy_name: fsdp2_train`训练策略、`strategy_name: vllm`推理引擎、`adv_estimator: grpo`、`max_steps: 1`），然后启动训练（模型运行时经ModelScope自动下载`Qwen/Qwen2.5-0.5B-Instruct`）：
+    ```bash
+    cd /opt
+    python3 ROLL/examples/start_agentic_pipeline.py --config_path agentic_frozen_lake_npu --config_name quick_start_npu
+    ```
+
+    训练完成后TensorBoard指标保存在`output/tensorboard/roll-quick-start-npu`：
+    ```python
+    from pathlib import Path
+
+    from tensorboard.backend.event_processing.event_accumulator import EventAccumulator
+
+    tensorboard_dir = Path("output/tensorboard/roll-quick-start-npu")
+    event_files = sorted(tensorboard_dir.glob("*/events.out.tfevents.*"))
+    assert event_files, f"no tensorboard event file under {tensorboard_dir}"
+    metrics = EventAccumulator(str(event_files[-1]))
+    metrics.Reload()
+    print("training steps:", len(metrics.Scalars("time/step_total")))
+    print("samples:", int(metrics.Scalars("system/samples")[-1].value))
+    print("FrozenLake mean score:", metrics.Scalars("critic/score/mean")[-1].value)
+    ```
+
+license: Apache-2.0 license
+similar_packages:
+  - verl: verl是字节跳动开源的分布式RLHF训练框架，基于Ray与Megatron实现大规模后训练。
+  - AReaL: AReaL是开源的大规模异步强化学习系统，面向LLM与agentic RL后训练场景。
+dependency:
+  - python3
+  - torch
+  - torch_npu
+  - vllm
+  - vllm-ascend
+  - transformers
+  - ray
+  - triton-ascend
+
+homepage: https://github.com/alibaba/ROLL
+upstream:
+  backend: GitHub
+  version_url: alibaba/ROLL
+  version_prefix: v
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM
