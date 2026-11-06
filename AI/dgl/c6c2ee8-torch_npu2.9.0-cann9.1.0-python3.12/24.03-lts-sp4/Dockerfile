@@ -1,11 +1,9 @@
 FROM quay.io/ascend/torch-npu:2.9.0.post8-cann9.1.0-910b-openeuler24.03-py3.12
 
 ARG VERSION=c6c2ee8
-ARG PIP_INDEX_URL="https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"
 
 LABEL author="openEuler CloudNative SIG" description="DGL-Ascend (DGL with Ascend NPU support) with torch_npu + CANN"
 
-RUN pip config set global.index-url ${PIP_INDEX_URL}
 
 # Build and install DGL-Ascend (BUPT-GAMMA Ascend adaptation of DGL) from source.
 # The build script auto-detects the Ascend SoC and falls back to ascend910b4
