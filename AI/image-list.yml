@@ -36,6 +36,7 @@ images:
   chatqna-conversation-ui: opea/chatqna-conversation-ui
   chatqna-ui: opea/chatqna-ui
   chatqna: opea/chatqna
+  fastchat: fastchat
   codegen-ui: opea/codegen-ui
   codegen: opea/codegen
   codegen-react-ui: opea/codegen-react-ui
