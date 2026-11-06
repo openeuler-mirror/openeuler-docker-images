@@ -50,6 +50,7 @@ images:
   docsum-ui: opea/docsum-ui
   docsum: opea/docsum
   lvm: opea/lvm
+  dgl: dgl
   embedding-tei: opea/embedding-tei
   embedding: opea/embedding
   faqgen-ui: opea/faqgen-ui
