@@ -23,8 +23,9 @@ download: |
 usage: |
   - 启动容器
     ```
-    docker run -dit --name my-bwa openeuler/bwa:{Tag} /bin/bash
+    docker run -dit --name my-bwa openeuler/bwa:{Tag} sleep infinity
     ```
+    使用 `sleep infinity` 让容器内始终有前台进程，避免容器以 `/bin/bash` 启动后因无前台进程而立即退出。
     用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。
 
   - 容器测试
