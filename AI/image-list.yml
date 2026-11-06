@@ -9,6 +9,7 @@ images:
   comps-base: opea/comps-base
   kserve-huggingfaceserver: kserve/huggingfaceserver
   kserve-controller: kserve/controller
+  lm-evaluation-harness: lm-evaluation-harness
   kserve-agent: kserve/agent
   kserve-router: kserve/router
   kserve-storage-initializer: kserve/storage-initializer
