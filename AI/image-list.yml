@@ -45,6 +45,7 @@ images:
   graphrag-ui: opea/graphrag-ui
   graphrag-react-ui: opea/graphrag-react-ui
   dataprep: opea/dataprep  
+  diffsynth-studio: diffsynth-studio
   dataprep-redis: opea/dataprep-redis
   doc-index-retriever: opea/doc-index-retriever
   docsum-ui: opea/docsum-ui
