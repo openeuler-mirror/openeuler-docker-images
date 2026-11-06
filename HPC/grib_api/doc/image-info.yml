@@ -24,7 +24,10 @@ usage: |
   - 运行容器并使用 grib_api 命令行工具：
 
     ```
-    docker run --rm openeuler/grib_api:{Tag} grib_ls -h
+    docker run --rm openeuler/grib_api:{Tag} grib_ls -V
+
+    # 查看用法（不带参数，退出码为 1）
+    docker run --rm openeuler/grib_api:{Tag} grib_ls
     ```
 
   - 查看挂载到容器中的 GRIB 文件：
