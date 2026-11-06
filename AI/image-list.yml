@@ -16,6 +16,7 @@ images:
   agent-ui: opea/agent-ui
   onnx: onnx
   onnxruntime: onnxruntime
+  colossalai: colossalai
   cann: cann
   maca-sdk: maca-sdk
   dlrm: dlrm
