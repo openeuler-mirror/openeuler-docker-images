@@ -48,6 +48,7 @@ images:
   dataprep-redis: opea/dataprep-redis
   doc-index-retriever: opea/doc-index-retriever
   docsum-ui: opea/docsum-ui
+  wenet: wenet
   docsum: opea/docsum
   lvm: opea/lvm
   embedding-tei: opea/embedding-tei
