@@ -1,0 +1,121 @@
+name: diffusers
+category: ai
+description: Diffusers是Hugging Face开源的扩散模型工具库，提供DiffusionPipeline等接口组装文生图、图生图流水线，支持调度器切换、LoRA风格加载与显存优化。本镜像集成torch_npu与CANN，可在昇腾NPU上直接运行Stable Diffusion文生图推理与风格迁移。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  Diffusers镜像的Tag由其版本信息和软件栈版本信息组成，详细内容如下：
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[0.42.1-torch_npu2.9.0-cann9.1.0-python3.12-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/diffusers/0.42.1-torch_npu2.9.0-cann9.1.0-python3.12/24.03-lts-sp4/Dockerfile)| Diffusers 0.42.1 (torch_npu 2.9.0.post8, CANN 9.1.0) on openEuler 24.03-LTS-SP4 | arm64,amd64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/diffusers:{Tag}
+  ```
+
+usage: |
+  - 前置条件
+
+    示例使用Ascend NPU设备。运行前确认宿主机已安装Ascend驱动和固件：
+    ```bash
+    npu-smi info
+    ls /dev/davinci* /dev/davinci_manager /dev/devmm_svm /dev/hisi_hdc
+    ```
+    将`${device}`替换为实际NPU设备（例如`/dev/davinci0`），并按文档挂载驱动目录。没有NPU时无法执行该示例。
+
+  - 启动容器
+    ```
+    docker run \
+        --name my-diffusers \
+        --device ${device} \
+        --device /dev/davinci_manager \
+        --device /dev/devmm_svm \
+        --device /dev/hisi_hdc \
+        -v /usr/local/dcmi:/usr/local/dcmi \
+        -v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi \
+        -v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/ \
+        -v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info \
+        -v /etc/ascend_install.info:/etc/ascend_install.info \
+        -it openeuler/diffusers:{Tag} bash
+    ```
+    用户可根据自身需求选择对应版本的`{Tag}`、对应的NPU设备`{device}`以及容器启动的选项。
+
+  - 参数说明
+    | 配置项 | 描述 |
+    |--|--|
+    | `--name my-diffusers` | 容器名称。|
+    | `--device /dev/davinci1` | NPU设备，X是芯片物理ID号，例如davinci1。|
+    | `--device /dev/davinci_manager` | davinci相关的管理设备。|
+    | `--device /dev/devmm_svm` | 内存管理相关设备。|
+    | `--device /dev/hisi_hdc` | hdc相关管理设备。|
+    | `-v /usr/local/dcmi:/usr/local/dcmi` | 将宿主机dcmi的so和接口文件目录`/usr/local/dcmi`挂载到容器中，请根据实际情况修改。|
+    | `-v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi` | 将宿主机`npu-smi`工具`/usr/local/bin/npu-smi`挂载到容器中，请根据实际情况修改。|
+    | `-v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/` | 将宿主机目录`/usr/local/Ascend/driver/lib64/driver`挂载到容器中。请根据driver的驱动so所在路径修改。|
+    | `-v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info` | 将宿主机版本信息文件`/usr/local/Ascend/driver/version.info`挂载到容器中，请根据实际情况修改。|
+    | `-v /etc/ascend_install.info:/etc/ascend_install.info` | 将宿主机安装信息文件`/etc/ascend_install.info`挂载到容器中。|
+    | `-it` | 以交互模式启动容器。|
+    | `openeuler/diffusers:{Tag}` | 指定要运行的镜像`openeuler/diffusers`，其中`{Tag}`是需要替换的镜像标签。|
+
+  - 容器测试
+
+    进入容器后先验证NPU环境，再确认Diffusers版本：
+    ```bash
+    docker exec -it my-diffusers /bin/bash
+    python3 -c "import torch, torch_npu; print('is_available:', torch.npu.is_available())"
+    python3 -c "import diffusers; print('diffusers', diffusers.__version__)"
+    ```
+
+    在NPU上跑通SD 1.5文生图链路（`DiffusionPipeline.from_pretrained`自动组装text_encoder/unet/vae/tokenizer/scheduler，`.to("npu:0")`把流水线放上NPU）：
+    ```python
+    import torch
+    import torch_npu
+    from diffusers import DiffusionPipeline, UniPCMultistepScheduler
+
+    pipe = DiffusionPipeline.from_pretrained(
+        "stable-diffusion-v1-5/stable-diffusion-v1-5", dtype=torch.bfloat16, safety_checker=None,
+    ).to("npu:0")
+
+    prompt = "a photo of an astronaut riding a horse on mars"
+    image = pipe(prompt, num_inference_steps=30).images[0]
+    image.save("output/astronaut_rides_horse.png")
+    print("generated:", image.size)
+
+    pipe.scheduler = UniPCMultistepScheduler.from_config(pipe.scheduler.config)
+    image = pipe(prompt, num_inference_steps=20).images[0]
+    image.save("output/astronaut_unipc.png")
+    print("generated:", image.size, "via", type(pipe.scheduler).__name__)
+    ```
+
+    国内网络可通过ModelScope或hf-mirror加速模型下载：
+    ```bash
+    export HF_ENDPOINT=https://hf-mirror.com
+    ```
+
+license: Apache-2.0 license
+similar_packages:
+  - ComfyUI: 基于节点式工作流的生成式AI图像工具，以流水线编排方式支持各类扩散模型。
+  - stable-diffusion-webui: Stable Diffusion的Web交互界面，提供文生图、图生图等常用生成能力。
+dependency:
+  - python3
+  - torch
+  - torch_npu
+  - transformers
+  - accelerate
+  - peft
+  - huggingface-hub
+  - safetensors
+  - Pillow
+
+homepage: https://github.com/huggingface/diffusers
+upstream:
+  backend: GitHub
+  version_url: huggingface/diffusers
+  version_prefix: v
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM

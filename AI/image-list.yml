@@ -4,6 +4,7 @@ images:
   codegen-gradio-ui: opea/codegen-gradio-ui
   multimodalqna: opea/multimodalqna
   multimodalqna-ui: opea/multimodalqna-ui
+  diffusers: diffusers
   lvm-llava: opea/lvm-llava
   embedding-multimodal-bridgetower: opea/embedding-multimodal-bridgetower
   comps-base: opea/comps-base
