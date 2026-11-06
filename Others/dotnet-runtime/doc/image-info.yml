@@ -30,11 +30,11 @@ download: |
   ```
 
 usage: |
-  - 启动容器
+  - 验证运行时（前台执行，命令结束后容器退出）
     ```
-    docker run -d --name my-dotnet-runtime openeuler/dotnet-runtime:{Tag}
+    docker run --rm openeuler/dotnet-runtime:{Tag} --list-runtimes
     ```
-    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。`my-dotnet-runtime` 是 .NET 运行时基础镜像，直接启动会执行 `dotnet --info` 并退出；运行应用请参考下方 HelloWorld 示例。
+    该镜像是 .NET 运行时基础镜像，没有内置应用：`ENTRYPOINT` 为 `dotnet`，默认 `CMD` 为 `--info`，因此裸 `docker run -d` 执行完默认命令后会立即退出，属于正常现象。上面的命令把参数直接传给 `dotnet`，可正常输出已安装的运行时列表；用户可根据自身需求选择对应版本的{Tag}、容器启动的选项，运行应用请参考下方 HelloWorld 示例。
   
   - 使用示例
 
@@ -75,16 +75,21 @@ usage: |
         ```
         注意，发布应用使用的dotnet版本`{x.x}`必须和`{Tag}`所指向的dotnet版本一致。
 
-  - 容器测试
+  - 容器交互与调试
 
-    查看运行日志
+    启动交互式 shell
+    ```
+    docker run -it --rm --entrypoint /bin/bash openeuler/dotnet-runtime:{Tag}
+    ```
+
+    启动常驻容器（便于后续 `docker exec` 调试）
+    ```
+    docker run -d --name my-dotnet-runtime --entrypoint /bin/bash openeuler/dotnet-runtime:{Tag} -c "sleep infinity"
+    ```
+
+    查看常驻容器日志
     ```
     docker logs -f my-dotnet-runtime
-    ```
-
-    运行启动shell会话
-    ```
-    docker run -it --entrypoint /bin/bash --name my-dotnet-runtime openeuler/dotnet-runtime:{Tag}
     ```
 
 license: MIT license
