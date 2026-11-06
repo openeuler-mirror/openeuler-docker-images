@@ -2,6 +2,7 @@ ARG BASE=openeuler/openeuler:24.03-lts-sp4
 FROM ${BASE}
 
 ARG VERSION=3.4.2-release
+ARG PHYML_VERSION=v3.3.20260528
 
 RUN dnf install -y \
       java-11-openjdk-devel \
@@ -11,7 +12,7 @@ RUN dnf install -y \
     dnf clean all
 
 RUN mkdir -p /tmp/phyml-build && \
-    curl -fSL https://github.com/stephaneguindon/phyml/archive/refs/heads/master.tar.gz | tar xz --strip-components=1 -C /tmp/phyml-build && \
+    curl -fSL https://github.com/stephaneguindon/phyml/archive/refs/tags/${PHYML_VERSION}.tar.gz | tar xz --strip-components=1 -C /tmp/phyml-build && \
     cd /tmp/phyml-build && \
     sh ./autogen.sh && \
     ./configure --enable-phyml && \
@@ -26,8 +27,10 @@ RUN mkdir -p /tmp/prottest3-build && \
 WORKDIR /tmp/prottest3-build
 
 RUN sed -i 's/<javac /<javac encoding="UTF-8" /' build.xml && \
+    sed -i 's/STATS_FILE_SUFFIX + "txt"/STATS_FILE_SUFFIX + ".txt"/' src/main/java/es/uvigo/darwin/prottest/exe/PhyMLv3AminoAcidRunEstimator.java && \
+    sed -i 's/TREE_FILE_SUFFIX + "txt"/TREE_FILE_SUFFIX + ".txt"/' src/main/java/es/uvigo/darwin/prottest/exe/PhyMLv3AminoAcidRunEstimator.java && \
     ant jar && \
-    cp /opt/phyml/phyml dist/bin/PhyML_3.0_linux32 && \
+    cp /opt/phyml/phyml dist/bin/phyml && \
     mkdir -p /opt/prottest3 && \
     mv dist /opt/prottest3/ && \
     cd / && rm -rf /tmp/prottest3-build
