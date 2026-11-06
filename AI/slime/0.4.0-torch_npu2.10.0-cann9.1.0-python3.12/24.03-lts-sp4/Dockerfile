@@ -2,11 +2,9 @@ FROM quay.io/ascend/torch-npu:2.10.0.post6-cann9.1.0-910b-openeuler24.03-py3.12
 
 ARG VERSION=0.4.0
 ARG SLIME_ASCEND_REF=c69676fa94382175502101d9441c9aa82fd34a45
-ARG PIP_INDEX_URL="https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"
 
 LABEL author="openEuler CloudNative SIG" description="slime RL training framework (Ascend-adapted) with Ascend NPU support (torch_npu + CANN)"
 
-RUN pip config set global.index-url ${PIP_INDEX_URL}
 
 RUN dnf -y install --nodocs --setopt=install_weak_deps=False git && dnf clean all
 
