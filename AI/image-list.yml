@@ -46,6 +46,7 @@ images:
   graphrag-react-ui: opea/graphrag-react-ui
   dataprep: opea/dataprep  
   dataprep-redis: opea/dataprep-redis
+  vbench: vbench
   doc-index-retriever: opea/doc-index-retriever
   docsum-ui: opea/docsum-ui
   docsum: opea/docsum
