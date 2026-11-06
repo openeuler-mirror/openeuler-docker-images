@@ -7,6 +7,7 @@ images:
   lvm-llava: opea/lvm-llava
   embedding-multimodal-bridgetower: opea/embedding-multimodal-bridgetower
   comps-base: opea/comps-base
+  liger-kernel: liger-kernel
   kserve-huggingfaceserver: kserve/huggingfaceserver
   kserve-controller: kserve/controller
   kserve-agent: kserve/agent
