@@ -9,12 +9,14 @@ environment: |
 tags: |
   PyTorch镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
 
-  |    Tag   |  Currently  |   Architectures  |
-  |----------|-------------|------------------|
-  |[2.14.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/pytorch/2.14.1/24.03-lts-sp4/Dockerfile)| PyTorch 2.14.1 on openEuler 24.03-LTS-SP4 | arm64,amd64 |
-  |[pytorch2.1.0.a1-cann7.0.RC1.alpha002-oe2203sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/pytorch/2.1.0.a1-cann7.0.RC1.alpha002/22.03-lts-sp2/Dockerfile)| PyTorch pytorch2.1.0.a1-cann7.0.RC1.alpha002 on openEuler 22.03-LTS-SP2 | arm64 |
-  |[2.2.0-cann8.0.RC1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/pytorch/2.2.0-cann8.0.RC1/24.03-lts-sp4/Dockerfile)| PyTorch 2.2.0 with CANN 8.0.RC1 on openEuler 22.03-LTS-SP4 | arm64,amd64 |
-  |[2.2.0-cann8.0.RC1-oe2203sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/pytorch/2.2.0-cann8.0.RC1/22.03-lts-sp4/Dockerfile)| PyTorch 2.2.0 with CANN 8.0.RC1 on openEuler 22.03-LTS-SP4 | arm64,amd64 |
+  |    Tag   |  类型  |  Currently  |   Architectures  |
+  |----------|--------|-------------|------------------|
+  |[2.14.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/pytorch/2.14.1/24.03-lts-sp4/Dockerfile)| CPU | PyTorch 2.14.1 on openEuler 24.03-LTS-SP4 | arm64,amd64 |
+  |[pytorch2.1.0.a1-cann7.0.RC1.alpha002-oe2203sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/pytorch/2.1.0.a1-cann7.0.RC1.alpha002/22.03-lts-sp2/Dockerfile)| CANN | PyTorch pytorch2.1.0.a1-cann7.0.RC1.alpha002 on openEuler 22.03-LTS-SP2 | arm64 |
+  |[2.2.0-cann8.0.RC1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/pytorch/2.2.0-cann8.0.RC1/24.03-lts-sp4/Dockerfile)| CANN | PyTorch 2.2.0 with CANN 8.0.RC1 on openEuler 24.03-LTS-SP4 | arm64,amd64 |
+  |[2.2.0-cann8.0.RC1-oe2203sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/pytorch/2.2.0-cann8.0.RC1/22.03-lts-sp4/Dockerfile)| CANN | PyTorch 2.2.0 with CANN 8.0.RC1 on openEuler 22.03-LTS-SP4 | arm64,amd64 |
+
+  其余 PyTorch CANN 版本可访问 [AscendHub](https://www.hiascend.com/developer/ascendhub/detail/1bb1e5d9c8c64f6ea8db0d0ec5061531) 获取帮助。
 
 download: |
   拉取镜像到本地
@@ -23,7 +25,30 @@ download: |
   ```
 
 usage: |
-  - 启动容器
+  PyTorch 镜像分为 CPU 版和 CANN 版：CPU 版无需 NPU，可直接运行；CANN 版需要 Ascend NPU 驱动和固件。
+
+  - CPU 版（`2.14.1-oe2403sp4`）
+
+    启动容器并进入 shell：
+    ```
+    docker run --rm -it openeuler/pytorch:{Tag} bash
+    ```
+
+    无需挂载 NPU 设备，可直接验证 PyTorch：
+    ```
+    docker run --rm openeuler/pytorch:{Tag} python3 -c "import torch; print(torch.__version__)"
+    ```
+    预期输出：`2.14.1+cpu`
+
+  - CANN 版（Tag 含 `cann`，例如 `2.2.0-cann8.0.RC1-oe2403sp4`）
+
+    前置条件：宿主机已安装 Ascend 驱动和固件。
+    ```bash
+    npu-smi info
+    ls /dev/davinci* /dev/davinci_manager /dev/devmm_svm /dev/hisi_hdc
+    ```
+
+    启动容器：
     ```
     docker run \
         --name my-pytorch \
@@ -38,9 +63,9 @@ usage: |
         -v /etc/ascend_install.info:/etc/ascend_install.info \
         -it openeuler/pytorch:{Tag} bash
     ```
-    用户可根据自身需求选择对应的硬件设备{device}、对应版本的{Tag}以及容器启动的选项。
+    将 `${device}` 替换为实际 NPU 设备（例如 `/dev/davinci0`），并按实际路径挂载驱动目录。
 
-  - 参数说明
+  - CANN 版参数说明
     | 配置项 | 描述 |
     |--|--|
     | `--name my-pytorch` | 容器名称。|
@@ -67,16 +92,6 @@ usage: |
     ```
     docker exec -it my-pytorch /bin/bash
     ```
-
-
-  - 前置条件
-
-    示例使用 Ascend NPU 设备。运行前确认宿主机已安装 Ascend 驱动和固件：
-    ```bash
-    npu-smi info
-    ls /dev/davinci* /dev/davinci_manager /dev/devmm_svm /dev/hisi_hdc
-    ```
-    将 `${device}` 替换为实际 NPU 设备（例如 `/dev/davinci0`），并按文档挂载驱动目录。没有 NPU 时无法执行该示例。
 
 license: BSD 3-Clause license
 similar_packages:
