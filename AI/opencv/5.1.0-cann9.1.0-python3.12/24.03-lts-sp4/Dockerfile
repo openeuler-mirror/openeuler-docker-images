@@ -211,7 +211,6 @@ RUN source /usr/local/Ascend/ascend-toolkit/set_env.sh && \
         -DPYTHON_INCLUDE_DIR="${PY_INC}" \
         -DPYTHON_LIBRARY="${PY_LIB}" \
         -DOPENCV_ENABLE_NONFREE=OFF \
-        -DOPENCV_DOWNLOAD_MIRROR_ID=gitcode \
         -DOPENCV_EXTRA_MODULES_PATH=/tmp/opencv_contrib/modules && \
     cmake --build /tmp/opencv/build --target install --parallel 2 && \
     /usr/local/opencv-cann/bin/opencv_version && \
