@@ -6,6 +6,7 @@ images:
   multimodalqna-ui: opea/multimodalqna-ui
   lvm-llava: opea/lvm-llava
   embedding-multimodal-bridgetower: opea/embedding-multimodal-bridgetower
+  open_clip: open_clip
   comps-base: opea/comps-base
   kserve-huggingfaceserver: kserve/huggingfaceserver
   kserve-controller: kserve/controller
