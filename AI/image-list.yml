@@ -25,6 +25,7 @@ images:
   llm-server: llm-server
   llvm-build-deps: llvm-build-deps
   mindspore: mindspore
+  slime: slime
   mlflow: mlflow
   wav2lip: opea/wav2lip
   animation: opea/animation
