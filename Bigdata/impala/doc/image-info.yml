@@ -23,22 +23,28 @@ download: |
   ```
 
 usage: |
-  - 启动容器
+  说明：镜像未配置常驻服务，容器主进程退出后会立即停止；请使用以下前台或常驻命令启动。
+
+  - 启动容器（前台交互式 shell）
     ```
-    docker run -dit --name my-impala openeuler/impala:{Tag} /bin/bash
+    docker run -it --name my-impala openeuler/impala:{Tag} /bin/bash
     ```
     用户可根据自身需求选择对应版本的{Tag}。
-  
+
+  - 启动容器（后台常驻）
+    ```
+    docker run -dit --name my-impala openeuler/impala:{Tag} sleep infinity
+    ```
+    容器内无常驻业务进程，使用 sleep infinity 保持容器运行；需要 shell 时执行：
+    ```
+    docker exec -it my-impala /bin/bash
+    ```
+
   - 容器测试
 
     查看运行日志
       ```
       docker logs -f my-impala
-      ```
-
-    运行启动shell会话
-      ```
-      docker run -it --name my-impala openeuler/impala:{Tag} /bin/bash
       ```
 
 license: Apache-2.0 license
