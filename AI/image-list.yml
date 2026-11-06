@@ -19,6 +19,7 @@ images:
   cann: cann
   maca-sdk: maca-sdk
   dlrm: dlrm
+  torchtune: torchtune
   avatarchatbot: opea/avatarchatbot
   euler-copilot-fast-inference-qwen: euler-copilot-fast-inference-qwen
   llm: llm
