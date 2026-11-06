@@ -34,7 +34,7 @@ usage: |
 
   - 查看帮助：
     ```
-    docker run --rm openeuler/opencode:{Tag} opencode --help
+    docker run --rm openeuler/opencode:{Tag} --help
     ```
 
 license: MIT
