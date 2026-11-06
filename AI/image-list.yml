@@ -47,6 +47,7 @@ images:
   dataprep: opea/dataprep  
   dataprep-redis: opea/dataprep-redis
   doc-index-retriever: opea/doc-index-retriever
+  funasr: funasr
   docsum-ui: opea/docsum-ui
   docsum: opea/docsum
   lvm: opea/lvm
