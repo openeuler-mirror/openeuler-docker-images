@@ -18,6 +18,7 @@ images:
   onnxruntime: onnxruntime
   cann: cann
   maca-sdk: maca-sdk
+  xtuner: xtuner
   dlrm: dlrm
   avatarchatbot: opea/avatarchatbot
   euler-copilot-fast-inference-qwen: euler-copilot-fast-inference-qwen
