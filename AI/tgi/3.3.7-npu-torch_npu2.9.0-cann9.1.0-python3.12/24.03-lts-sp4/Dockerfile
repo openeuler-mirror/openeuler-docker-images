@@ -1,26 +1,18 @@
 FROM quay.io/ascend/torch-npu:2.9.0.post8-cann9.1.0-910b-openeuler24.03-py3.12
 
 ARG VERSION=3.3.7-npu
-ARG PIP_INDEX_URL="https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"
 
 LABEL author="openEuler CloudNative SIG" description="Text Generation Inference (TGI) with Ascend NPU support (torch_npu + CANN)"
-
-RUN pip config set global.index-url ${PIP_INDEX_URL}
 
 # System dependencies (Rust + Python dual-stack build)
 RUN yum install -y gcc gcc-c++ make protobuf-compiler pkg-config openssl-devel git curl && \
     yum clean all && \
     rm -rf /var/cache/yum
 
-# Rust toolchain pinned by the repo's rust-toolchain.toml, via the rsproxy.cn mirror
-ENV RUSTUP_DIST_SERVER=https://rsproxy.cn
-ENV RUSTUP_UPDATE_ROOT=https://rsproxy.cn/rustup
-RUN curl -fsSL https://rsproxy.cn/rustup-init.sh -o /tmp/rustup-init.sh && \
+# Rust toolchain pinned by the repo's rust-toolchain.toml
+RUN curl -fsSL https://sh.rustup.rs -o /tmp/rustup-init.sh && \
     sh /tmp/rustup-init.sh -y --default-toolchain 1.85.1 --profile minimal && \
-    rm -f /tmp/rustup-init.sh && \
-    mkdir -p /root/.cargo && \
-    printf '[source.crates-io]\nreplace-with = "rsproxy-sparse"\n[source.rsproxy-sparse]\nregistry = "sparse+https://rsproxy.cn/index/"\n' \
-        > /root/.cargo/config.toml
+    rm -f /tmp/rustup-init.sh
 
 ENV PATH=/root/.cargo/bin:$PATH
 ENV UV_SYSTEM_PYTHON=1
@@ -33,7 +25,7 @@ RUN git clone --branch "v${VERSION}" --depth 1 \
 # kernels must stay at 0.5.0: it is the build backend of the Python server and
 # ships the kernels.lockfile that avoids CUDA-only kernel downloads.
 RUN python3 -m pip install --no-cache-dir uv && \
-    uv pip install --index-url ${PIP_INDEX_URL} \
+    uv pip install \
         "transformers==4.57.6" "accelerate==1.15.0" "modelscope==1.37.0" \
         "kernels==0.5.0" "grpcio-tools>=1.69.0" "mypy-protobuf>=3.6.0" && \
     python3 -m pip cache purge
@@ -50,7 +42,7 @@ RUN cd /opt/text-generation-inference && \
 
 # Install the Python server (editable, sources are kept in the image)
 RUN cd /opt/text-generation-inference && \
-    uv pip install --index-url ${PIP_INDEX_URL} --no-build-isolation -e server && \
+    uv pip install --no-build-isolation -e server && \
     make -C server gen-server-raw && \
     rm -rf /root/.cargo /root/.rustup /root/.cache/uv && \
     python3 -m pip cache purge
