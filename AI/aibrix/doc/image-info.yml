@@ -1,0 +1,117 @@
+name: aibrix
+category: ai
+description: AIBrix是vLLM项目开源的云原生推理基础设施平台，提供推理网关、路由、令牌计费、可观测性与弹性伸缩能力，其local mode可在无Kubernetes的单机上经Envoy网关转发vLLM推理。本镜像集成其Python推理后端（vLLM-Ascend栈），作为AIBrix在昇腾NPU上的模型服务侧运行。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  AIBrix镜像的Tag由其版本信息和软件栈版本信息组成，详细内容如下：
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[0.8.0-torch_npu2.10.0-cann9.1.0-python3.12-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/aibrix/0.8.0-torch_npu2.10.0-cann9.1.0-python3.12/24.03-lts-sp4/Dockerfile)| AIBrix 0.8.0 local mode backend (vLLM 0.23.0, vLLM-Ascend 0.23.0, torch_npu 2.10.0.post4, CANN 9.1.0) on openEuler 24.03-LTS-SP4 | arm64,amd64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/aibrix:{Tag}
+  ```
+
+usage: |
+  - 前置条件
+
+    示例使用Ascend NPU设备。运行前确认宿主机已安装Ascend驱动和固件：
+    ```bash
+    npu-smi info
+    ls /dev/davinci* /dev/davinci_manager /dev/devmm_svm /dev/hisi_hdc
+    ```
+    将`${device}`替换为实际NPU设备（例如`/dev/davinci0`），并按文档挂载驱动目录。没有NPU时无法执行该示例。
+
+  - 启动容器
+    ```
+    docker run \
+        --name my-aibrix \
+        --device ${device} \
+        --device /dev/davinci_manager \
+        --device /dev/devmm_svm \
+        --device /dev/hisi_hdc \
+        -v /usr/local/dcmi:/usr/local/dcmi \
+        -v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi \
+        -v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/ \
+        -v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info \
+        -v /etc/ascend_install.info:/etc/ascend_install.info \
+        -it openeuler/aibrix:{Tag} bash
+    ```
+    用户可根据自身需求选择对应版本的`{Tag}`、对应的NPU设备`{device}`以及容器启动的选项。
+
+  - 参数说明
+    | 配置项 | 描述 |
+    |--|--|
+    | `--name my-aibrix` | 容器名称。|
+    | `--device /dev/davinci1` | NPU设备，X是芯片物理ID号，例如davinci1。|
+    | `--device /dev/davinci_manager` | davinci相关的管理设备。|
+    | `--device /dev/devmm_svm` | 内存管理相关设备。|
+    | `--device /dev/hisi_hdc` | hdc相关管理设备。|
+    | `-v /usr/local/dcmi:/usr/local/dcmi` | 将宿主机dcmi的so和接口文件目录`/usr/local/dcmi`挂载到容器中，请根据实际情况修改。|
+    | `-v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi` | 将宿主机`npu-smi`工具`/usr/local/bin/npu-smi`挂载到容器中，请根据实际情况修改。|
+    | `-v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/` | 将宿主机目录`/usr/local/Ascend/driver/lib64/driver`挂载到容器中。请根据driver的驱动so所在路径修改。|
+    | `-v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info` | 将宿主机版本信息文件`/usr/local/Ascend/driver/version.info`挂载到容器中，请根据实际情况修改。|
+    | `-v /etc/ascend_install.info:/etc/ascend_install.info` | 将宿主机安装信息文件`/etc/ascend_install.info`挂载到容器中。|
+    | `-it` | 以交互模式启动容器。|
+    | `openeuler/aibrix:{Tag}` | 指定要运行的镜像`openeuler/aibrix`，其中`{Tag}`是需要替换的镜像标签。|
+
+  - 容器测试
+
+    进入容器后先验证NPU环境与vLLM-Ascend栈版本：
+    ```bash
+    docker exec -it my-aibrix /bin/bash
+    python3 -c "import torch, torch_npu; print('is_available:', torch.npu.is_available())"
+    python3 -c "import importlib.metadata as m; print('vllm', m.version('vllm')); print('vllm-ascend', m.version('vllm-ascend'))"
+    ```
+
+    启动AIBrix local mode转发的vLLM-Ascend推理后端（模型从ModelScope下载，无需Hugging Face token）：
+    ```bash
+    export VLLM_USE_MODELSCOPE=True
+    vllm serve Qwen/Qwen2.5-0.5B-Instruct \
+      --served-model-name Qwen/Qwen2.5-0.5B-Instruct \
+      --host 127.0.0.1 --port 8000 \
+      --max-model-len 2048 --max-num-seqs 4 \
+      --gpu-memory-utilization 0.2
+    ```
+
+    vLLM日志中出现`backend=hccl`即表示已走昇腾通信后端。服务就绪后发送一次对话请求：
+    ```bash
+    curl -fsS http://127.0.0.1:8000/v1/chat/completions \
+      -H 'Content-Type: application/json' \
+      -d '{"model":"Qwen/Qwen2.5-0.5B-Instruct","messages":[{"role":"user","content":"Say hi in one sentence."}],"max_tokens":32,"temperature":0}'
+    ```
+
+    完整的AIBrix local mode还需按上游快速开始安装Go 1.22.6与Envoy 1.39.0，用镜像内`/opt/aibrix`源码编译gateway-plugins并执行`deployment/local/run-local.sh`，经Envoy `:10080`端口转发推理请求。
+
+    国内网络可通过ModelScope或hf-mirror加速模型下载：
+    ```bash
+    export HF_ENDPOINT=https://hf-mirror.com
+    ```
+
+license: Apache-2.0 license
+similar_packages:
+  - KServe: KServe是云原生的模型推理与服务编排框架，支持自动扩缩容与多种推理运行时。
+  - KubeAI: KubeAI是Kubernetes上的模型推理平台，提供模型目录化部署与弹性伸缩。
+dependency:
+  - python3
+  - torch
+  - torch_npu
+  - vllm
+  - vllm-ascend
+  - triton-ascend
+  - modelscope
+
+homepage: https://github.com/vllm-project/aibrix
+upstream:
+  backend: GitHub
+  version_url: vllm-project/aibrix
+  version_prefix: v
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM

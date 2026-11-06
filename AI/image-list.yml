@@ -37,6 +37,7 @@ images:
   chatqna-ui: opea/chatqna-ui
   chatqna: opea/chatqna
   codegen-ui: opea/codegen-ui
+  aibrix: aibrix
   codegen: opea/codegen
   codegen-react-ui: opea/codegen-react-ui
   codetrans-ui: opea/codetrans-ui
