@@ -13,6 +13,7 @@ images:
   kserve-router: kserve/router
   kserve-storage-initializer: kserve/storage-initializer
   agent: opea/agent
+  flash-linear-attention: flash-linear-attention
   agent-ui: opea/agent-ui
   onnx: onnx
   onnxruntime: onnxruntime
