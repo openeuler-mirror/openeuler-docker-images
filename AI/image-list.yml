@@ -3,6 +3,7 @@ images:
   sglang: sglang
   codegen-gradio-ui: opea/codegen-gradio-ui
   multimodalqna: opea/multimodalqna
+  trl: trl
   multimodalqna-ui: opea/multimodalqna-ui
   lvm-llava: opea/lvm-llava
   embedding-multimodal-bridgetower: opea/embedding-multimodal-bridgetower
