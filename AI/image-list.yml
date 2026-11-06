@@ -5,6 +5,7 @@ images:
   multimodalqna: opea/multimodalqna
   multimodalqna-ui: opea/multimodalqna-ui
   lvm-llava: opea/lvm-llava
+  timm: timm
   embedding-multimodal-bridgetower: opea/embedding-multimodal-bridgetower
   comps-base: opea/comps-base
   kserve-huggingfaceserver: kserve/huggingfaceserver
