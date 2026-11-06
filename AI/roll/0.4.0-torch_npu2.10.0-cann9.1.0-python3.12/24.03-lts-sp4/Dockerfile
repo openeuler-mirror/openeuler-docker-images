@@ -1,13 +1,10 @@
 FROM quay.io/ascend/torch-npu:2.10.0.post6-cann9.1.0-910b-openeuler24.03-py3.12
 
 ARG VERSION=0.4.0
-ARG PIP_INDEX_URL="https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"
-ARG HW_PIP_INDEX="https://repo.huaweicloud.com/repository/pypi/simple"
 ARG ASCEND_PIP_INDEX="https://repo.huaweicloud.com/ascend/repos/pypi"
 
 LABEL author="openEuler CloudNative SIG" description="Alibaba ROLL RL training framework with Ascend NPU support (torch_npu + CANN)"
 
-RUN pip config set global.index-url ${PIP_INDEX_URL}
 
 RUN dnf -y install --nodocs --setopt=install_weak_deps=False git && dnf clean all
 
@@ -28,7 +25,7 @@ RUN git clone --depth 1 --branch v${VERSION} https://github.com/alibaba/ROLL.git
     python3 -m pip cache purge
 
 # Install the vLLM-Ascend rollout stack matched to torch 2.10 (never resolve the CUDA dependency graph)
-RUN python3 -m pip install --no-cache-dir --no-deps --index-url ${HW_PIP_INDEX} 'vllm==0.23.0' 'vllm-ascend==0.23.0rc1' && \
+RUN python3 -m pip install --no-cache-dir --no-deps 'vllm==0.23.0' 'vllm-ascend==0.23.0rc1' && \
     printf '%s\n' \
         'from importlib.metadata import requires' \
         'from pathlib import Path' \
@@ -57,7 +54,7 @@ RUN python3 -m pip install --no-cache-dir --no-deps --index-url ${HW_PIP_INDEX} 
     python3 /tmp/vllm-npu-filter.py && \
     PIP_CONSTRAINT=/opt/roll-npu-constraints.txt python3 -m pip install --no-cache-dir -r /tmp/vllm-npu-deps.txt && \
     python3 -m pip uninstall -y -q triton triton-ascend || true && \
-    python3 -m pip install --no-cache-dir --index-url ${HW_PIP_INDEX} 'triton==3.5.0' && \
+    python3 -m pip install --no-cache-dir 'triton==3.5.0' && \
     python3 -m pip install --no-cache-dir --no-deps --index-url ${ASCEND_PIP_INDEX} 'triton-ascend==3.2.1' && \
     python3 -m pip cache purge
 
