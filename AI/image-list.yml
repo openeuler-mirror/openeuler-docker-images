@@ -12,6 +12,7 @@ images:
   kserve-agent: kserve/agent
   kserve-router: kserve/router
   kserve-storage-initializer: kserve/storage-initializer
+  tensordict: tensordict
   agent: opea/agent
   agent-ui: opea/agent-ui
   onnx: onnx
