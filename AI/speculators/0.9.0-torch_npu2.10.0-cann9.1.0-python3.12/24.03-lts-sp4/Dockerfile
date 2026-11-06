@@ -1,11 +1,9 @@
 FROM quay.io/ascend/torch-npu:2.10.0.post6-cann9.1.0-910b-openeuler24.03-py3.12
 
 ARG VERSION=0.9.0
-ARG PIP_INDEX_URL="https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"
 
 LABEL author="openEuler CloudNative SIG" description="Speculators (speculative decoding framework) with Ascend NPU support (vLLM-Ascend + torch_npu + CANN)"
 
-RUN pip config set global.index-url ${PIP_INDEX_URL}
 
 # Install the vLLM-Ascend stack used by the speculators Ascend quick start:
 # vllm first, then vllm-ascend pins the torch/torch_npu 2.10.0 pairing and
