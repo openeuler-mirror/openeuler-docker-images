@@ -31,11 +31,17 @@ download: |
   ```
 
 usage: |
-  - 启动容器
+  - 验证镜像
     ```
-    docker run -d --name my-dotnet-aspnet -p 8080:8080 openeuler/dotnet-aspnet:{Tag}
+    docker run --rm openeuler/dotnet-aspnet:{Tag} dotnet --info
     ```
-    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。`my-dotnet-aspnet` 是 ASP.NET 运行时基础镜像，直接启动会执行 `dotnet --info` 并退出；运行 Web 应用请参考下方 HelloWorld 示例。
+    该镜像为 ASP.NET Core 运行时基础镜像，未内置任何应用，直接 `docker run -d` 会执行默认的 `dotnet --info` 并立即退出；上述命令可查看镜像内的 .NET 运行环境信息，运行 Web 应用请参考下方 HelloWorld 示例。
+
+  - 启动容器（保持运行）
+    ```
+    docker run -d --name my-dotnet-aspnet openeuler/dotnet-aspnet:{Tag} sleep infinity
+    ```
+    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项，需要进入容器调试时可使用下方 `docker exec` 命令。
   
   - 使用示例
 
@@ -74,9 +80,9 @@ usage: |
     docker logs -f my-dotnet-aspnet
     ```
 
-    运行启动shell会话
+    进入运行中的容器
     ```
-    docker run -it --entrypoint /bin/bash --name my-dotnet-aspnet -p 8080:8080 openeuler/dotnet-aspnet:{Tag}
+    docker exec -it my-dotnet-aspnet /bin/bash
     ```
 
 license: MIT license
