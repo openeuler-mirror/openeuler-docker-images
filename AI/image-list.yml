@@ -1,6 +1,7 @@
 images:
   executorch: executorch
   sglang: sglang
+  accelerate: accelerate
   codegen-gradio-ui: opea/codegen-gradio-ui
   multimodalqna: opea/multimodalqna
   multimodalqna-ui: opea/multimodalqna-ui
