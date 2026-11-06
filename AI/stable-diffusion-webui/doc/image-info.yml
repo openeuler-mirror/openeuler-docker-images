@@ -1,0 +1,105 @@
+name: stable-diffusion-webui
+category: ai
+description: stable-diffusion-webui是AUTOMATIC1111开源的Stable Diffusion浏览器Web界面，提供文生图、图生图、局部重绘等功能以及REST API。本镜像基于torch_npu，可在昇腾NPU上运行Stable Diffusion推理（启动参数--skip-torch-cuda-test --no-half）。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  stable-diffusion-webui镜像的Tag由其版本信息和软件栈版本信息组成，详细内容如下：
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.10.1-torch_npu2.9.0-cann9.1.0-python3.12-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/stable-diffusion-webui/1.10.1-torch_npu2.9.0-cann9.1.0-python3.12/24.03-lts-sp4/Dockerfile)| stable-diffusion-webui 1.10.1 (torch_npu 2.9.0.post8, CANN 9.1.0) on openEuler 24.03-LTS-SP4 | arm64,amd64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/stable-diffusion-webui:{Tag}
+  ```
+
+usage: |
+  - 前置条件
+
+    示例使用Ascend NPU设备。运行前确认宿主机已安装Ascend驱动和固件：
+    ```bash
+    npu-smi info
+    ls /dev/davinci* /dev/davinci_manager /dev/devmm_svm /dev/hisi_hdc
+    ```
+    将`${device}`替换为实际NPU设备（例如`/dev/davinci0`），并按文档挂载驱动目录。没有NPU时无法执行该示例。
+
+  - 启动容器
+    ```
+    docker run \
+        --name my-stable-diffusion-webui \
+        --device ${device} \
+        --device /dev/davinci_manager \
+        --device /dev/devmm_svm \
+        --device /dev/hisi_hdc \
+        -v /usr/local/dcmi:/usr/local/dcmi \
+        -v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi \
+        -v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/ \
+        -v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info \
+        -v /etc/ascend_install.info:/etc/ascend_install.info \
+        -v /root/.cache:/root/.cache \
+        -p 7860:7860 \
+        -d openeuler/stable-diffusion-webui:{Tag}
+    ```
+    用户可根据自身需求选择对应版本的`{Tag}`、对应的NPU设备`{device}`以及容器启动的选项。容器启动后浏览器访问`http://<宿主机IP>:7860`即可使用Web界面。首次启动会向`repositories/`克隆Stable Diffusion运行仓库，需要访问github.com的网络，之后复用已有仓库。
+
+  - 参数说明
+    | 配置项 | 描述 |
+    |--|--|
+    | `--name my-stable-diffusion-webui` | 容器名称。|
+    | `--device /dev/davinci1` | NPU设备，X是芯片物理ID号，例如davinci1。|
+    | `--device /dev/davinci_manager` | davinci相关的管理设备。|
+    | `--device /dev/devmm_svm` | 内存管理相关设备。|
+    | `--device /dev/hisi_hdc` | hdc相关管理设备。|
+    | `-v /usr/local/dcmi:/usr/local/dcmi` | 将宿主机dcmi的so和接口文件目录`/usr/local/dcmi`挂载到容器中，请根据实际情况修改。|
+    | `-v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi` | 将宿主机`npu-smi`工具`/usr/local/bin/npu-smi`挂载到容器中，请根据实际情况修改。|
+    | `-v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/` | 将宿主机目录`/usr/local/Ascend/driver/lib64/driver`挂载到容器中。请根据driver的驱动so所在路径修改。|
+    | `-v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info` | 将宿主机版本信息文件`/usr/local/Ascend/driver/version.info`挂载到容器中，请根据实际情况修改。|
+    | `-v /etc/ascend_install.info:/etc/ascend_install.info` | 将宿主机安装信息文件`/etc/ascend_install.info`挂载到容器中。|
+    | `-v /root/.cache:/root/.cache` | 将宿主机缓存目录`/root/.cache`挂载到容器中，用于复用ModelScope等模型缓存，请根据实际情况修改。|
+    | `-p 7860:7860` | 将容器内Web UI服务端口7860映射到宿主机。|
+    | `-d` | 以后台模式启动容器，Web UI服务由镜像默认命令拉起。|
+    | `openeuler/stable-diffusion-webui:{Tag}` | 指定要运行的镜像`openeuler/stable-diffusion-webui`，其中`{Tag}`是需要替换的镜像标签。|
+
+  - 容器测试
+
+    进入容器后先验证NPU环境，再确认Web UI服务就绪：
+    ```bash
+    docker exec -it my-stable-diffusion-webui /bin/bash
+    python3 -c "import torch, torch_npu; print('is_available:', torch.npu.is_available())"
+    ```
+
+    在宿主机上确认REST API可用，并通过API完成一次文生图（模型可用ModelScope下载，放入`models/Stable-diffusion/`后以`--ckpt`指定）：
+    ```bash
+    curl -s http://localhost:7860/sdapi/v1/options -o /dev/null -w "%{http_code}\n"
+    curl -s http://localhost:7860/sdapi/v1/txt2img -H 'Content-Type: application/json' \
+      -d '{"prompt": "a cute cat", "steps": 1, "cfg_scale": 1.0, "width": 512, "height": 512}' \
+      | python3 -c "import sys, json, base64; d = json.load(sys.stdin); open('/tmp/out.png', 'wb').write(base64.b64decode(d['images'][0])); print('saved /tmp/out.png')"
+    ```
+
+license: AGPL-3.0 license
+similar_packages:
+  - ComfyUI: 开源的节点式扩散模型图形界面，通过可视化工作流编排图像与视频生成流水线。
+  - InvokeAI: 开源的Stable Diffusion创意套件，提供画布式交互界面与专业工作流。
+dependency:
+  - python3
+  - torch
+  - torch_npu
+  - torchvision
+  - gradio
+  - transformers
+  - openai CLIP
+  - modelscope
+
+homepage: https://github.com/AUTOMATIC1111/stable-diffusion-webui
+upstream:
+  backend: GitHub
+  version_url: AUTOMATIC1111/stable-diffusion-webui
+  version_prefix: v
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM
