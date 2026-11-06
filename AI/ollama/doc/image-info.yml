@@ -1,0 +1,98 @@
+name: ollama
+category: ai
+description: Ollama是开源的本地大模型运行框架，将模型权重、配置和提示词打包成易用的命令行与本地REST API。本镜像从源码应用实验性CANN后端补丁构建，支持将Q4_0格式的GGUF模型导入后在昇腾NPU上推理。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  Ollama镜像的Tag由其版本信息和软件栈版本信息组成，详细内容如下：
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[0.40.15-cann9.1.0-python3.12-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/ollama/0.40.15-cann9.1.0-python3.12/24.03-lts-sp4/Dockerfile)| Ollama 0.40.15（实验性CANN后端，CANN 9.1.0）on openEuler 24.03-LTS-SP4 | arm64,amd64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/ollama:{Tag}
+  ```
+
+usage: |
+  - 前置条件
+
+    示例使用Ascend NPU设备。运行前确认宿主机已安装Ascend驱动和固件：
+    ```bash
+    npu-smi info
+    ls /dev/davinci* /dev/davinci_manager /dev/devmm_svm /dev/hisi_hdc
+    ```
+    将`${device}`替换为实际NPU设备（例如`/dev/davinci0`），并按文档挂载驱动目录。没有NPU时无法执行该示例。
+
+  - 启动容器
+
+    镜像默认命令为`ollama serve`，以后台方式启动推理服务：
+    ```
+    docker run -d \
+        --name my-ollama \
+        --device ${device} \
+        --device /dev/davinci_manager \
+        --device /dev/devmm_svm \
+        --device /dev/hisi_hdc \
+        -v /usr/local/dcmi:/usr/local/dcmi \
+        -v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi \
+        -v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/ \
+        -v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info \
+        -v /etc/ascend_install.info:/etc/ascend_install.info \
+        openeuler/ollama:{Tag}
+    ```
+    用户可根据自身需求选择对应版本的`{Tag}`、对应的NPU设备`{device}`以及容器启动的选项。
+
+  - 参数说明
+    | 配置项 | 描述 |
+    |--|--|
+    | `--name my-ollama` | 容器名称。|
+    | `--device /dev/davinci1` | NPU设备，X是芯片物理ID号，例如davinci1。|
+    | `--device /dev/davinci_manager` | davinci相关的管理设备。|
+    | `--device /dev/devmm_svm` | 内存管理相关设备。|
+    | `--device /dev/hisi_hdc` | hdc相关管理设备。|
+    | `-v /usr/local/dcmi:/usr/local/dcmi` | 将宿主机dcmi的so和接口文件目录`/usr/local/dcmi`挂载到容器中，请根据实际情况修改。|
+    | `-v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi` | 将宿主机`npu-smi`工具`/usr/local/bin/npu-smi`挂载到容器中，请根据实际情况修改。|
+    | `-v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/` | 将宿主机目录`/usr/local/Ascend/driver/lib64/driver`挂载到容器中。请根据driver的驱动so所在路径修改。|
+    | `-v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info` | 将宿主机版本信息文件`/usr/local/Ascend/driver/version.info`挂载到容器中，请根据实际情况修改。|
+    | `-v /etc/ascend_install.info:/etc/ascend_install.info` | 将宿主机安装信息文件`/etc/ascend_install.info`挂载到容器中。|
+    | `openeuler/ollama:{Tag}` | 指定要运行的镜像`openeuler/ollama`，其中`{Tag}`是需要替换的镜像标签。|
+
+  - 容器测试
+
+    服务启动后，确认服务版本，再从ModelScope下载Q4_0量化的GGUF模型（CANN后端支持的格式）并导入对话：
+    ```bash
+    curl -fsS http://127.0.0.1:11434/api/version
+    docker exec -it my-ollama /bin/bash
+    curl -L -o qwen2.5-0.5b-instruct-q4_0.gguf \
+      https://modelscope.cn/models/Qwen/Qwen2.5-0.5B-Instruct-GGUF/resolve/master/qwen2.5-0.5b-instruct-q4_0.gguf
+    printf 'FROM ./qwen2.5-0.5b-instruct-q4_0.gguf\nPARAMETER num_ctx 1024\nPARAMETER num_gpu 999\nPARAMETER num_predict 64\n' > Modelfile
+    ollama create qwen2.5-ascend -f Modelfile
+    ASCEND_RT_VISIBLE_DEVICES=0 ollama run qwen2.5-ascend "用一句话介绍你自己。" --verbose
+    ```
+
+    模型返回回复、`--verbose`输出正数生成速度，且服务日志中模型加载记录包含正数CANN buffer与完整offload层数，说明昇腾推理成功。CPU回退不得视为通过。
+
+license: MIT license
+similar_packages:
+  - llama.cpp: llama.cpp是面向GGUF格式大模型的轻量级C/C++推理引擎，提供llama-cli、llama-server等工具。
+  - vllm-ascend: vllm-ascend是vLLM的昇腾NPU适配版本，提供高吞吐的OpenAI兼容推理服务。
+dependency:
+  - CANN toolkit
+  - Go
+  - cmake
+  - gcc
+  - git
+
+homepage: https://github.com/ollama/ollama
+upstream:
+  backend: GitHub
+  version_url: ollama/ollama
+  version_prefix: v
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM
