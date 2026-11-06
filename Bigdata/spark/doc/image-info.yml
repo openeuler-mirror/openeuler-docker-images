@@ -50,6 +50,19 @@ usage: |
     ```
     镜像入口脚本会把 `driver` 及其后的参数转换为 `spark-submit --deploy-mode client ...` 执行。
 
+    注意：`3.1.1-oe2403sp4` 基于 Python 3.11.6，而 Spark 3.1.1 自带的 cloudpickle 不支持 Python 3.11，运行上述 Python 示例会报：
+    ```
+    _pickle.PicklingError: Could not serialize object: IndexError: tuple index out of range
+    ```
+    该版本请改用 Scala 示例验证（需要显式指定 `spark.driver.bindAddress=0.0.0.0`，否则 executor 连接 driver 会失败）：
+    ```
+    docker run --rm --name my-spark openeuler/spark:3.1.1-oe2403sp4 driver \
+        --conf spark.driver.bindAddress=0.0.0.0 \
+        --class org.apache.spark.examples.SparkPi \
+        /opt/spark/examples/jars/spark-examples_2.12-3.1.1.jar 10
+    ```
+    预期输出包含 `Pi is roughly 3.14...`。或者使用 4.x 镜像（例如 `4.3.0-oe2403sp4`）运行 Python 示例。
+
   - 保持容器常驻，便于后续 `docker exec` 调试（不启动前台 Spark 进程）
     ```
     docker run -dit --name my-spark openeuler/spark:{Tag} /bin/bash
