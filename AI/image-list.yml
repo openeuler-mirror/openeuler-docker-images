@@ -41,6 +41,7 @@ images:
   codegen-react-ui: opea/codegen-react-ui
   codetrans-ui: opea/codetrans-ui
   codetrans: opea/codetrans
+  cache-dit: cache-dit
   graphrag: opea/graphrag
   graphrag-ui: opea/graphrag-ui
   graphrag-react-ui: opea/graphrag-react-ui
