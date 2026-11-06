@@ -38,6 +38,7 @@ images:
   chatqna: opea/chatqna
   codegen-ui: opea/codegen-ui
   codegen: opea/codegen
+  llm-d: llm-d
   codegen-react-ui: opea/codegen-react-ui
   codetrans-ui: opea/codetrans-ui
   codetrans: opea/codetrans
