@@ -3,11 +3,9 @@
 FROM quay.io/ascend/torch-npu:2.9.0.post8-cann9.1.0-910b-openeuler24.03-py3.12
 
 ARG VERSION=TileLang-ascend-v0.1.2.000-release
-ARG PIP_INDEX_URL="https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"
 
 LABEL author="openEuler CloudNative SIG" description="TileLang-Ascend (TILELANG with Ascend NPU backend) with torch_npu + CANN"
 
-RUN pip config set global.index-url ${PIP_INDEX_URL}
 
 # Build the tilelang-ascend wheel from source and install it (torch/torch_npu
 # from the base image are reused; requirements list them without pins).
