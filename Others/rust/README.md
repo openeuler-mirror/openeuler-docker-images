@@ -28,28 +28,25 @@ The tag of each rust docker image is consist of the version of rust and the vers
 
 
 # Usage
+
+> **Note:** Rust is installed with rustup, so the toolchain is located in `/root/.cargo/bin`. This directory is not on the default `PATH` when a command is passed directly to `docker run`, so source `$HOME/.cargo/env` before running cargo commands (an interactive `bash` shell does this automatically).
+
 ## Start a Rust development environment
 
 ```bash
 docker run -it openeuler/rust:{Tag} bash
 ```
 
-## Compile and run a Rust project
+## Create and run a new Rust project
 
 ```bash
-docker run -it -v $(pwd):/workspace -w /workspace openeuler/rust:{Tag} cargo run
+docker run -it --rm -v $(pwd):/workspace -w /workspace openeuler/rust:{Tag} bash -c 'source $HOME/.cargo/env && cargo init && cargo run'
 ```
 
-## Create a new Rust project
+For an existing Rust project (a directory that already contains a `Cargo.toml`), drop `cargo init &&`:
 
 ```bash
-docker run -it -v $(pwd):/workspace -w /workspace openeuler/rust:{Tag} cargo new my-project
-```
-
-## Build a Rust project
-
-```bash
-docker run -it -v $(pwd):/workspace -w /workspace openeuler/rust:{Tag} cargo build --release
+docker run -it --rm -v $(pwd):/workspace -w /workspace openeuler/rust:{Tag} bash -c 'source $HOME/.cargo/env && cargo run'
 ```
 
 # Question and answering
