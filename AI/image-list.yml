@@ -33,6 +33,7 @@ images:
   onnxruntime: onnxruntime
   colossalai: colossalai
   cann: cann
+  ms-swift: ms-swift
   maca-sdk: maca-sdk
   xtuner: xtuner
   dlrm: dlrm
