@@ -6,6 +6,17 @@ FROM quay.io/ascend/torch-npu:2.9.0.post8-cann9.1.0-910b-openeuler24.03-py3.12
 # unreachable from the CI builders.
 ENV PIP_INDEX_URL=https://pypi.org/simple
 
+# Harden git against the flaky CI network (HTTP/2 resets, stalled transfers).
+ENV GIT_CONFIG_COUNT=4 \
+    GIT_CONFIG_KEY_0=http.version \
+    GIT_CONFIG_VALUE_0=HTTP/1.1 \
+    GIT_CONFIG_KEY_1=http.postBuffer \
+    GIT_CONFIG_VALUE_1=524288000 \
+    GIT_CONFIG_KEY_2=http.lowSpeedLimit \
+    GIT_CONFIG_VALUE_2=1000 \
+    GIT_CONFIG_KEY_3=http.lowSpeedTime \
+    GIT_CONFIG_VALUE_3=60
+
 ARG VERSION=TileLang-ascend-v0.1.2.000-release
 
 LABEL author="openEuler CloudNative SIG" description="TileLang-Ascend (TILELANG with Ascend NPU backend) with torch_npu + CANN"
@@ -37,6 +48,11 @@ for old, new in subs:
 p.write_text(s)
 print('setup.py build parallelism clamped to <=12')
 PY
+
+# Separate RUN: a Dockerfile heredoc cannot be continued after its terminator
+RUN source /usr/local/Ascend/ascend-toolkit/set_env.sh && \
+    export ASCEND_HOME_PATH=${ASCEND_HOME_PATH:-/usr/local/Ascend/ascend-toolkit/latest} && \
+    cd /tmp/tilelang-ascend && \
     ./build_wheel_ascend.sh && \
     ls -la dist/ && \
     for W in dist/tilelang-*.whl; do \
