@@ -8,6 +8,7 @@ images:
   multimodalqna-ui: opea/multimodalqna-ui
   diffusers: diffusers
   lvm-llava: opea/lvm-llava
+  timm: timm
   embedding-multimodal-bridgetower: opea/embedding-multimodal-bridgetower
   open_clip: open_clip
   comps-base: opea/comps-base
