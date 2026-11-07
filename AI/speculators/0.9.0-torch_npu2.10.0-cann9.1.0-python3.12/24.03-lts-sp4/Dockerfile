@@ -52,8 +52,13 @@ selected += ["transformers==5.5.4"]
 Path("/tmp/vllm-npu-deps.txt").write_text("\n".join(sorted(set(selected))) + "\n", encoding="utf-8")
 PY
 
+# numpy 2 is what the upstream stack targets: speculators 0.9.0 itself
+# declares numpy>=2.0.0,<=2.5.4, and vllm 0.23.0 requires
+# opencv-python-headless>=4.13.0, whose releases all require numpy>=2 on
+# Python >=3.9 (only opencv <=4.11 supports numpy 1.x). Pinning numpy 1.26.4
+# therefore made every opencv candidate unsatisfiable.
 RUN printf 'torch==2.10.0\ntorchvision==0.25.0\ntorchaudio==2.10.0\ntorch-npu==2.10.0.post6\n' > /opt/vllm-npu-constraints.txt && \
-    PIP_CONSTRAINT=/opt/vllm-npu-constraints.txt python3 -m pip install --no-cache-dir -r /tmp/vllm-npu-deps.txt modelscope==1.37.0 "numpy==1.26.4" "setuptools>=77,<81" && \
+    PIP_CONSTRAINT=/opt/vllm-npu-constraints.txt python3 -m pip install --no-cache-dir -r /tmp/vllm-npu-deps.txt modelscope==1.37.0 "numpy>=2.0.0,<=2.5.4" "setuptools>=77,<81" && \
     python3 -m pip cache purge
 
 # Install speculators from the release source: the wheel with --no-deps (the
