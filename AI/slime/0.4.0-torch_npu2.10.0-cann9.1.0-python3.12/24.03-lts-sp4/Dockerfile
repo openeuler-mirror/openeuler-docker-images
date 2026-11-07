@@ -23,8 +23,12 @@ RUN dnf -y install --nodocs --setopt=install_weak_deps=False git && dnf clean al
 # build.sh initializes the slime submodule at the pinned upstream commit and
 # applies the npu-compat / upstream-fixes patch series; the installable package
 # tree is the slime/ subdirectory afterwards.
+# The patch series is applied with `git am`, which needs a committer identity;
+# container builds have no git user configured, so provide one inline.
 RUN git clone --recurse-submodules https://gitcode.com/Ascend/slime-ascend.git /opt/slime-ascend && \
     git -C /opt/slime-ascend checkout ${SLIME_ASCEND_REF} && \
+    GIT_AUTHOR_NAME="openEuler CI" GIT_AUTHOR_EMAIL="ci@openeuler.org" \
+    GIT_COMMITTER_NAME="openEuler CI" GIT_COMMITTER_EMAIL="ci@openeuler.org" \
     bash /opt/slime-ascend/build.sh && \
     rm -rf /opt/slime-ascend/.git /opt/slime-ascend/slime/.git
 
