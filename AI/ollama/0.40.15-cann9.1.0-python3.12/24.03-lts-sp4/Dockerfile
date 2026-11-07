@@ -1,5 +1,9 @@
 FROM quay.io/ascend/cann:9.1.0-910b-openeuler24.03-py3.12
 
+# Use PyPI directly; the base image pip.conf points at a mirror that is
+# unreachable from the CI builders.
+ENV PIP_INDEX_URL=https://pypi.org/simple
+
 ARG VERSION=0.40.15
 ARG GO_VERSION=1.26.10
 ARG CANN_PATCH_URL="https://api.github.com/repos/cosdt-ci-test/workflows/contents/projects/ollama/patches/ollama-cann.patch"
