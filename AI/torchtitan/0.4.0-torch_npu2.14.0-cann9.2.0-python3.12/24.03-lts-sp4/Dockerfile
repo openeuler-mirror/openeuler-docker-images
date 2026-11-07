@@ -5,7 +5,7 @@ FROM quay.io/ascend/torch-npu:2.14.0-cann9.2.0-910b-openeuler24.03-py3.12
 ENV PIP_INDEX_URL=https://pypi.org/simple
 
 ARG VERSION=0.4.0
-ARG TRITON_ASCEND_INDEX_URL="https://repo.huaweicloud.com/ascend/repos/pypi/test"
+ARG TRITON_ASCEND_INDEX_URL="https://triton-ascend.osinfra.cn/pypi/simple"
 
 LABEL author="openEuler CloudNative SIG" description="Torchtitan with Ascend NPU support (torch_npu + CANN)"
 
