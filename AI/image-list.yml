@@ -28,6 +28,7 @@ images:
   maca-sdk: maca-sdk
   dlrm: dlrm
   avatarchatbot: opea/avatarchatbot
+  torchtitan: torchtitan
   euler-copilot-fast-inference-qwen: euler-copilot-fast-inference-qwen
   llm: llm
   llm-server: llm-server
