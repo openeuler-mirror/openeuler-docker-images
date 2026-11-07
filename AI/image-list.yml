@@ -54,6 +54,7 @@ images:
   chatqna: opea/chatqna
   fastchat: fastchat
   codegen-ui: opea/codegen-ui
+  aibrix: aibrix
   codegen: opea/codegen
   llm-d: llm-d
   codegen-react-ui: opea/codegen-react-ui
