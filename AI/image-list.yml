@@ -70,6 +70,7 @@ images:
   docsum-ui: opea/docsum-ui
   wenet: wenet
   docsum: opea/docsum
+  modelscope: modelscope
   lvm: opea/lvm
   embedding-tei: opea/embedding-tei
   embedding: opea/embedding
