@@ -21,14 +21,17 @@ download: |
   ```
 
 usage: |
+  - 使用条件
+    ncview 是图形界面程序，浏览 NetCDF 文件时需要可用的 X11 显示环境。带图形界面的 Linux 宿主机需将 DISPLAY 和 X11 socket 传入容器；无图形界面的服务器可通过 `ssh -X` 开启 X11 转发后运行。仅查看帮助（`ncview -h`）不需要图形环境。
+
   - 查看帮助
     ```
-    docker run --rm openeuler/ncview:{Tag} ncview --help
+    docker run --rm openeuler/ncview:{Tag} ncview -h
     ```
 
   - 浏览 NetCDF 文件
     ```
-    docker run --rm -v $(pwd):/data openeuler/ncview:{Tag} ncview /data/sample.nc
+    docker run --rm -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -v $(pwd):/data openeuler/ncview:{Tag} ncview /data/sample.nc
     ```
 
 license: GPL-1.0
