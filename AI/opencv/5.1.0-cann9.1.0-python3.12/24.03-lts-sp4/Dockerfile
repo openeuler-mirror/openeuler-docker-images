@@ -2,6 +2,17 @@
 # OpenCV built from source with the Huawei Ascend CANN backend (WITH_CANN=ON).
 FROM quay.io/ascend/cann:9.1.0-910b-openeuler24.03-py3.12
 
+# Harden git against the flaky CI network (HTTP/2 resets, stalled transfers).
+ENV GIT_CONFIG_COUNT=4 \
+    GIT_CONFIG_KEY_0=http.version \
+    GIT_CONFIG_VALUE_0=HTTP/1.1 \
+    GIT_CONFIG_KEY_1=http.postBuffer \
+    GIT_CONFIG_VALUE_1=524288000 \
+    GIT_CONFIG_KEY_2=http.lowSpeedLimit \
+    GIT_CONFIG_VALUE_2=1000 \
+    GIT_CONFIG_KEY_3=http.lowSpeedTime \
+    GIT_CONFIG_VALUE_3=60
+
 ARG VERSION=5.1.0
 
 LABEL author="openEuler CloudNative SIG" description="OpenCV built from source with the Ascend CANN backend (dnn NPU backend + cannops)"
@@ -180,6 +191,11 @@ if 'aclrtCtxGetCurrentDefaultStream' in s:
     print('(ok)   cann_call.cpp: NULL-stream fallback already present (prior patch), skip')
 else:
     patch('opencv_contrib/modules/cannops/src/cann_call.cpp', old_g, new_g)
+# (h) guard the test-only link line; BUILD_TESTS=OFF removes the
+#     opencv_test_cannops target that cannops unconditionally links against
+patch('opencv_contrib/modules/cannops/CMakeLists.txt',
+      'ocv_target_link_libraries(opencv_test_cannops PRIVATE ascendc_kernels)',
+      'if(TARGET opencv_test_cannops)\n    ocv_target_link_libraries(opencv_test_cannops PRIVATE ascendc_kernels)\nendif()')
 PY
 
 # Bridge the CANN 9.1.0 library layout for OpenCV's OpenCVFindCANN.cmake,
