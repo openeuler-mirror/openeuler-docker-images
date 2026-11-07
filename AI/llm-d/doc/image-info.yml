@@ -1,0 +1,118 @@
+name: llm-d
+category: ai
+description: llm-d是Kubernetes原生的分布式LLM推理平台，通过Envoy与llm-d-router的EPP（Endpoint Picker）实现感知前缀的路由与调度，将服务拆解为可组合的层。本镜像集成其模型服务侧（vLLM-Ascend栈）与llm-d配置源码，作为llm-d路由栈在昇腾NPU上的模型服务侧运行。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  llm-d镜像的Tag由其版本信息和软件栈版本信息组成，详细内容如下：
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.0.0-torch_npu2.10.0-cann9.1.0-python3.12-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/llm-d/1.0.0-torch_npu2.10.0-cann9.1.0-python3.12/24.03-lts-sp4/Dockerfile)| llm-d 1.0.0 model server stack (vLLM 0.23.0, vLLM-Ascend 0.23.0, torch_npu 2.10.0.post4, CANN 9.1.0) on openEuler 24.03-LTS-SP4 | arm64,amd64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/llm-d:{Tag}
+  ```
+
+usage: |
+  - 前置条件
+
+    示例使用Ascend NPU设备。运行前确认宿主机已安装Ascend驱动和固件：
+    ```bash
+    npu-smi info
+    ls /dev/davinci* /dev/davinci_manager /dev/devmm_svm /dev/hisi_hdc
+    ```
+    将`${device}`替换为实际NPU设备（例如`/dev/davinci0`），并按文档挂载驱动目录。没有NPU时无法执行该示例。
+
+  - 启动容器
+    ```
+    docker run \
+        --name my-llm-d \
+        --device ${device} \
+        --device /dev/davinci_manager \
+        --device /dev/devmm_svm \
+        --device /dev/hisi_hdc \
+        -v /usr/local/dcmi:/usr/local/dcmi \
+        -v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi \
+        -v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/ \
+        -v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info \
+        -v /etc/ascend_install.info:/etc/ascend_install.info \
+        -it openeuler/llm-d:{Tag} bash
+    ```
+    用户可根据自身需求选择对应版本的`{Tag}`、对应的NPU设备`{device}`以及容器启动的选项。
+
+  - 参数说明
+    | 配置项 | 描述 |
+    |--|--|
+    | `--name my-llm-d` | 容器名称。|
+    | `--device /dev/davinci1` | NPU设备，X是芯片物理ID号，例如davinci1。|
+    | `--device /dev/davinci_manager` | davinci相关的管理设备。|
+    | `--device /dev/devmm_svm` | 内存管理相关设备。|
+    | `--device /dev/hisi_hdc` | hdc相关管理设备。|
+    | `-v /usr/local/dcmi:/usr/local/dcmi` | 将宿主机dcmi的so和接口文件目录`/usr/local/dcmi`挂载到容器中，请根据实际情况修改。|
+    | `-v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi` | 将宿主机`npu-smi`工具`/usr/local/bin/npu-smi`挂载到容器中，请根据实际情况修改。|
+    | `-v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/` | 将宿主机目录`/usr/local/Ascend/driver/lib64/driver`挂载到容器中。请根据driver的驱动so所在路径修改。|
+    | `-v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info` | 将宿主机版本信息文件`/usr/local/Ascend/driver/version.info`挂载到容器中，请根据实际情况修改。|
+    | `-v /etc/ascend_install.info:/etc/ascend_install.info` | 将宿主机安装信息文件`/etc/ascend_install.info`挂载到容器中。|
+    | `-it` | 以交互模式启动容器。|
+    | `openeuler/llm-d:{Tag}` | 指定要运行的镜像`openeuler/llm-d`，其中`{Tag}`是需要替换的镜像标签。|
+
+  - 容器测试
+
+    进入容器后先验证NPU环境与vLLM-Ascend栈版本：
+    ```bash
+    docker exec -it my-llm-d /bin/bash
+    python3 -c "import torch, torch_npu; print('is_available:', torch.npu.is_available())"
+    python3 -c "import importlib.metadata as m; print('vllm', m.version('vllm')); print('vllm-ascend', m.version('vllm-ascend'))"
+    ```
+
+    启动llm-d路由栈指向的vLLM模型服务（模型从ModelScope下载，无需Hugging Face token）：
+    ```bash
+    export VLLM_USE_MODELSCOPE=true
+    vllm serve Qwen/Qwen3-0.6B \
+      --host 127.0.0.1 --port 8000 \
+      --served-model-name Qwen/Qwen3-0.6B \
+      --max-model-len 2048 --max-num-seqs 4 \
+      --gpu-memory-utilization 0.3 \
+      --trust-remote-code --enforce-eager
+    ```
+
+    vLLM日志中出现`backend=hccl`即表示已走昇腾通信后端。服务就绪后发送一次补全请求：
+    ```bash
+    curl -sS http://127.0.0.1:8000/v1/completions \
+      -H 'Content-Type: application/json' \
+      -d '{"model":"Qwen/Qwen3-0.6B","prompt":"Hello","max_tokens":8,"temperature":0}'
+    ```
+
+    完整的llm-d路由栈还需按上游no-Kubernetes指南从llm-d-router编译EPP、安装Envoy，并使用镜像内`/opt/llm-d/guides/no-kubernetes-deployment`下的三份YAML配置，经Envoy `:8081`端口完成经EPP选路的推理。
+
+    国内网络可通过ModelScope或hf-mirror加速模型下载：
+    ```bash
+    export HF_ENDPOINT=https://hf-mirror.com
+    ```
+
+license: Apache-2.0 license
+similar_packages:
+  - AIBrix: AIBrix是vLLM项目开源的云原生推理基础设施平台，提供推理网关、路由与弹性伸缩能力。
+  - KServe: KServe是云原生的模型推理与服务编排框架，支持自动扩缩容与多种推理运行时。
+dependency:
+  - python3
+  - torch
+  - torch_npu
+  - vllm
+  - vllm-ascend
+  - triton-ascend
+  - modelscope
+
+homepage: https://github.com/llm-d/llm-d
+upstream:
+  backend: GitHub
+  version_url: llm-d/llm-d
+  version_prefix: v
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM
