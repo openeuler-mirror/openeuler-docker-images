@@ -26,6 +26,7 @@ images:
   mmengine: mmengine
   onnx: onnx
   onnxruntime: onnxruntime
+  colossalai: colossalai
   cann: cann
   maca-sdk: maca-sdk
   dlrm: dlrm
