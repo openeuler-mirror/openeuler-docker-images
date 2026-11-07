@@ -29,6 +29,7 @@ RUN dnf install -y ffmpeg-devel rust cargo && \
     dnf clean all && \
     git clone --recursive --depth 1 --branch v0.6.0 https://github.com/dmlc/decord.git /tmp/decord && \
     sed -i 's|#include <libavcodec/avcodec.h>|#include <libavcodec/avcodec.h>\n#include <libavcodec/bsf.h>|' /tmp/decord/src/video/ffmpeg/ffmpeg_common.h && \
+    sed -i 's|    AVCodec \*dec;|    const AVCodec *dec;|' /tmp/decord/src/video/video_reader.cc && \
     cmake -S /tmp/decord -B /tmp/decord/build -DUSE_CUDA=OFF -DCMAKE_BUILD_TYPE=Release && \
     cmake --build /tmp/decord/build --parallel $(nproc) && \
     python3 -m pip install --no-cache-dir --no-build-isolation --no-deps /tmp/decord/python && \
