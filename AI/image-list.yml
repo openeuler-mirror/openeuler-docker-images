@@ -21,6 +21,7 @@ images:
   bitsandbytes: bitsandbytes
   kserve-router: kserve/router
   kserve-storage-initializer: kserve/storage-initializer
+  tensordict: tensordict
   agent: opea/agent
   agent-ui: opea/agent-ui
   mmengine: mmengine
