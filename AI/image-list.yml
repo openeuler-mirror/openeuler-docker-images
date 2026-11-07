@@ -12,6 +12,7 @@ images:
   llm-compressor: llm-compressor
   kserve-controller: kserve/controller
   kserve-agent: kserve/agent
+  bitsandbytes: bitsandbytes
   kserve-router: kserve/router
   kserve-storage-initializer: kserve/storage-initializer
   agent: opea/agent
