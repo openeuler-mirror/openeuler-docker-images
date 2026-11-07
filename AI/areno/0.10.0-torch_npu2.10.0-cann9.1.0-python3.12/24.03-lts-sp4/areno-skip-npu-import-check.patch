@@ -1,0 +1,14 @@
+--- a/areno/accel/csrc/npu/setup.py
++++ b/areno/accel/csrc/npu/setup.py
+@@ -81,6 +81,11 @@
+
+
+ def _check_extension_import(extension: Path) -> None:
++    if os.environ.get("ARENO_SKIP_NPU_IMPORT_CHECK") == "1":
++        # Cross-compiling on an NPU-less builder: loading the extension makes
++        # CANN query the local SoC, which is absent, and abort. The linked
++        # kernel launchers were already validated by _check_launcher_symbols.
++        return
+     # Import the exact build output in a fresh process. Importing by package
+     # name could find an older editable .so and miss newly unresolved symbols.
+     result = subprocess.run(

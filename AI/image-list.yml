@@ -52,6 +52,7 @@ images:
   wav2lip: opea/wav2lip
   areal: areal
   animation: opea/animation
+  areno: areno
   oneapi-basekit: oneapi-basekit
   llama.cpp: llama.cpp
   oneapi-runtime: oneapi-runtime
