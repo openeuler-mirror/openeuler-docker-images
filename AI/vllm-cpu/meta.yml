@@ -53,5 +53,8 @@
 0.29.0-oe2403sp4:
   path: 0.29.0/24.03-lts-sp4/Dockerfile
 
+0.18.0-torch_npu2.9.0.post1-cann8.5.1-python3.11-oe2403lts:
+  path: 0.18.0-torch_npu2.9.0.post1-cann8.5.1-python3.11/24.03-lts/Dockerfile
+
 0.30.0-torch_npu2.10.0.post7-cann9.2.1-python3.12-oe2403lts:
   path: 0.30.0-torch_npu2.10.0.post7-cann9.2.1-python3.12/24.03-lts/Dockerfile
