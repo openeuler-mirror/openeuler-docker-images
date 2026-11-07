@@ -69,6 +69,7 @@ images:
   codetrans: opea/codetrans
   cache-dit: cache-dit
   graphrag: opea/graphrag
+  speculators: speculators
   graphrag-ui: opea/graphrag-ui
   comfyui: comfyui
   graphrag-react-ui: opea/graphrag-react-ui
