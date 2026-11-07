@@ -64,6 +64,7 @@ images:
   codetrans-ui: opea/codetrans-ui
   lightx2v: lightx2v
   codetrans: opea/codetrans
+  cache-dit: cache-dit
   graphrag: opea/graphrag
   graphrag-ui: opea/graphrag-ui
   comfyui: comfyui
