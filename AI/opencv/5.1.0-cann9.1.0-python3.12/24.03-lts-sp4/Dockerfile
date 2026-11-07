@@ -118,7 +118,9 @@ INSERTS = {
     'layers/instance_norm_layer.cpp': ['nn_norm_ops'],
     'layers/layer_norm.cpp': ['nn_norm_ops'],
     'layers/lrn_layer.cpp': ['nn_norm_ops'],
-    'layers/matmul_layer.cpp': ['matrix_calculation_ops'],
+    # MatMul needs both: BatchMatMulV2 (matrix_calculation_ops) and Mul
+    # (elewise_calculation_ops) for the beta-scaled bias path.
+    'layers/matmul_layer.cpp': ['matrix_calculation_ops', 'elewise_calculation_ops'],
     'layers/nary_eltwise_layers.cpp': ['elewise_calculation_ops'],
     'layers/padding_layer.cpp': ['pad_ops'],
     'layers/permute_layer.cpp': ['transformation_ops'],
