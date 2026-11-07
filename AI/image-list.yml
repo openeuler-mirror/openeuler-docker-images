@@ -56,6 +56,7 @@ images:
   asr: opea/asr
   ollama: ollama
   audioqna: opea/audioqna
+  ktransformers: ktransformers
   audioqna-ui: opea/audioqna-ui
   chatqna-conversation-ui: opea/chatqna-conversation-ui
   chatqna-ui: opea/chatqna-ui
