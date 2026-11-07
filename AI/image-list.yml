@@ -27,6 +27,7 @@ images:
   agent-ui: opea/agent-ui
   mmengine: mmengine
   onnx: onnx
+  deepspeed: deepspeed
   onnxruntime: onnxruntime
   colossalai: colossalai
   cann: cann
