@@ -1,0 +1,101 @@
+name: tilelang
+category: ai
+description: TileLang是面向高性能算子开发的AI编程语言（DSL），提供基于Tile的抽象来编写GPU/NPU算子。本镜像基于昇腾生态仓tilelang-ascend源码构建wheel，可在昇腾NPU上完成算子的JIT编译、执行与数值校验。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  TileLang镜像的Tag由其版本信息和软件栈版本信息组成，详细内容如下：
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[0.1.2.000-torch_npu2.9.0-cann9.1.0-python3.12-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/tilelang/0.1.2.000-torch_npu2.9.0-cann9.1.0-python3.12/24.03-lts-sp4/Dockerfile)| TileLang-Ascend 0.1.2.000 (torch_npu 2.9.0.post8, CANN 9.1.0) on openEuler 24.03-LTS-SP4 | arm64,amd64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/tilelang:{Tag}
+  ```
+
+usage: |
+  - 前置条件
+
+    示例使用Ascend NPU设备。运行前确认宿主机已安装Ascend驱动和固件：
+    ```bash
+    npu-smi info
+    ls /dev/davinci* /dev/davinci_manager /dev/devmm_svm /dev/hisi_hdc
+    ```
+    将`${device}`替换为实际NPU设备（例如`/dev/davinci0`），并按文档挂载驱动目录。没有NPU时无法执行该示例。
+
+  - 启动容器
+    ```
+    docker run \
+        --name my-tilelang \
+        --device ${device} \
+        --device /dev/davinci_manager \
+        --device /dev/devmm_svm \
+        --device /dev/hisi_hdc \
+        -v /usr/local/dcmi:/usr/local/dcmi \
+        -v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi \
+        -v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/ \
+        -v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info \
+        -v /etc/ascend_install.info:/etc/ascend_install.info \
+        -v /root/.cache:/root/.cache \
+        -it openeuler/tilelang:{Tag} bash
+    ```
+    用户可根据自身需求选择对应版本的`{Tag}`、对应的NPU设备`{device}`以及容器启动的选项。
+
+  - 参数说明
+    | 配置项 | 描述 |
+    |--|--|
+    | `--name my-tilelang` | 容器名称。|
+    | `--device /dev/davinci1` | NPU设备，X是芯片物理ID号，例如davinci1。|
+    | `--device /dev/davinci_manager` | davinci相关的管理设备。|
+    | `--device /dev/devmm_svm` | 内存管理相关设备。|
+    | `--device /dev/hisi_hdc` | hdc相关管理设备。|
+    | `-v /usr/local/dcmi:/usr/local/dcmi` | 将宿主机dcmi的so和接口文件目录`/usr/local/dcmi`挂载到容器中，请根据实际情况修改。|
+    | `-v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi` | 将宿主机`npu-smi`工具`/usr/local/bin/npu-smi`挂载到容器中，请根据实际情况修改。|
+    | `-v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/` | 将宿主机目录`/usr/local/Ascend/driver/lib64/driver`挂载到容器中。请根据driver的驱动so所在路径修改。|
+    | `-v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info` | 将宿主机版本信息文件`/usr/local/Ascend/driver/version.info`挂载到容器中，请根据实际情况修改。|
+    | `-v /etc/ascend_install.info:/etc/ascend_install.info` | 将宿主机安装信息文件`/etc/ascend_install.info`挂载到容器中。|
+    | `-it` | 以交互模式启动容器。|
+    | `openeuler/tilelang:{Tag}` | 指定要运行的镜像`openeuler/tilelang`，其中`{Tag}`是需要替换的镜像标签。|
+
+  - 容器测试
+
+    进入容器后先加载CANN环境并验证NPU栈与tilelang安装：
+    ```bash
+    docker exec -it my-tilelang /bin/bash
+    source /usr/local/Ascend/ascend-toolkit/set_env.sh
+    python3 -c "import torch, torch_npu; print('is_available:', torch.npu.is_available())"
+    python3 -c "import tilelang; print('tilelang', tilelang.__version__)"
+    ```
+
+    运行上游官方GEMM算例（默认1024x1024x1024 fp16，JIT编译后在NPU上执行，并与PyTorch参考结果做数值比对）：
+    ```bash
+    cd /opt/tilelang-ascend
+    python3 examples/gemm/example_gemm.py
+    ```
+    脚本先打印`init successful!`，比对通过后打印`Kernel Output Match!`。更多算子示例（FlashAttention、Softmax、归一化、DeepSeek V4算子等）见上游`examples/`目录。
+
+license: MIT license
+similar_packages:
+  - Triton: Triton是OpenAI开源的GPU算子编程语言，通过Python DSL编写GPU并行kernel。
+  - TVM: TVM是开源的深度学习编译器栈，支持多硬件后端的算子生成与自动调优。
+dependency:
+  - python3
+  - torch
+  - torch_npu
+  - CANN
+  - numpy
+  - torch-npu
+
+homepage: https://github.com/tile-ai/tilelang-ascend
+upstream:
+  backend: GitHub
+  version_url: tile-ai/tilelang-ascend
+  version_prefix: TileLang-ascend-v
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM
