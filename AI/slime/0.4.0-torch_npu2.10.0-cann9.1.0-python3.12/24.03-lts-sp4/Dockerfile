@@ -4,16 +4,12 @@ FROM quay.io/ascend/torch-npu:2.10.0.post6-cann9.1.0-910b-openeuler24.03-py3.12
 # unreachable from the CI builders.
 ENV PIP_INDEX_URL=https://pypi.org/simple
 
-# Harden git against the flaky CI network (HTTP/2 resets, stalled transfers).
-ENV GIT_CONFIG_COUNT=4 \
+# Harden git against the flaky CI network (force HTTP/1.1, large post buffer).
+ENV GIT_CONFIG_COUNT=2 \
     GIT_CONFIG_KEY_0=http.version \
     GIT_CONFIG_VALUE_0=HTTP/1.1 \
     GIT_CONFIG_KEY_1=http.postBuffer \
-    GIT_CONFIG_VALUE_1=524288000 \
-    GIT_CONFIG_KEY_2=http.lowSpeedLimit \
-    GIT_CONFIG_VALUE_2=1000 \
-    GIT_CONFIG_KEY_3=http.lowSpeedTime \
-    GIT_CONFIG_VALUE_3=60
+    GIT_CONFIG_VALUE_1=524288000
 
 ARG VERSION=0.4.0
 ARG SLIME_ASCEND_REF=c69676fa94382175502101d9441c9aa82fd34a45
@@ -27,7 +23,7 @@ RUN dnf -y install --nodocs --setopt=install_weak_deps=False git && dnf clean al
 # build.sh initializes the slime submodule at the pinned upstream commit and
 # applies the npu-compat / upstream-fixes patch series; the installable package
 # tree is the slime/ subdirectory afterwards.
-RUN git clone https://gitcode.com/Ascend/slime-ascend.git /opt/slime-ascend && \
+RUN git clone --recurse-submodules https://gitcode.com/Ascend/slime-ascend.git /opt/slime-ascend && \
     git -C /opt/slime-ascend checkout ${SLIME_ASCEND_REF} && \
     bash /opt/slime-ascend/build.sh && \
     rm -rf /opt/slime-ascend/.git /opt/slime-ascend/slime/.git
