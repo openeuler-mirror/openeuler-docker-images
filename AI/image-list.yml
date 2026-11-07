@@ -7,6 +7,7 @@ images:
   diffusers: diffusers
   lvm-llava: opea/lvm-llava
   embedding-multimodal-bridgetower: opea/embedding-multimodal-bridgetower
+  open_clip: open_clip
   comps-base: opea/comps-base
   kserve-huggingfaceserver: kserve/huggingfaceserver
   llm-compressor: llm-compressor
