@@ -29,7 +29,7 @@ RUN git clone --branch v${VERSION} --depth 1 https://github.com/AUTOMATIC1111/st
     python3 -m pip install --no-cache-dir torchvision==0.24.0 pytorch_lightning==1.9.4 && \
     python3 -m pip install --no-cache-dir tokenizers==0.14.1 -r requirements.txt && \
     python3 -m pip install --no-cache-dir -r requirements_npu.txt && \
-    python3 -m pip install --no-cache-dir modelscope wheel && \
+    python3 -m pip install --no-cache-dir modelscope wheel "setuptools<81" && \
     python3 -m pip install --no-cache-dir --no-build-isolation "https://github.com/openai/CLIP/archive/d50d76daa670286dd6cacf3bcd80b5e4823fc8e1.zip" && \
     python3 -m pip cache purge
 
