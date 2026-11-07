@@ -82,6 +82,7 @@ images:
   graphrag-ui: opea/graphrag-ui
   comfyui: comfyui
   graphrag-react-ui: opea/graphrag-react-ui
+  stable-diffusion-webui: stable-diffusion-webui
   dataprep: opea/dataprep  
   diffsynth-studio: diffsynth-studio
   dataprep-redis: opea/dataprep-redis
