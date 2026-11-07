@@ -20,12 +20,8 @@ ARG VERSION=0.1.5
 LABEL author="openEuler CloudNative SIG" description="VBench with Ascend NPU support (torch_npu + CANN)"
 
 
-# rust/cargo build the tokenizers sdist pinned by upstream (transformers==4.33.2);
-# PYO3_USE_ABI3_FORWARD_COMPATIBILITY lets its pyo3 0.18 backend target Python 3.12
-ENV PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1
-
 # Build Decord 0.6.0 from source (no aarch64 wheel is published)
-RUN dnf install -y ffmpeg-devel rust cargo && \
+RUN dnf install -y ffmpeg-devel && \
     dnf clean all && \
     git clone --recursive --depth 1 --branch v0.6.0 https://github.com/dmlc/decord.git /tmp/decord && \
     sed -i 's|#include <libavcodec/avcodec.h>|#include <libavcodec/avcodec.h>\n#include <libavcodec/bsf.h>|' /tmp/decord/src/video/ffmpeg/ffmpeg_common.h && \
@@ -35,8 +31,14 @@ RUN dnf install -y ffmpeg-devel rust cargo && \
     python3 -m pip install --no-cache-dir --no-build-isolation --no-deps /tmp/decord/python && \
     rm -rf /tmp/decord
 
-# Install VBench; torchvision is pinned to the version matching torch 2.9.0 in the base image
-RUN python3 -m pip install --no-cache-dir vbench==${VERSION} torchvision==0.24.0 gdown==6.4.2 && \
+# vbench 0.1.5 pins transformers==4.33.2, whose tokenizers<0.14 has no cp312
+# wheel, so pip compiles tokenizers from source on Python 3.12. Install vbench
+# without deps, then install its requirements against a transformers release
+# that accepts tokenizers 0.14.x (prebuilt manylinux cp312 wheels).
+RUN python3 -m pip install --no-cache-dir --no-deps vbench==${VERSION} && \
+    python3 -c "import importlib.metadata as m; print('\n'.join(r for r in m.requires('vbench') if not r.lower().startswith('transformers')))" > /tmp/vbench-requirements.txt && \
+    python3 -m pip install --no-cache-dir -r /tmp/vbench-requirements.txt "transformers==4.34.1" "tokenizers==0.14.1" torchvision==0.24.0 gdown==6.4.2 && \
+    rm -f /tmp/vbench-requirements.txt && \
     python3 -m pip cache purge
 
 CMD ["/bin/bash"]
