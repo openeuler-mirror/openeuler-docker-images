@@ -45,6 +45,7 @@ images:
   mlflow: mlflow
   roll: roll
   wav2lip: opea/wav2lip
+  areal: areal
   animation: opea/animation
   oneapi-basekit: oneapi-basekit
   llama.cpp: llama.cpp
