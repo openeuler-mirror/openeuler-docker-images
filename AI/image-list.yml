@@ -28,6 +28,7 @@ images:
   llvm-build-deps: llvm-build-deps
   mindspore: mindspore
   mlflow: mlflow
+  roll: roll
   wav2lip: opea/wav2lip
   animation: opea/animation
   oneapi-basekit: oneapi-basekit
