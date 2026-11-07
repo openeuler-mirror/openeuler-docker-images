@@ -14,6 +14,7 @@ images:
   embedding-multimodal-bridgetower: opea/embedding-multimodal-bridgetower
   open_clip: open_clip
   comps-base: opea/comps-base
+  liger-kernel: liger-kernel
   kserve-huggingfaceserver: kserve/huggingfaceserver
   llm-compressor: llm-compressor
   kserve-controller: kserve/controller
