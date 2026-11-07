@@ -74,6 +74,7 @@ images:
   embedding-tei: opea/embedding-tei
   embedding: opea/embedding
   faqgen-ui: opea/faqgen-ui
+  opencompass: opencompass
   faqgen: opea/faqgen
   evalscope: evalscope
   faqgen-react-ui: opea/faqgen-react-ui
