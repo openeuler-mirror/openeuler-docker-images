@@ -55,6 +55,7 @@ images:
   codegen: opea/codegen
   codegen-react-ui: opea/codegen-react-ui
   codetrans-ui: opea/codetrans-ui
+  lightx2v: lightx2v
   codetrans: opea/codetrans
   graphrag: opea/graphrag
   graphrag-ui: opea/graphrag-ui
