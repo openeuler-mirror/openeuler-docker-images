@@ -19,12 +19,15 @@ LABEL author="openEuler CloudNative SIG" description="DGL-Ascend (DGL with Ascen
 # Build and install DGL-Ascend (BUPT-GAMMA Ascend adaptation of DGL) from source.
 # The build script auto-detects the Ascend SoC and falls back to ascend910b4
 # when no NPU is visible during the docker build.
+# Cap the compile parallelism at 4 jobs: build_dgl_ascend.sh defaults to
+# -j$(nproc), and the heavy graphbolt translation units get OOM-killed
+# (cc1plus "Killed signal terminated") on the smaller CI builders.
 RUN dnf install -y git gcc gcc-c++ make cmake && dnf clean all && \
     source /usr/local/Ascend/ascend-toolkit/set_env.sh && \
     git clone https://github.com/BUPT-GAMMA/dgl-ascend.git /tmp/dgl-ascend && \
     git -C /tmp/dgl-ascend checkout ${VERSION} && \
     git -C /tmp/dgl-ascend submodule update --init --recursive && \
-    bash /tmp/dgl-ascend/script/build_dgl_ascend.sh -t release && \
+    bash /tmp/dgl-ascend/script/build_dgl_ascend.sh -t release -j 4 && \
     python3 -m pip install --no-cache-dir "Cython==3.0.12" packaging pandas "pydantic>=2.0" tqdm && \
     cd /tmp/dgl-ascend/python && \
     python3 setup.py install && \
