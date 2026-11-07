@@ -33,6 +33,7 @@ images:
   colossalai: colossalai
   cann: cann
   maca-sdk: maca-sdk
+  xtuner: xtuner
   dlrm: dlrm
   torchtune: torchtune
   avatarchatbot: opea/avatarchatbot
