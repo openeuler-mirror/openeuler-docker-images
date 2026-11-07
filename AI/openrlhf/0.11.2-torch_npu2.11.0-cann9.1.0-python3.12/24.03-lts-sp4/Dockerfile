@@ -4,6 +4,17 @@ FROM quay.io/ascend/torch-npu:2.11.0.post2-cann9.1.0-910b-openeuler24.03-py3.12
 # unreachable from the CI builders.
 ENV PIP_INDEX_URL=https://pypi.org/simple
 
+# Harden git against the flaky CI network (HTTP/2 resets, stalled transfers).
+ENV GIT_CONFIG_COUNT=4 \
+    GIT_CONFIG_KEY_0=http.version \
+    GIT_CONFIG_VALUE_0=HTTP/1.1 \
+    GIT_CONFIG_KEY_1=http.postBuffer \
+    GIT_CONFIG_VALUE_1=524288000 \
+    GIT_CONFIG_KEY_2=http.lowSpeedLimit \
+    GIT_CONFIG_VALUE_2=1000 \
+    GIT_CONFIG_KEY_3=http.lowSpeedTime \
+    GIT_CONFIG_VALUE_3=60
+
 ARG VERSION=0.11.2
 
 LABEL author="openEuler CloudNative SIG" description="OpenRLHF RLHF framework with Ascend NPU support (torch_npu + CANN)"
