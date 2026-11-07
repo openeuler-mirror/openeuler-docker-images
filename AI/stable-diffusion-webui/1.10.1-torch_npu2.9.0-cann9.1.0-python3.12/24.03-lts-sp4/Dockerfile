@@ -4,28 +4,29 @@ FROM quay.io/ascend/torch-npu:2.9.0.post8-cann9.1.0-910b-openeuler24.03-py3.12
 # unreachable from the CI builders.
 ENV PIP_INDEX_URL=https://pypi.org/simple
 
-# Harden git against the flaky CI network (HTTP/2 resets, stalled transfers).
-ENV GIT_CONFIG_COUNT=4 \
+# Harden git against the flaky CI network (force HTTP/1.1, large post buffer).
+ENV GIT_CONFIG_COUNT=2 \
     GIT_CONFIG_KEY_0=http.version \
     GIT_CONFIG_VALUE_0=HTTP/1.1 \
     GIT_CONFIG_KEY_1=http.postBuffer \
-    GIT_CONFIG_VALUE_1=524288000 \
-    GIT_CONFIG_KEY_2=http.lowSpeedLimit \
-    GIT_CONFIG_VALUE_2=1000 \
-    GIT_CONFIG_KEY_3=http.lowSpeedTime \
-    GIT_CONFIG_VALUE_3=60
+    GIT_CONFIG_VALUE_1=524288000
 
 ARG VERSION=1.10.1
 
 LABEL author="openEuler CloudNative SIG" description="stable-diffusion-webui (AUTOMATIC1111) with Ascend NPU support (torch_npu + CANN)"
 
 
-# rust/cargo build the tokenizers sdist pinned by upstream requirements.txt (transformers==4.30.2);
-# PYO3_USE_ABI3_FORWARD_COMPATIBILITY lets its pyo3 0.18 backend target Python 3.12
+# The tokenizers sdist pinned by upstream requirements.txt (transformers==4.30.2)
+# has a pyo3 0.18 backend: it needs PYO3_USE_ABI3_FORWARD_COMPATIBILITY for
+# Python 3.12 and a pre-1.75 rustc (newer rustc rejects pyo3 0.18's casts).
 ENV PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1
+ENV PATH=/root/.cargo/bin:${PATH}
 
-RUN dnf install -y rust cargo mesa-libGL glib2 openssl-devel && \
-    dnf clean all
+RUN dnf install -y mesa-libGL glib2 openssl-devel curl && \
+    dnf clean all && \
+    curl -fsSL https://sh.rustup.rs -o /tmp/rustup-init.sh && \
+    sh /tmp/rustup-init.sh -y --default-toolchain 1.70.0 --profile minimal && \
+    rm -f /tmp/rustup-init.sh
 
 RUN git clone --branch v${VERSION} --depth 1 https://github.com/AUTOMATIC1111/stable-diffusion-webui.git /stable-diffusion-webui && \
     cd /stable-diffusion-webui && \
