@@ -55,3 +55,6 @@
 
 0.30.0-torch_npu2.10.0.post7-cann9.2.1-python3.12-oe2403lts:
   path: 0.30.0-torch_npu2.10.0.post7-cann9.2.1-python3.12/24.03-lts/Dockerfile
+
+0.23.0-torch_npu2.10.0.post4-cann9.1.0-python3.12-oe2403lts:
+  path: 0.23.0-torch_npu2.10.0.post4-cann9.1.0-python3.12/24.03-lts/Dockerfile
