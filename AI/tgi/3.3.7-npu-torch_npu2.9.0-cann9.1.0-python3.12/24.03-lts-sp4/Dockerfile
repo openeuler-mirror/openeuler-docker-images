@@ -1,5 +1,9 @@
 FROM quay.io/ascend/torch-npu:2.9.0.post8-cann9.1.0-910b-openeuler24.03-py3.12
 
+# Use PyPI directly; the base image pip.conf points at a mirror that is
+# unreachable from the CI builders.
+ENV PIP_INDEX_URL=https://pypi.org/simple
+
 ARG VERSION=3.3.7-npu
 
 LABEL author="openEuler CloudNative SIG" description="Text Generation Inference (TGI) with Ascend NPU support (torch_npu + CANN)"
@@ -25,7 +29,7 @@ RUN git clone --branch "v${VERSION}" --depth 1 \
 # kernels must stay at 0.5.0: it is the build backend of the Python server and
 # ships the kernels.lockfile that avoids CUDA-only kernel downloads.
 RUN python3 -m pip install --no-cache-dir uv && \
-    uv pip install \
+    uv pip install --index-url https://pypi.org/simple \
         "transformers==4.57.6" "accelerate==1.15.0" "modelscope==1.37.0" \
         "kernels==0.5.0" "grpcio-tools>=1.69.0" "mypy-protobuf>=3.6.0" && \
     python3 -m pip cache purge
@@ -42,7 +46,7 @@ RUN cd /opt/text-generation-inference && \
 
 # Install the Python server (editable, sources are kept in the image)
 RUN cd /opt/text-generation-inference && \
-    uv pip install --no-build-isolation -e server && \
+    uv pip install --index-url https://pypi.org/simple --no-build-isolation -e server && \
     make -C server gen-server-raw && \
     rm -rf /root/.cargo /root/.rustup /root/.cache/uv && \
     python3 -m pip cache purge
