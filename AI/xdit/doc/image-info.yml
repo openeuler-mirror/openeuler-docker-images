@@ -1,0 +1,163 @@
+name: xdit
+category: ai
+description: xDiT（PyPI包名xfuser）是统一的扩散模型并行推理框架，支持张量并行、序列并行（Ulysses）与PipeFusion流水线并行，可显著加速文生图、文生视频等任务的推理。本镜像基于torch_npu，可在昇腾NPU上运行Stable Diffusion 3等扩散模型的单卡与多卡推理。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  xDiT镜像的Tag由其版本信息和软件栈版本信息组成，详细内容如下：
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[0.7.0-torch_npu2.9.0-cann9.1.0-python3.12-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/xdit/0.7.0-torch_npu2.9.0-cann9.1.0-python3.12/24.03-lts-sp4/Dockerfile)| xDiT 0.7.0 (xfuser, torch_npu 2.9.0.post8, CANN 9.1.0) on openEuler 24.03-LTS-SP4 | arm64,amd64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/xdit:{Tag}
+  ```
+
+usage: |
+  - 前置条件
+
+    示例使用Ascend NPU设备。运行前确认宿主机已安装Ascend驱动和固件：
+    ```bash
+    npu-smi info
+    ls /dev/davinci* /dev/davinci_manager /dev/devmm_svm /dev/hisi_hdc
+    ```
+    将`${device}`替换为实际NPU设备（例如`/dev/davinci0`），并按文档挂载驱动目录。没有NPU时无法执行该示例。
+
+  - 启动容器
+    ```
+    docker run \
+        --name my-xdit \
+        --device ${device} \
+        --device /dev/davinci_manager \
+        --device /dev/devmm_svm \
+        --device /dev/hisi_hdc \
+        -v /usr/local/dcmi:/usr/local/dcmi \
+        -v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi \
+        -v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/ \
+        -v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info \
+        -v /etc/ascend_install.info:/etc/ascend_install.info \
+        -it openeuler/xdit:{Tag} bash
+    ```
+    用户可根据自身需求选择对应版本的`{Tag}`、对应的NPU设备`{device}`以及容器启动的选项。
+
+  - 参数说明
+    | 配置项 | 描述 |
+    |--|--|
+    | `--name my-xdit` | 容器名称。|
+    | `--device /dev/davinci1` | NPU设备，X是芯片物理ID号，例如davinci1。|
+    | `--device /dev/davinci_manager` | davinci相关的管理设备。|
+    | `--device /dev/devmm_svm` | 内存管理相关设备。|
+    | `--device /dev/hisi_hdc` | hdc相关管理设备。|
+    | `-v /usr/local/dcmi:/usr/local/dcmi` | 将宿主机dcmi的so和接口文件目录`/usr/local/dcmi`挂载到容器中，请根据实际情况修改。|
+    | `-v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi` | 将宿主机`npu-smi`工具`/usr/local/bin/npu-smi`挂载到容器中，请根据实际情况修改。|
+    | `-v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/` | 将宿主机目录`/usr/local/Ascend/driver/lib64/driver`挂载到容器中。请根据driver的驱动so所在路径修改。|
+    | `-v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info` | 将宿主机版本信息文件`/usr/local/Ascend/driver/version.info`挂载到容器中，请根据实际情况修改。|
+    | `-v /etc/ascend_install.info:/etc/ascend_install.info` | 将宿主机安装信息文件`/etc/ascend_install.info`挂载到容器中。|
+    | `-it` | 以交互模式启动容器。|
+    | `openeuler/xdit:{Tag}` | 指定要运行的镜像`openeuler/xdit`，其中`{Tag}`是需要替换的镜像标签。|
+
+  - 容器测试
+
+    进入容器后先验证NPU环境，再确认xDiT（xfuser）版本：
+    ```bash
+    docker exec -it my-xdit /bin/bash
+    python3 -c "import torch, torch_npu; print('is_available:', torch.npu.is_available())"
+    python3 -c "from importlib.metadata import version; print('xDiT version:', version('xfuser'))"
+    ```
+
+    用SD3 medium模型在单卡上生成一张256×256的图（模型约28 GB，从ModelScope自动下载）。将以下Python代码保存为`sd3_npu.py`：
+    ```python
+    import os
+    import sys
+    import time
+
+    import torch
+    import torch_npu
+    from modelscope import snapshot_download
+    from transformers import T5EncoderModel
+    from xfuser import xFuserArgs, xFuserStableDiffusion3Pipeline
+    from xfuser.config import FlexibleArgumentParser
+    from xfuser.core.distributed import get_runtime_state, get_world_group
+
+    model_path = snapshot_download('stabilityai/stable-diffusion-3-medium-diffusers')
+
+    parser = FlexibleArgumentParser(description="xFuser SD3 Arguments")
+    args = xFuserArgs.add_cli_args(parser).parse_args(['--model', model_path] + sys.argv[1:])
+    engine_args = xFuserArgs.from_cli_args(args)
+    engine_config, input_config = engine_args.create_config()
+    local_rank = get_world_group().rank
+
+    text_encoder_3 = T5EncoderModel.from_pretrained(
+        model_path, subfolder="text_encoder_3", dtype=torch.float16
+    )
+    pipe = xFuserStableDiffusion3Pipeline.from_pretrained(
+        pretrained_model_name_or_path=model_path,
+        engine_config=engine_config,
+        dtype=torch.float16,
+        text_encoder_3=text_encoder_3,
+    ).to(f"npu:{local_rank}")
+    pipe.prepare_run(input_config)
+
+    torch.npu.synchronize(device=local_rank)
+    start = time.perf_counter()
+    output = pipe(
+        height=input_config.height,
+        width=input_config.width,
+        prompt=input_config.prompt,
+        num_inference_steps=input_config.num_inference_steps,
+        output_type=input_config.output_type,
+        guidance_scale=input_config.guidance_scale,
+        generator=torch.Generator(device="npu").manual_seed(input_config.seed),
+    )
+    torch.npu.synchronize(device=local_rank)
+    elapsed = time.perf_counter() - start
+
+    os.makedirs("results", exist_ok=True)
+    if pipe.is_dp_last_group():
+        world_size = get_world_group().world_size
+        path = f"results/sd3_npu{world_size}_ulysses{engine_args.ulysses_degree}.png"
+        output.images[0].save(path)
+        print(f"inference time: {elapsed:.2f} sec")
+        print(f"image saved to {path}")
+    get_runtime_state().destroy_distributed_env()
+    ```
+
+    用`torchrun`单卡运行：
+    ```bash
+    torchrun --nproc_per_node=1 sd3_npu.py --prompt "a tiny test sketch" --height 256 --width 256 --num_inference_steps 1 --seed 42
+    ```
+
+    同一脚本加`--ulysses_degree 2 --attention_backend SDPA`并将`--nproc_per_node`改为2即可在2卡上做序列并行。
+
+    国内网络可通过ModelScope或hf-mirror加速模型下载：
+    ```bash
+    export HF_ENDPOINT=https://hf-mirror.com
+    ```
+
+license: Apache-2.0 license
+similar_packages:
+  - Diffusers: Diffusers是Hugging Face开源的扩散模型库，提供主流文生图、文生视频模型的单卡推理实现。
+  - Accelerate: Accelerate是Hugging Face开源的分布式加速库，为PyTorch提供多设备训练与推理的统一封装。
+dependency:
+  - python3
+  - torch
+  - torch_npu
+  - xfuser
+  - diffusers
+  - transformers
+  - triton
+  - modelscope
+
+homepage: https://github.com/xdit-project/xDiT
+upstream:
+  backend: GitHub
+  version_url: xdit-project/xDiT
+  version_prefix: ""
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM
