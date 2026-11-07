@@ -87,6 +87,7 @@ images:
   docsum: opea/docsum
   modelscope: modelscope
   lvm: opea/lvm
+  dgl: dgl
   embedding-tei: opea/embedding-tei
   embedding: opea/embedding
   tilelang: tilelang
