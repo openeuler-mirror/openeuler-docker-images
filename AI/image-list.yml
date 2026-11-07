@@ -83,6 +83,7 @@ images:
   faqgen: opea/faqgen
   evalscope: evalscope
   faqgen-react-ui: opea/faqgen-react-ui
+  minionerec: minionerec
   llm-faqgen: opea/llm-faqgen
   specforge: specforge
   llm-docsum-tgi: opea/llm-docsum-tgi
