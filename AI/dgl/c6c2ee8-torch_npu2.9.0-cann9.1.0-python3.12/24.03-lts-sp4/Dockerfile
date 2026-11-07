@@ -4,6 +4,17 @@ FROM quay.io/ascend/torch-npu:2.9.0.post8-cann9.1.0-910b-openeuler24.03-py3.12
 # unreachable from the CI builders.
 ENV PIP_INDEX_URL=https://pypi.org/simple
 
+# Harden git against the flaky CI network (HTTP/2 resets, stalled transfers).
+ENV GIT_CONFIG_COUNT=4 \
+    GIT_CONFIG_KEY_0=http.version \
+    GIT_CONFIG_VALUE_0=HTTP/1.1 \
+    GIT_CONFIG_KEY_1=http.postBuffer \
+    GIT_CONFIG_VALUE_1=524288000 \
+    GIT_CONFIG_KEY_2=http.lowSpeedLimit \
+    GIT_CONFIG_VALUE_2=1000 \
+    GIT_CONFIG_KEY_3=http.lowSpeedTime \
+    GIT_CONFIG_VALUE_3=60
+
 ARG VERSION=c6c2ee8
 
 LABEL author="openEuler CloudNative SIG" description="DGL-Ascend (DGL with Ascend NPU support) with torch_npu + CANN"
@@ -17,7 +28,7 @@ RUN dnf install -y git gcc gcc-c++ make cmake && dnf clean all && \
     git clone https://github.com/BUPT-GAMMA/dgl-ascend.git /tmp/dgl-ascend && \
     git -C /tmp/dgl-ascend checkout ${VERSION} && \
     git -C /tmp/dgl-ascend submodule update --init --recursive && \
-    bash /tmp/dgl-ascend/script/build_dgl_ascend.sh && \
+    bash /tmp/dgl-ascend/script/build_dgl_ascend.sh -t release && \
     python3 -m pip install --no-cache-dir "Cython==3.0.12" packaging pandas "pydantic>=2.0" tqdm && \
     cd /tmp/dgl-ascend/python && \
     python3 setup.py install && \
