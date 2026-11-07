@@ -2,6 +2,7 @@ images:
   executorch: executorch
   transformers: transformers
   sglang: sglang
+  accelerate: accelerate
   codegen-gradio-ui: opea/codegen-gradio-ui
   peft: peft
   multimodalqna: opea/multimodalqna

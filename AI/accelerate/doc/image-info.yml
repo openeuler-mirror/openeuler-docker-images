@@ -1,0 +1,128 @@
+name: accelerate
+category: ai
+description: Accelerate是Hugging Face开源的分布式训练加速库，同一份PyTorch训练代码无需修改即可运行在CPU、NPU等多种设备上，支持DDP多卡训练、混合精度与大模型分片推理。本镜像集成torch_npu与CANN，可在昇腾NPU上直接运行多卡训练与推理。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  Accelerate镜像的Tag由其版本信息和软件栈版本信息组成，详细内容如下：
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.15.0-torch_npu2.9.0-cann9.1.0-python3.12-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/accelerate/1.15.0-torch_npu2.9.0-cann9.1.0-python3.12/24.03-lts-sp4/Dockerfile)| Accelerate 1.15.0 (torch_npu 2.9.0.post8, CANN 9.1.0) on openEuler 24.03-LTS-SP4 | arm64,amd64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/accelerate:{Tag}
+  ```
+
+usage: |
+  - 前置条件
+
+    示例使用Ascend NPU设备。运行前确认宿主机已安装Ascend驱动和固件：
+    ```bash
+    npu-smi info
+    ls /dev/davinci* /dev/davinci_manager /dev/devmm_svm /dev/hisi_hdc
+    ```
+    将`${device}`替换为实际NPU设备（例如`/dev/davinci0`），并按文档挂载驱动目录。没有NPU时无法执行该示例。
+
+  - 启动容器
+    ```
+    docker run \
+        --name my-accelerate \
+        --device ${device} \
+        --device /dev/davinci_manager \
+        --device /dev/devmm_svm \
+        --device /dev/hisi_hdc \
+        -v /usr/local/dcmi:/usr/local/dcmi \
+        -v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi \
+        -v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/ \
+        -v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info \
+        -v /etc/ascend_install.info:/etc/ascend_install.info \
+        -it openeuler/accelerate:{Tag} bash
+    ```
+    用户可根据自身需求选择对应版本的`{Tag}`、对应的NPU设备`{device}`以及容器启动的选项。
+
+  - 参数说明
+    | 配置项 | 描述 |
+    |--|--|
+    | `--name my-accelerate` | 容器名称。|
+    | `--device /dev/davinci1` | NPU设备，X是芯片物理ID号，例如davinci1。|
+    | `--device /dev/davinci_manager` | davinci相关的管理设备。|
+    | `--device /dev/devmm_svm` | 内存管理相关设备。|
+    | `--device /dev/hisi_hdc` | hdc相关管理设备。|
+    | `-v /usr/local/dcmi:/usr/local/dcmi` | 将宿主机dcmi的so和接口文件目录`/usr/local/dcmi`挂载到容器中，请根据实际情况修改。|
+    | `-v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi` | 将宿主机`npu-smi`工具`/usr/local/bin/npu-smi`挂载到容器中，请根据实际情况修改。|
+    | `-v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/` | 将宿主机目录`/usr/local/Ascend/driver/lib64/driver`挂载到容器中。请根据driver的驱动so所在路径修改。|
+    | `-v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info` | 将宿主机版本信息文件`/usr/local/Ascend/driver/version.info`挂载到容器中，请根据实际情况修改。|
+    | `-v /etc/ascend_install.info:/etc/ascend_install.info` | 将宿主机安装信息文件`/etc/ascend_install.info`挂载到容器中。|
+    | `-it` | 以交互模式启动容器。|
+    | `openeuler/accelerate:{Tag}` | 指定要运行的镜像`openeuler/accelerate`，其中`{Tag}`是需要替换的镜像标签。|
+
+  - 容器测试
+
+    进入容器后先验证NPU环境，再确认Accelerate版本：
+    ```bash
+    docker exec -it my-accelerate /bin/bash
+    python3 -c "import torch, torch_npu; print('is_available:', torch.npu.is_available())"
+    python3 -c "import accelerate; print('accelerate', accelerate.__version__)"
+    accelerate env
+    ```
+
+    在NPU上跑一个最小训练循环（`Accelerator`自动探测NPU设备，`accelerator.prepare`完成模型与数据下卡，`accelerator.backward`替代`loss.backward`）：
+    ```python
+    import torch
+    import torch_npu
+    from torch import nn
+    from torch.utils.data import DataLoader, TensorDataset
+    from accelerate import Accelerator
+
+    x = torch.linspace(-1.0, 1.0, 64).unsqueeze(1)
+    y = 2 * x + 1 + 0.05 * torch.randn_like(x)
+    ds = TensorDataset(x, y)
+    loader = DataLoader(ds, batch_size=8, shuffle=True)
+    model = nn.Linear(1, 1)
+    optim = torch.optim.SGD(model.parameters(), lr=0.1)
+
+    accelerator = Accelerator()
+    model, optim, loader = accelerator.prepare(model, optim, loader)
+    loss_fn = nn.MSELoss()
+    for step, (xb, yb) in enumerate(loader):
+        preds = model(xb)
+        loss = loss_fn(preds, yb)
+        accelerator.backward(loss)
+        optim.step()
+        optim.zero_grad()
+        if step == 2:
+            break
+    print(f"device={accelerator.device.type} final_loss={loss.item():.4f}")
+    ```
+
+    保存为`train_npu.py`执行后输出`device=npu final_loss=...`。多卡机器上可用`accelerate launch`启动同一脚本：
+    ```bash
+    ASCEND_RT_VISIBLE_DEVICES=0,1 accelerate launch --num_processes 2 --mixed_precision bf16 train_npu.py
+    ```
+
+license: Apache-2.0 license
+similar_packages:
+  - DeepSpeed: 微软开源的大规模分布式训练优化库，提供ZeRO显存优化、混合精度与流水线并行能力。
+  - ColossalAI: 面向大模型的高性能分布式训练框架，集成分片、并行与显存优化等组件。
+dependency:
+  - python3
+  - torch
+  - torch_npu
+  - transformers
+  - huggingface-hub
+  - safetensors
+  - psutil
+
+homepage: https://github.com/huggingface/accelerate
+upstream:
+  backend: GitHub
+  version_url: huggingface/accelerate
+  version_prefix: v
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM
