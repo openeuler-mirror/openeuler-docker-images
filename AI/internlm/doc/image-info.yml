@@ -1,0 +1,143 @@
+name: internlm
+category: ai
+description: InternLM是上海人工智能实验室开源的大语言模型系列，本镜像包含InternLM源码树与经NPU验证的Transformers推理栈。镜像基于torch_npu，可在昇腾NPU上以FP16直接运行InternLM3-8B-Instruct等模型的对话推理。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  InternLM镜像的Tag由其源码版本信息和软件栈版本信息组成（现有Release早于NPU指南，故跟踪main分支commit），详细内容如下：
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[main-68fdc71-torch_npu2.9.0-cann9.1.0-python3.12-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/internlm/main-68fdc71-torch_npu2.9.0-cann9.1.0-python3.12/24.03-lts-sp4/Dockerfile)| InternLM main分支commit 68fdc71 (torch_npu 2.9.0.post8, CANN 9.1.0) on openEuler 24.03-LTS-SP4 | arm64,amd64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/internlm:{Tag}
+  ```
+
+usage: |
+  - 前置条件
+
+    示例使用Ascend NPU设备。运行前确认宿主机已安装Ascend驱动和固件：
+    ```bash
+    npu-smi info
+    ls /dev/davinci* /dev/davinci_manager /dev/devmm_svm /dev/hisi_hdc
+    ```
+    将`${device}`替换为实际NPU设备（例如`/dev/davinci0`），并按文档挂载驱动目录。没有NPU时无法执行该示例。
+
+  - 启动容器
+    ```
+    docker run \
+        --name my-internlm \
+        --device ${device} \
+        --device /dev/davinci_manager \
+        --device /dev/devmm_svm \
+        --device /dev/hisi_hdc \
+        -v /usr/local/dcmi:/usr/local/dcmi \
+        -v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi \
+        -v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/ \
+        -v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info \
+        -v /etc/ascend_install.info:/etc/ascend_install.info \
+        -it openeuler/internlm:{Tag} bash
+    ```
+    用户可根据自身需求选择对应版本的`{Tag}`、对应的NPU设备`{device}`以及容器启动的选项。
+
+  - 参数说明
+    | 配置项 | 描述 |
+    |--|--|
+    | `--name my-internlm` | 容器名称。|
+    | `--device /dev/davinci1` | NPU设备，X是芯片物理ID号，例如davinci1。|
+    | `--device /dev/davinci_manager` | davinci相关的管理设备。|
+    | `--device /dev/devmm_svm` | 内存管理相关设备。|
+    | `--device /dev/hisi_hdc` | hdc相关管理设备。|
+    | `-v /usr/local/dcmi:/usr/local/dcmi` | 将宿主机dcmi的so和接口文件目录`/usr/local/dcmi`挂载到容器中，请根据实际情况修改。|
+    | `-v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi` | 将宿主机`npu-smi`工具`/usr/local/bin/npu-smi`挂载到容器中，请根据实际情况修改。|
+    | `-v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/` | 将宿主机目录`/usr/local/Ascend/driver/lib64/driver`挂载到容器中。请根据driver的驱动so所在路径修改。|
+    | `-v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info` | 将宿主机版本信息文件`/usr/local/Ascend/driver/version.info`挂载到容器中，请根据实际情况修改。|
+    | `-v /etc/ascend_install.info:/etc/ascend_install.info` | 将宿主机安装信息文件`/etc/ascend_install.info`挂载到容器中。|
+    | `-it` | 以交互模式启动容器。|
+    | `openeuler/internlm:{Tag}` | 指定要运行的镜像`openeuler/internlm`，其中`{Tag}`是需要替换的镜像标签。|
+
+  - 容器测试
+
+    进入容器后先验证NPU环境，再下载模型运行官方NPU推理示例：
+    ```bash
+    docker exec -it my-internlm /bin/bash
+    python3 -c "import torch, torch_npu; print('is_available:', torch.npu.is_available())"
+    ```
+
+    经ModelScope下载`Shanghai_AI_Laboratory/internlm3-8b-instruct`（约16GB，无需token）：
+    ```bash
+    mkdir -p /root/internlm-quick-start
+    ln -sfn "$(python3 -c 'from modelscope import snapshot_download; print(snapshot_download("Shanghai_AI_Laboratory/internlm3-8b-instruct"))' | grep '^/' | tail -n 1)" /root/internlm-quick-start/model
+    ```
+
+    按上游`ecosystem/README_npu.md`的官方配方（FP16、chat template、`.npu()`）执行推理：
+    ```python
+    import torch
+    import torch_npu
+    from transformers import AutoModelForCausalLM, AutoTokenizer
+
+    model_dir = "/root/internlm-quick-start/model"
+    tokenizer = AutoTokenizer.from_pretrained(model_dir, trust_remote_code=True)
+    model = AutoModelForCausalLM.from_pretrained(
+        model_dir,
+        trust_remote_code=True,
+        torch_dtype=torch.float16,
+    ).npu()
+    model.eval()
+
+    messages = [
+        {
+            "role": "system",
+            "content": "You are InternLM, a helpful, honest, and harmless AI assistant.",
+        },
+        {"role": "user", "content": "Please name one scenic spot in Shanghai."},
+    ]
+    tokenized_chat = tokenizer.apply_chat_template(
+        messages,
+        tokenize=True,
+        add_generation_prompt=True,
+        return_tensors="pt",
+    ).npu()
+
+    with torch.inference_mode():
+        generated_ids = model.generate(
+            tokenized_chat,
+            max_new_tokens=64,
+            do_sample=False,
+        )
+    torch.npu.synchronize()
+
+    new_tokens = generated_ids[:, tokenized_chat.shape[-1]:]
+    response = tokenizer.batch_decode(new_tokens, skip_special_tokens=True)[0].strip()
+    print("model device:", next(model.parameters()).device)
+    print("response:", response)
+    ```
+
+    输出中`model device: npu:0`与非空`response`表示NPU推理成功。
+
+license: Apache-2.0 license
+similar_packages:
+  - Qwen: Qwen是阿里通义实验室开源的大语言模型系列，提供多规格基座与Instruct模型及官方推理部署工具。
+  - Baichuan: Baichuan是百川智能开源的大语言模型系列，覆盖对话与通用理解场景。
+dependency:
+  - python3
+  - torch
+  - torch_npu
+  - transformers
+  - modelscope
+  - sentencepiece
+  - safetensors
+
+homepage: https://github.com/InternLM/InternLM
+upstream:
+  backend: GitHub
+  version_url: InternLM/InternLM
+  version_prefix: v
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM

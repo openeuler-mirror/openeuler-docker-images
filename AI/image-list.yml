@@ -33,6 +33,7 @@ images:
   llm: llm
   llm-server: llm-server
   llvm-build-deps: llvm-build-deps
+  internlm: internlm
   mindspore: mindspore
   mlflow: mlflow
   roll: roll
