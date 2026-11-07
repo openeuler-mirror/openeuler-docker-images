@@ -65,6 +65,7 @@ images:
   doc-index-retriever: opea/doc-index-retriever
   funasr: funasr
   docsum-ui: opea/docsum-ui
+  wenet: wenet
   docsum: opea/docsum
   lvm: opea/lvm
   embedding-tei: opea/embedding-tei
