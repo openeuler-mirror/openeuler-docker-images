@@ -6,6 +6,7 @@ images:
   codegen-gradio-ui: opea/codegen-gradio-ui
   peft: peft
   multimodalqna: opea/multimodalqna
+  trl: trl
   multimodalqna-ui: opea/multimodalqna-ui
   diffusers: diffusers
   lvm-llava: opea/lvm-llava
