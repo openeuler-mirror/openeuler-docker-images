@@ -34,6 +34,8 @@ RUN git clone --recurse-submodules https://gitcode.com/Ascend/slime-ascend.git /
 
 # Install slime with the NumPy/PyArrow/pandas/OpenAI pins used by the Ascend CI
 RUN printf 'numpy==1.26.4\npyarrow==20.0.0\npandas==2.2.3\nopenai==2.6.1\n' > /opt/slime-npu-constraints.txt && \
+    ARCH="$(uname -m)" && \
+    CARGO_BUILD_TARGET="${ARCH}-unknown-linux-gnu" \
     PIP_CONSTRAINT=/opt/slime-npu-constraints.txt python3 -m pip install --no-cache-dir -e /opt/slime-ascend/slime && \
     python3 -m pip install --no-cache-dir 'modelscope==1.37.0' && \
     python3 -m pip cache purge
