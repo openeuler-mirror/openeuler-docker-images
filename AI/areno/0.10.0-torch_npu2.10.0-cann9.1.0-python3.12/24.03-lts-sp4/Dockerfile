@@ -21,12 +21,18 @@ LABEL author="openEuler CloudNative SIG" description="AReno RL post-training too
 
 RUN dnf -y install --nodocs --setopt=install_weak_deps=False git cmake binutils gcc gcc-c++ && dnf clean all
 
-# Install AReno from source; the build compiles the areno.accel._areno_accel_npu Ascend C extension
+# Install AReno from source; the build compiles the areno.accel._areno_accel_npu
+# Ascend C extension. setup.py then imports the built extension to validate it,
+# but loading it makes CANN query the local SoC, which aborts on NPU-less CI
+# builders. The patch lets the builder skip that device-dependent check; the
+# unresolved kernel-launcher symbol validation still runs.
+COPY areno-skip-npu-import-check.patch /tmp/areno-skip-npu-import-check.patch
 RUN git clone --depth 1 --branch v${VERSION} https://github.com/inclusionAI/AReno.git /opt/AReno && \
     cd /opt/AReno && \
+    git apply /tmp/areno-skip-npu-import-check.patch && \
     python3 -m pip install --no-cache-dir -U 'setuptools>=69' wheel && \
     . /usr/local/Ascend/ascend-toolkit/set_env.sh && \
-    MAX_JOBS=$(nproc) python3 -m pip install --no-cache-dir --no-build-isolation --no-deps -e . && \
+    ARENO_SKIP_NPU_IMPORT_CHECK=1 MAX_JOBS=$(nproc) python3 -m pip install --no-cache-dir --no-build-isolation --no-deps -e . && \
     python3 -m pip install --no-cache-dir $(grep -vE '^[[:space:]]*(#|flash-attn-npu|flash-linear-attention)' requirements/npu.txt) && \
     python3 -m pip install --no-cache-dir 'transformers==5.15.*' openai httpx && \
     python3 -m pip cache purge
