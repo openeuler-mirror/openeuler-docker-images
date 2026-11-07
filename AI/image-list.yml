@@ -48,6 +48,7 @@ images:
   audioqna-ui: opea/audioqna-ui
   chatqna-conversation-ui: opea/chatqna-conversation-ui
   chatqna-ui: opea/chatqna-ui
+  tgi: tgi
   chatqna: opea/chatqna
   codegen-ui: opea/codegen-ui
   codegen: opea/codegen
