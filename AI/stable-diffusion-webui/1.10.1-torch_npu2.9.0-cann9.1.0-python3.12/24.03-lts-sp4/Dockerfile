@@ -16,22 +16,18 @@ ARG VERSION=1.10.1
 LABEL author="openEuler CloudNative SIG" description="stable-diffusion-webui (AUTOMATIC1111) with Ascend NPU support (torch_npu + CANN)"
 
 
-# The tokenizers sdist pinned by upstream requirements.txt (transformers==4.30.2)
-# has a pyo3 0.18 backend: it needs PYO3_USE_ABI3_FORWARD_COMPATIBILITY for
-# Python 3.12 and a pre-1.75 rustc (newer rustc rejects pyo3 0.18's casts).
-ENV PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1
-ENV PATH=/root/.cargo/bin:${PATH}
+RUN dnf install -y mesa-libGL glib2 && \
+    dnf clean all
 
-RUN dnf install -y mesa-libGL glib2 openssl-devel curl && \
-    dnf clean all && \
-    curl -fsSL https://sh.rustup.rs -o /tmp/rustup-init.sh && \
-    sh /tmp/rustup-init.sh -y --default-toolchain 1.70.0 --profile minimal && \
-    rm -f /tmp/rustup-init.sh
-
+# Upstream pins transformers==4.30.2, which requires tokenizers<0.14 and thus
+# has no cp312 wheel (pip compiles it from source and fails on Python 3.12).
+# Move to the first transformers line that accepts tokenizers 0.14.x and pin
+# the prebuilt cp312 wheel instead.
 RUN git clone --branch v${VERSION} --depth 1 https://github.com/AUTOMATIC1111/stable-diffusion-webui.git /stable-diffusion-webui && \
     cd /stable-diffusion-webui && \
+    sed -i 's/^transformers==.*/transformers==4.34.1/' requirements.txt && \
     python3 -m pip install --no-cache-dir torchvision==0.24.0 pytorch_lightning==1.9.4 && \
-    python3 -m pip install --no-cache-dir -r requirements.txt && \
+    python3 -m pip install --no-cache-dir tokenizers==0.14.1 -r requirements.txt && \
     python3 -m pip install --no-cache-dir -r requirements_npu.txt && \
     python3 -m pip install --no-cache-dir modelscope wheel && \
     python3 -m pip install --no-cache-dir --no-build-isolation "https://github.com/openai/CLIP/archive/d50d76daa670286dd6cacf3bcd80b5e4823fc8e1.zip" && \
