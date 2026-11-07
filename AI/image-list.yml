@@ -1,5 +1,6 @@
 images:
   executorch: executorch
+  transformers: transformers
   sglang: sglang
   codegen-gradio-ui: opea/codegen-gradio-ui
   peft: peft
