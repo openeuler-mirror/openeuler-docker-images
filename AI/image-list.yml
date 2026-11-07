@@ -39,6 +39,7 @@ images:
   torchtitan: torchtitan
   euler-copilot-fast-inference-qwen: euler-copilot-fast-inference-qwen
   llm: llm
+  axolotl: axolotl
   llm-server: llm-server
   openrlhf: openrlhf
   llvm-build-deps: llvm-build-deps
