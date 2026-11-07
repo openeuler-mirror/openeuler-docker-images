@@ -80,6 +80,7 @@ images:
   dataprep: opea/dataprep  
   diffsynth-studio: diffsynth-studio
   dataprep-redis: opea/dataprep-redis
+  vbench: vbench
   doc-index-retriever: opea/doc-index-retriever
   funasr: funasr
   docsum-ui: opea/docsum-ui
