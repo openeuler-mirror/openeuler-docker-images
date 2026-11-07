@@ -198,6 +198,9 @@ PY
 
 # Bridge the CANN 9.1.0 library layout for OpenCV's OpenCVFindCANN.cmake,
 # then configure and build with WITH_CANN=ON and install to /usr/local/opencv-cann.
+# Importing cv2 with the CANN backend queries the local SoC, which aborts on a
+# build host without an NPU, so the import smoke test only runs when a device is
+# present; the opencv_version check above still validates the build.
 RUN source /usr/local/Ascend/ascend-toolkit/set_env.sh && \
     ARCH_DIR="$(uname -m)-linux" && \
     test -d "/usr/local/Ascend/ascend-toolkit/latest/${ARCH_DIR}" && \
@@ -233,8 +236,12 @@ RUN source /usr/local/Ascend/ascend-toolkit/set_env.sh && \
     SITE_DIR="$(python3 -c 'import site; print(site.getsitepackages()[0])')" && \
     CV2_DIR="$(dirname "$(find /usr/local/opencv-cann -type d -name cv2 | head -n 1)")" && \
     echo "${CV2_DIR}" > "${SITE_DIR}/opencv-cann.pth" && \
-    LD_LIBRARY_PATH="/usr/local/opencv-cann/lib:${LD_LIBRARY_PATH}" \
-    PYTHONPATH="${CV2_DIR}" python3 -c "import cv2; print('cv2', cv2.__version__)" && \
+    if [ -e /dev/davinci0 ]; then \
+        LD_LIBRARY_PATH="/usr/local/opencv-cann/lib:${LD_LIBRARY_PATH}" \
+        PYTHONPATH="${CV2_DIR}" python3 -c "import cv2; print('cv2', cv2.__version__)"; \
+    else \
+        echo "skip cv2 import check: no NPU device on the build host"; \
+    fi && \
     rm -rf /tmp/opencv /tmp/opencv_contrib
 
 CMD ["/bin/bash"]
