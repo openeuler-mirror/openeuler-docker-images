@@ -43,6 +43,7 @@ images:
   oneapi-runtime: oneapi-runtime
   whisper.cpp: whisper.cpp
   asr: opea/asr
+  ollama: ollama
   audioqna: opea/audioqna
   audioqna-ui: opea/audioqna-ui
   chatqna-conversation-ui: opea/chatqna-conversation-ui
