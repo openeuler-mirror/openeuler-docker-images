@@ -58,6 +58,7 @@ images:
   codetrans: opea/codetrans
   graphrag: opea/graphrag
   graphrag-ui: opea/graphrag-ui
+  comfyui: comfyui
   graphrag-react-ui: opea/graphrag-react-ui
   dataprep: opea/dataprep  
   dataprep-redis: opea/dataprep-redis
