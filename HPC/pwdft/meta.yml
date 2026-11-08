@@ -15,3 +15,5 @@ d7fef2d-oe2403sp4:
   path: 8f0f760/24.03-lts-sp4/Dockerfile
 06b4f09-oe2403sp4:
   path: 06b4f09/24.03-lts-sp4/Dockerfile
+af51c97-oe2403sp4:
+  path: af51c97/24.03-lts-sp4/Dockerfile
