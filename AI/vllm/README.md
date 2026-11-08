@@ -2,9 +2,9 @@
 
 - The official vLLM CPU and vLLM Ascend docker images
 
-- Maintained by: [openEuler CloudNative SIG](https://gitee.com/openeuler/cloudnative)
+- Maintained by: [openEuler CloudNative SIG](https://atomgit.com/openeuler/cloudnative)
 
-- Where to get help: [openEuler CloudNative SIG](https://gitee.com/openeuler/cloudnative), [openEuler](https://gitee.com/openeuler/community)
+- Where to get help: [openEuler CloudNative SIG](https://atomgit.com/openeuler/cloudnative), [openEuler](https://atomgit.com/openeuler/community)
 
 # vLLM | openEuler
 
@@ -35,30 +35,30 @@ The tag of each vLLM docker image is consist of the version of vLLM and the vers
 
 | Tags | Currently |  Architectures|
 |--|--|--|
-|[0.30.0-torch_npu2.10.0.post7-cann9.2.1-python3.12-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.30.0-torch_npu2.10.0.post7-cann9.2.1-python3.12/24.03-lts/Dockerfile) | vLLM Ascend 0.30.0 (torch_npu 2.10.0.post7, CANN 9.2.1, Python 3.12) on openEuler 24.03-LTS | amd64, arm64 |
-|[0.23.0-torch_npu2.10.0.post4-cann9.1.0-python3.12-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.23.0-torch_npu2.10.0.post4-cann9.1.0-python3.12/24.03-lts/Dockerfile) | vLLM Ascend 0.23.0 (torch_npu 2.10.0.post4, CANN 9.1.0, Python 3.12) on openEuler 24.03-LTS | amd64, arm64 |
-|[0.29.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.29.0/24.03-lts-sp4/Dockerfile) | vllm 0.29.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[0.23.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.23.0/24.03-lts-sp4/Dockerfile) | vllm 0.23.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[0.23.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.23.0/24.03-lts-sp3/Dockerfile) | vllm 0.23.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[0.20.1-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.20.1/24.03-lts-sp3/Dockerfile) | vllm 0.20.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[0.18.0-torch_npu2.9.0.post1-cann8.5.1-python3.11-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.18.0-torch_npu2.9.0.post1-cann8.5.1-python3.11/24.03-lts/Dockerfile) | vLLM Ascend 0.18.0 (torch_npu 2.9.0.post1, CANN 8.5.1, Python 3.11) on openEuler 24.03-LTS | amd64, arm64 |
-|[0.18.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.18.0/24.03-lts-sp3/Dockerfile) | vllm 0.18.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[0.16.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.16.0/24.03-lts-sp3/Dockerfile) | vllm 0.16.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[0.6.3-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.6.3/24.03-lts/Dockerfile)| vLLM 0.6.3 on openEuler 24.03-LTS | amd64 |
-|[0.8.3-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.8.3/22.03-lts-sp4/Dockerfile)| vLLM 0.8.3 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
-|[0.8.3-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.8.3/24.03-lts/Dockerfile)| vLLM 0.8.3 on openEuler 24.03-LTS | amd64, arm64 |
-|[0.8.4-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.8.4/22.03-lts-sp4/Dockerfile)| vLLM 0.8.4 on openEuler 22.03-LTS-SP4 | amd64 |
-|[0.8.4-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.8.4/24.03-lts/Dockerfile)| vLLM 0.8.4 on openEuler 24.03-LTS | amd64 |
-|[0.8.5-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.8.5/22.03-lts-sp4/Dockerfile)| vLLM 0.8.5 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
-|[0.8.5-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.8.5/24.03-lts/Dockerfile)| vLLM 0.8.5 on openEuler 24.03-LTS | amd64, arm64 |
-|[0.9.0-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.9.0/22.03-lts-sp4/Dockerfile)| vLLM 0.9.0 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
-|[0.9.0-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.9.0/24.03-lts/Dockerfile)| vLLM 0.9.0 on openEuler 24.03-LTS | amd64, arm64 |
-|[0.9.1-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.9.1/22.03-lts-sp4/Dockerfile)| vLLM 0.9.1 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
-|[0.9.1-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.9.1/24.03-lts/Dockerfile)| vLLM 0.9.1 on openEuler 24.03-LTS | amd64, arm64 |
-|[0.10.1-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.10.1/22.03-lts-sp4/Dockerfile)| vLLM 0.10.1 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
-|[0.10.1-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.10.1/24.03-lts/Dockerfile)| vLLM 0.10.1 on openEuler 24.03-LTS | amd64, arm64 |
-|[0.13.0-torch_npu2.8.0.post2-cann8.5.0-python3.11-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.13.0-torch_npu2.8.0.post2-cann8.5.0-python3.11/24.03-lts/Dockerfile) | vLLM Ascend 0.13.0 (torch_npu 2.8.0.post2, CANN 8.5.0, Python 3.11) on openEuler 24.03-LTS | amd64, arm64 |
-|[0.14.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.14.0/24.03-lts-sp3/Dockerfile) | vllm 0.14.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[0.30.0-torch_npu2.10.0.post7-cann9.2.1-python3.12-oe2403lts](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.30.0-torch_npu2.10.0.post7-cann9.2.1-python3.12/24.03-lts/Dockerfile) | vLLM Ascend 0.30.0 (torch_npu 2.10.0.post7, CANN 9.2.1, Python 3.12) on openEuler 24.03-LTS | amd64, arm64 |
+|[0.23.0-torch_npu2.10.0.post4-cann9.1.0-python3.12-oe2403lts](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.23.0-torch_npu2.10.0.post4-cann9.1.0-python3.12/24.03-lts/Dockerfile) | vLLM Ascend 0.23.0 (torch_npu 2.10.0.post4, CANN 9.1.0, Python 3.12) on openEuler 24.03-LTS | amd64, arm64 |
+|[0.29.0-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.29.0/24.03-lts-sp4/Dockerfile) | vllm 0.29.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[0.23.0-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.23.0/24.03-lts-sp4/Dockerfile) | vllm 0.23.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[0.23.0-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.23.0/24.03-lts-sp3/Dockerfile) | vllm 0.23.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[0.20.1-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.20.1/24.03-lts-sp3/Dockerfile) | vllm 0.20.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[0.18.0-torch_npu2.9.0.post1-cann8.5.1-python3.11-oe2403lts](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.18.0-torch_npu2.9.0.post1-cann8.5.1-python3.11/24.03-lts/Dockerfile) | vLLM Ascend 0.18.0 (torch_npu 2.9.0.post1, CANN 8.5.1, Python 3.11) on openEuler 24.03-LTS | amd64, arm64 |
+|[0.18.0-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.18.0/24.03-lts-sp3/Dockerfile) | vllm 0.18.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[0.16.0-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.16.0/24.03-lts-sp3/Dockerfile) | vllm 0.16.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[0.6.3-oe2403lts](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.6.3/24.03-lts/Dockerfile)| vLLM 0.6.3 on openEuler 24.03-LTS | amd64 |
+|[0.8.3-oe2203sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.8.3/22.03-lts-sp4/Dockerfile)| vLLM 0.8.3 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+|[0.8.3-oe2403lts](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.8.3/24.03-lts/Dockerfile)| vLLM 0.8.3 on openEuler 24.03-LTS | amd64, arm64 |
+|[0.8.4-oe2203sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.8.4/22.03-lts-sp4/Dockerfile)| vLLM 0.8.4 on openEuler 22.03-LTS-SP4 | amd64 |
+|[0.8.4-oe2403lts](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.8.4/24.03-lts/Dockerfile)| vLLM 0.8.4 on openEuler 24.03-LTS | amd64 |
+|[0.8.5-oe2203sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.8.5/22.03-lts-sp4/Dockerfile)| vLLM 0.8.5 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+|[0.8.5-oe2403lts](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.8.5/24.03-lts/Dockerfile)| vLLM 0.8.5 on openEuler 24.03-LTS | amd64, arm64 |
+|[0.9.0-oe2203sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.9.0/22.03-lts-sp4/Dockerfile)| vLLM 0.9.0 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+|[0.9.0-oe2403lts](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.9.0/24.03-lts/Dockerfile)| vLLM 0.9.0 on openEuler 24.03-LTS | amd64, arm64 |
+|[0.9.1-oe2203sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.9.1/22.03-lts-sp4/Dockerfile)| vLLM 0.9.1 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+|[0.9.1-oe2403lts](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.9.1/24.03-lts/Dockerfile)| vLLM 0.9.1 on openEuler 24.03-LTS | amd64, arm64 |
+|[0.10.1-oe2203sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.10.1/22.03-lts-sp4/Dockerfile)| vLLM 0.10.1 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+|[0.10.1-oe2403lts](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.10.1/24.03-lts/Dockerfile)| vLLM 0.10.1 on openEuler 24.03-LTS | amd64, arm64 |
+|[0.13.0-torch_npu2.8.0.post2-cann8.5.0-python3.11-oe2403lts](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.13.0-torch_npu2.8.0.post2-cann8.5.0-python3.11/24.03-lts/Dockerfile) | vLLM Ascend 0.13.0 (torch_npu 2.8.0.post2, CANN 8.5.0, Python 3.11) on openEuler 24.03-LTS | amd64, arm64 |
+|[0.14.0-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.14.0/24.03-lts-sp3/Dockerfile) | vllm 0.14.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 # Usage
 
@@ -133,4 +133,4 @@ for output in outputs:
 
 # Question and answering
 
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images)⁠.
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://atomgit.com/openeuler/openeuler-docker-images)⁠.
