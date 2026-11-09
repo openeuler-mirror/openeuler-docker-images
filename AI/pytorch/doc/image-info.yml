@@ -16,13 +16,13 @@ tags: |
   |[2.2.0-cann8.0.RC1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/pytorch/2.2.0-cann8.0.RC1/24.03-lts-sp4/Dockerfile)| CANN | PyTorch 2.2.0 with CANN 8.0.RC1 on openEuler 24.03-LTS-SP4 | arm64,amd64 |
   |[2.2.0-cann8.0.RC1-oe2203sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/pytorch/2.2.0-cann8.0.RC1/22.03-lts-sp4/Dockerfile)| CANN | PyTorch 2.2.0 with CANN 8.0.RC1 on openEuler 22.03-LTS-SP4 | arm64,amd64 |
 
-  其余 PyTorch CANN 版本可访问 [AscendHub](https://www.hiascend.com/developer/ascendhub/detail/1bb1e5d9c8c64f6ea8db0d0ec5061531) 获取帮助。
-
 download: |
   拉取镜像到本地
   ```
   docker pull openeuler/pytorch:{Tag}
   ```
+
+  更多有关 CANN 的镜像参考 [AscendHub](https://www.hiascend.com/developer/ascendhub/detail/1bb1e5d9c8c64f6ea8db0d0ec5061531)。
 
 usage: |
   PyTorch 镜像分为 CPU 版和 CANN 版：CPU 版无需 NPU，可直接运行；CANN 版需要 Ascend NPU 驱动和固件。
