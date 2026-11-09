@@ -21,9 +21,9 @@ download: |
   ```
 
 usage: |
-  - 可以直接运行任何WanT可执行文件。例如，运行Wannier函数计算：
+  - 可以直接运行任何WanT可执行文件。例如，运行Wannier函数计算（需先在当前目录准备 `wannier.in` 及配套的 `.eig`、`.mmn`、`.amn` 等数据文件）：
     ```bash
-    docker run --rm openeuler/want:{Tag} wannier.x < wannier.in
+    docker run -i --rm -v $(pwd):/workdir -w /workdir openeuler/want:{Tag} wannier.x < wannier.in
     ```
 
   - 可用可执行文件：
@@ -38,7 +38,7 @@ usage: |
 
   - 使用宿主机的输入文件运行：
     ```bash
-    docker run --rm -v $(pwd):/workdir -w /workdir openeuler/want:{Tag} wannier.x < wannier.in
+    docker run -i --rm -v $(pwd):/workdir -w /workdir openeuler/want:{Tag} wannier.x < wannier.in
     ```
 
 
@@ -52,7 +52,7 @@ usage: |
 
     完整 `wannier.x` 计算需要 WanT 输入文件以及配套的 `.eig`、`.mmn`、`.amn` 等数据文件，将输入目录挂载后运行：
     ```bash
-    docker run --rm -v "$PWD":/workdir -w /workdir openeuler/want:{Tag} wannier.x < wannier.in
+    docker run -i --rm -v "$PWD":/workdir -w /workdir openeuler/want:{Tag} wannier.x < wannier.in
     ```
 
 license: GPL-2.0
