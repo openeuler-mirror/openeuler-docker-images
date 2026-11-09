@@ -22,6 +22,8 @@ tags: |
   |[1.28.0-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/istio/1.28.0/24.03-lts-sp2/Dockerfile) | istio 1.28.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
   |[1.27.3-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/istio/1.27.3/24.03-lts-sp2/Dockerfile) | istio 1.27.3 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
   |[1.25.1-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/istio/1.25.1/24.03-lts-sp1/Dockerfile)| Istio 1.25.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+  |[1.28.2-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/istio/1.28.2/24.03-lts-sp1/Dockerfile)| istio 1.28.2 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+  |[1.27.0-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/istio/1.27.0/24.03-lts-sp1/Dockerfile)| istio 1.27.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 download: |
   拉取镜像到本地
