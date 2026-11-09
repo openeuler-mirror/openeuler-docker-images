@@ -38,7 +38,11 @@ usage: |
 
   - 编码视频
 
-    在当前目录准备一个名为 `input.yuv` 的 8 位 I420 原始视频文件，根据输入文件调整分辨率和帧率。编码结果保存为当前目录下的 `output.h264`。
+    在当前目录生成一帧 1920x1080 I420 测试输入（也可替换为自己的视频文件），编码结果保存为当前目录下的 `output.h264`。
+
+    ```
+    dd if=/dev/zero of=input.yuv bs=3110400 count=1
+    ```
 
     ```
     docker run --rm -v "$PWD:/workspace" openeuler/x264:{Tag} \
@@ -51,11 +55,7 @@ usage: |
     生成 10 帧 I420 测试数据并编码，检查输出文件是否非空。
 
     ```
-    docker run --rm openeuler/x264:{Tag} bash -c \
-      'dd if=/dev/zero of=/tmp/input.yuv bs=6144 count=10 &&
-       x264 --input-res 64x64 --fps 25 --frames 10 \
-         --preset ultrafast --threads 1 --output /tmp/output.h264 /tmp/input.yuv &&
-       test -s /tmp/output.h264'
+    docker run --rm openeuler/x264:{Tag} bash -c 'dd if=/dev/zero of=/tmp/input.yuv bs=6144 count=10 && x264 --input-res 64x64 --fps 25 --frames 10 --preset ultrafast --threads 1 --output /tmp/output.h264 /tmp/input.yuv && test -s /tmp/output.h264'
     ```
 
   - 进入容器交互式终端
