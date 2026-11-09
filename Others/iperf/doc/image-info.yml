@@ -22,6 +22,24 @@ download: |
   ```
 
 usage: |
+  - 启动容器
+  ```
+  docker run -d --name my-iperf -p 5201:5201 openeuler/iperf:{Tag} iperf3 -s
+  ```
+  镜像默认命令为 `iperf3 --help`，不会常驻；上述命令以服务端模式启动并监听 5201 端口。用户可根据自身需求选择对应版本的{Tag}、容器启动的选项（如自定义端口 `-p 9000:5201`）。
+
+  - 容器测试
+
+  查看运行日志
+  ```
+  docker logs -f my-iperf
+  ```
+
+  使用shell交互
+  ```
+  docker exec -it my-iperf /bin/bash
+  ```
+
   启动iperf3 (默认端口: 5201)
   ```
   iperf3 -s
