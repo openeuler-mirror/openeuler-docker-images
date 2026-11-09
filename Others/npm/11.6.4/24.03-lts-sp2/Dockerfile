@@ -11,3 +11,4 @@ RUN dnf update -y \
 RUN curl -qL https://www.npmjs.com/install.sh | sh
 
 CMD ["npm", "-v"]
+
