@@ -19,3 +19,4 @@ RUN git clone -b ${VERSION} https://github.com/snort3/snort3.git && \
     ./configure_cmake.sh --prefix=/usr/local && \
     cd build && \
     make -j $(nproc) install
+
