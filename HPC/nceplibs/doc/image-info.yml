@@ -17,13 +17,13 @@ tags: |
 download: |
   拉取镜像到本地
   ```
-  docker pull openeuler/NCEPLIBS:{Tag}
+  docker pull openeuler/nceplibs:{Tag}
   ```
 
 usage: |
   - 本镜像中，NCEPLIBS 安装在 `/opt/nceplibs` 目录下。您可以使用此镜像作为基础镜像，构建依赖 NCEPLIBS 的 HPC 应用程序。
     ```
-    docker run -it openeuler/NCEPLIBS:{Tag} bash
+    docker run -it openeuler/nceplibs:{Tag} bash
     ```
 
   - 在 CMake 项目中使用 NCEPLIBS：
