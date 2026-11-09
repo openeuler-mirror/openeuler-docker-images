@@ -7,7 +7,7 @@ environment: |
   yum install -y docker
   ```
 tags: |
-  docker镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+  opencloudos镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
@@ -27,6 +27,7 @@ usage: |
     ```
     docker run --rm --privileged --network host \
         -v /lib/modules:/lib/modules:ro \
+        -v /sys/kernel/debug:/sys/kernel/debug \
         openeuler/opencloudos:{Tag} \
         nettrace -p icmp
     ```
@@ -36,6 +37,7 @@ usage: |
     ```
     docker run --rm --privileged --network host \
         -v /lib/modules:/lib/modules:ro \
+        -v /sys/kernel/debug:/sys/kernel/debug \
         openeuler/opencloudos:{Tag} \
         nettrace --drop
     ```
