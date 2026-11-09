@@ -26,9 +26,13 @@ usage: |
     ```
     docker run -it --name my-ruby openeuler/ruby:{Tag}
     ```
+  - 创建示例 Ruby 脚本
+    ```
+    echo 'puts "Hello from Ruby"' > hello.rb
+    ```
   - 在容器中运行Ruby脚本
     ```
-    docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp openeuler/ruby:{Tag} ruby your-daemon-or-script.rb
+    docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp openeuler/ruby:{Tag} ruby hello.rb
     ```
   - 查看容器运行日志
     ```
