@@ -17,6 +17,15 @@ tags: |
   | [8.1.RC1-python3.11-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/cann/8.1.RC1-python3.11/24.03-lts/Dockerfile)                   | CANN 8.1.RC1 with Python 3.11 on openEuler 24.03-LTS          | arm64,amd64   |
   | [8.2.RC1.alpha001-python3.10-oe2203lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/cann/8.2.RC1.alpha001-python3.10/22.03-lts/Dockerfile) | CANN 8.2.RC1.alpha001 with Python 3.10 on openEuler 22.03-LTS | arm64,amd64   |
   | [8.2.RC1.alpha002-python3.10-oe2203lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/cann/8.2.RC1.alpha002-python3.10/22.03-lts/Dockerfile) | CANN 8.2.RC1.alpha002 with Python 3.10 on openEuler 22.03-LTS | arm64,amd64   |
+  | [8.5.0-910b-python3.11-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/cann/8.5.0-910b-python3.11/24.03-lts/Dockerfile)             | CANN 8.5.0 (910B) with Python 3.11 on openEuler 24.03-LTS     | arm64,amd64   |
+  | [8.5.1-910b-python3.12-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/cann/8.5.1-910b-python3.12/24.03-lts/Dockerfile)             | CANN 8.5.1 (910B) with Python 3.12 on openEuler 24.03-LTS     | arm64,amd64   |
+  | [8.5.2-910b-python3.11-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/cann/8.5.2-910b-python3.11/24.03-lts/Dockerfile)             | CANN 8.5.2 (910B) with Python 3.11 on openEuler 24.03-LTS     | arm64,amd64   |
+  | [9.0.0-910b-python3.12-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/cann/9.0.0-910b-python3.12/24.03-lts/Dockerfile)             | CANN 9.0.0 (910B) with Python 3.12 on openEuler 24.03-LTS     | arm64,amd64   |
+  | [9.0.1-910b-python3.12-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/cann/9.0.1-910b-python3.12/24.03-lts/Dockerfile)             | CANN 9.0.1 (910B) with Python 3.12 on openEuler 24.03-LTS     | arm64,amd64   |
+  | [9.1.0-910b-python3.12-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/cann/9.1.0-910b-python3.12/24.03-lts/Dockerfile)             | CANN 9.1.0 (910B) with Python 3.12 on openEuler 24.03-LTS     | arm64,amd64   |
+  | [9.1.1-910b-python3.12-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/cann/9.1.1-910b-python3.12/24.03-lts/Dockerfile)             | CANN 9.1.1 (910B) with Python 3.12 on openEuler 24.03-LTS     | arm64,amd64   |
+  | [9.2.0-910b-python3.12-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/cann/9.2.0-910b-python3.12/24.03-lts/Dockerfile)             | CANN 9.2.0 (910B) with Python 3.12 on openEuler 24.03-LTS     | arm64,amd64   |
+  | [9.2.1-910b-python3.12-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/cann/9.2.1-910b-python3.12/24.03-lts/Dockerfile)             | CANN 9.2.1 (910B) with Python 3.12 on openEuler 24.03-LTS     | arm64,amd64   |
 
 download: |
   拉取镜像到本地
