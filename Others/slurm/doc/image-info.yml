@@ -1,4 +1,5 @@
 name: slurm
+  |[25.11.6.1-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/slurm/25.11.6.1/24.03-lts-sp3/Dockerfile)| slurm 25.11.6.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 category: hpc
 description: Slurm是一款免费开源的集群资源管理和作业调度系统，被全球众多超级计算机和计算集群广泛使用。它提供资源分配、作业执行监控和调度冲突仲裁三大核心功能。
 environment: |
@@ -13,9 +14,6 @@ tags: |
   |----------|-------------|------------------|
   |[26.05.5.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/slurm/26.05.5.1/24.03-lts-sp4/Dockerfile) | slurm 26.05.5.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[26.05.4.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/slurm/26.05.4.1/24.03-lts-sp4/Dockerfile) | slurm 26.05.4.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-  |[26-05-1-1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/slurm/26-05-1-1/24.03-lts-sp4/Dockerfile) | slurm 26-05-1-1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-  |[26-05-1-1-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/slurm/26-05-1-1/24.03-lts-sp3/Dockerfile) | slurm 26-05-1-1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-  |[25.11.6-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/slurm/25.11.6/24.03-lts-sp3/Dockerfile) | slurm 25.11.6 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 download: |
   拉取镜像到本地
