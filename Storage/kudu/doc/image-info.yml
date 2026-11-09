@@ -1,4 +1,6 @@
 name: kudu
+  |[1.18.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/kudu/1.18.0/24.03-lts-sp1/Dockerfile)| kudu 1.18.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+  |[1.17.1-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/kudu/1.17.1/22.03-lts-sp4/Dockerfile)| kudu 1.17.1 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
 category: storage
 description: Apache kudu是一个分布式数据存储引擎，它可以轻松对快速变化的数据进行快速分析。
 environment: |
@@ -14,7 +16,6 @@ tags: |
   |[1.18.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/kudu/1.18.1/24.03-lts-sp4/Dockerfile) | kudu 1.18.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[1.18.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/kudu/1.18.0/24.03-lts-sp4/Dockerfile) | kudu 1.18.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[1.18.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/kudu/1.18.0/24.03-lts-sp2/Dockerfile) | kudu 1.18.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-  |[1.17.1-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/kudu/1.17.1/24.03-lts/Dockerfile)| Apache kudu 1.17.1 on openEuler 24.03-LTS | amd64, arm64 |
 
 download: |
   拉取镜像到本地
