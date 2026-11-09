@@ -48,7 +48,7 @@ usage: |
   - 使用原生client连接到server
 
     ```bash
-    docker run -it --rm --network=container:my-clickhouse-server --entrypoint clickhouse-client clickhouse
+    docker run -it --rm --network=container:my-clickhouse-server --entrypoint clickhouse-client openeuler/clickhouse:{Tag}
     # 或
     docker exec -it my-clickhouse-server clickhouse-client
     ```
@@ -57,7 +57,7 @@ usage: |
   - 使用curl连接到server
 
     ```bash
-    echo "SELECT 'Hello, ClickHouse!'" | docker run -i --rm --network=container:my-clickhouse-server buildpack-deps:curl curl 'http://localhost:8123/?query=' -s --data-binary @-
+    echo "SELECT 'Hello, ClickHouse!'" | docker run -i --rm --network=container:my-clickhouse-server openeuler/clickhouse:{Tag} curl 'http://localhost:8123/?query=' -s --data-binary @-
     ```
 
   - 停止server实例
