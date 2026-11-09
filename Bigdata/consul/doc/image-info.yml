@@ -28,14 +28,13 @@ usage: |
   - 启动容器
 
     ```bash
-    docker run -it \
+    docker run -d \
       --name my-consul \
       -p 8500:8500 \
-      openeuler/consul:{Tag}
-      {command}
+      openeuler/consul:{Tag} agent -dev -client=0.0.0.0
     ```
 
-    用户可根据自身需求替换`{command}`，可选：
+    如需使用其他子命令，可将 `agent -dev` 替换为下列命令之一：
     ```
     Usage: consul [--version] [--help] <command> [<args>]
 
