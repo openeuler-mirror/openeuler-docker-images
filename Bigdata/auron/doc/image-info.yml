@@ -22,9 +22,11 @@ download: |
   ```
 
 usage: |
-  - 从镜像中提取 Auron JAR 到 Spark 的 classpath：
+  - 从镜像中提取 Auron JAR：执行前需在宿主机安装 Spark，并将 `SPARK_HOME` 指向 Spark 安装目录（示例路径请替换为实际路径）：
     ```
-    docker run --rm openeuler/auron:{Tag} cat /opt/auron/auron-spark_2.12-release-linux-x86_64-7.0.0-incubating.jar > $SPARK_HOME/jars/auron-spark.jar
+    export SPARK_HOME=/path/to/spark
+    mkdir -p "$SPARK_HOME/jars"
+    docker run --rm openeuler/auron:{Tag} cat /opt/auron/auron-spark_2.12-release-linux-x86_64-7.0.0-incubating.jar > "$SPARK_HOME/jars/auron-spark.jar"
     ```
   - 在 `$SPARK_HOME/conf/spark-defaults.conf` 中添加以下配置：
     ```properties
