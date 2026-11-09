@@ -35,3 +35,4 @@ USER knoxuser
 WORKDIR /opt/knox-${VERSION}
 
 CMD ["./bin/gateway.sh", "start"]
+
