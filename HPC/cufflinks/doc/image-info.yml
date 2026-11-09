@@ -23,12 +23,12 @@ download: |
 usage: |
   本镜像提供 Cufflinks 工具套件，用于转录组组装和差异表达分析。
 
-  - 对比对后的 RNA-Seq 数据运行 cufflinks：
+  - 对比对后的 RNA-Seq 数据运行 cufflinks（需准备比对后的 BAM 文件 `accepted_hits.bam`，可参考文末“快速验证”生成）：
     ```
     docker run -it --rm -v $(pwd):/data -w /data openeuler/cufflinks:{Tag} cufflinks -o output_dir accepted_hits.bam
     ```
 
-  - 运行 cuffdiff 进行差异表达分析：
+  - 运行 cuffdiff 进行差异表达分析（需自行准备参考注释 `transcripts.gtf` 以及两个重复样本的 BAM 文件 `sample1.bam`、`sample2.bam`）：
     ```
     docker run -it --rm -v $(pwd):/data -w /data openeuler/cufflinks:{Tag} cuffdiff -o diff_output transcripts.gtf sample1.bam sample2.bam
     ```
