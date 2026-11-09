@@ -19,3 +19,4 @@ RUN wget -q https://www.python.org/ftp/python/3.9.19/Python-3.9.19.tgz \
 ENV PATH=/opt/python39/bin:$PATH
 
 RUN /opt/python39/bin/pip3 install --no-cache-dir -i https://pypi.tuna.tsinghua.edu.cn/simple scann==${VERSION}
+
