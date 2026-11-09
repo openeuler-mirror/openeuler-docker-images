@@ -17,6 +17,8 @@ tags: |
   |[1.22.3-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/consul/1.22.3/24.03-lts-sp3/Dockerfile) | consul 1.22.3 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
   |[1.22.0-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/consul/1.22.0/24.03-lts-sp2/Dockerfile) | consul 1.22.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
   |[1.20.5-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/consul/1.20.5/24.03-lts-sp1/Dockerfile)| Consul 1.20.5 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+  |[1.22.2-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/consul/1.22.2/24.03-lts-sp1/Dockerfile)| consul 1.22.2 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+  |[1.21.4-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/consul/1.21.4/24.03-lts-sp1/Dockerfile)| consul 1.21.4 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 download: |
   拉取镜像到本地
@@ -28,14 +30,13 @@ usage: |
   - 启动容器
 
     ```bash
-    docker run -it \
+    docker run -d \
       --name my-consul \
       -p 8500:8500 \
-      openeuler/consul:{Tag}
-      {command}
+      openeuler/consul:{Tag} agent -dev -client=0.0.0.0
     ```
 
-    用户可根据自身需求替换`{command}`，可选：
+    如需使用其他子命令，可将 `agent -dev` 替换为下列命令之一：
     ```
     Usage: consul [--version] [--help] <command> [<args>]
 
