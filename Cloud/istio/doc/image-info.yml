@@ -7,7 +7,7 @@ environment: |
   yum install -y docker
   ```
 tags: |
-  docker镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+  istio镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
@@ -35,7 +35,7 @@ usage: |
     ```
     docker run -it --name istio openeuler/istio:{Tag}
     ```
-    `openeuler/使用istio`镜像用于验证上游istio版本和openEuler的集成。
+    `openeuler/istio`镜像用于验证上游istio版本和openEuler的集成。
 
 license: Apache-2.0 license
 similar_packages:

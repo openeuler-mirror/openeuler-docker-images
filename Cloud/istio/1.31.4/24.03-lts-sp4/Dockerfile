@@ -10,4 +10,4 @@ RUN curl -fSL -o istio.tar.gz https://github.com/istio/istio/releases/download/$
 
 ENV PATH=$PATH:/usr/local/istio/bin/
 
-CMD ["istioctl", "version"]
+CMD ["istioctl", "version", "--remote=false"]
