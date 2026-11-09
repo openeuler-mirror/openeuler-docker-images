@@ -15,6 +15,7 @@ tags: |
   |[2.8.2-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/storm/2.8.2/24.03-lts-sp4/Dockerfile) | storm 2.8.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[2.8.2-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/storm/2.8.2/24.03-lts-sp2/Dockerfile) | storm 2.8.2 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
   |[2.8.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/storm/2.8.0/24.03-lts-sp1/Dockerfile)| Storm 2.8.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+  |[2.8.2-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/storm/2.8.2/24.03-lts-sp1/Dockerfile)| storm 2.8.2 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 download: |
   拉取镜像到本地
@@ -27,8 +28,9 @@ usage: |
   - 启动storm实例：
 
     ```bash
-    docker run -it --name storm openeuler/storm:{Tag} storm
+    docker run -it --name storm openeuler/storm:{Tag} storm version
     ```
+    完整集群请使用 `storm nimbus`、`storm supervisor`、`storm ui` 等子命令（需配置 ZooKeeper）。
 
   - 执行选项
 
