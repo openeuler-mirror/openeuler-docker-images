@@ -23,6 +23,12 @@ download: |
 usage: |
   本镜像提供 ProtTest 3 工具，用于蛋白质进化模型选择。
 
+  运行前需准备蛋白质序列比对文件（PHYLIP 或 FASTA 格式）。可用以下命令生成一个最小 PHYLIP 示例：
+
+  ```
+  printf '4 11\nSeq1      MAFSAEDVKLM\nSeq2      MAFSAEDVKLN\nSeq3      MAFSAEDVKLP\nSeq4      MAFSAEDVKLQ\n' > alignment_file.phy
+  ```
+
   - 使用 PHYLIP 或 FASTA 格式的比对文件运行 ProtTest 3
     ```
     docker run -it --rm -v $(pwd):/data -w /data openeuler/prottest3:{Tag} prottest3 -i alignment_file.phy
