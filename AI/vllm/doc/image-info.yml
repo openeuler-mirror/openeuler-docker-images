@@ -41,7 +41,7 @@ download: |
   docker pull openeuler/vllm:{Tag}
   ```
 
-  更多 vLLM Ascend 官方镜像（含 A3、310P、950DT 等硬件变体）及安装方式，请参考 [vLLM Ascend 官方安装指南](https://docs.vllm.ai/projects/ascend/zh-cn/v0.30.0/getting_started/installation.html)。
+  更多 vLLM Ascend 官方镜像（含 A3、310P、950DT 等硬件变体）及安装方式，请参考 [vLLM Ascend 官方安装指南](https://docs.vllm.ai/projects/ascend)。
 
 usage: |
   - 启动容器
