@@ -79,13 +79,13 @@ usage: |
   - 查看容器日志
 
     ```
-    docker logs <container>
+    docker logs my-rapidjson
     ```
 
   - 进入运行中的容器
 
     ```
-    docker exec -it <container> bash
+    docker exec -it my-rapidjson bash
     ```
 
 license: MIT License
