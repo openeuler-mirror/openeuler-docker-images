@@ -19,3 +19,4 @@ RUN make clean \
     && make install
 
 CMD ["haproxy", "--help"]
+
