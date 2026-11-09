@@ -22,6 +22,29 @@ download: |
   ```
 
 usage: |
+  - 启动容器
+  ```
+  docker run -d --name my-memtester openeuler/memtester:{Tag} sleep infinity
+  ```
+  memtester 为运行即退出的测试工具，此处以 `sleep infinity` 保持容器常驻便于调试；用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。
+
+  一次性运行测试（与现有“基本命令语法”章节一致；注意容器内可测试的内存受 cgroup 限制）：
+  ```
+  docker run --rm openeuler/memtester:{Tag} 100M 1
+  ```
+
+  - 容器测试
+
+  在常驻容器内执行内存测试
+  ```
+  docker exec -it my-memtester memtester 100M 1
+  ```
+
+  查看运行日志
+  ```
+  docker logs -f my-memtester
+  ```
+
   -  基本命令语法
 
     ```
