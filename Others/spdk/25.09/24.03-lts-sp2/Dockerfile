@@ -20,3 +20,4 @@ RUN ./scripts/pkgdep.sh \
     && make -j$(nproc)
 
 CMD ["./test/unit/unittest.sh"]
+
