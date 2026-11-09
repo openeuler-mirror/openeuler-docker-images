@@ -17,3 +17,4 @@ USER 10001
 ENV MLFLOW_TRACKING_URI=/mlflow
 
 CMD ["mlflow", "server", "--backend-store-uri", "/mlflow", "--default-artifact-root", "/mlflow", "--host", "0.0.0.0"]
+
