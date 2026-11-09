@@ -15,7 +15,7 @@ tags: |
   |[1.25.6-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/go/1.25.6/24.03-lts-sp4/Dockerfile) | go 1.25.6 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[1.25.6-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/go/1.25.6/24.03-lts-sp3/Dockerfile) | go 1.25.6 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
   |[1.25.4-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/go/1.25.4/24.03-lts-sp2/Dockerfile) | go 1.25.4 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-  |[1.17.3-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/go/1.17.3/22.03-lts/Dockerfile)| go 1.17.3 on openEuler 22.03-LTS | amd64, arm64 |
+  |[1.17.3-22.03-lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/go/1.17.3/22.03-lts/Dockerfile)| go 1.17.3 on openEuler 22.03-LTS | amd64, arm64 |
   |[1.21.1-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/go/1.21.1/22.03-lts/Dockerfile)| go 1.21.1 on openEuler 22.03-LTS | amd64, arm64 |
   |[1.21.1-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/go/1.21.1/22.03-lts-sp3/Dockerfile)| go 1.21.1 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
   |[1.22.5-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/go/1.22.5/22.03-lts-sp4/Dockerfile)| go 1.22.5 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
@@ -32,10 +32,6 @@ tags: |
   |[1.23.4-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/go/1.23.4/22.03-lts-sp3/Dockerfile)| go 1.23.4 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
   |[1.23.4-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/go/1.23.4/22.03-lts-sp4/Dockerfile)| go 1.23.4 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
   |[1.23.4-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/go/1.23.4/24.03-lts/Dockerfile)| go 1.23.4 on openEuler 24.03-LTS | amd64, arm64 |
-  |[1.24.0-oe2203sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/go/1.24.0/22.03-lts-sp1/Dockerfile)| go 1.24.0 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
-  |[1.24.0-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/go/1.24.0/22.03-lts-sp3/Dockerfile)| go 1.24.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
-  |[1.24.0-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/go/1.24.0/22.03-lts-sp4/Dockerfile)| go 1.24.0 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
-  |[1.24.0-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/go/1.24.0/24.03-lts/Dockerfile)| go 1.24.0 on openEuler 24.03-LTS | amd64, arm64 |
   |[1.24.1-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/go/1.24.1/24.03-lts/Dockerfile)| go 1.24.1 on openEuler 24.03-LTS | amd64, arm64 |
   |[1.24.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/go/1.24.1/24.03-lts-sp1/Dockerfile)| go 1.24.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
   |[1.24.3-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/go/1.24.3/24.03-lts-sp1/Dockerfile)| go 1.24.3 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
@@ -43,6 +39,7 @@ tags: |
   |[1.24rc1-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/go/1.24rc1/22.03-lts-sp3/Dockerfile)| go 1.24rc1 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
   |[1.24rc1-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/go/1.24rc1/22.03-lts-sp4/Dockerfile)| go 1.24rc1 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
   |[1.24rc1-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/go/1.24rc1/24.03-lts/Dockerfile)| go 1.24rc1 on openEuler 24.03-LTS | amd64, arm64 |
+  |[1.25.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/go/1.25.0/24.03-lts-sp1/Dockerfile)| go 1.25.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
   注意，以下`{Tag}`的值按照需求，替换为上述表格中的tag内容。
 
@@ -80,10 +77,7 @@ usage: |
     ```
     docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp openeuler/go:{Tag} go build -v
     ```
-    这会将当前目录作为卷添加到容器中，将工作目录设置为该卷，然后运行执行`go build`编译项目中的代码，输出为可执行文件myapp。如果项目中包含Makefile编译文件，可以在容器内通过make命令编译:
-    ```
-    docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp openeuler/go:{Tag} make
-    ```
+    这会将当前目录作为卷添加到容器中，将工作目录设置为该卷，然后运行执行`go build`编译项目中的代码，输出为可执行文件myapp。该镜像默认未安装 make 等构建工具；如需使用 Makefile，请在宿主机或其他构建镜像中执行 make。
   
   - 交叉编译
 
