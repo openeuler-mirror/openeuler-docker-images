@@ -33,7 +33,7 @@ usage: |
   mkdir playground
   cd playground
   wget https://raw.githubusercontent.com/cp2k/cp2k/master/benchmarks/QS/H2O-32.inp
-  docker run -v $PWD:/mnt --shm-size=1g -e OMP_NUM_THREADS=2 -it --rm openeuler/cp2k:{Tag} mpiexec -np 3 cp2k H2O-32.inp
+  docker run -v $PWD:/mnt -w /mnt --shm-size=1g -e OMP_NUM_THREADS=2 -it --rm openeuler/cp2k:{Tag} mpiexec -np 3 cp2k H2O-32.inp
   ```
 
 license: GPL-2.0 license
