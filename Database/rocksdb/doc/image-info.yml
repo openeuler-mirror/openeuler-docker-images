@@ -54,6 +54,36 @@ usage: |
     }
     ```
 
+    也可直接执行以下命令，将同样的示例源码写入当前目录的 `rocksdb_example.cpp`：
+
+    ```bash
+    cat > rocksdb_example.cpp <<'EOF'
+    #include <cassert>
+    #include <string>
+    #include <rocksdb/db.h>
+
+    int main() {
+        rocksdb::DB* db;
+        rocksdb::Options options;
+        options.create_if_missing = true;
+        rocksdb::Status status = rocksdb::DB::Open(options, "/tmp/testdb", &db);
+        assert(status.ok());
+
+        const std::string key = "hello";
+        const std::string value = "openEuler";
+        status = db->Put(rocksdb::WriteOptions(), key, value);
+        assert(status.ok());
+
+        std::string result;
+        status = db->Get(rocksdb::ReadOptions(), key, &result);
+        assert(status.ok() && result == value);
+
+        delete db;
+        return 0;
+    }
+    EOF
+    ```
+
     在容器内编译并运行：
 
     ```
