@@ -28,7 +28,7 @@ usage: |
         --name hive \
         -p 10000:10000 \
         -p 10002:10002 \
-        -p 9083:9083
+        -p 9083:9083 \
         openeuler/hive:{Tag}
     ```
 
