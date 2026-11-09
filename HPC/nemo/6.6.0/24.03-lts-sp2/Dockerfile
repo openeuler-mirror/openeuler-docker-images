@@ -44,3 +44,4 @@ RUN meson setup build -Ddeprecated_warnings=false -Dgtk_doc=false -Dselinux=true
 ENV LD_LIBRARY_PATH=/usr/local/lib64:$LD_LIBRARY_PATH
 
 CMD ["nemo", "--help"]
+
