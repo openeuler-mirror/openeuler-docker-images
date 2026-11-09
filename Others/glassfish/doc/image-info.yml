@@ -15,6 +15,7 @@ tags: |
   |[710-20250515-before-cpenv-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/glassfish/710-20250515-before-cpenv/24.03-lts-sp4/Dockerfile) | glassfish 710-20250515-before-cpenv on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[710-20250515-before-cpenv-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/glassfish/710-20250515-before-cpenv/24.03-lts-sp3/Dockerfile) | glassfish 710-20250515-before-cpenv on openEuler 24.03-LTS-SP3 | amd64, arm64 |
   |[7.0.23-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/glassfish/7.0.23/24.03-lts-sp1/Dockerfile)| GlassFish 7.0.23 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+  |[7.0.25-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/glassfish/7.0.25/24.03-lts-sp1/Dockerfile)| glassfish 7.0.25 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 download: |
   拉取镜像到本地
@@ -34,7 +35,7 @@ usage: |
   
     要启动 Eclipse GlassFish 服务器，请运行以下命令：
     ```
-    /glassfish/appserver/distributions/web/target/stage/glassfish7/bin/asadmin start-domai
+    /glassfish/appserver/distributions/web/target/stage/glassfish7/bin/asadmin start-domain
     ```
     服务器启动后，您可以通过以下地址访问 管理控制台： ` http://localhost:4848`.
 
