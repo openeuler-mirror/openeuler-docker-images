@@ -11,4 +11,6 @@ RUN dnf install -y \
 
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain ${VERSION}
 
+ENV PATH=$PATH:/root/.cargo/bin
+
 CMD ["bash"]
