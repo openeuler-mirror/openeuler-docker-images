@@ -9,3 +9,4 @@ RUN dnf install -y python3-pip && \
     dnf clean all
 
 CMD ["python3"]
+
