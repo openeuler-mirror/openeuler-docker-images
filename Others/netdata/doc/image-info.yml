@@ -19,6 +19,7 @@ tags: |
   |[2.7.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/netdata/2.7.0/24.03-lts-sp2/Dockerfile) | netdata 2.7.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
   |[2.6.3-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/netdata/2.6.3/24.03-lts-sp1/Dockerfile) | netdata 2.6.3 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
   | [2.5.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/netdata/2.5.0/24.03-lts-sp1/Dockerfile) | Netdata 2.5.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+  |[2.6.2-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/netdata/2.6.2/24.03-lts-sp1/Dockerfile)| netdata 2.6.2 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 download: |
   拉取镜像到本地
