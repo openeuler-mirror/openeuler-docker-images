@@ -15,17 +15,17 @@ tags: |
 download: |
   拉取镜像到本地
   ```
-  docker pull openeuler/NOVOPlasty:{Tag}
+  docker pull openeuler/novoplasty:{Tag}
   ```
 usage: |
   - 确保已安装 Docker 环境。
   - 从 DockerHub 获取 NOVOPlasty 镜像:
     ```
-    docker pull openeuler/NOVOPlasty:{Tag}
+    docker pull openeuler/novoplasty:{Tag}
     ```
   - 启动容器进入 NOVOPlasty 环境
     ```
-    docker run -it openeuler/NOVOPlasty:{Tag}
+    docker run -it openeuler/novoplasty:{Tag}
     ```
   - 在容器内验证安装
     ```
