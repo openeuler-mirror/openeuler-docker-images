@@ -7,7 +7,7 @@ environment: |
   yum install -y docker
   ```
 tags: |
-  AutoDock-Vina镜像的Tag由其版本信息和基础镜像版本信息组成,详细内容如下
+  autodock镜像的Tag由其版本信息和基础镜像版本信息组成,详细内容如下
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
   |[1.2.7-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/autodock/1.2.7/24.03-lts-sp4/Dockerfile) | AutoDock Vina 1.2.7 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
