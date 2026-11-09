@@ -25,10 +25,10 @@ download: |
 
 usage: |
   
-  - 启动thrift实例：
+  - 查看 thrift 编译器版本：
 
     ```bash
-    docker run -it --name thrift openeuler/thrift:{Tag}
+    docker run --rm openeuler/thrift:{Tag} --version
     ```
 
   - 执行选项
