@@ -20,9 +20,7 @@ The tag of each `dotnet-aspnet` docker image is consist of the version of `dotne
 |[10.0.13-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/dotnet-aspnet/10.0.13/24.03-lts-sp4/Dockerfile) | dotnet 10.0.13 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[10.0.12-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/dotnet-aspnet/10.0.12/24.03-lts-sp4/Dockerfile) | dotnet 10.0.12 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[10.0.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/dotnet-aspnet/10.0.0/24.03-lts-sp4/Dockerfile) | dotnet 10.0.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[10.0.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/dotnet-aspnet/10.0.0/24.03-lts-sp2/Dockerfile) | dotnet 10.0.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[8.0.3-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/dotnet-aspnet/8.0.3/22.03-lts-sp3/Dockerfile)| Dotnet-aspnet 8.0.3 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
-|[8.0.7-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/dotnet-aspnet/8.0.7/22.03-lts-sp3/Dockerfile)| Dotnet-aspnet 8.0.7 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
 |[8.0.8-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/dotnet-aspnet/8.0.8/22.03-lts-sp3/Dockerfile)| Dotnet-aspnet 8.0.8 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
 |[8.0.10-oe2003sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/dotnet-aspnet/8.0.10/20.03-lts-sp4/Dockerfile)| Dotnet-aspnet 8.0.10 on openEuler 20.03-LTS-SP4 | amd64, arm64 |
 |[8.0.10-oe2203sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/dotnet-aspnet/8.0.10/22.03-lts-sp1/Dockerfile)| Dotnet-aspnet 8.0.10 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
