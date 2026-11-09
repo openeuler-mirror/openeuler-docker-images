@@ -30,12 +30,12 @@ usage: |
 
   - 启动 Ray 工作节点连接到头节点
     ```
-    docker run -d --name ray-worker openeuler/ray:{Tag} ray start --address=<head-node-ip>:6379
+    docker run -d --name ray-worker --network host openeuler/ray:{Tag} start --address=127.0.0.1:6379
     ```
 
   - 在 Ray 集群上运行 Python 代码
     ```
-    docker exec -it ray-head python -c "import ray; ray.init(address='auto'); print(ray.cluster_resources())"
+    docker exec -it ray-head python3 -c "import ray; ray.init(address='auto'); print(ray.cluster_resources())"
     ```
 
   - 启动参数
