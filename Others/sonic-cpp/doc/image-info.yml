@@ -45,6 +45,27 @@ usage: |
       return 0;
     }
     ```
+
+    也可直接执行以下命令，将同样的示例源码写入当前目录的 `example.cpp`：
+
+    ```bash
+    cat > example.cpp <<'EOF'
+    #include "sonic/sonic.h"
+    #include <string>
+    #include <iostream>
+
+    int main() {
+      std::string json = R"({"a": 1, "b": 2})";
+      sonic_json::Document doc;
+      doc.Parse(json);
+      sonic_json::WriteBuffer wb;
+      doc.Serialize(wb);
+      std::cout << wb.ToString() << std::endl;
+      return 0;
+    }
+    EOF
+    ```
+
     编译并运行：
     ```bash
     docker run --rm -v "$PWD":/workspace openeuler/sonic-cpp:{Tag} g++ -I/usr/local/include/sonic -march=native --std=c++11 -O3 /workspace/example.cpp -o /workspace/example
