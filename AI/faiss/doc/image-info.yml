@@ -38,7 +38,7 @@ usage: |
 
   - 验证 faiss 安装
     ```
-    docker run --rm openeuler/faiss:{Tag} -c "import faiss; print(faiss.__version__)"
+    docker run --rm openeuler/faiss:{Tag} python3 -c "import faiss; print(faiss.__version__)"
     ```
 
   - 使用 shell 交互
