@@ -37,8 +37,9 @@ usage: |
       --name celeborn-worker \
       -p 9096:9096 \
       openeuler/celeborn:{Tag} \
-      /opt/celeborn/sbin/start-worker.sh celeborn://<master-ip>:9097
+      /opt/celeborn/sbin/start-worker.sh celeborn://$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' celeborn-master):9097
     ```
+    其中 master 地址通过 `docker inspect` 从上方创建的 `celeborn-master` 容器自动获取；若 master 不在本机 Docker 中，请替换为实际地址。
 
 license: Apache-2.0
 similar_packages:
