@@ -26,6 +26,13 @@ usage: |
     docker run --rm openeuler/vvenc:{Tag} vvencapp --help
     ```
 
+  - 准备测试输入
+
+    生成一帧 1920x1080 YUV420p 测试数据（也可替换为自己的视频文件）：
+    ```
+    dd if=/dev/zero of=input.yuv bs=3110400 count=1
+    ```
+
   - 编码视频文件
     ```
     docker run --rm -v $(pwd):/data openeuler/vvenc:{Tag} vvencapp -i /data/input.yuv -s 1920x1080 -o /data/output.266
