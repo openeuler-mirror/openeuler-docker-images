@@ -8,7 +8,7 @@
 
 # vLLM | openEuler
 
-Current vLLM docker images are built on the [openEuler](https://repo.openeuler.org/)⁠. This repository is free to use and exempted from per-user rate limits.
+Current vLLM docker images are built on the [openEuler](https://repo.openeuler.org/). This repository is free to use and exempted from per-user rate limits.
 
 vLLM is a fast and easy-to-use library for LLM inference and serving.
 
@@ -133,4 +133,4 @@ for output in outputs:
 
 # Question and answering
 
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://atomgit.com/openeuler/openeuler-docker-images)⁠.
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://atomgit.com/openeuler/openeuler-docker-images).
