@@ -31,6 +31,10 @@ usage: |
     ```perl
     print "Hello, Perl!\n";
     ```
+    也可通过以下命令直接生成 hello.pl
+    ```
+    echo 'print "Hello, Perl!\n";' > hello.pl
+    ```
     挂载当前目录并运行脚本
     ```
     docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp openeuler/perl:{Tag} perl hello.pl
