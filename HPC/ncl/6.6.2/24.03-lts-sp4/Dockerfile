@@ -27,7 +27,7 @@ RUN cp config/LINUX.64.GNU config/LINUX && \
     awk '/case    ppc:/{print "        case    aarch64:"; print "            set model   = $mach"; print "            set arch    = $mach"; print "            set sysincs = LINUX"; print "            set vendor  = IBM"; print "            breaksw"; print ""}1' config/ymake > config/ymake.new && \
     mv config/ymake.new config/ymake && \
     chmod +x config/ymake && \
-    printf '#define BuildNCL\n#define EmptySite\n' > config/Site.local && \
+    printf '#define BuildNCL 1\n#define EmptySite\n' > config/Site.local && \
     script -q -c "echo n | tcsh Configure" /dev/null && \
     make Everything -j$(nproc) && \
     make install && \
