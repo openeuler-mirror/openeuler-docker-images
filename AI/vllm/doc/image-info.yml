@@ -41,6 +41,8 @@ download: |
   docker pull openeuler/vllm:{Tag}
   ```
 
+  更多有关 CANN 的镜像参考 [AscendHub](https://www.hiascend.com/developer/ascendhub/detail/1bb1e5d9c8c64f6ea8db0d0ec5061531)。
+
 usage: |
   - 启动容器
     ```

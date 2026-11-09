@@ -100,6 +100,8 @@ docker run --rm \
 -it $IMAGE bash
 ```
 
+For more CANN-related images, refer to [AscendHub](https://www.hiascend.com/developer/ascendhub/detail/1bb1e5d9c8c64f6ea8db0d0ec5061531).
+
 ## Quick start 3: offline inference
 
 You can use Modelscope mirror to speed up download:
