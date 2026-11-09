@@ -7,7 +7,7 @@ environment: |
   yum install -y docker
   ```
 tags: |
-  docker镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+  containerd镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
@@ -15,6 +15,8 @@ tags: |
   |[2.3.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/containerd/2.3.0/24.03-lts-sp3/Dockerfile) | containerd 2.3.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
   |[2.2.2-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/containerd/2.2.2/24.03-lts-sp3/Dockerfile) | containerd 2.2.2 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
   |[2.1.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/containerd/2.1.1/24.03-lts-sp1/Dockerfile)| containerd 2.1.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+  |[2.2.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/containerd/2.2.1/24.03-lts-sp1/Dockerfile)| containerd 2.2.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+  |[2.1.4-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/containerd/2.1.4/24.03-lts-sp1/Dockerfile)| containerd 2.1.4 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 download: |
   拉取镜像到本地
