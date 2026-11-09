@@ -28,8 +28,8 @@ usage: |
     ```bash
     docker run --rm --network host openeuler/mooncake:{Tag} \
         transfer_engine_bench --mode=initiator \
-        --metadata_server=<metadata-ip>:2379 \
-        --local_server_name=<local-ip>:12345
+        --metadata_server=127.0.0.1:2379 \
+        --local_server_name=127.0.0.1:12345
     ```
 
   - 运行传输引擎基准测试（接收端）
@@ -37,25 +37,25 @@ usage: |
     ```bash
     docker run --rm --network host openeuler/mooncake:{Tag} \
         transfer_engine_bench --mode=target \
-        --metadata_server=<metadata-ip>:2379 \
-        --local_server_name=<local-ip>:12346
+        --metadata_server=127.0.0.1:2379 \
+        --local_server_name=127.0.0.1:12346
     ```
 
   - 验证传输引擎正确性
 
     ```bash
     docker run --rm --network host openeuler/mooncake:{Tag} \
-        transfer_engine_validator --metadata_server=<metadata-ip>:2379
+        transfer_engine_validator --metadata_server=127.0.0.1:2379
     ```
 
 
   - 前置条件
 
-    `transfer_engine_bench` 需要可访问的 etcd/metadata 服务以及多节点 IP 配置。运行前确认：
+    `transfer_engine_bench` 需要可访问的 etcd/metadata 服务以及多节点 IP 配置。以下示例假设 etcd 运行在本机 2379 端口；如使用远程 etcd 或跨主机测试，请将 `127.0.0.1` 替换为实际的 etcd 地址和本机 IP。运行前确认：
     ```bash
-    etcdctl --endpoints=<metadata-ip>:2379 endpoint health
+    etcdctl --endpoints=127.0.0.1:2379 endpoint health
     ```
-    将 `<metadata-ip>` 替换为 etcd 地址，`<local-ip>` 替换为本机 IP；多节点测试需要在每个节点分别启动 initiator 和 target。
+    多节点测试需要在每个节点分别启动 initiator 和 target。
 
 license: Apache-2.0
 similar_packages:
