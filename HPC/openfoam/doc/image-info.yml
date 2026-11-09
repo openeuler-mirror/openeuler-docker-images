@@ -35,8 +35,9 @@ usage: |
 
   - 测试验证
 
-    在`/opt/OpenFOAM-v{VERSION}`目录下进行如下测试：
+    进入 motorBike 教程目录并执行测试：
     ```
+    cd /opt/OpenFOAM-v{VERSION}/tutorials/incompressible/pisoFoam/LES/motorBike/motorBike
     ./Allrun
     ```
     得到如下类似的结果：
