@@ -35,6 +35,8 @@ In this usage, users can select the corresponding `{Tag}` and `container startup
 	docker pull openeuler/pytorch:{Tag}
 	```
 
+- For more CANN-related images, refer to [AscendHub](https://www.hiascend.com/developer/ascendhub/detail/1bb1e5d9c8c64f6ea8db0d0ec5061531).
+
 - Start a pytorch instance
 
 	```bash
