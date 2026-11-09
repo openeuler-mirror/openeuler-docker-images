@@ -48,9 +48,9 @@ usage: |
     subsample_bin — 对二进制向量文件进行子采样
     ```
 
-  - 运行指定工具：
+  - 运行指定工具（以 diskann-benchmark 为例）：
     ```
-    docker run openeuler/diskann:{Tag} <tool-name> --help
+    docker run openeuler/diskann:{Tag} diskann-benchmark --help
     ```
 
 license: MIT
