@@ -22,11 +22,18 @@ download: |
   ```
 
 usage: |
-  - 使用交互式 Shell 启动容器
+  - 启动 Drill 服务（Web UI）
 
-    运行以下命令，启动一个交互式的 Apache Drill 容器，并将 Web UI 的端口 `8047` 映射到你的主机：
     ```
-    docker run -it --rm -p 8047:8047 openeuler/drill
+    docker run -d --name my-drill -p 8047:8047 openeuler/drill:{Tag} supervisord -n
+    ```
+    容器启动后，访问 `http://localhost:8047` 打开 Web UI。
+    注意：Drillbit 依赖 ZooKeeper，需先准备可访问的 ZooKeeper（默认主机名为 `zookeeper`，如需其他地址，请修改 /apache-drill/conf/drill-override.conf 或构建时设置 ZOOKEEPER_HOST）。
+
+  - 使用交互式 SQL Shell
+
+    ```
+    docker run -it --rm openeuler/drill:{Tag}
     ```
   
     当容器启动后，你会看到类似下面这样的 `sqlline Shell` 提示符：

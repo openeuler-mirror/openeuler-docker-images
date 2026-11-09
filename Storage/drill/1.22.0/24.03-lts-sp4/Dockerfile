@@ -9,12 +9,13 @@ ARG PACKAGE_RUL=https://dlcdn.apache.org/drill/${VERSION}/${PACKAGE}
 
 ENV DRILL_HEAP=900M
 ENV ZOOKEEPER_HOST=zookeeper
+ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 ENV PATH $PATH:/apache-drill/bin:/zookeeper/bin
 
 WORKDIR /
-RUN dnf install -y java-1.8.0-openjdk-devel supervisor which && \
+RUN dnf install -y java-11-openjdk-devel supervisor which hostname && \
     yum clean all && \
-    mkdir -p /etc/supervisor.d
+    mkdir -p /etc/supervisord.d
 
 RUN curl -fSL -o "${PACKAGE}" "$PACKAGE_RUL" && \
     tar zxf "${PACKAGE}" && \
@@ -23,7 +24,7 @@ RUN curl -fSL -o "${PACKAGE}" "$PACKAGE_RUL" && \
     ln -sv "apache-drill-${VERSION}" apache-drill
 
 COPY entrypoint.sh /
-COPY drill.ini /etc/supervisor.d/
+COPY drill.ini /etc/supervisord.d/
 RUN sed -i -e "s/-Xms1G/-Xms\$DRILL_MAX_HEAP/" apache-drill/conf/drill-env.sh && \
     sed -i -e "s/^DRILL_MAX_HEAP=.*/DRILL_MAX_HEAP=\"${DRILL_HEAP}\"/" apache-drill/conf/drill-env.sh && \
     sed -i -e "s/^DRILL_HEAP=.*/DRILL_HEAP=\"${DRILL_HEAP}\"/" apache-drill/conf/drill-env.sh && \
