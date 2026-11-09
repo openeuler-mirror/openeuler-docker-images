@@ -26,9 +26,9 @@ usage: |
     docker run -it --rm openeuler/root:{Tag} root -b
     ```
 
-  - 运行 ROOT 宏
+  - 执行 ROOT 表达式（批处理）
     ```
-    docker run -it --rm openeuler/root:{Tag} root -b -q 'TMath::Pi()'
+    docker run -it --rm openeuler/root:{Tag} root -b -q -e 'printf("%.17g\n", TMath::Pi())'
     ```
 
   - 进入容器使用 ROOT 工具
