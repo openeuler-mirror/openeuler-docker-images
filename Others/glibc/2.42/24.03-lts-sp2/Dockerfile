@@ -29,3 +29,4 @@ FROM ${BASE}
 COPY --from=BUILDER /usr/local/glibc /usr/local/glibc
 WORKDIR /usr/local/glibc
 CMD ["./bin/ldd", "--version"]
+
