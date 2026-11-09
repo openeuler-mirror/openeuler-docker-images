@@ -2,9 +2,9 @@ name: netty
 category: others
 description: Netty 是一个基于 Java 的 高性能、异步事件驱动的网络通信框架，适用于快速开发可靠、可扩展的网络应用程序。
 environment: |
-  本应用在Docker环境中运行，安装Docker执行如下命令
+  本应用在Docker环境中运行，安装Docker及连接验证工具telnet执行如下命令
   ```
-  yum install -y docker
+  yum install -y docker telnet
   ```
 tags: |
   netty镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
