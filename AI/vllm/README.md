@@ -100,7 +100,7 @@ docker run --rm \
 -it $IMAGE bash
 ```
 
-For more CANN-related images, refer to [AscendHub](https://www.hiascend.com/developer/ascendhub/detail/1bb1e5d9c8c64f6ea8db0d0ec5061531).
+For more official vLLM Ascend images (including A3, 310P, and 950DT hardware variants) and installation methods, refer to the [vLLM Ascend installation guide](https://docs.vllm.ai/projects/ascend/zh-cn/v0.30.0/getting_started/installation.html).
 
 ## Quick start 3: offline inference
 
