@@ -7,7 +7,7 @@ environment: |
   yum install -y docker
   ```
 tags: |
-  dotnet-deps镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+  impala镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
 
   | Tag                                                                                                                              | Currently                                      | Architectures |
   |----------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------|---------------|
@@ -32,7 +32,10 @@ usage: |
     用户可根据自身需求选择对应版本的{Tag}。
 
   - 启动容器（后台常驻）
+
+    先移除上方交互式示例创建的同名容器，避免名称和端口冲突：
     ```
+    docker rm -f my-impala
     docker run -dit --name my-impala openeuler/impala:{Tag} sleep infinity
     ```
     容器内无常驻业务进程，使用 sleep infinity 保持容器运行；需要 shell 时执行：
