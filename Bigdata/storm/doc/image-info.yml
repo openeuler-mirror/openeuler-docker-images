@@ -27,8 +27,9 @@ usage: |
   - 启动storm实例：
 
     ```bash
-    docker run -it --name storm openeuler/storm:{Tag} storm
+    docker run -it --name storm openeuler/storm:{Tag} storm version
     ```
+    完整集群请使用 `storm nimbus`、`storm supervisor`、`storm ui` 等子命令（需配置 ZooKeeper）。
 
   - 执行选项
 
