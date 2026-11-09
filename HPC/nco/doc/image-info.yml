@@ -20,6 +20,11 @@ download: |
   ```
 
 usage: |
+  - 准备示例数据（在当前目录生成 in.nc）：
+    ```
+    docker run --rm -v "$PWD":/data openeuler/nco:{Tag} ncap2 -O -s 'defdim("lat",3);lat[$lat]={10.,20.,30.};defdim("lon",2);lon[$lon]={100.,110.};v[$lat,$lon]=lat*lon;' /data/in.nc
+    ```
+
   - 打印当前工作目录下 netCDF 文件 in.nc 的元数据：
     ```
     docker run --rm -v $(pwd):/data openeuler/nco:{Tag} ncks -m in.nc
