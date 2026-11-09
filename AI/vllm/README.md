@@ -100,6 +100,8 @@ docker run --rm \
 -it $IMAGE bash
 ```
 
+For more official vLLM Ascend images (including A3, 310P, and 950DT hardware variants) and installation methods, refer to the [vLLM Ascend installation guide](https://docs.vllm.ai/projects/ascend).
+
 ## Quick start 3: offline inference
 
 You can use Modelscope mirror to speed up download:
