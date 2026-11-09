@@ -24,8 +24,9 @@ download: |
 usage: |
   - Step 1: 启动Milvus实例
     ```
-    docker run --name euler-milvus -it openeuler/milvus:latest
+    docker run --name euler-milvus -it openeuler/milvus:{Tag}
     ```
+    以下 Step 2 到 Step 4 的命令均在 Step 1 打开的容器内执行。
 
   - Step 2: 运行etcd
     ```
