@@ -40,7 +40,7 @@ usage: |
   - 启动 Elasticsearch 容器
 
     ```
-    docker run --name es01 --net elastic -p 9200:9200 -it -m 1GB openeuler/elasticsearch:latest
+    docker run --name es01 --net elastic -p 9200:9200 -it -m 1GB openeuler/elasticsearch:{Tag}
     ```
     复制生成的elastic密码和enrollment token. 这些认证信息只在启动Elasticsearch容器的时候显示一次，如下所示
     ```
