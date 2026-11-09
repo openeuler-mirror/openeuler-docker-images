@@ -28,7 +28,7 @@ usage: |
 
     启动一个监听在 `8080` 端口的 Nginx 容器：
     ```
-    docker run -d --name nginx -p 8080:8080 openeuler/nginx:latest
+    docker run -d --name nginx -p 8080:8080 openeuler/nginx:{Tag}
     ```
 
   - 配置转发规则
