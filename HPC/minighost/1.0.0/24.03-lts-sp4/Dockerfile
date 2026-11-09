@@ -27,3 +27,4 @@ RUN git clone https://github.com/Mantevo/miniGhost && \
 WORKDIR /opt/miniGhost/ref
 
 CMD ["mpirun", "--allow-run-as-root", "-np", "4", "./miniGhost.x"]
+
