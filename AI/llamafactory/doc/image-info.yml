@@ -1,0 +1,112 @@
+name: llamafactory
+category: ai
+description: LlamaFactory是开源的大模型统一微调框架，支持100+个LLM/VLM的SFT、LoRA、长上下文与DPO等训练流水线，并提供WebUI（LLaMA Board）、CLI工具与OpenAI风格API服务。本镜像基于torch_npu并配套deepspeed、triton-ascend与评测组件，可在昇腾NPU上直接运行微调。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  LlamaFactory镜像的Tag由其版本信息和软件栈版本信息组成，详细内容如下：
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[0.9.5-torch_npu2.10.0-cann9.1.0-python3.12-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/llamafactory/0.9.5-torch_npu2.10.0-cann9.1.0-python3.12/24.03-lts-sp4/Dockerfile)| LlamaFactory 0.9.5 (torch_npu 2.10.0.post7, CANN 9.1.0) on openEuler 24.03-LTS-SP4 | arm64,amd64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/llamafactory:{Tag}
+  ```
+
+usage: |
+  - 前置条件
+
+    示例使用Ascend NPU设备。运行前确认宿主机已安装Ascend驱动和固件：
+    ```bash
+    npu-smi info
+    ls /dev/davinci* /dev/davinci_manager /dev/devmm_svm /dev/hisi_hdc
+    ```
+    将`${device}`替换为实际NPU设备（例如`/dev/davinci0`），并按文档挂载驱动目录。没有NPU时无法执行该示例。
+
+  - 启动容器
+    ```
+    docker run \
+        --name my-llamafactory \
+        --device ${device} \
+        --device /dev/davinci_manager \
+        --device /dev/devmm_svm \
+        --device /dev/hisi_hdc \
+        -v /usr/local/dcmi:/usr/local/dcmi \
+        -v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi \
+        -v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/ \
+        -v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info \
+        -v /etc/ascend_install.info:/etc/ascend_install.info \
+        -it openeuler/llamafactory:{Tag} bash
+    ```
+    用户可根据自身需求选择对应版本的`{Tag}`、对应的NPU设备`{device}`以及容器启动的选项。
+
+  - 参数说明
+    | 配置项 | 描述 |
+    |--|--|
+    | `--name my-llamafactory` | 容器名称。|
+    | `--device /dev/davinci1` | NPU设备，X是芯片物理ID号，例如davinci1。|
+    | `--device /dev/davinci_manager` | davinci相关的管理设备。|
+    | `--device /dev/devmm_svm` | 内存管理相关设备。|
+    | `--device /dev/hisi_hdc` | hdc相关管理设备。|
+    | `-v /usr/local/dcmi:/usr/local/dcmi` | 将宿主机dcmi的so和接口文件目录`/usr/local/dcmi`挂载到容器中，请根据实际情况修改。|
+    | `-v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi` | 将宿主机`npu-smi`工具`/usr/local/bin/npu-smi`挂载到容器中，请根据实际情况修改。|
+    | `-v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/` | 将宿主机目录`/usr/local/Ascend/driver/lib64/driver`挂载到容器中。请根据driver的驱动so所在路径修改。|
+    | `-v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info` | 将宿主机版本信息文件`/usr/local/Ascend/driver/version.info`挂载到容器中，请根据实际情况修改。|
+    | `-v /etc/ascend_install.info:/etc/ascend_install.info` | 将宿主机安装信息文件`/etc/ascend_install.info`挂载到容器中。|
+    | `-it` | 以交互模式启动容器。|
+    | `openeuler/llamafactory:{Tag}` | 指定要运行的镜像`openeuler/llamafactory`，其中`{Tag}`是需要替换的镜像标签。|
+
+  - 容器测试
+
+    进入容器后先source CANN环境并验证NPU与LlamaFactory：
+    ```bash
+    docker exec -it my-llamafactory /bin/bash
+    source /usr/local/Ascend/ascend-toolkit/set_env.sh
+    python3 -c "import torch, torch_npu; print(torch_npu.__version__, torch.npu.is_available())"
+    llamafactory-cli version
+    ```
+
+    然后获取上游示例配置（PyPI wheel不含`examples/`目录）并运行LoRA SFT快速开始（将yaml中的`model_name_or_path`改为适配设备的模型，例如Qwen系列小模型；权重运行时从Hugging Face或ModelScope下载）：
+    ```bash
+    git clone --depth 1 --branch v0.9.5 https://github.com/hiyouga/LlamaFactory.git
+    cd LlamaFactory
+    llamafactory-cli train examples/train_lora/llama3_lora_sft.yaml
+    ```
+    训练完成后可对话验证并导出合并权重：
+    ```bash
+    llamafactory-cli chat examples/inference/llama3_lora.yaml
+    llamafactory-cli export examples/merge_lora/llama3_lora.yaml
+    ```
+    也可启动LLaMA Board WebUI（端口7860）或OpenAI风格API服务（端口8000）：
+    ```bash
+    llamafactory-cli webui
+    llamafactory-cli api examples/inference/llama3_api.yaml
+    ```
+
+license: Apache-2.0 license
+similar_packages:
+  - ms-swift: ms-swift是魔乐社区开源的大模型训练推理框架，支持300+模型的微调与部署。
+  - axolotl: axolotl是开源的大模型微调工具，基于配置文件驱动多种训练算法。
+  - xtuner: xtuner是上海AI实验室开源的多模态大模型微调框架。
+dependency:
+  - python3
+  - torch
+  - torch_npu
+  - transformers
+  - deepspeed
+  - triton-ascend
+  - gradio
+
+homepage: https://github.com/hiyouga/LlamaFactory
+upstream:
+  backend: GitHub
+  version_url: hiyouga/LlamaFactory
+  version_prefix: v
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM
