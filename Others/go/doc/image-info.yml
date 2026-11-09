@@ -80,10 +80,7 @@ usage: |
     ```
     docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp openeuler/go:{Tag} go build -v
     ```
-    这会将当前目录作为卷添加到容器中，将工作目录设置为该卷，然后运行执行`go build`编译项目中的代码，输出为可执行文件myapp。如果项目中包含Makefile编译文件，可以在容器内通过make命令编译:
-    ```
-    docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp openeuler/go:{Tag} make
-    ```
+    这会将当前目录作为卷添加到容器中，将工作目录设置为该卷，然后运行执行`go build`编译项目中的代码，输出为可执行文件myapp。该镜像默认未安装 make 等构建工具；如需使用 Makefile，请在宿主机或其他构建镜像中执行 make。
   
   - 交叉编译
 
