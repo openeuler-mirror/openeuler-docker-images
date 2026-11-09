@@ -26,6 +26,9 @@ tags: |
   |[2.14.1-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/mimir/2.14.1/22.03-lts-sp3/Dockerfile)| Grafana mimir 2.14.1 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
   |[2.14.1-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/mimir/2.14.1/22.03-lts-sp4/Dockerfile)| Grafana mimir 2.14.1 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
   |[2.14.1-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/mimir/2.14.1/24.03-lts/Dockerfile)| Grafana mimir 2.14.1 on openEuler 24.03-LTS | amd64, arm64 |
+  |[2.17.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/mimir/2.17.0/24.03-lts-sp1/Dockerfile)| mimir 2.17.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+  |[2.16.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/mimir/2.16.0/24.03-lts-sp1/Dockerfile)| mimir 2.16.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+  |[2.15.1-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/mimir/2.15.1/24.03-lts/Dockerfile)| mimir 2.15.1 on openEuler 24.03-LTS | amd64, arm64 |
   
 
 download: |
