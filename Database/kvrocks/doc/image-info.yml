@@ -29,9 +29,10 @@ usage: |
 
   - 使用持久化存储
 
-    创建docker volume，并将数据目录挂载到容器上
+    创建docker volume，并将数据目录挂载到容器上。先移除上一步创建的同名容器（两者使用同一端口）：
     ```bash
     docker volume create kvrocks_data
+    docker rm -f my-kvrocks
     docker run -d --name my-kvrocks -p 6666:6666 --volume kvrocks_data:/var/lib/kvrocks openeuler/kvrocks:{Tag}
     ```
 
