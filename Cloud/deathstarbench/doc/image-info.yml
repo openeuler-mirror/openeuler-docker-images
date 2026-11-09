@@ -7,7 +7,7 @@ environment: |
   yum install -y docker
   ```
 tags: |
-  docker镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+  deathstarbench镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
@@ -21,10 +21,10 @@ download: |
   ```
 
 usage: |
-  - 启动deathstarbench实例
+  - 启动 deathstarbench 容器（交互式 shell）
 
     ```
-    docker run -it --name deathstarbench openeuler/deathstarbench:{Tag}
+    docker run -it --name deathstarbench openeuler/deathstarbench:{Tag} bash
     ```
     `openeuler/deathstarbench`镜像构建了hotelReservation微服务基准测试套件，并安装了所有服务二进制文件（frontend、geo、profile、rate、recommendation、reservation、search、user等）。
 
