@@ -32,6 +32,17 @@ usage: |
       def main(args: Array[String]): Unit = println("Hello, Scala!")
     }
     ```
+
+    也可直接执行以下命令，将同样的示例源码写入当前目录的 `Hello.scala`：
+
+    ```bash
+    cat > Hello.scala <<'EOF'
+    object Hello {
+      def main(args: Array[String]): Unit = println("Hello, Scala!")
+    }
+    EOF
+    ```
+
     然后挂载当前目录并编译、运行：
     ```
     docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp openeuler/scala:{Tag} scalac Hello.scala
