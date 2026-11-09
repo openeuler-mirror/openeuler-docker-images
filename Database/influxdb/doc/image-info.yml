@@ -24,6 +24,7 @@ tags: |
   |[3.4.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/influxdb/3.4.1/24.03-lts-sp1/Dockerfile) | influxdb 3.4.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
   |[3.4.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/influxdb/3.4.0/24.03-lts-sp1/Dockerfile) | influxdb 3.4.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
   |[2.7.11-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/influxdb/2.7.11/24.03-lts-sp1/Dockerfile)| Influxdb 2.7.11 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+  |[3.3.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/influxdb/3.3.0/24.03-lts-sp2/Dockerfile)| influxdb 3.3.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 
 download: |
   拉取镜像到本地
@@ -34,11 +35,11 @@ download: |
 usage: |
   启动influxdb实例：
   ```
-  docker run -it -p 8086:8086 openeuler/influxdb:{Tag}
+  docker run -d -p 8181:8181 openeuler/influxdb:{Tag}
   ```
   终端提示以下信息则表示influxdb已经ready：
   ```
-  2025-07-02T02:07:01.507857Z	info	Listening	{"log_id": "0xUE2JM0000", "service": "tcp-listener", "transport": "http", "addr": ":8086", "port": 8086}
+  2025-07-02T02:07:01.507857Z	info	Listening	{"log_id": "0xUE2JM0000", "service": "tcp-listener", "transport": "http", "addr": ":8181", "port": 8181}
   2025-07-02T02:07:01.507881Z	info	Starting	{"log_id": "0xUE2JM0000", "service": "telemetry", "interval": "8h"}
   ```
   
