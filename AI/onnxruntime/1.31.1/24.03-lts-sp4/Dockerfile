@@ -61,4 +61,5 @@ RUN yum update -y && \
 
 RUN python3 -m pip install coloredlogs humanfriendly onnx && \
     python3 -m pip install --no-index --find-links /root onnxruntime && \
+    python3 -m pip install --no-cache-dir "numpy<2" && \
     rm -rf /root/*.whl
