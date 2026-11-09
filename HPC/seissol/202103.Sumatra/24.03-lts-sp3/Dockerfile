@@ -99,3 +99,4 @@ ENV LD_LIBRARY_PATH=/usr/lib64/openmpi/lib:/usr/local/lib64:/usr/local/lib:${LD_
 
 WORKDIR /data
 CMD ["mpirun", "--allow-run-as-root", "/usr/local/bin/SeisSol"]
+
