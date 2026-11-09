@@ -27,20 +27,18 @@ download: |
   ```
 
 usage: |
-  - 以交互式Shell运行容器
+  - 启动 Netdata 容器
 
-    通过交互式 Shell 启动容器，netdata：
+    ```
+    docker run -d --name netdata -p 19999:19999 openeuler/netdata:{Tag} ./netdata/bin/netdata -D
+    ```
+    该命令会在前台模式启动 Netdata 监控代理，并将 Web UI 映射到宿主机 19999 端口。
+
+  - 使用交互式 Shell（可选）
+
     ```
     docker run -it --rm openeuler/netdata:{Tag} bash
     ```
-
-  - 运行 Netdata 进程
-
-    执行以下命令手动启动 Netdata：
-    ```
-    netdata/bin/netdata
-    ```
-    这会以前台方式启动 Netdata 监控代理进程。如果你希望它在后台运行，可以在命令后添加 &。
 
   - 访问 Web UI
      
