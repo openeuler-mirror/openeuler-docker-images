@@ -27,4 +27,5 @@ RUN mkdir -p /tmp/build && \
     make install && \
     mkdir -p /usr/local/lib/grads/data && \
     cp -r data/* /usr/local/lib/grads/data/ && \
+    printf 'gxdisplay Cairo /usr/local/lib/libgxdCairo.so\ngxprint Cairo /usr/local/lib/libgxpCairo.so\ngxdisplay X11 /usr/local/lib/libgxdX11.so\ngxdisplay gxdummy /usr/local/lib/libgxdummy.so\ngxprint GD /usr/local/lib/libgxpGD.so\ngxprint gxdummy /usr/local/lib/libgxdummy.so\n' > /usr/local/lib/grads/data/udpt && \
     cd / && rm -rf /tmp/build
