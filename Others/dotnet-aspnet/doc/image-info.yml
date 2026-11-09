@@ -37,7 +37,7 @@ usage: |
 
   - 启动容器（保持运行）
     ```
-    docker run -d --name my-dotnet-aspnet openeuler/dotnet-aspnet:{Tag} sleep infinity
+    docker run -d --name my-dotnet-aspnet --entrypoint sleep openeuler/dotnet-aspnet:{Tag} infinity
     ```
     用户可根据自身需求选择对应版本的{Tag}、容器启动的选项，需要进入容器调试时可使用下方 `docker exec` 命令。
   
