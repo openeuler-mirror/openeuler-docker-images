@@ -33,12 +33,14 @@ download: |
   ```
 
 usage: |
-  - 以交互式Shell运行容器
+  - 启动 Swagger UI 静态服务
 
-    通过交互式 Shell 启动容器，使用swagger-ui命令：
     ```bash
-    docker run -it --rm openeuler/swagger-ui:{Tag} bash
+    docker run -d --name my-swagger-ui -p 8080:8080 \
+      --entrypoint python3 openeuler/swagger-ui:{Tag} \
+      -m http.server 8080 --directory /usr/local/lib/node_modules/swagger-ui/dist
     ```
+    容器启动后访问 `http://localhost:8080/` 即可打开 Swagger UI。
 
   - 快速使用示例（HTML 本地版）
     
