@@ -1,4 +1,5 @@
 name: spring-boot
+  |[3.5.4-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/spring-boot/3.5.4/24.03-lts-sp1/Dockerfile)| spring 3.5.4 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 category: others
 description: Spring Boot 是 Spring 官方推出的一个开源框架，用于快速构建独立、生产级别的 Spring 应用，它对原生 Spring 做了自动化配置、内嵌服务器支持、约定优于配置，大大降低了使用 Spring 的复杂度。
 environment: |
@@ -17,7 +18,6 @@ tags: |
   |[4.0.2-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/spring-boot/4.0.2/24.03-lts-sp3/Dockerfile) | spring 4.0.2 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
   |[3.5.7-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/spring-boot/3.5.7/24.03-lts-sp2/Dockerfile) | spring 3.5.7 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
   | [3.4.4-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/spring-boot/3.4.4/24.03-lts-sp1/Dockerfile) | Spring Boot 3.4.4 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
-  | [3.5.4-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/spring-boot/3.5.4/24.03-lts-sp2/Dockerfile) | Spring Boot 3.5.4 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
 
 download: |
   拉取镜像到本地
