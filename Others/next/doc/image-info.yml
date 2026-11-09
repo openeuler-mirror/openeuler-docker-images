@@ -26,6 +26,8 @@ tags: |
   |[15.5.3-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/next/15.5.3/24.03-lts-sp2/Dockerfile) | next 15.5.3 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
   |[15.5.2-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/next/15.5.2/24.03-lts-sp1/Dockerfile) | next 15.5.2 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
   |[15.3.4-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/next/15.3.4/24.03-lts-sp1/Dockerfile)| Next.js 15.3.4 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+  |[16.1.1-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/next/16.1.1/24.03-lts-sp1/Dockerfile)| next 16.1.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+  |[15.4.6-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/next/15.4.6/24.03-lts-sp1/Dockerfile)| next 15.4.6 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 download: |
   拉取镜像到本地
