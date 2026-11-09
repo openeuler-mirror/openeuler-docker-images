@@ -7,7 +7,7 @@ environment: |
   yum install -y docker
   ```
 tags: |
-  dotnet-deps镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+  cubefs镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
@@ -15,6 +15,7 @@ tags: |
   |[3.5.3-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/cubefs/3.5.3/24.03-lts-sp4/Dockerfile) | cubefs 3.5.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[3.5.3-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/cubefs/3.5.3/24.03-lts-sp3/Dockerfile) | cubefs 3.5.3 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
   |[3.5.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/cubefs/3.5.0/24.03-lts-sp1/Dockerfile)| Cubefs 3.5.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+  |[3.5.3-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/cubefs/3.5.3/24.03-lts-sp1/Dockerfile)| cubefs 3.5.3 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 download: |
   拉取镜像到本地
