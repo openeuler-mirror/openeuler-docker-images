@@ -13,10 +13,10 @@ opencode is an open-source AI programming assistant that provides code completio
 The tag of each opencode docker image is consist of the version of opencode and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
-|[1.18.31-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/opencode/1.18.31/24.03-lts-sp4/Dockerfile) | opencode 1.18.31 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[1.18.30-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/opencode/1.18.30/24.03-lts-sp4/Dockerfile) | opencode 1.18.30 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[1.1.48-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/opencode/1.1.48/24.03-lts-sp4/Dockerfile) | opencode 1.1.48 on openEuler 24.03-lts-sp4 | amd64, arm64 |
-|[1.1.48-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/opencode/1.1.48/24.03-lts/Dockerfile) | opencode 1.1.48 on openEuler 24.03-lts | amd64, arm64 |
+|[1.18.31-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/opencode/1.18.31/24.03-lts-sp4/Dockerfile) | opencode 1.18.31 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[1.18.30-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/opencode/1.18.30/24.03-lts-sp4/Dockerfile) | opencode 1.18.30 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[1.1.48-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/opencode/1.1.48/24.03-lts-sp4/Dockerfile) | opencode 1.1.48 on openEuler 24.03-lts-sp4 | amd64, arm64 |
+|[1.1.48-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/opencode/1.1.48/24.03-lts/Dockerfile) | opencode 1.1.48 on openEuler 24.03-lts | amd64, arm64 |
 
 
 # Usage
@@ -37,4 +37,4 @@ docker run --rm openeuler/opencode:{Tag} opencode --help
 ```
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

@@ -10,7 +10,7 @@
 The tag of each `claude-code` docker image is consist of the complete software stack version. The details are as follows
 |    Tag   |  Currently  |     |
 |----------|-------------|------------------|
-|[2.1.20-oe2403ltssp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/claude-code/2.1.20/24.03-lts-sp3/Dockerfile)| Claude-Code:latest on openEuler 24.03-LTS-SP3 |
+|[2.1.20-oe2403ltssp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/claude-code/2.1.20/24.03-lts-sp3/Dockerfile)| Claude-Code:latest on openEuler 24.03-LTS-SP3 |
 
 # Recommend local models
 * gpt-oss:20b
@@ -51,4 +51,4 @@ claude --model gpt-oss:20b
 ```
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

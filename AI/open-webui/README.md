@@ -13,9 +13,9 @@ Current open-webui docker images are built on the [openEuler](https://repo.opene
 The tag of each `open-webui` docker image is consist of the complete software stack version. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
-|[0.1.108-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/open-webui/0.1.108/22.03-lts-sp4/Dockerfile)| open-webui 0.1.108 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
-|[0.1.108-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/open-webui/0.1.108/24.03-lts-sp4/Dockerfile)| open-webui 0.1.108 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[0.1.108-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/open-webui/0.1.108/24.03-lts-sp1/Dockerfile)| open-webui 0.1.108 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[0.1.108-oe2203sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/open-webui/0.1.108/22.03-lts-sp4/Dockerfile)| open-webui 0.1.108 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+|[0.1.108-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/open-webui/0.1.108/24.03-lts-sp4/Dockerfile)| open-webui 0.1.108 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[0.1.108-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/open-webui/0.1.108/24.03-lts-sp1/Dockerfile)| open-webui 0.1.108 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` and `container startup options` based on their requirements.
@@ -57,4 +57,4 @@ In this usage, users can select the corresponding `{Tag}` and `container startup
 	```
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

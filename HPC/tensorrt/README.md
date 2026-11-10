@@ -18,12 +18,12 @@ The tag of each `tensorrt` docker image is consist of the version of `tensorrt` 
 
 | Tag                                                                                                                                | Currently                                 | Architectures |
 |------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------|---------------|
-|[11.4-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/tensorrt/11.4/24.03-lts-sp4/Dockerfile) | tensorrt 11.4 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[11.3-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/tensorrt/11.3/24.03-lts-sp4/Dockerfile) | tensorrt 11.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[11.2.1.2-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/tensorrt/11.2.1.2/24.03-lts-sp4/Dockerfile) | tensorrt 11.2.1.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[10.13.3.9-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/tensorrt/10.13.3.9/24.03-lts-sp2/Dockerfile) | tensorrt 10.13.3.9 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-|[10.13.2.6-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/tensorrt/10.13.2.6/24.03-lts-sp1/Dockerfile) | tensorrt 10.13.2.6 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
-| [10.9.0.34-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/tensorrt/10.9.0.34/24.03-lts/Dockerfile) | TensorRT 10.9.0.34 on openEuler 24.03-LTS | amd64, arm64  |
+|[11.4-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/tensorrt/11.4/24.03-lts-sp4/Dockerfile) | tensorrt 11.4 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[11.3-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/tensorrt/11.3/24.03-lts-sp4/Dockerfile) | tensorrt 11.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[11.2.1.2-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/tensorrt/11.2.1.2/24.03-lts-sp4/Dockerfile) | tensorrt 11.2.1.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[10.13.3.9-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/tensorrt/10.13.3.9/24.03-lts-sp2/Dockerfile) | tensorrt 10.13.3.9 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[10.13.2.6-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/tensorrt/10.13.2.6/24.03-lts-sp1/Dockerfile) | tensorrt 10.13.2.6 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+| [10.9.0.34-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/tensorrt/10.9.0.34/24.03-lts/Dockerfile) | TensorRT 10.9.0.34 on openEuler 24.03-LTS | amd64, arm64  |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.
@@ -42,4 +42,4 @@ In this usage, users can select the corresponding `{Tag}` based on their require
     The `openeuler/tensorrt` image is used to verify the integration between the upstream tensorrt version and openEuler.
         
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

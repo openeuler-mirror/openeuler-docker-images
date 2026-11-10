@@ -28,8 +28,8 @@ The tag of each FaqGen docker image is consist of the version of FaqGen and the 
 
 | Tags | Currently |  Architectures|
 |--|--|--|
-|[1.0-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/opea/faqgen/1.0/24.03-lts/Dockerfile)| FaqGen 1.0 on openEuler 24.03-LTS | amd64 |
-|[1.2-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/opea/faqgen/1.2/24.03-lts/Dockerfile)| FaqGen 1.2 on openEuler 24.03-LTS | amd64 |
+|[1.0-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/opea/faqgen/1.0/24.03-lts/Dockerfile)| FaqGen 1.0 on openEuler 24.03-LTS | amd64 |
+|[1.2-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/opea/faqgen/1.2/24.03-lts/Dockerfile)| FaqGen 1.2 on openEuler 24.03-LTS | amd64 |
 
 # Usage
 
@@ -65,7 +65,7 @@ To set up environment variables for deploying FaqGen services, follow these step
 
 3. Set up other environment variables:
 
-   > Get `set_env.sh` here: [set_env.sh](https://gitee.com/openeuler/openeuler-docker-images/tree/master/AI/opea/faqgen/doc/set_env.sh)
+   > Get `set_env.sh` here: [set_env.sh](https://gitcode.com/openeuler/openeuler-docker-images/tree/master/AI/opea/faqgen/doc/set_env.sh)
 
    ```bash 
    # on Xeon
@@ -78,7 +78,7 @@ Select the compose.yaml file that matches your hardware.
 
 CPU example:
 
-> Get `compose.yml` here: [compose.yml](https://gitee.com/openeuler/openeuler-docker-images/tree/master/AI/opea/faqgen/doc/compose.yml)
+> Get `compose.yml` here: [compose.yml](https://gitcode.com/openeuler/openeuler-docker-images/tree/master/AI/opea/faqgen/doc/compose.yml)
 
 ```bash
 docker compose -f compose.yml up -d

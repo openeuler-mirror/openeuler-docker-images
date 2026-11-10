@@ -17,15 +17,15 @@ The tag of each orientdb docker image is consist of the version of orientdb and 
 
 | Tags                                                                                                                                  | Currently                                  | Architectures |
 |---------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------|---------------|
-|[3.2.57-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/orientdb/3.2.57/24.03-lts-sp4/Dockerfile) | orientdb 3.2.57 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[3.2.53-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/orientdb/3.2.53/24.03-lts-sp4/Dockerfile) | orientdb 3.2.53 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[3.2.53-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/orientdb/3.2.53/24.03-lts-sp3/Dockerfile) | orientdb 3.2.53 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[3.2.49-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/orientdb/3.2.49/24.03-lts-sp3/Dockerfile) | orientdb 3.2.49 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[3.2.45-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/orientdb/3.2.45/24.03-lts-sp2/Dockerfile) | orientdb 3.2.45 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-| [3.2.44-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/orientdb/3.2.44/24.03-lts-sp2/Dockerfile) | OrientDB 3.2.44 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
-| [3.2.44-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/orientdb/3.2.44/24.03-lts-sp1/Dockerfile) | OrientDB 3.2.44 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
-| [3.2.43-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/orientdb/3.2.43/24.03-lts-sp1/Dockerfile)  | OrientDB 3.2.43 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
-| [3.2.38-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/orientdb/3.2.38/24.03-lts-sp1/Dockerfile)  | OrientDB 3.2.38 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+|[3.2.57-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/orientdb/3.2.57/24.03-lts-sp4/Dockerfile) | orientdb 3.2.57 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[3.2.53-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/orientdb/3.2.53/24.03-lts-sp4/Dockerfile) | orientdb 3.2.53 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[3.2.53-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/orientdb/3.2.53/24.03-lts-sp3/Dockerfile) | orientdb 3.2.53 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[3.2.49-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/orientdb/3.2.49/24.03-lts-sp3/Dockerfile) | orientdb 3.2.49 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[3.2.45-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/orientdb/3.2.45/24.03-lts-sp2/Dockerfile) | orientdb 3.2.45 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+| [3.2.44-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/orientdb/3.2.44/24.03-lts-sp2/Dockerfile) | OrientDB 3.2.44 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
+| [3.2.44-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/orientdb/3.2.44/24.03-lts-sp1/Dockerfile) | OrientDB 3.2.44 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+| [3.2.43-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/orientdb/3.2.43/24.03-lts-sp1/Dockerfile)  | OrientDB 3.2.43 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+| [3.2.38-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/orientdb/3.2.38/24.03-lts-sp1/Dockerfile)  | OrientDB 3.2.38 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 
 # Usage
 
@@ -56,4 +56,4 @@ This image is used to verify if the upstream orientdb version can be integrated 
 	
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

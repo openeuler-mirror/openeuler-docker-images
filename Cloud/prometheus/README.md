@@ -19,26 +19,26 @@ The tag of each `prometheus` docker image is consist of the version of `promethe
 |----------|-------------|------------------|
 |[3.16.0-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/prometheus/3.16.0/24.03-lts-sp4/Dockerfile) | prometheus 3.16.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[3.15.1-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/prometheus/3.15.1/24.03-lts-sp4/Dockerfile) | prometheus 3.15.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[3.15.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/prometheus/3.15.0/24.03-lts-sp4/Dockerfile) | prometheus 3.15.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[3.11.3-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/prometheus/3.11.3/24.03-lts-sp4/Dockerfile) | prometheus 3.11.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[3.11.3-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/prometheus/3.11.3/24.03-lts-sp3/Dockerfile) | prometheus 3.11.3 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[3.7.2-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/prometheus/3.7.2/24.03-lts-sp2/Dockerfile) | prometheus 3.7.2 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-|[2.20.0-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/prometheus/2.20.0/22.03-lts/Dockerfile)| Prometheus server 2.20.0 on openEuler 22.03-LTS | amd64, arm64 |
-|[2.50.1-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/prometheus/2.50.1/22.03-lts-sp3/Dockerfile)| Prometheus server 2.50.1 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
-|[2.54.1-oe2003sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/prometheus/2.54.1/20.03-lts-sp4/Dockerfile)| Prometheus server 2.54.1 on openEuler 20.03-LTS-SP4 | amd64, arm64 |
-|[2.54.1-oe2203sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/prometheus/2.54.1/22.03-lts-sp1/Dockerfile)| Prometheus server 2.54.1 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
-|[2.54.1-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/prometheus/2.54.1/22.03-lts-sp3/Dockerfile)| Prometheus server 2.54.1 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
-|[2.54.1-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/prometheus/2.54.1/22.03-lts-sp4/Dockerfile)| Prometheus server 2.54.1 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
-|[2.54.1-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/prometheus/2.54.1/24.03-lts/Dockerfile)| Prometheus server 2.54.1 on openEuler 24.03-LTS | amd64, arm64 |
-|[2.55.0-oe2003sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/prometheus/2.55.0/20.03-lts-sp4/Dockerfile)| Prometheus server 2.55.0 on openEuler 20.03-LTS-SP4 | amd64, arm64 |
-|[2.55.0-oe2203sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/prometheus/2.55.0/22.03-lts-sp1/Dockerfile)| Prometheus server 2.55.0 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
-|[2.55.0-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/prometheus/2.55.0/22.03-lts-sp3/Dockerfile)| Prometheus server 2.55.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
-|[2.55.0-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/prometheus/2.55.0/22.03-lts-sp4/Dockerfile)| Prometheus server 2.55.0 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
-|[2.55.0-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/prometheus/2.55.0/24.03-lts/Dockerfile)| Prometheus server 2.55.0 on openEuler 24.03-LTS | amd64, arm64 |
-|[2.55.1-oe2203sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/prometheus/2.55.1/22.03-lts-sp1/Dockerfile)| Prometheus server 2.55.1 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
-|[2.55.1-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/prometheus/2.55.1/22.03-lts-sp3/Dockerfile)| Prometheus server 2.55.1 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
-|[2.55.1-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/prometheus/2.55.1/22.03-lts-sp4/Dockerfile)| Prometheus server 2.55.1 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
-|[2.55.1-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/prometheus/2.55.1/24.03-lts/Dockerfile)| Prometheus server 2.55.1 on openEuler 24.03-LTS | amd64, arm64 |
+|[3.15.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/prometheus/3.15.0/24.03-lts-sp4/Dockerfile) | prometheus 3.15.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[3.11.3-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/prometheus/3.11.3/24.03-lts-sp4/Dockerfile) | prometheus 3.11.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[3.11.3-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/prometheus/3.11.3/24.03-lts-sp3/Dockerfile) | prometheus 3.11.3 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[3.7.2-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/prometheus/3.7.2/24.03-lts-sp2/Dockerfile) | prometheus 3.7.2 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[2.20.0-oe2203lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/prometheus/2.20.0/22.03-lts/Dockerfile)| Prometheus server 2.20.0 on openEuler 22.03-LTS | amd64, arm64 |
+|[2.50.1-oe2203sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/prometheus/2.50.1/22.03-lts-sp3/Dockerfile)| Prometheus server 2.50.1 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[2.54.1-oe2003sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/prometheus/2.54.1/20.03-lts-sp4/Dockerfile)| Prometheus server 2.54.1 on openEuler 20.03-LTS-SP4 | amd64, arm64 |
+|[2.54.1-oe2203sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/prometheus/2.54.1/22.03-lts-sp1/Dockerfile)| Prometheus server 2.54.1 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
+|[2.54.1-oe2203sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/prometheus/2.54.1/22.03-lts-sp3/Dockerfile)| Prometheus server 2.54.1 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[2.54.1-oe2203sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/prometheus/2.54.1/22.03-lts-sp4/Dockerfile)| Prometheus server 2.54.1 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+|[2.54.1-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/prometheus/2.54.1/24.03-lts/Dockerfile)| Prometheus server 2.54.1 on openEuler 24.03-LTS | amd64, arm64 |
+|[2.55.0-oe2003sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/prometheus/2.55.0/20.03-lts-sp4/Dockerfile)| Prometheus server 2.55.0 on openEuler 20.03-LTS-SP4 | amd64, arm64 |
+|[2.55.0-oe2203sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/prometheus/2.55.0/22.03-lts-sp1/Dockerfile)| Prometheus server 2.55.0 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
+|[2.55.0-oe2203sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/prometheus/2.55.0/22.03-lts-sp3/Dockerfile)| Prometheus server 2.55.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[2.55.0-oe2203sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/prometheus/2.55.0/22.03-lts-sp4/Dockerfile)| Prometheus server 2.55.0 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+|[2.55.0-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/prometheus/2.55.0/24.03-lts/Dockerfile)| Prometheus server 2.55.0 on openEuler 24.03-LTS | amd64, arm64 |
+|[2.55.1-oe2203sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/prometheus/2.55.1/22.03-lts-sp1/Dockerfile)| Prometheus server 2.55.1 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
+|[2.55.1-oe2203sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/prometheus/2.55.1/22.03-lts-sp3/Dockerfile)| Prometheus server 2.55.1 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[2.55.1-oe2203sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/prometheus/2.55.1/22.03-lts-sp4/Dockerfile)| Prometheus server 2.55.1 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+|[2.55.1-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/prometheus/2.55.1/24.03-lts/Dockerfile)| Prometheus server 2.55.1 on openEuler 24.03-LTS | amd64, arm64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` and `container startup options` based on their requirements.
@@ -77,4 +77,4 @@ In this usage, users can select the corresponding `{Tag}` and `container startup
 	```
 	
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

@@ -19,11 +19,11 @@ The tag of each `milc` docker image is consist of the version of `milc` and the 
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
 |[551dc47-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/milc/551dc47/24.03-lts-sp4/Dockerfile) | milc 551dc47 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[5ba70ca-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/milc/5ba70ca/24.03-lts-sp4/Dockerfile) | milc 5ba70ca on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[6b9b8a0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/milc/6b9b8a0/24.03-lts-sp4/Dockerfile) | milc 6b9b8a0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[develop-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/milc/develop/24.03-lts-sp4/Dockerfile) | milc develop on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[1.0.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/milc/1.0.0/24.03-lts-sp4/Dockerfile) | MILC 1.0.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[1.0.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/milc/1.0.0/24.03-lts-sp3/Dockerfile) | MILC 1.0.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[5ba70ca-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/milc/5ba70ca/24.03-lts-sp4/Dockerfile) | milc 5ba70ca on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[6b9b8a0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/milc/6b9b8a0/24.03-lts-sp4/Dockerfile) | milc 6b9b8a0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[develop-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/milc/develop/24.03-lts-sp4/Dockerfile) | milc develop on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[1.0.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/milc/1.0.0/24.03-lts-sp4/Dockerfile) | MILC 1.0.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[1.0.0-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/milc/1.0.0/24.03-lts-sp3/Dockerfile) | MILC 1.0.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 # Usage
 Here, users can select the corresponding `{Tag}` by their requirements.
@@ -50,4 +50,4 @@ Here, users can select the corresponding `{Tag}` by their requirements.
 	Note: MILC programs require input parameter files. Users need to prepare appropriate input files for their specific physics problems.
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

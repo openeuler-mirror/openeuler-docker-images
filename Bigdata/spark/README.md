@@ -19,23 +19,23 @@ The tag of each spark docker image is consist of the version of spark and the ve
 |--|--|--|
 |[4.3.0-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/4.3.0/24.03-lts-sp4/Dockerfile) | spark 4.3.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[4.2.1-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/4.2.1/24.03-lts-sp4/Dockerfile) | spark 4.2.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[3.4.3-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.4.3/24.03-lts-sp4/Dockerfile) | spark 3.4.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[3.3.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.3.1/24.03-lts-sp4/Dockerfile) | spark 3.3.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[3.5.2-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.5.2/24.03-lts-sp4/Dockerfile) | spark 3.5.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[3.1.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.1.1/24.03-lts-sp4/Dockerfile) | spark 3.1.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[4.2.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/4.2.0/24.03-lts-sp4/Dockerfile) | spark 4.2.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[4.1.2-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/4.1.2/24.03-lts-sp4/Dockerfile) | spark 4.1.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[4.1.2-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/4.1.2/24.03-lts-sp3/Dockerfile) | spark 4.1.2 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[4.0.1-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/4.0.1/24.03-lts-sp2/Dockerfile) | spark 4.0.1 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-|[3.3.1-22.03-lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.3.1/22.03-lts/Dockerfile)| spark 3.3.1 on openEuler 22.03-LTS | amd64, arm64 |
-|[3.3.2-22.03-lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.3.2/22.03-lts/Dockerfile)| spark 3.3.2 on openEuler 22.03-LTS | amd64, arm64 |
-|[3.4.0-22.03-lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.4.0/22.03-lts/Dockerfile)| spark 3.4.0 on openEuler 22.03-LTS | amd64, arm64 |
-|[3.5.1-24.03-lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.5.1/24.03-lts/Dockerfile)| spark 3.5.1 on openEuler 24.03-LTS | amd64, arm64 |
-|[3.5.3-oe2003sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.5.3/20.03-lts-sp4/Dockerfile)| spark 3.5.3 on openEuler 20.03-LTS-SP4 | amd64, arm64 |
-|[3.5.3-oe2203sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.5.3/22.03-lts-sp1/Dockerfile)| spark 3.5.3 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
-|[3.5.3-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.5.3/22.03-lts-sp3/Dockerfile)| spark 3.5.3 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
-|[3.5.3-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.5.3/22.03-lts-sp4/Dockerfile)| spark 3.5.3 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
-|[3.5.3-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.5.3/24.03-lts/Dockerfile)| spark 3.5.3 on openEuler 24.03-LTS | amd64, arm64 |
+|[3.4.3-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.4.3/24.03-lts-sp4/Dockerfile) | spark 3.4.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[3.3.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.3.1/24.03-lts-sp4/Dockerfile) | spark 3.3.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[3.5.2-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.5.2/24.03-lts-sp4/Dockerfile) | spark 3.5.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[3.1.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.1.1/24.03-lts-sp4/Dockerfile) | spark 3.1.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[4.2.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/4.2.0/24.03-lts-sp4/Dockerfile) | spark 4.2.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[4.1.2-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/4.1.2/24.03-lts-sp4/Dockerfile) | spark 4.1.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[4.1.2-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/4.1.2/24.03-lts-sp3/Dockerfile) | spark 4.1.2 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[4.0.1-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/4.0.1/24.03-lts-sp2/Dockerfile) | spark 4.0.1 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[3.3.1-22.03-lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.3.1/22.03-lts/Dockerfile)| spark 3.3.1 on openEuler 22.03-LTS | amd64, arm64 |
+|[3.3.2-22.03-lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.3.2/22.03-lts/Dockerfile)| spark 3.3.2 on openEuler 22.03-LTS | amd64, arm64 |
+|[3.4.0-22.03-lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.4.0/22.03-lts/Dockerfile)| spark 3.4.0 on openEuler 22.03-LTS | amd64, arm64 |
+|[3.5.1-24.03-lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.5.1/24.03-lts/Dockerfile)| spark 3.5.1 on openEuler 24.03-LTS | amd64, arm64 |
+|[3.5.3-oe2003sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.5.3/20.03-lts-sp4/Dockerfile)| spark 3.5.3 on openEuler 20.03-LTS-SP4 | amd64, arm64 |
+|[3.5.3-oe2203sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.5.3/22.03-lts-sp1/Dockerfile)| spark 3.5.3 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
+|[3.5.3-oe2203sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.5.3/22.03-lts-sp3/Dockerfile)| spark 3.5.3 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[3.5.3-oe2203sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.5.3/22.03-lts-sp4/Dockerfile)| spark 3.5.3 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+|[3.5.3-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.5.3/24.03-lts/Dockerfile)| spark 3.5.3 on openEuler 24.03-LTS | amd64, arm64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}`  based on their requirements.
@@ -83,4 +83,4 @@ In this usage, users can select the corresponding `{Tag}`  based on their requir
     See more in [https://github.com/apache/spark-docker/blob/master/OVERVIEW.md#environment-variable](https://github.com/apache/spark-docker/blob/master/OVERVIEW.md#environment-variable).
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

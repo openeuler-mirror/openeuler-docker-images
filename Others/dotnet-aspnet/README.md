@@ -17,16 +17,16 @@ Learn more about Dotnet-aspnet（ASP.NET Core）（ASP on [learn.microsoft.com](
 The tag of each `dotnet-aspnet` docker image is consist of the version of `dotnet-aspnet` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
-|[10.0.13-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/dotnet-aspnet/10.0.13/24.03-lts-sp4/Dockerfile) | dotnet 10.0.13 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[10.0.12-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/dotnet-aspnet/10.0.12/24.03-lts-sp4/Dockerfile) | dotnet 10.0.12 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[10.0.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/dotnet-aspnet/10.0.0/24.03-lts-sp4/Dockerfile) | dotnet 10.0.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[8.0.3-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/dotnet-aspnet/8.0.3/22.03-lts-sp3/Dockerfile)| Dotnet-aspnet 8.0.3 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
-|[8.0.8-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/dotnet-aspnet/8.0.8/22.03-lts-sp3/Dockerfile)| Dotnet-aspnet 8.0.8 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
-|[8.0.10-oe2003sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/dotnet-aspnet/8.0.10/20.03-lts-sp4/Dockerfile)| Dotnet-aspnet 8.0.10 on openEuler 20.03-LTS-SP4 | amd64, arm64 |
-|[8.0.10-oe2203sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/dotnet-aspnet/8.0.10/22.03-lts-sp1/Dockerfile)| Dotnet-aspnet 8.0.10 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
-|[8.0.10-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/dotnet-aspnet/8.0.10/22.03-lts-sp3/Dockerfile)| Dotnet-aspnet 8.0.10 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
-|[8.0.10-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/dotnet-aspnet/8.0.10/22.03-lts-sp4/Dockerfile)| Dotnet-aspnet 8.0.10 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
-|[8.0.10-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/dotnet-aspnet/8.0.10/24.03-lts/Dockerfile)| Dotnet-aspnet 8.0.10 on openEuler 24.03-LTS | amd64, arm64 |
+|[10.0.13-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/dotnet-aspnet/10.0.13/24.03-lts-sp4/Dockerfile) | dotnet 10.0.13 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[10.0.12-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/dotnet-aspnet/10.0.12/24.03-lts-sp4/Dockerfile) | dotnet 10.0.12 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[10.0.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/dotnet-aspnet/10.0.0/24.03-lts-sp4/Dockerfile) | dotnet 10.0.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[8.0.3-oe2203sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/dotnet-aspnet/8.0.3/22.03-lts-sp3/Dockerfile)| Dotnet-aspnet 8.0.3 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[8.0.8-oe2203sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/dotnet-aspnet/8.0.8/22.03-lts-sp3/Dockerfile)| Dotnet-aspnet 8.0.8 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[8.0.10-oe2003sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/dotnet-aspnet/8.0.10/20.03-lts-sp4/Dockerfile)| Dotnet-aspnet 8.0.10 on openEuler 20.03-LTS-SP4 | amd64, arm64 |
+|[8.0.10-oe2203sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/dotnet-aspnet/8.0.10/22.03-lts-sp1/Dockerfile)| Dotnet-aspnet 8.0.10 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
+|[8.0.10-oe2203sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/dotnet-aspnet/8.0.10/22.03-lts-sp3/Dockerfile)| Dotnet-aspnet 8.0.10 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[8.0.10-oe2203sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/dotnet-aspnet/8.0.10/22.03-lts-sp4/Dockerfile)| Dotnet-aspnet 8.0.10 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+|[8.0.10-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/dotnet-aspnet/8.0.10/24.03-lts/Dockerfile)| Dotnet-aspnet 8.0.10 on openEuler 24.03-LTS | amd64, arm64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.
@@ -85,4 +85,4 @@ In this usage, users can select the corresponding `{Tag}` based on their require
 	docker run -it --entrypoint /bin/bash --name my-dotnet-aspnet -p 8080:8080 openeuler/dotnet-aspnet:{Tag}
 	```
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

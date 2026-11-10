@@ -17,7 +17,7 @@ Learn more on [SIMULATeQCD GitHub](https://github.com/LatticeQCD/SIMULATeQCD).
 The tag of each `rhmc` docker image is consist of the version of `rhmc` and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
-|[1.2.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/rhmc/1.2.0/24.03-lts-sp4/Dockerfile) | SIMULATeQCD 1.2.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[1.2.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/rhmc/1.2.0/24.03-lts-sp4/Dockerfile) | SIMULATeQCD 1.2.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` and `container startup options` based on their requirements.
@@ -47,4 +47,4 @@ In this usage, users can select the corresponding `{Tag}` and `container startup
 	```
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

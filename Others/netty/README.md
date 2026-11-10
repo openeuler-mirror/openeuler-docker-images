@@ -19,16 +19,16 @@ The tag of each `netty` docker image is consist of the version of `netty` and th
 | Tag                                                                                                                            | Currently                              | Architectures |
 |--------------------------------------------------------------------------------------------------------------------------------|----------------------------------------|---------------|
 |[4.2.20-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/netty/4.2.20/24.03-lts-sp4/Dockerfile) | netty 4.2.20 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[4.2.19-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/netty/4.2.19/24.03-lts-sp4/Dockerfile) | netty 4.2.19 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[4.2.18-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/netty/4.2.18/24.03-lts-sp4/Dockerfile) | netty 4.2.18 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[4.2.13-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/netty/4.2.13/24.03-lts-sp4/Dockerfile) | netty 4.2.13 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[4.2.13-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/netty/4.2.13/24.03-lts-sp3/Dockerfile) | netty 4.2.13 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[4.2.12-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/netty/4.2.12/24.03-lts-sp3/Dockerfile) | netty 4.2.12 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[4.2.10-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/netty/4.2.10/24.03-lts-sp3/Dockerfile) | netty 4.2.10 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[4.2.9-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/netty/4.2.9/24.03-lts-sp2/Dockerfile) | netty 4.2.9 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-| [4.2.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/netty/4.2.1/24.03-lts-sp1/Dockerfile) | Netty 4.2.1 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
-| [4.2.4-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/netty/4.2.4/24.03-lts-sp2/Dockerfile) | Netty 4.2.4 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
-| [4.2.5-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/netty/4.2.5/24.03-lts-sp2/Dockerfile) | Netty 4.2.5 on openEuler 24.03-LTS-SP2 | amd64, arm64  |5
+|[4.2.19-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/netty/4.2.19/24.03-lts-sp4/Dockerfile) | netty 4.2.19 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[4.2.18-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/netty/4.2.18/24.03-lts-sp4/Dockerfile) | netty 4.2.18 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[4.2.13-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/netty/4.2.13/24.03-lts-sp4/Dockerfile) | netty 4.2.13 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[4.2.13-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/netty/4.2.13/24.03-lts-sp3/Dockerfile) | netty 4.2.13 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[4.2.12-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/netty/4.2.12/24.03-lts-sp3/Dockerfile) | netty 4.2.12 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[4.2.10-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/netty/4.2.10/24.03-lts-sp3/Dockerfile) | netty 4.2.10 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[4.2.9-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/netty/4.2.9/24.03-lts-sp2/Dockerfile) | netty 4.2.9 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+| [4.2.1-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/netty/4.2.1/24.03-lts-sp1/Dockerfile) | Netty 4.2.1 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+| [4.2.4-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/netty/4.2.4/24.03-lts-sp2/Dockerfile) | Netty 4.2.4 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
+| [4.2.5-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/netty/4.2.5/24.03-lts-sp2/Dockerfile) | Netty 4.2.5 on openEuler 24.03-LTS-SP2 | amd64, arm64  |5
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.
 
@@ -124,4 +124,4 @@ In this usage, users can select the corresponding `{Tag}` based on their require
     Any input will be echoed back by the server.
  
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

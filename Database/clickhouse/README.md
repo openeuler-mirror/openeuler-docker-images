@@ -24,17 +24,17 @@ The tag of each `clickhouse` docker image is consist of the version of `clickhou
 |[26.9.22.3-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Database/clickhouse/26.9.22.3/24.03-lts-sp4/Dockerfile) | clickhouse 26.9.22.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[26.9.21.9-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Database/clickhouse/26.9.21.9/24.03-lts-sp4/Dockerfile) | clickhouse 26.9.21.9 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[26.9.20.23-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Database/clickhouse/26.9.20.23/24.03-lts-sp4/Dockerfile) | clickhouse 26.9.20.23 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[26.9.18.11-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/clickhouse/26.9.18.11/24.03-lts-sp4/Dockerfile) | clickhouse 26.9.18.11 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[26.9.15.5-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/clickhouse/26.9.15.5/24.03-lts-sp4/Dockerfile) | clickhouse 26.9.15.5 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[26.9.14.10-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/clickhouse/26.9.14.10/24.03-lts-sp4/Dockerfile) | clickhouse 26.9.14.10 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[26.9.11.2-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/clickhouse/26.9.11.2/24.03-lts-sp4/Dockerfile) | clickhouse 26.9.11.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[26.9.5.2-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/clickhouse/26.9.5.2/24.03-lts-sp4/Dockerfile) | clickhouse 26.9.5.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[26.9.3.38-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/clickhouse/26.9.3.38/24.03-lts-sp4/Dockerfile) | clickhouse 26.9.3.38 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[26.7.12.6-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/clickhouse/26.7.12.6/24.03-lts-sp4/Dockerfile) | clickhouse 26.7.12.6 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[26.7.7.92-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/clickhouse/26.7.7.92/24.03-lts-sp4/Dockerfile) | clickhouse 26.7.7.92 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[25.3.1.2703-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/clickhouse/25.3.1.2703/24.03-lts-sp1/Dockerfile)| Clickhouse 25.3.1.2703 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
-|[25.7.5.34-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/clickhouse/25.7.5.34/24.03-lts-sp2/Dockerfile)| Clickhouse 25.7.5.34 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-|[25.7.5.34-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/clickhouse/25.7.5.34/24.03-lts-sp4/Dockerfile)| Clickhouse 25.7.5.34 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[26.9.18.11-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/clickhouse/26.9.18.11/24.03-lts-sp4/Dockerfile) | clickhouse 26.9.18.11 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[26.9.15.5-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/clickhouse/26.9.15.5/24.03-lts-sp4/Dockerfile) | clickhouse 26.9.15.5 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[26.9.14.10-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/clickhouse/26.9.14.10/24.03-lts-sp4/Dockerfile) | clickhouse 26.9.14.10 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[26.9.11.2-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/clickhouse/26.9.11.2/24.03-lts-sp4/Dockerfile) | clickhouse 26.9.11.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[26.9.5.2-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/clickhouse/26.9.5.2/24.03-lts-sp4/Dockerfile) | clickhouse 26.9.5.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[26.9.3.38-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/clickhouse/26.9.3.38/24.03-lts-sp4/Dockerfile) | clickhouse 26.9.3.38 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[26.7.12.6-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/clickhouse/26.7.12.6/24.03-lts-sp4/Dockerfile) | clickhouse 26.7.12.6 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[26.7.7.92-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/clickhouse/26.7.7.92/24.03-lts-sp4/Dockerfile) | clickhouse 26.7.7.92 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[25.3.1.2703-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/clickhouse/25.3.1.2703/24.03-lts-sp1/Dockerfile)| Clickhouse 25.3.1.2703 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[25.7.5.34-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/clickhouse/25.7.5.34/24.03-lts-sp2/Dockerfile)| Clickhouse 25.7.5.34 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[25.7.5.34-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/clickhouse/25.7.5.34/24.03-lts-sp4/Dockerfile)| Clickhouse 25.7.5.34 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 # Usage
 
@@ -69,4 +69,4 @@ The tag of each `clickhouse` docker image is consist of the version of `clickhou
 	```
 	
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

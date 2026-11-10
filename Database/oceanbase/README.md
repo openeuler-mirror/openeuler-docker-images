@@ -18,11 +18,11 @@ The tag of each oceanbase docker image is consist of the version of oceanbase an
 
 | Tags                                                                                                                                                       | Currently                                             | Architectures |
 |------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------|---------------|
-|[5.0.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/oceanbase/5.0.1/24.03-lts-sp4/Dockerfile) | oceanbase 5.0.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[4.4.2_CE_BP3-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/oceanbase/4.4.2_CE_BP3/24.03-lts-sp4/Dockerfile) | oceanbase 4.4.2_CE_BP3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-| [4.3.5_CE_BP2_HF1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/oceanbase/4.3.5_CE_BP2_HF1/24.03-lts-sp1/Dockerfile) | oceanbase 4.3.5_CE_BP2_HF1 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
-| [4.3.5_CE_BP3-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/oceanbase/4.3.5_CE_BP3/24.03-lts-sp2/Dockerfile)         | oceanbase 4.3.5_CE_BP3 on openEuler 24.03-LTS-SP2     | amd64, arm64  |
-| [4.3.5_CE_BP3-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/oceanbase/4.3.5_CE_BP3/24.03-lts-sp4/Dockerfile)         | oceanbase 4.3.5_CE_BP3 on openEuler 24.03-LTS-SP4     | amd64, arm64  |
+|[5.0.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/oceanbase/5.0.1/24.03-lts-sp4/Dockerfile) | oceanbase 5.0.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[4.4.2_CE_BP3-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/oceanbase/4.4.2_CE_BP3/24.03-lts-sp4/Dockerfile) | oceanbase 4.4.2_CE_BP3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+| [4.3.5_CE_BP2_HF1-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/oceanbase/4.3.5_CE_BP2_HF1/24.03-lts-sp1/Dockerfile) | oceanbase 4.3.5_CE_BP2_HF1 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+| [4.3.5_CE_BP3-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/oceanbase/4.3.5_CE_BP3/24.03-lts-sp2/Dockerfile)         | oceanbase 4.3.5_CE_BP3 on openEuler 24.03-LTS-SP2     | amd64, arm64  |
+| [4.3.5_CE_BP3-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/oceanbase/4.3.5_CE_BP3/24.03-lts-sp4/Dockerfile)         | oceanbase 4.3.5_CE_BP3 on openEuler 24.03-LTS-SP4     | amd64, arm64  |
 
 # Usage
 Here, users can select `{Tag}` based on their requirements.
@@ -62,4 +62,4 @@ Here, users can select `{Tag}` based on their requirements.
     ```
 	
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

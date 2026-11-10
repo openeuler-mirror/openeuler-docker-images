@@ -20,10 +20,10 @@ The tag of each rust docker image is consist of the version of rust and the vers
 | Tags | Currently |  Architectures|
 |--|--|--|
 |[1.99.1-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/rust/1.99.1/24.03-lts-sp4/Dockerfile) | rust 1.99.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[1.99.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/rust/1.99.0/24.03-lts-sp4/Dockerfile) | rust 1.99.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[1.98.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/rust/1.98.1/24.03-lts-sp4/Dockerfile) | rust 1.98.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[1.96.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/rust/1.96.0/24.03-lts-sp4/Dockerfile) | rust 1.96.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[1.96.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/rust/1.96.0/24.03-lts-sp3/Dockerfile) | rust 1.96.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[1.99.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/rust/1.99.0/24.03-lts-sp4/Dockerfile) | rust 1.99.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[1.98.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/rust/1.98.1/24.03-lts-sp4/Dockerfile) | rust 1.98.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[1.96.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/rust/1.96.0/24.03-lts-sp4/Dockerfile) | rust 1.96.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[1.96.0-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/rust/1.96.0/24.03-lts-sp3/Dockerfile) | rust 1.96.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 |[1.95.0-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/rust/1.95.0/24.03-lts-sp3/Dockerfile) | rust 1.95.0 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 

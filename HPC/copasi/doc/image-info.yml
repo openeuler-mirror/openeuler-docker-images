@@ -11,11 +11,11 @@ tags: |
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
   |[4.48-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/copasi/4.48/24.03-lts-sp4/Dockerfile) | copasi 4.48 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-  |[4.47.309-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/copasi/4.47.309/24.03-lts-sp4/Dockerfile) | COPASI 4.47 (Build 309) on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-  |[4.47-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/copasi/4.47/24.03-lts-sp4/Dockerfile) | copasi 4.47 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-  |[4.46.300-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/copasi/4.46.300/24.03-lts-sp4/Dockerfile) | COPASI 4.46 (Build 300) on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-  |[4.46.300-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/copasi/4.46.300/24.03-lts-sp3/Dockerfile) | COPASI 4.46 (Build 300) on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-  |[4.48.309-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/copasi/4.48.309/24.03-lts-sp4/Dockerfile)| copasi 4.48.309 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[4.47.309-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/copasi/4.47.309/24.03-lts-sp4/Dockerfile) | COPASI 4.47 (Build 309) on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[4.47-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/copasi/4.47/24.03-lts-sp4/Dockerfile) | copasi 4.47 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[4.46.300-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/copasi/4.46.300/24.03-lts-sp4/Dockerfile) | COPASI 4.46 (Build 300) on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[4.46.300-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/copasi/4.46.300/24.03-lts-sp3/Dockerfile) | COPASI 4.46 (Build 300) on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+  |[4.48.309-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/copasi/4.48.309/24.03-lts-sp4/Dockerfile)| copasi 4.48.309 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 download: |
   拉取镜像到本地
   ```

@@ -17,10 +17,10 @@ The tag of each `solr` docker image is consist of the version of `solr` and the 
 | Tag                                                                                                                             | Currently                              | Architectures |
 |---------------------------------------------------------------------------------------------------------------------------------|----------------------------------------|---------------|
 |[10.1.0-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/solr/10.1.0/24.03-lts-sp4/Dockerfile) | solr 10.1.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[10.0.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/solr/10.0.0/24.03-lts-sp4/Dockerfile) | solr 10.0.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[9.10.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/solr/9.10.1/24.03-lts-sp4/Dockerfile) | solr 9.10.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[9.10.1-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/solr/9.10.1/24.03-lts-sp3/Dockerfile) | solr 9.10.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-| [9.8.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/solr/9.8.1/24.03-lts-sp1/Dockerfile) | Apache Solr 9.8.1 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+|[10.0.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/solr/10.0.0/24.03-lts-sp4/Dockerfile) | solr 10.0.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[9.10.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/solr/9.10.1/24.03-lts-sp4/Dockerfile) | solr 9.10.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[9.10.1-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/solr/9.10.1/24.03-lts-sp3/Dockerfile) | solr 9.10.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+| [9.8.1-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/solr/9.8.1/24.03-lts-sp1/Dockerfile) | Apache Solr 9.8.1 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 
 # Usage
 - Pull the `openeuler/solr` image from docker
@@ -37,4 +37,4 @@ The tag of each `solr` docker image is consist of the version of `solr` and the 
     The `openeuler/solr` image is used to verify the integration between the upstream msolresa version and openEuler. 
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

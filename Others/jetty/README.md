@@ -18,14 +18,14 @@ The tag of each `jetty` docker image is consist of the version of `jetty` and th
 
 | Tag                                                                                                                                | Currently                                | Architectures |
 |------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|---------------|
-|[12.1.14-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/jetty/12.1.14/24.03-lts-sp4/Dockerfile) | jetty 12.1.14 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[12.1.13-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/jetty/12.1.13/24.03-lts-sp4/Dockerfile) | jetty 12.1.13 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[12.1.9-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/jetty/12.1.9/24.03-lts-sp4/Dockerfile) | jetty 12.1.9 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[12.1.9-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/jetty/12.1.9/24.03-lts-sp3/Dockerfile) | jetty 12.1.9 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[12.1.6-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/jetty/12.1.6/24.03-lts-sp3/Dockerfile) | jetty 12.1.6 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-| [12.1.1-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/jetty/12.1.1/24.03-lts-sp2/Dockerfile)   | Jetty 12.1.1 on openEuler 24.03-LTS-SP2  | amd64, arm64  |
-| [12.1.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/jetty/12.1.0/24.03-lts-sp2/Dockerfile)   | Jetty 12.1.0 on openEuler 24.03-LTS-SP2  | amd64, arm64  |
-| [12.0.21-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/jetty/12.0.21/24.03-lts-sp1/Dockerfile) | Jetty 12.0.21 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+|[12.1.14-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/jetty/12.1.14/24.03-lts-sp4/Dockerfile) | jetty 12.1.14 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[12.1.13-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/jetty/12.1.13/24.03-lts-sp4/Dockerfile) | jetty 12.1.13 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[12.1.9-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/jetty/12.1.9/24.03-lts-sp4/Dockerfile) | jetty 12.1.9 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[12.1.9-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/jetty/12.1.9/24.03-lts-sp3/Dockerfile) | jetty 12.1.9 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[12.1.6-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/jetty/12.1.6/24.03-lts-sp3/Dockerfile) | jetty 12.1.6 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+| [12.1.1-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/jetty/12.1.1/24.03-lts-sp2/Dockerfile)   | Jetty 12.1.1 on openEuler 24.03-LTS-SP2  | amd64, arm64  |
+| [12.1.0-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/jetty/12.1.0/24.03-lts-sp2/Dockerfile)   | Jetty 12.1.0 on openEuler 24.03-LTS-SP2  | amd64, arm64  |
+| [12.0.21-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/jetty/12.0.21/24.03-lts-sp1/Dockerfile) | Jetty 12.0.21 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.
@@ -49,4 +49,4 @@ In this usage, users can select the corresponding `{Tag}` based on their require
     - There is a collection of [examples](https://github.com/jetty/jetty-examples) of how to use various features present in the Eclipse Jetty server and Eclipse Jetty client.
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

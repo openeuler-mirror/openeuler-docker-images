@@ -17,28 +17,28 @@ Learn more on [Grafana website](https://grafana.com/docs/grafana/latest/introduc
 The tag of each grafana docker image is consist of the version of grafana and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
-|[13.2.4-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/13.2.4/24.03-lts-sp4/Dockerfile) | grafana 13.2.4 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[13.2.3-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/13.2.3/24.03-lts-sp4/Dockerfile) | grafana 13.2.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[12.4.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/12.4.1/24.03-lts-sp4/Dockerfile) | grafana 12.4.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[12.4.1-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/12.4.1/24.03-lts-sp3/Dockerfile) | grafana 12.4.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[12.3.2-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/12.3.2/24.03-lts-sp3/Dockerfile) | grafana 12.3.2 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[12.3.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/12.3.0/24.03-lts-sp2/Dockerfile) | grafana 12.3.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-|[12.2.1-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/12.2.1/24.03-lts-sp2/Dockerfile) | grafana 12.2.1 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-|[12.2.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/12.2.0/24.03-lts-sp2/Dockerfile) | grafana 12.2.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-|[12.1.1-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/12.1.1/24.03-lts-sp2/Dockerfile) | grafana 12.1.1 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-|[7.5.11-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/7.5.1/22.03-lts/Dockerfile)| Grafana 7.5.1 on openEuler 22.03-LTS | amd64, arm64 |
-|[10.4.1-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/10.4.1/22.03-lts-sp3/Dockerfile)| Grafana 10.4.1 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
-|[11.1.0-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/11.1.0/22.03-lts-sp3/Dockerfile)| Grafana 11.1.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
-|[11.2.0-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/11.2.0/22.03-lts-sp3/Dockerfile)| Grafana 11.2.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
-|[11.2.2-oe2003sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/11.2.2/20.03-lts-sp4/Dockerfile)| Grafana 11.2.2 on openEuler 20.03-LTS-SP4 | amd64, arm64 |
-|[11.2.2-oe2203sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/11.2.2/22.03-lts-sp1/Dockerfile)| Grafana 11.2.2 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
-|[11.2.2-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/11.2.2/22.03-lts-sp3/Dockerfile)| Grafana 11.2.2 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
-|[11.2.2-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/11.2.2/22.03-lts-sp4/Dockerfile)| Grafana 11.2.2 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
-|[11.2.2-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/11.2.2/24.03-lts/Dockerfile)| Grafana 11.2.2 on openEuler 24.03-LTS | amd64, arm64 |
-|[11.3.0-oe2203sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/11.3.0/22.03-lts-sp1/Dockerfile)| Grafana 11.3.0 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
-|[11.3.0-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/11.3.0/22.03-lts-sp3/Dockerfile)| Grafana 11.3.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
-|[11.3.0-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/11.3.0/22.03-lts-sp4/Dockerfile)| Grafana 11.3.0 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
-|[11.3.0-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/11.3.0/24.03-lts/Dockerfile)| Grafana 11.3.0 on openEuler 24.03-LTS | amd64, arm64 |
+|[13.2.4-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/13.2.4/24.03-lts-sp4/Dockerfile) | grafana 13.2.4 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[13.2.3-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/13.2.3/24.03-lts-sp4/Dockerfile) | grafana 13.2.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[12.4.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/12.4.1/24.03-lts-sp4/Dockerfile) | grafana 12.4.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[12.4.1-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/12.4.1/24.03-lts-sp3/Dockerfile) | grafana 12.4.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[12.3.2-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/12.3.2/24.03-lts-sp3/Dockerfile) | grafana 12.3.2 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[12.3.0-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/12.3.0/24.03-lts-sp2/Dockerfile) | grafana 12.3.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[12.2.1-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/12.2.1/24.03-lts-sp2/Dockerfile) | grafana 12.2.1 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[12.2.0-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/12.2.0/24.03-lts-sp2/Dockerfile) | grafana 12.2.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[12.1.1-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/12.1.1/24.03-lts-sp2/Dockerfile) | grafana 12.1.1 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[7.5.11-oe2203lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/7.5.1/22.03-lts/Dockerfile)| Grafana 7.5.1 on openEuler 22.03-LTS | amd64, arm64 |
+|[10.4.1-oe2203sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/10.4.1/22.03-lts-sp3/Dockerfile)| Grafana 10.4.1 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[11.1.0-oe2203sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/11.1.0/22.03-lts-sp3/Dockerfile)| Grafana 11.1.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[11.2.0-oe2203sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/11.2.0/22.03-lts-sp3/Dockerfile)| Grafana 11.2.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[11.2.2-oe2003sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/11.2.2/20.03-lts-sp4/Dockerfile)| Grafana 11.2.2 on openEuler 20.03-LTS-SP4 | amd64, arm64 |
+|[11.2.2-oe2203sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/11.2.2/22.03-lts-sp1/Dockerfile)| Grafana 11.2.2 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
+|[11.2.2-oe2203sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/11.2.2/22.03-lts-sp3/Dockerfile)| Grafana 11.2.2 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[11.2.2-oe2203sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/11.2.2/22.03-lts-sp4/Dockerfile)| Grafana 11.2.2 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+|[11.2.2-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/11.2.2/24.03-lts/Dockerfile)| Grafana 11.2.2 on openEuler 24.03-LTS | amd64, arm64 |
+|[11.3.0-oe2203sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/11.3.0/22.03-lts-sp1/Dockerfile)| Grafana 11.3.0 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
+|[11.3.0-oe2203sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/11.3.0/22.03-lts-sp3/Dockerfile)| Grafana 11.3.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[11.3.0-oe2203sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/11.3.0/22.03-lts-sp4/Dockerfile)| Grafana 11.3.0 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+|[11.3.0-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/grafana/11.3.0/24.03-lts/Dockerfile)| Grafana 11.3.0 on openEuler 24.03-LTS | amd64, arm64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` and `container startup options` based on their requirements.
@@ -71,4 +71,4 @@ In this usage, users can select the corresponding `{Tag}` and `container startup
 	docker exec -it my-grafana /bin/bash
 	```
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

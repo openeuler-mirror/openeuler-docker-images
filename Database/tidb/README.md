@@ -19,12 +19,12 @@ The tag of each tidb docker image is consist of the version of tidb and the vers
 |[26.3.22-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Database/tidb/26.3.22/24.03-lts-sp4/Dockerfile) | tidb 26.3.22 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[26.3.21-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Database/tidb/26.3.21/24.03-lts-sp4/Dockerfile) | tidb 26.3.21 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[26.3.20-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Database/tidb/26.3.20/24.03-lts-sp4/Dockerfile) | tidb 26.3.20 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[26.3.19-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/tidb/26.3.19/24.03-lts-sp4/Dockerfile) | tidb 26.3.19 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[26.3.18-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/tidb/26.3.18/24.03-lts-sp4/Dockerfile) | tidb 26.3.18 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[26.3.13-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/tidb/26.3.13/24.03-lts-sp4/Dockerfile) | tidb 26.3.13 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[8.5.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/tidb/8.5.1/24.03-lts-sp1/Dockerfile)| TiDB 8.5.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
-|[8.5.3-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/tidb/8.5.3/24.03-lts-sp1/Dockerfile)| TiDB 8.5.3 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
-|[8.5.3-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/tidb/8.5.3/24.03-lts-sp4/Dockerfile)| TiDB 8.5.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[26.3.19-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/tidb/26.3.19/24.03-lts-sp4/Dockerfile) | tidb 26.3.19 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[26.3.18-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/tidb/26.3.18/24.03-lts-sp4/Dockerfile) | tidb 26.3.18 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[26.3.13-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/tidb/26.3.13/24.03-lts-sp4/Dockerfile) | tidb 26.3.13 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[8.5.1-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/tidb/8.5.1/24.03-lts-sp1/Dockerfile)| TiDB 8.5.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[8.5.3-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/tidb/8.5.3/24.03-lts-sp1/Dockerfile)| TiDB 8.5.3 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[8.5.3-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/tidb/8.5.3/24.03-lts-sp4/Dockerfile)| TiDB 8.5.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 # Usage
 
@@ -55,4 +55,4 @@ The tag of each tidb docker image is consist of the version of tidb and the vers
     ```
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

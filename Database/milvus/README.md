@@ -18,8 +18,8 @@ The tag of each `milvus` docker image is consist of the version of `milvus` and 
 
 | Tag                                                                                                                                 | Currently                                | Architectures |
 |-------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|---------------|
-| [2.5.14-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/milvus/2.5.14/24.03-lts-sp2/Dockerfile) | Milvus 2.5.14 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
-| [2.6.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/milvus/2.6.0/24.03-lts-sp2/Dockerfile)   | Milvus 2.6.0 on openEuler 24.03-LTS-SP2  | amd64, arm64  |
+| [2.5.14-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/milvus/2.5.14/24.03-lts-sp2/Dockerfile) | Milvus 2.5.14 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
+| [2.6.0-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/milvus/2.6.0/24.03-lts-sp2/Dockerfile)   | Milvus 2.6.0 on openEuler 24.03-LTS-SP2  | amd64, arm64  |
 | [3.0.5-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Database/milvus/3.0.5/24.03-lts-sp4/Dockerfile) | Milvus 3.0.5 on openEuler 24.03-LTS-SP4 | amd64, arm64  |
 
 # Usage
@@ -99,4 +99,4 @@ The tag of each `milvus` docker image is consist of the version of `milvus` and 
     ```
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

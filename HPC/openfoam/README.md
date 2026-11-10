@@ -17,10 +17,10 @@ Learn more on [OpenFOAM Web Site](https://www.openfoam.com/).
 The tag of each `openfoam` docker image is consist of the version of OpenFOAM and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
-|[20260907-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/openfoam/20260907/24.03-lts-sp4/Dockerfile) | openfoam 20260907 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[2506-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/openfoam/2506/24.03-lts-sp4/Dockerfile) | openfoam 2506 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[2506-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/openfoam/2506/24.03-lts-sp2/Dockerfile) | openfoam 2506 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-|[2412-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/openfoam/2412/24.03-lts-sp1/Dockerfile)| OpenFOAM 2412 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[20260907-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/openfoam/20260907/24.03-lts-sp4/Dockerfile) | openfoam 20260907 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[2506-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/openfoam/2506/24.03-lts-sp4/Dockerfile) | openfoam 2506 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[2506-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/openfoam/2506/24.03-lts-sp2/Dockerfile) | openfoam 2506 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[2412-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/openfoam/2412/24.03-lts-sp1/Dockerfile)| OpenFOAM 2412 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
 Here, you can select the corresponding `{Tag}` by their requirements.
@@ -59,4 +59,4 @@ Here, you can select the corresponding `{Tag}` by their requirements.
 	Once the test is finished, you can check `ExecutionTime` in `log.simpleFoam` which represents the performance.
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

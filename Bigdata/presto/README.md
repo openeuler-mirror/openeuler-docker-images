@@ -18,11 +18,11 @@ The tag of each presto docker image is consist of the version of presto and the 
 
 | Tags                                                                                                                             | Currently                               | Architectures |
 |----------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|---------------|
-|[0.300-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/presto/0.300/24.03-lts-sp4/Dockerfile) | presto 0.300 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[0.299-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/presto/0.299/24.03-lts-sp4/Dockerfile) | presto 0.299 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-| [0.292-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/presto/0.292/24.03-lts-sp1/Dockerfile) | Presto 0.292 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
-| [0.293-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/presto/0.293/24.03-lts-sp4/Dockerfile) | Presto 0.293 on openEuler 24.03-LTS-SP4 | amd64, arm64  |
-| [0.293-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/presto/0.293/24.03-lts-sp2/Dockerfile) | Presto 0.293 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
+|[0.300-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/presto/0.300/24.03-lts-sp4/Dockerfile) | presto 0.300 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[0.299-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/presto/0.299/24.03-lts-sp4/Dockerfile) | presto 0.299 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+| [0.292-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/presto/0.292/24.03-lts-sp1/Dockerfile) | Presto 0.292 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+| [0.293-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/presto/0.293/24.03-lts-sp4/Dockerfile) | Presto 0.293 on openEuler 24.03-LTS-SP4 | amd64, arm64  |
+| [0.293-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/presto/0.293/24.03-lts-sp2/Dockerfile) | Presto 0.293 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}`  based on their requirements.
@@ -84,4 +84,4 @@ In this usage, users can select the corresponding `{Tag}`  based on their requir
   ```
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

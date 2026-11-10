@@ -16,13 +16,13 @@ tags: |
   |[2.61.0-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/e2b/2.61.0/24.03-lts-sp4/Dockerfile) | e2b 2.61.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[2.59.0-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/e2b/2.59.0/24.03-lts-sp4/Dockerfile) | e2b 2.59.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[2.58.0-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/e2b/2.58.0/24.03-lts-sp4/Dockerfile) | e2b 2.58.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-  |[2.56.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/e2b/2.56.0/24.03-lts-sp4/Dockerfile) | e2b 2.56.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-  |[2.55.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/e2b/2.55.0/24.03-lts-sp4/Dockerfile) | e2b 2.55.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-  |[2.53.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/e2b/2.53.1/24.03-lts-sp4/Dockerfile) | e2b 2.53.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-  |[2.52.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/e2b/2.52.1/24.03-lts-sp4/Dockerfile) | e2b 2.52.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-  |[2.51.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/e2b/2.51.0/24.03-lts-sp4/Dockerfile) | e2b 2.51.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-  |[2.51.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/e2b/2.51.0/24.03-lts-sp4/Dockerfile) | e2b 2.51.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-  |[2.49.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/e2b/2.49.0/24.03-lts-sp4/Dockerfile) | e2b 2.49.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[2.56.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/e2b/2.56.0/24.03-lts-sp4/Dockerfile) | e2b 2.56.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[2.55.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/e2b/2.55.0/24.03-lts-sp4/Dockerfile) | e2b 2.55.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[2.53.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/e2b/2.53.1/24.03-lts-sp4/Dockerfile) | e2b 2.53.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[2.52.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/e2b/2.52.1/24.03-lts-sp4/Dockerfile) | e2b 2.52.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[2.51.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/e2b/2.51.0/24.03-lts-sp4/Dockerfile) | e2b 2.51.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[2.51.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/e2b/2.51.0/24.03-lts-sp4/Dockerfile) | e2b 2.51.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[2.49.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/e2b/2.49.0/24.03-lts-sp4/Dockerfile) | e2b 2.49.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[2.29.4-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/e2b/2.29.4/24.03-lts-sp4/Dockerfile) | E2B Python SDK 2.29.4 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[2.29.4-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/e2b/2.29.4/24.03-lts-sp3/Dockerfile) | E2B Python SDK 2.29.4 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 

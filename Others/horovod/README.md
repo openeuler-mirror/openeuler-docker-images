@@ -17,10 +17,10 @@ Learn more on [Horovod Website](https://horovod.readthedocs.io/en/stable/)⁠.
 The tag of each `horovod` docker image is consist of the version of `horovod` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
-|[0.28.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/horovod/0.28.1/24.03-lts-sp4/Dockerfile) | horovod 0.28.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[0.28.1-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/horovod/0.28.1/24.03-lts-sp3/Dockerfile) | horovod 0.28.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[0.28.1-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/horovod/0.28.1/24.03-lts-sp2/Dockerfile) | horovod 0.28.1 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-|[0.28.1-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/horovod/0.28.1/24.03-lts/Dockerfile)| Horovod 0.28.1 on openEuler 24.03-LTS | amd64, arm64 |
+|[0.28.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/horovod/0.28.1/24.03-lts-sp4/Dockerfile) | horovod 0.28.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[0.28.1-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/horovod/0.28.1/24.03-lts-sp3/Dockerfile) | horovod 0.28.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[0.28.1-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/horovod/0.28.1/24.03-lts-sp2/Dockerfile) | horovod 0.28.1 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[0.28.1-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/horovod/0.28.1/24.03-lts/Dockerfile)| Horovod 0.28.1 on openEuler 24.03-LTS | amd64, arm64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.
@@ -39,4 +39,4 @@ In this usage, users can select the corresponding `{Tag}` based on their require
     After the Horovod container starts, it will display version information.
         
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

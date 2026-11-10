@@ -18,10 +18,10 @@ Each tag of cp2k container image consists of the version of CP2K and the version
 
 | Tags | Currently |  Architectures|
 |------|-----------|---------------|
-|[2026.2-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/cp2k/2026.2/24.03-lts-sp4/Dockerfile) | cp2k 2026.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[2024.3-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/cp2k/2024.3/24.03-lts/Dockerfile)| CP2K 2024.3 on openEuler 24.03-LTS | amd64, arm64 |
-|[2025.2-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/cp2k/2025.2/24.03-lts-sp4/Dockerfile)| CP2K 2025.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[2025.2-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/cp2k/2025.2/24.03-lts-sp2/Dockerfile)| CP2K 2025.2 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[2026.2-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/cp2k/2026.2/24.03-lts-sp4/Dockerfile) | cp2k 2026.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[2024.3-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/cp2k/2024.3/24.03-lts/Dockerfile)| CP2K 2024.3 on openEuler 24.03-LTS | amd64, arm64 |
+|[2025.2-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/cp2k/2025.2/24.03-lts-sp4/Dockerfile)| CP2K 2025.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[2025.2-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/cp2k/2025.2/24.03-lts-sp2/Dockerfile)| CP2K 2025.2 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 
 
 # Usage
@@ -45,4 +45,4 @@ Here, users can select the `{Tag}` and container startup options by their requir
 	```
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

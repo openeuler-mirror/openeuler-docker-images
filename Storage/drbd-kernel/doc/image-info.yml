@@ -11,7 +11,7 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
-  |[9.3.4-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/drbd-kernel/9.3.4/24.03-lts-sp4/Dockerfile)| DRBD kernel module 9.3.4 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[9.3.4-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Storage/drbd-kernel/9.3.4/24.03-lts-sp4/Dockerfile)| DRBD kernel module 9.3.4 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 download: |
   拉取镜像到本地

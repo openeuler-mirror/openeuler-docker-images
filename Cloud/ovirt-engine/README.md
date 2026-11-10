@@ -16,9 +16,9 @@ The tag of each `ovirt-engine` docker image is consist of the version of `ovirt-
 
 | Tag                                                                                                                                  | Currently                                     | Architectures |
 |--------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------|---------------|
-|[4.5.7-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/ovirt-engine/4.5.7/24.03-lts-sp4/Dockerfile) | ovirt 4.5.7 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[4.5.7-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/ovirt-engine/4.5.7/24.03-lts-sp3/Dockerfile) | ovirt 4.5.7 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-| [4.5.6-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/ovirt-engine/4.5.6/24.03-lts-sp1/Dockerfile) | oVirt Engine 4.5.6 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+|[4.5.7-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/ovirt-engine/4.5.7/24.03-lts-sp4/Dockerfile) | ovirt 4.5.7 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[4.5.7-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/ovirt-engine/4.5.7/24.03-lts-sp3/Dockerfile) | ovirt 4.5.7 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+| [4.5.6-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/ovirt-engine/4.5.6/24.03-lts-sp1/Dockerfile) | oVirt Engine 4.5.6 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.
@@ -47,4 +47,4 @@ In this usage, users can select the corresponding `{Tag}` based on their require
     * `-bmanagement 0.0.0.0:` Listen for both application traffic and management traffic.
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

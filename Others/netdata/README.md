@@ -18,14 +18,14 @@ The tag of each netdata docker image is consist of the version of netdata and th
 
 | Tags                                                                                                                             | Currently                                |  Architectures|
 |----------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|--|
-|[2.8.3-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/netdata/2.8.3/24.03-lts-sp4/Dockerfile) | netdata 2.8.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[2.8.3-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/netdata/2.8.3/24.03-lts-sp2/Dockerfile) | netdata 2.8.3 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-|[2.8.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/netdata/2.8.0/24.03-lts-sp2/Dockerfile) | netdata 2.8.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-|[2.7.3-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/netdata/2.7.3/24.03-lts-sp2/Dockerfile) | netdata 2.7.3 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-|[2.7.1-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/netdata/2.7.1/24.03-lts-sp2/Dockerfile) | netdata 2.7.1 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-|[2.7.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/netdata/2.7.0/24.03-lts-sp2/Dockerfile) | netdata 2.7.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-|[2.6.3-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/netdata/2.6.3/24.03-lts-sp1/Dockerfile) | netdata 2.6.3 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
-| [2.5.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/netdata/2.5.0/24.03-lts-sp1/Dockerfile) | Netdata 2.5.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[2.8.3-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/netdata/2.8.3/24.03-lts-sp4/Dockerfile) | netdata 2.8.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[2.8.3-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/netdata/2.8.3/24.03-lts-sp2/Dockerfile) | netdata 2.8.3 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[2.8.0-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/netdata/2.8.0/24.03-lts-sp2/Dockerfile) | netdata 2.8.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[2.7.3-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/netdata/2.7.3/24.03-lts-sp2/Dockerfile) | netdata 2.7.3 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[2.7.1-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/netdata/2.7.1/24.03-lts-sp2/Dockerfile) | netdata 2.7.1 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[2.7.0-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/netdata/2.7.0/24.03-lts-sp2/Dockerfile) | netdata 2.7.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[2.6.3-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/netdata/2.6.3/24.03-lts-sp1/Dockerfile) | netdata 2.6.3 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+| [2.5.0-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/netdata/2.5.0/24.03-lts-sp1/Dockerfile) | Netdata 2.5.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}`  based on their requirements.
@@ -60,4 +60,4 @@ In this usage, users can select the corresponding `{Tag}`  based on their requir
     This will bring up the Netdata real-time monitoring dashboard, where you can view system metrics such as CPU, memory, disk I/O, network traffic, and more.
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

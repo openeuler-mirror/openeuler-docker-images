@@ -28,7 +28,7 @@ The tag of each Text2Image docker image is consist of the version of Text2Image 
 
 | Tags | Currently |  Architectures|
 |--|--|--|
-|[1.2-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/opea/text2image/1.2/24.03-lts/Dockerfile)| Text2Image 1.2 on openEuler 24.03-LTS | amd64 |
+|[1.2-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/opea/text2image/1.2/24.03-lts/Dockerfile)| Text2Image 1.2 on openEuler 24.03-LTS | amd64 |
 
 # Usage
 
@@ -68,7 +68,7 @@ To set up environment variables for deploying Text2Image services, follow these 
 
 ### Quick Start: 2.Run Docker Compose 
 
-> Get `compose.yml` here: [compose.yml](https://gitee.com/openeuler/openeuler-docker-images/tree/master/AI/opea/text2image/doc/compose.yml)
+> Get `compose.yml` here: [compose.yml](https://gitcode.com/openeuler/openeuler-docker-images/tree/master/AI/opea/text2image/doc/compose.yml)
 
 ```bash
 docker compose -f compose.yml up -d
