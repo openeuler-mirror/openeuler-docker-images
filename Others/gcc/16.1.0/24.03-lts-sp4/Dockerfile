@@ -12,7 +12,7 @@ RUN dnf update -y \
 
 WORKDIR /opt
 
-RUN wget https://mirrors.tuna.tsinghua.edu.cn/gnu/gcc/gcc-${VERSION}/gcc-${VERSION}.tar.gz \
+RUN wget https://mirrors.huaweicloud.com/gnu/gcc/gcc-${VERSION}/gcc-${VERSION}.tar.gz \
     && tar -zxvf gcc-${VERSION}.tar.gz \
     && rm -f gcc-${VERSION}.tar.gz
 
@@ -20,10 +20,10 @@ WORKDIR /opt/gcc-${VERSION}
 
 RUN mkdir -p gcc-deps \
     && cd gcc-deps \
-    && wget https://mirrors.tuna.tsinghua.edu.cn/gnu/gmp/gmp-6.2.1.tar.bz2 \
-    && wget https://mirrors.tuna.tsinghua.edu.cn/gnu/mpfr/mpfr-4.1.0.tar.bz2 \
-    && wget https://mirrors.tuna.tsinghua.edu.cn/gnu/mpc/mpc-1.2.1.tar.gz \
-    && wget https://mirrors.tuna.tsinghua.edu.cn/gnu/gettext/gettext-0.22.tar.gz \
+    && wget https://mirrors.huaweicloud.com/gnu/gmp/gmp-6.2.1.tar.bz2 \
+    && wget https://mirrors.huaweicloud.com/gnu/mpfr/mpfr-4.1.0.tar.bz2 \
+    && wget https://mirrors.huaweicloud.com/gnu/mpc/mpc-1.2.1.tar.gz \
+    && wget https://mirrors.huaweicloud.com/gnu/gettext/gettext-0.22.tar.gz \
     && wget https://libisl.sourceforge.io/isl-0.24.tar.bz2 \
     && ln -s gmp-6.2.1 ../gmp \
     && ln -s mpfr-4.1.0 ../mpfr \
