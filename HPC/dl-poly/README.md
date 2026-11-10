@@ -36,18 +36,20 @@ In this usage, users can select the corresponding `{Tag}` based on their require
 
 - Run DL_POLY with your own input files
 
+    DL_POLY requires three input files: CONTROL, CONFIG, and FIELD. They must be in the same working directory.
     ```
-    docker run -it --rm -v /path/to/your/data:/data openeuler/dl-poly:{Tag} \
-        mpirun -np 4 ./DLPOLY.Z -c /data/CONTROL -f /data/FIELD
+    docker run -it --rm -v /path/to/your/data:/data -w /data openeuler/dl-poly:{Tag} \
+        mpirun -np 4 /opt/dl-poly/bin/DLPOLY.Z -c CONTROL
     ```
+    CONFIG and FIELD are read from the current working directory (`/data` above); no extra parameter is needed.
 
 - Run parallel simulation with multiple MPI processes
 
     ```
-    docker run -it --rm openeuler/dl-poly:{Tag} mpirun -np 4 ./DLPOLY.Z
+    docker run -it --rm -v /path/to/your/data:/data -w /data openeuler/dl-poly:{Tag} \
+        mpirun -np 4 /opt/dl-poly/bin/DLPOLY.Z
     ```
-
-    Note: DL_POLY requires three input files: CONTROL, CONFIG, and FIELD.
+    Make sure CONTROL, CONFIG, and FIELD exist in `/data` before running.
 
 # Question and answering
 If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).
