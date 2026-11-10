@@ -2,7 +2,7 @@ ARG BASE=openeuler/openeuler:24.03-lts-sp4
 FROM ${BASE}
 
 ARG TARGETARCH
-ARG VERSION=17_6
+ARG VERSION=18_6
 ARG GOSU_VERSION=1.17
 
 RUN yum -y install wget make gcc icu libicu-devel readline-devel zlib-devel findutils shadow-utils \
