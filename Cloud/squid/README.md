@@ -18,13 +18,13 @@ The tag of each `squid` docker image is consist of the version of `squid` and th
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
 |[7.8-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/squid/7.8/24.03-lts-sp4/Dockerfile) | squid 7.8 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[7.7-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/squid/7.7/24.03-lts-sp4/Dockerfile) | squid 7.7 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[7.5-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/squid/7.5/24.03-lts-sp4/Dockerfile) | squid 7.5 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[7.5-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/squid/7.5/24.03-lts-sp3/Dockerfile) | squid 7.5 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[7.4-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/squid/7.4/24.03-lts-sp3/Dockerfile) | squid 7.4 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[7.3-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/squid/7.3/24.03-lts-sp3/Dockerfile) | squid 7.3 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[7.3-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/squid/7.3/24.03-lts-sp2/Dockerfile) | squid 7.3 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-|[6.8-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/squid/6.8/22.03-lts-sp3/Dockerfile)| Squid 6.8 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[7.7-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/squid/7.7/24.03-lts-sp4/Dockerfile) | squid 7.7 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[7.5-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/squid/7.5/24.03-lts-sp4/Dockerfile) | squid 7.5 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[7.5-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/squid/7.5/24.03-lts-sp3/Dockerfile) | squid 7.5 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[7.4-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/squid/7.4/24.03-lts-sp3/Dockerfile) | squid 7.4 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[7.3-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/squid/7.3/24.03-lts-sp3/Dockerfile) | squid 7.3 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[7.3-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/squid/7.3/24.03-lts-sp2/Dockerfile) | squid 7.3 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[6.8-oe2203sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/squid/6.8/22.03-lts-sp3/Dockerfile)| Squid 6.8 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` and `container startup options` based on their requirements.
@@ -65,4 +65,4 @@ In this usage, users can select the corresponding `{Tag}` and `container startup
 	```
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

@@ -19,14 +19,14 @@ The tag of each `qemu` docker image is consist of the version of `qemu` and the 
 | Tag                                                                                                                        | Currently                              | Architectures |
 |----------------------------------------------------------------------------------------------------------------------------|----------------------------------------|---------------|
 |[11.1.3-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/qemu/11.1.3/24.03-lts-sp4/Dockerfile) | qemu 11.1.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[11.1.2-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/qemu/11.1.2/24.03-lts-sp4/Dockerfile) | qemu 11.1.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[11.1.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/qemu/11.1.1/24.03-lts-sp4/Dockerfile) | qemu 11.1.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[11.0.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/qemu/11.0.0/24.03-lts-sp4/Dockerfile) | qemu 11.0.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[11.0.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/qemu/11.0.0/24.03-lts-sp3/Dockerfile) | qemu 11.0.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[10.2.2-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/qemu/10.2.2/24.03-lts-sp3/Dockerfile) | qemu 10.2.2 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[10.1.2-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/qemu/10.1.2/24.03-lts-sp2/Dockerfile) | qemu 10.1.2 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-|[10.1.1-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/qemu/10.1.1/24.03-lts-sp2/Dockerfile) | qemu 10.1.1 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-|[10.1.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/qemu/10.1.0/24.03-lts-sp1/Dockerfile) | qemu 10.1.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[11.1.2-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/qemu/11.1.2/24.03-lts-sp4/Dockerfile) | qemu 11.1.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[11.1.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/qemu/11.1.1/24.03-lts-sp4/Dockerfile) | qemu 11.1.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[11.0.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/qemu/11.0.0/24.03-lts-sp4/Dockerfile) | qemu 11.0.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[11.0.0-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/qemu/11.0.0/24.03-lts-sp3/Dockerfile) | qemu 11.0.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[10.2.2-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/qemu/10.2.2/24.03-lts-sp3/Dockerfile) | qemu 10.2.2 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[10.1.2-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/qemu/10.1.2/24.03-lts-sp2/Dockerfile) | qemu 10.1.2 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[10.1.1-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/qemu/10.1.1/24.03-lts-sp2/Dockerfile) | qemu 10.1.1 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[10.1.0-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/qemu/10.1.0/24.03-lts-sp1/Dockerfile) | qemu 10.1.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 | [10.0.2-oe2403sp1](https://gitee.com/openeuler/openeuler-qemu-images/blob/master/Cloud/qemu/10.0.2/24.03-lts-sp1/qemufile) | QEMU 10.0.2 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 
 # Usage
@@ -73,4 +73,4 @@ In this usage, users can select the corresponding `{Tag}` based on their require
     * `-boot d:` Boot from the CD-ROM drive.
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

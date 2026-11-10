@@ -16,9 +16,9 @@ Learn more at [wgcna](https://github.com/smorabit/hdWGCNA/).
 The tag of each wgcna docker image is consist of the version of wgcna and the version of basic image. The details are as follows:
 | Tags | Currently | Architectures |
 |------|-----------|---------------|
-|[0.4.12-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/wgcna/0.4.12/24.03-lts-sp4/Dockerfile) | wgcna 0.4.12 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[0.4.09-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/wgcna/0.4.09/24.03-lts-sp4/Dockerfile) | wgcna 0.4.09 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[0.4.09-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/wgcna/0.4.09/24.03-lts-sp3/Dockerfile) | wgcna 0.4.09 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[0.4.12-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/wgcna/0.4.12/24.03-lts-sp4/Dockerfile) | wgcna 0.4.12 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[0.4.09-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/wgcna/0.4.09/24.03-lts-sp4/Dockerfile) | wgcna 0.4.09 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[0.4.09-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/wgcna/0.4.09/24.03-lts-sp3/Dockerfile) | wgcna 0.4.09 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 # Usage
 - Ensure that you have Docker installed, or are using Docker for Linux containers if on Windows.

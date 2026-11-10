@@ -17,11 +17,11 @@ Learn more about ZooKeeper on the [ZooKeeper Wiki](https://cwiki.apache.org/conf
 The tag of each `zookeeper` docker image is consist of the version of `zookeeper` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
-|[3.9.7-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/zookeeper/3.9.7/24.03-lts-sp4/Dockerfile) | zookeeper 3.9.7 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[3.9.6-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/zookeeper/3.9.6/24.03-lts-sp4/Dockerfile) | zookeeper 3.9.6 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[3.9.4-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/zookeeper/3.9.4/24.03-lts-sp4/Dockerfile) | zookeeper 3.9.4 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[3.9.4-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/zookeeper/3.9.4/24.03-lts-sp1/Dockerfile) | zookeeper 3.9.4 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
-|[3.8.3-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/zookeeper/3.8.3/22.03-lts-sp3/Dockerfile)| zookeeper 3.8.3 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[3.9.7-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/zookeeper/3.9.7/24.03-lts-sp4/Dockerfile) | zookeeper 3.9.7 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[3.9.6-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/zookeeper/3.9.6/24.03-lts-sp4/Dockerfile) | zookeeper 3.9.6 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[3.9.4-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/zookeeper/3.9.4/24.03-lts-sp4/Dockerfile) | zookeeper 3.9.4 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[3.9.4-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/zookeeper/3.9.4/24.03-lts-sp1/Dockerfile) | zookeeper 3.9.4 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[3.8.3-oe2203sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/zookeeper/3.8.3/22.03-lts-sp3/Dockerfile)| zookeeper 3.8.3 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` and `container startup options` based on their requirements.
@@ -61,4 +61,4 @@ In this usage, users can select the corresponding `{Tag}` and `container startup
 	```
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

@@ -18,18 +18,18 @@ The tag of each Python docker image is consist of the version of Python and the 
 | Tags | Currently |  Architectures|
 |--|--|--|
 |[3.15.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/python/3.15.0/24.03-lts-sp4/Dockerfile) | python 3.15.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[3.14.7-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/python/3.14.7/24.03-lts-sp4/Dockerfile) | python 3.14.7 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[3.9.9-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/Others/python/3.9.9/22.03-lts/Dockerfile)| Python 3.9.9 on openEuler 22.03-LTS | amd64, arm64 |
-|[3.9.9-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/Others/python/3.9.9/24.03-lts/Dockerfile)| Python 3.9.9 on openEuler 24.03-LTS | amd64, arm64 |
-|[3.10.17-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/Others/python/3.10.17/22.03-lts/Dockerfile)| Python 3.10.17 on openEuler 22.03-LTS | amd64, arm64 |
-|[3.10.17-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/Others/python/3.10.17/24.03-lts/Dockerfile)| Python 3.10.17 on openEuler 24.03-LTS | amd64, arm64 |
-|[3.11.13-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/Others/python/3.11.13/22.03-lts/Dockerfile)| Python 3.11.13 on openEuler 22.03-LTS | amd64, arm64 |
-|[3.11.13-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/Others/python/3.11.13/24.03-lts/Dockerfile)| Python 3.11.13 on openEuler 24.03-LTS | amd64, arm64 |
-|[3.12.10-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/Others/python/3.12.10/22.03-lts/Dockerfile)| Python 3.12.10 on openEuler 22.03-LTS | amd64, arm64 |
-|[3.12.10-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/Others/python/3.12.10/24.03-lts/Dockerfile)| Python 3.12.10 on openEuler 24.03-LTS | amd64, arm64 |
-|[3.13.4-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/Others/python/3.13.4/22.03-lts/Dockerfile)| Python 3.13.4 on openEuler 22.03-LTS | amd64, arm64 |
-|[3.13.4-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/Others/python/3.13.4/24.03-lts/Dockerfile)| Python 3.13.4 on openEuler 24.03-LTS | amd64, arm64 |
-|[3.13.4-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/Others/python/3.13.4/24.03-lts-sp4/Dockerfile)| Python 3.13.4 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[3.14.7-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/python/3.14.7/24.03-lts-sp4/Dockerfile) | python 3.14.7 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[3.9.9-oe2203lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/Others/python/3.9.9/22.03-lts/Dockerfile)| Python 3.9.9 on openEuler 22.03-LTS | amd64, arm64 |
+|[3.9.9-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/Others/python/3.9.9/24.03-lts/Dockerfile)| Python 3.9.9 on openEuler 24.03-LTS | amd64, arm64 |
+|[3.10.17-oe2203lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/Others/python/3.10.17/22.03-lts/Dockerfile)| Python 3.10.17 on openEuler 22.03-LTS | amd64, arm64 |
+|[3.10.17-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/Others/python/3.10.17/24.03-lts/Dockerfile)| Python 3.10.17 on openEuler 24.03-LTS | amd64, arm64 |
+|[3.11.13-oe2203lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/Others/python/3.11.13/22.03-lts/Dockerfile)| Python 3.11.13 on openEuler 22.03-LTS | amd64, arm64 |
+|[3.11.13-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/Others/python/3.11.13/24.03-lts/Dockerfile)| Python 3.11.13 on openEuler 24.03-LTS | amd64, arm64 |
+|[3.12.10-oe2203lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/Others/python/3.12.10/22.03-lts/Dockerfile)| Python 3.12.10 on openEuler 22.03-LTS | amd64, arm64 |
+|[3.12.10-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/Others/python/3.12.10/24.03-lts/Dockerfile)| Python 3.12.10 on openEuler 24.03-LTS | amd64, arm64 |
+|[3.13.4-oe2203lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/Others/python/3.13.4/22.03-lts/Dockerfile)| Python 3.13.4 on openEuler 22.03-LTS | amd64, arm64 |
+|[3.13.4-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/Others/python/3.13.4/24.03-lts/Dockerfile)| Python 3.13.4 on openEuler 24.03-LTS | amd64, arm64 |
+|[3.13.4-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/Others/python/3.13.4/24.03-lts-sp4/Dockerfile)| Python 3.13.4 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 
 # Usage
@@ -48,4 +48,4 @@ In this usage, users can select the corresponding `{Tag}` and `container startup
 	```
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

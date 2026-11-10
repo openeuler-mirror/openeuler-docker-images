@@ -16,7 +16,7 @@ The tag of each llvm-build-deps docker image is consist of the version of llvm-b
 
 | Tags | Currently |  Architectures|
 |------|-----------|---------------|
-|[1.0.0-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/llvm-build-deps/1.0.0/22.03-lts-sp4/Dockerfile)| llvm-build-deps 1.0.0 on openEuler 22.03-LTS | amd64, arm64 |
+|[1.0.0-oe2203sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/llvm-build-deps/1.0.0/22.03-lts-sp4/Dockerfile)| llvm-build-deps 1.0.0 on openEuler 22.03-LTS | amd64, arm64 |
 
 
 # Usage
@@ -37,4 +37,4 @@ Here, users can select the corresponding `{Tag}` and `container startup options`
 Linux/Unix, ARM64 or X86-64 architecture.
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

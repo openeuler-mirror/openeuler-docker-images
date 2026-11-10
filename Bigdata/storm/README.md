@@ -16,10 +16,10 @@ For more information about storm, please visit [https://storm.apache.org/](https
 The tag of each storm docker image is consist of the version of storm and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
-|[3.1.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/storm/3.1.0/24.03-lts-sp4/Dockerfile) | storm 3.1.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[2.8.2-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/storm/2.8.2/24.03-lts-sp4/Dockerfile) | storm 2.8.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[2.8.2-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/storm/2.8.2/24.03-lts-sp2/Dockerfile) | storm 2.8.2 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-|[2.8.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/storm/2.8.0/24.03-lts-sp1/Dockerfile)| Storm 2.8.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[3.1.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/storm/3.1.0/24.03-lts-sp4/Dockerfile) | storm 3.1.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[2.8.2-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/storm/2.8.2/24.03-lts-sp4/Dockerfile) | storm 2.8.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[2.8.2-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/storm/2.8.2/24.03-lts-sp2/Dockerfile) | storm 2.8.2 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[2.8.0-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/storm/2.8.0/24.03-lts-sp1/Dockerfile)| Storm 2.8.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
 
@@ -50,4 +50,4 @@ positional arguments:
 ```
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

@@ -18,12 +18,12 @@ The tag of each `wrf` docker image is consist of the version of `wrf` and the ve
 
 | Tag                                                                                                                       | Currently                            | Architectures |
 |---------------------------------------------------------------------------------------------------------------------------|--------------------------------------|---------------|
-|[4.8.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/wrf/4.8.0/24.03-lts-sp4/Dockerfile) | wrf 4.8.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-| [4.7.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/wrf/4.7.1/24.03-lts-sp4/Dockerfile) | WRF 4.7.1 on openEuler 24.03-LTS-SP4 | amd64, arm64  |
-| [4.7.1-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/wrf/4.7.1/24.03-lts-sp2/Dockerfile) | WRF 4.7.1 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
-| [4.7.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/wrf/4.7.1/24.03-lts-sp1/Dockerfile) | WRF 4.7.1 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
-| [4.7.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/wrf/4.7.0/24.03-lts-sp1/Dockerfile) | WRF 4.7.0 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
-| [4.6.1-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/wrf/4.6.1/24.03-lts/Dockerfile)     | WRF 4.6.1 on openEuler 24.03-LTS     | amd64, arm64  |
+|[4.8.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/wrf/4.8.0/24.03-lts-sp4/Dockerfile) | wrf 4.8.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+| [4.7.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/wrf/4.7.1/24.03-lts-sp4/Dockerfile) | WRF 4.7.1 on openEuler 24.03-LTS-SP4 | amd64, arm64  |
+| [4.7.1-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/wrf/4.7.1/24.03-lts-sp2/Dockerfile) | WRF 4.7.1 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
+| [4.7.1-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/wrf/4.7.1/24.03-lts-sp1/Dockerfile) | WRF 4.7.1 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+| [4.7.0-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/wrf/4.7.0/24.03-lts-sp1/Dockerfile) | WRF 4.7.0 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+| [4.6.1-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/wrf/4.6.1/24.03-lts/Dockerfile)     | WRF 4.6.1 on openEuler 24.03-LTS     | amd64, arm64  |
 
 # Usage
 Here, users can select the corresponding `{Tag}` by requirements.
@@ -46,4 +46,4 @@ Here, users can select the corresponding `{Tag}` by requirements.
 	From here, you can begin your work to run the WRF tasks.
 	
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

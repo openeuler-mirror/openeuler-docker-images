@@ -16,9 +16,9 @@ The tag of each diskann docker image is consist of the version of diskann and th
 |[9.0.0-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/diskann/9.0.0/24.03-lts-sp4/Dockerfile) | diskann 9.0.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[8.0.1-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/diskann/8.0.1/24.03-lts-sp4/Dockerfile) | diskann 8.0.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[8.0.0-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/diskann/8.0.0/24.03-lts-sp4/Dockerfile) | diskann 8.0.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[6.0.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/diskann/6.0.0/24.03-lts-sp4/Dockerfile) | diskann 6.0.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[5.0.3-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/diskann/5.0.3/24.03-lts-sp4/Dockerfile) | diskann 5.0.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[0.59.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/diskann/0.59.0/24.03-lts-sp4/Dockerfile) | diskann 0.59.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[6.0.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/diskann/6.0.0/24.03-lts-sp4/Dockerfile) | diskann 6.0.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[5.0.3-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/diskann/5.0.3/24.03-lts-sp4/Dockerfile) | diskann 5.0.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[0.59.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/diskann/0.59.0/24.03-lts-sp4/Dockerfile) | diskann 0.59.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[0.52.0-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/diskann/0.52.0/24.03-lts-sp4/Dockerfile) | diskann 0.52.0 on openEuler 24.03-lts-sp4 | amd64, arm64 |
 |[0.52.0-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/diskann/0.52.0/24.03-lts-sp3/Dockerfile) | diskann 0.52.0 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 

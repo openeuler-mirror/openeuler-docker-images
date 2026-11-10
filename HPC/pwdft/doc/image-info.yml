@@ -13,12 +13,12 @@ tags: |
   |----------|-------------|------------------|
   |[af51c97-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/pwdft/af51c97/24.03-lts-sp4/Dockerfile) | pwdft af51c97 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[06b4f09-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/pwdft/06b4f09/24.03-lts-sp4/Dockerfile) | pwdft 06b4f09 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-  |[8f0f760-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/pwdft/8f0f760/24.03-lts-sp4/Dockerfile) | pwdft 8f0f760 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-  |[d7fef2d-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/pwdft/d7fef2d/24.03-lts-sp4/Dockerfile) | pwdft d7fef2d on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-  |[dacb3dc-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/pwdft/dacb3dc/24.03-lts-sp4/Dockerfile) | pwdft dacb3dc on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-  |[dabe15a-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/pwdft/dabe15a/24.03-lts-sp4/Dockerfile) | pwdft dabe15a on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-  |[784e13d-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/pwdft/784e13d/24.03-lts-sp4/Dockerfile) | pwdft 784e13d on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-  |[1.0.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/pwdft/1.0.0/24.03-lts-sp3/Dockerfile)| PWDFT 1.0.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+  |[8f0f760-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/pwdft/8f0f760/24.03-lts-sp4/Dockerfile) | pwdft 8f0f760 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[d7fef2d-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/pwdft/d7fef2d/24.03-lts-sp4/Dockerfile) | pwdft d7fef2d on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[dacb3dc-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/pwdft/dacb3dc/24.03-lts-sp4/Dockerfile) | pwdft dacb3dc on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[dabe15a-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/pwdft/dabe15a/24.03-lts-sp4/Dockerfile) | pwdft dabe15a on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[784e13d-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/pwdft/784e13d/24.03-lts-sp4/Dockerfile) | pwdft 784e13d on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[1.0.0-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/pwdft/1.0.0/24.03-lts-sp3/Dockerfile)| PWDFT 1.0.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 download: |
   拉取镜像到本地

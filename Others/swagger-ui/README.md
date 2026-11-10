@@ -21,17 +21,17 @@ The tag of each `swagger-ui` docker image is consist of the version of `swagger-
 |[5.34.1-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/swagger-ui/5.34.1/24.03-lts-sp4/Dockerfile) | swagger 5.34.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[5.34.0-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/swagger-ui/5.34.0/24.03-lts-sp4/Dockerfile) | swagger 5.34.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[5.33.3-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/swagger-ui/5.33.3/24.03-lts-sp4/Dockerfile) | swagger 5.33.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[5.33.2-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/swagger-ui/5.33.2/24.03-lts-sp4/Dockerfile) | swagger 5.33.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[5.33.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/swagger-ui/5.33.1/24.03-lts-sp4/Dockerfile) | swagger 5.33.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[5.33.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/swagger-ui/5.33.0/24.03-lts-sp4/Dockerfile) | swagger 5.33.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[5.32.5-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/swagger-ui/5.32.5/24.03-lts-sp4/Dockerfile) | swagger 5.32.5 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[5.32.5-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/swagger-ui/5.32.5/24.03-lts-sp3/Dockerfile) | swagger 5.32.5 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[5.32.1-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/swagger-ui/5.32.1/24.03-lts-sp3/Dockerfile) | swagger 5.32.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[5.30.3-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/swagger-ui/5.30.3/24.03-lts-sp2/Dockerfile) | swagger 5.30.3 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-|[5.30.2-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/swagger-ui/5.30.2/24.03-lts-sp2/Dockerfile) | swagger 5.30.2 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-|[5.30.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/swagger-ui/5.30.0/24.03-lts-sp2/Dockerfile) | swagger 5.30.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-|[5.29.1-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/swagger-ui/5.29.1/24.03-lts-sp2/Dockerfile) | swagger 5.29.1 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-| [5.21.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/swagger-ui/5.21.0/24.03-lts-sp1/Dockerfile) | Swagger UI 5.21.0 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+|[5.33.2-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/swagger-ui/5.33.2/24.03-lts-sp4/Dockerfile) | swagger 5.33.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[5.33.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/swagger-ui/5.33.1/24.03-lts-sp4/Dockerfile) | swagger 5.33.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[5.33.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/swagger-ui/5.33.0/24.03-lts-sp4/Dockerfile) | swagger 5.33.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[5.32.5-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/swagger-ui/5.32.5/24.03-lts-sp4/Dockerfile) | swagger 5.32.5 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[5.32.5-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/swagger-ui/5.32.5/24.03-lts-sp3/Dockerfile) | swagger 5.32.5 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[5.32.1-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/swagger-ui/5.32.1/24.03-lts-sp3/Dockerfile) | swagger 5.32.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[5.30.3-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/swagger-ui/5.30.3/24.03-lts-sp2/Dockerfile) | swagger 5.30.3 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[5.30.2-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/swagger-ui/5.30.2/24.03-lts-sp2/Dockerfile) | swagger 5.30.2 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[5.30.0-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/swagger-ui/5.30.0/24.03-lts-sp2/Dockerfile) | swagger 5.30.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[5.29.1-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/swagger-ui/5.29.1/24.03-lts-sp2/Dockerfile) | swagger 5.29.1 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+| [5.21.0-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/swagger-ui/5.21.0/24.03-lts-sp1/Dockerfile) | Swagger UI 5.21.0 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.
@@ -114,4 +114,4 @@ In this usage, users can select the corresponding `{Tag}` based on their require
     You'll see the interactive Swagger UI page. Click /hello → GET → Try it out → Execute, and it will show the example response.
   
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

@@ -16,11 +16,11 @@ The tag of each `snort3` docker image is consist of the version of `snort3` and 
 
 | Tag                                                                                                                             | Currently                              | Architectures |
 |---------------------------------------------------------------------------------------------------------------------------------|----------------------------------------|---------------|
-|[3.12.2.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/snort3/3.12.2.0/24.03-lts-sp4/Dockerfile) | snort3 3.12.2.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[3.12.2.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/snort3/3.12.2.0/24.03-lts-sp3/Dockerfile) | snort3 3.12.2.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[3.10.0.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/snort3/3.10.0.0/24.03-lts-sp2/Dockerfile) | snort3 3.10.0.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-|[3.9.5.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/snort3/3.9.5.0/24.03-lts-sp1/Dockerfile) | snort3 3.9.5.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
-| [3.7.2.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/snort3/3.7.2.0/24.03-lts-sp1/Dockerfile) | Snort3 3.7.2.0 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+|[3.12.2.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/snort3/3.12.2.0/24.03-lts-sp4/Dockerfile) | snort3 3.12.2.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[3.12.2.0-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/snort3/3.12.2.0/24.03-lts-sp3/Dockerfile) | snort3 3.12.2.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[3.10.0.0-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/snort3/3.10.0.0/24.03-lts-sp2/Dockerfile) | snort3 3.10.0.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[3.9.5.0-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/snort3/3.9.5.0/24.03-lts-sp1/Dockerfile) | snort3 3.9.5.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+| [3.7.2.0-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/snort3/3.7.2.0/24.03-lts-sp1/Dockerfile) | Snort3 3.7.2.0 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 
 # Usage
 - Pull the `openeuler/snort3` image from docker
@@ -66,4 +66,4 @@ The tag of each `snort3` docker image is consist of the version of `snort3` and 
     ```
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

@@ -17,15 +17,15 @@ The tag of each elasticsearch docker image is consist of the version of elastics
 | Tags | Currently |  Architectures|
 |--|--|--|
 |[9.5.6-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Bigdata/elasticsearch/9.5.6/24.03-lts-sp4/Dockerfile) | elasticsearch 9.5.6 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[9.5.5-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/elasticsearch/9.5.5/24.03-lts-sp4/Dockerfile) | elasticsearch 9.5.5 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[9.5.4-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/elasticsearch/9.5.4/24.03-lts-sp4/Dockerfile) | elasticsearch 9.5.4 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[9.3.4-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/elasticsearch/9.3.4/24.03-lts-sp4/Dockerfile) | elasticsearch 9.3.4 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[9.3.4-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/elasticsearch/9.3.4/24.03-lts-sp3/Dockerfile) | elasticsearch 9.3.4 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[9.3.2-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/elasticsearch/9.3.2/24.03-lts-sp3/Dockerfile) | elasticsearch 9.3.2 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[9.2.1-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/elasticsearch/9.2.1/24.03-lts-sp2/Dockerfile) | elasticsearch 9.2.1 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-|[9.2.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/elasticsearch/9.2.0/24.03-lts-sp2/Dockerfile) | elasticsearch 9.2.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-|[9.1.3-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/elasticsearch/9.1.3/24.03-lts-sp1/Dockerfile) | elasticsearch 9.1.3 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
-|[8.17.3-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/elasticsearch/8.17.3/24.03-lts-sp1/Dockerfile)| Elasticsearch 8.17.3 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[9.5.5-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/elasticsearch/9.5.5/24.03-lts-sp4/Dockerfile) | elasticsearch 9.5.5 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[9.5.4-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/elasticsearch/9.5.4/24.03-lts-sp4/Dockerfile) | elasticsearch 9.5.4 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[9.3.4-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/elasticsearch/9.3.4/24.03-lts-sp4/Dockerfile) | elasticsearch 9.3.4 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[9.3.4-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/elasticsearch/9.3.4/24.03-lts-sp3/Dockerfile) | elasticsearch 9.3.4 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[9.3.2-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/elasticsearch/9.3.2/24.03-lts-sp3/Dockerfile) | elasticsearch 9.3.2 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[9.2.1-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/elasticsearch/9.2.1/24.03-lts-sp2/Dockerfile) | elasticsearch 9.2.1 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[9.2.0-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/elasticsearch/9.2.0/24.03-lts-sp2/Dockerfile) | elasticsearch 9.2.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[9.1.3-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/elasticsearch/9.1.3/24.03-lts-sp1/Dockerfile) | elasticsearch 9.1.3 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[8.17.3-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/elasticsearch/8.17.3/24.03-lts-sp1/Dockerfile)| Elasticsearch 8.17.3 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
 Start a elasticsearch instance by following command:
@@ -34,4 +34,4 @@ docker run -d --name elasticsearch --net {somenetwork} -p 9200:9200 -p 9300:9300
 ```
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

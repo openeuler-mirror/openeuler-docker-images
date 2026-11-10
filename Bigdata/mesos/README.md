@@ -16,8 +16,8 @@ For more information about mesos, please visit [http://mesos.apache.org/](http:/
 The tag of each mesos docker image is consist of the version of mesos and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
-|[1.11.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/mesos/1.11.0/24.03-lts-sp4/Dockerfile)| Apache Mesos 1.11.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[1.11.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/mesos/1.11.0/24.03-lts-sp1/Dockerfile)| Apache Mesos 1.11.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[1.11.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/mesos/1.11.0/24.03-lts-sp4/Dockerfile)| Apache Mesos 1.11.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[1.11.0-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/mesos/1.11.0/24.03-lts-sp1/Dockerfile)| Apache Mesos 1.11.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
 Start a mesos instance by following command:
@@ -42,4 +42,4 @@ I0701 08:39:18.579586    82 slave.cpp:7657] Current disk usage 38.64%. Max allow
 Users can access `mesos` on broswer `http://localhost:5050`
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

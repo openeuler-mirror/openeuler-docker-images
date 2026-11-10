@@ -19,12 +19,12 @@ The tag of each `spring-boot` docker image is consist of the version of `spring-
 | Tag                                                                                                                                  | Currently                                    | Architectures |
 |--------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------|---------------|
 |[4.1.2-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/spring-boot/4.1.2/24.03-lts-sp4/Dockerfile) | spring 4.1.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[4.1.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/spring-boot/4.1.1/24.03-lts-sp4/Dockerfile) | spring-boot 4.1.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-| [4.0.2-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/spring-boot/4.0.2/24.03-lts-sp4/Dockerfile) | spring 4.0.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-| [4.0.2-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/spring-boot/4.0.2/24.03-lts-sp3/Dockerfile) | spring 4.0.2 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-| [3.5.7-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/spring-boot/3.5.7/24.03-lts-sp2/Dockerfile) | spring 3.5.7 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-| [3.4.4-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/spring-boot/3.4.4/24.03-lts-sp1/Dockerfile) | Spring Boot 3.4.4 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
-| [3.5.4-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/spring-boot/3.5.4/24.03-lts-sp2/Dockerfile) | Spring Boot 3.5.4 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
+|[4.1.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/spring-boot/4.1.1/24.03-lts-sp4/Dockerfile) | spring-boot 4.1.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+| [4.0.2-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/spring-boot/4.0.2/24.03-lts-sp4/Dockerfile) | spring 4.0.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+| [4.0.2-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/spring-boot/4.0.2/24.03-lts-sp3/Dockerfile) | spring 4.0.2 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+| [3.5.7-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/spring-boot/3.5.7/24.03-lts-sp2/Dockerfile) | spring 3.5.7 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+| [3.4.4-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/spring-boot/3.4.4/24.03-lts-sp1/Dockerfile) | Spring Boot 3.4.4 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+| [3.5.4-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/spring-boot/3.5.4/24.03-lts-sp2/Dockerfile) | Spring Boot 3.5.4 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
 
 # Usage
 In this usage, users can select the corresponding `{Version}` based on their requirements.
@@ -108,4 +108,4 @@ In this usage, users can select the corresponding `{Version}` based on their req
     ```
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

@@ -31,22 +31,22 @@ The tag of each `next` docker image is consist of the version of `next` and the 
 
 | Tag                                                                                                                                   | Currently                                 | Architectures |
 |---------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------|---------------|
-|[26.9.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/node/26.9.0/24.03-lts-sp4/Dockerfile) | node 26.9.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[26.8.2-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/node/26.8.2/24.03-lts-sp4/Dockerfile) | node 26.8.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[26.3.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/node/26.3.0/24.03-lts-sp4/Dockerfile) | node 26.3.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[26.3.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/node/26.3.0/24.03-lts-sp3/Dockerfile) | node 26.3.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[25.8.1-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/node/25.8.1/24.03-lts-sp3/Dockerfile) | node 25.8.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[25.5.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/node/25.5.0/24.03-lts-sp3/Dockerfile) | node 25.5.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[25.2.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/node/25.2.0/24.03-lts-sp2/Dockerfile) | node 25.2.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-|[25.1.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/node/25.1.0/24.03-lts-sp2/Dockerfile) | node 25.1.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-|[24.10.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/node/24.10.0/24.03-lts-sp2/Dockerfile) | node 24.10.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-|[24.9.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/node/24.9.0/24.03-lts-sp2/Dockerfile) | node 24.9.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-|[24.8.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/node/24.8.0/24.03-lts-sp2/Dockerfile) | node 24.8.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-| [10.21.0-20.03-lts-sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/node/10.21.0/20.03-lts-sp1/Dockerfile) | Nodejs 10.21.0 on openEuler 20.03-LTS-SP1 | amd64, arm64  |
-| [20.11.1-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/node/20.11.1/24.03-lts/Dockerfile)         | Nodejs 20.11.1 on openEuler 24.03-LTS     | amd64, arm64  |
-| [20.19.0-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/node/20.19.0/24.03-lts/Dockerfile)     | Nodejs 20.19.0 on openEuler 24.03-LTS | amd64, arm64  |
-| [20.18.2-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/node/20.18.2/24.03-lts-sp1/Dockerfile)     | Nodejs 20.18.2 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
-| [24.4.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/node/24.4.0/24.03-lts-sp2/Dockerfile)       | Nodejs 24.4.0 on openEuler 24.03-LTS-SP2  | amd64, arm64  |
+|[26.9.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/node/26.9.0/24.03-lts-sp4/Dockerfile) | node 26.9.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[26.8.2-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/node/26.8.2/24.03-lts-sp4/Dockerfile) | node 26.8.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[26.3.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/node/26.3.0/24.03-lts-sp4/Dockerfile) | node 26.3.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[26.3.0-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/node/26.3.0/24.03-lts-sp3/Dockerfile) | node 26.3.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[25.8.1-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/node/25.8.1/24.03-lts-sp3/Dockerfile) | node 25.8.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[25.5.0-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/node/25.5.0/24.03-lts-sp3/Dockerfile) | node 25.5.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[25.2.0-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/node/25.2.0/24.03-lts-sp2/Dockerfile) | node 25.2.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[25.1.0-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/node/25.1.0/24.03-lts-sp2/Dockerfile) | node 25.1.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[24.10.0-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/node/24.10.0/24.03-lts-sp2/Dockerfile) | node 24.10.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[24.9.0-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/node/24.9.0/24.03-lts-sp2/Dockerfile) | node 24.9.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[24.8.0-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/node/24.8.0/24.03-lts-sp2/Dockerfile) | node 24.8.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+| [10.21.0-20.03-lts-sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/node/10.21.0/20.03-lts-sp1/Dockerfile) | Nodejs 10.21.0 on openEuler 20.03-LTS-SP1 | amd64, arm64  |
+| [20.11.1-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/node/20.11.1/24.03-lts/Dockerfile)         | Nodejs 20.11.1 on openEuler 24.03-LTS     | amd64, arm64  |
+| [20.19.0-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/node/20.19.0/24.03-lts/Dockerfile)     | Nodejs 20.19.0 on openEuler 24.03-LTS | amd64, arm64  |
+| [20.18.2-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/node/20.18.2/24.03-lts-sp1/Dockerfile)     | Nodejs 20.18.2 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+| [24.4.0-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/node/24.4.0/24.03-lts-sp2/Dockerfile)       | Nodejs 24.4.0 on openEuler 24.03-LTS-SP2  | amd64, arm64  |
 
 
 ## Operating System

@@ -18,8 +18,8 @@ The tag of each `docker` docker image is consist of the version of `docker` and 
 
 | Tag                                                                                                                              | Currently                                | Architectures |
 |----------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|---------------|
-| [28.2.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/docker/28.2.1/24.03-lts-sp4/Dockerfile) | Docker 28.2.1 on openEuler 24.03-LTS-SP4 | amd64, arm64  |
-| [28.2.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/docker/28.2.1/24.03-lts-sp1/Dockerfile) | Docker 28.2.1 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+| [28.2.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/docker/28.2.1/24.03-lts-sp4/Dockerfile) | Docker 28.2.1 on openEuler 24.03-LTS-SP4 | amd64, arm64  |
+| [28.2.1-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/docker/28.2.1/24.03-lts-sp1/Dockerfile) | Docker 28.2.1 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.
@@ -66,4 +66,4 @@ In this usage, users can select the corresponding `{Tag}` based on their require
     * `--rm:` Automatically remove the container when it exits.
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

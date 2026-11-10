@@ -16,9 +16,9 @@ Learn more on [hbase website](https://hbase.apache.org/).
 The tag of each hbase docker image is consist of the version of hbase and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
-|[3.0.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/hbase/3.0.0/24.03-lts-sp4/Dockerfile) | hbase 3.0.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[2.6.5-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/hbase/2.6.5/24.03-lts-sp3/Dockerfile) | hbase 2.6.5 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[2.6.2-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/hbase/2.6.2/24.03-lts-sp1/Dockerfile)| Apache HBase 2.6.2 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[3.0.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/hbase/3.0.0/24.03-lts-sp4/Dockerfile) | hbase 3.0.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[2.6.5-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/hbase/2.6.5/24.03-lts-sp3/Dockerfile) | hbase 2.6.5 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[2.6.2-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/hbase/2.6.2/24.03-lts-sp1/Dockerfile)| Apache HBase 2.6.2 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
 Start a hbase instance by following command:
@@ -29,4 +29,4 @@ docker run -it \
 ```
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

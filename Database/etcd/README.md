@@ -18,12 +18,12 @@ The tag of each `etcd` docker image is consist of the version of `etcd` and the 
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
 |[3.7.3-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Database/etcd/3.7.3/24.03-lts-sp4/Dockerfile) | etcd 3.7.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[3.7.2-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/etcd/3.7.2/24.03-lts-sp4/Dockerfile) | etcd 3.7.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[3.7.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/etcd/3.7.1/24.03-lts-sp4/Dockerfile) | etcd 3.7.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[3.6.11-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/etcd/3.6.11/24.03-lts-sp4/Dockerfile) | etcd 3.6.11 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[3.6.11-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/etcd/3.6.11/24.03-lts-sp3/Dockerfile) | etcd 3.6.11 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[3.6.9-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/etcd/3.6.9/24.03-lts-sp3/Dockerfile) | etcd 3.6.9 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[3.6.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/etcd/3.6.0/24.03-lts-sp1/Dockerfile)| Etcd 3.6.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[3.7.2-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/etcd/3.7.2/24.03-lts-sp4/Dockerfile) | etcd 3.7.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[3.7.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/etcd/3.7.1/24.03-lts-sp4/Dockerfile) | etcd 3.7.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[3.6.11-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/etcd/3.6.11/24.03-lts-sp4/Dockerfile) | etcd 3.6.11 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[3.6.11-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/etcd/3.6.11/24.03-lts-sp3/Dockerfile) | etcd 3.6.11 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[3.6.9-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/etcd/3.6.9/24.03-lts-sp3/Dockerfile) | etcd 3.6.9 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[3.6.0-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/etcd/3.6.0/24.03-lts-sp1/Dockerfile)| Etcd 3.6.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
 
@@ -47,4 +47,4 @@ The tag of each `etcd` docker image is consist of the version of `etcd` and the 
 	```
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

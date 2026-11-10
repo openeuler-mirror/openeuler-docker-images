@@ -19,10 +19,10 @@ The tag of each langgraph docker image is consist of the version of langgraph an
 |[1.2.17-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/langgraph/1.2.17/24.03-lts-sp4/Dockerfile) | langgraph 1.2.17 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[1.2.16-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/langgraph/1.2.16/24.03-lts-sp4/Dockerfile) | langgraph 1.2.16 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[1.2.15-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/langgraph/1.2.15/24.03-lts-sp4/Dockerfile) | langgraph 1.2.15 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[1.2.14-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/langgraph/1.2.14/24.03-lts-sp4/Dockerfile) | langgraph 1.2.14 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[1.2.13-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/langgraph/1.2.13/24.03-lts-sp4/Dockerfile) | langgraph 1.2.13 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[1.2.12-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/langgraph/1.2.12/24.03-lts-sp4/Dockerfile) | langgraph 1.2.12 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[1.2.11-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/langgraph/1.2.11/24.03-lts-sp4/Dockerfile) | langgraph 1.2.11 on openEuler 24.03-lts-sp4 | amd64, arm64 |
+|[1.2.14-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/langgraph/1.2.14/24.03-lts-sp4/Dockerfile) | langgraph 1.2.14 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[1.2.13-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/langgraph/1.2.13/24.03-lts-sp4/Dockerfile) | langgraph 1.2.13 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[1.2.12-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/langgraph/1.2.12/24.03-lts-sp4/Dockerfile) | langgraph 1.2.12 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[1.2.11-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/langgraph/1.2.11/24.03-lts-sp4/Dockerfile) | langgraph 1.2.11 on openEuler 24.03-lts-sp4 | amd64, arm64 |
 |[1.2.5-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/langgraph/1.2.5/24.03-lts-sp4/Dockerfile) | langgraph 1.2.5 on openEuler 24.03-lts-sp4 | amd64, arm64 |
 |[1.2.5-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/langgraph/1.2.5/24.03-lts-sp3/Dockerfile) | langgraph 1.2.5 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 

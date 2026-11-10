@@ -11,7 +11,7 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
-  |[8.4.10-10-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/percona/8.4.10-10/24.03-lts-sp4/Dockerfile) | Percona Server 8.4.10-10 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[8.4.10-10-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/percona/8.4.10-10/24.03-lts-sp4/Dockerfile) | Percona Server 8.4.10-10 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 download: |
   拉取镜像到本地

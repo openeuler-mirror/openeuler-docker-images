@@ -15,9 +15,9 @@ The tag of each lucene docker image is consist of the version of lucene and the 
 | Tags | Currently |  Architectures|
 |--|--|--|
 |[10.6.0-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Bigdata/lucene/10.6.0/24.03-lts-sp4/Dockerfile) | lucene 10.6.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[10.5.2-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/lucene/10.5.2/24.03-lts-sp4/Dockerfile) | lucene 10.5.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[10.5.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/lucene/10.5.0/24.03-lts-sp4/Dockerfile) | lucene 10.5.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[10.2.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/lucene/10.2.1/24.03-lts-sp1/Dockerfile)| Apache Lucene 10.2.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[10.5.2-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/lucene/10.5.2/24.03-lts-sp4/Dockerfile) | lucene 10.5.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[10.5.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/lucene/10.5.0/24.03-lts-sp4/Dockerfile) | lucene 10.5.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[10.2.1-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/lucene/10.2.1/24.03-lts-sp1/Dockerfile)| Apache Lucene 10.2.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
 Start a lucene instance by following command:
@@ -34,4 +34,4 @@ luke.cmd  luke.sh
 For more information about lucene, please visit [https://lucene.apache.org/](https://lucene.apache.org/).
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

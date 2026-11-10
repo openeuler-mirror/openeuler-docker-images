@@ -16,13 +16,13 @@ Learn more on [doris website](https://doris.apache.org/).
 The tag of each doris docker image is consist of the version of doris and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
-|[4.1.5-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/doris/4.1.5/24.03-lts-sp4/Dockerfile) | doris 4.1.5 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[4.1.4.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/doris/4.1.4.1/24.03-lts-sp4/Dockerfile) | doris 4.1.4.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[4.1.4-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/doris/4.1.4/24.03-lts-sp4/Dockerfile) | doris 4.1.4 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[4.1.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/doris/4.1.1/24.03-lts-sp4/Dockerfile) | doris 4.1.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[4.1.1-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/doris/4.1.1/24.03-lts-sp3/Dockerfile) | doris 4.1.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[3.0.6.2-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/doris/3.0.6.2/24.03-lts-sp3/Dockerfile) | doris 3.0.6.2 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[2.1.9-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/doris/2.1.9/24.03-lts-sp1/Dockerfile)| doris 2.1.9 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[4.1.5-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/doris/4.1.5/24.03-lts-sp4/Dockerfile) | doris 4.1.5 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[4.1.4.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/doris/4.1.4.1/24.03-lts-sp4/Dockerfile) | doris 4.1.4.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[4.1.4-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/doris/4.1.4/24.03-lts-sp4/Dockerfile) | doris 4.1.4 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[4.1.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/doris/4.1.1/24.03-lts-sp4/Dockerfile) | doris 4.1.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[4.1.1-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/doris/4.1.1/24.03-lts-sp3/Dockerfile) | doris 4.1.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[3.0.6.2-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/doris/3.0.6.2/24.03-lts-sp3/Dockerfile) | doris 3.0.6.2 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[2.1.9-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/doris/2.1.9/24.03-lts-sp1/Dockerfile)| doris 2.1.9 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
 Start a doris instance by following command:
@@ -32,4 +32,4 @@ docker run -it openeuler/doris:latest
 Please use doris according to [Doris Doc](https://doris.apache.org/).
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

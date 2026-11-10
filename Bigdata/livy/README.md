@@ -18,9 +18,9 @@ The tag of each livy docker image is consist of the version of livy and the vers
 
 | Tags                                                                                                                           | Currently                               |  Architectures|
 |--------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|--|
-|[0.9.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/livy/0.9.0/24.03-lts-sp4/Dockerfile) | livy 0.9.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-| [0.8.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/livy/0.8.0/24.03-lts-sp4/Dockerfile) | Livy 0.8.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-| [0.8.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/livy/0.8.0/24.03-lts-sp1/Dockerfile) | Livy 0.8.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[0.9.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/livy/0.9.0/24.03-lts-sp4/Dockerfile) | livy 0.9.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+| [0.8.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/livy/0.8.0/24.03-lts-sp4/Dockerfile) | Livy 0.8.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+| [0.8.0-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/livy/0.8.0/24.03-lts-sp1/Dockerfile) | Livy 0.8.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}`  based on their requirements.
@@ -70,4 +70,4 @@ In this usage, users can select the corresponding `{Tag}`  based on their requir
 	- [Programmatic API](https://livy.incubator.apache.org/docs/latest/programmatic-api.html)
 	
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

@@ -17,25 +17,25 @@ Learn more on [Telegraf website](https://docs.influxdata.com/telegraf/v1/).
 The tag of each `telegraf` docker image is consist of the version of `telegraf` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
-|[1.38.3-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/telegraf/1.38.3/24.03-lts-sp4/Dockerfile) | telegraf 1.38.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[1.38.3-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/telegraf/1.38.3/24.03-lts-sp3/Dockerfile) | telegraf 1.38.3 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[1.38.1-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/telegraf/1.38.1/24.03-lts-sp3/Dockerfile) | telegraf 1.38.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[1.36.3-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/telegraf/1.36.3/24.03-lts-sp2/Dockerfile) | telegraf 1.36.3 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-|[1.36.2-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/telegraf/1.36.2/24.03-lts-sp2/Dockerfile) | telegraf 1.36.2 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-|[1.36.1-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/telegraf/1.36.1/24.03-lts-sp2/Dockerfile) | telegraf 1.36.1 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-|[1.35.4-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/telegraf/1.35.4/24.03-lts-sp1/Dockerfile) | telegraf 1.35.4 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
-|[1.29.5-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/telegraf/1.29.5/22.03-lts-sp3/Dockerfile)| Telegraf 1.29.5 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
-|[1.31.1-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/telegraf/1.31.1/22.03-lts-sp3/Dockerfile)| Telegraf 1.31.1 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
-|[1.32.0-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/telegraf/1.32.0/22.03-lts-sp3/Dockerfile)| Telegraf 1.32.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
-|[1.32.1-oe2003sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/telegraf/1.32.1/20.03-lts-sp4/Dockerfile)| Telegraf 1.32.1 on openEuler 20.03-LTS-SP4 | amd64, arm64 |
-|[1.32.1-oe2203sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/telegraf/1.32.1/22.03-lts-sp1/Dockerfile)| Telegraf 1.32.1 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
-|[1.32.1-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/telegraf/1.32.1/22.03-lts-sp3/Dockerfile)| Telegraf 1.32.1 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
-|[1.32.1-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/telegraf/1.32.1/22.03-lts-sp4/Dockerfile)| Telegraf 1.32.1 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
-|[1.32.1-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/telegraf/1.32.1/24.03-lts/Dockerfile)| Telegraf 1.32.1 on openEuler 24.03-LTS | amd64, arm64 |
-|[1.32.2-oe2203sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/telegraf/1.32.2/22.03-lts-sp1/Dockerfile)| Telegraf 1.32.2 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
-|[1.32.2-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/telegraf/1.32.2/22.03-lts-sp3/Dockerfile)| Telegraf 1.32.2 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
-|[1.32.2-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/telegraf/1.32.2/22.03-lts-sp4/Dockerfile)| Telegraf 1.32.2 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
-|[1.32.2-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/telegraf/1.32.2/24.03-lts/Dockerfile)| Telegraf 1.32.2 on openEuler 24.03-LTS | amd64, arm64 |
+|[1.38.3-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/telegraf/1.38.3/24.03-lts-sp4/Dockerfile) | telegraf 1.38.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[1.38.3-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/telegraf/1.38.3/24.03-lts-sp3/Dockerfile) | telegraf 1.38.3 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[1.38.1-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/telegraf/1.38.1/24.03-lts-sp3/Dockerfile) | telegraf 1.38.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[1.36.3-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/telegraf/1.36.3/24.03-lts-sp2/Dockerfile) | telegraf 1.36.3 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[1.36.2-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/telegraf/1.36.2/24.03-lts-sp2/Dockerfile) | telegraf 1.36.2 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[1.36.1-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/telegraf/1.36.1/24.03-lts-sp2/Dockerfile) | telegraf 1.36.1 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[1.35.4-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/telegraf/1.35.4/24.03-lts-sp1/Dockerfile) | telegraf 1.35.4 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[1.29.5-oe2203sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/telegraf/1.29.5/22.03-lts-sp3/Dockerfile)| Telegraf 1.29.5 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[1.31.1-oe2203sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/telegraf/1.31.1/22.03-lts-sp3/Dockerfile)| Telegraf 1.31.1 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[1.32.0-oe2203sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/telegraf/1.32.0/22.03-lts-sp3/Dockerfile)| Telegraf 1.32.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[1.32.1-oe2003sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/telegraf/1.32.1/20.03-lts-sp4/Dockerfile)| Telegraf 1.32.1 on openEuler 20.03-LTS-SP4 | amd64, arm64 |
+|[1.32.1-oe2203sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/telegraf/1.32.1/22.03-lts-sp1/Dockerfile)| Telegraf 1.32.1 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
+|[1.32.1-oe2203sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/telegraf/1.32.1/22.03-lts-sp3/Dockerfile)| Telegraf 1.32.1 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[1.32.1-oe2203sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/telegraf/1.32.1/22.03-lts-sp4/Dockerfile)| Telegraf 1.32.1 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+|[1.32.1-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/telegraf/1.32.1/24.03-lts/Dockerfile)| Telegraf 1.32.1 on openEuler 24.03-LTS | amd64, arm64 |
+|[1.32.2-oe2203sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/telegraf/1.32.2/22.03-lts-sp1/Dockerfile)| Telegraf 1.32.2 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
+|[1.32.2-oe2203sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/telegraf/1.32.2/22.03-lts-sp3/Dockerfile)| Telegraf 1.32.2 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[1.32.2-oe2203sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/telegraf/1.32.2/22.03-lts-sp4/Dockerfile)| Telegraf 1.32.2 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+|[1.32.2-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/telegraf/1.32.2/24.03-lts/Dockerfile)| Telegraf 1.32.2 on openEuler 24.03-LTS | amd64, arm64 |
 
 
 # Usage
@@ -74,4 +74,4 @@ In this usage, users can select the corresponding `{Tag}` and `container startup
 	```
 	
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

@@ -17,10 +17,10 @@ For more information about ranger, please visit [https://ranger.fm/](https://ran
 The tag of each ranger docker image is consist of the version of ranger and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
-|[2.9.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/ranger/2.9.0/24.03-lts-sp4/Dockerfile) | ranger 2.9.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[1.9.4-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/ranger/1.9.4/24.03-lts-sp4/Dockerfile) | ranger 1.9.4 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[1.9.4-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/ranger/1.9.4/24.03-lts-sp3/Dockerfile) | ranger 1.9.4 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[1.9.4-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/ranger/1.9.4/24.03-lts-sp1/Dockerfile)| Apache ranger 1.9.4 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[2.9.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/ranger/2.9.0/24.03-lts-sp4/Dockerfile) | ranger 2.9.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[1.9.4-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/ranger/1.9.4/24.03-lts-sp4/Dockerfile) | ranger 1.9.4 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[1.9.4-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/ranger/1.9.4/24.03-lts-sp3/Dockerfile) | ranger 1.9.4 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[1.9.4-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/ranger/1.9.4/24.03-lts-sp1/Dockerfile)| Apache ranger 1.9.4 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
 
@@ -33,4 +33,4 @@ After ranger started, your terminal will show such console file manager
 ![console](./doc/picture/ranger.png) 
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

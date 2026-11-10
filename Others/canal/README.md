@@ -16,9 +16,9 @@ The tag of each canal docker image is consist of the version of canal and the ve
 
 | Tags                                                                                                                           | Currently                              | Architectures |
 |--------------------------------------------------------------------------------------------------------------------------------|----------------------------------------|---------------|
-| [1.1.8-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/canal/1.1.8/24.03-lts-sp1/Dockerfile) | canal 1.1.8 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
-| [1.1.8-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/canal/1.1.8/24.03-lts-sp4/Dockerfile) | canal 1.1.8 on openEuler 24.03-LTS-SP4 | amd64, arm64  |
-| [1.1.8-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/canal/1.1.8/24.03-lts-sp2/Dockerfile) | canal 1.1.8 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
+| [1.1.8-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/canal/1.1.8/24.03-lts-sp1/Dockerfile) | canal 1.1.8 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+| [1.1.8-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/canal/1.1.8/24.03-lts-sp4/Dockerfile) | canal 1.1.8 on openEuler 24.03-LTS-SP4 | amd64, arm64  |
+| [1.1.8-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/canal/1.1.8/24.03-lts-sp2/Dockerfile) | canal 1.1.8 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
 
 # Usage
 
@@ -49,4 +49,4 @@ The tag of each canal docker image is consist of the version of canal and the ve
 	After the instance `my-canal` is started, you can view its running logs using `docker logs`.
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

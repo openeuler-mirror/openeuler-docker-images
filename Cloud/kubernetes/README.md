@@ -34,12 +34,12 @@ We are using `buildx` in here to generate multi-arch images, see more in [Docker
 |       Arch     |  Hostname  | Specification |      EIP       |  Private IP   |
 |      :----:    |   :----:   |    :----:     |     :----:     |    :----:     |
 |[1.37.2-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/kubernetes/1.37.2/24.03-lts-sp4/Dockerfile) | kubernetes 1.37.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[1.28.4-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/kubernetes/1.28.4/24.03-lts-sp4/Dockerfile) | kubernetes 1.28.4 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[1.37.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/kubernetes/1.37.1/24.03-lts-sp4/Dockerfile) | kubernetes 1.37.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[1.36.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/kubernetes/1.36.0/24.03-lts-sp4/Dockerfile) | kubernetes 1.36.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[1.36.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/kubernetes/1.36.0/24.03-lts-sp3/Dockerfile) | kubernetes 1.36.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[1.35.3-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/kubernetes/1.35.3/24.03-lts-sp3/Dockerfile) | kubernetes 1.35.3 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[1.35.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/kubernetes/1.35.0/24.03-lts-sp2/Dockerfile) | kubernetes 1.35.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[1.28.4-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/kubernetes/1.28.4/24.03-lts-sp4/Dockerfile) | kubernetes 1.28.4 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[1.37.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/kubernetes/1.37.1/24.03-lts-sp4/Dockerfile) | kubernetes 1.37.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[1.36.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/kubernetes/1.36.0/24.03-lts-sp4/Dockerfile) | kubernetes 1.36.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[1.36.0-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/kubernetes/1.36.0/24.03-lts-sp3/Dockerfile) | kubernetes 1.36.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[1.35.3-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/kubernetes/1.35.3/24.03-lts-sp3/Dockerfile) | kubernetes 1.35.3 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[1.35.0-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/kubernetes/1.35.0/24.03-lts-sp2/Dockerfile) | kubernetes 1.35.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 | x86_64(amd64)  | amd64-k8s0 |  c6s.large.2  | 116.63.177.179 | 192.168.0.47  |
 | x86_64(amd64)  | amd64-k8s1 |  c6s.large.2  | 122.9.153.240  | 192.168.0.28  |
 | x86_64(amd64)  | amd64-k8s2 |  c6s.large.2  | 116.63.161.162 | 192.168.0.127 |
@@ -131,8 +131,8 @@ aarch64-host2   Ready    <none>                 104s    v1.20.2
 
   | Tag                                                                                                                                  | Currently                                    | Architectures |
   |--------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------|---------------|
-  | [1.20.2-oe2109](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/kubernetes/1.20.2/21.09/Dockerfile)            | kubernetes 1.20.2 on openEuler 21.09         | amd64, arm64  |
-  | [1.33.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/kubernetes/1.33.1/24.03-lts-sp1/Dockerfile) | kubernetes 1.33.1 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+  | [1.20.2-oe2109](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/kubernetes/1.20.2/21.09/Dockerfile)            | kubernetes 1.20.2 on openEuler 21.09         | amd64, arm64  |
+  | [1.33.1-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/kubernetes/1.33.1/24.03-lts-sp1/Dockerfile) | kubernetes 1.33.1 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 
 ## Operating System
 

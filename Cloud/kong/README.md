@@ -18,11 +18,11 @@ The tag of each `kong` docker image is consist of the version of `kong` and the 
 
 | Tag                                                                                                                          | Currently                             | Architectures |
 |------------------------------------------------------------------------------------------------------------------------------|---------------------------------------|---------------|
-|[3.9.4-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/kong/3.9.4/24.03-lts-sp4/Dockerfile) | kong 3.9.4 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[3.9.3-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/kong/3.9.3/24.03-lts-sp4/Dockerfile) | kong 3.9.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-| [3.9.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/kong/3.9.1/24.03-lts-sp1/Dockerfile) | Kong 3.9.1 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
-| [3.9.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/kong/3.9.1/24.03-lts-sp4/Dockerfile) | Kong 3.9.1 on openEuler 24.03-LTS-SP4 | amd64, arm64  |
-| [3.9.1-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/kong/3.9.1/24.03-lts-sp2/Dockerfile) | Kong 3.9.1 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
+|[3.9.4-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/kong/3.9.4/24.03-lts-sp4/Dockerfile) | kong 3.9.4 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[3.9.3-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/kong/3.9.3/24.03-lts-sp4/Dockerfile) | kong 3.9.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+| [3.9.1-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/kong/3.9.1/24.03-lts-sp1/Dockerfile) | Kong 3.9.1 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+| [3.9.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/kong/3.9.1/24.03-lts-sp4/Dockerfile) | Kong 3.9.1 on openEuler 24.03-LTS-SP4 | amd64, arm64  |
+| [3.9.1-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/kong/3.9.1/24.03-lts-sp2/Dockerfile) | Kong 3.9.1 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
 
 
 # Usage
@@ -113,4 +113,4 @@ You should receive a 200 status code.
 	```
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

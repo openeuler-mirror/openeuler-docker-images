@@ -17,10 +17,10 @@ Learn more about Cassandra at [https://cassandra.apache.org/](https://cassandra.
 The tag of each `cassandra` docker image is consist of the version of `cassandra` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
-|[5.0.9-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/cassandra/5.0.9/24.03-lts-sp4/Dockerfile) | cassandra 5.0.9 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[5.0.6-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/cassandra/5.0.6/24.03-lts-sp4/Dockerfile) | cassandra 5.0.6 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[5.0.6-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/cassandra/5.0.6/24.03-lts-sp3/Dockerfile) | cassandra 5.0.6 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[4.1.4-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/cassandra/4.1.4/22.03-lts-sp3/Dockerfile)| Cassandra 4.1.4 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[5.0.9-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/cassandra/5.0.9/24.03-lts-sp4/Dockerfile) | cassandra 5.0.9 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[5.0.6-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/cassandra/5.0.6/24.03-lts-sp4/Dockerfile) | cassandra 5.0.6 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[5.0.6-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/cassandra/5.0.6/24.03-lts-sp3/Dockerfile) | cassandra 5.0.6 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[4.1.4-oe2203sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/cassandra/4.1.4/22.03-lts-sp3/Dockerfile)| Cassandra 4.1.4 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` and `container startup options` based on their requirements.
@@ -63,4 +63,4 @@ In this usage, users can select the corresponding `{Tag}` and `container startup
 	```
 	
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

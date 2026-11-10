@@ -22,11 +22,11 @@ The tag of each `grpc-server` docker image is consist of the version of `grpc-se
 |[1.85.1-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/grpc-server/1.85.1/24.03-lts-sp4/Dockerfile) | grpc 1.85.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[1.85.0-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/grpc-server/1.85.0/24.03-lts-sp4/Dockerfile) | grpc 1.85.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[1.84.1-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/grpc-server/1.84.1/24.03-lts-sp4/Dockerfile) | grpc 1.84.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[1.84.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/grpc-server/1.84.0/24.03-lts-sp4/Dockerfile) | grpc 1.84.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[1.81.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/grpc-server/1.81.0/24.03-lts-sp4/Dockerfile) | grpc 1.81.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[1.81.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/grpc-server/1.81.0/24.03-lts-sp3/Dockerfile) | grpc 1.81.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[1.80.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/grpc-server/1.80.0/24.03-lts-sp3/Dockerfile) | grpc 1.80.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[1.72.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/grpc-server/1.72.0/24.03-lts-sp1/Dockerfile)| Grpc Server 1.72.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[1.84.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/grpc-server/1.84.0/24.03-lts-sp4/Dockerfile) | grpc 1.84.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[1.81.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/grpc-server/1.81.0/24.03-lts-sp4/Dockerfile) | grpc 1.81.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[1.81.0-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/grpc-server/1.81.0/24.03-lts-sp3/Dockerfile) | grpc 1.81.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[1.80.0-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/grpc-server/1.80.0/24.03-lts-sp3/Dockerfile) | grpc 1.80.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[1.72.0-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/grpc-server/1.72.0/24.03-lts-sp1/Dockerfile)| Grpc Server 1.72.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.
@@ -57,4 +57,4 @@ In this usage, users can select the corresponding `{Tag}` based on their require
 	```
  
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

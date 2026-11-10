@@ -16,10 +16,10 @@ For more information about parquet, please visit [https://parquet.apache.org/](h
 The tag of each parquet docker image is consist of the version of parquet and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
-|[1.18.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/parquet/1.18.1/24.03-lts-sp4/Dockerfile) | parquet 1.18.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[2.12.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/parquet/2.12.0/24.03-lts-sp4/Dockerfile) | parquet 2.12.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[2.12.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/parquet/2.12.0/24.03-lts-sp1/Dockerfile) | parquet 2.12.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
-|[2.11.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/parquet/2.11.0/24.03-lts-sp1/Dockerfile)| Apache Parquet 2.11.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[1.18.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/parquet/1.18.1/24.03-lts-sp4/Dockerfile) | parquet 1.18.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[2.12.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/parquet/2.12.0/24.03-lts-sp4/Dockerfile) | parquet 2.12.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[2.12.0-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/parquet/2.12.0/24.03-lts-sp1/Dockerfile) | parquet 2.12.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[2.11.0-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/parquet/2.11.0/24.03-lts-sp1/Dockerfile)| Apache Parquet 2.11.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
 
@@ -30,4 +30,4 @@ docker run -it --name parquet openeuler/parquet:latest
 If someone needs to use the complete functions, please visit [http://parquet.apache.org/](http://parquet.apache.org/) for setting up parquet.
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

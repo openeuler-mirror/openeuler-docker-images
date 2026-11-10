@@ -22,10 +22,10 @@ Features:
 The tag of each `openresty` docker image is consist of the version of `openresty` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
-|[1.31.1.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/openresty/1.31.1.1/24.03-lts-sp4/Dockerfile) | openresty 1.31.1.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[1.21.4.1-oe2203sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/openresty/1.21.4.1/22.03-lts-sp2/Dockerfile)| openresty 1.21.4.1 on openEuler 22.03-LTS-SP2 | amd64, arm64 |
-|[1.21.4.1-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/openresty/1.21.4.1/22.03-lts-sp3/Dockerfile)| openresty 1.21.4.1 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
-|[1.25.3.1-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/openresty/1.25.3.1/22.03-lts-sp3/Dockerfile)| openresty 1.25.3.1 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[1.31.1.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/openresty/1.31.1.1/24.03-lts-sp4/Dockerfile) | openresty 1.31.1.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[1.21.4.1-oe2203sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/openresty/1.21.4.1/22.03-lts-sp2/Dockerfile)| openresty 1.21.4.1 on openEuler 22.03-LTS-SP2 | amd64, arm64 |
+|[1.21.4.1-oe2203sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/openresty/1.21.4.1/22.03-lts-sp3/Dockerfile)| openresty 1.21.4.1 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[1.25.3.1-oe2203sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/openresty/1.25.3.1/22.03-lts-sp3/Dockerfile)| openresty 1.25.3.1 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
 
 
 
@@ -33,9 +33,9 @@ The tag of each `openresty` docker image is consist of the version of `openresty
 
 | Tag                                                          | OpenResty | Nginx-core | LuaJit       |
 | ------------------------------------------------------------ | --------- | ---------- | ------------ |
-| [1.21.4.1-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/openresty/1.21.4.1/22.03-lts-sp3/Dockerfile) | 1.21.4.1  | 1.21.4     | 2.1-20220411 |
-| [1.25.3.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/openresty/1.25.3.1/24.03-lts-sp4/Dockerfile) | 1.25.3.1  | 1.25.3     | 2.1-20231117 |
-| [1.25.3.1-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/openresty/1.25.3.1/22.03-lts-sp3/Dockerfile) | 1.25.3.1  | 1.25.3     | 2.1-20231117 |
+| [1.21.4.1-oe2203sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/openresty/1.21.4.1/22.03-lts-sp3/Dockerfile) | 1.21.4.1  | 1.21.4     | 2.1-20220411 |
+| [1.25.3.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/openresty/1.25.3.1/24.03-lts-sp4/Dockerfile) | 1.25.3.1  | 1.25.3     | 2.1-20231117 |
+| [1.25.3.1-oe2203sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/openresty/1.25.3.1/22.03-lts-sp3/Dockerfile) | 1.25.3.1  | 1.25.3     | 2.1-20231117 |
 
 
 
@@ -77,4 +77,4 @@ In this usage, users can select the corresponding `{Tag}` and `container startup
 	```
 	
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).
