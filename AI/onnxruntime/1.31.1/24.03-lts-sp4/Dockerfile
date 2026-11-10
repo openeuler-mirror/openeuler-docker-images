@@ -35,7 +35,7 @@ RUN ln -sf /usr/lib64/libgcc_s.so.1 /opt/openEuler/gcc-toolset-14/root/usr/lib64
     source /opt/openEuler/gcc-toolset-14/enable && \
     git clone --recursive -b $VERSION $ONNXRUNTIME_REPO && \
     cd onnxruntime && \
-    ./build.sh --allow_running_as_root --skip_submodule_sync --config Release --build_wheel --update --build --parallel --cmake_extra_defines ONNXRUNTIME_VERSION=$(cat ./VERSION_NUMBER)
+    ./build.sh --allow_running_as_root --skip_submodule_sync --config Release --build_wheel --update --build --parallel 4 --cmake_extra_defines ONNXRUNTIME_VERSION=$(cat ./VERSION_NUMBER)
 
 ARG BASE
 FROM $BASE as runtime
