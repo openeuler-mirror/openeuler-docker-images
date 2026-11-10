@@ -57,7 +57,7 @@ RUN set -ex \
     && autoreconf -fi \
     && CXXFLAGS="-std=c++14" ./configure --prefix=/opt/chroma-install \
         --with-qdp=/opt/qdp-install \
-    && make -j$(nproc) \
+    && make -j2 LDFLAGS="-Wl,--no-keep-memory" \
     && make install \
     && test -d /opt/chroma-install/lib \
     && cd /opt \
