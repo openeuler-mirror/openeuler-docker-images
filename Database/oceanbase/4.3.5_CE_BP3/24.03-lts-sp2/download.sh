@@ -12,7 +12,7 @@ elif [ "$TARGETARCH" = "arm64" ]; then
     ARCH="aarch64";
 fi;
 BASE_URL="https://obbusiness-private.oss-cn-shanghai.aliyuncs.com/download-center/opensource/oceanbase-all-in-one/8/${ARCH}"
-for day in {0..60}; do
+for day in {0..365}; do
     DATE=$(date -d "today - $day days" +"%Y%m%d")
     URL="${BASE_URL}/oceanbase-all-in-one-${VERSION}_${DATE}.el8.${ARCH}.tar.gz"
     if curl --output /dev/null --silent --head --fail "$URL"; then
