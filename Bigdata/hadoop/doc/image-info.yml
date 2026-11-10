@@ -30,7 +30,7 @@ usage: |
       -p 9870:9870 \
       -p 8088:8088 \
       -p 19888:19888 \
-      openeuler/hadoop:latest
+      openeuler/hadoop:{Tag}
     ```
 
   - 查看运行日志
