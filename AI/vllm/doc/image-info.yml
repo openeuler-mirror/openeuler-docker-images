@@ -7,7 +7,7 @@ environment: |
   yum install -y docker
   ```
 tags: |
-  vllm-cpu镜像的Tag由其版本信息和基础镜像版本信息组成，vLLM Ascend镜像的Tag还包含torch_npu、CANN和Python的版本信息，详细内容如下
+  vllm镜像的Tag由其版本信息和基础镜像版本信息组成，vLLM Ascend镜像的Tag还包含torch_npu、CANN和Python的版本信息，详细内容如下
 
   | Tags | Currently |  Architectures|
   |--|--|--|
@@ -38,7 +38,7 @@ tags: |
 download: |
   拉取镜像到本地
   ```
-  docker pull openeuler/vllm-cpu:{Tag}
+  docker pull openeuler/vllm:{Tag}
   ```
 
   更多 vLLM Ascend 官方镜像（含 A3、310P、950DT 等硬件变体）及安装方式，请参考 [vLLM Ascend 官方安装指南](https://docs.vllm.ai/projects/ascend)。
@@ -46,7 +46,7 @@ download: |
 usage: |
   - 验证镜像
     ```
-    docker run --rm openeuler/vllm-cpu:{Tag} --help
+    docker run --rm openeuler/vllm:{Tag} --help
     ```
 
   - 启动容器（交互式 shell）
@@ -54,13 +54,13 @@ usage: |
     docker run \
         --name my-vllm \
         --entrypoint /bin/bash \
-        -it openeuler/vllm-cpu:{Tag}
+        -it openeuler/vllm:{Tag}
     ```
     用户可根据自身需求选择对应的硬件设备{device}、对应版本的{Tag}以及容器启动的选项。
 
   - 启动 OpenAI 兼容服务（需指定模型）
     ```
-    docker run --rm -p 8000:8000 openeuler/vllm-cpu:{Tag} --model Qwen/Qwen3-0.6B
+    docker run --rm -p 8000:8000 openeuler/vllm:{Tag} --model Qwen/Qwen3-0.6B
     ```
 
   - 参数说明
@@ -68,7 +68,7 @@ usage: |
     |--|--|
     | `--name my-vllm` | 容器名称。|
     | `-it` | 以交互模式启动容器。 |
-    | `openeuler/vllm-cpu:{Tag}` | 指定要运行的镜像为 `openeuler/vllm-cpu`，其中` {Tag}` 是需要替换的镜像标签。 |
+    | `openeuler/vllm:{Tag}` | 指定要运行的镜像为 `openeuler/vllm`，其中` {Tag}` 是需要替换的镜像标签。 |
 
   - 容器测试
 
