@@ -15,7 +15,7 @@ RUN dnf update -y && \
 
 WORKDIR /opt
 
-RUN wget https://mirrors.tuna.tsinghua.edu.cn/gnu/glibc/glibc-${VERSION}.tar.xz \
+RUN wget https://mirrors.huaweicloud.com/gnu/glibc/glibc-${VERSION}.tar.xz \
     && tar -xvf  glibc-${VERSION}.tar.xz \
     && rm -f glibc-${VERSION}.tar.xz
 
@@ -29,3 +29,4 @@ FROM ${BASE}
 COPY --from=BUILDER /usr/local/glibc /usr/local/glibc
 WORKDIR /usr/local/glibc
 CMD ["./bin/ldd", "--version"]
+
