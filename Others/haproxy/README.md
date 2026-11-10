@@ -37,7 +37,7 @@ In this usage, users can select the corresponding `{Tag}` based on their require
 
     You can start the container with an interactive shell to use haproxy.
     ```
-    docker run -it --rm openeuler/haproxy:{Tag} bash
+    docker run -it --rm -p 8080:8080 openeuler/haproxy:{Tag} bash
     ```
 
 - Create haproxy configuration file
@@ -48,7 +48,7 @@ In this usage, users can select the corresponding `{Tag}` based on their require
     daemon
     maxconn 256
 
-    aults
+    defaults
         mode http
         timeout connect 5000ms
         timeout client 50000ms
@@ -62,22 +62,22 @@ In this usage, users can select the corresponding `{Tag}` based on their require
         server local_srv 127.0.0.1:8000 maxconn 32
     ```
     * `frontend` listens on port `8080`.
-    * `backend` forwards traffic to `127.0.0.1:8080` inside the container.
+    * `backend` forwards traffic to `127.0.0.1:8000` inside the container.
   
 - Start a simple backend HTTP server
 
-    Run a basic HTTP server using Python3 on port 8080:
+    Run a basic HTTP server using Python3 on port 8000:
     ```
-    nohup python3 -m http.server 8080 &
+    nohup python3 -m http.server 8000 &
     ```
-    This starts a minimal HTTP server that serves the current working directory on port `8080`.
+    This starts a minimal HTTP server that serves the current working directory on port `8000`.
   
 - Start haproxy in the background
 
     ```
     haproxy -f haproxy.cfg
     ```
-    HAProxy will listen on port `8080` and forward incoming requests to the local HTTP server on `127.0.0.1:8080`.
+    HAProxy will listen on port `8080` and forward incoming requests to the local HTTP server on `127.0.0.1:8000`.
   
 - Test haproxy HTTP service
 
