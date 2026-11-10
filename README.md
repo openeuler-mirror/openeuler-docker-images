@@ -206,9 +206,9 @@ docker pull quay.io/openeuler/openeuler:latest
 
 关于门禁检查的说明：
 
-1. 所有容器镜像的构建、发布、测试均由[EulerPublisher](https://gitee.com/openeuler/eulerpublisher)完成。
+1. 所有容器镜像的构建、发布、测试均由[EulerPublisher](https://gitcode.com/openeuler/eulerpublisher)完成。
 
-2. 应用容器镜像的测试通过[tests/container/app](https://gitee.com/openeuler/eulerpublisher/tree/master/tests/container/app)目录的测试脚本实现。开发者贡献应用镜像时，可通过[EulerPublisher](https://gitee.com/openeuler/eulerpublisher)仓库的说明同时贡献对应的测试用例。
+2. 应用容器镜像的测试通过`{app}/tests/`目录下的`test.sh`测试脚本实现。CI会自动解析并运行该目录下的测试脚本，需保证一个用例一个输出。
 
 关于PR合入后，自动发布镜像的规则说明：
 
