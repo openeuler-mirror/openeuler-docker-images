@@ -10,3 +10,21 @@
   path: 8.2.RC1.alpha001-python3.10/22.03-lts/Dockerfile
 8.2.RC1.alpha002-python3.10-oe2203lts:
   path: 8.2.RC1.alpha002-python3.10/22.03-lts/Dockerfile
+8.5.0-910b-python3.11-oe2403lts:
+  path: 8.5.0-910b-python3.11/24.03-lts/Dockerfile
+8.5.1-910b-python3.11-oe2403lts:
+  path: 8.5.1-910b-python3.11/24.03-lts/Dockerfile
+8.5.2-910b-python3.11-oe2403lts:
+  path: 8.5.2-910b-python3.11/24.03-lts/Dockerfile
+9.0.0-910b-python3.11-oe2403lts:
+  path: 9.0.0-910b-python3.11/24.03-lts/Dockerfile
+9.0.1-910b-python3.12-oe2403lts:
+  path: 9.0.1-910b-python3.12/24.03-lts/Dockerfile
+9.1.0-910b-python3.12-oe2403lts:
+  path: 9.1.0-910b-python3.12/24.03-lts/Dockerfile
+9.1.1-910b-python3.12-oe2403lts:
+  path: 9.1.1-910b-python3.12/24.03-lts/Dockerfile
+9.2.0-910b-python3.12-oe2403lts:
+  path: 9.2.0-910b-python3.12/24.03-lts/Dockerfile
+9.2.1-910b-python3.12-oe2403lts:
+  path: 9.2.1-910b-python3.12/24.03-lts/Dockerfile
