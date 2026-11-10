@@ -30,17 +30,20 @@ usage: |
   
   - 使用自己的输入文件运行模拟
 
-    DL_POLY需要三个输入文件：CONTROL、CONFIG和FIELD。
+    DL_POLY需要三个输入文件：CONTROL、CONFIG和FIELD，三者需要放在同一个工作目录中。
     ```
-    docker run -it --rm -v /path/to/your/data:/data openeuler/dl-poly:{Tag} \
-        mpirun -np 4 ./DLPOLY.Z -c /data/CONTROL -f /data/FIELD
+    docker run -it --rm -v /path/to/your/data:/data -w /data openeuler/dl-poly:{Tag} \
+        mpirun -np 4 /opt/dl-poly/bin/DLPOLY.Z -c CONTROL
     ```
+    `CONFIG` 和 `FIELD` 会从当前工作目录（上述命令中的 `/data`）读取，无需通过参数指定。
 
   - 使用MPI并行运行模拟
 
     ```
-    docker run -it --rm openeuler/dl-poly:{Tag} mpirun -np 4 ./DLPOLY.Z
+    docker run -it --rm -v /path/to/your/data:/data -w /data openeuler/dl-poly:{Tag} \
+        mpirun -np 4 /opt/dl-poly/bin/DLPOLY.Z
     ```
+    运行前请确保 `/data` 目录下已有 `CONTROL`、`CONFIG` 和 `FIELD` 文件。
 
 note: DL_POLY测试数据不包含在镜像中，用户需要自行准备输入文件或从CCP5 FTP服务器下载测试数据。
 
