@@ -19,7 +19,8 @@ tags: |
   | [3.2.44-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/orientdb/3.2.44/24.03-lts-sp2/Dockerfile) | OrientDB 3.2.44 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
   | [3.2.44-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/orientdb/3.2.44/24.03-lts-sp1/Dockerfile) | OrientDB 3.2.44 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
   | [3.2.43-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/orientdb/3.2.43/24.03-lts-sp1/Dockerfile) | OrientDB 3.2.43 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
-  | [3.2.38-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/orientdb/3.2.38/24.03-lts-sp1/Dockerfile)  | OrientDB 3.2.38 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+  | [3.2.38-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/orientdb/3.2.38/24.03-lts-sp1/Dockerfile)  | OrientDB 3.2.38 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+  |[3.2.48-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/orientdb/3.2.48/24.03-lts-sp1/Dockerfile)| orientdb 3.2.48 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 download: |
   拉取镜像到本地
