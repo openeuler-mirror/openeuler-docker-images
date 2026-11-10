@@ -8,11 +8,11 @@ RUN dnf update -y \
 
 WORKDIR /opt
 
-RUN curl -LO http://home.tiscali.cz/~cz210552/distfiles/webbench-${VERSION}.tar.gz \
-    && tar -xzf webbench-${VERSION}.tar.gz \
-    && rm -f webbench-${VERSION}.tar.gz
+RUN curl -fSL -o webbench.tar.gz https://github.com/baiguo/webbench-1.5/archive/refs/heads/master.tar.gz \
+    && tar -xzf webbench.tar.gz \
+    && rm -f webbench.tar.gz
 
-WORKDIR /opt/webbench-${VERSION}
+WORKDIR /opt/webbench-1.5-master
 
 RUN mkdir -p /usr/local/man/man1 && \
     make CFLAGS="-ggdb -W -I/usr/include/tirpc" && \
