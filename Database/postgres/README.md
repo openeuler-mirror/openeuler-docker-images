@@ -43,6 +43,8 @@ In this usage, users can select the corresponding `{Tag}` and `container startup
 	```
 	After the instance `my-postgres` is started, access the PostgreSQL  service through `http://localhost:30432`.
 
+	If you need to use a custom `postgresql.conf`, mount it outside `PGDATA` and append `postgres -c config_file=/etc/postgresql/postgresql.conf` to the start command. Mounting it at `PGDATA/postgresql.conf` can be overwritten by `initdb` on first start.
+
 - Container startup options
 
 	| Option | Description |
@@ -54,9 +56,9 @@ In this usage, users can select the corresponding `{Tag}` and `container startup
     | `-e POSTGRES_DB=postgres` | Set the name of the default database. |
     | `-e POSTGRES_INITDB_WALDIR` | Set the location of the Postgres transaction log. By default it is stored in a subdirectory of the main Postgres data folder (`PGDATA`). |
     | `-e POSTGRES_HOST_AUTH_METHOD=trust` | Set the auth-method for `host` connections for `all` databases, `all` users, and `all` addresses. The following will be added to the `pg_hba.conf` if this option is passed: `host all all all $POSTGRES_HOST_AUTH_METHOD`. |
-    | `-e PGDATA=/path/to/location` | Set the location of the database files. The default is `/var/lib/postgresql/data`. |
-    | `-v /path/to/postgresql.conf:/etc/postgresql/postgresql.conf` | Local configuration file `postgresql.conf`. |
-    | `-v /path/to/persisted/data:/var/lib/postgresql/data` | Persist data instead of initializing a new database every time you launch a new container. |
+    | `-e PGDATA=/path/to/location` | Set the location of the database files. The default is `/var/lib/pgsql/data`. |
+    | `-v /path/to/postgresql.conf:/etc/postgresql/postgresql.conf` | Mount a custom configuration file outside `PGDATA` (to avoid `initdb` overwriting it on first start); append `postgres -c config_file=/etc/postgresql/postgresql.conf` to the start command. |
+    | `-v /path/to/persisted/data:/var/lib/pgsql/data` | Persist data instead of initializing a new database every time you launch a new container. |
 
 - View container running logs
 
