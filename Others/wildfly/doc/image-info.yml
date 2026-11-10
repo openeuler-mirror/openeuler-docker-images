@@ -27,12 +27,12 @@ download: |
 usage: |
   - 单节点模式运行
     ```
-    docker run -d -p 8080:8080 --name my-wildfly openeuler/wildfly:{TAG}
+    docker run -d -p 8080:8080 --name my-wildfly openeuler/wildfly:{Tag}
     ```
   
   - 多节点集群模式运行
     ```
-    docker run -d --name my-wildfly openeuler/wildfly:{TAG} ./bin/domain.sh -b 0.0.0.0 -bmanagement 0.0.0.0
+    docker run -d --name my-wildfly openeuler/wildfly:{Tag} ./bin/domain.sh -b 0.0.0.0 -bmanagement 0.0.0.0
     ```
 
   - 容器测试
