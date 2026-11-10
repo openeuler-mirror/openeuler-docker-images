@@ -35,6 +35,7 @@ The tag of each vLLM docker image is consist of the version of vLLM and the vers
 
 | Tags | Currently |  Architectures|
 |--|--|--|
+|[0.32.0-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.32.0/24.03-lts-sp4/Dockerfile) | vllm 0.32.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[0.30.0-torch_npu2.10.0.post7-cann9.2.1-python3.12-oe2403lts](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.30.0-torch_npu2.10.0.post7-cann9.2.1-python3.12/24.03-lts/Dockerfile) | vLLM Ascend 0.30.0 (torch_npu 2.10.0.post7, CANN 9.2.1, Python 3.12) on openEuler 24.03-LTS | amd64, arm64 |
 |[0.23.0-torch_npu2.10.0.post4-cann9.1.0-python3.12-oe2403lts](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.23.0-torch_npu2.10.0.post4-cann9.1.0-python3.12/24.03-lts/Dockerfile) | vLLM Ascend 0.23.0 (torch_npu 2.10.0.post4, CANN 9.1.0, Python 3.12) on openEuler 24.03-LTS | amd64, arm64 |
 |[0.29.0-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/vllm/0.29.0/24.03-lts-sp4/Dockerfile) | vllm 0.29.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
