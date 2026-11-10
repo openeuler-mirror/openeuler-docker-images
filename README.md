@@ -20,6 +20,7 @@ openEuler的基础镜像由社区官方发布，目前发布在[openEuler镜像�
 
 ### 2.可用镜像的Tags
 - [24.03-lts-sp4, 24.03, latest](https://repo.openeuler.org/openEuler-24.03-LTS-SP4/docker_img/)
+- [26.09](https://repo.openeuler.org/openEuler-26.09/docker_img/)
 - [24.03-lts-sp3](https://repo.openeuler.org/openEuler-24.03-LTS-SP3/docker_img/)
 - [25.09](https://repo.openeuler.org/openEuler-25.09/docker_img/)
 - [24.03-lts-sp2](https://repo.openeuler.org/openEuler-24.03-LTS-SP2/docker_img/)
