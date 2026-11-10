@@ -2,7 +2,7 @@
 FROM openeuler/openeuler:24.03 AS python-installer
 
 # Python Environment variables
-ENV PATH=/usr/local/python3.12.12/bin:${PATH}
+ENV PATH=/usr/local/python3.11.14/bin:${PATH}
 
 RUN yum update -y && \
     yum install -y \
@@ -30,17 +30,17 @@ RUN yum update -y && \
     && rm -rf /tmp/*
 
 # Install Python
-RUN curl -fsSL https://repo.huaweicloud.com/python/3.12.12/Python-3.12.12.tgz -o /tmp/Python-3.12.12.tgz && \
-    tar -xf /tmp/Python-3.12.12.tgz -C /tmp && \
-    cd /tmp/Python-3.12.12 && \
-    mkdir -p /usr/local/python3.12.12/lib && \
-    ./configure --enable-shared --enable-shared LDFLAGS="-Wl,-rpath /usr/local/python3.12.12/lib" --prefix=/usr/local/python3.12.12 && \
+RUN curl -fsSL https://repo.huaweicloud.com/python/3.11.14/Python-3.11.14.tgz -o /tmp/Python-3.11.14.tgz && \
+    tar -xf /tmp/Python-3.11.14.tgz -C /tmp && \
+    cd /tmp/Python-3.11.14 && \
+    mkdir -p /usr/local/python3.11.14/lib && \
+    ./configure --enable-shared --enable-shared LDFLAGS="-Wl,-rpath /usr/local/python3.11.14/lib" --prefix=/usr/local/python3.11.14 && \
     make -j $(nproc) && \
     make altinstall && \
-    ln -sf /usr/local/python3.12.12/bin/python3.12 /usr/local/python3.12.12/bin/python3 && \
-    ln -sf /usr/local/python3.12.12/bin/pip3.12 /usr/local/python3.12.12/bin/pip3 && \
-    ln -sf /usr/local/python3.12.12/bin/python3 /usr/local/python3.12.12/bin/python && \
-    ln -sf /usr/local/python3.12.12/bin/pip3 /usr/local/python3.12.12/bin/pip && \
+    ln -sf /usr/local/python3.11.14/bin/python3.11 /usr/local/python3.11.14/bin/python3 && \
+    ln -sf /usr/local/python3.11.14/bin/pip3.11 /usr/local/python3.11.14/bin/pip3 && \
+    ln -sf /usr/local/python3.11.14/bin/python3 /usr/local/python3.11.14/bin/python && \
+    ln -sf /usr/local/python3.11.14/bin/pip3 /usr/local/python3.11.14/bin/pip && \
     rm -rf /tmp/*
 
 # Stage 2: Install CANN
@@ -99,7 +99,7 @@ FROM openeuler/openeuler:24.03 AS official-openeuler
 ARG TARGETPLATFORM
 
 # Python Environment variables
-ENV PATH=/usr/local/python3.12.12/bin:${PATH}
+ENV PATH=/usr/local/python3.11.14/bin:${PATH}
 
 # Note: Toolkit Environment variables, obtained from /usr/local/Ascend/ascend-toolkit/set_env.sh
 ENV ASCEND_TOOLKIT_HOME=/usr/local/Ascend/cann-8.5.1
@@ -158,7 +158,7 @@ RUN yum update -y && \
     && rm -rf /var/cache/yum \
     && rm -rf /tmp/*
 
-COPY --from=cann-installer /usr/local/python3.12.12 /usr/local/python3.12.12
+COPY --from=cann-installer /usr/local/python3.11.14 /usr/local/python3.11.14
 COPY --from=cann-installer /usr/local/Ascend /usr/local/Ascend
 COPY --from=cann-installer /etc/Ascend /etc/Ascend
 
