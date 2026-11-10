@@ -30,6 +30,8 @@ tags: |
   | [2.502-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.502/24.03-lts-sp1/Dockerfile) | Jenkins 2.502 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
   | [2.523-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.523/24.03-lts-sp1/Dockerfile) | Jenkins 2.523 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
   | [2.524-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.524/24.03-lts-sp2/Dockerfile) | Jenkins 2.524 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
+  |[2.589-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.589/24.03-lts-sp4/Dockerfile)| jenkins 2.589 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[2.587-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.587/24.03-lts-sp4/Dockerfile)| jenkins 2.587 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 download: |
   拉取镜像到本地
