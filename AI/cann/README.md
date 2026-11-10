@@ -34,6 +34,8 @@ The tag of each `cann` docker image is consist of the complete software stack ve
 | [9.2.0-910b-python3.12-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/cann/9.2.0-910b-python3.12/24.03-lts/Dockerfile)             | CANN 9.2.0 (910B) with Python 3.12 on openEuler 24.03-LTS     | arm64,amd64   |
 | [9.2.1-910b-python3.12-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/cann/9.2.1-910b-python3.12/24.03-lts/Dockerfile)             | CANN 9.2.1 (910B) with Python 3.12 on openEuler 24.03-LTS     | arm64,amd64   |
 
+更多版本请访问 [CANN镜像仓库](https://www.hiascend.com/developer/ascendhub/detail/17da20d1c2b6493cb38765adeba85884)。
+
 # Usage
 In this usage, users can select the corresponding `{Tag}` and `container startup options` based on their requirements.
 
