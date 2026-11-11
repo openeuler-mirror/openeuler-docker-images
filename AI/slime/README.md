@@ -22,7 +22,7 @@ The tag of each slime docker image consists of the slime version and the version
 
 | Tags | Currently | Architectures |
 |--|--|--|
-|[0.4.0-torch_npu2.10.0-cann9.1.0-python3.12-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/slime/0.4.0-torch_npu2.10.0-cann9.1.0-python3.12/24.03-lts-sp4/Dockerfile)| slime 0.4.0, Ascend-adapted fork at c69676f (torch_npu 2.10.0.post6, CANN 9.1.0) on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[0.4.0-torch_npu2.10.0-cann9.1.0-python3.12-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/slime/0.4.0-torch_npu2.10.0-cann9.1.0-python3.12/24.03-lts-sp4/Dockerfile)| slime 0.4.0, Ascend-adapted fork at c69676f (torch_npu 2.10.0.post6, CANN 9.1.0) on openEuler 24.03-LTS-SP4 | amd64 |
 
 # Usage
 
