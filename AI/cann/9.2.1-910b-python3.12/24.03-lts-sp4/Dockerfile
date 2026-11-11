@@ -1,7 +1,7 @@
 # Stage 1: Install Python
 # BASE_IMAGE can be overridden at build time, e.g.
-#   --build-arg BASE_IMAGE=swr.cn-southwest-2.myhuaweicloud.com/base_image/os/openeuler:24.03
-ARG BASE_IMAGE=openeuler/openeuler:24.03
+#   --build-arg BASE_IMAGE=swr.cn-southwest-2.myhuaweicloud.com/base_image/os/openeuler:24.03-lts-sp4
+ARG BASE_IMAGE=openeuler/openeuler:24.03-lts-sp4
 FROM ${BASE_IMAGE} AS python-installer
 
 # Python Environment variables
@@ -100,7 +100,7 @@ RUN . /usr/local/Ascend/ascend-toolkit/set_env.sh && \
     rm -f ~/Ascend-cann-nnal.run
 
 # Stage 3: Copy results from previous stages
-ARG BASE_IMAGE=openeuler/openeuler:24.03
+ARG BASE_IMAGE=openeuler/openeuler:24.03-lts-sp4
 FROM ${BASE_IMAGE} AS official-openeuler
 
 ARG TARGETPLATFORM
