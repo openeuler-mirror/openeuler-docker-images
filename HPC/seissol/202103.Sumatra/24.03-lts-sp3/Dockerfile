@@ -58,7 +58,7 @@ RUN git clone --depth 1 https://github.com/KarypisLab/ParMETIS.git /tmp/parmetis
 
 RUN git clone --recursive --depth 1 --branch ${VERSION} https://github.com/SeisSol/SeisSol.git /tmp/seissol && \
     sed -i '/#include <string>/a #include <sched.h>' /tmp/seissol/src/Parallel/Pin.h && \
-    if [ "$(uname -m)" = "aarch64" ]; then sed -i 's/ -mno-red-zone//' /tmp/seissol/CMakeLists.txt; fi && \
+    if [ "$(uname -m)" = "aarch64" ]; then sed -i '/^# Generated code does only work without red-zone\.$/,/^endif()$/d' /tmp/seissol/CMakeLists.txt; fi && \
     cd /tmp/seissol && \
     cmake -B build \
       -DCMAKE_BUILD_TYPE=Release \
