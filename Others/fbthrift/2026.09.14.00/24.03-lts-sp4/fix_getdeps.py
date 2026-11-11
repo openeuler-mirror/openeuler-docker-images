@@ -1,5 +1,19 @@
 #!/usr/bin/env python3
+import os
 import re
+import subprocess
+
+# 0. getdeps 默认会 clone fbthrift main，而 main 与当前 tag 内 pin 的 folly 不兼容
+#    （main 使用 folly::io::Cursor::Buffer，tag 的 folly 已无此类型）。
+#    把当前 tag 的 commit 写入 pinned rev，让 getdeps 构建 tag 源码。
+try:
+    sha = subprocess.check_output(['git', '-C', '/build', 'rev-parse', 'HEAD']).decode().strip()
+    rev_dir = 'build/deps/github_hashes/facebook'
+    os.makedirs(rev_dir, exist_ok=True)
+    with open(os.path.join(rev_dir, 'fbthrift-rev.txt'), 'w') as f:
+        f.write('Subproject commit %s\n' % sha)
+except Exception:
+    pass
 
 # 1. 修复 openEuler 发行版识别
 f = 'build/fbcode_builder/getdeps/getdeps_platform.py'
