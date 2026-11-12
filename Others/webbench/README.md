@@ -17,9 +17,9 @@ The tag of each `webbench` docker image is consist of the version of `webbench` 
 
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
-|[b1acf3c-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/webbench/b1acf3c/24.03-lts-sp4/Dockerfile)| webbench b1acf3c on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[1.5-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/webbench/1.5/24.03-lts-sp4/Dockerfile)| webbench 1.5 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[1.5-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/webbench/1.5/24.03-lts-sp1/Dockerfile)| webbench 1.5 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[b1acf3c-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/webbench/b1acf3c/24.03-lts-sp4/Dockerfile)| webbench b1acf3c on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[1.5-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/webbench/1.5/24.03-lts-sp4/Dockerfile)| webbench 1.5 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[1.5-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/webbench/1.5/24.03-lts-sp1/Dockerfile)| webbench 1.5 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.
@@ -55,4 +55,4 @@ In this usage, users can select the corresponding `{Tag}` based on their require
     This means using `100 concurrent clients` to test accessing `http://127.0.0.1:8080/index.html` for `30 seconds`.
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

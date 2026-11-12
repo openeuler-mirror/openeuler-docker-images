@@ -26,3 +26,4 @@ ENV PATH=$PATH:/opt/scala/bin
 USER root
 
 CMD ["scala"]
+

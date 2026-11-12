@@ -17,18 +17,18 @@ Read more on the [BIND 9 website](https://www.isc.org/bind/)⁠.
 The tag of each `bind9` docker image is consist of the version of `bind9` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
-|[9.21.26-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/bind9/9.21.26/24.03-lts-sp4/Dockerfile) | bind9 9.21.26 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[9.21.25-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/bind9/9.21.25/24.03-lts-sp4/Dockerfile) | bind9 9.21.25 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[9.21.23-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/bind9/9.21.23/24.03-lts-sp4/Dockerfile) | bind9 9.21.23 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[9.21.23-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/bind9/9.21.23/24.03-lts-sp3/Dockerfile) | bind9 9.21.23 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[9.18.24-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/bind9/9.18.24/22.03-lts-sp3/Dockerfile)| Bind9 9.18.24 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
-|[9.21.4-oe2203sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/bind9/9.21.4/22.03-lts-sp1/Dockerfile)| Bind9 9.21.4 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
-|[9.21.4-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/bind9/9.21.4/22.03-lts-sp3/Dockerfile)| Bind9 9.21.4 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
-|[9.21.4-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/bind9/9.21.4/22.03-lts-sp4/Dockerfile)| Bind9 9.21.4 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
-|[9.21.4-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/bind9/9.21.4/24.03-lts/Dockerfile)| Bind9 9.21.4 on openEuler 24.03-LTS | amd64, arm64 |
-|[9.21.6-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/bind9/9.21.6/24.03-lts/Dockerfile)| Bind9 9.21.6 on openEuler 24.03-LTS | amd64, arm64 |
-|[9.21.7-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/bind9/9.21.7/24.03-lts-sp1/Dockerfile)| Bind9 9.21.7 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
-|[9.21.10-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/bind9/9.21.10/24.03-lts-sp2/Dockerfile)| Bind9 9.21.10 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[9.21.26-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/bind9/9.21.26/24.03-lts-sp4/Dockerfile) | bind9 9.21.26 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[9.21.25-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/bind9/9.21.25/24.03-lts-sp4/Dockerfile) | bind9 9.21.25 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[9.21.23-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/bind9/9.21.23/24.03-lts-sp4/Dockerfile) | bind9 9.21.23 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[9.21.23-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/bind9/9.21.23/24.03-lts-sp3/Dockerfile) | bind9 9.21.23 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[9.18.24-oe2203sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/bind9/9.18.24/22.03-lts-sp3/Dockerfile)| Bind9 9.18.24 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[9.21.4-oe2203sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/bind9/9.21.4/22.03-lts-sp1/Dockerfile)| Bind9 9.21.4 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
+|[9.21.4-oe2203sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/bind9/9.21.4/22.03-lts-sp3/Dockerfile)| Bind9 9.21.4 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[9.21.4-oe2203sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/bind9/9.21.4/22.03-lts-sp4/Dockerfile)| Bind9 9.21.4 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+|[9.21.4-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/bind9/9.21.4/24.03-lts/Dockerfile)| Bind9 9.21.4 on openEuler 24.03-LTS | amd64, arm64 |
+|[9.21.6-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/bind9/9.21.6/24.03-lts/Dockerfile)| Bind9 9.21.6 on openEuler 24.03-LTS | amd64, arm64 |
+|[9.21.7-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/bind9/9.21.7/24.03-lts-sp1/Dockerfile)| Bind9 9.21.7 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[9.21.10-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/bind9/9.21.10/24.03-lts-sp2/Dockerfile)| Bind9 9.21.10 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` and `container startup options` based on their requirements.
@@ -66,4 +66,4 @@ In this usage, users can select the corresponding `{Tag}` and `container startup
 	```
 	
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

@@ -17,11 +17,11 @@ Learn more about mariadb at [https://mariadb.org/](https://mariadb.org/).
 The tag of each `mariadb` docker image is consist of the version of `mariadb` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
-|[13.1.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/mariadb/13.1.1/24.03-lts-sp4/Dockerfile) | mariadb 13.1.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[13.0.2-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/mariadb/13.0.2/24.03-lts-sp4/Dockerfile) | mariadb 13.0.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[12.1.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/mariadb/12.1.1/24.03-lts-sp4/Dockerfile)| mariadb 12.1.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[12.1.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/mariadb/12.1.1/24.03-lts-sp1/Dockerfile)| mariadb 12.1.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
-|[11.7.2-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/mariadb/11.7.2/24.03-lts-sp1/Dockerfile)| mariadb 11.7.2 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[13.1.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/mariadb/13.1.1/24.03-lts-sp4/Dockerfile) | mariadb 13.1.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[13.0.2-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/mariadb/13.0.2/24.03-lts-sp4/Dockerfile) | mariadb 13.0.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[12.1.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/mariadb/12.1.1/24.03-lts-sp4/Dockerfile)| mariadb 12.1.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[12.1.1-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/mariadb/12.1.1/24.03-lts-sp1/Dockerfile)| mariadb 12.1.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[11.7.2-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/mariadb/11.7.2/24.03-lts-sp1/Dockerfile)| mariadb 11.7.2 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
 
@@ -35,4 +35,4 @@ The tag of each `mariadb` docker image is consist of the version of `mariadb` an
 	You can connect to MariaDB from the MariaDB command line client, more information about the MariaDB command-line client can be found in the [MariaDB Command Line Client⁠](https://mariadb.com/kb/en/mariadb-command-line-client/)
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

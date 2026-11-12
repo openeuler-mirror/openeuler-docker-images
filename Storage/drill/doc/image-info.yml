@@ -11,9 +11,9 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
-  |[1.21.2-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/drill/1.21.2/24.03-lts-sp1/Dockerfile)| Apache Drill 1.21.2 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
-  |[1.22.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/drill/1.22.0/24.03-lts-sp1/Dockerfile)| Apache Drill 1.22.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
-  |[1.22.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/drill/1.22.0/24.03-lts-sp4/Dockerfile)| Apache Drill 1.22.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[1.21.2-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Storage/drill/1.21.2/24.03-lts-sp1/Dockerfile)| Apache Drill 1.21.2 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+  |[1.22.0-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Storage/drill/1.22.0/24.03-lts-sp1/Dockerfile)| Apache Drill 1.22.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+  |[1.22.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Storage/drill/1.22.0/24.03-lts-sp4/Dockerfile)| Apache Drill 1.22.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 download: |
   拉取镜像到本地
@@ -22,11 +22,18 @@ download: |
   ```
 
 usage: |
-  - 使用交互式 Shell 启动容器
+  - 启动 Drill 服务（Web UI）
 
-    运行以下命令，启动一个交互式的 Apache Drill 容器，并将 Web UI 的端口 `8047` 映射到你的主机：
     ```
-    docker run -it --rm -p 8047:8047 openeuler/drill
+    docker run -d --name my-drill -p 8047:8047 openeuler/drill:{Tag} supervisord -n
+    ```
+    容器启动后，访问 `http://localhost:8047` 打开 Web UI。
+    注意：Drillbit 依赖 ZooKeeper，需先准备可访问的 ZooKeeper（默认主机名为 `zookeeper`，如需其他地址，请修改 /apache-drill/conf/drill-override.conf 或构建时设置 ZOOKEEPER_HOST）。
+
+  - 使用交互式 SQL Shell
+
+    ```
+    docker run -it --rm openeuler/drill:{Tag}
     ```
   
     当容器启动后，你会看到类似下面这样的 `sqlline Shell` 提示符：

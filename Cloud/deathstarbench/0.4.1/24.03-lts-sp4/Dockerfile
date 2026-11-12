@@ -25,3 +25,4 @@ RUN git clone --depth 1 --branch socialNetwork-${VERSION} \
     dnf clean all
 
 CMD ["frontend"]
+

@@ -22,15 +22,15 @@ The tag of each `libvirt` docker image is consist of the version of `libvirt` an
 
 | Tag                                                                                                                               | Currently                                 | Architectures |
 |-----------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------|---------------|
-|[12.8.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/libvirt/12.8.0/24.03-lts-sp4/Dockerfile) | libvirt 12.8.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[12.7.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/libvirt/2026.77159/24.03-lts-sp4/Dockerfile) | libvirt 12.7.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[12.7.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/libvirt/12.7.0/24.03-lts-sp4/Dockerfile) | libvirt 12.7.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[12.4.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/libvirt/12.4.0/24.03-lts-sp4/Dockerfile) | libvirt 12.4.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[12.4.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/libvirt/12.4.0/24.03-lts-sp3/Dockerfile) | libvirt 12.4.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[12.3.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/libvirt/12.3.0/24.03-lts-sp3/Dockerfile) | libvirt 12.3.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[12.0.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/libvirt/12.0.0/24.03-lts-sp3/Dockerfile) | libvirt 12.0.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[11.7.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/libvirt/11.7.0/24.03-lts-sp1/Dockerfile) | libvirt 11.7.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
-| [11.3.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/libvirt/11.3.0/24.03-lts-sp1/Dockerfile) | Libvirt 11.3.0 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+|[12.8.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/libvirt/12.8.0/24.03-lts-sp4/Dockerfile) | libvirt 12.8.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[12.7.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/libvirt/2026.77159/24.03-lts-sp4/Dockerfile) | libvirt 12.7.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[12.7.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/libvirt/12.7.0/24.03-lts-sp4/Dockerfile) | libvirt 12.7.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[12.4.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/libvirt/12.4.0/24.03-lts-sp4/Dockerfile) | libvirt 12.4.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[12.4.0-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/libvirt/12.4.0/24.03-lts-sp3/Dockerfile) | libvirt 12.4.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[12.3.0-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/libvirt/12.3.0/24.03-lts-sp3/Dockerfile) | libvirt 12.3.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[12.0.0-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/libvirt/12.0.0/24.03-lts-sp3/Dockerfile) | libvirt 12.0.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[11.7.0-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/libvirt/11.7.0/24.03-lts-sp1/Dockerfile) | libvirt 11.7.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+| [11.3.0-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/libvirt/11.3.0/24.03-lts-sp1/Dockerfile) | Libvirt 11.3.0 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.
@@ -49,4 +49,4 @@ In this usage, users can select the corresponding `{Tag}` based on their require
     The `openeuler/libvirt` image is used to verify the integration between the upstream libvirt version and openEuler. 
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

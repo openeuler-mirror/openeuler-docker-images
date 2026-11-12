@@ -18,9 +18,9 @@ The tag of each `miniGhost` docker image consists of the version of `miniGhost` 
 
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
-|[c2102b5-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/minighost/c2102b5/24.03-lts-sp4/Dockerfile) | miniGhost c2102b5 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[1.0.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/minighost/1.0.0/24.03-lts-sp3/Dockerfile) | miniGhost 1.0.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[1.0.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/minighost/1.0.0/24.03-lts-sp4/Dockerfile) | miniGhost 1.0.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[c2102b5-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/minighost/c2102b5/24.03-lts-sp4/Dockerfile) | miniGhost c2102b5 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[1.0.0-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/minighost/1.0.0/24.03-lts-sp3/Dockerfile) | miniGhost 1.0.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[1.0.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/minighost/1.0.0/24.03-lts-sp4/Dockerfile) | miniGhost 1.0.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 # Usage
 Here, users can select the corresponding `{Tag}` by their requirements.
@@ -42,4 +42,4 @@ Here, users can select the corresponding `{Tag}` by their requirements.
 	```
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

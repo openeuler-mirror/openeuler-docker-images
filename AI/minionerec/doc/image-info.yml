@@ -1,0 +1,105 @@
+name: minionerec
+category: ai
+description: MiniOneRec是全开源的生成式推荐框架，覆盖SID构建、SFT监督微调与推荐导向RL全流程。本镜像基于torch_npu，可在昇腾NPU上单卡完成生成式推荐模型的微调、约束解码评估与RL训练。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  MiniOneRec镜像的Tag由其版本信息和软件栈版本信息组成，详细内容如下：
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[0cbd94d-torch_npu2.9.0-cann9.1.0-python3.12-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/minionerec/0cbd94d-torch_npu2.9.0-cann9.1.0-python3.12/24.03-lts-sp4/Dockerfile)| MiniOneRec 0cbd94d (torch_npu 2.9.0.post8, CANN 9.1.0) on openEuler 24.03-LTS-SP4 | arm64,amd64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/minionerec:{Tag}
+  ```
+
+usage: |
+  - 前置条件
+
+    示例使用Ascend NPU设备。运行前确认宿主机已安装Ascend驱动和固件：
+    ```bash
+    npu-smi info
+    ls /dev/davinci* /dev/davinci_manager /dev/devmm_svm /dev/hisi_hdc
+    ```
+    将`${device}`替换为实际NPU设备（例如`/dev/davinci0`），并按文档挂载驱动目录。没有NPU时无法执行该示例。
+
+  - 启动容器
+    ```
+    docker run \
+        --name my-minionerec \
+        --device ${device} \
+        --device /dev/davinci_manager \
+        --device /dev/devmm_svm \
+        --device /dev/hisi_hdc \
+        -v /usr/local/dcmi:/usr/local/dcmi \
+        -v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi \
+        -v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/ \
+        -v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info \
+        -v /etc/ascend_install.info:/etc/ascend_install.info \
+        -v /root/.cache:/root/.cache \
+        -it openeuler/minionerec:{Tag} bash
+    ```
+    用户可根据自身需求选择对应版本的`{Tag}`、对应的NPU设备`{device}`以及容器启动的选项。
+
+  - 参数说明
+    | 配置项 | 描述 |
+    |--|--|
+    | `--name my-minionerec` | 容器名称。|
+    | `--device /dev/davinci1` | NPU设备，X是芯片物理ID号，例如davinci1。|
+    | `--device /dev/davinci_manager` | davinci相关的管理设备。|
+    | `--device /dev/devmm_svm` | 内存管理相关设备。|
+    | `--device /dev/hisi_hdc` | hdc相关管理设备。|
+    | `-v /usr/local/dcmi:/usr/local/dcmi` | 将宿主机dcmi的so和接口文件目录`/usr/local/dcmi`挂载到容器中，请根据实际情况修改。|
+    | `-v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi` | 将宿主机`npu-smi`工具`/usr/local/bin/npu-smi`挂载到容器中，请根据实际情况修改。|
+    | `-v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/` | 将宿主机目录`/usr/local/Ascend/driver/lib64/driver`挂载到容器中。请根据driver的驱动so所在路径修改。|
+    | `-v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info` | 将宿主机版本信息文件`/usr/local/Ascend/driver/version.info`挂载到容器中，请根据实际情况修改。|
+    | `-v /etc/ascend_install.info:/etc/ascend_install.info` | 将宿主机安装信息文件`/etc/ascend_install.info`挂载到容器中。|
+    | `-it` | 以交互模式启动容器。|
+    | `openeuler/minionerec:{Tag}` | 指定要运行的镜像`openeuler/minionerec`，其中`{Tag}`是需要替换的镜像标签。|
+
+  - 容器测试
+
+    进入容器后先加载CANN环境，检查设备走向（`sft.py`把设备选择交给`TrainingArguments`，NPU分支排在CUDA之前，训练器零注入即可落在`npu:0`）：
+    ```bash
+    docker exec -it my-minionerec /bin/bash
+    source /usr/local/Ascend/ascend-toolkit/set_env.sh
+    cd /opt/MiniOneRec
+    python3 -c "import torch, torch_npu; from transformers import TrainingArguments; print('npu available:', torch.npu.is_available()); print('trainer device:', TrainingArguments(output_dir='/tmp/probe-default').device)"
+    ```
+    预期输出`npu available: True`与`trainer device: npu:0`。
+
+    评估与RL入口写死了`cuda`，通过独立目录的`sitecustomize.py`（`import torch_npu.contrib.transfer_to_npu`）挂`PYTHONPATH`启用CUDA到NPU的映射，仅作用于目标命令：
+    ```bash
+    mkdir -p /tmp/minionerec-npu-shim
+    echo 'import torch_npu.contrib.transfer_to_npu  # noqa: F401' > /tmp/minionerec-npu-shim/sitecustomize.py
+    PYTHONPATH=/tmp/minionerec-npu-shim python3 -c "import torch; print('tensor landed on:', torch.zeros(1, device='cuda').device.type)"
+    ```
+
+    完整流程：从ModelScope下载Qwen2.5-0.5B基座模型、经hf-mirror下载Amazon Industrial_and_Scientific预处理数据后，单卡运行`python3 sft.py`完成SFT；随后`evaluate.py`做约束解码评估（`calc.py`计算HR/NDCG/CC，CC必须为0）、`rl.py`在SFT产物上再做GRPO。完整命令见上游Quick Start。
+
+license: Apache-2.0 license
+similar_packages:
+  - RecBole: RecBole是统一的推荐系统库，覆盖传统推荐与序列推荐的大量模型。
+  - EasyRec: EasyRec是阿里开源的推荐算法框架，提供端到端的训练与部署流程。
+dependency:
+  - python3
+  - torch
+  - torch_npu
+  - transformers
+  - trl
+  - datasets
+  - modelscope
+
+homepage: https://github.com/AkaliKong/MiniOneRec
+upstream:
+  backend: GitHub
+  version_url: AkaliKong/MiniOneRec
+  version_prefix: ""
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM

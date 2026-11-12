@@ -18,12 +18,12 @@ The tag of each `moosefs` docker image is consist of the version of `moosefs` an
 
 | Tag                                                                                                                                 | Currently                                 | Architectures |
 |-------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------|---------------|
-|[4.59.2-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/moosefs/4.59.2/24.03-lts-sp4/Dockerfile) | moosefs 4.59.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[4.59.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/moosefs/4.59.0/24.03-lts-sp4/Dockerfile) | moosefs 4.59.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[4.59.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/moosefs/4.59.0/24.03-lts-sp3/Dockerfile) | moosefs 4.59.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[4.58.4-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/moosefs/4.58.4/24.03-lts-sp3/Dockerfile) | moosefs 4.58.4 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-| [4.57.5-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/moosefs/4.57.5/24.03-lts-sp1/Dockerfile) | MooseFS 4.57.5 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
-| [4.58.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/moosefs/4.58.0/24.03-lts-sp2/Dockerfile) | MooseFS 4.58.0 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
+|[4.59.2-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Storage/moosefs/4.59.2/24.03-lts-sp4/Dockerfile) | moosefs 4.59.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[4.59.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Storage/moosefs/4.59.0/24.03-lts-sp4/Dockerfile) | moosefs 4.59.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[4.59.0-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Storage/moosefs/4.59.0/24.03-lts-sp3/Dockerfile) | moosefs 4.59.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[4.58.4-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Storage/moosefs/4.58.4/24.03-lts-sp3/Dockerfile) | moosefs 4.58.4 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+| [4.57.5-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Storage/moosefs/4.57.5/24.03-lts-sp1/Dockerfile) | MooseFS 4.57.5 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+| [4.58.0-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Storage/moosefs/4.58.0/24.03-lts-sp2/Dockerfile) | MooseFS 4.58.0 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.
@@ -87,4 +87,4 @@ In this usage, users can select the corresponding `{Tag}` based on their require
     ```
   
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

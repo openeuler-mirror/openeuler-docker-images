@@ -16,8 +16,8 @@ For more information about tez, please visit [https://tez.apache.org/](https://t
 The tag of each tez docker image is consist of the version of tez and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
-|[0.10.5-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/tez/0.10.5/24.03-lts-sp4/Dockerfile)| Apache Tez 0.10.5 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[0.10.5-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/tez/0.10.5/24.03-lts-sp1/Dockerfile)| Apache Tez 0.10.5 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[0.10.5-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/tez/0.10.5/24.03-lts-sp4/Dockerfile)| Apache Tez 0.10.5 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[0.10.5-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/tez/0.10.5/24.03-lts-sp1/Dockerfile)| Apache Tez 0.10.5 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
 
@@ -29,4 +29,4 @@ docker run -it --name tez openeuler/tez:latest
 ```
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

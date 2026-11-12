@@ -23,3 +23,4 @@ COPY --from=builder /usr/local/bin/SURVIVOR /usr/local/bin/SURVIVOR
 
 USER root
 CMD ["/bin/bash"]
+

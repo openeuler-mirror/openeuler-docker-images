@@ -23,6 +23,16 @@ download: |
 usage: |
   本镜像提供 TopHat 剪接读映射工具，用于 RNA-Seq 比对。
 
+  TopHat 运行前需要准备以下输入：
+
+  - `reference_genome`：Bowtie 1 索引前缀，需先用 `bowtie-build` 从参考基因组 FASTA 构建（镜像内已包含 bowtie）。
+  - `reads.fastq` / `reads_1.fastq` / `reads_2.fastq`：待比对的单端或双端 RNA-Seq 读数。
+  - 示例参考序列和读数可从公共数据库下载；准备 `reference_genome.fa` 后，可在当前目录构建索引：
+
+    ```
+    docker run --rm -v $(pwd):/data -w /data openeuler/tophat:{Tag} bowtie-build reference_genome.fa reference_genome
+    ```
+
   - 将 RNA-Seq 读数比对到参考基因组：
     ```
     docker run -it --rm -v $(pwd):/data -w /data openeuler/tophat:{Tag} tophat2 -o output_dir reference_genome reads.fastq

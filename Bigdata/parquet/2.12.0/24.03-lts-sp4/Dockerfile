@@ -9,4 +9,4 @@ RUN curl -fSL -o parquet.tar.gz https://archive.apache.org/dist/parquet/apache-p
     rm -rf parquet.tar.gz
 ENV PATH=$PATH:/usr/local/parquet/bin
 
-ENTRYPOINT [ "parquet", "--version" ]
+CMD [ "/bin/bash" ]

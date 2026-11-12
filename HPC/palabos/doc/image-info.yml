@@ -1,4 +1,6 @@
 name: palabos
+  |[2.3.0-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/palabos/2.3.0/24.03-lts-sp4/Dockerfile)| Palabos 2.3.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[2.3.0-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/palabos/2.3.0/24.03-lts-sp3/Dockerfile)| Palabos 2.3.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 category: hpc
 description: Palabos是一款开源的格子玻尔兹曼方法(LBM)计算流体力学(CFD)求解器，由日内瓦大学(UNIGE)团队开发和维护。Palabos提供MPI分布式并行计算、自由面流动模拟、多相流与气泡粒子建模、多孔介质渗流模拟、自适应网格细化等核心功能，并提供C++原生编程接口以及Python和Java脚本接口。Palabos广泛应用于计算流体力学、生物医学血流模拟、多相流与自由面流动、热对流与Rayleigh-Benard对流、多孔介质渗流及偏微分方程数值求解等科学研究与工程计算领域。
 environment: |
@@ -10,8 +12,6 @@ tags: |
   palabos镜像的Tag由其版本信息和基础镜像版本信息组成,详细内容如下
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
-  |[v2.3.0-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/palabos/v2.3.0/24.03-lts-sp4/Dockerfile) | Palabos v2.3.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-  |[v2.3.0-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/palabos/v2.3.0/24.03-lts-sp3/Dockerfile) | Palabos v2.3.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 download: |
   拉取镜像到本地
   ```

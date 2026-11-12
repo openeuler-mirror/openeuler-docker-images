@@ -21,6 +21,7 @@ The {repository/name} for the base image on third-party image hubs is `openeuler
 
 ### 2. Supported Tags
 - [24.03-lts-sp4, 24.03, latest](https://repo.openeuler.org/openEuler-24.03-LTS-SP4/docker_img/)
+- [26.09](https://repo.openeuler.org/openEuler-26.09/docker_img/)
 - [24.03-lts-sp3](https://repo.openeuler.org/openEuler-24.03-LTS-SP3/docker_img/)
 - [25.09](https://repo.openeuler.org/openEuler-25.09/docker_img/)
 - [24.03-lts-sp2](https://repo.openeuler.org/openEuler-24.03-LTS-SP2/docker_img/)
@@ -214,8 +215,8 @@ docker pull quay.io/openeuler/openeuler:latest
 Welcome to contribute openEuler application container images, please submit PR according to the above rules. Once the PR is passed and merged, the automatically publishing process will be triggered, and these images will be published to available container registries mentioned above!
 
 Code check instruction:
-1. [EulerPublisher](https://gitee.com/openeuler/eulerpublisher) is used to build, check and publish container images.
-2. All test cases of application container images are stored in [/tests/container/app](https://gitee.com/openeuler/eulerpublisher/tree/master/tests/container/app). Developers who want to publish container images can also submit test cases to [EulerPublisher](https://gitee.com/openeuler/eulerpublisher).
+1. [EulerPublisher](https://gitcode.com/openeuler/eulerpublisher) is used to build, check and publish container images.
+2. Application container images are tested by the `test.sh` script under `{app}/tests/`. CI automatically parses and runs the test scripts in that directory, and each test case must produce one output.
 3. When the PR in which you add or modify a Dockerfile is merged, a new image will be automatically published or the existing image will be updated.
 4. When the PR in which you add or modify a README.md is merged, the README.md will be synchronously published to the third-party Hubs.
 5. **Published images generally cannot be removed**, even if they are no longer updated or maintained, as users may still be using them. Therefore, in special cases where an image needs to be removed, please create an issue providing the tag of the image to be removed and the reason for removal, and contact the maintainer.

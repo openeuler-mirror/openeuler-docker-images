@@ -18,9 +18,9 @@ The tag of each `lizardfs` docker image is consist of the version of `lizardfs` 
 
 | Tag                                                                                                                                  | Currently                                  | Architectures |
 |--------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------|---------------|
-|[3.12.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/lizardfs/3.12.0/24.03-lts-sp4/Dockerfile) | lizardfs 3.12.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[3.12.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/lizardfs/3.12.0/24.03-lts-sp3/Dockerfile) | lizardfs 3.12.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-| [3.12.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/lizardfs/3.12.0/24.03-lts-sp1/Dockerfile) | LizardFS 3.12.0 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+|[3.12.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Storage/lizardfs/3.12.0/24.03-lts-sp4/Dockerfile) | lizardfs 3.12.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[3.12.0-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Storage/lizardfs/3.12.0/24.03-lts-sp3/Dockerfile) | lizardfs 3.12.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+| [3.12.0-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Storage/lizardfs/3.12.0/24.03-lts-sp1/Dockerfile) | LizardFS 3.12.0 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.
@@ -84,4 +84,4 @@ In this usage, users can select the corresponding `{Tag}` based on their require
     ```
   
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

@@ -22,7 +22,7 @@ For more details, visit the [KServe website](https://kserve.github.io/website/).
 The tag of each `KServe` docker image is consist of the complete software stack version. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
-|[0.15.2-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/kserve/controller/0.15.2/24.03-lts/Dockerfile)| KServe controller 0.15.2 on openEuler 24.03-LTS | amd64 |
+|[0.15.2-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/kserve/controller/0.15.2/24.03-lts/Dockerfile)| KServe controller 0.15.2 on openEuler 24.03-LTS | amd64 |
 
 # Usage
 
@@ -64,7 +64,7 @@ to use this context.
 
 You can then get started with a local deployment of KServe by using KServe Quick installation script on Kind:
 ```shell
-curl -s "https://gitee.com/openeuler-docker-images/raw//master/AI/kserve/controller/doc/quick_install.sh" | bash
+curl -s "https://gitcode.com/openeuler/openeuler-docker-images/raw/master/AI/kserve/controller/doc/quick_install.sh" | bash
 ```
 
 ## Deploy the Llama3 model for text_generation task with Hugging Face LLM Serving Runtime

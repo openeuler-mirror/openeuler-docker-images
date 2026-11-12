@@ -11,10 +11,11 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
-  |[2.4.3-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/keepalived/2.4.3/24.03-lts-sp4/Dockerfile) | keepalived 2.4.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-  |[2.3.4-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/keepalived/2.3.4/24.03-lts-sp4/Dockerfile) | keepalived 2.3.4 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-  |[2.3.4-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/keepalived/2.3.4/24.03-lts-sp3/Dockerfile) | keepalived 2.3.4 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-  |[2.3.3-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/keepalived/2.3.3/24.03-lts-sp1/Dockerfile)| Keepalived 2.3.3 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+  |[2.4.3-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/keepalived/2.4.3/24.03-lts-sp4/Dockerfile) | keepalived 2.4.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[2.3.4-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/keepalived/2.3.4/24.03-lts-sp4/Dockerfile) | keepalived 2.3.4 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[2.3.4-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/keepalived/2.3.4/24.03-lts-sp3/Dockerfile) | keepalived 2.3.4 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+  |[2.3.3-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/keepalived/2.3.3/24.03-lts-sp1/Dockerfile)| Keepalived 2.3.3 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+  |[2.3.4-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/keepalived/2.3.4/24.03-lts-sp1/Dockerfile)| keepalived 2.3.4 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 download: |
   拉取镜像到本地
@@ -25,7 +26,7 @@ download: |
 usage: |
   - 交互式 Shell 运行容器
 
-    R使用 `--privileged` 参数以特权模式运行容器， 这样Keepalived 才能管理网络接口并绑定虚拟 IP 地址：
+    使用 `--privileged` 参数以特权模式运行容器， 这样Keepalived 才能管理网络接口并绑定虚拟 IP 地址：
     ```
     docker run -it --privileged --rm openeuler/keepalived:{Tag} bash
     ```
@@ -64,6 +65,7 @@ usage: |
     }
     ```
     请根据实际环境修改 `interface` 和 `virtual_ipaddress` 的值。
+    注意：该 VIP 添加在容器自身的网络命名空间中，默认不会出现在宿主机上；如需在宿主机或外部网络使用，请结合 `--network host` 或相应的网络配置。
   
   - 启动 Keepalived
 

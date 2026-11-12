@@ -22,10 +22,12 @@ RUN python3 -m virtualenv cactus_env && \
 ENV PATH=/opt/cactus/cactus_env/bin:/opt/cactus/bin:$PATH
 ENV PYTHONPATH=/opt/cactus/lib:$PYTHONPATH
 
-RUN pip3 install --no-cache-dir -i https://pypi.tuna.tsinghua.edu.cn/simple -U setuptools pip wheel
-RUN pip3 install --no-cache-dir -i https://pypi.tuna.tsinghua.edu.cn/simple -U .
-RUN pip3 install --no-cache-dir -i https://pypi.tuna.tsinghua.edu.cn/simple -U -r ./toil-requirement.txt
+RUN pip3 install --no-cache-dir -i https://pypi.org/simple -U setuptools pip wheel
+RUN pip3 install --no-cache-dir -i https://pypi.org/simple -U .
+RUN pip3 install --no-cache-dir -i https://pypi.org/simple -U -r ./toil-requirement.txt
 
 WORKDIR /data
 
 CMD ["cactus", "--help"]
+
+

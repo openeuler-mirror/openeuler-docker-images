@@ -18,7 +18,7 @@ The tag of each `tempo` docker image is consist of the version of `tempo` and th
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
 
-|[2.5.0-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/tempo/2.5.0/24.03-lts/Dockerfile)| Grafana Tempo 2.5.0 on openEuler 24.03-LTS | amd64, arm64 |
+|[2.5.0-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/tempo/2.5.0/24.03-lts/Dockerfile)| Grafana Tempo 2.5.0 on openEuler 24.03-LTS | amd64, arm64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` and `container startup options` based on their requirements.
@@ -64,4 +64,4 @@ In this usage, users can select the corresponding `{Tag}` and `container startup
 	```
 	
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

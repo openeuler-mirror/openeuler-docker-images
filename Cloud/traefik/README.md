@@ -17,22 +17,22 @@ Learn more about Traefik on the [Traefik Website](https://doc.traefik.io/).
 The tag of each `traefik` docker image is consist of the version of `traefik` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
-|[3.7.0-ea.2-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/traefik/3.7.0-ea.2/24.03-lts-sp4/Dockerfile) | traefik 3.7.0-ea.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[3.7.0-ea.2-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/traefik/3.7.0-ea.2/24.03-lts-sp3/Dockerfile) | traefik 3.7.0-ea.2 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[3.6.7-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/traefik/3.6.7/24.03-lts-sp3/Dockerfile) | traefik 3.6.7 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[3.5.4-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/traefik/3.5.4/24.03-lts-sp2/Dockerfile) | traefik 3.5.4 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-|[2.11.0-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/traefik/2.11.0/22.03-lts-sp3/Dockerfile)| Traefik 2.11.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
-|[3.1.4-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/traefik/3.1.4/22.03-lts-sp3/Dockerfile)| Traefik 3.1.4 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
-|[3.1.5-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/traefik/3.1.5/22.03-lts-sp3/Dockerfile)| Traefik 3.1.5 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
-|[3.1.6-oe2003sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/traefik/3.1.6/20.03-lts-sp4/Dockerfile)| Traefik 3.1.6 on openEuler 20.03-LTS-SP4 | amd64, arm64 |
-|[3.1.6-oe2203sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/traefik/3.1.6/22.03-lts-sp1/Dockerfile)| Traefik 3.1.6 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
-|[3.1.6-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/traefik/3.1.6/22.03-lts-sp3/Dockerfile)| Traefik 3.1.6 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
-|[3.1.6-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/traefik/3.1.6/22.03-lts-sp4/Dockerfile)| Traefik 3.1.6 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
-|[3.1.6-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/traefik/3.1.6/24.03-lts/Dockerfile)| Traefik 3.1.6 on openEuler 24.03-LTS | amd64, arm64 |
-|[3.2.0-oe2203sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/traefik/3.2.0/22.03-lts-sp1/Dockerfile)| Traefik 3.2.0 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
-|[3.2.0-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/traefik/3.2.0/22.03-lts-sp3/Dockerfile)| Traefik 3.2.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
-|[3.2.0-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/traefik/3.2.0/22.03-lts-sp4/Dockerfile)| Traefik 3.2.0 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
-|[3.2.0-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/traefik/3.2.0/24.03-lts/Dockerfile)| Traefik 3.2.0 on openEuler 24.03-LTS | amd64, arm64 |
+|[3.7.0-ea.2-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/traefik/3.7.0-ea.2/24.03-lts-sp4/Dockerfile) | traefik 3.7.0-ea.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[3.7.0-ea.2-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/traefik/3.7.0-ea.2/24.03-lts-sp3/Dockerfile) | traefik 3.7.0-ea.2 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[3.6.7-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/traefik/3.6.7/24.03-lts-sp3/Dockerfile) | traefik 3.6.7 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[3.5.4-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/traefik/3.5.4/24.03-lts-sp2/Dockerfile) | traefik 3.5.4 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[2.11.0-oe2203sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/traefik/2.11.0/22.03-lts-sp3/Dockerfile)| Traefik 2.11.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[3.1.4-oe2203sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/traefik/3.1.4/22.03-lts-sp3/Dockerfile)| Traefik 3.1.4 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[3.1.5-oe2203sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/traefik/3.1.5/22.03-lts-sp3/Dockerfile)| Traefik 3.1.5 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[3.1.6-oe2003sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/traefik/3.1.6/20.03-lts-sp4/Dockerfile)| Traefik 3.1.6 on openEuler 20.03-LTS-SP4 | amd64, arm64 |
+|[3.1.6-oe2203sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/traefik/3.1.6/22.03-lts-sp1/Dockerfile)| Traefik 3.1.6 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
+|[3.1.6-oe2203sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/traefik/3.1.6/22.03-lts-sp3/Dockerfile)| Traefik 3.1.6 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[3.1.6-oe2203sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/traefik/3.1.6/22.03-lts-sp4/Dockerfile)| Traefik 3.1.6 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+|[3.1.6-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/traefik/3.1.6/24.03-lts/Dockerfile)| Traefik 3.1.6 on openEuler 24.03-LTS | amd64, arm64 |
+|[3.2.0-oe2203sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/traefik/3.2.0/22.03-lts-sp1/Dockerfile)| Traefik 3.2.0 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
+|[3.2.0-oe2203sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/traefik/3.2.0/22.03-lts-sp3/Dockerfile)| Traefik 3.2.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[3.2.0-oe2203sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/traefik/3.2.0/22.03-lts-sp4/Dockerfile)| Traefik 3.2.0 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+|[3.2.0-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/traefik/3.2.0/24.03-lts/Dockerfile)| Traefik 3.2.0 on openEuler 24.03-LTS | amd64, arm64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` and `container startup options` based on their requirements.
@@ -70,4 +70,4 @@ In this usage, users can select the corresponding `{Tag}` and `container startup
 	```
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

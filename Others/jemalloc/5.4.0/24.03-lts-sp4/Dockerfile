@@ -39,3 +39,4 @@ ENV LD_LIBRARY_PATH=/usr/local/lib
 CMD ["bash"]
 
 USER root
+

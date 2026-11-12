@@ -46,3 +46,4 @@ RUN echo /usr/local/lib > /etc/ld.so.conf.d/onednn.conf && ldconfig
 USER root
 
 CMD ["onednn-getting-started"]
+

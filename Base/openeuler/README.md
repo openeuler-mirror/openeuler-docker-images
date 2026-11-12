@@ -1,6 +1,6 @@
 # Quick reference
 
-- Where to get help: [openEuler Docker Images](https://gitee.com/openeuler/openeuler-docker-images/issues), [openEuler CloudNative SIG](https://gitee.com/openeuler/cloudnative)
+- Where to get help: [openEuler Docker Images](https://gitcode.com/openeuler/openeuler-docker-images/issues), [openEuler CloudNative SIG](https://gitee.com/openeuler/cloudnative)
 
 # Tags
 The version numbers of openEuler are used as the tags,  such as 24.03-lts, 22.03-lts-sp4, and 23.09.

@@ -11,7 +11,7 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
-  |[1.14.2-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/reedsolomon/1.14.2/24.03-lts-sp4/Dockerfile) | reedsolomon 1.14.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[1.14.2-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Storage/reedsolomon/1.14.2/24.03-lts-sp4/Dockerfile) | reedsolomon 1.14.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[1.14.1-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Storage/reedsolomon/1.14.1/24.03-lts-sp4/Dockerfile) | Reed-Solomon 1.14.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[1.14.1-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Storage/reedsolomon/1.14.1/24.03-lts-sp3/Dockerfile) | Reed-Solomon 1.14.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
@@ -22,6 +22,13 @@ download: |
   ```
 
 usage: |
+  - 准备测试数据
+
+    生成 1 MiB 测试文件（已有文件可跳过）：
+    ```bash
+    dd if=/dev/urandom of=myfile.dat bs=1M count=1
+    ```
+
   - 对文件进行纠删码编码
 
     ```bash
@@ -35,6 +42,20 @@ usage: |
     docker run --rm -v $(pwd):/data openeuler/reedsolomon:{Tag} \
         simple-decoder -data 4 -par 2 /data/myfile.dat
     ```
+
+
+  - 快速验证
+
+    生成 1 MiB 测试文件并编码：
+    ```bash
+    dd if=/dev/urandom of=myfile.dat bs=1M count=1
+    docker run --rm -v "$PWD":/data openeuler/reedsolomon:{Tag} simple-encoder -data 4 -par 2 /data/myfile.dat
+    ```
+    解码恢复：
+    ```bash
+    docker run --rm -v "$PWD":/data openeuler/reedsolomon:{Tag} simple-decoder -data 4 -par 2 /data/myfile.dat
+    ```
+    预期生成 `myfile.dat.0` 到 `myfile.dat.5` 共 6 个分片；解码输出 `No reconstruction needed` 并写回 `myfile.dat`。
 
 license: MIT
 similar_packages:

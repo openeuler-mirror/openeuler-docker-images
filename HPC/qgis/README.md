@@ -18,8 +18,8 @@ The tag of each QGIS container image is consist of the version of QGIS and the v
 
 | Tags | Currently |  Architectures|
 |------|-----------|---------------|
-|[4.2.3-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/qgis/4.2.3/24.03-lts-sp4/Dockerfile) | qgis 4.2.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[4.2.2-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/qgis/4.2.2/24.03-lts-sp4/Dockerfile)| QGIS 4.2.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[4.2.3-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/qgis/4.2.3/24.03-lts-sp4/Dockerfile) | qgis 4.2.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[4.2.2-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/qgis/4.2.2/24.03-lts-sp4/Dockerfile)| QGIS 4.2.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 
 # Usage
@@ -42,4 +42,4 @@ The tag of each QGIS container image is consist of the version of QGIS and the v
 	**Note:** This image is built without the Python bindings (PyQt6/SIP are not packaged on openEuler), so Python plugins and the Python console are not available. The core C++ application, its GDAL/GEOS/PROJ providers, SpatiaLite, 3D and QtWebEngine support are included.
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

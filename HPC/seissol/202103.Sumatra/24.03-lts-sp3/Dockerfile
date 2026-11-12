@@ -58,6 +58,7 @@ RUN git clone --depth 1 https://github.com/KarypisLab/ParMETIS.git /tmp/parmetis
 
 RUN git clone --recursive --depth 1 --branch ${VERSION} https://github.com/SeisSol/SeisSol.git /tmp/seissol && \
     sed -i '/#include <string>/a #include <sched.h>' /tmp/seissol/src/Parallel/Pin.h && \
+    if [ "$(uname -m)" = "aarch64" ]; then sed -i '/^# Generated code does only work without red-zone\.$/,/^endif()$/d' /tmp/seissol/CMakeLists.txt; fi && \
     cd /tmp/seissol && \
     cmake -B build \
       -DCMAKE_BUILD_TYPE=Release \
@@ -99,3 +100,4 @@ ENV LD_LIBRARY_PATH=/usr/lib64/openmpi/lib:/usr/local/lib64:/usr/local/lib:${LD_
 
 WORKDIR /data
 CMD ["mpirun", "--allow-run-as-root", "/usr/local/bin/SeisSol"]
+

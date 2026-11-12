@@ -16,11 +16,11 @@ Learn more on [flume website](https://flume.apache.org/).
 The tag of each flume docker image is consist of the version of flume and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
-|[1.10.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/flume/1.10.1/24.03-lts-sp4/Dockerfile) | flume 1.10.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[1.11.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/flume/1.11.0/24.03-lts-sp4/Dockerfile) | flume 1.11.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[1.11.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/flume/1.11.0/24.03-lts-sp3/Dockerfile) | flume 1.11.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[1.11.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/flume/1.11.0/24.03-lts-sp2/Dockerfile) | flume 1.11.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-|[1.11.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/flume/1.11.0/24.03-lts-sp1/Dockerfile)| flume 1.11.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[1.10.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/flume/1.10.1/24.03-lts-sp4/Dockerfile) | flume 1.10.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[1.11.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/flume/1.11.0/24.03-lts-sp4/Dockerfile) | flume 1.11.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[1.11.0-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/flume/1.11.0/24.03-lts-sp3/Dockerfile) | flume 1.11.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[1.11.0-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/flume/1.11.0/24.03-lts-sp2/Dockerfile) | flume 1.11.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[1.11.0-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/flume/1.11.0/24.03-lts-sp1/Dockerfile)| flume 1.11.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
 Start a flume instance by following command:
@@ -31,4 +31,4 @@ docker run -it \
 ```
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

@@ -33,12 +33,16 @@ RUN mvn -B clean install package \
 
 FROM ${BASE}
 
-RUN yum install -y java-17-openjdk java-17-openjdk-devel python3 && \
+RUN yum install -y java-17-openjdk java-17-openjdk-devel python3 python3-distro && \
     yum clean all
 
 COPY --from=builder /opt/ambari-src /opt/ambari
 
+RUN mkdir -p /etc/ambari-server/conf && \
+    cp -a /opt/ambari/ambari-server/conf/unix/. /etc/ambari-server/conf/
+
 ENV AMBARI_HOME=/opt/ambari
+ENV PYTHONPATH=/opt/ambari/ambari-common/src/main/python:/opt/ambari/ambari-server/src/main/python
 WORKDIR /opt/ambari
 
 EXPOSE 8080

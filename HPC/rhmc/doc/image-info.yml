@@ -11,7 +11,7 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
-  |[1.2.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/rhmc/1.2.0/24.03-lts-sp4/Dockerfile)| RHMC 1.2.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[1.2.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/rhmc/1.2.0/24.03-lts-sp4/Dockerfile)| RHMC 1.2.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 download: |
   拉取镜像到本地
@@ -26,6 +26,16 @@ usage: |
     docker run -it --rm --gpus all openeuler/rhmc:{Tag}
     ```
     `openeuler/rhmc`镜像用于验证上游SIMULATeQCD版本和openEuler的集成。
+
+
+  - 前置条件
+
+    示例使用 `--gpus all`，需要 NVIDIA GPU、驱动和 nvidia-container-toolkit。运行前确认：
+    ```bash
+    nvidia-smi
+    docker info | grep -i nvidia
+    ```
+    没有 GPU 时无法执行该示例。
 
 license: MIT license
 similar_packages:

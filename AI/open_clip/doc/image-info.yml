@@ -1,0 +1,132 @@
+name: open_clip
+category: ai
+description: open_clip是ML Foundations开源的CLIP图文对比学习实现，支持数百个预训练图文模型、零样本分类与自定义对比学习训练。本镜像集成torch_npu与CANN，可在昇腾NPU上直接运行图文相似度计算、零样本推理与CLIP训练。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  open_clip镜像的Tag由其版本信息和软件栈版本信息组成，详细内容如下：
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[4.2.1-torch_npu2.9.0-cann9.1.0-python3.12-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/open_clip/4.2.1-torch_npu2.9.0-cann9.1.0-python3.12/24.03-lts-sp4/Dockerfile)| open_clip 4.2.1 (torch_npu 2.9.0.post8, CANN 9.1.0) on openEuler 24.03-LTS-SP4 | arm64,amd64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/open_clip:{Tag}
+  ```
+
+usage: |
+  - 前置条件
+
+    示例使用Ascend NPU设备。运行前确认宿主机已安装Ascend驱动和固件：
+    ```bash
+    npu-smi info
+    ls /dev/davinci* /dev/davinci_manager /dev/devmm_svm /dev/hisi_hdc
+    ```
+    将`${device}`替换为实际NPU设备（例如`/dev/davinci0`），并按文档挂载驱动目录。没有NPU时无法执行该示例。
+
+  - 启动容器
+    ```
+    docker run \
+        --name my-open_clip \
+        --device ${device} \
+        --device /dev/davinci_manager \
+        --device /dev/devmm_svm \
+        --device /dev/hisi_hdc \
+        -v /usr/local/dcmi:/usr/local/dcmi \
+        -v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi \
+        -v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/ \
+        -v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info \
+        -v /etc/ascend_install.info:/etc/ascend_install.info \
+        -it openeuler/open_clip:{Tag} bash
+    ```
+    用户可根据自身需求选择对应版本的`{Tag}`、对应的NPU设备`{device}`以及容器启动的选项。
+
+  - 参数说明
+    | 配置项 | 描述 |
+    |--|--|
+    | `--name my-open_clip` | 容器名称。|
+    | `--device /dev/davinci1` | NPU设备，X是芯片物理ID号，例如davinci1。|
+    | `--device /dev/davinci_manager` | davinci相关的管理设备。|
+    | `--device /dev/devmm_svm` | 内存管理相关设备。|
+    | `--device /dev/hisi_hdc` | hdc相关管理设备。|
+    | `-v /usr/local/dcmi:/usr/local/dcmi` | 将宿主机dcmi的so和接口文件目录`/usr/local/dcmi`挂载到容器中，请根据实际情况修改。|
+    | `-v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi` | 将宿主机`npu-smi`工具`/usr/local/bin/npu-smi`挂载到容器中，请根据实际情况修改。|
+    | `-v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/` | 将宿主机目录`/usr/local/Ascend/driver/lib64/driver`挂载到容器中。请根据driver的驱动so所在路径修改。|
+    | `-v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info` | 将宿主机版本信息文件`/usr/local/Ascend/driver/version.info`挂载到容器中，请根据实际情况修改。|
+    | `-v /etc/ascend_install.info:/etc/ascend_install.info` | 将宿主机安装信息文件`/etc/ascend_install.info`挂载到容器中。|
+    | `-it` | 以交互模式启动容器。|
+    | `openeuler/open_clip:{Tag}` | 指定要运行的镜像`openeuler/open_clip`，其中`{Tag}`是需要替换的镜像标签。|
+
+  - 容器测试
+
+    进入容器后先验证NPU环境，再确认open_clip版本：
+    ```bash
+    docker exec -it my-open_clip /bin/bash
+    python3 -c "import torch, torch_npu; print('is_available:', torch.npu.is_available())"
+    python3 -c "import open_clip; print('open_clip', open_clip.__version__)"
+    ```
+
+    在NPU上用预训练`ViT-B-32`跑图文相似度计算（沿用上游README示例，仅增加`torch_npu`导入与`device="npu:0"`）：
+    ```python
+    import torch
+    import torch_npu
+    from PIL import Image
+    import open_clip
+
+    device = "npu:0"
+    labels = ["a diagram", "a dog", "a cat"]
+
+    model, _, preprocess = open_clip.create_model_and_transforms(
+        "ViT-B-32",
+        pretrained="laion2b_s34b_b79k",
+        device=device,
+    )
+    model.eval()
+    tokenizer = open_clip.get_tokenizer("ViT-B-32")
+
+    image = preprocess(Image.new("RGB", (512, 512), (30, 144, 255))).unsqueeze(0).to(device)
+    text = tokenizer(labels).to(device)
+
+    with torch.no_grad():
+        image_features = model.encode_image(image)
+        text_features = model.encode_text(text)
+        image_features /= image_features.norm(dim=-1, keepdim=True)
+        text_features /= text_features.norm(dim=-1, keepdim=True)
+        probabilities = (100.0 * image_features @ text_features.T).softmax(dim=-1)
+
+    print("device:", next(model.parameters()).device)
+    print("top label:", labels[probabilities.argmax(dim=-1).item()])
+    print("NPU inference PASSED")
+    ```
+
+    国内网络可通过ModelScope或hf-mirror加速权重下载：
+    ```bash
+    export HF_ENDPOINT=https://hf-mirror.com
+    ```
+
+license: MIT license
+similar_packages:
+  - OpenAI CLIP: OpenAI发布的图文对比预训练模型原始实现，是open_clip的上游参考。
+  - Chinese-CLIP: 面向中文场景的图文对比学习实现，提供中文预训练权重与零样本能力。
+dependency:
+  - python3
+  - torch
+  - torch_npu
+  - torchvision
+  - timm
+  - huggingface-hub
+  - safetensors
+  - transformers
+
+homepage: https://github.com/mlfoundations/open_clip
+upstream:
+  backend: GitHub
+  version_url: mlfoundations/open_clip
+  version_prefix: v
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM

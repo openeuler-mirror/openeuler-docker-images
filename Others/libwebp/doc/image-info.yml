@@ -21,6 +21,17 @@ download: |
   ```
 
 usage: |
+  - 准备示例图片（在宿主机当前目录执行）：
+    ```bash
+    printf 'P6\n2 2\n255\n\xff\x00\x00\x00\xff\x00\x00\x00\xff\xff\xff\xff' > input.ppm
+    docker run --rm -v "$PWD":/work openeuler/libwebp:{Tag} cwebp -q 80 /work/input.ppm -o /work/input.webp
+    docker run --rm -v "$PWD":/work openeuler/libwebp:{Tag} dwebp /work/input.webp -o /work/input.png
+    docker run --rm -v "$PWD":/work openeuler/libwebp:{Tag} dwebp /work/input.webp -o /work/frame1.png
+    cp frame1.png frame2.png
+    echo 'R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==' | base64 -d > input.gif
+    ```
+    以上命令生成后续示例所需的 `input.png`、`input.webp`、`frame1.png`、`frame2.png` 和 `input.gif`。
+
   - 使用 cwebp 将图像编码为 WebP 格式：
 
     ```

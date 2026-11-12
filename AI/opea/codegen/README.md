@@ -28,9 +28,9 @@ The tag of each CodeGen docker image is consist of the version of CodeGen and th
 
 | Tags | Currently |  Architectures|
 |--|--|--|
-|[1.0-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/opea/codegen/1.0/24.03-lts/Dockerfile)| CodeGen 1.0 on openEuler 24.03-LTS | amd64 |
-|[1.2-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/opea/codegen/1.2/24.03-lts/Dockerfile)| CodeGen 1.2 on openEuler 24.03-LTS | amd64 |
-|[1.3-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/opea/codegen/1.3/24.03-lts/Dockerfile)| CodeGen 1.3 on openEuler 24.03-LTS | amd64 |
+|[1.0-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/opea/codegen/1.0/24.03-lts/Dockerfile)| CodeGen 1.0 on openEuler 24.03-LTS | amd64 |
+|[1.2-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/opea/codegen/1.2/24.03-lts/Dockerfile)| CodeGen 1.2 on openEuler 24.03-LTS | amd64 |
+|[1.3-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/opea/codegen/1.3/24.03-lts/Dockerfile)| CodeGen 1.3 on openEuler 24.03-LTS | amd64 |
 
 # Usage
 
@@ -82,7 +82,7 @@ To set up environment variables for deploying CodeGen services, follow these ste
 
 3. Set up other environment variables:
 
-   > Get `set_env.sh` here: [set_env.sh](https://gitee.com/openeuler/openeuler-docker-images/tree/master/AI/opea/codegen/doc/set_env.sh) 
+   > Get `set_env.sh` here: [set_env.sh](https://gitcode.com/openeuler/openeuler-docker-images/tree/master/AI/opea/codegen/doc/set_env.sh) 
 
    ```bash
    source set_env.sh
@@ -90,7 +90,7 @@ To set up environment variables for deploying CodeGen services, follow these ste
 
 ### Quick Start: 2.Run Docker Compose 
 
-> Get `compose.yml` here: [compose.yml](https://gitee.com/openeuler/openeuler-docker-images/tree/master/AI/opea/codegen/doc/compose.yml)
+> Get `compose.yml` here: [compose.yml](https://gitcode.com/openeuler/openeuler-docker-images/tree/master/AI/opea/codegen/doc/compose.yml)
 
 ```bash
 docker compose -f compose.yml up -d

@@ -20,7 +20,7 @@ The tag of each `maca-sdk` docker image is composed of the SDK version and the o
 
 | Tag                                                                                                                            | Currently                                            | Architectures |
 |--------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------|---------------|
-| [3.7-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/maca-sdk/3.7/24.03-lts-sp3/Dockerfile)      | MACA SDK 3.7.0.38 on openEuler 24.03-LTS-SP3         | amd64, arm64  |
+| [3.7-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/maca-sdk/3.7/24.03-lts-sp3/Dockerfile)      | MACA SDK 3.7.0.38 on openEuler 24.03-LTS-SP3         | amd64, arm64  |
 
 ## Usage
 
@@ -101,4 +101,4 @@ In this usage, users can select the corresponding `{Tag}` and `container startup
 
 ## Question and answering
 
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

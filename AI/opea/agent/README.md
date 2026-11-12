@@ -28,7 +28,7 @@ The tag of each AgentQnA docker image is consist of the version of AgentQnA and 
 
 | Tags | Currently |  Architectures|
 |--|--|--|
-|[1.2-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/opea/agent/1.2/24.03-lts/Dockerfile)| AgentQnA 1.2 on openEuler 24.03-LTS | amd64 |
+|[1.2-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/opea/agent/1.2/24.03-lts/Dockerfile)| AgentQnA 1.2 on openEuler 24.03-LTS | amd64 |
 
 # Usage
 

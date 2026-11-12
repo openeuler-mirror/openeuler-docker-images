@@ -7,15 +7,15 @@ environment: |
   yum install -y docker
   ```
 tags: |
-  Httpd镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+  kong镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
 
   | Tag                                                                                                                          | Currently                             | Architectures |
   |------------------------------------------------------------------------------------------------------------------------------|---------------------------------------|---------------|
-  |[3.9.4-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/kong/3.9.4/24.03-lts-sp4/Dockerfile) | kong 3.9.4 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-  |[3.9.3-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/kong/3.9.3/24.03-lts-sp4/Dockerfile) | kong 3.9.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-  | [3.9.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/kong/3.9.1/24.03-lts-sp4/Dockerfile) | Kong 3.9.1 on openEuler 24.03-LTS-SP4 | amd64, arm64  |
-  | [3.9.1-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/kong/3.9.1/24.03-lts-sp2/Dockerfile) | Kong 3.9.1 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
-  | [3.9.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/kong/3.9.1/24.03-lts-sp1/Dockerfile) | Kong 3.9.1 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+  |[3.9.4-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/kong/3.9.4/24.03-lts-sp4/Dockerfile) | kong 3.9.4 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[3.9.3-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/kong/3.9.3/24.03-lts-sp4/Dockerfile) | kong 3.9.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  | [3.9.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/kong/3.9.1/24.03-lts-sp4/Dockerfile) | Kong 3.9.1 on openEuler 24.03-LTS-SP4 | amd64, arm64  |
+  | [3.9.1-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/kong/3.9.1/24.03-lts-sp2/Dockerfile) | Kong 3.9.1 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
+  | [3.9.1-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/kong/3.9.1/24.03-lts-sp1/Dockerfile) | Kong 3.9.1 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 
 download: |
   拉取镜像到本地
@@ -39,7 +39,7 @@ usage: |
     -e "POSTGRES_USER=kong" \
     -e "POSTGRES_DB=kong" \
     -e "POSTGRES_PASSWORD=kongpass" \
-    openeuler/postgres:{Tag}
+    openeuler/postgres:latest
     ```
 
   3. 准备 Kong 数据库：

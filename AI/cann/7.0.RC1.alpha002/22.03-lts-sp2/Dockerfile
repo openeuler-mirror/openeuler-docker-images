@@ -1,6 +1,8 @@
 FROM openeuler/openeuler:22.03-lts-sp2
 
-ARG CANN_TOOLKIT_URL=https://ascend-repo.obs.cn-east-2.myhuaweicloud.com/Milan-ASL/Milan-ASL%20V100R001C13SPC702/Ascend-cann-toolkit_7.0.RC1.alpha002_linux-aarch64.run
+ARG TARGETARCH
+
+ARG CANN_TOOLKIT_URL
 ARG CANN_KERNELS_URL=https://ascend-repo.obs.cn-east-2.myhuaweicloud.com/Milan-ASL/Milan-ASL%20V100R001C13SPC702/Ascend-cann-kernels-910b_7.0.RC1.alpha002_linux.run
 
 
@@ -19,18 +21,31 @@ RUN yum install -y git wget gcc gcc-c++ make cmake unzip zlib-devel libffi-devel
     yum clean all && \
     rm -rf /var/cache/yum
 
-RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-aarch64.sh -O ~/miniconda.sh && \
+RUN ARCH=$(case "${TARGETARCH:-$(uname -m)}" in \
+        amd64|x86_64) echo "x86_64" ;; \
+        arm64|aarch64) echo "aarch64" ;; \
+        *) echo "Unsupported architecture" >&2; exit 1 ;; \
+    esac) && \
+    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-${ARCH}.sh -O ~/miniconda.sh && \
     bash ~/miniconda.sh -b -p /usr/local/miniconda && \
     rm -f ~/miniconda.sh
 
 RUN /usr/local/miniconda/bin/conda init bash && \
+    /usr/local/miniconda/bin/conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main && \
+    /usr/local/miniconda/bin/conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r && \
     /usr/local/miniconda/bin/conda create --name torch_npu -y python=3.8.11
 
 RUN source /root/.bashrc && conda activate torch_npu && \
-    pip3 install attrs decorator psutil numpy absl-py cloudpickle scipy synr==0.5.0 protobuf==3.19.0 tornado -i https://pypi.tuna.tsinghua.edu.cn/simple && \
+    pip3 install attrs decorator psutil numpy absl-py cloudpickle scipy synr==0.5.0 protobuf==3.19.0 tornado -i https://pypi.org/simple && \
     pip3 cache purge
 
-RUN wget ${CANN_TOOLKIT_URL} -O ~/Ascend-cann-toolkit.run && \
+RUN ARCH=$(case "${TARGETARCH:-$(uname -m)}" in \
+        amd64|x86_64) echo "x86_64" ;; \
+        arm64|aarch64) echo "aarch64" ;; \
+        *) echo "Unsupported architecture" >&2; exit 1 ;; \
+    esac) && \
+    TOOLKIT_URL="${CANN_TOOLKIT_URL:-https://ascend-repo.obs.cn-east-2.myhuaweicloud.com/Milan-ASL/Milan-ASL%20V100R001C13SPC702/Ascend-cann-toolkit_7.0.RC1.alpha002_linux-${ARCH}.run}" && \
+    wget ${TOOLKIT_URL} -O ~/Ascend-cann-toolkit.run && \
     chmod +x ~/Ascend-cann-toolkit.run && \
     printf "Y\n" | ~/Ascend-cann-toolkit.run --install && \
     rm -f ~/Ascend-cann-toolkit.run
@@ -39,3 +54,4 @@ RUN wget ${CANN_KERNELS_URL} -O ~/Ascend-cann-kernels.run && \
     chmod +x ~/Ascend-cann-kernels.run && \
     printf "Y\n" | ~/Ascend-cann-kernels.run --install && \
     rm -f ~/Ascend-cann-kernels.run
+

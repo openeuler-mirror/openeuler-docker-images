@@ -17,9 +17,9 @@ Learn more about on [ONNX Website](https://onnx.ai/).
 The tag of each `ONNX` docker image is consist of the complete software stack version. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
-|[1.23.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/onnx/1.23.0/24.03-lts-sp4/Dockerfile) | onnx 1.23.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[1.18.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/onnx/1.18.0/24.03-lts-sp4/Dockerfile)| ONNX 1.18.0 on openEuler 24.03-LTS | amd64, arm64 |
-|[1.18.0-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/onnx/1.18.0/24.03-lts/Dockerfile)| ONNX 1.18.0 on openEuler 24.03-LTS | amd64, arm64 |
+|[1.23.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/onnx/1.23.0/24.03-lts-sp4/Dockerfile) | onnx 1.23.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[1.18.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/onnx/1.18.0/24.03-lts-sp4/Dockerfile)| ONNX 1.18.0 on openEuler 24.03-LTS | amd64, arm64 |
+|[1.18.0-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/onnx/1.18.0/24.03-lts/Dockerfile)| ONNX 1.18.0 on openEuler 24.03-LTS | amd64, arm64 |
 
 # Usage
 1. Ensure that you have Docker installed, or are using Docker for Linux containers if on Windows.
@@ -29,7 +29,7 @@ The tag of each `ONNX` docker image is consist of the complete software stack ve
 - Pull the pre-built Docker image from DockerHub
   - ```docker pull openeuler/onnx```
 
-- Clone the [source repository](https://gitee.com/openeuler/openeuler-docker-images)⁠. Navigate to the `AI/onnx` folder and build the image locally with the following command.
+- Clone the [source repository](https://gitcode.com/openeuler/openeuler-docker-images)⁠. Navigate to the `AI/onnx` folder and build the image locally with the following command.
   -  ```docker build . -t openeuler/onnx```
 
 3. Run the Docker container to launch the ONNX developer image.
@@ -37,4 +37,4 @@ The tag of each `ONNX` docker image is consist of the complete software stack ve
 - ```docker run -it openeuler/onnx```
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

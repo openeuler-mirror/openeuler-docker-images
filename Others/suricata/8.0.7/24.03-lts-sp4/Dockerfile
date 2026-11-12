@@ -194,3 +194,4 @@ RUN chmod +x /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
 RUN /usr/bin/suricata --build-info
+

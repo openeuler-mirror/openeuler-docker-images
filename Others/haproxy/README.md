@@ -18,11 +18,11 @@ The tag of each `haproxy` docker image is consist of the version of `haproxy` an
 
 | Tag                                                                                                                              | Currently                                | Architectures |
 |----------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|---------------|
-|[3.4.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/haproxy/3.4.0/24.03-lts-sp4/Dockerfile) | haproxy 3.4.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[3.3.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/haproxy/3.3.0/24.03-lts-sp4/Dockerfile) | haproxy 3.3.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[3.3.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/haproxy/3.3.0/24.03-lts-sp3/Dockerfile) | haproxy 3.3.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-| [3.1.7-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/haproxy/3.1.7/24.03-lts-sp1/Dockerfile) | HAProxy 3.1.7 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
-| [3.2.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/haproxy/3.2.0/24.03-lts-sp2/Dockerfile) | HAProxy 3.2.0 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
+|[3.4.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/haproxy/3.4.0/24.03-lts-sp4/Dockerfile) | haproxy 3.4.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[3.3.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/haproxy/3.3.0/24.03-lts-sp4/Dockerfile) | haproxy 3.3.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[3.3.0-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/haproxy/3.3.0/24.03-lts-sp3/Dockerfile) | haproxy 3.3.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+| [3.1.7-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/haproxy/3.1.7/24.03-lts-sp1/Dockerfile) | HAProxy 3.1.7 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+| [3.2.0-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/haproxy/3.2.0/24.03-lts-sp2/Dockerfile) | HAProxy 3.2.0 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.
@@ -37,7 +37,7 @@ In this usage, users can select the corresponding `{Tag}` based on their require
 
     You can start the container with an interactive shell to use haproxy.
     ```
-    docker run -it --rm openeuler/haproxy:{Tag} bash
+    docker run -it --rm -p 8080:8080 openeuler/haproxy:{Tag} bash
     ```
 
 - Create haproxy configuration file
@@ -48,7 +48,7 @@ In this usage, users can select the corresponding `{Tag}` based on their require
     daemon
     maxconn 256
 
-    aults
+    defaults
         mode http
         timeout connect 5000ms
         timeout client 50000ms
@@ -62,22 +62,22 @@ In this usage, users can select the corresponding `{Tag}` based on their require
         server local_srv 127.0.0.1:8000 maxconn 32
     ```
     * `frontend` listens on port `8080`.
-    * `backend` forwards traffic to `127.0.0.1:8080` inside the container.
+    * `backend` forwards traffic to `127.0.0.1:8000` inside the container.
   
 - Start a simple backend HTTP server
 
-    Run a basic HTTP server using Python3 on port 8080:
+    Run a basic HTTP server using Python3 on port 8000:
     ```
-    nohup python3 -m http.server 8080 &
+    nohup python3 -m http.server 8000 &
     ```
-    This starts a minimal HTTP server that serves the current working directory on port `8080`.
+    This starts a minimal HTTP server that serves the current working directory on port `8000`.
   
 - Start haproxy in the background
 
     ```
     haproxy -f haproxy.cfg
     ```
-    HAProxy will listen on port `8080` and forward incoming requests to the local HTTP server on `127.0.0.1:8080`.
+    HAProxy will listen on port `8080` and forward incoming requests to the local HTTP server on `127.0.0.1:8000`.
   
 - Test haproxy HTTP service
 
@@ -88,4 +88,4 @@ In this usage, users can select the corresponding `{Tag}` based on their require
     You should see the reponse from the local HTTP server through HAProxy.
   
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

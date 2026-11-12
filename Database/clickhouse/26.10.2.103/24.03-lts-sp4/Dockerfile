@@ -19,6 +19,9 @@ RUN if [ "$TARGETARCH" = "amd64" ]; then \
 RUN yum install -y sudo shadow clickhouse-common-static.rpm clickhouse-server.rpm clickhouse-client.rpm && \
     yum clean all
 
+RUN getent group clickhouse >/dev/null || groupadd -r clickhouse; \
+    getent passwd clickhouse >/dev/null || useradd -r -g clickhouse -s /bin/false clickhouse
+
 COPY config.xml /etc/clickhouse-server/config.d/
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod 755 /entrypoint.sh && \

@@ -42,5 +42,10 @@ ENV PATH=$PATH:/opt/celeborn/sbin
 
 EXPOSE 9097 9098 9096
 
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
 USER celeborn
+
+ENTRYPOINT ["/entrypoint.sh"]
 WORKDIR /opt/celeborn

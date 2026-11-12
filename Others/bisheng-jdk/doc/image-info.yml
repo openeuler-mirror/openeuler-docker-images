@@ -57,7 +57,7 @@ usage: |
 
     使用以下方式验证镜像内安装的JAVA环境：
     ```
-    docker run -it openeuler/bisheng-jdk:{Tag} java --version
+    docker run --rm openeuler/bisheng-jdk:{Tag} java -version
     ```
     例如，`{Tag}`为`17.0.10-oe2203sp3`时，返回类似如下信息则证明环境正常：
     ```
@@ -65,6 +65,24 @@ usage: |
     OpenJDK Runtime Environment BiSheng (build 17.0.10+11)
     OpenJDK 64-Bit Server VM BiSheng (build 17.0.10+11, mixed mode, sharing)
     ```
+
+
+  - 快速验证（编译并运行一个 Java 程序）
+
+    创建测试文件 `Main.java`：
+    ```java
+    public class Main {
+        public static void main(String[] args) {
+            System.out.println("Hello from BiSheng JDK");
+        }
+    }
+    ```
+    编译并运行：
+    ```bash
+    docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp openeuler/bisheng-jdk:{Tag} javac Main.java
+    docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp openeuler/bisheng-jdk:{Tag} java Main
+    ```
+    预期输出：`Hello from BiSheng JDK`。
 
 license: GPL-2.0 license
 similar_packages:

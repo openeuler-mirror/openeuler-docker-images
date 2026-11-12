@@ -26,6 +26,30 @@ usage: |
   docker run --rm openeuler/scalapack:{Tag} mpirun --allow-run-as-root -np 4 /path/to/your_mpi_program
   ```
 
+
+  - 快速验证
+
+    创建测试程序 `hello_mpi.c`：
+    ```c
+    #include <mpi.h>
+    #include <stdio.h>
+
+    int main(int argc, char **argv) {
+        int rank, size;
+        MPI_Init(&argc, &argv);
+        MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+        MPI_Comm_size(MPI_COMM_WORLD, &size);
+        printf("Hello from rank %d of %d\n", rank, size);
+        MPI_Finalize();
+        return 0;
+    }
+    ```
+    编译并以 4 个进程运行：
+    ```bash
+    docker run --rm -v "$PWD":/data -w /data openeuler/scalapack:{Tag} sh -c 'export PATH=/usr/lib64/openmpi/bin:$PATH; mpicc hello_mpi.c -o hello_mpi && mpirun --allow-run-as-root -np 4 ./hello_mpi'
+    ```
+    预期输出 4 行 `Hello from rank ...`。
+
 license: BSD-3-Clause
 similar_packages:
   - LAPACK: 标准顺序线性代数库，ScaLAPACK 的串行对应版本

@@ -18,8 +18,8 @@ The tag of each 3dslicer container image is consist of the version of 3dslicer a
 
 | Tags | Currently |  Architectures|
 |------|-----------|---------------|
-|[5.12.4-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/3dslicer/5.12.4/24.03-lts-sp4/Dockerfile)| 3D Slicer 5.12.4 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[5.8.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/3dslicer/5.8.1/24.03-lts-sp1/Dockerfile)| 3D Slicer 5.8.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[5.12.4-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/3dslicer/5.12.4/24.03-lts-sp4/Dockerfile)| 3D Slicer 5.12.4 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[5.8.1-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/3dslicer/5.8.1/24.03-lts-sp1/Dockerfile)| 3D Slicer 5.8.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 
 # Usage
@@ -42,4 +42,4 @@ The tag of each 3dslicer container image is consist of the version of 3dslicer a
     ```
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

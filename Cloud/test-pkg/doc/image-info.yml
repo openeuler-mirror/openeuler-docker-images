@@ -7,7 +7,7 @@ environment: |
   yum install -y docker
   ```
 tags: |
-  docker镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+  test-pkg镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
@@ -44,6 +44,18 @@ usage: |
 
     ```
     docker run --rm -it --entrypoint /bin/bash openeuler/test-pkg:{Tag}
+    ```
+
+
+  - 前置条件
+
+    该镜像提供 kubectl，需要可访问的 Kubernetes 集群。运行前确认：
+    ```bash
+    kubectl cluster-info
+    ```
+    运行容器时挂载 kubeconfig：
+    ```bash
+    docker run --rm -v "$HOME/.kube:/root/.kube:ro" openeuler/test-pkg:{Tag} get nodes
     ```
 
 license: Apache-2.0

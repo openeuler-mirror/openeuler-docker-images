@@ -1,0 +1,120 @@
+name: dgl
+category: ai
+description: DGL是开源的图神经网络框架，提供图数据结构、消息传递与GNN模块。本镜像基于BUPT-GAMMA的昇腾适配版DGL-Ascend源码构建，可在昇腾NPU上直接运行图神经网络的训练与推理。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  DGL镜像的Tag由其版本信息和软件栈版本信息组成，详细内容如下：
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[c6c2ee8-torch_npu2.9.0-cann9.1.0-python3.12-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/dgl/c6c2ee8-torch_npu2.9.0-cann9.1.0-python3.12/24.03-lts-sp4/Dockerfile)| DGL-Ascend c6c2ee8 (torch_npu 2.9.0.post8, CANN 9.1.0) on openEuler 24.03-LTS-SP4 | arm64,amd64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/dgl:{Tag}
+  ```
+
+usage: |
+  - 前置条件
+
+    示例使用Ascend NPU设备。运行前确认宿主机已安装Ascend驱动和固件：
+    ```bash
+    npu-smi info
+    ls /dev/davinci* /dev/davinci_manager /dev/devmm_svm /dev/hisi_hdc
+    ```
+    将`${device}`替换为实际NPU设备（例如`/dev/davinci0`），并按文档挂载驱动目录。没有NPU时无法执行该示例。
+
+  - 启动容器
+    ```
+    docker run \
+        --name my-dgl \
+        --device ${device} \
+        --device /dev/davinci_manager \
+        --device /dev/devmm_svm \
+        --device /dev/hisi_hdc \
+        -v /usr/local/dcmi:/usr/local/dcmi \
+        -v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi \
+        -v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/ \
+        -v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info \
+        -v /etc/ascend_install.info:/etc/ascend_install.info \
+        -it openeuler/dgl:{Tag} bash
+    ```
+    用户可根据自身需求选择对应版本的`{Tag}`、对应的NPU设备`{device}`以及容器启动的选项。
+
+  - 参数说明
+    | 配置项 | 描述 |
+    |--|--|
+    | `--name my-dgl` | 容器名称。|
+    | `--device /dev/davinci1` | NPU设备，X是芯片物理ID号，例如davinci1。|
+    | `--device /dev/davinci_manager` | davinci相关的管理设备。|
+    | `--device /dev/devmm_svm` | 内存管理相关设备。|
+    | `--device /dev/hisi_hdc` | hdc相关管理设备。|
+    | `-v /usr/local/dcmi:/usr/local/dcmi` | 将宿主机dcmi的so和接口文件目录`/usr/local/dcmi`挂载到容器中，请根据实际情况修改。|
+    | `-v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi` | 将宿主机`npu-smi`工具`/usr/local/bin/npu-smi`挂载到容器中，请根据实际情况修改。|
+    | `-v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/` | 将宿主机目录`/usr/local/Ascend/driver/lib64/driver`挂载到容器中。请根据driver的驱动so所在路径修改。|
+    | `-v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info` | 将宿主机版本信息文件`/usr/local/Ascend/driver/version.info`挂载到容器中，请根据实际情况修改。|
+    | `-v /etc/ascend_install.info:/etc/ascend_install.info` | 将宿主机安装信息文件`/etc/ascend_install.info`挂载到容器中。|
+    | `-it` | 以交互模式启动容器。|
+    | `openeuler/dgl:{Tag}` | 指定要运行的镜像`openeuler/dgl`，其中`{Tag}`是需要替换的镜像标签。|
+
+  - 容器测试
+
+    进入容器后先加载CANN环境并验证NPU栈。注意导入顺序：必须先导入`torch`和`torch_npu`，再导入`dgl`：
+    ```bash
+    docker exec -it my-dgl /bin/bash
+    source /usr/local/Ascend/ascend-toolkit/set_env.sh
+    python3 -c "import torch, torch_npu; print('is_available:', torch.npu.is_available())"
+    python3 -c "import torch, torch_npu, dgl; print('dgl version:', dgl.__version__)"
+    ```
+
+    在NPU上执行一次图消息传递检查：
+    ```python
+    import torch        # 1st
+    import torch_npu    # 2nd
+    import dgl          # 3rd
+    import dgl.function as fn
+
+    src = torch.tensor([0, 1, 2])
+    dst = torch.tensor([1, 2, 0])
+    g = dgl.graph((src, dst)).to('npu:0')
+    g.ndata['h'] = torch.randn(g.num_nodes(), 4, device='npu:0')
+    g.update_all(fn.copy_u('h', 'm'), fn.sum('m', 'agg'))
+    print('dgl version:', dgl.__version__)
+    print('aggregated tensor device:', g.ndata['agg'].device)
+    ```
+
+    运行上游Quick Start的LightGCN图推荐训练（Gowalla数据集，单卡一轮）：
+    ```bash
+    git clone https://github.com/BUPT-GAMMA/dgl-ascend.git
+    cd dgl-ascend/examples/pytorch/lightgcn
+    python3 -c "from urllib.request import urlretrieve; urlretrieve('https://s3.us-west-2.amazonaws.com/dgl-data/dataset/gowalla.zip', 'gowalla.zip')"
+    python3 -c "from zipfile import ZipFile; ZipFile('gowalla.zip').extractall('.')"
+    python3 main.py --dataset gowalla --batch 2048 --recdim 64 --epochs 1 --device npu
+    ```
+
+license: Apache-2.0 license
+similar_packages:
+  - PyG: PyTorch Geometric是基于PyTorch的图神经网络框架，提供图深度学习所需的层、算子与数据集抽象。
+  - Spektral: Spektral是基于Keras/TensorFlow的图神经网络库，面向图信号的深度学习建模。
+dependency:
+  - python3
+  - torch
+  - torch_npu
+  - CANN
+  - numpy
+  - pydantic
+  - pandas
+  - tqdm
+
+homepage: https://github.com/BUPT-GAMMA/dgl-ascend
+upstream:
+  backend: GitHub
+  version_url: BUPT-GAMMA/dgl-ascend
+  version_prefix: ""
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM

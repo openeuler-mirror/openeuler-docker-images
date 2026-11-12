@@ -18,11 +18,11 @@ The tag of each `druid` docker image is consist of the version of `druid` and th
 
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
-|[38.0.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/druid/38.0.0/24.03-lts-sp4/Dockerfile) | druid 38.0.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[37.0.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/druid/37.0.0/24.03-lts-sp4/Dockerfile) | druid 37.0.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[35.0.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/druid/35.0.0/24.03-lts-sp4/Dockerfile) | druid 35.0.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[35.0.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/druid/35.0.0/24.03-lts-sp2/Dockerfile) | druid 35.0.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-|[32.0.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/druid/32.0.1/24.03-lts-sp1/Dockerfile)| Apache druid 32.0.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[38.0.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/druid/38.0.0/24.03-lts-sp4/Dockerfile) | druid 38.0.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[37.0.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/druid/37.0.0/24.03-lts-sp4/Dockerfile) | druid 37.0.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[35.0.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/druid/35.0.0/24.03-lts-sp4/Dockerfile) | druid 35.0.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[35.0.0-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/druid/35.0.0/24.03-lts-sp2/Dockerfile) | druid 35.0.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[32.0.1-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/druid/32.0.1/24.03-lts-sp1/Dockerfile)| Apache druid 32.0.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
 
@@ -57,4 +57,4 @@ available processors and memory, using the default JVM arguments and service-spe
 	```
         
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

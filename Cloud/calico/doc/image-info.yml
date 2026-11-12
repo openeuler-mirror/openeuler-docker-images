@@ -7,14 +7,14 @@ environment: |
   yum install -y docker
   ```
 tags: |
-  docker镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+  calico镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
-  |[3.31.3-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/calico/3.31.3/24.03-lts-sp4/Dockerfile)| calico 3.31.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-  |[3.31.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/calico/3.31.0/24.03-lts-sp2/Dockerfile) | calico 3.31.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-  |[3.30.3-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/calico/3.30.3/24.03-lts-sp1/Dockerfile) | calico 3.30.3 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
-  |[3.29.3-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/calico/3.29.3/24.03-lts-sp1/Dockerfile)| Calico 3.29.3 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+  |[3.31.3-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/calico/3.31.3/24.03-lts-sp4/Dockerfile)| calico 3.31.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[3.31.0-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/calico/3.31.0/24.03-lts-sp2/Dockerfile) | calico 3.31.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+  |[3.30.3-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/calico/3.30.3/24.03-lts-sp1/Dockerfile) | calico 3.30.3 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+  |[3.29.3-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/calico/3.29.3/24.03-lts-sp1/Dockerfile)| Calico 3.29.3 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 download: |
   拉取镜像到本地
@@ -23,12 +23,12 @@ download: |
   ```
 
 usage: |
-  - 启动calico实例
+  - 验证 calicoctl 版本
 
     ```
-    docker run -it --name calico openeuler/calico:{Tag}
+    docker run --rm openeuler/calico:{Tag} version
     ```
-    `openeuler/calico`镜像用于验证上游calico版本和openEuler的集成。
+    `openeuler/calico` 镜像提供 `calicoctl`，用于验证上游 Calico 版本和 openEuler 的集成。
 
 license: Apache-2.0 license
 similar_packages:

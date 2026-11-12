@@ -18,8 +18,8 @@ The tag of each lumpy-sv container image is consist of the version of lumpy-sv a
 
 | Tags | Currently |  Architectures|
 |------|-----------|---------------|
-|[0.3.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/lumpy-sv/0.3.1/24.03-lts-sp4/Dockerfile)| lumpy-sv 0.3.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[0.3.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/lumpy-sv/0.3.1/24.03-lts-sp1/Dockerfile)| lumpy-sv 0.3.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[0.3.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/lumpy-sv/0.3.1/24.03-lts-sp4/Dockerfile)| lumpy-sv 0.3.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[0.3.1-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/lumpy-sv/0.3.1/24.03-lts-sp1/Dockerfile)| lumpy-sv 0.3.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 
 # Usage
@@ -77,4 +77,4 @@ The tag of each lumpy-sv container image is consist of the version of lumpy-sv a
                 weight:<sample weight>
     ```
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

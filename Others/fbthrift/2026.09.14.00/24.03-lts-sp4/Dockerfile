@@ -12,13 +12,13 @@ RUN dnf install -y \
         python3 && \
     dnf clean all
 
-COPY libaio-libaio-0.3.113.tar.gz /tmp/libaio.tar.gz
+COPY libaio-0.3.113.tar.gz /tmp/libaio.tar.gz
 COPY fix_getdeps.py /tmp/fix_getdeps.py
 
 RUN git clone -b ${VERSION} --depth 1 https://github.com/facebook/fbthrift.git /build && \
     cd /build && \
     mkdir -p /tmp/fbcode_builder_getdeps-ZbuildZbuildZfbcode_builder-root/downloads && \
-    cp /tmp/libaio.tar.gz /tmp/fbcode_builder_getdeps-ZbuildZbuildZfbcode_builder-root/downloads/libaio-libaio-libaio-0.3.113.tar.gz && \
+    cp /tmp/libaio.tar.gz /tmp/fbcode_builder_getdeps-ZbuildZbuildZfbcode_builder-root/downloads/libaio-libaio-0.3.113.tar.gz && \
     python3 /tmp/fix_getdeps.py && \
     ./build/fbcode_builder/getdeps.py --allow-system-packages --install-prefix /usr/local build fbthrift
 

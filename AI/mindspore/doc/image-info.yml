@@ -11,7 +11,7 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
-  |[2.3.0rc1-cann8.0.RC1-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/mindspore/2.3.0.rc1-cann8.0.RC1/22.03-lts-sp4/Dockerfile)| MindSpore 2.3.0.rc1 with CANN 8.0.RC1 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+  |[2.3.0rc1-cann8.0.RC1-oe2203sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/mindspore/2.3.0.rc1-cann8.0.RC1/22.03-lts-sp4/Dockerfile)| MindSpore 2.3.0.rc1 with CANN 8.0.RC1 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
 
 download: |
   拉取镜像到本地
@@ -65,6 +65,16 @@ usage: |
     ```
     docker exec -it my-mindspore /bin/bash
     ```
+
+
+  - 前置条件
+
+    示例使用 Ascend NPU 设备。运行前确认宿主机已安装 Ascend 驱动和固件：
+    ```bash
+    npu-smi info
+    ls /dev/davinci* /dev/davinci_manager /dev/devmm_svm /dev/hisi_hdc
+    ```
+    将 `${device}` 替换为实际 NPU 设备（例如 `/dev/davinci0`），并按文档挂载驱动目录。没有 NPU 时无法执行该示例。
 
 license: Apache-2.0 license
 similar_packages:

@@ -18,25 +18,25 @@ The tag of each `jenkins` docker image is consist of the version of `jenkins` an
 
 | Tag                                                                                                                              | Currently                                | Architectures |
 |----------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|---------------|
-|[2.586-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.586/24.03-lts-sp4/Dockerfile) | jenkins 2.586 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[2.585-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.585/24.03-lts-sp4/Dockerfile) | jenkins 2.585 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[2.584-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.584/24.03-lts-sp4/Dockerfile) | jenkins 2.584 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[2.583-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.583/24.03-lts-sp4/Dockerfile) | jenkins 2.583 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[2.582-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.582/24.03-lts-sp4/Dockerfile) | jenkins 2.582 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[2.562-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.562/24.03-lts-sp4/Dockerfile) | jenkins 2.562 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[2.562-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.562/24.03-lts-sp3/Dockerfile) | jenkins 2.562 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[2.555-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.555/24.03-lts-sp3/Dockerfile) | jenkins 2.555 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[2.548-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.548/24.03-lts-sp3/Dockerfile) | jenkins 2.548 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[2.545-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.545/24.03-lts-sp3/Dockerfile) | jenkins 2.545 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[2.536-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.536/24.03-lts-sp2/Dockerfile) | jenkins 2.536 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-|[2.535-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.535/24.03-lts-sp2/Dockerfile) | jenkins 2.535 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-|[2.534-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.534/24.03-lts-sp2/Dockerfile) | jenkins 2.534 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-|[2.529-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.529/24.03-lts-sp2/Dockerfile) | jenkins 2.529 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-|[2.526-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.526/24.03-lts-sp1/Dockerfile) | jenkins 2.526 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
-|[2.525-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.525/24.03-lts-sp1/Dockerfile) | jenkins 2.525 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
-| [2.502-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.502/24.03-lts-sp1/Dockerfile) | Jenkins 2.502 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
-| [2.523-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.523/24.03-lts-sp1/Dockerfile) | Jenkins 2.523 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
-| [2.524-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.524/24.03-lts-sp2/Dockerfile) | Jenkins 2.524 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
+|[2.586-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.586/24.03-lts-sp4/Dockerfile) | jenkins 2.586 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[2.585-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.585/24.03-lts-sp4/Dockerfile) | jenkins 2.585 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[2.584-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.584/24.03-lts-sp4/Dockerfile) | jenkins 2.584 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[2.583-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.583/24.03-lts-sp4/Dockerfile) | jenkins 2.583 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[2.582-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.582/24.03-lts-sp4/Dockerfile) | jenkins 2.582 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[2.562-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.562/24.03-lts-sp4/Dockerfile) | jenkins 2.562 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[2.562-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.562/24.03-lts-sp3/Dockerfile) | jenkins 2.562 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[2.555-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.555/24.03-lts-sp3/Dockerfile) | jenkins 2.555 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[2.548-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.548/24.03-lts-sp3/Dockerfile) | jenkins 2.548 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[2.545-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.545/24.03-lts-sp3/Dockerfile) | jenkins 2.545 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[2.536-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.536/24.03-lts-sp2/Dockerfile) | jenkins 2.536 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[2.535-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.535/24.03-lts-sp2/Dockerfile) | jenkins 2.535 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[2.534-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.534/24.03-lts-sp2/Dockerfile) | jenkins 2.534 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[2.529-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.529/24.03-lts-sp2/Dockerfile) | jenkins 2.529 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[2.526-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.526/24.03-lts-sp1/Dockerfile) | jenkins 2.526 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[2.525-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.525/24.03-lts-sp1/Dockerfile) | jenkins 2.525 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+| [2.502-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.502/24.03-lts-sp1/Dockerfile) | Jenkins 2.502 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+| [2.523-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.523/24.03-lts-sp1/Dockerfile) | Jenkins 2.523 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+| [2.524-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/jenkins/2.524/24.03-lts-sp2/Dockerfile) | Jenkins 2.524 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.
@@ -85,4 +85,4 @@ In this usage, users can select the corresponding `{Tag}` based on their require
     ```
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

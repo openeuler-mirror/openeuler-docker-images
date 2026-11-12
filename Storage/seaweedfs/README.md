@@ -16,11 +16,11 @@ The tag of each `seaweedfs` docker image is consist of the version of `seaweedfs
 
 | Tag                                                                                                                               | Currently                                 | Architectures |
 |-----------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------|---------------|
-|[4.03-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/seaweedfs/24.03-lts-sp4/24.03-lts-sp4/Dockerfile) | seaweedfs 4.03 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[4.03-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/seaweedfs/24.03-lts-sp2/24.03-lts-sp2/Dockerfile) | seaweedfs 4.03 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-|[3.99-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/seaweedfs/3.99/24.03-lts-sp2/Dockerfile) | seaweedfs 3.99 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-|[3.97-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/seaweedfs/3.97/24.03-lts-sp1/Dockerfile) | seaweedfs 3.97 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
-| [3.85-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Storage/seaweedfs/3.85/24.03-lts-sp1/Dockerfile) | seaweedfs 3.85 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+|[4.03-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Storage/seaweedfs/24.03-lts-sp4/24.03-lts-sp4/Dockerfile) | seaweedfs 4.03 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[4.03-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Storage/seaweedfs/24.03-lts-sp2/24.03-lts-sp2/Dockerfile) | seaweedfs 4.03 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[3.99-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Storage/seaweedfs/3.99/24.03-lts-sp2/Dockerfile) | seaweedfs 3.99 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[3.97-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Storage/seaweedfs/3.97/24.03-lts-sp1/Dockerfile) | seaweedfs 3.97 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+| [3.85-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Storage/seaweedfs/3.85/24.03-lts-sp1/Dockerfile) | seaweedfs 3.85 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.
@@ -39,4 +39,4 @@ In this usage, users can select the corresponding `{Tag}` based on their require
     The `openeuler/seaweedfs` image is used to verify the integration between the upstream seaweedfs version and openEuler. 
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

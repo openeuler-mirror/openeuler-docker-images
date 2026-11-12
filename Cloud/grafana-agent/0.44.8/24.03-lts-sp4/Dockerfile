@@ -10,3 +10,4 @@ COPY agent.yaml /etc/agent/agent.yaml
 
 ENTRYPOINT ["grafana-agent"]
 CMD ["--config.file=/etc/agent/agent.yaml", "--metrics.wal-directory=/etc/agent/data"]
+

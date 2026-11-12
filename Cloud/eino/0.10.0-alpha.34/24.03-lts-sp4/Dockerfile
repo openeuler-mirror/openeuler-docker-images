@@ -53,3 +53,4 @@ WORKDIR /eino
 USER root
 
 CMD ["go", "version"]
+

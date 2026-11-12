@@ -24,6 +24,10 @@ usage: |
     ```
     docker run --rm openeuler/zstd:{Tag} zstd --version
     ```
+  - 创建测试文件
+    ```
+    echo 'openeuler-zstd-test' > input.txt
+    ```
   - 压缩文件
     ```
     docker run --rm -v "$(pwd)":/work -w /work openeuler/zstd:{Tag} \

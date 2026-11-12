@@ -20,36 +20,33 @@ The tag of each rust docker image is consist of the version of rust and the vers
 | Tags | Currently |  Architectures|
 |--|--|--|
 |[1.99.1-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/rust/1.99.1/24.03-lts-sp4/Dockerfile) | rust 1.99.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[1.99.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/rust/1.99.0/24.03-lts-sp4/Dockerfile) | rust 1.99.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[1.98.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/rust/1.98.1/24.03-lts-sp4/Dockerfile) | rust 1.98.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[1.96.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/rust/1.96.0/24.03-lts-sp4/Dockerfile) | rust 1.96.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[1.96.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/rust/1.96.0/24.03-lts-sp3/Dockerfile) | rust 1.96.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[1.99.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/rust/1.99.0/24.03-lts-sp4/Dockerfile) | rust 1.99.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[1.98.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/rust/1.98.1/24.03-lts-sp4/Dockerfile) | rust 1.98.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[1.96.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/rust/1.96.0/24.03-lts-sp4/Dockerfile) | rust 1.96.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[1.96.0-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/rust/1.96.0/24.03-lts-sp3/Dockerfile) | rust 1.96.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 |[1.95.0-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/rust/1.95.0/24.03-lts-sp3/Dockerfile) | rust 1.95.0 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 
 # Usage
+
+> **Note:** Rust is installed with rustup, so the toolchain is located in `/root/.cargo/bin`. This directory is not on the default `PATH` when a command is passed directly to `docker run`, so source `$HOME/.cargo/env` before running cargo commands (an interactive `bash` shell does this automatically).
+
 ## Start a Rust development environment
 
 ```bash
 docker run -it openeuler/rust:{Tag} bash
 ```
 
-## Compile and run a Rust project
+## Create and run a new Rust project
 
 ```bash
-docker run -it -v $(pwd):/workspace -w /workspace openeuler/rust:{Tag} cargo run
+docker run -it --rm -v $(pwd):/workspace -w /workspace openeuler/rust:{Tag} bash -c 'source $HOME/.cargo/env && cargo init && cargo run'
 ```
 
-## Create a new Rust project
+For an existing Rust project (a directory that already contains a `Cargo.toml`), drop `cargo init &&`:
 
 ```bash
-docker run -it -v $(pwd):/workspace -w /workspace openeuler/rust:{Tag} cargo new my-project
-```
-
-## Build a Rust project
-
-```bash
-docker run -it -v $(pwd):/workspace -w /workspace openeuler/rust:{Tag} cargo build --release
+docker run -it --rm -v $(pwd):/workspace -w /workspace openeuler/rust:{Tag} bash -c 'source $HOME/.cargo/env && cargo run'
 ```
 
 # Question and answering

@@ -40,3 +40,4 @@ RUN printf '/usr/local/lib\n/usr/local/lib64\n' > /etc/ld.so.conf.d/nco.conf && 
 ENV PATH=/usr/local/bin:$PATH
 USER root
 WORKDIR /data
+

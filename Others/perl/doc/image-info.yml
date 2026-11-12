@@ -12,7 +12,7 @@ tags: |
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
   |[5.45.4-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/perl/5.45.4/24.03-lts-sp4/Dockerfile) | perl 5.45.4 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-  |[5.45.3-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/perl/5.45.3/24.03-lts-sp4/Dockerfile) | perl 5.45.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[5.45.3-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/perl/5.45.3/24.03-lts-sp4/Dockerfile) | perl 5.45.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[5.45.2-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/perl/5.45.2/24.03-lts-sp4/Dockerfile) | perl 5.45.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 download: |
@@ -30,6 +30,10 @@ usage: |
     创建 hello.pl 文件，内容如下
     ```perl
     print "Hello, Perl!\n";
+    ```
+    也可通过以下命令直接生成 hello.pl
+    ```
+    echo 'print "Hello, Perl!\n";' > hello.pl
     ```
     挂载当前目录并运行脚本
     ```

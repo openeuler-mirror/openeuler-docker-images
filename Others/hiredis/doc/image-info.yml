@@ -23,6 +23,25 @@ download: |
   ```
 
 usage: |
+  - 启动容器
+  ```
+  docker run -d --name my-hiredis openeuler/hiredis:{Tag} sleep infinity
+  ```
+  hiredis 镜像提供 hiredis C 客户端库及编译环境，用于编译/运行使用 hiredis 的 C 程序（见现有“使用 Hiredis 的 Redis 客户端示例”章节）；镜像默认命令为 `bash`，非交互启动后会立即退出，故以 `sleep infinity` 常驻便于调试。用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。
+
+  - 容器测试
+
+  在容器内编译并运行示例程序（先将 hiredis.c 示例源码放入容器，或在容器内创建）：
+  ```
+  docker exec -it my-hiredis bash
+  gcc -o /tmp/hiredis /tmp/hiredis.c -lhiredis && /tmp/hiredis
+  ```
+
+  查看运行日志
+  ```
+  docker logs -f my-hiredis
+  ```
+
   - 使用 Hiredis 的 Redis 客户端示例
 
     这个示例演示了如何使用 C 语言中的 Hiredis 客户端库连接到 Redis 服务器并执行基本命令。

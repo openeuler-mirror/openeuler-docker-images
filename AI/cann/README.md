@@ -18,12 +18,23 @@ The tag of each `cann` docker image is consist of the complete software stack ve
 
 | Tag                                                                                                                                                               | Currently                                                     | Architectures |
 |-------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------|---------------|
-| [7.0.RC1.alpha002-oe2203sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/cann/7.0.RC1.alpha002/22.03-lts-sp2/Dockerfile)                   | CANN 7.0.RC1.alpha002 on openEuler 22.03-LTS-SP2              | arm64         |
-| [8.0.RC1-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/cann/8.0.RC1/22.03-lts-sp4/Dockerfile)                                     | CANN 8.0.RC1 with Python 3.8 on openEuler 22.03-LTS-SP4       | arm64,amd64   |
-| [8.1.RC1-python3.11-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/cann/8.1.RC1-python3.11/22.03-lts/Dockerfile)                   | CANN 8.1.RC1 with Python 3.11 on openEuler 22.03-LTS          | arm64,amd64   |
-| [8.1.RC1-python3.11-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/cann/8.1.RC1-python3.11/24.03-lts/Dockerfile)                   | CANN 8.1.RC1 with Python 3.11 on openEuler 24.03-LTS          | arm64,amd64   |
-| [8.2.RC1.alpha001-python3.10-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/cann/8.2.RC1.alpha001-python3.10/22.03-lts/Dockerfile) | CANN 8.2.RC1.alpha001 with Python 3.10 on openEuler 22.03-LTS | arm64,amd64   |
-| [8.2.RC1.alpha002-python3.10-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/AI/cann/8.2.RC1.alpha002-python3.10/22.03-lts/Dockerfile) | CANN 8.2.RC1.alpha002 with Python 3.10 on openEuler 22.03-LTS | arm64,amd64   |
+| [7.0.RC1.alpha002-oe2203sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/cann/7.0.RC1.alpha002/22.03-lts-sp2/Dockerfile)                   | CANN 7.0.RC1.alpha002 on openEuler 22.03-LTS-SP2              | arm64         |
+| [8.0.RC1-oe2203sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/cann/8.0.RC1/22.03-lts-sp4/Dockerfile)                                     | CANN 8.0.RC1 with Python 3.8 on openEuler 22.03-LTS-SP4       | arm64,amd64   |
+| [8.1.RC1-python3.11-oe2203lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/cann/8.1.RC1-python3.11/22.03-lts/Dockerfile)                   | CANN 8.1.RC1 with Python 3.11 on openEuler 22.03-LTS          | arm64,amd64   |
+| [8.1.RC1-python3.11-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/cann/8.1.RC1-python3.11/24.03-lts/Dockerfile)                   | CANN 8.1.RC1 with Python 3.11 on openEuler 24.03-LTS          | arm64,amd64   |
+| [8.2.RC1.alpha001-python3.10-oe2203lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/cann/8.2.RC1.alpha001-python3.10/22.03-lts/Dockerfile) | CANN 8.2.RC1.alpha001 with Python 3.10 on openEuler 22.03-LTS | arm64,amd64   |
+| [8.2.RC1.alpha002-python3.10-oe2203lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/cann/8.2.RC1.alpha002-python3.10/22.03-lts/Dockerfile) | CANN 8.2.RC1.alpha002 with Python 3.10 on openEuler 22.03-LTS | arm64,amd64   |
+| [8.5.0-910b-python3.11-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/cann/8.5.0-910b-python3.11/24.03-lts-sp2/Dockerfile)             | CANN 8.5.0 (910B) with Python 3.11 on openEuler 24.03-LTS-SP2     | arm64,amd64   |
+| [8.5.1-910b-python3.11-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/cann/8.5.1-910b-python3.11/24.03-lts-sp2/Dockerfile)             | CANN 8.5.1 (910B) with Python 3.11 on openEuler 24.03-LTS-SP2     | arm64,amd64   |
+| [8.5.2-910b-python3.11-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/cann/8.5.2-910b-python3.11/24.03-lts-sp2/Dockerfile)             | CANN 8.5.2 (910B) with Python 3.11 on openEuler 24.03-LTS-SP2     | arm64,amd64   |
+| [9.0.0-910b-python3.11-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/cann/9.0.0-910b-python3.11/24.03-lts-sp2/Dockerfile)             | CANN 9.0.0 (910B) with Python 3.11 on openEuler 24.03-LTS-SP2     | arm64,amd64   |
+| [9.0.1-910b-python3.12-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/cann/9.0.1-910b-python3.12/24.03-lts-sp3/Dockerfile)             | CANN 9.0.1 (910B) with Python 3.12 on openEuler 24.03-LTS-SP3     | arm64,amd64   |
+| [9.1.0-910b-python3.12-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/cann/9.1.0-910b-python3.12/24.03-lts-sp3/Dockerfile)             | CANN 9.1.0 (910B) with Python 3.12 on openEuler 24.03-LTS-SP3     | arm64,amd64   |
+| [9.1.1-910b-python3.12-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/cann/9.1.1-910b-python3.12/24.03-lts-sp4/Dockerfile)             | CANN 9.1.1 (910B) with Python 3.12 on openEuler 24.03-LTS-SP4     | arm64,amd64   |
+| [9.2.0-910b-python3.12-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/cann/9.2.0-910b-python3.12/24.03-lts-sp4/Dockerfile)             | CANN 9.2.0 (910B) with Python 3.12 on openEuler 24.03-LTS-SP4     | arm64,amd64   |
+| [9.2.1-910b-python3.12-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/cann/9.2.1-910b-python3.12/24.03-lts-sp4/Dockerfile)             | CANN 9.2.1 (910B) with Python 3.12 on openEuler 24.03-LTS-SP4     | arm64,amd64   |
+
+更多版本请访问 [CANN镜像仓库](https://www.hiascend.com/developer/ascendhub/detail/17da20d1c2b6493cb38765adeba85884)。
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` and `container startup options` based on their requirements.
@@ -81,4 +92,4 @@ In this usage, users can select the corresponding `{Tag}` and `container startup
 	```
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

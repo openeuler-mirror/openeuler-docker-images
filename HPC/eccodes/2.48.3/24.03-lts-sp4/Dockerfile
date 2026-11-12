@@ -64,3 +64,4 @@ ENV LD_LIBRARY_PATH=/opt/eccodes/lib:/opt/libaec/lib:$LD_LIBRARY_PATH
 USER root
 
 CMD ["grib_ls"]
+

@@ -7,12 +7,11 @@ environment: |
   yum install -y docker
   ```
 tags: |
-  docker镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+  cloudwego镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
   |[0.16.4-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/cloudwego/0.16.4/24.03-lts-sp4/Dockerfile) | CloudWeGo (Kitex 0.16.4 + Hertz 0.10.6 + Volo 0.12.2 + Eino 0.9.22) on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-  |[0.16.4-grpc-identify-cascade-cancel-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/cloudwego/0.16.4-grpc-identify-cascade-cancel/24.03-lts-sp4/Dockerfile) | cloudwego 0.16.4-grpc-identify-cascade-cancel on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[0.16.2-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/cloudwego/0.16.2/24.03-lts-sp4/Dockerfile) | CloudWeGo (kitex 0.16.2 + hz 0.10.5) on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[0.16.2-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/cloudwego/0.16.2/24.03-lts-sp3/Dockerfile) | CloudWeGo (kitex 0.16.2 + hz 0.10.5) on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
@@ -48,6 +47,27 @@ usage: |
     ```
     docker run --rm -w /eino openeuler/cloudwego:0.16.4-oe2403sp4 go build ./...
     ```
+
+
+  - 快速验证（kitex 代码生成）
+
+    创建测试文件 `my.thrift`：
+    ```thrift
+    namespace go example
+
+    struct HelloReq {
+        1: required string name
+    }
+
+    service HelloService {
+        string Hello(1: HelloReq req)
+    }
+    ```
+    生成代码：
+    ```bash
+    docker run --rm -v "$PWD":/workspace -w /workspace openeuler/cloudwego:{Tag} kitex -module example.com/myservice my.thrift
+    ```
+    预期生成 `kitex_gen/` 目录，并输出 `[INFO] Code Generation is Done!`。
 
 license: Apache-2.0 license
 similar_packages:

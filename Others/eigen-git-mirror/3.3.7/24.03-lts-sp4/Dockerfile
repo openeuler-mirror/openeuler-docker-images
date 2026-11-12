@@ -29,3 +29,4 @@ COPY --from=build /usr/local/share/pkgconfig/eigen3.pc /usr/local/share/pkgconfi
 USER root
 
 CMD ["bash"]
+

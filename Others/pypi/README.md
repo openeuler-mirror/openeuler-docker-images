@@ -18,8 +18,8 @@ The tag of each `pypi` docker image is consist of the version of `pypi` and the 
 
 | Tag | Currently | Architectures |
 |-----|-----------|---------------|
-| [23.3.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/pypi/23.3.1/24.03-lts-sp1/Dockerfile) | PyPI 23.3.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
-| [23.3.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/pypi/23.3.1/24.03-lts-sp4/Dockerfile) | PyPI 23.3.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+| [23.3.1-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/pypi/23.3.1/24.03-lts-sp1/Dockerfile) | PyPI 23.3.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+| [23.3.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/pypi/23.3.1/24.03-lts-sp4/Dockerfile) | PyPI 23.3.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.

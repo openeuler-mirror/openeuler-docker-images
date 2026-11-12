@@ -19,10 +19,10 @@ The tag of each `traffic-server` docker image is consist of the version of `traf
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
 |[10.2.1-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/traffic-server/10.2.1/24.03-lts-sp4/Dockerfile) | traffic 10.2.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[10.2.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/traffic-server/10.2.0/24.03-lts-sp4/Dockerfile) | traffic 10.2.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[10.1.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/traffic-server/10.1.0/24.03-lts-sp4/Dockerfile) | traffic 10.1.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[10.1.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/traffic-server/10.1.0/24.03-lts-sp2/Dockerfile) | traffic 10.1.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-|[10.0.5-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/traffic-server/10.0.5/24.03-lts-sp1/Dockerfile)| Apache Traffic Server 10.0.5 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[10.2.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/traffic-server/10.2.0/24.03-lts-sp4/Dockerfile) | traffic 10.2.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[10.1.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/traffic-server/10.1.0/24.03-lts-sp4/Dockerfile) | traffic 10.1.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[10.1.0-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/traffic-server/10.1.0/24.03-lts-sp2/Dockerfile) | traffic 10.1.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[10.0.5-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/traffic-server/10.0.5/24.03-lts-sp1/Dockerfile)| Apache Traffic Server 10.0.5 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
 This guide shows how to run the `Apcache Traffic Server(ATS)` as a simple local proxy in a single-node setup, forwarding traffic to a Nginx container running on the same host.
@@ -84,4 +84,4 @@ This guide shows how to run the `Apcache Traffic Server(ATS)` as a simple local 
     You should see the response coming from the backend Nginx server through Traffic Server.
   
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

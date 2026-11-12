@@ -17,16 +17,16 @@ Learn more about PostgreSQL on the [PostgreSQL Website](https://www.postgresql.o
 The tag of each `postgres` docker image is consist of the version of `postgres` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
-|[18.6-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/postgres/18.6/24.03-lts-sp4/Dockerfile) | postgres 18.6 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[13.3-oe2203lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/postgres/13.3/22.03-lts/Dockerfile)| Postgres 13.3 on openEuler 22.03-LTS | amd64, arm64 |
-|[16.2-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/postgres/16.2/22.03-lts-sp3/Dockerfile)| Postgres 16.2 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
-|[17.0-oe2203sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/postgres/17.0/22.03-lts-sp1/Dockerfile)| Postgres 17.0 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
-|[17.0-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/postgres/17.0/22.03-lts-sp3/Dockerfile)| Postgres 17.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
-|[17.0-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/postgres/17.0/22.03-lts-sp4/Dockerfile)| Postgres 17.0 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
-|[17.0-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/postgres/17.0/24.03-lts/Dockerfile)| Postgres 17.0 on openEuler 24.03-LTS | amd64, arm64 |
-|[17.5-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/postgres/17.5/24.03-lts-sp1/Dockerfile)| Postgres 17.5 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
-|[17.6-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/postgres/17.6/24.03-lts-sp2/Dockerfile)| Postgres 17.6 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-|[17.6-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/postgres/17.6/24.03-lts-sp4/Dockerfile)| Postgres 17.6 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[18.7-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Database/postgres/18.7/24.03-lts-sp4/Dockerfile) | postgres 18.7 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[18.6-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/postgres/18.6/24.03-lts-sp4/Dockerfile) | postgres 18.6 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[13.3-oe2203lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/postgres/13.3/22.03-lts/Dockerfile)| Postgres 13.3 on openEuler 22.03-LTS | amd64, arm64 |
+|[16.2-oe2203sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/postgres/16.2/22.03-lts-sp3/Dockerfile)| Postgres 16.2 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[17.0-oe2203sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/postgres/17.0/22.03-lts-sp1/Dockerfile)| Postgres 17.0 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
+|[17.0-oe2203sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/postgres/17.0/22.03-lts-sp3/Dockerfile)| Postgres 17.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[17.0-oe2203sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/postgres/17.0/22.03-lts-sp4/Dockerfile)| Postgres 17.0 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+|[17.0-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/postgres/17.0/24.03-lts/Dockerfile)| Postgres 17.0 on openEuler 24.03-LTS | amd64, arm64 |
+|[17.6-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/postgres/17.6/24.03-lts-sp2/Dockerfile)| Postgres 17.6 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[17.6-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/postgres/17.6/24.03-lts-sp4/Dockerfile)| Postgres 17.6 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   
 # Usage
 In this usage, users can select the corresponding `{Tag}` and `container startup options` based on their requirements.
@@ -44,6 +44,8 @@ In this usage, users can select the corresponding `{Tag}` and `container startup
 	```
 	After the instance `my-postgres` is started, access the PostgreSQL  service through `http://localhost:30432`.
 
+	If you need to use a custom `postgresql.conf`, mount it outside `PGDATA` and append `postgres -c config_file=/etc/postgresql/postgresql.conf` to the start command. Mounting it at `PGDATA/postgresql.conf` can be overwritten by `initdb` on first start.
+
 - Container startup options
 
 	| Option | Description |
@@ -55,9 +57,9 @@ In this usage, users can select the corresponding `{Tag}` and `container startup
     | `-e POSTGRES_DB=postgres` | Set the name of the default database. |
     | `-e POSTGRES_INITDB_WALDIR` | Set the location of the Postgres transaction log. By default it is stored in a subdirectory of the main Postgres data folder (`PGDATA`). |
     | `-e POSTGRES_HOST_AUTH_METHOD=trust` | Set the auth-method for `host` connections for `all` databases, `all` users, and `all` addresses. The following will be added to the `pg_hba.conf` if this option is passed: `host all all all $POSTGRES_HOST_AUTH_METHOD`. |
-    | `-e PGDATA=/path/to/location` | Set the location of the database files. The default is `/var/lib/postgresql/data`. |
-    | `-v /path/to/postgresql.conf:/etc/postgresql/postgresql.conf` | Local configuration file `postgresql.conf`. |
-    | `-v /path/to/persisted/data:/var/lib/postgresql/data` | Persist data instead of initializing a new database every time you launch a new container. |
+    | `-e PGDATA=/path/to/location` | Set the location of the database files. The default is `/var/lib/pgsql/data`. |
+    | `-v /path/to/postgresql.conf:/etc/postgresql/postgresql.conf` | Mount a custom configuration file outside `PGDATA` (to avoid `initdb` overwriting it on first start); append `postgres -c config_file=/etc/postgresql/postgresql.conf` to the start command. |
+    | `-v /path/to/persisted/data:/var/lib/pgsql/data` | Persist data instead of initializing a new database every time you launch a new container. |
 
 - View container running logs
 
@@ -72,4 +74,4 @@ In this usage, users can select the corresponding `{Tag}` and `container startup
 	```
 	
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

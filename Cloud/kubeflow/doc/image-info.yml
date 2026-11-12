@@ -7,7 +7,7 @@ environment: |
   yum install -y docker
   ```
 tags: |
-  docker镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+  kubeflow镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
@@ -39,6 +39,18 @@ usage: |
     docker run -it --rm openeuler/kubeflow:{Tag} bash
     ```
     `openeuler/kubeflow` 镜像用于验证上游 Kubeflow 版本和 openEuler 的集成。
+
+
+  - 前置条件
+
+    `notebook-controller` 和 `profile-controller` 需要 Kubernetes 集群和 kubeconfig。运行前确认：
+    ```bash
+    kubectl get nodes
+    ```
+    挂载 kubeconfig 后运行：
+    ```bash
+    docker run --rm -v "$HOME/.kube:/root/.kube:ro" openeuler/kubeflow:{Tag} notebook-controller
+    ```
 
 license: Apache-2.0 license
 similar_packages:

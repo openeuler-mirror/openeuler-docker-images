@@ -7,14 +7,16 @@ environment: |
   yum install -y docker
   ```
 tags: |
-  docker镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+  flannel镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
 
   | Tag | Currently | Architectures |
   |-----|-----------|---------------|
+  |[0.28.10-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/flannel/0.28.10/24.03-lts-sp4/Dockerfile) | flannel 0.28.10 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[0.28.7-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/flannel/0.28.7/24.03-lts-sp3/Dockerfile) | flannel 0.28.7 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
   |[0.27.3-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/flannel/0.27.3/24.03-lts-sp4/Dockerfile) | flannel 0.27.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[0.27.3-oe2403sp1](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/flannel/0.27.3/24.03-lts-sp1/Dockerfile) | flannel 0.27.3 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
   |[0.26.7-oe2403sp1](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/flannel/0.26.7/24.03-lts-sp1/Dockerfile) | flannel 0.26.7 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+  |[0.27.2-oe2403sp1](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/flannel/0.27.2/24.03-lts-sp1/Dockerfile)| flannel 0.27.2 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 download: |
   拉取镜像到本地
@@ -58,6 +60,21 @@ usage: |
     ```
     docker exec -it my-flannel /bin/bash
     ```
+
+
+  - 前置条件
+
+    文档中的 `--kube-subnet-mgr` 模式需要 Kubernetes 集群访问权限。运行前确认：
+    ```bash
+    kubectl get nodes
+    ```
+    容器内需要能读取 kubeconfig，或注入 `KUBERNETES_SERVICE_HOST` / `KUBERNETES_SERVICE_PORT`。挂载 kubeconfig 的示例：
+    ```bash
+    docker run -d --name my-flannel --cap-add NET_ADMIN --net=host \
+      -v "$HOME/.kube:/root/.kube:ro" \
+      openeuler/flannel:{Tag} --ip-masq --kube-subnet-mgr
+    ```
+    不使用 Kubernetes 时，请改用 etcd 后端并传入 `--etcd-endpoints`。
 
 license: Apache-2.0
 similar_packages:

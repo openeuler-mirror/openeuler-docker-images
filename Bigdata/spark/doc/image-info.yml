@@ -11,23 +11,26 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
-  |[3.4.3-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.4.3/24.03-lts-sp4/Dockerfile) | spark 3.4.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-  |[3.3.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.3.1/24.03-lts-sp4/Dockerfile) | spark 3.3.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-  |[3.5.2-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.5.2/24.03-lts-sp4/Dockerfile) | spark 3.5.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-  |[3.1.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.1.1/24.03-lts-sp4/Dockerfile) | spark 3.1.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-  |[4.2.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/4.2.0/24.03-lts-sp4/Dockerfile) | spark 4.2.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-  |[4.1.2-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/4.1.2/24.03-lts-sp4/Dockerfile) | spark 4.1.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-  |[4.1.2-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/4.1.2/24.03-lts-sp3/Dockerfile) | spark 4.1.2 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-  |[4.0.1-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/4.0.1/24.03-lts-sp2/Dockerfile) | spark 4.0.1 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-  |[3.3.1-22.03-lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.3.1/22.03-lts/Dockerfile)| spark 3.3.1 on openEuler 22.03-LTS | amd64, arm64 |
-  |[3.3.2-22.03-lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.3.2/22.03-lts/Dockerfile)| spark 3.3.2 on openEuler 22.03-LTS | amd64, arm64 |
-  |[3.4.0-22.03-lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.4.0/22.03-lts/Dockerfile)| spark 3.4.0 on openEuler 22.03-LTS | amd64, arm64 |
-  |[3.5.1-24.03-lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.5.1/24.03-lts/Dockerfile)| spark 3.5.1 on openEuler 24.03-LTS | amd64, arm64 |
-  |[3.5.3-oe2003sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.5.3/20.03-lts-sp4/Dockerfile)| spark 3.5.3 on openEuler 20.03-LTS-SP4 | amd64, arm64 |
-  |[3.5.3-oe2203sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.5.3/22.03-lts-sp1/Dockerfile)| spark 3.5.3 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
-  |[3.5.3-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.5.3/22.03-lts-sp3/Dockerfile)| spark 3.5.3 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
-  |[3.5.3-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.5.3/22.03-lts-sp4/Dockerfile)| spark 3.5.3 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
-  |[3.5.3-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.5.3/24.03-lts/Dockerfile)| spark 3.5.3 on openEuler 24.03-LTS | amd64, arm64 |
+  |[4.3.0-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/4.3.0/24.03-lts-sp4/Dockerfile) | spark 4.3.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[4.2.1-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/4.2.1/24.03-lts-sp4/Dockerfile) | spark 4.2.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[3.4.3-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.4.3/24.03-lts-sp4/Dockerfile) | spark 3.4.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[3.3.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.3.1/24.03-lts-sp4/Dockerfile) | spark 3.3.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[3.5.2-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.5.2/24.03-lts-sp4/Dockerfile) | spark 3.5.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[3.1.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.1.1/24.03-lts-sp4/Dockerfile) | spark 3.1.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[4.2.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/4.2.0/24.03-lts-sp4/Dockerfile) | spark 4.2.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[4.1.2-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/4.1.2/24.03-lts-sp4/Dockerfile) | spark 4.1.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[4.1.2-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/4.1.2/24.03-lts-sp3/Dockerfile) | spark 4.1.2 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+  |[4.0.1-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/4.0.1/24.03-lts-sp2/Dockerfile) | spark 4.0.1 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+  |[3.3.1-22.03-lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.3.1/22.03-lts/Dockerfile)| spark 3.3.1 on openEuler 22.03-LTS | amd64, arm64 |
+  |[3.3.2-22.03-lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.3.2/22.03-lts/Dockerfile)| spark 3.3.2 on openEuler 22.03-LTS | amd64, arm64 |
+  |[3.4.0-22.03-lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.4.0/22.03-lts/Dockerfile)| spark 3.4.0 on openEuler 22.03-LTS | amd64, arm64 |
+  |[3.5.1-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.5.1/24.03-lts/Dockerfile)| spark 3.5.1 on openEuler 24.03-LTS | amd64, arm64 |
+  |[3.5.3-oe2003sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.5.3/20.03-lts-sp4/Dockerfile)| spark 3.5.3 on openEuler 20.03-LTS-SP4 | amd64, arm64 |
+  |[3.5.3-oe2203sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.5.3/22.03-lts-sp1/Dockerfile)| spark 3.5.3 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
+  |[3.5.3-oe2203sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.5.3/22.03-lts-sp3/Dockerfile)| spark 3.5.3 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+  |[3.5.3-oe2203sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.5.3/22.03-lts-sp4/Dockerfile)| spark 3.5.3 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+  |[3.5.3-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/3.5.3/24.03-lts/Dockerfile)| spark 3.5.3 on openEuler 24.03-LTS | amd64, arm64 |
+  |[4.0.0-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/spark/4.0.0/24.03-lts-sp1/Dockerfile)| spark 4.0.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 download: |
   拉取镜像到本地
@@ -36,11 +39,42 @@ download: |
   ```
 
 usage: |
-  - 启动容器
+  - 启动交互式 spark-shell
     ```
-    docker run -d --name my-spark openeuler/spark:{Tag}
+    docker run -it --rm --name my-spark openeuler/spark:{Tag} /opt/spark/bin/spark-shell
     ```
-  用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。
+    进入 spark-shell 后可直接执行 Scala 代码，例如 `sc.parallelize(1 to 10).sum()`，输入 `:quit` 退出。
+
+  - 提交 Spark 作业（前台运行，作业结束后容器退出）
+    ```
+    docker run --rm --name my-spark openeuler/spark:{Tag} driver /opt/spark/examples/src/main/python/pi.py 10
+    ```
+    镜像入口脚本会把 `driver` 及其后的参数转换为 `spark-submit --deploy-mode client ...` 执行。
+
+    注意：`3.1.1-oe2403sp4` 基于 Python 3.11.6，而 Spark 3.1.1 自带的 cloudpickle 不支持 Python 3.11，运行上述 Python 示例会报：
+    ```
+    _pickle.PicklingError: Could not serialize object: IndexError: tuple index out of range
+    ```
+    该版本请改用 Scala 示例验证（需要显式指定 `spark.driver.bindAddress=0.0.0.0`，否则 executor 连接 driver 会失败）：
+    ```
+    docker run --rm --name my-spark openeuler/spark:3.1.1-oe2403sp4 driver \
+        --conf spark.driver.bindAddress=0.0.0.0 \
+        --class org.apache.spark.examples.SparkPi \
+        /opt/spark/examples/jars/spark-examples_2.12-3.1.1.jar 10
+    ```
+    预期输出包含 `Pi is roughly 3.14...`。或者使用 4.x 镜像（例如 `4.3.0-oe2403sp4`）运行 Python 示例。
+
+  - 保持容器常驻，便于后续 `docker exec` 调试（不启动前台 Spark 进程）
+    ```
+    docker run -dit --name my-spark openeuler/spark:{Tag} /bin/bash
+    ```
+    或使用 keepalive 进程
+    ```
+    docker run -d --name my-spark openeuler/spark:{Tag} sleep infinity
+    ```
+
+  - 说明
+    直接执行 `docker run -d openeuler/spark:{Tag}` 时，镜像默认命令为 `driver`，`spark-submit` 没有可提交的应用，进程会立即退出；请按上面的方式显式启动 `spark-shell`、`spark-submit` 或 keepalive 进程。
 
   - 容器测试
 

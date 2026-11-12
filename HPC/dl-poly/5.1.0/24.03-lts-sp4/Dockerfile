@@ -40,3 +40,4 @@ COPY --from=builder /opt/dl-poly-${VERSION}/build /opt/dl-poly
 WORKDIR /opt/dl-poly
 
 CMD ["bash"]
+

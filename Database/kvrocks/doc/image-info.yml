@@ -11,7 +11,7 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
-  |[2.17.0-rc1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/kvrocks/2.17.0-rc1/24.03-lts-sp4/Dockerfile) | kvrocks 2.17.0-rc1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[2.17.0-rc1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/kvrocks/2.17.0-rc1/24.03-lts-sp4/Dockerfile) | kvrocks 2.17.0-rc1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[2.16.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/kvrocks/2.16.0/24.03-lts-sp4/Dockerfile) | kvrocks 2.16.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 download: |
@@ -29,9 +29,10 @@ usage: |
 
   - 使用持久化存储
 
-    创建docker volume，并将数据目录挂载到容器上
+    创建docker volume，并将数据目录挂载到容器上。先移除上一步创建的同名容器（两者使用同一端口）：
     ```bash
     docker volume create kvrocks_data
+    docker rm -f my-kvrocks
     docker run -d --name my-kvrocks -p 6666:6666 --volume kvrocks_data:/var/lib/kvrocks openeuler/kvrocks:{Tag}
     ```
 

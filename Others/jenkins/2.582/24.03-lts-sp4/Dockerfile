@@ -30,3 +30,4 @@ RUN dnf update -y \
 WORKDIR /jenkins
 
 CMD ["java", "-jar", "./jenkins.war"]
+

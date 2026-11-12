@@ -23,7 +23,7 @@ set -euo pipefail
 : "${EXPECTED_VERSION:?EXPECTED_VERSION is required}"
 
 if [[ ! "${EXPECTED_VERSION}" =~ ^v?[0-9]{4}\.[0-9]{2}\.[0-9]{2}$ ]]; then
-    printf 'FAIL: EXPECTED_VERSION is not a jvarkit date tag: <%s>\n' \
+    printf 'ERROR: EXPECTED_VERSION is not a jvarkit date tag: <%s>\n' \
         "${EXPECTED_VERSION}" >&2
     exit 1
 fi
@@ -180,7 +180,7 @@ count_variant_lines() {
     printf '%s' "${variants}"
 }
 
-test_vcfhead_stdout() {
+check_vcfhead_stdout() {
     local output rc variants
 
     if output="$("${JAVA_BIN}" -jar "${JAR_PATH}" vcfhead -n 2 \
@@ -221,10 +221,10 @@ test_vcfhead_stdout() {
         return 1
     fi
 
-    printf 'PASS: vcfhead -n 2 streamed the header and the first two records\n'
+    printf 'INFO: vcfhead -n 2 streamed the header and the first two records\n'
 }
 
-test_vcfhead_output_file() {
+check_vcfhead_output_file() {
     local rc content
 
     if "${JAVA_BIN}" -jar "${JAR_PATH}" vcfhead -n 1 \
@@ -255,28 +255,30 @@ test_vcfhead_output_file() {
         return 1
     fi
 
-    printf 'PASS: vcfhead wrote the first record to a file and it reads back\n'
+    printf 'INFO: vcfhead wrote the first record to a file and it reads back\n'
 }
 
 test_core_function() {
     write_input_vcf
 
-    if ! test_vcfhead_stdout; then
+    if ! check_vcfhead_stdout; then
         return 1
     fi
 
-    if ! test_vcfhead_output_file; then
+    if ! check_vcfhead_output_file; then
         return 1
     fi
+
+    printf 'PASS: vcfhead -n 2 streamed two records and -n 1 -o wrote the first record\n'
 }
 
 main() {
     local failures=0
 
-    require_command mktemp || {
+    if ! command -v mktemp >/dev/null 2>&1; then
         printf 'TESTS_FAILED: mktemp is required\n' >&2
         return 1
-    }
+    fi
 
     WORKDIR="$(mktemp -d "${TMPDIR:-/tmp}/jvarkit-test.XXXXXX")" || {
         printf 'TESTS_FAILED: could not create a temporary workspace\n' >&2

@@ -15,16 +15,16 @@ The Alertmanager handles alerts sent by client applications (such as a Prometheu
 The tag of each `alertmanager` docker image is consist of the version of `alertmanager` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
-|[0.34.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/alertmanager/0.34.1/24.03-lts-sp4/Dockerfile) | alertmanager 0.34.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[0.32.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/alertmanager/0.32.1/24.03-lts-sp4/Dockerfile) | alertmanager 0.32.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[0.32.1-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/alertmanager/0.32.1/24.03-lts-sp3/Dockerfile) | alertmanager 0.32.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[0.30.1-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/alertmanager/0.30.1/24.03-lts-sp3/Dockerfile) | alertmanager 0.30.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[0.30.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/alertmanager/0.30.0/24.03-lts-sp2/Dockerfile) | alertmanager 0.30.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-|[0.27.0-oe2003sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/alertmanager/0.27.0/20.03-lts-sp4/Dockerfile)| Alertmanager 0.27.0 on openEuler 20.03-LTS-SP4 | amd64, arm64 |
-|[0.27.0-oe2203sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/alertmanager/0.27.0/22.03-lts-sp1/Dockerfile)| Alertmanager 0.27.0 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
-|[0.27.0-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/alertmanager/0.27.0/22.03-lts-sp3/Dockerfile)| Alertmanager 0.27.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
-|[0.27.0-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/alertmanager/0.27.0/22.03-lts-sp4/Dockerfile)| Alertmanager 0.27.0 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
-|[0.27.0-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/alertmanager/0.27.0/24.03-lts/Dockerfile)| Alertmanager 0.27.0 on openEuler 24.03-LTS | amd64, arm64 |
+|[0.34.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/alertmanager/0.34.1/24.03-lts-sp4/Dockerfile) | alertmanager 0.34.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[0.32.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/alertmanager/0.32.1/24.03-lts-sp4/Dockerfile) | alertmanager 0.32.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[0.32.1-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/alertmanager/0.32.1/24.03-lts-sp3/Dockerfile) | alertmanager 0.32.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[0.30.1-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/alertmanager/0.30.1/24.03-lts-sp3/Dockerfile) | alertmanager 0.30.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[0.30.0-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/alertmanager/0.30.0/24.03-lts-sp2/Dockerfile) | alertmanager 0.30.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[0.27.0-oe2003sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/alertmanager/0.27.0/20.03-lts-sp4/Dockerfile)| Alertmanager 0.27.0 on openEuler 20.03-LTS-SP4 | amd64, arm64 |
+|[0.27.0-oe2203sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/alertmanager/0.27.0/22.03-lts-sp1/Dockerfile)| Alertmanager 0.27.0 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
+|[0.27.0-oe2203sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/alertmanager/0.27.0/22.03-lts-sp3/Dockerfile)| Alertmanager 0.27.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[0.27.0-oe2203sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/alertmanager/0.27.0/22.03-lts-sp4/Dockerfile)| Alertmanager 0.27.0 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+|[0.27.0-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/alertmanager/0.27.0/24.03-lts/Dockerfile)| Alertmanager 0.27.0 on openEuler 24.03-LTS | amd64, arm64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` and `container startup options` based on their requirements.
@@ -64,4 +64,4 @@ In this usage, users can select the corresponding `{Tag}` and `container startup
 	```
 	
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

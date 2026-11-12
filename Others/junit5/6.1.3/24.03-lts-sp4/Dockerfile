@@ -27,3 +27,4 @@ WORKDIR /workspace
 USER root
 
 ENTRYPOINT ["java", "-jar", "/usr/local/lib/junit-platform-console-standalone.jar"]
+

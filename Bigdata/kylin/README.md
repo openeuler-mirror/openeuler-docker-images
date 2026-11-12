@@ -16,11 +16,11 @@ Learn more on [kylin website](https://kylin.apache.org/).
 The tag of each kylin docker image is consist of the version of kylin and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
-|[5.0.5-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kylin/5.0.5/24.03-lts-sp4/Dockerfile) | kylin 5.0.5 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[5.0.4-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kylin/5.0.4/24.03-lts-sp4/Dockerfile) | kylin 5.0.4 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[5.0.3-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kylin/5.0.3/24.03-lts-sp4/Dockerfile) | kylin 5.0.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[5.0.3-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kylin/5.0.3/24.03-lts-sp3/Dockerfile) | kylin 5.0.3 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[5.0.2-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kylin/5.0.2/24.03-lts-sp1/Dockerfile)| Apache kylin 5.0.2 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[5.0.5-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kylin/5.0.5/24.03-lts-sp4/Dockerfile) | kylin 5.0.5 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[5.0.4-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kylin/5.0.4/24.03-lts-sp4/Dockerfile) | kylin 5.0.4 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[5.0.3-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kylin/5.0.3/24.03-lts-sp4/Dockerfile) | kylin 5.0.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[5.0.3-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kylin/5.0.3/24.03-lts-sp3/Dockerfile) | kylin 5.0.3 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[5.0.2-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kylin/5.0.2/24.03-lts-sp1/Dockerfile)| Apache kylin 5.0.2 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
 Deploy a Kylin instance without any pre-deployed hadoop component by following command:
@@ -60,4 +60,4 @@ docker rm Kylin
 ```
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

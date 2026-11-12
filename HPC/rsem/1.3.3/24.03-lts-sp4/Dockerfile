@@ -33,3 +33,4 @@ COPY --from=builder /usr/local/bin /usr/local/bin
 WORKDIR /data
 
 CMD ["rsem-calculate-expression", "--help"]
+

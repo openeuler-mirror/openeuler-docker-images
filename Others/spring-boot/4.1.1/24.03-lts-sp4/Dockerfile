@@ -41,3 +41,4 @@ ARG BASE=openeuler/openeuler:24.03-lts-sp4
  EXPOSE 8080
  
  CMD java -jar ${WORKSPACE}/target/demo-1.0.jar
+

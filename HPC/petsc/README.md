@@ -18,12 +18,12 @@ Learn more at [PETSc](https://github.com/petsc/petsc).
 The tag of each PETSc docker image is consist of the version of PETSc and the version of basic image. The details are as follows:
 | Tags | Currently | Architectures |
 |------|-----------|---------------|
-|[3.26.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/petsc/3.26.0/24.03-lts-sp4/Dockerfile) | petsc 3.26.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[3.25.6-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/petsc/3.25.6/24.03-lts-sp4/Dockerfile) | petsc 3.25.6 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[3.25.5-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/petsc/3.25.5/24.03-lts-sp4/Dockerfile) | petsc 3.25.5 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[3.25.3-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/petsc/3.25.3/24.03-lts-sp4/Dockerfile) | petsc 3.25.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[3.25.3-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/petsc/3.25.3/24.03-lts-sp3/Dockerfile) | petsc 3.25.3 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[3.22.4-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/petsc/3.22.4/24.03-lts-sp3/Dockerfile) | PETSc 3.22.4 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[3.26.1-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/petsc/3.26.1/24.03-lts-sp4/Dockerfile) | petsc 3.26.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[3.26.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/petsc/3.26.0/24.03-lts-sp4/Dockerfile) | petsc 3.26.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[3.25.6-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/petsc/3.25.6/24.03-lts-sp4/Dockerfile) | petsc 3.25.6 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[3.25.5-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/petsc/3.25.5/24.03-lts-sp4/Dockerfile) | petsc 3.25.5 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[3.25.3-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/petsc/3.25.3/24.03-lts-sp4/Dockerfile) | petsc 3.25.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[3.25.3-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/petsc/3.25.3/24.03-lts-sp3/Dockerfile) | petsc 3.25.3 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 # Usage
 - Ensure that you have Docker installed, or are using Docker for Linux containers if on Windows.

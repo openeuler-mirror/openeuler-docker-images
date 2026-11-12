@@ -11,9 +11,9 @@ tags: |
 
   | Tags                                                                                                                           | Currently                              | Architectures |
   |--------------------------------------------------------------------------------------------------------------------------------|----------------------------------------|---------------|
-  | [1.1.8-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/canal/1.1.8/24.03-lts-sp1/Dockerfile) | canal 1.1.8 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
-  | [1.1.8-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/canal/1.1.8/24.03-lts-sp4/Dockerfile) | canal 1.1.8 on openEuler 24.03-LTS-SP4 | amd64, arm64  |
-  | [1.1.8-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/canal/1.1.8/24.03-lts-sp2/Dockerfile) | canal 1.1.8 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
+  | [1.1.8-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/canal/1.1.8/24.03-lts-sp1/Dockerfile) | canal 1.1.8 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+  | [1.1.8-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/canal/1.1.8/24.03-lts-sp4/Dockerfile) | canal 1.1.8 on openEuler 24.03-LTS-SP4 | amd64, arm64  |
+  | [1.1.8-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/canal/1.1.8/24.03-lts-sp2/Dockerfile) | canal 1.1.8 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
 
   注意，以下`{Tag}`的值按照需求，替换为上述表格中的tag内容。
 
@@ -48,9 +48,11 @@ usage: |
   - 启动
   
     ```
-    docker run -d --name my-canal -p 30306:3306 openeuler/canal:{Tag}
+    docker run -d --name my-canal -p 11110:11110 -p 11111:11111 -p 11112:11112 openeuler/canal:1.1.8-oe2403sp4
     ```
     当 `my-canal` 实例启动后，你可以使用 `docker logs` 查看其运行日志。
+
+    > 说明：`1.1.8-oe2403sp1` 是源码构建镜像，未安装 canal deployer，也没有 `startup.sh`，不能直接运行；启动 canal 服务请使用 `1.1.8-oe2403sp4`（或 `1.1.8-oe2403sp2`）。
   
 
 license: Apache-2.0 license

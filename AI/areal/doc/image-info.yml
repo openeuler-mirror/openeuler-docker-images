@@ -1,0 +1,115 @@
+name: areal
+category: ai
+description: AReaL是开源的大规模异步强化学习系统，面向LLM后训练解耦推理与训练，支持RLHF/RLVR与agentic RL。本镜像基于torch_npu安装AReaL源码版及核心运行依赖，可在昇腾NPU上运行SFT与RL后训练。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  AReaL镜像的Tag由其版本信息和软件栈版本信息组成，详细内容如下：
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[2.1.1-torch_npu2.10.0-cann9.1.0-python3.12-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/areal/2.1.1-torch_npu2.10.0-cann9.1.0-python3.12/24.03-lts-sp4/Dockerfile)| AReaL 2.1.1 (torch_npu 2.10.0.post6, CANN 9.1.0) on openEuler 24.03-LTS-SP4 | arm64,amd64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/areal:{Tag}
+  ```
+
+usage: |
+  - 前置条件
+
+    示例使用Ascend NPU设备。运行前确认宿主机已安装Ascend驱动和固件：
+    ```bash
+    npu-smi info
+    ls /dev/davinci* /dev/davinci_manager /dev/devmm_svm /dev/hisi_hdc
+    ```
+    将`${device}`替换为实际NPU设备（例如`/dev/davinci0`），并按文档挂载驱动目录。没有NPU时无法执行该示例。
+
+  - 启动容器
+    ```
+    docker run \
+        --name my-areal \
+        --device ${device} \
+        --device /dev/davinci_manager \
+        --device /dev/devmm_svm \
+        --device /dev/hisi_hdc \
+        -v /usr/local/dcmi:/usr/local/dcmi \
+        -v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi \
+        -v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/ \
+        -v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info \
+        -v /etc/ascend_install.info:/etc/ascend_install.info \
+        -it openeuler/areal:{Tag} bash
+    ```
+    用户可根据自身需求选择对应版本的`{Tag}`、对应的NPU设备`{device}`以及容器启动的选项。
+
+  - 参数说明
+    | 配置项 | 描述 |
+    |--|--|
+    | `--name my-areal` | 容器名称。|
+    | `--device /dev/davinci1` | NPU设备，X是芯片物理ID号，例如davinci1。|
+    | `--device /dev/davinci_manager` | davinci相关的管理设备。|
+    | `--device /dev/devmm_svm` | 内存管理相关设备。|
+    | `--device /dev/hisi_hdc` | hdc相关管理设备。|
+    | `-v /usr/local/dcmi:/usr/local/dcmi` | 将宿主机dcmi的so和接口文件目录`/usr/local/dcmi`挂载到容器中，请根据实际情况修改。|
+    | `-v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi` | 将宿主机`npu-smi`工具`/usr/local/bin/npu-smi`挂载到容器中，请根据实际情况修改。|
+    | `-v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/` | 将宿主机目录`/usr/local/Ascend/driver/lib64/driver`挂载到容器中。请根据driver的驱动so所在路径修改。|
+    | `-v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info` | 将宿主机版本信息文件`/usr/local/Ascend/driver/version.info`挂载到容器中，请根据实际情况修改。|
+    | `-v /etc/ascend_install.info:/etc/ascend_install.info` | 将宿主机安装信息文件`/etc/ascend_install.info`挂载到容器中。|
+    | `-it` | 以交互模式启动容器。|
+    | `openeuler/areal:{Tag}` | 指定要运行的镜像`openeuler/areal`，其中`{Tag}`是需要替换的镜像标签。|
+
+  - 容器测试
+
+    进入容器后先验证NPU环境，再确认AReaL版本与CLI入口：
+    ```bash
+    docker exec -it my-areal /bin/bash
+    python3 -c "import torch, torch_npu; print('is_available:', torch.npu.is_available())"
+    python3 -c "from importlib.metadata import version; print('areal', version('areal'))"
+    areal --help
+    ```
+
+    运行GSM8K SFT冒烟测试（与昇腾CI一致的调用方式，单卡、FSDP训练后端，模型与数据集运行时下载）：
+    ```bash
+    cd /opt/AReaL
+    export HF_ENDPOINT=https://hf-mirror.com
+    export SWANLAB_MODE=disabled
+    python3 examples/math/gsm8k_sft.py --config examples/math/gsm8k_sft.yaml \
+        scheduler.type=local \
+        cluster.n_gpus_per_node=1 \
+        actor.backend=fsdp:d1p1t1 \
+        actor.path=Qwen/Qwen3-1.7B \
+        experiment_name=areal-sft-smoke \
+        train_dataset.batch_size=2 \
+        valid_dataset.batch_size=2 \
+        +total_train_steps=1 \
+        +train_dataset.setup_timeout=600 \
+        +valid_dataset.setup_timeout=600 \
+        stats_logger.wandb.mode=disabled
+    ```
+
+    vLLM推理引擎与Megatron训练后端不在本镜像内，运行带rollout的示例前请按上游NPU文档安装配套的vLLM-Ascend栈。
+
+license: Apache-2.0 license
+similar_packages:
+  - verl: verl是字节跳动开源的分布式RLHF训练框架，基于Ray与Megatron实现大规模后训练。
+  - ROLL: ROLL是阿里巴巴开源的大规模强化学习训练框架，支持SFT、DPO、GRPO与agentic RL。
+dependency:
+  - python3
+  - torch
+  - torch_npu
+  - transformers
+  - ray
+  - datasets
+  - hydra-core
+
+homepage: https://github.com/areal-project/AReaL
+upstream:
+  backend: GitHub
+  version_url: areal-project/AReaL
+  version_prefix: v
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM

@@ -39,3 +39,4 @@ RUN ldconfig
 USER root
 
 CMD ["bash"]
+

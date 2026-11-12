@@ -11,7 +11,7 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
-  |[8.4.10-10-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/percona/8.4.10-10/24.03-lts-sp4/Dockerfile) | Percona Server 8.4.10-10 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[8.4.10-10-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/percona/8.4.10-10/24.03-lts-sp4/Dockerfile) | Percona Server 8.4.10-10 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 download: |
   拉取镜像到本地
@@ -24,7 +24,7 @@ usage: |
     ```
     docker run -d --name my-percona -p 3306:3306 -e MYSQL_ROOT_PASSWORD=openEuler:S3cr3t/ openeuler/percona:{Tag}
     ```
-    `my-percona`启动之后，通过`http://localhost:3306`访问Percona Server服务。
+    `my-percona`启动之后，通过 MySQL 客户端连接 `127.0.0.1:3306` 访问服务（3306 为 MySQL 协议端口，不是 HTTP）。
 
   - 启动参数
 

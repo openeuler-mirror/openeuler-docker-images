@@ -7,11 +7,11 @@ environment: |
   yum install -y docker
   ```
 tags: |
-  docker镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+  opencloudos镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
-  |[9.6-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Cloud/opencloudos/9.6/24.03-lts-sp4/Dockerfile) | opencloudos 9.6 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[9.6-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/opencloudos/9.6/24.03-lts-sp4/Dockerfile) | opencloudos 9.6 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[1.2.11-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/opencloudos/1.2.11/24.03-lts-sp4/Dockerfile) | OpenCloudOS nettrace 1.2.11 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[1.2.11-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/opencloudos/1.2.11/24.03-lts-sp3/Dockerfile) | OpenCloudOS nettrace 1.2.11 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
@@ -27,6 +27,7 @@ usage: |
     ```
     docker run --rm --privileged --network host \
         -v /lib/modules:/lib/modules:ro \
+        -v /sys/kernel/debug:/sys/kernel/debug \
         openeuler/opencloudos:{Tag} \
         nettrace -p icmp
     ```
@@ -36,9 +37,23 @@ usage: |
     ```
     docker run --rm --privileged --network host \
         -v /lib/modules:/lib/modules:ro \
+        -v /sys/kernel/debug:/sys/kernel/debug \
         openeuler/opencloudos:{Tag} \
         nettrace --drop
     ```
+
+
+  - 前置条件
+
+    `nettrace` 需要宿主机 debugfs 和特权模式。运行前确认：
+    ```bash
+    mount | grep debugfs
+    ```
+    如未挂载，先执行：
+    ```bash
+    mount -t debugfs debugfs /sys/kernel/debug
+    ```
+    运行时需要 `--privileged`，建议同时挂载 `/sys/kernel/debug` 和 `/lib/modules`。
 
 license: GPL-2.0 license
 similar_packages:

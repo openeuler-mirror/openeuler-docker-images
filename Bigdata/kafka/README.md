@@ -19,23 +19,23 @@ The tag of each kafka docker image is consist of the version of kafka and the ve
 |--|--|--|
 |[4.4.0-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kafka/4.4.0/24.03-lts-sp4/Dockerfile) | kafka 4.4.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[4.3.2-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kafka/4.3.2/24.03-lts-sp4/Dockerfile) | kafka 4.3.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[4.3.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kafka/4.3.1/24.03-lts-sp4/Dockerfile) | kafka 4.3.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[4.1.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kafka/4.1.0/24.03-lts-sp4/Dockerfile) | kafka 4.1.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[4.1.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kafka/4.1.0/24.03-lts-sp1/Dockerfile) | kafka 4.1.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
-|[3.7.0-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kafka/3.7.0/22.03-lts-sp3/Dockerfile)| Apache Kafka server 3.7.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
-|[3.8.0-oe2003sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kafka/3.8.0/20.03-lts-sp4/Dockerfile)| Apache Kafka server 3.8.0 on openEuler 20.03-LTS-SP4 | amd64, arm64 |
-|[3.8.0-oe2203sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kafka/3.8.0/22.03-lts-sp1/Dockerfile)| Apache Kafka server 3.8.0 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
-|[3.8.0-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kafka/3.8.0/22.03-lts-sp3/Dockerfile)| Apache Kafka server 3.8.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
-|[3.8.0-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kafka/3.8.0/22.03-lts-sp4/Dockerfile)| Apache Kafka server 3.8.0 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
-|[3.8.0-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kafka/3.8.0/24.03-lts/Dockerfile)| Apache Kafka server 3.8.0 on openEuler 24.03-LTS | amd64, arm64 |
-|[3.8.1-oe2203sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kafka/3.8.1/22.03-lts-sp1/Dockerfile)| Apache Kafka server 3.8.1 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
-|[3.8.1-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kafka/3.8.1/22.03-lts-sp3/Dockerfile)| Apache Kafka server 3.8.1 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
-|[3.8.1-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kafka/3.8.1/22.03-lts-sp4/Dockerfile)| Apache Kafka server 3.8.1 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
-|[3.8.1-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kafka/3.8.1/24.03-lts/Dockerfile)| Apache Kafka server 3.8.1 on openEuler 24.03-LTS | amd64, arm64 |
-|[3.9.0-oe2203sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kafka/3.9.0/22.03-lts-sp1/Dockerfile)| Apache Kafka server 3.9.0 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
-|[3.9.0-oe2203sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kafka/3.9.0/22.03-lts-sp3/Dockerfile)| Apache Kafka server 3.9.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
-|[3.9.0-oe2203sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kafka/3.9.0/22.03-lts-sp4/Dockerfile)| Apache Kafka server 3.9.0 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
-|[3.9.0-oe2403lts](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kafka/3.9.0/24.03-lts/Dockerfile)| Apache Kafka server 3.9.0 on openEuler 24.03-LTS | amd64, arm64 |
+|[4.3.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kafka/4.3.1/24.03-lts-sp4/Dockerfile) | kafka 4.3.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[4.1.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kafka/4.1.0/24.03-lts-sp4/Dockerfile) | kafka 4.1.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[4.1.0-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kafka/4.1.0/24.03-lts-sp1/Dockerfile) | kafka 4.1.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[3.7.0-oe2203sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kafka/3.7.0/22.03-lts-sp3/Dockerfile)| Apache Kafka server 3.7.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[3.8.0-oe2003sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kafka/3.8.0/20.03-lts-sp4/Dockerfile)| Apache Kafka server 3.8.0 on openEuler 20.03-LTS-SP4 | amd64, arm64 |
+|[3.8.0-oe2203sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kafka/3.8.0/22.03-lts-sp1/Dockerfile)| Apache Kafka server 3.8.0 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
+|[3.8.0-oe2203sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kafka/3.8.0/22.03-lts-sp3/Dockerfile)| Apache Kafka server 3.8.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[3.8.0-oe2203sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kafka/3.8.0/22.03-lts-sp4/Dockerfile)| Apache Kafka server 3.8.0 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+|[3.8.0-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kafka/3.8.0/24.03-lts/Dockerfile)| Apache Kafka server 3.8.0 on openEuler 24.03-LTS | amd64, arm64 |
+|[3.8.1-oe2203sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kafka/3.8.1/22.03-lts-sp1/Dockerfile)| Apache Kafka server 3.8.1 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
+|[3.8.1-oe2203sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kafka/3.8.1/22.03-lts-sp3/Dockerfile)| Apache Kafka server 3.8.1 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[3.8.1-oe2203sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kafka/3.8.1/22.03-lts-sp4/Dockerfile)| Apache Kafka server 3.8.1 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+|[3.8.1-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kafka/3.8.1/24.03-lts/Dockerfile)| Apache Kafka server 3.8.1 on openEuler 24.03-LTS | amd64, arm64 |
+|[3.9.0-oe2203sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kafka/3.9.0/22.03-lts-sp1/Dockerfile)| Apache Kafka server 3.9.0 on openEuler 22.03-LTS-SP1 | amd64, arm64 |
+|[3.9.0-oe2203sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kafka/3.9.0/22.03-lts-sp3/Dockerfile)| Apache Kafka server 3.9.0 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
+|[3.9.0-oe2203sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kafka/3.9.0/22.03-lts-sp4/Dockerfile)| Apache Kafka server 3.9.0 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
+|[3.9.0-oe2403lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kafka/3.9.0/24.03-lts/Dockerfile)| Apache Kafka server 3.9.0 on openEuler 24.03-LTS | amd64, arm64 |
 
 
 # Usage
@@ -71,4 +71,4 @@ In this usage, users can select the corresponding `{Tag}` and `container startup
 	```
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

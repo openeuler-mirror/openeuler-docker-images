@@ -7,7 +7,7 @@ INCLUDE_DIR="/usr/local/include/taskflow"
 WORKDIR="$(mktemp -d)"
 trap 'rm -rf "${WORKDIR}"' EXIT
 
-check_compiler() {
+test_compiler_available() {
     if ! command -v g++ >/dev/null 2>&1; then
         printf 'FAIL: g++ not found in PATH\n' >&2
         return 1
@@ -15,7 +15,7 @@ check_compiler() {
     printf 'PASS: g++ compiler available: %s\n' "$(command -v g++)"
 }
 
-check_headers() {
+test_headers_installed() {
     if [[ ! -f "${INCLUDE_DIR}/taskflow.hpp" ]]; then
         printf 'FAIL: header not found: %s\n' "${INCLUDE_DIR}/taskflow.hpp" >&2
         return 1
@@ -126,10 +126,10 @@ EOF
 main() {
     local failures=0
 
-    if ! check_compiler; then
+    if ! test_compiler_available; then
         failures=$((failures + 1))
     fi
-    if ! check_headers; then
+    if ! test_headers_installed; then
         failures=$((failures + 1))
     fi
     if ! test_version; then

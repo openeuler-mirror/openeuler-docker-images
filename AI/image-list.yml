@@ -1,61 +1,115 @@
 images:
   executorch: executorch
+  transformers: transformers
   sglang: sglang
+  accelerate: accelerate
   codegen-gradio-ui: opea/codegen-gradio-ui
+  peft: peft
   multimodalqna: opea/multimodalqna
+  trl: trl
   multimodalqna-ui: opea/multimodalqna-ui
+  diffusers: diffusers
   lvm-llava: opea/lvm-llava
+  timm: timm
   embedding-multimodal-bridgetower: opea/embedding-multimodal-bridgetower
+  open_clip: open_clip
   comps-base: opea/comps-base
+  liger-kernel: liger-kernel
   kserve-huggingfaceserver: kserve/huggingfaceserver
+  llm-compressor: llm-compressor
   kserve-controller: kserve/controller
+  lm-evaluation-harness: lm-evaluation-harness
   kserve-agent: kserve/agent
+  bitsandbytes: bitsandbytes
   kserve-router: kserve/router
+  lmcache: lmcache
   kserve-storage-initializer: kserve/storage-initializer
+  tensordict: tensordict
   agent: opea/agent
+  flash-linear-attention: flash-linear-attention
   agent-ui: opea/agent-ui
+  mmengine: mmengine
   onnx: onnx
+  deepspeed: deepspeed
   onnxruntime: onnxruntime
+  colossalai: colossalai
   cann: cann
+  ms-swift: ms-swift
   maca-sdk: maca-sdk
+  xtuner: xtuner
   dlrm: dlrm
+  torchtune: torchtune
   avatarchatbot: opea/avatarchatbot
+  torchtitan: torchtitan
   euler-copilot-fast-inference-qwen: euler-copilot-fast-inference-qwen
   llm: llm
+  axolotl: axolotl
   llm-server: llm-server
+  openrlhf: openrlhf
   llvm-build-deps: llvm-build-deps
+  internlm: internlm
   mindspore: mindspore
+  slime: slime
   mlflow: mlflow
+  roll: roll
   wav2lip: opea/wav2lip
+  areal: areal
   animation: opea/animation
+  areno: areno
   oneapi-basekit: oneapi-basekit
+  llama.cpp: llama.cpp
   oneapi-runtime: oneapi-runtime
+  whisper.cpp: whisper.cpp
   asr: opea/asr
+  ollama: ollama
   audioqna: opea/audioqna
+  ktransformers: ktransformers
   audioqna-ui: opea/audioqna-ui
   chatqna-conversation-ui: opea/chatqna-conversation-ui
   chatqna-ui: opea/chatqna-ui
+  tgi: tgi
   chatqna: opea/chatqna
+  fastchat: fastchat
   codegen-ui: opea/codegen-ui
+  aibrix: aibrix
   codegen: opea/codegen
+  llm-d: llm-d
   codegen-react-ui: opea/codegen-react-ui
+  xdit: xdit
   codetrans-ui: opea/codetrans-ui
+  lightx2v: lightx2v
   codetrans: opea/codetrans
+  cache-dit: cache-dit
   graphrag: opea/graphrag
+  speculators: speculators
   graphrag-ui: opea/graphrag-ui
+  comfyui: comfyui
   graphrag-react-ui: opea/graphrag-react-ui
+  stable-diffusion-webui: stable-diffusion-webui
   dataprep: opea/dataprep  
+  diffsynth-studio: diffsynth-studio
   dataprep-redis: opea/dataprep-redis
+  vbench: vbench
   doc-index-retriever: opea/doc-index-retriever
+  funasr: funasr
   docsum-ui: opea/docsum-ui
+  wenet: wenet
   docsum: opea/docsum
+  modelscope: modelscope
   lvm: opea/lvm
+  dgl: dgl
   embedding-tei: opea/embedding-tei
+  opencv: opencv
   embedding: opea/embedding
+  tilelang: tilelang
   faqgen-ui: opea/faqgen-ui
+  opencompass: opencompass
   faqgen: opea/faqgen
+  evalscope: evalscope
   faqgen-react-ui: opea/faqgen-react-ui
+  minionerec: minionerec
   llm-faqgen: opea/llm-faqgen
+  specforge: specforge
   llm-docsum-tgi: opea/llm-docsum-tgi
   llm-faqgen-tgi: opea/llm-faqgen-tgi
   llm-tgi: opea/llm-tgi
@@ -79,7 +133,7 @@ images:
   pytorch: pytorch
   text-embeddings-inference-cpu: text-embeddings-inference-cpu
   text-generation-inference-cpu: text-generation-inference-cpu
-  vllm-cpu: vllm-cpu
+  vllm: vllm
   vllm-ascend: vllm-ascend
   langchain: langchain
   open-webui: open-webui
@@ -110,3 +164,8 @@ images:
   langgraph: langgraph
   tensorrt-llm: tensorrt-llm
   openviking: openviking
+  dsh: dsh
+  mem0: mem0
+  st-embed: st-embed
+  verl: verl
+  llamafactory: llamafactory

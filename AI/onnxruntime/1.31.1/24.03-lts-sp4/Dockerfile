@@ -35,7 +35,7 @@ RUN ln -sf /usr/lib64/libgcc_s.so.1 /opt/openEuler/gcc-toolset-14/root/usr/lib64
     source /opt/openEuler/gcc-toolset-14/enable && \
     git clone --recursive -b $VERSION $ONNXRUNTIME_REPO && \
     cd onnxruntime && \
-    ./build.sh --allow_running_as_root --skip_submodule_sync --config Release --build_wheel --update --build --parallel --cmake_extra_defines ONNXRUNTIME_VERSION=$(cat ./VERSION_NUMBER)
+    ./build.sh --allow_running_as_root --skip_submodule_sync --config Release --build_wheel --update --build --parallel 4 --cmake_extra_defines ONNXRUNTIME_VERSION=$(cat ./VERSION_NUMBER)
 
 ARG BASE
 FROM $BASE as runtime
@@ -61,4 +61,5 @@ RUN yum update -y && \
 
 RUN python3 -m pip install coloredlogs humanfriendly onnx && \
     python3 -m pip install --no-index --find-links /root onnxruntime && \
+    python3 -m pip install --no-cache-dir "numpy<2" && \
     rm -rf /root/*.whl

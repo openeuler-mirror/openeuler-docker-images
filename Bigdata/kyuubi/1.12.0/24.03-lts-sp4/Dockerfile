@@ -31,7 +31,8 @@ RUN if [ "$TARGETARCH" = "amd64" ]; then \
       JAVA_ARCH="aarch64"; \
     fi \
     && mkdir -p /usr/local/jre \
-    && wget -O jre.tar.gz https://mirrors.tuna.tsinghua.edu.cn/Adoptium/11/jre/${JAVA_ARCH}/linux/OpenJDK11U-jre_${JAVA_ARCH}_linux_hotspot_${JDK_VERSION}.tar.gz \
+    && JDK_TAG=$(echo "${JDK_VERSION}" | sed 's/_/%2B/g') \
+    && wget --tries=3 --timeout=30 -O jre.tar.gz "https://github.com/adoptium/temurin11-binaries/releases/download/jdk-${JDK_TAG}/OpenJDK11U-jre_${JAVA_ARCH}_linux_hotspot_${JDK_VERSION}.tar.gz" \
     && tar -zxvf jre.tar.gz --strip-components=1 -C /usr/local/jre \
     && rm -f jre.tar.gz
 
@@ -59,4 +60,4 @@ WORKDIR ${KYUUBI_HOME}
 
 HEALTHCHECK --interval=30s --timeout=5s CMD curl -f http://localhost:10009/ || exit 1
 
-ENTRYPOINT ["bin/kyuubi", "start"]
+ENTRYPOINT ["/bin/bash", "-c", "bin/kyuubi start && exec tail -f /dev/null"]

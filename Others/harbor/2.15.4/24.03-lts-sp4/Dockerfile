@@ -76,3 +76,4 @@ USER harbor
 EXPOSE 8080
 HEALTHCHECK CMD curl --fail -s http://localhost:8080/api/v2.0/ping || curl -k --fail -s https://localhost:8443/api/v2.0/ping || exit 1
 ENTRYPOINT ["/harbor/entrypoint.sh"]
+

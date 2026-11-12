@@ -16,10 +16,10 @@ For more information about phoenix, please visit [https://phoenix.apache.org/](h
 The tag of each phoenix docker image is consist of the version of phoenix and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
-|[5.3.2-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/phoenix/5.3.2/24.03-lts-sp4/Dockerfile) | phoenix 5.3.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[5.3.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/phoenix/5.3.0/24.03-lts-sp4/Dockerfile) | phoenix 5.3.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[5.3.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/phoenix/5.3.0/24.03-lts-sp3/Dockerfile) | phoenix 5.3.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[5.2.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/phoenix/5.2.1/24.03-lts-sp1/Dockerfile)| phoenix 5.2.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[5.3.2-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/phoenix/5.3.2/24.03-lts-sp4/Dockerfile) | phoenix 5.3.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[5.3.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/phoenix/5.3.0/24.03-lts-sp4/Dockerfile) | phoenix 5.3.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[5.3.0-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/phoenix/5.3.0/24.03-lts-sp3/Dockerfile) | phoenix 5.3.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[5.2.1-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/phoenix/5.2.1/24.03-lts-sp1/Dockerfile)| phoenix 5.2.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
 
@@ -31,4 +31,4 @@ docker run -it --name phoenix openeuler/phoenix:latest
 ```
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

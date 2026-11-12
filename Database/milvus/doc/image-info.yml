@@ -11,8 +11,9 @@ tags: |
 
   | Tag                                                                                                                                 | Currently                                | Architectures |
   |-------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|---------------|
-  | [2.5.14-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/milvus/2.5.14/24.03-lts-sp2/Dockerfile) | Milvus 2.5.14 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
-  | [2.6.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/milvus/2.6.0/24.03-lts-sp2/Dockerfile)   | Milvus 2.6.0 on openEuler 24.03-LTS-SP2  | amd64, arm64  |
+  | [2.5.14-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/milvus/2.5.14/24.03-lts-sp2/Dockerfile) | Milvus 2.5.14 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
+  | [2.6.0-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/milvus/2.6.0/24.03-lts-sp2/Dockerfile)   | Milvus 2.6.0 on openEuler 24.03-LTS-SP2  | amd64, arm64  |
+  | [3.0.5-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Database/milvus/3.0.5/24.03-lts-sp4/Dockerfile) | Milvus 3.0.5 on openEuler 24.03-LTS-SP4 | amd64, arm64  |
 
 download: |
   拉取镜像到本地
@@ -23,8 +24,9 @@ download: |
 usage: |
   - Step 1: 启动Milvus实例
     ```
-    docker run --name euler-milvus -it openeuler/milvus:latest
+    docker run --name euler-milvus -it openeuler/milvus:{Tag}
     ```
+    以下 Step 2 到 Step 4 的命令均在 Step 1 打开的容器内执行。
 
   - Step 2: 运行etcd
     ```

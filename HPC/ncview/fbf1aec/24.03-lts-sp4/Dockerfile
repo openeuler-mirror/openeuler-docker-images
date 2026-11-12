@@ -23,3 +23,5 @@ RUN git clone https://github.com/iem-projects/ncview.git && \
     PKG_CONFIG_PATH=/usr/local/lib/pkgconfig ./configure --prefix=/usr/local && \
     make -j $(nproc) && \
     make install
+
+RUN echo /usr/local/lib > /etc/ld.so.conf.d/local.conf && ldconfig

@@ -1,0 +1,72 @@
+FROM quay.io/ascend/torch-npu:2.9.0.post8-cann9.1.0-910b-openeuler24.03-py3.12
+
+# Use PyPI directly; the base image pip.conf points at a mirror that is
+# unreachable from the CI builders.
+ENV PIP_INDEX_URL=https://pypi.org/simple
+
+# Harden git against the flaky CI network (HTTP/2 resets, stalled transfers).
+ENV GIT_CONFIG_COUNT=4 \
+    GIT_CONFIG_KEY_0=http.version \
+    GIT_CONFIG_VALUE_0=HTTP/1.1 \
+    GIT_CONFIG_KEY_1=http.postBuffer \
+    GIT_CONFIG_VALUE_1=524288000 \
+    GIT_CONFIG_KEY_2=http.lowSpeedLimit \
+    GIT_CONFIG_VALUE_2=1000 \
+    GIT_CONFIG_KEY_3=http.lowSpeedTime \
+    GIT_CONFIG_VALUE_3=60
+
+ARG VERSION=3.3.7-npu
+
+LABEL author="openEuler CloudNative SIG" description="Text Generation Inference (TGI) with Ascend NPU support (torch_npu + CANN)"
+
+# System dependencies (Rust + Python dual-stack build)
+RUN yum install -y gcc gcc-c++ make protobuf-compiler pkg-config openssl-devel git curl && \
+    yum clean all && \
+    rm -rf /var/cache/yum
+
+# Rust toolchain pinned by the repo's rust-toolchain.toml
+RUN curl -fsSL https://sh.rustup.rs -o /tmp/rustup-init.sh && \
+    sh /tmp/rustup-init.sh -y --default-toolchain 1.85.1 --profile minimal && \
+    rm -f /tmp/rustup-init.sh
+
+ENV PATH=/root/.cargo/bin:$PATH
+ENV UV_SYSTEM_PYTHON=1
+
+# Fetch the sources of the Ascend-adapted fork (release tag on feat/ascend-npu)
+RUN git clone --branch "v${VERSION}" --depth 1 \
+        https://github.com/VenusTZZ/text-generation-inference.git /opt/text-generation-inference
+
+# Python dependencies (torch and torch_npu are provided by the base image)
+# kernels must stay at 0.5.0: it is the build backend of the Python server and
+# ships the kernels.lockfile that avoids CUDA-only kernel downloads.
+RUN python3 -m pip install --no-cache-dir uv && \
+    uv pip install --index-url https://pypi.org/simple \
+        "transformers==4.57.6" "accelerate==1.15.0" "modelscope==1.37.0" \
+        "kernels==0.5.0" "grpcio-tools>=1.69.0" "mypy-protobuf>=3.6.0" && \
+    python3 -m pip cache purge
+
+# Build the Rust launcher and router
+RUN cd /opt/text-generation-inference && \
+    export PYO3_PYTHON="$(command -v python3)" && \
+    export PROTOC="$(command -v protoc)" && \
+    cargo build --profile release-opt \
+        -p text-generation-launcher -p text-generation-router-v3 && \
+    install -m 755 target/release-opt/text-generation-launcher /usr/local/bin/ && \
+    install -m 755 target/release-opt/text-generation-router /usr/local/bin/ && \
+    rm -rf target
+
+# Install the Python server (editable, sources are kept in the image)
+RUN cd /opt/text-generation-inference && \
+    uv pip install --index-url https://pypi.org/simple --no-build-isolation -e server && \
+    make -C server gen-server-raw && \
+    rm -rf /root/.cargo /root/.rustup /root/.cache/uv && \
+    python3 -m pip cache purge
+
+# NPU serving defaults (torch-npu attention; prefix caching is not supported yet)
+ENV ATTENTION=flashdecoding-npu
+ENV PREFIX_CACHING=0
+ENV PREFILL_CHUNKING=1
+ENV CUDA_GRAPHS=0
+ENV HCCL_CONNECT_TIMEOUT=1800
+
+CMD ["/bin/bash"]

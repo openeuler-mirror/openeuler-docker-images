@@ -33,6 +33,7 @@ RUN dnf install -y java-17-openjdk-devel && \
 
 ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
 
-COPY --from=builder /build/target/auron-spark_2.12-release-*.jar /opt/auron/
+COPY --from=builder /build/target/*.jar /opt/auron/
+RUN test -n "$(ls -A /opt/auron)"
 
 WORKDIR /opt/auron

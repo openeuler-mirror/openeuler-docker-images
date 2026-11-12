@@ -16,9 +16,9 @@ The tag of each `qmcpack` docker image is consist of the version of `qmcpack` an
 
 | Tag                                                                                                                                  | Currently                                   | Architectures |
 |--------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------|---------------|
-|[4.4.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/qmcpack/4.4.0/24.03-lts-sp4/Dockerfile) | qmcpack 4.4.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-| [4.2.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/qmcpack/4.2.0/24.03-lts-sp4/Dockerfile) | QMCPACK 4.2.0 on openEuler 24.03-LTS-SP4 | amd64, arm64  |
-| [4.2.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/qmcpack/4.2.0/24.03-lts-sp3/Dockerfile) | QMCPACK 4.2.0 on openEuler 24.03-LTS-SP3 | amd64, arm64  |
+|[4.4.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/qmcpack/4.4.0/24.03-lts-sp4/Dockerfile) | qmcpack 4.4.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+| [4.2.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/qmcpack/4.2.0/24.03-lts-sp4/Dockerfile) | QMCPACK 4.2.0 on openEuler 24.03-LTS-SP4 | amd64, arm64  |
+| [4.2.0-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/qmcpack/4.2.0/24.03-lts-sp3/Dockerfile) | QMCPACK 4.2.0 on openEuler 24.03-LTS-SP3 | amd64, arm64  |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.
@@ -44,4 +44,4 @@ In this usage, users can select the corresponding `{Tag}` based on their require
     The `openeuler/qmcpack` image is used to verify the integration between the upstream qmcpack version and openEuler. 
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

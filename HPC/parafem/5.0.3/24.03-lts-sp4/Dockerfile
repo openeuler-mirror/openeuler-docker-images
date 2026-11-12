@@ -15,6 +15,8 @@ ENV PATH=/usr/lib64/openmpi/bin:$PATH
 RUN git clone --depth 1 --branch ${VERSION} https://github.com/ParaFEM/ParaFEM.git /tmp/parafem-src && \
     cd /tmp/parafem-src/parafem && \
     sed -i 's|^FC=/usr/bin/mpif90|FC=mpif90|' build/linuxdesktop.inc && \
+    sed -i -E 's/^(.*FFLAGS=)(.*)$/\1-fallow-argument-mismatch \2/' build/linuxdesktop.inc && \
+    mkdir -p include/bem_p && \
     ./make-parafem MACHINE=linuxdesktop && \
     mkdir -p /usr/local/parafem && \
     cp -r bin include lib /usr/local/parafem/ && \

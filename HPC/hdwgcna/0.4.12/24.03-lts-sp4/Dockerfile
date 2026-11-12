@@ -42,3 +42,4 @@ ENV PATH=/opt/conda/envs/hdwgcna/bin:$PATH
 WORKDIR /workspace
 USER root
 CMD ["/bin/bash"]
+

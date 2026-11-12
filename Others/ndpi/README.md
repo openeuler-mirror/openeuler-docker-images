@@ -18,11 +18,11 @@ The tag of each npdi docker image is consist of the version of npdi and the vers
 
 | Tags                                                                                                                          | Currently                             | Architectures |
 |-------------------------------------------------------------------------------------------------------------------------------|---------------------------------------|---------------|
-|[6.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/ndpi/6.0/24.03-lts-sp4/Dockerfile) | ndpi 6.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[5.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/ndpi/5.0/24.03-lts-sp4/Dockerfile) | ndpi 5.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[5.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/ndpi/5.0/24.03-lts-sp3/Dockerfile) | ndpi 5.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[4.14-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/ndpi/4.14/24.03-lts-sp2/Dockerfile) | ndpi 4.14 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-| [4.1.2-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/npdi/4.1.2/24.03-lts-sp1/Dockerfile) | nDPI 4.1.2 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+|[6.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/ndpi/6.0/24.03-lts-sp4/Dockerfile) | ndpi 6.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[5.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/ndpi/5.0/24.03-lts-sp4/Dockerfile) | ndpi 5.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[5.0-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/ndpi/5.0/24.03-lts-sp3/Dockerfile) | ndpi 5.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+|[4.14-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/ndpi/4.14/24.03-lts-sp2/Dockerfile) | ndpi 4.14 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+| [4.1.2-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/npdi/4.1.2/24.03-lts-sp1/Dockerfile) | nDPI 4.1.2 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}`  based on their requirements.
@@ -59,4 +59,4 @@ In this usage, users can select the corresponding `{Tag}`  based on their requir
     * The tool will parse the packets, classify detected protocols, and output basic statistics.
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

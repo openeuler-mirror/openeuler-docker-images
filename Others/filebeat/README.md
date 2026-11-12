@@ -18,9 +18,9 @@ The tag of each `filebeat` docker image is consist of the version of `filebeat` 
 
 |    Tag   | Currently                                 |   Architectures  |
 |----------|-------------------------------------------|------------------|
-|[9.5.5-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/filebeat/9.5.5/24.03-lts-sp4/Dockerfile)| Filebeat 9.5.5 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[9.0.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/filebeat/9.0.1/24.03-lts-sp4/Dockerfile)| Filebeat 9.0.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[9.0.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/filebeat/9.0.1/24.03-lts-sp1/Dockerfile)| Filebeat 9.0.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[9.5.5-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/filebeat/9.5.5/24.03-lts-sp4/Dockerfile)| Filebeat 9.5.5 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[9.0.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/filebeat/9.0.1/24.03-lts-sp4/Dockerfile)| Filebeat 9.0.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[9.0.1-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/filebeat/9.0.1/24.03-lts-sp1/Dockerfile)| Filebeat 9.0.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.
@@ -60,4 +60,4 @@ In this usage, users can select the corresponding `{Tag}` based on their require
     ```
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

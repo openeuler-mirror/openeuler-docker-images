@@ -1,0 +1,126 @@
+name: peft
+category: ai
+description: PEFT是Hugging Face开源的参数高效微调库，提供LoRA、AdaLoRA、IA3、VeRA等方法，只训练极少量参数即可完成大模型适配，适配器可保存、共享并重新挂载到底座模型。本镜像集成torch_npu与CANN，可在昇腾NPU上直接进行大模型LoRA微调与适配器加载推理。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  PEFT镜像的Tag由其版本信息和软件栈版本信息组成，详细内容如下：
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[0.21.2-torch_npu2.9.0-cann9.1.0-python3.12-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/peft/0.21.2-torch_npu2.9.0-cann9.1.0-python3.12/24.03-lts-sp4/Dockerfile)| PEFT 0.21.2 (torch_npu 2.9.0.post8, CANN 9.1.0) on openEuler 24.03-LTS-SP4 | arm64,amd64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/peft:{Tag}
+  ```
+
+usage: |
+  - 前置条件
+
+    示例使用Ascend NPU设备。运行前确认宿主机已安装Ascend驱动和固件：
+    ```bash
+    npu-smi info
+    ls /dev/davinci* /dev/davinci_manager /dev/devmm_svm /dev/hisi_hdc
+    ```
+    将`${device}`替换为实际NPU设备（例如`/dev/davinci0`），并按文档挂载驱动目录。没有NPU时无法执行该示例。
+
+  - 启动容器
+    ```
+    docker run \
+        --name my-peft \
+        --device ${device} \
+        --device /dev/davinci_manager \
+        --device /dev/devmm_svm \
+        --device /dev/hisi_hdc \
+        -v /usr/local/dcmi:/usr/local/dcmi \
+        -v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi \
+        -v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/ \
+        -v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info \
+        -v /etc/ascend_install.info:/etc/ascend_install.info \
+        -it openeuler/peft:{Tag} bash
+    ```
+    用户可根据自身需求选择对应版本的`{Tag}`、对应的NPU设备`{device}`以及容器启动的选项。
+
+  - 参数说明
+    | 配置项 | 描述 |
+    |--|--|
+    | `--name my-peft` | 容器名称。|
+    | `--device /dev/davinci1` | NPU设备，X是芯片物理ID号，例如davinci1。|
+    | `--device /dev/davinci_manager` | davinci相关的管理设备。|
+    | `--device /dev/devmm_svm` | 内存管理相关设备。|
+    | `--device /dev/hisi_hdc` | hdc相关管理设备。|
+    | `-v /usr/local/dcmi:/usr/local/dcmi` | 将宿主机dcmi的so和接口文件目录`/usr/local/dcmi`挂载到容器中，请根据实际情况修改。|
+    | `-v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi` | 将宿主机`npu-smi`工具`/usr/local/bin/npu-smi`挂载到容器中，请根据实际情况修改。|
+    | `-v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/` | 将宿主机目录`/usr/local/Ascend/driver/lib64/driver`挂载到容器中。请根据driver的驱动so所在路径修改。|
+    | `-v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info` | 将宿主机版本信息文件`/usr/local/Ascend/driver/version.info`挂载到容器中，请根据实际情况修改。|
+    | `-v /etc/ascend_install.info:/etc/ascend_install.info` | 将宿主机安装信息文件`/etc/ascend_install.info`挂载到容器中。|
+    | `-it` | 以交互模式启动容器。|
+    | `openeuler/peft:{Tag}` | 指定要运行的镜像`openeuler/peft`，其中`{Tag}`是需要替换的镜像标签。|
+
+  - 容器测试
+
+    进入容器后先验证NPU环境，再确认PEFT版本：
+    ```bash
+    docker exec -it my-peft /bin/bash
+    python3 -c "import torch, torch_npu; print('is_available:', torch.npu.is_available())"
+    python3 -c "import peft; print('peft', peft.__version__)"
+    ```
+
+    在NPU上给底座模型应用LoRA适配器（底座权重冻结，仅LoRA矩阵参与训练），保存后重新挂载并生成验证链路：
+    ```python
+    import torch
+    import torch_npu
+    from transformers import AutoModelForCausalLM, AutoTokenizer
+    from peft import LoraConfig, TaskType, get_peft_model, PeftModel
+
+    model_id = "Qwen/Qwen2.5-1.5B-Instruct"
+    device = "npu:0"
+
+    model = AutoModelForCausalLM.from_pretrained(model_id, dtype=torch.bfloat16).to(device)
+    peft_config = LoraConfig(
+        r=16,
+        lora_alpha=32,
+        task_type=TaskType.CAUSAL_LM,
+    )
+    peft_model = get_peft_model(model, peft_config)
+    peft_model.print_trainable_parameters()
+    peft_model.save_pretrained("output/peft-adapter")
+
+    base = AutoModelForCausalLM.from_pretrained(model_id, dtype=torch.bfloat16).to(device)
+    tokenizer = AutoTokenizer.from_pretrained(model_id)
+    peft_model = PeftModel.from_pretrained(base, "output/peft-adapter")
+    inputs = tokenizer("Preheat the oven to 350 degrees and place the cookie dough", return_tensors="pt").to(device)
+    outputs = peft_model.generate(**inputs, max_new_tokens=20, do_sample=False)
+    print(tokenizer.decode(outputs[0], skip_special_tokens=True))
+    ```
+
+    国内网络可通过ModelScope或hf-mirror加速模型下载：
+    ```bash
+    export HF_ENDPOINT=https://hf-mirror.com
+    ```
+
+license: Apache-2.0 license
+similar_packages:
+  - Unsloth: 面向LoRA微调场景的加速库，通过手写Triton算子显著降低显存占用并提升微调速度。
+  - LLaMA-Factory: 一站式大模型微调框架，内置SFT/LoRA/DPO等常用训练流程与WebUI。
+dependency:
+  - python3
+  - torch
+  - torch_npu
+  - transformers
+  - accelerate
+  - safetensors
+  - huggingface-hub
+
+homepage: https://github.com/huggingface/peft
+upstream:
+  backend: GitHub
+  version_url: huggingface/peft
+  version_prefix: v
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM

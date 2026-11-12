@@ -11,9 +11,9 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
-  |[4.4.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/qmcpack/4.4.0/24.03-lts-sp4/Dockerfile) | qmcpack 4.4.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-  |[4.2.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/qmcpack/4.2.0/24.03-lts-sp4/Dockerfile)| QMCPACK 4.2.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-  |[4.2.0-oe2403sp3](https://gitee.com/openeuler/openeuler-docker-images/blob/master/HPC/qmcpack/4.2.0/24.03-lts-sp3/Dockerfile)| QMCPACK 4.2.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
+  |[4.4.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/qmcpack/4.4.0/24.03-lts-sp4/Dockerfile) | qmcpack 4.4.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[4.2.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/qmcpack/4.2.0/24.03-lts-sp4/Dockerfile)| QMCPACK 4.2.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[4.2.0-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/qmcpack/4.2.0/24.03-lts-sp3/Dockerfile)| QMCPACK 4.2.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 download: |
   拉取镜像到本地
@@ -36,6 +36,14 @@ usage: |
     
     `openeuler/qmcpack`镜像用于验证上游qmcpack版本和openEuler的集成。
   
+
+
+  - 快速验证（使用镜像内置测试用例）
+
+    ```bash
+    docker run --rm openeuler/qmcpack:{Tag} sh -c 'cd /opt/qmcpack/tests/molecules/Be_STO && mpirun --allow-run-as-root -np 1 /opt/qmcpack/bin/qmcpack be_sto_vmc.in.xml'
+    ```
+    预期输出 `QMCPACK execution completed successfully`。自定义算例可将输入 XML 和依赖文件挂载到容器后运行。
 
 license: UIUC/NCSA
 similar_packages:

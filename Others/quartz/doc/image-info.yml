@@ -11,10 +11,10 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
-  |[2.5.2-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/quartz/2.5.2/24.03-lts-sp4/Dockerfile) | quartz 2.5.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-  |[2.5.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/quartz/2.5.1/24.03-lts-sp4/Dockerfile) | quartz 2.5.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-  |[2.5.1-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/quartz/2.5.1/24.03-lts-sp2/Dockerfile) | quartz 2.5.1 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-  |[2.5.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/quartz/2.5.0/24.03-lts-sp1/Dockerfile)| quartz 2.5.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+  |[2.5.2-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/quartz/2.5.2/24.03-lts-sp4/Dockerfile) | quartz 2.5.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[2.5.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/quartz/2.5.1/24.03-lts-sp4/Dockerfile) | quartz 2.5.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[2.5.1-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/quartz/2.5.1/24.03-lts-sp2/Dockerfile) | quartz 2.5.1 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+  |[2.5.0-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/quartz/2.5.0/24.03-lts-sp1/Dockerfile)| quartz 2.5.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 download: |
   拉取镜像到本地
@@ -23,6 +23,24 @@ download: |
   ```
 
 usage: |
+  - 启动容器
+  ```
+  docker run -d --name my-quartz openeuler/quartz:{Tag}
+  ```
+  镜像默认命令会运行内置的 Quartz 示例程序（每 5 秒触发一次任务并持续运行，可通过日志观察）。用户可根据自身需求选择对应版本的{Tag}、容器启动的选项；如需一个空闲的调试容器，可将启动命令改为 `sleep infinity`。Quartz 示例程序的编写与调度参见现有“使用示例”章节。
+
+  - 容器测试
+
+  查看运行日志
+  ```
+  docker logs -f my-quartz
+  ```
+
+  使用shell交互（进入容器后可用 javac/java 编译运行 Quartz 示例）
+  ```
+  docker exec -it my-quartz /bin/bash
+  ```
+
   - Add quartz dependency
   
     Maven: Add the following dependency to your `pom.xml`.

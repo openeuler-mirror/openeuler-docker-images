@@ -17,9 +17,9 @@ The tag of each `starrocks` docker image is consist of the version of `starrocks
 | Tag | Currently | Architectures |
 |-----|-----------|---------------|
 |[4.1.7-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Bigdata/starrocks/4.1.7/24.03-lts-sp4/Dockerfile) | starrocks 4.1.7 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[4.1.6-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/starrocks/4.1.6/24.03-lts-sp4/Dockerfile) | starrocks 4.1.6 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[4.1.3-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/starrocks/4.1.3/24.03-lts-sp4/Dockerfile) | starrocks 4.1.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[4.1.4-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/starrocks/4.1.4/24.03-lts-sp4/Dockerfile) | starrocks 4.1.4 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[4.1.6-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/starrocks/4.1.6/24.03-lts-sp4/Dockerfile) | starrocks 4.1.6 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[4.1.3-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/starrocks/4.1.3/24.03-lts-sp4/Dockerfile) | starrocks 4.1.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[4.1.4-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/starrocks/4.1.4/24.03-lts-sp4/Dockerfile) | starrocks 4.1.4 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 | [4.1.1-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Bigdata/starrocks/4.1.1/24.03-lts-sp3/Dockerfile) | StarRocks 4.1.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 
 # Usage

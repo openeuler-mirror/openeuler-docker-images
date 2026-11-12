@@ -32,3 +32,6 @@ RUN dnf install -y \
 COPY --from=build /opt/stage/usr /usr
 
 CMD ["bash"]
+
+
+

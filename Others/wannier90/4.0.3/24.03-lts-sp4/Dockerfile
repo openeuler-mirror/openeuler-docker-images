@@ -34,3 +34,4 @@ ENV LD_LIBRARY_PATH=/usr/local/lib64:/usr/local/lib
 
 WORKDIR /workspace
 USER root
+

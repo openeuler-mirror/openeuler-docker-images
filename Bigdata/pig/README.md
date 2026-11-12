@@ -17,9 +17,9 @@ For more information about pig, please visit [https://pig.apache.org/](https://p
 The tag of each pig docker image is consist of the version of pig and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
-|[0.17.0-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/pig/0.17.0/24.03-lts-sp4/Dockerfile) | pig 0.17.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[0.17.0-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/pig/0.17.0/24.03-lts-sp2/Dockerfile) | pig 0.17.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-|[0.17.0-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Bigdata/pig/0.17.0/24.03-lts-sp1/Dockerfile)| Apache Pig 0.17.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[0.17.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/pig/0.17.0/24.03-lts-sp4/Dockerfile) | pig 0.17.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[0.17.0-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/pig/0.17.0/24.03-lts-sp2/Dockerfile) | pig 0.17.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
+|[0.17.0-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/pig/0.17.0/24.03-lts-sp1/Dockerfile)| Apache Pig 0.17.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
 
@@ -30,4 +30,4 @@ docker run -it --name pig openeuler/pig:latest
 If someone needs to use the complete functions, please visit [http://pig.apache.org/](http://pig.apache.org/) for setting up pig.
 
 # Question and answering
-If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitee.com/openeuler/openeuler-docker-images).
+If you have any questions or want to use some special features, please submit an issue or a pull request on [openeuler-docker-images](https://gitcode.com/openeuler/openeuler-docker-images).

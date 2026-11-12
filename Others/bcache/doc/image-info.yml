@@ -7,13 +7,13 @@ environment: |
   yum install -y docker
   ```
 tags: |
-  dotnet-deps镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+  bcache镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
-  |[1.0.8-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/bcache/1.0.8/24.03-lts-sp4/Dockerfile) | bcache 1.0.8 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-  |[1.1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/bcache/1.1/24.03-lts-sp1/Dockerfile)| bcache 1.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
-  |[1.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Others/bcache/1.1/24.03-lts-sp4/Dockerfile)| bcache 1.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[1.0.8-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/bcache/1.0.8/24.03-lts-sp4/Dockerfile) | bcache 1.0.8 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[1.1-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/bcache/1.1/24.03-lts-sp1/Dockerfile)| bcache 1.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+  |[1.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/bcache/1.1/24.03-lts-sp4/Dockerfile)| bcache 1.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 download: |
   拉取镜像到本地
@@ -22,12 +22,12 @@ download: |
   ```
 
 usage: |
-  - 启动bcache实例
+  - 验证 make-bcache 工具
 
     ```
-    docker run -it --name bcache openeuler/bcache:{Tag}
+    docker run --rm openeuler/bcache:{Tag} which make-bcache
     ```
-    `openeuler/使用bcache`镜像用于验证上游bcache版本和openEuler的集成。
+    `openeuler/bcache` 镜像提供 `make-bcache` 工具，用于验证上游 bcache 版本和 openEuler 的集成；实际格式化缓存设备时需要挂载块设备并传入设备路径。
 
 license: GPL-2.0 license
 

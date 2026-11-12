@@ -11,11 +11,11 @@ tags: |
 
   | Tags                                                                                                                                                       | Currently                                             | Architectures |
   |------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------|---------------|
-  |[5.0.1-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/oceanbase/5.0.1/24.03-lts-sp4/Dockerfile) | oceanbase 5.0.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-  |[4.4.2_CE_BP3-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/oceanbase/4.4.2_CE_BP3/24.03-lts-sp4/Dockerfile) | oceanbase 4.4.2_CE_BP3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-  | [4.3.5_CE_BP2_HF1-oe2403sp1](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/oceanbase/4.3.5_CE_BP2_HF1/24.03-lts-sp1/Dockerfile) | oceanbase 4.3.5_CE_BP2_HF1 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
-  | [4.3.5_CE_BP3-oe2403sp2](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/oceanbase/4.3.5_CE_BP3/24.03-lts-sp2/Dockerfile)         | oceanbase 4.3.5_CE_BP3 on openEuler 24.03-LTS-SP2     | amd64, arm64  |
-  | [4.3.5_CE_BP3-oe2403sp4](https://gitee.com/openeuler/openeuler-docker-images/blob/master/Database/oceanbase/4.3.5_CE_BP3/24.03-lts-sp4/Dockerfile)         | oceanbase 4.3.5_CE_BP3 on openEuler 24.03-LTS-SP4     | amd64, arm64  |
+  |[5.0.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/oceanbase/5.0.1/24.03-lts-sp4/Dockerfile) | oceanbase 5.0.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[4.4.2_CE_BP3-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/oceanbase/4.4.2_CE_BP3/24.03-lts-sp4/Dockerfile) | oceanbase 4.4.2_CE_BP3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  | [4.3.5_CE_BP2_HF1-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/oceanbase/4.3.5_CE_BP2_HF1/24.03-lts-sp1/Dockerfile) | oceanbase 4.3.5_CE_BP2_HF1 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+  | [4.3.5_CE_BP3-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/oceanbase/4.3.5_CE_BP3/24.03-lts-sp2/Dockerfile)         | oceanbase 4.3.5_CE_BP3 on openEuler 24.03-LTS-SP2     | amd64, arm64  |
+  | [4.3.5_CE_BP3-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/oceanbase/4.3.5_CE_BP3/24.03-lts-sp4/Dockerfile)         | oceanbase 4.3.5_CE_BP3 on openEuler 24.03-LTS-SP4     | amd64, arm64  |
 
 download: |
   拉取镜像到本地
@@ -25,10 +25,13 @@ download: |
 usage: |
   - 启动容器
     ```
-    docker run -it --name my-oceanbase -p 2881:2881 openeuler/oceanbase:{Tag} bash
+    docker run -d --name my-oceanbase -p 2881:2881 openeuler/oceanbase:{Tag}
     ```
 
-    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。`my-oceanbase`启动之后，用户根据个人需求完成oceanbase的配置和部署
+    用户可根据自身需求选择对应版本的{Tag}、容器启动的选项。`my-oceanbase`启动之后，进入容器完成oceanbase的配置和部署：
+    ```
+    docker exec -it my-oceanbase bash
+    ```
     ```
     [root@6559d851ae46 /]# obd --help
         Usage: obd <command> [options]
