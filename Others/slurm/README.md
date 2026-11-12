@@ -14,6 +14,7 @@ Learn more at [Slurm](https://slurm.schedmd.com/).
 The tag of each Slurm docker image is consist of the version of Slurm and the version of basic image. The details are as follows:
 | Tags | Currently | Architectures |
 |------|-----------|---------------|
+|[26.05.6.1-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/slurm/26.05.6.1/24.03-lts-sp4/Dockerfile) | slurm 26.05.6.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[26.05.5.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/slurm/26.05.5.1/24.03-lts-sp4/Dockerfile) | slurm 26.05.5.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[26.05.4.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/slurm/26.05.4.1/24.03-lts-sp4/Dockerfile) | slurm 26.05.4.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[26-05-1-1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/slurm/26-05-1-1/24.03-lts-sp4/Dockerfile) | slurm 26-05-1-1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
