@@ -17,6 +17,7 @@ Learn more about Dotnet-aspnet（ASP.NET Core）（ASP on [learn.microsoft.com](
 The tag of each `dotnet-aspnet` docker image is consist of the version of `dotnet-aspnet` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[11.0.0-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/dotnet-aspnet/11.0.0/24.03-lts-sp4/Dockerfile) | dotnet 11.0.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[10.0.13-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/dotnet-aspnet/10.0.13/24.03-lts-sp4/Dockerfile) | dotnet 10.0.13 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[10.0.12-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/dotnet-aspnet/10.0.12/24.03-lts-sp4/Dockerfile) | dotnet 10.0.12 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[10.0.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/dotnet-aspnet/10.0.0/24.03-lts-sp4/Dockerfile) | dotnet 10.0.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
