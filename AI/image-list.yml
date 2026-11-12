@@ -49,6 +49,7 @@ images:
   llvm-build-deps: llvm-build-deps
   internlm: internlm
   mindspore: mindspore
+  slime: slime
   mlflow: mlflow
   roll: roll
   wav2lip: opea/wav2lip
