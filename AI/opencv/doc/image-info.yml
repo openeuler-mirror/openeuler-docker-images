@@ -1,0 +1,114 @@
+name: opencv
+category: ai
+description: OpenCV是开源的计算机视觉库，提供图像视频读写、图像处理与DNN深度学习推理等能力。本镜像从源码构建并开启昇腾CANN后端（WITH_CANN=ON，含opencv_contrib的cannops模块），cv2.dnn可将推理下发到昇腾NPU执行。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  OpenCV镜像的Tag由其版本信息和软件栈版本信息组成，详细内容如下：
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[5.1.0-cann9.1.0-python3.12-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/opencv/5.1.0-cann9.1.0-python3.12/24.03-lts-sp4/Dockerfile)| OpenCV 5.1.0 (CANN backend, opencv_contrib cannops) with CANN 9.1.0 on openEuler 24.03-LTS-SP4 | arm64,amd64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/opencv:{Tag}
+  ```
+
+usage: |
+  - 前置条件
+
+    示例使用Ascend NPU设备。运行前确认宿主机已安装Ascend驱动和固件：
+    ```bash
+    npu-smi info
+    ls /dev/davinci* /dev/davinci_manager /dev/devmm_svm /dev/hisi_hdc
+    ```
+    将`${device}`替换为实际NPU设备（例如`/dev/davinci0`），并按文档挂载驱动目录。没有NPU时无法执行该示例。
+
+  - 启动容器
+    ```
+    docker run \
+        --name my-opencv \
+        --device ${device} \
+        --device /dev/davinci_manager \
+        --device /dev/devmm_svm \
+        --device /dev/hisi_hdc \
+        -v /usr/local/dcmi:/usr/local/dcmi \
+        -v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi \
+        -v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/ \
+        -v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info \
+        -v /etc/ascend_install.info:/etc/ascend_install.info \
+        -it openeuler/opencv:{Tag} bash
+    ```
+    用户可根据自身需求选择对应版本的`{Tag}`、对应的NPU设备`{device}`以及容器启动的选项。
+
+  - 参数说明
+    | 配置项 | 描述 |
+    |--|--|
+    | `--name my-opencv` | 容器名称。|
+    | `--device /dev/davinci1` | NPU设备，X是芯片物理ID号，例如davinci1。|
+    | `--device /dev/davinci_manager` | davinci相关的管理设备。|
+    | `--device /dev/devmm_svm` | 内存管理相关设备。|
+    | `--device /dev/hisi_hdc` | hdc相关管理设备。|
+    | `-v /usr/local/dcmi:/usr/local/dcmi` | 将宿主机dcmi的so和接口文件目录`/usr/local/dcmi`挂载到容器中，请根据实际情况修改。|
+    | `-v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi` | 将宿主机`npu-smi`工具`/usr/local/bin/npu-smi`挂载到容器中，请根据实际情况修改。|
+    | `-v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/` | 将宿主机目录`/usr/local/Ascend/driver/lib64/driver`挂载到容器中。请根据driver的驱动so所在路径修改。|
+    | `-v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info` | 将宿主机版本信息文件`/usr/local/Ascend/driver/version.info`挂载到容器中，请根据实际情况修改。|
+    | `-v /etc/ascend_install.info:/etc/ascend_install.info` | 将宿主机安装信息文件`/etc/ascend_install.info`挂载到容器中。|
+    | `-it` | 以交互模式启动容器。|
+    | `openeuler/opencv:{Tag}` | 指定要运行的镜像`openeuler/opencv`，其中`{Tag}`是需要替换的镜像标签。|
+
+  - 容器测试
+
+    进入容器后先加载CANN环境，确认cv2版本与CANN后端可用：
+    ```bash
+    docker exec -it my-opencv /bin/bash
+    source /usr/local/Ascend/ascend-toolkit/set_env.sh
+    python3 -c "import cv2; print('cv2 version:', cv2.__version__); print('CANN backend available:', cv2.dnn.DNN_BACKEND_CANN); print('NPU target available:', cv2.dnn.DNN_TARGET_NPU)"
+    ```
+
+    经典图像处理API冒烟（读图/写图/灰度转换/缩放）：
+    ```python
+    import cv2
+    import numpy as np
+
+    img = np.random.randint(0, 255, (512, 512, 3), dtype=np.uint8)
+    ok = cv2.imwrite('/tmp/opencv_quickstart.png', img)
+    loaded = cv2.imread('/tmp/opencv_quickstart.png')
+    gray = cv2.cvtColor(loaded, cv2.COLOR_BGR2GRAY)
+    resized = cv2.resize(loaded, (50, 200), interpolation=cv2.INTER_AREA)
+    print('imwrite ok:', ok)
+    print('shape:', loaded.shape, 'dtype:', loaded.dtype)
+    print('gray shape:', gray.shape, 'mean:', float(gray.mean()))
+    print('resized shape:', resized.shape)
+    ```
+
+    在NPU上跑一次DNN推理（MobileNetV2，onnx/models提供；OpenCV 5.x需设置`OPENCV_FORCE_DNN_ENGINE=1`使经典引擎走CANN后端）：
+    ```bash
+    python3 -c "from urllib.request import urlretrieve; urlretrieve('https://github.com/onnx/models/raw/main/validated/vision/classification/mobilenet/model/mobilenetv2-12.onnx', '/tmp/mobilenetv2-12.onnx')"
+    OPENCV_FORCE_DNN_ENGINE=1 python3 -c "import numpy as np, cv2; net = cv2.dnn.readNetFromONNX('/tmp/mobilenetv2-12.onnx'); net.setPreferableBackend(cv2.dnn.DNN_BACKEND_CANN); net.setPreferableTarget(cv2.dnn.DNN_TARGET_NPU); blob = np.random.rand(1, 3, 224, 224).astype(np.float32); net.setInput(blob); out = net.forward(); print('output shape:', out.shape); print('output dtype:', out.dtype); assert out.shape == (1, 1000) and out.dtype == np.float32"
+    ```
+
+    首次forward包含CANN图编译（约0.5~1分钟），预期输出`output shape (1, 1000)`、`float32`。
+
+license: Apache-2.0 license
+similar_packages:
+  - libvips: libvips是高性能的图像处理库，内存占用低，适合大批量图像的流水线处理。
+  - Pillow: Pillow是Python生态常用的图像处理库，覆盖常见图像格式读写与基础处理操作。
+dependency:
+  - python3
+  - numpy
+  - CANN
+  - opencv_contrib
+
+homepage: https://github.com/opencv/opencv
+upstream:
+  backend: GitHub
+  version_url: opencv/opencv
+  version_prefix: ""
+  version_filter: alpha;rc;candidate
+  version_scheme: RPM

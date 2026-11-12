@@ -98,6 +98,7 @@ images:
   lvm: opea/lvm
   dgl: dgl
   embedding-tei: opea/embedding-tei
+  opencv: opencv
   embedding: opea/embedding
   tilelang: tilelang
   faqgen-ui: opea/faqgen-ui
