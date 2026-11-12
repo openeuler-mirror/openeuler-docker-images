@@ -16,6 +16,7 @@ The tag of each eman container image is consist of the version of eman and the v
 
 | Tags                                                                                                                           | Currently                                | Architectures |
 |--------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|---------------|
+|[2.99.86-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/eman/2.99.86/24.03-lts-sp4/Dockerfile) | eman 2.99.86 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[2.99.85-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/eman/2.99.85/24.03-lts-sp4/Dockerfile) | eman 2.99.85 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 | [2.99.69-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/eman/2.99.69/24.03-lts-sp1/Dockerfile) | EMAN2 2.99.69 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
 | [2.99.70-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/eman/2.99.70/24.03-lts-sp2/Dockerfile) | EMAN2 2.99.70 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
