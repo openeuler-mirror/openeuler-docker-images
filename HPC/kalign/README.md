@@ -18,6 +18,7 @@ Learn more at [Kalign](https://github.com/TimoLassmann/kalign).
 The tag of each Kalign docker image is consist of the version of Kalign and the version of basic image. The details are as follows:
 | Tags | Currently | Architectures |
 |------|-----------|---------------|
+|[4.0.0-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/kalign/4.0.0/24.03-lts-sp4/Dockerfile) | kalign 4.0.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[3.6.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/kalign/3.6.0/24.03-lts-sp4/Dockerfile) | kalign 3.6.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[3.5.1-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/kalign/3.5.1/24.03-lts-sp4/Dockerfile) | Kalign 3.5.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[3.5.1-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/kalign/3.5.1/24.03-lts-sp3/Dockerfile) | Kalign 3.5.1 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
