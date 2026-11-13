@@ -34,3 +34,4 @@ RUN echo /usr/local/lib > /etc/ld.so.conf.d/x265.conf && ldconfig && \
 WORKDIR /workspace
 
 CMD ["x265", "--help"]
+
