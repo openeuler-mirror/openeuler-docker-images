@@ -17,6 +17,7 @@ Learn more about PostgreSQL on the [PostgreSQL Website](https://www.postgresql.o
 The tag of each `postgres` docker image is consist of the version of `postgres` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[14.25-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Database/postgres/14.25/24.03-lts-sp4/Dockerfile) | postgres 14.25 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[18.7-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Database/postgres/18.7/24.03-lts-sp4/Dockerfile) | postgres 18.7 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[18.6-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/postgres/18.6/24.03-lts-sp4/Dockerfile) | postgres 18.6 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[13.3-oe2203lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/postgres/13.3/22.03-lts/Dockerfile)| Postgres 13.3 on openEuler 22.03-LTS | amd64, arm64 |
