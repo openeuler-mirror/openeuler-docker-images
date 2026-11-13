@@ -8,10 +8,11 @@ RUN dnf install -y gcc gcc-c++ make cmake curl tar gzip git && \
     dnf clean all
 
 RUN curl -fSL --connect-timeout 30 --retry 3 -o /tmp/x265.tar.gz \
-      https://github.com/Multicorewareinc/x265/releases/download/${VERSION}/x265_${VERSION}.tar.gz && \
+      https://github.com/Multicorewareinc/x265/archive/refs/tags/${VERSION}.tar.gz && \
     mkdir -p /x265 && \
     tar -xzf /tmp/x265.tar.gz -C /x265 --strip-components=1 && \
-    rm -f /tmp/x265.tar.gz
+    rm -f /tmp/x265.tar.gz && \
+    printf 'tag: %s\n' "${VERSION}" > /x265/.hg_archival.txt
 
 RUN cmake -S /x265/source -B /x265/build-release \
       -DCMAKE_BUILD_TYPE=Release \
