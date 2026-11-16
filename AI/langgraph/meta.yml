@@ -24,3 +24,5 @@
   path: 1.2.20/24.03-lts-sp4/Dockerfile
 1.2.21-oe2403sp4:
   path: 1.2.21/24.03-lts-sp4/Dockerfile
+1.2.22-oe2403sp4:
+  path: 1.2.22/24.03-lts-sp4/Dockerfile
