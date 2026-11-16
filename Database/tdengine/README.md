@@ -23,8 +23,8 @@ The tag of each tdengine docker image is consist of the version of tdengine and 
 |[3.4.1.7-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/tdengine/3.4.1.7/24.03-lts-sp4/Dockerfile) | tdengine 3.4.1.7 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[3.4.1.7-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/tdengine/3.4.1.7/24.03-lts-sp3/Dockerfile) | tdengine 3.4.1.7 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 |[3.3.8.3-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/tdengine/3.3.8.3/24.03-lts-sp2/Dockerfile) | tdengine 3.3.8.3 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-| [3.3.6.0-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/tdengine/3.3.6.0/24.03-lts-sp1/Dockerfile) | tdengine 3.3.6.0 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
-| [3.3.7.3-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/tdengine/3.3.7.3/24.03-lts-sp2/Dockerfile) | tdengine 3.3.7.3 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
+| [3.3.6.0-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/tdengine/3.3.6.0/24.03-lts-sp1/Dockerfile) | tdengine 3.3.6.0 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+| [3.3.7.3-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/tdengine/3.3.7.3/24.03-lts-sp2/Dockerfile) | tdengine 3.3.7.3 on openEuler 24.03-LTS-SP2 | amd64, arm64  |
 
 # Usage
 
