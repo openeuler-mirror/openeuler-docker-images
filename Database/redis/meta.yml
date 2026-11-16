@@ -9,7 +9,7 @@
 7.4.1-oe2203sp1:
   path: 7.4.1/22.03-lts-sp1/Dockerfile
 7.4.1-oe2203sp3:
-  path: /7.4.1/22.03-lts-sp4/Dockerfile
+  path: 7.4.1/22.03-lts-sp3/Dockerfile
 7.4.1-oe2203sp4:
   path: 7.4.1/22.03-lts-sp4/Dockerfile
 7.4.1-oe2403lts:
