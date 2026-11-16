@@ -20,7 +20,7 @@ The tag of each `memcached` docker image is consist of the version of `memcached
 |[1.6.45-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/memcached/1.6.45/24.03-lts-sp4/Dockerfile) | memcached 1.6.45 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[1.6.39-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/memcached/1.6.39/24.03-lts-sp4/Dockerfile) | memcached 1.6.39 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[1.6.39-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/memcached/1.6.39/24.03-lts-sp2/Dockerfile) | memcached 1.6.39 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
-|[1.6.12-oe2203lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/memcached/1.6.12/22.03-lts-sp3/Dockerfile)| Memcached 1.6.12 on openEuler 22.03-LTS | amd64, arm64 |
+|[1.6.12-oe2203lts](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/memcached/1.6.12/22.03-lts/Dockerfile)| Memcached 1.6.12 on openEuler 22.03-LTS | amd64, arm64 |
 |[1.6.24-oe2203sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/memcached/1.6.24/22.03-lts-sp3/Dockerfile)| Memcached 1.6.24 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
 |[1.6.29-oe2203sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/memcached/1.6.29/22.03-lts-sp3/Dockerfile)| Memcached 1.6.29 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
 |[1.6.31-oe2003sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/memcached/1.6.31/20.03-lts-sp4/Dockerfile)| Memcached 1.6.31 on openEuler 20.03-LTS-SP4 | amd64, arm64 |
