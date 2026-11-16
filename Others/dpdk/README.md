@@ -12,7 +12,7 @@ Current DPDK docker images are built on the [openEuler](https://repo.openeuler.o
 Data Plane Development Kit (DPDK) is a Linux Foundation project that consists of libraries to accelerate packet 
 processing workloads running on a wide variety of CPU architectures.
 
-Learn more about DPDK on [DPDK Website](hhttps://core.dpdk.org/doc/)⁠.
+Learn more about DPDK on [DPDK Website](https://core.dpdk.org/doc/)⁠.
 
 # Supported tags and respective Dockerfile links
 The tag of each `dpdk` docker image is consist of the version of `dpdk` and the version of basic image. The details are as follows
