@@ -17,6 +17,7 @@ Learn more on [Kudu website](https://kudu.apache.org/).
 The tag of each kudu docker image consists of the version of kudu and the version of base image. The details are as follows
 | Tags | Currently |  Architectures|
 |------|-----------|---------------|
+|[1.18.2-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Storage/kudu/1.18.2/24.03-lts-sp4/Dockerfile) | kudu 1.18.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[1.18.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Storage/kudu/1.18.1/24.03-lts-sp4/Dockerfile) | kudu 1.18.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[1.18.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Storage/kudu/1.18.0/24.03-lts-sp4/Dockerfile) | kudu 1.18.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[1.18.0-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Storage/kudu/1.18.0/24.03-lts-sp2/Dockerfile) | kudu 1.18.0 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
