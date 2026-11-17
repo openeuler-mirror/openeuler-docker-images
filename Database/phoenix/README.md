@@ -19,7 +19,7 @@ The tag of each phoenix docker image is consist of the version of phoenix and th
 |[5.3.2-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/phoenix/5.3.2/24.03-lts-sp4/Dockerfile) | phoenix 5.3.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[5.3.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/phoenix/5.3.0/24.03-lts-sp4/Dockerfile) | phoenix 5.3.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[5.3.0-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/phoenix/5.3.0/24.03-lts-sp3/Dockerfile) | phoenix 5.3.0 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
-|[5.2.1-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/phoenix/5.2.1/24.03-lts-sp1/Dockerfile)| phoenix 5.2.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[5.2.1-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/phoenix/5.2.1/24.03-lts-sp1/Dockerfile)| phoenix 5.2.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
 # Usage
 
