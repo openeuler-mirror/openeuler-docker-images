@@ -16,7 +16,7 @@ For more information about tengine, please visit [https://tengine.taobao.org/](h
 The tag of each tengine docker image is consist of the version of tengine and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
-|[2.4.1-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/tengine/2.4.1/24.03-lts-sp1/Dockerfile)| tengine 2.4.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+|[2.4.1-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/tengine/2.4.1/24.03-lts-sp1/Dockerfile)| tengine 2.4.1 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 |[3.1.0-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/tengine/3.1.0/24.03-lts-sp1/Dockerfile)| tengine 3.1.0 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 |[3.1.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/tengine/3.1.0/24.03-lts-sp4/Dockerfile)| tengine 3.1.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
