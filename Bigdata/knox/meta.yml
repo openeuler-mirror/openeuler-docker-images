@@ -6,4 +6,4 @@
   path: 2.1.0/24.03-lts-sp4/Dockerfile
 
 3.0.0-release-oe2403sp4:
-  path: 3.0.0/24.03-lts-sp4/Dockerfile
+  path: 3.0.0-release/24.03-lts-sp4/Dockerfile
