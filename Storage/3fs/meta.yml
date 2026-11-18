@@ -5,3 +5,5 @@
 
 1aabc71-oe2403sp4:
   path: 1aabc71/24.03-lts-sp4/Dockerfile
+2dcbff5-oe2403sp4:
+  path: 2dcbff5/24.03-lts-sp4/Dockerfile
