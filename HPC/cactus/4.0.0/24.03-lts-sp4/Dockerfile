@@ -10,7 +10,7 @@ RUN rm -rf /var/cache/dnf /var/cache/yum \
 ARG VERSION=4.0.0
 
 RUN dnf install -y \
-      python3-pip python3-virtualenv \
+      python3-pip python3-virtualenv python3-devel \
       gcc gcc-c++ make \
       git rsync && \
     dnf clean all
@@ -22,8 +22,8 @@ RUN git clone --branch v${VERSION} --depth 1 https://github.com/ComparativeGenom
 WORKDIR /opt/cactus
 
 RUN python3 -m virtualenv cactus_env && \
-    echo "export PATH=/opt/cactus/bin:\$PATH" >> cactus_env/bin/activate && \
-    echo "export PYTHONPATH=/opt/cactus/lib:\$PYTHONPATH" >> cactus_env/bin/activate
+    echo "export PATH=/opt/cactus/bin:$PATH" >> cactus_env/bin/activate && \
+    echo "export PYTHONPATH=/opt/cactus/lib:$PYTHONPATH" >> cactus_env/bin/activate
 
 ENV PATH=/opt/cactus/cactus_env/bin:/opt/cactus/bin:$PATH
 ENV PYTHONPATH=/opt/cactus/lib:$PYTHONPATH
