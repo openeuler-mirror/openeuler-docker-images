@@ -28,7 +28,9 @@ find_bin() {
 }
 
 app_version_output() {
-    Rscript -e 'cat(as.character(packageVersion("WGCNA")), "\n")' 2>&1 || true
+    # The image installs hdWGCNA v${EXPECTED_VERSION}; the WGCNA package is
+    # only a dependency, so report the hdWGCNA package version.
+    Rscript -e 'cat(as.character(packageVersion("hdWGCNA")), "\n")' 2>&1 || true
 }
 
 version_matches() {
