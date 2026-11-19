@@ -28,7 +28,11 @@ find_bin() {
 }
 
 app_version_output() {
-    python3 -c "import scann; print(scann.__version__)" 2>&1 || true
+    local py
+    for py in /opt/python39/bin/python3 python3 python3.12 python3.11; do
+        command -v "${py}" >/dev/null 2>&1 || continue
+        "${py}" -c "import importlib.metadata as m; print(m.version('scann'))" 2>/dev/null && return 0
+    done
 }
 
 version_matches() {
