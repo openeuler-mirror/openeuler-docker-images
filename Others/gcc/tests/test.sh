@@ -28,7 +28,10 @@ find_bin() {
 }
 
 app_version_output() {
-    b="$(find_bin "gcc")" && "$b" "--version" 2>&1 || true
+    local b
+    for b in /usr/local/gcc/bin/gcc /usr/local/bin/gcc "$(find_bin "gcc")"; do
+        [ -n "${b}" ] && [ -x "${b}" ] && "${b}" --version 2>&1
+    done
 }
 
 version_matches() {
