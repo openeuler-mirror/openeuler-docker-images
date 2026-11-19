@@ -67,6 +67,13 @@ test_version() {
 test_service() {
     local pwd_file passwd tries status
 
+    status="$(http_get_status 127.0.0.1 "${JENKINS_PORT}" 2>/dev/null || true)"
+    if [ -n "${status}" ] && [ "${status}" != "503" ]; then
+        printf 'PASS: jenkins service already serving HTTP %s on port %s\n' \
+            "${status}" "${JENKINS_PORT}"
+        return 0
+    fi
+
     JENKINS_HOME_DIR="$(mktemp -d "${TMPDIR:-/tmp}/jenkins-home.XXXXXX")" || {
         printf 'FAIL: cannot create temporary jenkins home\n' >&2
         return 1
