@@ -28,6 +28,11 @@ find_bin() {
 }
 
 app_version_output() {
+    local j b
+    for j in $(find /opt /usr/local -maxdepth 5 -name 'oozie-client-*.jar' 2>/dev/null | head -n 3); do
+        printf '%s
+' "${j}"
+    done
     b="$(find_bin "oozie")" && "$b" "version" 2>&1 || true
 }
 
