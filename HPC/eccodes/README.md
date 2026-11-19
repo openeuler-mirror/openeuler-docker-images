@@ -26,7 +26,7 @@ Learn more on [ecCodes Home - ecCodes - ECMWF Confluence Wiki](https://confluenc
 The tag of each ecCodes docker image is consist of the version of ecCodes and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
-|[2.48.3-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/eccodes/2.48.3/24.03-lts-sp4/Dockerfile) | ecCodes 2.48.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[2.50.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/eccodes/2.50.1/24.03-lts-sp4/Dockerfile) | ecCodes 2.50.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 # Usage
 To pull the ecCodes image:
