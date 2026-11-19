@@ -33,8 +33,9 @@ find_bin() {
 }
 
 app_version_output() {
-    b="$(find_bin "pymolcas")" && "$b" "--version" 2>&1 || true
-    python3 -c "import pymolcas; print(pymolcas.__version__)" 2>&1 || true
+    local b
+    b="$(find_bin "pymolcas")" && MOLCAS="${MOLCAS:-/opt/OpenMolcas}" "$b" "--version" 2>&1 || true
+    [ -x /opt/OpenMolcas/bin/pymolcas ] && MOLCAS=/opt/OpenMolcas /opt/OpenMolcas/bin/pymolcas --version 2>&1 || true
 }
 
 version_matches() {
