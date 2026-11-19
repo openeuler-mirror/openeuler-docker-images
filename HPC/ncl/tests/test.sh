@@ -34,8 +34,8 @@ find_bin() {
 
 app_version_output() {
     local b
-    b="$(find_bin "ncl")" && NCARG_ROOT="${NCARG_ROOT:-/usr/local/ncarg}" "$b" "-V" 2>&1 || true
-    [ -x /usr/local/ncarg/bin/ncl ] && NCARG_ROOT=/usr/local/ncarg /usr/local/ncarg/bin/ncl -V 2>&1 || true
+    b="$(find_bin "ncargversion")" && "$b" 2>&1 || true
+    [ -x /usr/local/ncarg/bin/ncargversion ] && /usr/local/ncarg/bin/ncargversion 2>&1 || true
 }
 
 version_matches() {
