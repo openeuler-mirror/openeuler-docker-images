@@ -28,7 +28,18 @@ find_bin() {
 }
 
 app_version_output() {
-    python3 -c "import faiss; print(faiss.__version__)" 2>&1 || true
+    local py out d
+    for py in python3 python3.12 python3.11 python3.10 /usr/local/bin/python3; do
+        command -v "${py}" >/dev/null 2>&1 || continue
+        out="$("${py}" -c 'import faiss; print(getattr(faiss, "__version__", ""))' 2>/dev/null)"
+        [ -n "${out}" ] && { printf '%s
+' "${out}"; return 0; }
+    done
+    for d in $(find /usr /usr/local -maxdepth 6 -type d -name faiss 2>/dev/null | head -n 3); do
+        out="$(PYTHONPATH="$(dirname "${d}")" python3 -c 'import faiss; print(getattr(faiss, "__version__", ""))' 2>/dev/null)"
+        [ -n "${out}" ] && { printf '%s
+' "${out}"; return 0; }
+    done
 }
 
 version_matches() {
