@@ -28,7 +28,12 @@ find_bin() {
 }
 
 app_version_output() {
-    b="$(find_bin "cactus")" && "$b" "--version" 2>&1 || true
+    # `cactus --version` is registered by Toil's default argument parser and
+    # prints the Toil version (e.g. 9.5.0), not the Cactus version. Read the
+    # installed Cactus distribution metadata instead (setup.py version 3.3.0).
+    local py
+    py="$(find_bin "python3")" || py="$(find_bin "python")" || return 0
+    "${py}" -c 'from importlib.metadata import version; print(version("Cactus"))' 2>&1 || true
 }
 
 version_matches() {
