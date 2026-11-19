@@ -10,7 +10,7 @@ RUN rm -rf /var/cache/dnf /var/cache/yum \
 ARG VERSION=1.11.1
 
 RUN dnf install -y \
-      gcc make \
+      gcc make findutils \
     && dnf clean all \
     && rm -rf /var/cache/dnf
 
