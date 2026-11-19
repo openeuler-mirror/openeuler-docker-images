@@ -13,11 +13,35 @@ RUN yum install -y gcc-c++ wget  && \
 
 WORKDIR /mongoose
 
-COPY example.c .
-
 RUN wget https://github.com/cesanta/mongoose/archive/refs/tags/${VERSION}.tar.gz \
-    && tar -zxvf ${VERSION}.tar.gz -C /mongoose --strip-components=1 \
-    && gcc example.c mongoose.c -o server -lpthread
+    && tar -zxvf ${VERSION}.tar.gz -C /mongoose --strip-components=1
+
+RUN cat > server.c <<'EOF'
+#include "mongoose.h"
+
+static void ev_handler(struct mg_connection *c, int ev, void *ev_data) {
+  if (ev == MG_EV_HTTP_MSG) {
+    struct mg_http_message *hm = (struct mg_http_message *) ev_data;
+    if (mg_strcmp(hm->uri, mg_str("/")) == 0) {
+      mg_http_reply(c, 200, NULL, "Mongoose v." MG_VERSION "\n");
+    } else {
+      struct mg_http_serve_opts opts = { .root_dir = "./web_root/" };
+      mg_http_serve_dir(c, hm, &opts);
+    }
+    c->is_draining = 1;
+  }
+}
+
+int main(void) {
+  struct mg_mgr mgr;
+  mg_mgr_init(&mgr);
+  mg_http_listen(&mgr, "http://0.0.0.0:8000", ev_handler, NULL);
+  for (;;) mg_mgr_poll(&mgr, 1000);
+  return 0;
+}
+EOF
+
+RUN gcc server.c mongoose.c -o server -lpthread
 
 FROM ${BASE}
 # autopilot: refresh dnf metadata
