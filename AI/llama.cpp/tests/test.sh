@@ -28,8 +28,12 @@ find_bin() {
 }
 
 app_version_output() {
-    b="$(find_bin "llama-cli")" && "$b" "--version" 2>&1 || true
-    for p in /app/build/bin/llama-cli /usr/local/bin/llama-cli /opt/llama.cpp/build/bin/llama-cli; do [ -x "$p" ] && "$p" --version; done || true
+    local b d
+    for b in "$(find_bin "llama-cli")" /app/build/bin/llama-cli /usr/local/bin/llama-cli /opt/llama.cpp/build/bin/llama-cli; do
+        [ -n "${b}" ] && [ -x "${b}" ] || continue
+        d="$(dirname "${b}")"
+        LD_LIBRARY_PATH="${d}:/usr/local/lib:${LD_LIBRARY_PATH:-}" "${b}" --version 2>&1
+    done
 }
 
 version_matches() {
