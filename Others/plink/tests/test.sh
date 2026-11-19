@@ -34,9 +34,10 @@ find_bin() {
 
 app_version_output() {
     local b
-    for b in "$(find_bin "plink")" /plink-ng/2.0/plink /plink-ng/2.0/plink2; do
+    for b in "$(find_bin "plink2")" /usr/bin/plink2 /plink-ng/2.0/plink2; do
         [ -n "${b}" ] && [ -x "${b}" ] && "${b}" --version 2>&1
     done
+    b="$(find_bin "plink")" && "$b" --version 2>&1 || true
 }
 
 version_matches() {
