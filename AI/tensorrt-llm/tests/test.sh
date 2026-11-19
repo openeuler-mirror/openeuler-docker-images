@@ -28,7 +28,13 @@ find_bin() {
 }
 
 app_version_output() {
-    python3 -c "import tensorrt_llm as m; print(m.__version__)" 2>&1 || true
+    local py out
+    for py in python3.12 python3 /usr/local/python3.12/bin/python3.12; do
+        command -v "${py}" >/dev/null 2>&1 || continue
+        out="$("${py}" -c 'import tensorrt_llm; print(getattr(tensorrt_llm, "__version__", ""))' 2>/dev/null)"
+        [ -n "${out}" ] && { printf '%s
+' "${out}"; return 0; }
+    done
 }
 
 version_matches() {
