@@ -17,7 +17,7 @@ Learn more on [Ruby Programming Language](https://www.ruby-lang.org/en/).
 The tag of each Ruby docker image is consist of the version of Ruby and the version of basic image. The details are as follows
 | Tags | Currently |  Architectures|
 |--|--|--|
-|[4.0.7-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/ruby/4.0.7/24.03-lts-sp4/Dockerfile) | ruby 4.0.7 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[4.0.10-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/ruby/4.0.10/24.03-lts-sp4/Dockerfile) | ruby 4.0.10 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.
