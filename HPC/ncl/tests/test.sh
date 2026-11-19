@@ -24,11 +24,16 @@ find_bin() {
             return 0
         fi
     done
+    p="$(find / -maxdepth 6 -type f -name "${name}" -perm -u+x 2>/dev/null | head -n 1)"
+    if [ -n "${p}" ]; then
+        printf '%s\n' "${p}"
+        return 0
+    fi
     return 1
 }
 
 app_version_output() {
-    b="$(find_bin "ncl")" && "$b" "-V" 2>&1 || true
+    b="$(find_bin "ncl")" && NCARG_ROOT="${NCARG_ROOT:-/usr/local/ncarg}" "$b" "-V" 2>&1 || true
 }
 
 version_matches() {
