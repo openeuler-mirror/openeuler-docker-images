@@ -33,13 +33,11 @@ find_bin() {
 }
 
 app_version_output() {
-    local b py
-    b="$(find_bin "e2version.py")"
-    if [ -n "${b}" ]; then
-        py="$(find_bin "python3")"
-        [ -n "${py}" ] && "${py}" "${b}" 2>&1
+    local py
+    py=/usr/local/miniconda/envs/eman2/bin/python3
+    if [ -x "${py}" ] && [ -f /opt/eman2/programs/e2version.py ]; then
+        "${py}" /opt/eman2/programs/e2version.py 2>&1
     fi
-    python3 -c "import EMAN2; print(EMAN2.__version__)" 2>&1 || true
 }
 
 version_matches() {
