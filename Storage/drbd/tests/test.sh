@@ -1,137 +1,76 @@
 #!/bin/bash
+# KunpengTest functional test for drbd (kernel module, version only).
+#
+# CI executes this file inside the image under test with --entrypoint bash and
+# the test directory mounted read-only at /opt/oe-tests. Injected env vars:
+# EXPECTED_VERSION (image version dir name).
+#
+# The image builds the DRBD 9 kernel module (drbd.ko) from LINBIT/drbd
+# (tag drbd-${EXPECTED_VERSION}). The only case asserts that the installed
+# module reports exactly ${EXPECTED_VERSION}.
 
 : "${EXPECTED_VERSION:?EXPECTED_VERSION is required}"
 
-WORKDIR=""
+APP_NAME="drbd"
 
-cleanup() {
-    if [ -n "${WORKDIR}" ] && [ -d "${WORKDIR}" ]; then
-        rm -rf "${WORKDIR}"
-    fi
-}
-trap cleanup EXIT
-
-resolve_bin() {
-    local tool="$1"
-    local dir
-    if command -v "${tool}" >/dev/null 2>&1; then
-        command -v "${tool}"
-        return 0
-    fi
-    for dir in /usr/sbin /sbin /usr/bin /bin /usr/local/sbin /usr/local/bin; do
-        if [ -x "${dir}/${tool}" ]; then
-            printf '%s\n' "${dir}/${tool}"
+find_module() {
+    local m
+    for m in /lib/modules/*/updates/drbd.ko \
+             /lib/modules/*/extra/drbd.ko \
+             /lib/modules/*/drbd/drbd.ko; do
+        if [ -f "${m}" ]; then
+            printf '%s\n' "${m}"
             return 0
         fi
     done
     return 1
 }
 
+module_version() {
+    local m version
+    m="$(find_module)" || return 1
+    version="$(modinfo "${m}" 2>/dev/null | grep '^version:' | head -n 1 \
+        | sed 's/^version:[[:space:]]*//' | tr -d '[:space:]')"
+    [ -n "${version}" ] || return 1
+    printf '%s\n' "${version}"
+}
+
+version_matches() {
+    local token="$1" part
+    token="${token#v}"; token="${token#V}"
+    [ "${token}" = "${EXPECTED_VERSION}" ] && return 0
+    while IFS= read -r part; do
+        [ -n "${part}" ] || continue
+        part="${part#v}"; part="${part#V}"
+        [ "${part}" = "${EXPECTED_VERSION}" ] && return 0
+    done < <(printf '%s\n' "${token}" | tr '/-' '\n')
+    return 1
+}
+
 test_version() {
-    local binary out version_line reported
-    if ! binary="$(resolve_bin drbdadm)"; then
-        echo "FAIL: drbdadm binary not found in PATH or /usr/sbin"
+    local version
+    version="$(module_version 2>/dev/null)" || true
+    if [ -z "${version}" ]; then
+        printf 'FAIL: drbd kernel module (drbd.ko) not found under /lib/modules or reports no version\n'
         return 1
     fi
-
-    out="$("${binary}" --version 2>&1 || true)"
-
-    version_line="$(printf '%s\n' "${out}" | grep '^DRBDADM_VERSION=' | head -n 1)"
-    if [ -z "${version_line}" ]; then
-        echo "FAIL: cannot find DRBDADM_VERSION in drbdadm --version output: ${out}"
-        return 1
+    if version_matches "${version}"; then
+        printf 'PASS: %s reports version %s\n' "${APP_NAME}" "${EXPECTED_VERSION}"
+        return 0
     fi
-
-    reported="${version_line#DRBDADM_VERSION=}"
-    if [ "${reported}" != "${EXPECTED_VERSION}" ]; then
-        echo "FAIL: version mismatch: expected=${EXPECTED_VERSION} actual=${reported}"
-        return 1
-    fi
-
-    echo "PASS: drbdadm reports exact version ${reported}"
-    return 0
-}
-
-test_tools_present() {
-    local tool
-    for tool in drbdadm drbdsetup drbdmeta; do
-        if ! resolve_bin "${tool}" >/dev/null 2>&1; then
-            echo "FAIL: required drbd-utils tool not found: ${tool}"
-            return 1
-        fi
-    done
-    echo "PASS: drbdadm, drbdsetup and drbdmeta tools are available"
-    return 0
-}
-
-test_config_dump() {
-    local binary conf out
-    if ! binary="$(resolve_bin drbdadm)"; then
-        echo "FAIL: drbdadm binary not found"
-        return 1
-    fi
-
-    WORKDIR="$(mktemp -d)"
-    if [ ! -d "${WORKDIR}" ]; then
-        echo "FAIL: cannot create temporary working directory"
-        return 1
-    fi
-    conf="${WORKDIR}/drbd.conf"
-
-    cat > "${conf}" <<'EOF'
-global { disable-ip-verification; }
-resource r0 {
-    net {
-        cram-hmac-alg sha1;
-        shared-secret "FooFunFactory";
-    }
-    volume 0 {
-        device    /dev/drbd1;
-        disk      /dev/loop0;
-        meta-disk internal;
-    }
-    on node0 {
-        node-id   0;
-        address   10.1.1.31:7000;
-    }
-    on node1 {
-        node-id   1;
-        address   10.1.1.32:7000;
-    }
-    connection {
-        host      node0  port 7000;
-        host      node1  port 7000;
-        net {
-            protocol C;
-        }
-    }
-}
-EOF
-
-    out="$("${binary}" -c "${conf}" dump 2>&1 || true)"
-
-    case "${out}" in
-        *"resource r0"*)
-            echo "PASS: drbdadm dump parsed the resource config and reproduced resource r0"
-            return 0
-            ;;
-    esac
-
-    echo "FAIL: drbdadm dump did not reproduce the configured resource: ${out}"
+    printf 'FAIL: expected %s version %s, got: %s\n' "${APP_NAME}" "${EXPECTED_VERSION}" "${version}"
     return 1
 }
 
 main() {
     local failures=0
-    test_version      || failures=$((failures + 1))
-    test_tools_present || failures=$((failures + 1))
-    test_config_dump  || failures=$((failures + 1))
+    test_version || failures=$((failures + 1))
 
     if [ "${failures}" -eq 0 ]; then
-        echo "ALL_TESTS_PASSED"
+        printf 'ALL_TESTS_PASSED\n'
         return 0
     fi
-    echo "TESTS_FAILED: ${failures} failure(s)"
+    printf 'TESTS_FAILED: %s failure(s)\n' "${failures}"
     return 1
 }
 
