@@ -33,7 +33,10 @@ find_bin() {
 }
 
 app_version_output() {
-    b="$(find_bin "kubeadm")" && "$b" "version" "-o" "short" 2>&1 || true
+    local b
+    for b in "$(find_bin "kubeadm")" /usr/local/kubernetes-*/_output/bin/kubeadm /usr/local/bin/kubeadm; do
+        [ -n "${b}" ] && [ -x "${b}" ] && "${b}" version -o short 2>&1
+    done
     b="$(find_bin "kubelet")" && "$b" "--version" 2>&1 || true
 }
 
