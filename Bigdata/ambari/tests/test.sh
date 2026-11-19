@@ -28,6 +28,13 @@ find_bin() {
 }
 
 app_version_output() {
+    local py b
+    py="$(find_bin "python3")"
+    if [ -n "${py}" ] && [ -f /opt/ambari/ambari-server/src/main/python/ambari-server.py ]; then
+        AMBARI_HOME="${AMBARI_HOME:-/opt/ambari}" \
+        PYTHONPATH="/opt/ambari/ambari-common/src/main/python:/opt/ambari/ambari-server/src/main/python${PYTHONPATH:+:${PYTHONPATH}}" \
+        "${py}" /opt/ambari/ambari-server/src/main/python/ambari-server.py --version 2>&1
+    fi
     b="$(find_bin "ambari-server")" && "$b" "--version" 2>&1 || true
 }
 
