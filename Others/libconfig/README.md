@@ -17,7 +17,7 @@ Learn more on [libconfig | C/C++ Library for Processing Structured Configuration
 The tag of each `libconfig` docker image is consist of the version of `libconfig` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
-|[1.8.2-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/libconfig/1.8.2/24.03-lts-sp4/Dockerfile) | libconfig 1.8.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[1.8.3-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/libconfig/1.8.3/24.03-lts-sp4/Dockerfile) | libconfig 1.8.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.

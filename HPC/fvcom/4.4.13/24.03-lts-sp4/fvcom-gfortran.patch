@@ -1,0 +1,111 @@
+--- a/ocpcre.F
++++ b/ocpcre.F
+@@ -2202,7 +2202,7 @@
+          EXIT
+        ENDIF
+      END DO
+-     IF(ELTYPE == 'KEY' .AND. KEYWIS==.TRUE.) ELTYPE = 'USED'
++     IF(ELTYPE == 'KEY' .AND. KEYWIS .EQV. .TRUE.) ELTYPE = 'USED'
+    ENDIF 
+ 30 RETURN
+    END FUNCTION KEYWIS
+--- a/mod_sed_cstms.F
++++ b/mod_sed_cstms.F
+@@ -5796,7 +5796,7 @@
+ # endif
+ 
+     !J. Ge for tracer advection
+-    IF(BACKWARD_ADVECTION==.TRUE.)THEN
++    IF(BACKWARD_ADVECTION .EQV. .TRUE.)THEN
+        IF(BACKWARD_STEP==1)THEN
+           do i=1,nst
+              SED0(i)%conc = sed(i)%cnew
+--- a/mod_sed.F
++++ b/mod_sed.F
+@@ -1119,7 +1119,7 @@
+ # endif
+ 
+ !J. Ge for tracer advection
+-  IF(BACKWARD_ADVECTION==.TRUE.)THEN
++  IF(BACKWARD_ADVECTION .EQV. .TRUE.)THEN
+     IF(BACKWARD_STEP==1)THEN
+       do i=1,nsed
+         SED0(i)%conc = sed(i)%cnew
+--- a/mod_fluid_mud.F
++++ b/mod_fluid_mud.F
+@@ -683,7 +683,7 @@
+ 
+    DO I=1,NT
+ #    if defined (WET_DRY)
+-     IF( ISWETCE_FML(I)*ISWETC_FML(I) == 1.AND.((WETTING_DRYING_ON.AND.ISWETCE(I)*ISWETC(I) == 1).OR.WETTING_DRYING_ON==.FALSE.))THEN
++     IF( ISWETCE_FML(I)*ISWETC_FML(I) == 1.AND.((WETTING_DRYING_ON.AND.ISWETCE(I)*ISWETC(I) == 1).OR.WETTING_DRYING_ON .EQV. .FALSE.))THEN
+ #    else
+      IF( ISWETCE_FML(I)*ISWETC_FML(I) == 1)THEN
+ #    endif
+@@ -842,7 +842,7 @@
+      DIJ=0.5_SP*(D_FML(J1)+D_FML(J2))
+ 
+ #    if defined (WET_DRY)
+-     IF((ISWETCE_FML(IA)*ISWETC_FML(IA) == 1 .OR. ISWETCE_FML(IB)*ISWETC_FML(IB) == 1).AND.((WETTING_DRYING_ON.AND.(ISWETCE(IA)*ISWETC(IA) == 1 .OR. ISWETCE(IB)*ISWETC(IB) == 1)).OR.WETTING_DRYING_ON==.FALSE.))THEN
++     IF((ISWETCE_FML(IA)*ISWETC_FML(IA) == 1 .OR. ISWETCE_FML(IB)*ISWETC_FML(IB) == 1).AND.((WETTING_DRYING_ON.AND.(ISWETCE(IA)*ISWETC(IA) == 1 .OR. ISWETCE(IB)*ISWETC(IB) == 1)).OR.WETTING_DRYING_ON .EQV. .FALSE.))THEN
+ #    else
+      IF(ISWETCE_FML(IA)*ISWETC_FML(IA) == 1 .OR. ISWETCE_FML(IB)*ISWETC_FML(IB) == 1)THEN
+ #    endif
+@@ -982,7 +982,7 @@
+      UN_TMP=-UIJ*DLTYC(I) + VIJ*DLTXC(I)
+           
+ #    if defined (WET_DRY)
+-     IF((ISWETCE_FML(IA)*ISWETC_FML(IA) == 1 .OR. ISWETCE_FML(IB)*ISWETC_FML(IB) == 1).AND.((WETTING_DRYING_ON.AND.(ISWETCE(IA)*ISWETC(IA) == 1 .OR. ISWETCE(IB)*ISWETC(IB) == 1)).OR.WETTING_DRYING_ON==.FALSE.))THEN
++     IF((ISWETCE_FML(IA)*ISWETC_FML(IA) == 1 .OR. ISWETCE_FML(IB)*ISWETC_FML(IB) == 1).AND.((WETTING_DRYING_ON.AND.(ISWETCE(IA)*ISWETC(IA) == 1 .OR. ISWETCE(IB)*ISWETC(IB) == 1)).OR.WETTING_DRYING_ON .EQV. .FALSE.))THEN
+ #    else
+      IF(ISWETCE_FML(IA)*ISWETC_FML(IA) == 1 .OR. ISWETCE_FML(IB)*ISWETC_FML(IB) == 1)THEN
+ #    endif
+@@ -1048,7 +1048,7 @@
+ ! J. Ge for extra surface water level
+ 
+ #    if defined (WET_DRY)
+-     IF((ISWETCE_FML(IA)*ISWETC_FML(IA) == 1 .OR. ISWETCE_FML(IB)*ISWETC_FML(IB) == 1).AND.((WETTING_DRYING_ON.AND.(ISWETCE(IA)*ISWETC(IA) == 1 .OR. ISWETCE(IB)*ISWETC(IB) == 1)).OR.WETTING_DRYING_ON==.FALSE.))THEN
++     IF((ISWETCE_FML(IA)*ISWETC_FML(IA) == 1 .OR. ISWETCE_FML(IB)*ISWETC_FML(IB) == 1).AND.((WETTING_DRYING_ON.AND.(ISWETCE(IA)*ISWETC(IA) == 1 .OR. ISWETCE(IB)*ISWETC(IB) == 1)).OR.WETTING_DRYING_ON .EQV. .FALSE.))THEN
+ #    else
+      IF(ISWETCE_FML(IA)*ISWETC_FML(IA) == 1 .OR. ISWETCE_FML(IB)*ISWETC_FML(IB) == 1)THEN
+ #    endif
+--- a/mod_station_timeseries.F
++++ b/mod_station_timeseries.F
+@@ -1403,6 +1403,7 @@
+    IMPLICIT NONE
+    LOGICAL FEXIST
+    INTEGER I,J,NCNT,MX_NBR_ELEM_GL,II
++   CHARACTER(LEN=40) :: FMT
+    CHARACTER(LEN=160) :: pathnfile
+ 
+    pathnfile=trim(INPUT_DIR)//trim(GRID_EDGE_FILE_NAME)
+@@ -1452,7 +1453,8 @@
+ !  Added by Zheng
+ 
+        DO I=1,MGL
+-         WRITE(10,'(2I10,<MX_NBR_ELEM_GL+1>I10)') I,NTVEGL(I),(NBVEGL(I,J),J=1,NTVEGL(I))
++         WRITE(FMT,'(A,I4,A)') '(2I10,',MX_NBR_ELEM_GL+1,'I10)'
++         WRITE(10,FMT) I,NTVEGL(I),(NBVEGL(I,J),J=1,NTVEGL(I))
+        END DO
+        CLOSE(10)
+      END IF
+--- a/swancom5.F
++++ b/swancom5.F
+@@ -55,7 +55,7 @@
+         END DO	 
+       ELSE
+ !     *** call KSCIP1 to compute KWAVE and CGO ***
+-        CALL KSCIP1(MSC,SPCSIG,DEPLOC,KWAVE(1,IC),CGO(1,IC),NN,ND)                                 
++        CALL KSCIP1(MSC,SPCSIG(1),DEPLOC,KWAVE(1,IC),CGO(1,IC),NN,ND)                                 
+       ENDIF
+     ELSE                                                    
+       INDX  = NBVE(IG,IC-1)
+@@ -69,7 +69,7 @@
+         END DO	 
+       ELSE
+ !     *** call KSCIP1 to compute KWAVE and CGO ***
+-        CALL KSCIP1(MSC,SPCSIG,DEPLOC,KWAVE(1,IC),CGO(1,IC),NN,ND)
++        CALL KSCIP1(MSC,SPCSIG(1),DEPLOC,KWAVE(1,IC),CGO(1,IC),NN,ND)
+       ENDIF
+     END IF  
+   ENDDO                                                              

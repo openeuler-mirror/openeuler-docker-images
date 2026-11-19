@@ -17,7 +17,7 @@ Learn more at [FVCOM](http://fvcom.smast.umassd.edu/) and [FVCOM-GitHub](https:/
 The tag of each FVCOM docker image is consist of the version of FVCOM and the version of basic image. The details are as follows:
 | Tags | Currently | Architectures |
 |------|-----------|---------------|
-|[4.4.12-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/fvcom/4.4.12/24.03-lts-sp4/Dockerfile) | FVCOM 4.4.12 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[4.4.13-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/HPC/fvcom/4.4.13/24.03-lts-sp4/Dockerfile) | FVCOM 4.4.13 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 # Usage
 - Ensure that you have Docker installed, or are using Docker for Linux containers if on Windows.
