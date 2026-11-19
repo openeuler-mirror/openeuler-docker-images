@@ -28,18 +28,22 @@ find_bin() {
 }
 
 app_version_output() {
+    local b
     b="$(find_bin "etcd")" && "$b" "--version" 2>&1 || true
+    [ -x /usr/bin/etcd ] && /usr/bin/etcd --version 2>&1 || true
 }
 
 version_matches() {
-    local token="$1" part
+    local token="$1" part p
     token="${token#v}"; token="${token#V}"
     [ "${token}" = "${EXPECTED_VERSION}" ] && return 0
-    while IFS= read -r part; do
-        [ -n "${part}" ] || continue
-        part="${part#v}"; part="${part#V}"
-        [ "${part}" = "${EXPECTED_VERSION}" ] && return 0
-    done < <(printf '%s\n' "${token}" | tr '/-' '\n')
+    part="${token//\// }"
+    part="${part//-/ }"
+    for p in ${part}; do
+        [ -n "${p}" ] || continue
+        p="${p#v}"; p="${p#V}"
+        [ "${p}" = "${EXPECTED_VERSION}" ] && return 0
+    done
     if [[ "${token}" =~ ^([0-9]+(\.[0-9A-Za-z]+)+) ]] && [ "${BASH_REMATCH[1]}" = "${EXPECTED_VERSION}" ]; then
         return 0
     fi
@@ -47,20 +51,25 @@ version_matches() {
 }
 
 test_version() {
-    local out token
+    local out token norm msg
     out="$(app_version_output 2>&1 || true)"
     if [ -z "${out}" ]; then
-        printf 'FAIL: %s produced no version output\n' "${APP_NAME}"
+        printf 'FAIL: %s produced no version output
+' "${APP_NAME}"
         return 1
     fi
-    for token in $(printf '%s\n' "${out}" | tr -c 'A-Za-z0-9._+-' ' '); do
+    norm="${out//[^A-Za-z0-9._+-]/ }"
+    for token in ${norm}; do
         if version_matches "${token}"; then
-            printf 'PASS: %s reports version %s\n' "${APP_NAME}" "${EXPECTED_VERSION}"
+            printf 'PASS: %s reports version %s
+' "${APP_NAME}" "${EXPECTED_VERSION}"
             return 0
         fi
     done
-    printf 'FAIL: expected %s version %s, got: %s\n' "${APP_NAME}" "${EXPECTED_VERSION}" \
-        "$(printf '%s' "${out}" | tr '\n' ' ' | cut -c1-300)"
+    msg="${out//$'
+'/ }"
+    printf 'FAIL: expected %s version %s, got: %s
+' "${APP_NAME}" "${EXPECTED_VERSION}" "${msg:0:300}"
     return 1
 }
 
