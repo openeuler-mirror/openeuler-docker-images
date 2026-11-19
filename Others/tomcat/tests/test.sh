@@ -28,7 +28,11 @@ find_bin() {
 }
 
 app_version_output() {
-    b="$(find_bin "catalina.sh")" && "$b" "version" 2>&1 || true
+    local j
+    j="$(find_bin "java")"
+    if [ -n "${j}" ] && [ -d /opt/tomcat/output/build/lib ]; then
+        CATALINA_HOME=/opt/tomcat/output/build "$j" -cp "/opt/tomcat/output/build/lib/*" org.apache.catalina.util.ServerInfo 2>&1
+    fi
 }
 
 version_matches() {
