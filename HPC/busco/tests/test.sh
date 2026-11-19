@@ -6,29 +6,29 @@
 # EXPECTED_VERSION (image version dir name), DOCKER_NAMESPACE, DOCKER_PACKAGE,
 # DOCKER_TAG, DOCKER_IMAGE.
 #
-# The only case asserts that busco reports exactly ${EXPECTED_VERSION}.
+# `busco --version` is unusable in this image: bin/busco constructs
+# BuscoLogger during startup, and BuscoLogger.__init__ creates
+# busco_<pid>.log in the current directory. When that directory is not
+# writable (the CI mount is read-only) logging.FileHandler raises IOError and
+# BuscoLogger turns it into BatchFatalError, so the version is never printed.
+# Query the installed package metadata instead: importing busco only loads
+# busco/_version.py and never initialises the logger or touches the FS.
 
 : "${EXPECTED_VERSION:?EXPECTED_VERSION is required}"
 
 APP_NAME="busco"
 
-find_bin() {
-    local name="$1" p
-    command -v "${name}" 2>/dev/null && return 0
-    for p in /usr/local/bin/"${name}" /usr/bin/"${name}" /bin/"${name}" \
-             /usr/local/sbin/"${name}" /usr/sbin/"${name}" /sbin/"${name}" \
-             /opt/*/bin/"${name}" /opt/*/*/bin/"${name}" \
-             /usr/local/*/bin/"${name}" /usr/*/bin/"${name}"; do
-        if [ -x "${p}" ]; then
-            printf '%s\n' "${p}"
-            return 0
-        fi
-    done
-    return 1
-}
-
 app_version_output() {
-    b="$(find_bin "busco")" && "$b" "--version" 2>&1 || true
+    local out
+    out="$(python3 -c 'import busco; print(busco.__version__)' 2>&1)" && {
+        printf '%s\n' "${out}"
+        return 0
+    }
+    out="$(python3 -c 'import importlib.metadata as m; print(m.version("busco"))' 2>&1)" && {
+        printf '%s\n' "${out}"
+        return 0
+    }
+    printf '%s\n' "${out}"
 }
 
 version_matches() {
