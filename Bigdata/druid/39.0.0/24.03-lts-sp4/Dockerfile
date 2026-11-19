@@ -29,7 +29,7 @@ ARG DRUID_HOME=/opt/druid
 ARG DRUID_UID=1000
 ARG DRUID_GID=1000
 
-RUN dnf install -y java-25-openjdk-headless busybox iproute shadow-utils perl && \
+RUN dnf install -y java-25-openjdk-headless python3 busybox iproute shadow-utils perl && \
     dnf clean all
 
 RUN groupadd -g ${DRUID_GID} druid && \
@@ -44,4 +44,4 @@ COPY --from=builder --chown=druid:druid ${DRUID_HOME} ${DRUID_HOME}
 USER druid
 WORKDIR ${DRUID_HOME}
 
-ENTRYPOINT ["./bin/start-druid"]
+ENTRYPOINT ["./bin/start-druid", "--services", "broker,router,coordinator-overlord,historical,zookeeper"]
