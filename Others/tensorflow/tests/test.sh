@@ -28,7 +28,13 @@ find_bin() {
 }
 
 app_version_output() {
-    python3 -c "import tensorflow as tf; print(tf.__version__)" 2>&1 || true
+    local py out
+    for py in python3 python3.12 python3.11 python3.10 /usr/local/bin/python3; do
+        command -v "${py}" >/dev/null 2>&1 || continue
+        out="$("${py}" -c 'import tensorflow as tf; print(tf.__version__)' 2>/dev/null)"
+        [ -n "${out}" ] && { printf '%s
+' "${out}"; return 0; }
+    done
 }
 
 version_matches() {
