@@ -24,6 +24,11 @@ find_bin() {
             return 0
         fi
     done
+    p="$(find / -maxdepth 6 -type f -name "${name}" -perm -u+x 2>/dev/null | head -n 1)"
+    if [ -n "${p}" ]; then
+        printf '%s\n' "${p}"
+        return 0
+    fi
     return 1
 }
 
