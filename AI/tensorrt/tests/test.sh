@@ -28,6 +28,8 @@ find_bin() {
 }
 
 app_version_output() {
+    local b
+    b="$(find_bin "tensorrt")" && "$b" "--version" 2>&1 || true
     python3 -c "import tensorrt as m; print(m.__version__)" 2>&1 || true
 }
 
@@ -35,6 +37,15 @@ version_matches() {
     local token="$1" part
     token="${token#v}"; token="${token#V}"
     [ "${token}" = "${EXPECTED_VERSION}" ] && return 0
+    case "${token}" in
+        "${EXPECTED_VERSION}."*)
+            local rest="${token#"${EXPECTED_VERSION}."}"
+            case "${rest}" in
+                *[!0-9.]*) ;;
+                *) return 0 ;;
+            esac
+            ;;
+    esac
     while IFS= read -r part; do
         [ -n "${part}" ] || continue
         part="${part#v}"; part="${part#V}"
