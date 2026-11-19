@@ -33,7 +33,9 @@ find_bin() {
 }
 
 app_version_output() {
+    local b
     b="$(find_bin "coredns")" && "$b" "-version" 2>&1 || true
+    [ -x /usr/local/coredns/coredns ] && /usr/local/coredns/coredns -version 2>&1 || true
 }
 
 version_matches() {
