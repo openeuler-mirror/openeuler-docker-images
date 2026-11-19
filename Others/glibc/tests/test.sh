@@ -28,6 +28,14 @@ find_bin() {
 }
 
 app_version_output() {
+    # The Dockerfile builds glibc ${VERSION} with --prefix=/usr/local/glibc and
+    # the image CMD runs ./bin/ldd --version. `ldd` on PATH is the base
+    # openEuler glibc (2.38), so query the installed copy explicitly.
+    local ldd=/usr/local/glibc/bin/ldd b
+    if [ -x "${ldd}" ]; then
+        "${ldd}" "--version" 2>&1 || true
+        return 0
+    fi
     b="$(find_bin "ldd")" && "$b" "--version" 2>&1 || true
 }
 
