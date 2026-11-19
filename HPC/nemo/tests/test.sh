@@ -18,7 +18,7 @@ test_version() {
         return 1
     fi
 
-    out="$("${NEMO_BIN}" --version 2>&1 || true)"
+    out="$(xvfb-run -a "${NEMO_BIN}" --version 2>&1 || true)"
 
     # nemo --version prints "nemo <version>" (src/nemo-main-application.c:
     # g_print ("nemo " VERSION "\n")). Release tags carry a channel suffix

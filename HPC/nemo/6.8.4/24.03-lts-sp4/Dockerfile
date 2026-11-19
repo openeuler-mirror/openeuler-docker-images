@@ -16,6 +16,7 @@ RUN dnf install -y git gcc-c++ cmake wget libselinux-devel \
     gtk3-devel json-glib-devel xkeyboard-config-devel libgnomekbd-devel \
     pulseaudio-libs-devel xkeyboard-config-devel systemd-devel \
     libxkbfile-devel pygobject3-devel libdbusmenu-gtk3-devel \
+    xorg-x11-server-Xvfb \
     && dnf clean all \
     && rm -rf /var/cache/dnf
 
