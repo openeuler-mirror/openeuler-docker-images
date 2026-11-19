@@ -32,9 +32,21 @@ app_version_output() {
 }
 
 version_matches() {
-    local token="$1" part
+    local token="$1" part hash
     token="${token#v}"; token="${token#V}"
     [ "${token}" = "${EXPECTED_VERSION}" ] && return 0
+    # The release tag is <release>-<short hash> (10-941cd33) while
+    # `foldseek version` prints the full 40-char commit hash.
+    case "${EXPECTED_VERSION}" in
+        *-*)
+            hash="${EXPECTED_VERSION##*-}"
+            if [ "${#hash}" -ge 7 ]; then
+                case "${token}" in
+                    "${hash}"*) return 0 ;;
+                esac
+            fi
+            ;;
+    esac
     while IFS= read -r part; do
         [ -n "${part}" ] || continue
         part="${part#v}"; part="${part#V}"
