@@ -24,11 +24,17 @@ find_bin() {
             return 0
         fi
     done
+    p="$(find / -maxdepth 6 -type f -name "${name}" -perm -u+x 2>/dev/null | head -n 1)"
+    if [ -n "${p}" ]; then
+        printf '%s\n' "${p}"
+        return 0
+    fi
     return 1
 }
 
 app_version_output() {
     b="$(find_bin "meep")" && "$b" "--version" 2>&1 || true
+    python3 -c "import meep; print(meep.__version__)" 2>&1 || true
 }
 
 version_matches() {
