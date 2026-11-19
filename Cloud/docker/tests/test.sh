@@ -33,7 +33,9 @@ find_bin() {
 }
 
 app_version_output() {
+    local b
     b="$(find_bin "docker")" && "$b" "--version" 2>&1 || true
+    [ -x /usr/local/docker/docker ] && /usr/local/docker/docker --version 2>&1 || true
 }
 
 version_matches() {
