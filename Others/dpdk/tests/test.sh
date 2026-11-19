@@ -35,6 +35,9 @@ version_matches() {
     local token="$1" part
     token="${token#v}"; token="${token#V}"
     [ "${token}" = "${EXPECTED_VERSION}" ] && return 0
+    # DPDK's meson-generated pkg-config version always appends a patch
+    # component (26.07 -> 26.07.0); accept only that trailing-zero form.
+    [ "${token}" = "${EXPECTED_VERSION}.0" ] && return 0
     while IFS= read -r part; do
         [ -n "${part}" ] || continue
         part="${part#v}"; part="${part#V}"
