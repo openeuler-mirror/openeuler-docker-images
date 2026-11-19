@@ -28,7 +28,11 @@ find_bin() {
 }
 
 app_version_output() {
-    python3 -c "import importlib.metadata as m; print(m.version('towhee'))" 2>&1 || true
+    local py
+    for py in python3 python3.12 python3.11; do
+        command -v "${py}" >/dev/null 2>&1 || continue
+        "${py}" -c "import importlib.metadata as m; print(m.version('towhee'))" 2>/dev/null && return 0
+    done
 }
 
 version_matches() {
