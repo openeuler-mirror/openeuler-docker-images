@@ -20,6 +20,7 @@ The tag of each `x264` docker image consists of the version of `x264` and the ve
 
 | Tag | Currently | Architectures |
 | --- | --- | --- |
+| [0.165.x-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/x264/0.165.x/24.03-lts-sp4/Dockerfile) | x264 0.165.x on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 | [0480cb05-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/x264/0480cb05/24.03-lts-sp4/Dockerfile) | x264 0480cb05 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 # Usage
