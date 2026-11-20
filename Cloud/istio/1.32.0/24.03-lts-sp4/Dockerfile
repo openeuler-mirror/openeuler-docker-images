@@ -4,6 +4,8 @@ FROM ${BASE}
 ARG TARGETARCH
 ARG VERSION=1.32.0
 
+LABEL org.opencontainers.image.version="${VERSION}"
+
 RUN curl -fSL -o istio.tar.gz https://github.com/istio/istio/releases/download/${VERSION}/istio-${VERSION}-linux-${TARGETARCH}.tar.gz && \
     mkdir -p /usr/local/istio/ && \
     tar -zxf istio.tar.gz -C /usr/local/istio/ --strip-components=1
