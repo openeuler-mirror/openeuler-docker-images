@@ -6,11 +6,17 @@ RUN dnf update -y && dnf install -y shadow-utils findutils
 
 RUN groupadd --system netdata && useradd --system -g netdata -s /sbin/nologin -M netdata
 
-RUN curl https://get.netdata.cloud/kickstart.sh > /opt/netdata-kickstart.sh
+RUN arch="$(uname -m)"; \
+    if [ "${arch}" = "x86_64" ]; then nd_arch=x86_64; else nd_arch=aarch64; fi; \
+    curl -fSL --retry 3 -o /tmp/netdata.run \
+        "https://github.com/netdata/netdata/releases/download/v2.8.3/netdata-${nd_arch}-v2.8.3.gz.run" && \
+    chmod +x /tmp/netdata.run && \
+    /tmp/netdata.run -- --install-prefix=/opt/netdata --dont-start-it --no-updates --disable-telemetry && \
+    rm -f /tmp/netdata.run
 
 WORKDIR /opt
 
-RUN chmod +x ./netdata-kickstart.sh
+# installed by the pinned static build above
 
 
 
