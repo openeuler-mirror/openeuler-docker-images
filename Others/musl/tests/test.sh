@@ -28,7 +28,15 @@ find_bin() {
 }
 
 app_version_output() {
-    b="$(find_bin "musl-gcc")" && "$b" "--version" 2>&1 || true
+    local ld
+    for ld in /lib/ld-musl-*.so.1 /usr/local/musl/lib/libc.so; do
+        [ -f "${ld}" ] || continue
+        if command -v strings >/dev/null 2>&1; then
+            strings "${ld}" 2>/dev/null | grep -m1 -E '^Version [0-9]' && return 0
+        fi
+        grep -a -o -E 'Version [0-9][0-9.]*' "${ld}" 2>/dev/null | head -n 1 && return 0
+    done
+    return 1
 }
 
 version_matches() {
