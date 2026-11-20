@@ -7,7 +7,7 @@ ARG VERSION
 ARG TARGETARCH
 
 RUN yum update -y && \
-    yum install -y wget && \
+    yum install -y wget libatomic && \
     yum clean all && \
     rm -rf /var/cache/yum && \
     rm -rf /tmp/*
