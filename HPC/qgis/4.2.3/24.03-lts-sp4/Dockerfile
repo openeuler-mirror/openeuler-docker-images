@@ -2,7 +2,7 @@ ARG BASE=openeuler/openeuler:24.03-lts-sp4
 FROM ${BASE}
 
 ARG VERSION=4.2.3
-ARG QGIS_BRANCH=final-4_2_2
+ARG QGIS_BRANCH=final-4_2_3
 ARG TARGETARCH
 
 RUN dnf install -y --setopt=install_weak_deps=False \
