@@ -22,6 +22,6 @@ RUN git clone -b v3.0.29 https://github.com/snort3/libdaq.git && \
 ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib:/usr/local/lib/daq
 RUN git clone -b ${VERSION} https://github.com/snort3/snort3.git && \
     cd snort3 && \
-    ./configure_cmake.sh --prefix=/usr/local && \
+    PKG_CONFIG_PATH=/usr/local/lib/pkgconfig ./configure_cmake.sh --prefix=/usr/local && \
     cd build && \
     make -j $(nproc) install
