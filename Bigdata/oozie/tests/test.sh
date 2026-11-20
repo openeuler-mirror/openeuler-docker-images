@@ -28,10 +28,15 @@ find_bin() {
 }
 
 app_version_output() {
-    local j
-    for j in /oozie/client/target/oozie-client-*.jar /oozie/server/target/dependency/oozie-client-*.jar; do
-        [ -f "${j}" ] && printf '%s
-' "${j}"
+    local j b v
+    for j in /oozie/client/target/oozie-client-*.jar \
+             /oozie/server/target/dependency/oozie-client-*.jar; do
+        [ -f "${j}" ] || continue
+        b="${j##*/}"
+        v="${b#oozie-client-}"
+        v="${v%.jar}"
+        printf '%s
+' "${v}"
     done
 }
 
