@@ -28,7 +28,13 @@ find_bin() {
 }
 
 app_version_output() {
-    b="$(find_bin "kyuubi")" && "$b" "--version" 2>&1 || true
+    local f b
+    for f in /opt/kyuubi/RELEASE /opt/kyuubi/release /opt/kyuubi/VERSION; do
+        [ -f "${f}" ] || continue
+        cat "${f}"
+        return 0
+    done
+    b="$(find_bin "kyuubi-version")" && "$b" 2>&1 || true
 }
 
 version_matches() {
