@@ -20,13 +20,14 @@ RUN wget https://github.com/OpenFOAM/OpenFOAM-dev/archive/refs/tags/${VERSION}.t
     tar -xzf OpenFOAM-dev.tar.gz && \
     tar -xzf ThirdParty-dev.tar.gz && \
     rm -rf OpenFOAM-dev.tar.gz ThirdParty-dev.tar.gz && \
-    mv OpenFOAM-dev-${VERSION} OpenFOAM-dev && \
-    mv ThirdParty-dev-${THIRD_PARTY_VERSION} ThirdParty-dev && \
-    cd OpenFOAM-dev && \
+    mv OpenFOAM-dev-${VERSION} OpenFOAM-v${VERSION} && \
+    mv ThirdParty-dev-${THIRD_PARTY_VERSION} ThirdParty-v${VERSION} && \
+    sed -i "s/^export WM_PROJECT_VERSION=dev$/export WM_PROJECT_VERSION=v${VERSION}/" OpenFOAM-v${VERSION}/etc/bashrc && \
+    cd OpenFOAM-v${VERSION} && \
     source etc/bashrc && \
     ./Allwmake -j -k -s -q
 
-WORKDIR /opt/OpenFOAM-dev
+WORKDIR /opt/OpenFOAM-v${VERSION}
 ENV OMPI_ALLOW_RUN_AS_ROOT=1
 ENV OMPI_ALLOW_RUN_AS_ROOT_CONFIRM=1
 

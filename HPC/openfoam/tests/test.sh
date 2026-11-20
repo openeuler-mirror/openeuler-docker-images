@@ -9,7 +9,7 @@
 # The image ENTRYPOINT normally sources etc/bashrc and drops into a shell, but
 # the CI overrides the entrypoint, so this script must locate the OpenFOAM
 # installation, source its bashrc itself, and exercise a real mesh/solve
-# pipeline (blockMesh + icoFoam on the incompressible cavity tutorial).
+# pipeline (blockMesh + icoFoam on the legacy incompressible cavity tutorial).
 
 : "${EXPECTED_VERSION:?EXPECTED_VERSION is required}"
 
@@ -77,11 +77,13 @@ test_version() {
 
 # Run the incompressible lid-driven cavity tutorial: blockMesh generates the
 # mesh (constant/polyMesh) and icoFoam time-steps the transient flow to the
-# configured endTime.  A completed icoFoam run writes a terminating "End" line,
-# which is the success marker asserted below.
+# configured endTime.  In this release the tutorial was moved under the
+# "legacy" tree, so the path below reflects the new location.  A completed
+# icoFoam run writes a terminating "End" line, which is the success marker
+# asserted below.
 test_cavity_case() {
     local case_src case_dir log_mesh log_run rc
-    case_src="${FOAM_DIR}/tutorials/incompressible/icoFoam/cavity/cavity"
+    case_src="${FOAM_DIR}/tutorials/legacy/incompressible/icoFoam/cavity/cavity"
     if [ ! -d "${case_src}" ]; then
         printf 'FAIL: cavity tutorial not found at %s\n' "${case_src}"
         return 1
