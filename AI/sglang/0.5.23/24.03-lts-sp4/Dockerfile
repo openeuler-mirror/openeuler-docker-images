@@ -63,6 +63,7 @@ ARG VERSION=0.5.23
 
 ENV LANG=C.UTF-8 \
     SGL_HOME=/opt/sglang \
+    PYTHONPATH=/opt/sglang/pylib \
     PATH=/opt/sglang/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 # 安装运行时依赖（精简版）
