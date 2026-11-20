@@ -1,59 +1,5 @@
 ARG BASE=openeuler/openeuler:24.03-lts-sp4
 
-FROM ${BASE} AS builder
-# autopilot: refresh dnf metadata
-RUN rm -rf /var/cache/dnf /var/cache/yum \
-    && (dnf clean all 2>/dev/null || yum clean all 2>/dev/null || true) \
-    && mkdir -p /etc/dnf \
-    && (grep -qxF skip_if_unavailable=True /etc/dnf/dnf.conf 2>/dev/null \
-        || echo skip_if_unavailable=True >> /etc/dnf/dnf.conf)
-ARG VERSION=4.4.1
-ARG ERLANG_VERSION=27.3.4
-ARG ELIXIR_VERSION=1.18.4
-
-ENV LANG=C.UTF-8
-
-RUN dnf install -y \
-        git gcc gcc-c++ make cmake \
-        openssl-devel ncurses-devel \
-        python3-simplejson \
-        libxslt xmlto \
-        zip unzip rsync \
-        xz curl perl autoconf && \
-    dnf clean all
-
-RUN ln -s /usr/bin/python3 /usr/bin/python
-
-RUN curl -fSL -o /tmp/otp.tar.gz https://github.com/erlang/otp/releases/download/OTP-${ERLANG_VERSION}/otp_src_${ERLANG_VERSION}.tar.gz && \
-    tar -xzf /tmp/otp.tar.gz -C /tmp && \
-    cd /tmp/otp_src_${ERLANG_VERSION} && \
-    ./configure --prefix=/opt/erlang && \
-    make -j$(nproc) && \
-    make install && \
-    rm -rf /tmp/otp*
-
-ENV PATH=/opt/erlang/bin:$PATH
-
-RUN git clone --depth 1 --branch v${ELIXIR_VERSION} https://github.com/elixir-lang/elixir.git /tmp/elixir && \
-    cd /tmp/elixir && \
-    make compile && \
-    make install PREFIX=/opt/elixir && \
-    rm -rf /tmp/elixir
-
-ENV PATH=/opt/elixir/bin:$PATH
-
-RUN dnf install -y p7zip && dnf clean all && ln -s /usr/bin/7za /usr/local/bin/7z
-
-RUN git clone --depth 1 --branch v${VERSION} https://github.com/rabbitmq/rabbitmq-server.git /tmp/rabbitmq && \
-    cd /tmp/rabbitmq && \
-    mix local.hex --force && \
-    mix local.rebar --force && \
-    make && \
-    make package-generic-unix && \
-    mkdir -p /tmp/output && \
-    tar -xf /tmp/rabbitmq/PACKAGES/rabbitmq-server-generic-unix-*.tar.xz -C /tmp/output --strip-components=1
-
-
 FROM ${BASE}
 # autopilot: refresh dnf metadata
 RUN rm -rf /var/cache/dnf /var/cache/yum \
@@ -62,18 +8,31 @@ RUN rm -rf /var/cache/dnf /var/cache/yum \
     && (grep -qxF skip_if_unavailable=True /etc/dnf/dnf.conf 2>/dev/null \
         || echo skip_if_unavailable=True >> /etc/dnf/dnf.conf)
 ARG VERSION=4.4.1
+ARG ERLANG_VERSION=27.3.4.19
 
 RUN dnf install -y \
-        hostname \
-        shadow && \
-    dnf clean all && \
-    groupadd -r rabbitmq && \
+        xz hostname shadow && \
+    dnf clean all
+
+RUN set -eux; \
+    ARCH=$(uname -m); \
+    case "$ARCH" in \
+      x86_64|amd64) RPMARCH=x86_64 ;; \
+      aarch64|arm64) RPMARCH=aarch64 ;; \
+      *) echo "Unsupported architecture: $ARCH" >&2; exit 1 ;; \
+    esac; \
+    curl -fSL -o /tmp/erlang.rpm "https://github.com/rabbitmq/erlang-rpm/releases/download/v${ERLANG_VERSION}/erlang-${ERLANG_VERSION}-1.el9.${RPMARCH}.rpm"; \
+    dnf install -y /tmp/erlang.rpm; \
+    rm -f /tmp/erlang.rpm
+
+RUN mkdir -p /usr/local/lib/rabbitmq && \
+    curl -fSL -o /tmp/rabbitmq.tar.xz "https://github.com/rabbitmq/rabbitmq-server/releases/download/v${VERSION}/rabbitmq-server-generic-unix-${VERSION}.tar.xz" && \
+    tar -xJf /tmp/rabbitmq.tar.xz -C /usr/local/lib/rabbitmq --strip-components=1 && \
+    rm -f /tmp/rabbitmq.tar.xz
+
+RUN groupadd -r rabbitmq && \
     useradd -r -g rabbitmq -d /var/lib/rabbitmq -s /sbin/nologin rabbitmq
 
-COPY --from=builder /opt/erlang /opt/erlang
-ENV PATH=/opt/erlang/bin:$PATH
-
-COPY --from=builder /tmp/output /usr/local/lib/rabbitmq
 ENV RABBITMQ_HOME=/usr/local/lib/rabbitmq
 ENV PATH=$RABBITMQ_HOME/sbin:$PATH
 
