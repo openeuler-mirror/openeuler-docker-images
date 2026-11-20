@@ -49,7 +49,7 @@ WORKDIR ${SGL_HOME}
 RUN pip3 install --no-cache-dir --break-system-packages \
         --upgrade pip setuptools wheel && \
     pip3 install --no-cache-dir --break-system-packages \
-        sglang
+        --target ${SGL_HOME}/pylib sglang==${VERSION}
 
 # 收集原生库产物
 RUN mkdir -p ${SGL_HOME}/dist/lib && \
