@@ -19,4 +19,4 @@ WORKDIR /opt/uwsgi
 
 RUN make -j
 
-CMD ["./uwsgi", "--help"]
+CMD ["uwsgi", "--help"]
