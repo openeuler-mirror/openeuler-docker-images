@@ -28,10 +28,25 @@ find_bin() {
 }
 
 app_version_output() {
-    local b
+    local b f so out
     for b in "$(find_bin "llama-cli")" /usr/local/bin/llama-cli /app/build/bin/llama-cli; do
         [ -n "${b}" ] && [ -x "${b}" ] || continue
-        LD_LIBRARY_PATH="/usr/local/lib64:/usr/local/lib:$(dirname "${b}"):/usr/local/Ascend/cann-9.1.0/aarch64-linux/devlib:/usr/local/Ascend/cann-9.1.0/aarch64-linux/devlib/linux/aarch64:/usr/local/Ascend/cann-9.1.0/aarch64-linux/lib64:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/lib:${LD_LIBRARY_PATH:-}" "${b}" --version 2>&1
+        out="$(LD_LIBRARY_PATH="/usr/local/lib64:/usr/local/lib:$(dirname "${b}"):/usr/local/Ascend/cann-9.1.0/aarch64-linux/lib64:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/lib:${LD_LIBRARY_PATH:-}" "${b}" --version 2>&1)"
+        case "${out}" in
+            *version*) printf '%s\n' "${out}"; return 0 ;;
+        esac
+    done
+    for f in /usr/local/lib/cmake/llama/llama-config-version.cmake \
+             /usr/local/lib64/cmake/llama/llama-config-version.cmake \
+             /usr/local/lib/cmake/ggml/ggml-config-version.cmake \
+             /usr/local/lib64/cmake/ggml/ggml-config-version.cmake; do
+        [ -f "${f}" ] || continue
+        grep -m1 "PACKAGE_VERSION" "${f}" 2>/dev/null && return 0
+    done
+    for so in /usr/local/lib64/libllama-cli-impl.so /usr/local/lib/libllama-cli-impl.so \
+              /usr/local/lib64/libllama.so.0 /usr/local/lib/libllama.so.0; do
+        [ -f "${so}" ] || continue
+        grep -a -o -m1 "version: [0-9][0-9A-Za-z._+-]*" "${so}" 2>/dev/null && return 0
     done
 }
 
