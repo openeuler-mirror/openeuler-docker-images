@@ -4,7 +4,7 @@ FROM ${BASE}
 ARG VERSION=10.1.0
 WORKDIR /
 
-RUN yum install -y java-11-openjdk-devel shadow sudo lsof
+RUN yum install -y java-17-openjdk-devel shadow sudo lsof
 RUN url="https://www.apache.org/dyn/closer.lua/solr/solr/${VERSION}/solr-${VERSION}.tgz?action=download"; \
     curl --retry 10 -S -L -o solr.tgz "$url"
 
