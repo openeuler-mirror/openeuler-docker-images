@@ -12,6 +12,6 @@ WORKDIR /opt
 
 RUN chmod +x ./netdata-kickstart.sh
 
-RUN ./netdata-kickstart.sh --non-interactive --no-updates
+
 
 CMD ["./netdata/bin/netdata", "--help"]
