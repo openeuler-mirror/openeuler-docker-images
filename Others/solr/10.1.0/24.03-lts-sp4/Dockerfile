@@ -6,8 +6,11 @@ WORKDIR /
 
 RUN yum install -y java-17-openjdk-devel shadow sudo lsof
 
+RUN alternatives --set java /usr/lib/jvm/java-17-openjdk/bin/java 2>/dev/null || true
 ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
-ENV PATH=${JAVA_HOME}/bin:${PATH}
+ENV SOLR_JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+ENV PATH=/usr/lib/jvm/java-17-openjdk/bin:${PATH}
+RUN java -version
 RUN url="https://www.apache.org/dyn/closer.lua/solr/solr/${VERSION}/solr-${VERSION}.tgz?action=download"; \
     curl --retry 10 -S -L -o solr.tgz "$url"
 
