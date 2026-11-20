@@ -34,6 +34,8 @@ ARG VERSION=1.1.7
 
 RUN sed -i '/^meta/ s/^\(.*\)$/#\1/g' /etc/yum.repos.d/openEuler.repo
 
+RUN dnf install -y pkgconf-pkg-config && dnf clean all
+
 COPY --from=builder /opt/snappy/usr/local/ /usr/local/
 
 # snappy installs via GNUInstallDirs, which resolves to lib64 on openEuler
