@@ -73,10 +73,10 @@ struct Person {
 }
 EOF
 
-    out="$("${thrift1_bin}" -o "${WORKDIR}" --gen cpp2 "${WORKDIR}/Person.thrift" 2>&1)"
+    out="$("${thrift1_bin}" -o "${WORKDIR}" --gen mstch_cpp2 "${WORKDIR}/Person.thrift" 2>&1)"
     rc=$?
     if [ "${rc}" -ne 0 ]; then
-        printf 'FAIL: thrift1 --gen cpp2 exited %s: %s\n' \
+        printf 'FAIL: thrift1 --gen mstch_cpp2 exited %s: %s\n' \
             "${rc}" "$(printf '%s' "${out}" | tr '\n' ' ' | cut -c1-300)"
         return 1
     fi
