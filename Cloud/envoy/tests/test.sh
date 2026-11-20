@@ -33,7 +33,15 @@ find_bin() {
 }
 
 app_version_output() {
-    b="$(find_bin "envoy")" && "$b" "--version" 2>&1 || true
+    local b
+    for b in /usr/local/envoy/envoy /usr/local/envoy/bin/envoy \
+             /opt/envoy/envoy /opt/*/bin/envoy /usr/local/bin/envoy /usr/bin/envoy; do
+        [ -n "${b}" ] && [ -x "${b}" ] || continue
+        "${b}" --version 2>&1
+        return 0
+    done
+    b="$(find_bin "envoy")" || return 0
+    "${b}" --version 2>&1
 }
 
 version_matches() {
