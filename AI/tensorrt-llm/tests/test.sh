@@ -28,13 +28,22 @@ find_bin() {
 }
 
 app_version_output() {
-    local py out
-    for py in python3.12 python3 /usr/local/python3.12/bin/python3.12; do
-        command -v "${py}" >/dev/null 2>&1 || continue
-        out="$("${py}" -c 'import tensorrt_llm; print(getattr(tensorrt_llm, "__version__", ""))' 2>/dev/null)"
-        [ -n "${out}" ] && { printf '%s
-' "${out}"; return 0; }
+    local f d b
+    for f in /usr/local/python*/lib/python*/site-packages/tensorrt_llm/version.py \
+             /usr/local/lib/python*/site-packages/tensorrt_llm/version.py; do
+        [ -f "${f}" ] || continue
+        grep -m1 '__version__' "${f}" 2>/dev/null && return 0
     done
+    for d in /usr/local/python*/lib/python*/site-packages/tensorrt_llm-*.dist-info \
+             /usr/local/lib/python*/site-packages/tensorrt_llm-*.dist-info; do
+        [ -d "${d}" ] || continue
+        b="${d##*/}"
+        b="${b#tensorrt_llm-}"
+        printf '%s
+' "${b%.dist-info}"
+        return 0
+    done
+    return 1
 }
 
 version_matches() {
