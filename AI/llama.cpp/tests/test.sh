@@ -31,7 +31,7 @@ app_version_output() {
     local b
     for b in "$(find_bin "llama-cli")" /usr/local/bin/llama-cli /app/build/bin/llama-cli; do
         [ -n "${b}" ] && [ -x "${b}" ] || continue
-        LD_LIBRARY_PATH="/usr/local/lib64:/usr/local/lib:$(dirname "${b}"):${LD_LIBRARY_PATH:-}" "${b}" --version 2>&1
+        LD_LIBRARY_PATH="/usr/local/lib64:/usr/local/lib:$(dirname "${b}"):/usr/local/Ascend/cann-9.1.0/aarch64-linux/devlib:/usr/local/Ascend/cann-9.1.0/aarch64-linux/devlib/linux/aarch64:/usr/local/Ascend/cann-9.1.0/aarch64-linux/lib64:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/lib:${LD_LIBRARY_PATH:-}" "${b}" --version 2>&1
     done
 }
 
