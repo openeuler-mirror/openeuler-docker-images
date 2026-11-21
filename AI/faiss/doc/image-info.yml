@@ -63,5 +63,5 @@ upstream:
   backend: GitHub
   version_url: facebookresearch/faiss
   version_prefix: v
-  version_filter: alpha;rc;candidate
+  version_filter: alpha;rc;candidate;20180223
   version_scheme: RPM
