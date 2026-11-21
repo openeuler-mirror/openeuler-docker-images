@@ -1,0 +1,61 @@
+name: r
+category: others
+description: R 是一个用于统计计算和绘图的自由软件环境，可编译并运行于多种 UNIX 平台、Windows 和 macOS。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  r镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[4.0.5-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/r/4.0.5/24.03-lts-sp4/Dockerfile) | r 4.0.5 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+
+  注意，以下`{Tag}`的值按照需求，替换为上述表格中的tag内容。
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/r:{Tag}
+  ```
+
+usage: |
+  - 启动交互式 R 容器
+    ```
+    docker run -it --name my-r openeuler/r:{Tag}
+    ```
+  - 运行 R 脚本
+    创建 script.R 文件，内容如下
+    ```r
+    print("Hello, R!")
+    ```
+    也可通过以下命令直接生成 script.R
+    ```
+    echo 'print("Hello, R!")' > script.R
+    ```
+    挂载当前目录并运行脚本
+    ```
+    docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp openeuler/r:{Tag} Rscript script.R
+    ```
+  - 查看容器运行日志
+    ```
+    docker logs -f my-r
+    ```
+  - 进入交互式 shell
+    ```
+    docker exec -it my-r /bin/bash
+    ```
+
+license: GPL-2.0-or-later
+similar_packages:
+  - N/A
+dependency:
+  - N/A
+homepage: https://www.r-project.org/
+upstream:
+  backend: custom
+  version_url: https://cran.r-project.org/src/base/R-4/
+  regex: R-(\d+\.\d+\.\d+)\.tar\.gz
+  version_scheme: RPM

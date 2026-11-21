@@ -1,0 +1,2 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuite name="r-x86_64" tests="1" failures="0" errors="0" time="343.068"><testcase classname="native-image-validation" name="build-runtime-tests" time="343.068" /></testsuite>

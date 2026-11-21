@@ -135,3 +135,4 @@ images:
   x264: x264
   snappy: snappy
   ffmpeg: ffmpeg
+  r: r
