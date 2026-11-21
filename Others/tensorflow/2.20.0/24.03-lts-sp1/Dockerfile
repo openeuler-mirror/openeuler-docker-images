@@ -6,6 +6,6 @@ RUN dnf update -y \
     && dnf install -y python3-pip \
     && dnf clean all \
     && rm -rf /tmp/* \
-    && rm -rf /var/cache/dnf \
+    && rm -rf /var/cache/dnf
 
 RUN pip3 install tensorflow==${VERSION}
