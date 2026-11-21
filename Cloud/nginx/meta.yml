@@ -38,3 +38,5 @@
   path: 1.31.7/24.03-lts-sp4/Dockerfile
 1.31.8-oe2403sp4:
   path: 1.31.8/24.03-lts-sp4/Dockerfile
+1.31.9-oe2403sp4:
+  path: 1.31.9/24.03-lts-sp4/Dockerfile
