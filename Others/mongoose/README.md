@@ -17,7 +17,7 @@ The tag of each mongoose docker image is consist of the version of mongoose and 
 
 | Tags                                                                                                                            | Currently                                | Architectures |
 |---------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|---------------|
-|[7.23-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/mongoose/7.23/24.03-lts-sp4/Dockerfile) | mongoose 7.23 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[7.24-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/mongoose/7.24/24.03-lts-sp4/Dockerfile) | mongoose 7.24 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[7.22-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/mongoose/7.22/24.03-lts-sp4/Dockerfile) | mongoose 7.22 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[7.22-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/mongoose/7.22/24.03-lts-sp3/Dockerfile) | mongoose 7.22 on openEuler 24.03-LTS-SP3 | amd64, arm64 |
 |[7.21-oe2403sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/mongoose/7.21/24.03-lts-sp3/Dockerfile) | mongoose 7.21 on openEuler 24.03-LTS-SP3 | amd64, arm64 |

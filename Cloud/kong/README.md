@@ -18,6 +18,7 @@ The tag of each `kong` docker image is consist of the version of `kong` and the 
 
 | Tag                                                                                                                          | Currently                             | Architectures |
 |------------------------------------------------------------------------------------------------------------------------------|---------------------------------------|---------------|
+|[3.9.5-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Cloud/kong/3.9.5/24.03-lts-sp4/Dockerfile) | kong 3.9.5 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[3.9.4-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/kong/3.9.4/24.03-lts-sp4/Dockerfile) | kong 3.9.4 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[3.9.3-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/kong/3.9.3/24.03-lts-sp4/Dockerfile) | kong 3.9.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 | [3.9.1-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/kong/3.9.1/24.03-lts-sp1/Dockerfile) | Kong 3.9.1 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
