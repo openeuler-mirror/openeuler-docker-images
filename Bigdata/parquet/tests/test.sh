@@ -1,66 +1,67 @@
 #!/bin/bash
-# KunpengTest functional test for parquet (Apache Parquet Java source distribution).
+# KunpengTest functional test for apache parquet-format (source distribution).
 #
-# The image ships the parquet-java source tree under /usr/local/parquet (there is
-# no compiled binary). The version is declared by the root Maven build descriptor
-# pom.xml (groupId org.apache.parquet, artifactId parquet). Injected env vars:
-# EXPECTED_VERSION, DOCKER_NAMESPACE, DOCKER_PACKAGE, DOCKER_TAG, DOCKER_IMAGE.
+# CI executes this file inside the image under test with --entrypoint bash and
+# the script directory mounted read-only at /tmp/eptest. Injected env vars:
+# EXPECTED_VERSION (image version dir name), DOCKER_NAMESPACE, DOCKER_PACKAGE,
+# DOCKER_TAG, DOCKER_IMAGE.
+#
+# The Dockerfile extracts apache-parquet-format-<VERSION> into /usr/local/parquet.
+# This is the Apache Parquet format specification: Thrift IDL + documentation,
+# with no runtime binary. We therefore assert (1) the release version recorded in
+# the Maven project descriptor pom.xml and (2) the canonical Thrift definition
+# that describes the Parquet file format.
 
 : "${EXPECTED_VERSION:?EXPECTED_VERSION is required}"
 
-PARQUET_HOME="/usr/local/parquet"
+APP_HOME="/usr/local/parquet"
+POM="${APP_HOME}/pom.xml"
+THRIFT="${APP_HOME}/src/main/thrift/parquet.thrift"
 
-project_version() {
-    awk '
-        /<artifactId>parquet<\/artifactId>/ { found=1; next }
-        found && /<version>/ {
-            line = $0
-            sub(/^[[:space:]]*<version>/, "", line)
-            sub(/<\/version>.*$/, "", line)
-            print line
-            exit
-        }
-    ' "${PARQUET_HOME}/pom.xml" 2>/dev/null
+pom_version() {
+    grep -A1 '<artifactId>parquet-format</artifactId>' "${POM}" 2>/dev/null \
+        | grep '<version>' \
+        | head -1 \
+        | sed -n 's/[[:space:]]*<version>\([^<]*\)<\/version>[[:space:]]*/\1/p'
 }
 
 test_version() {
-    local got
-    got="$(project_version)"
-    if [ -z "${got}" ]; then
-        printf 'FAIL: could not read project version from %s/pom.xml\n' "${PARQUET_HOME}"
+    local out
+    if [ ! -f "${POM}" ]; then
+        printf 'FAIL: %s not found\n' "${POM}"
         return 1
     fi
-    if [ "${got}" = "${EXPECTED_VERSION}" ]; then
-        printf 'PASS: pom.xml reports exact version %s\n' "${got}"
+    out="$(pom_version)"
+    if [ -z "${out}" ]; then
+        printf 'FAIL: could not extract version from %s\n' "${POM}"
+        return 1
+    fi
+    if [ "${out}" = "${EXPECTED_VERSION}" ]; then
+        printf 'PASS: parquet-format version %s\n' "${out}"
         return 0
     fi
-    printf 'FAIL: expected version %s, got %s\n' "${EXPECTED_VERSION}" "${got}"
+    printf 'FAIL: expected parquet-format version %s, got %s\n' "${EXPECTED_VERSION}" "${out}"
     return 1
 }
 
-test_source_tree() {
-    local java_file
-    java_file="${PARQUET_HOME}/parquet-hadoop/src/main/java/org/apache/parquet/hadoop/ParquetFileReader.java"
-    if [ ! -f "${PARQUET_HOME}/pom.xml" ]; then
-        printf 'FAIL: missing build descriptor %s/pom.xml\n' "${PARQUET_HOME}"
+test_thrift_spec() {
+    if [ ! -f "${THRIFT}" ]; then
+        printf 'FAIL: %s not found\n' "${THRIFT}"
         return 1
     fi
-    if [ ! -f "${java_file}" ]; then
-        printf 'FAIL: missing core source file %s\n' "${java_file}"
-        return 1
+    if grep -q 'namespace java org.apache.parquet.format' "${THRIFT}" \
+        && grep -q 'struct FileMetaData' "${THRIFT}"; then
+        printf 'PASS: parquet.thrift defines the Parquet format (java namespace + FileMetaData)\n'
+        return 0
     fi
-    if ! grep -q 'package org.apache.parquet.hadoop;' "${java_file}"; then
-        printf 'FAIL: unexpected package declaration in %s\n' "${java_file}"
-        return 1
-    fi
-    printf 'PASS: parquet-java source tree intact (pom.xml and ParquetFileReader.java)\n'
-    return 0
+    printf 'FAIL: %s missing expected Parquet format definitions\n' "${THRIFT}"
+    return 1
 }
 
 main() {
     local failures=0
-    test_version    || failures=$((failures + 1))
-    test_source_tree || failures=$((failures + 1))
+    test_version     || failures=$((failures + 1))
+    test_thrift_spec || failures=$((failures + 1))
     if [ "${failures}" -eq 0 ]; then
         printf 'ALL_TESTS_PASSED\n'
         return 0
