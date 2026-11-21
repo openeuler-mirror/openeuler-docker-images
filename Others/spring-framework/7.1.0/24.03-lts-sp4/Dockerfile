@@ -1,6 +1,11 @@
 ARG BASE=openeuler/openeuler:24.03-lts-sp4
 FROM ${BASE}
-ARG TARGETARCH
+# autopilot: refresh dnf metadata
+RUN rm -rf /var/cache/dnf /var/cache/yum \
+    && (dnf clean all 2>/dev/null || yum clean all 2>/dev/null || true) \
+    && mkdir -p /etc/dnf \
+    && (grep -qxF skip_if_unavailable=True /etc/dnf/dnf.conf 2>/dev/null \
+        || echo skip_if_unavailable=True >> /etc/dnf/dnf.conf)
 ARG VERSION=7.1.0
 
 RUN dnf update -y \
