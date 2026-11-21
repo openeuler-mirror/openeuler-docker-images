@@ -22,8 +22,8 @@ The tag of each scann docker image is consist of the version of scann and the ve
 |[a1e7371-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/scann/a1e7371/24.03-lts-sp4/Dockerfile) | scann a1e7371 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[e49bbfe-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/scann/e49bbfe/24.03-lts-sp4/Dockerfile) | scann e49bbfe on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[d36068b-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/scann/d36068b/24.03-lts-sp4/Dockerfile) | scann d36068b on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[1.4.2-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/scann/1.4.2/24.03-lts-sp4/Dockerfile) | scann 1.4.2 on openEuler 24.03-lts-sp4 | amd64, arm64 |
-|[1.4.2-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/scann/1.4.2/24.03-lts-sp3/Dockerfile) | scann 1.4.2 on openEuler 24.03-lts-sp3 | amd64, arm64 |
+|[7117df5-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/scann/7117df5/24.03-lts-sp4/Dockerfile) | scann 7117df5 on openEuler 24.03-lts-sp4 | amd64, arm64 |
+|[7117df5-oe2403sp3](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/scann/7117df5/24.03-lts-sp3/Dockerfile) | scann 7117df5 on openEuler 24.03-lts-sp3 | amd64, arm64 |
 
 
 # Usage
