@@ -1,77 +1,87 @@
 #!/bin/bash
-# KunpengTest functional test for lustre (version only).
-#
-# CI executes this file inside the image under test with --entrypoint bash and
-# the script directory mounted read-only at /tmp/eptest. Injected env vars:
-# EXPECTED_VERSION (image version dir name), DOCKER_NAMESPACE, DOCKER_PACKAGE,
-# DOCKER_TAG, DOCKER_IMAGE.
-#
-# The only case asserts that lustre reports exactly ${EXPECTED_VERSION}.
 
 : "${EXPECTED_VERSION:?EXPECTED_VERSION is required}"
 
-APP_NAME="lustre"
-
-find_bin() {
-    local name="$1" p
-    command -v "${name}" 2>/dev/null && return 0
-    for p in /usr/local/bin/"${name}" /usr/bin/"${name}" /bin/"${name}" \
-             /usr/local/sbin/"${name}" /usr/sbin/"${name}" /sbin/"${name}" \
-             /opt/*/bin/"${name}" /opt/*/*/bin/"${name}" \
-             /usr/local/*/bin/"${name}" /usr/*/bin/"${name}"; do
-        if [ -x "${p}" ]; then
-            printf '%s\n' "${p}"
+resolve_bin() {
+    local name="$1" path=""
+    if path="$(command -v "${name}" 2>/dev/null)"; then
+        printf '%s\n' "${path}"
+        return 0
+    fi
+    for candidate in \
+        "/usr/local/bin/${name}" \
+        "/usr/local/sbin/${name}" \
+        "/usr/sbin/${name}" \
+        "/sbin/${name}" \
+        "/usr/bin/${name}" \
+        "/bin/${name}"; do
+        if [ -x "${candidate}" ]; then
+            printf '%s\n' "${candidate}"
             return 0
         fi
     done
-    return 1
-}
-
-app_version_output() {
-    b="$(find_bin "lfs")" && "$b" "--version" 2>&1 || true
-}
-
-version_matches() {
-    local token="$1" part
-    token="${token#v}"; token="${token#V}"
-    [ "${token}" = "${EXPECTED_VERSION}" ] && return 0
-    while IFS= read -r part; do
-        [ -n "${part}" ] || continue
-        part="${part#v}"; part="${part#V}"
-        [ "${part}" = "${EXPECTED_VERSION}" ] && return 0
-    done < <(printf '%s\n' "${token}" | tr '/-' '\n')
-    if [[ "${token}" =~ ^([0-9]+(\.[0-9A-Za-z]+)+) ]] && [ "${BASH_REMATCH[1]}" = "${EXPECTED_VERSION}" ]; then
-        return 0
-    fi
     return 1
 }
 
 test_version() {
-    local out token
-    out="$(app_version_output 2>&1 || true)"
-    if [ -z "${out}" ]; then
-        printf 'FAIL: %s produced no version output\n' "${APP_NAME}"
+    local bin out ver
+    if ! bin="$(resolve_bin lfs)"; then
+        echo "FAIL: lfs binary not found"
         return 1
     fi
-    for token in $(printf '%s\n' "${out}" | tr -c 'A-Za-z0-9._+-' ' '); do
-        if version_matches "${token}"; then
-            printf 'PASS: %s reports version %s\n' "${APP_NAME}" "${EXPECTED_VERSION}"
-            return 0
-        fi
-    done
-    printf 'FAIL: expected %s version %s, got: %s\n' "${APP_NAME}" "${EXPECTED_VERSION}" \
-        "$(printf '%s' "${out}" | tr '\n' ' ' | cut -c1-300)"
+    out="$("${bin}" --version 2>&1 || true)"
+    ver="${out#* }"
+    if [ "${ver}" = "${EXPECTED_VERSION}" ]; then
+        echo "PASS: lfs reports exact version ${ver}"
+        return 0
+    fi
+    echo "FAIL: expected lfs version '${EXPECTED_VERSION}', got '${out}'"
+    return 1
+}
+
+test_lctl_version() {
+    local bin out ver
+    if ! bin="$(resolve_bin lctl)"; then
+        echo "FAIL: lctl binary not found"
+        return 1
+    fi
+    out="$("${bin}" --version 2>&1 || true)"
+    ver="${out#* }"
+    if [ "${ver}" = "${EXPECTED_VERSION}" ]; then
+        echo "PASS: lctl reports exact version ${ver}"
+        return 0
+    fi
+    echo "FAIL: expected lctl version '${EXPECTED_VERSION}', got '${out}'"
+    return 1
+}
+
+test_command_table() {
+    local bin out
+    if ! bin="$(resolve_bin lfs)"; then
+        echo "FAIL: lfs binary not found"
+        return 1
+    fi
+    out="$("${bin}" list-commands 2>&1 || true)"
+    if printf '%s\n' "${out}" | grep -q 'setstripe' &&
+        printf '%s\n' "${out}" | grep -q 'getstripe' &&
+        printf '%s\n' "${out}" | grep -q 'df'; then
+        echo "PASS: lfs command table lists core layout/df subcommands"
+        return 0
+    fi
+    echo "FAIL: lfs command table missing core subcommands"
     return 1
 }
 
 main() {
     local failures=0
     test_version || failures=$((failures + 1))
+    test_lctl_version || failures=$((failures + 1))
+    test_command_table || failures=$((failures + 1))
     if [ "${failures}" -eq 0 ]; then
-        printf 'ALL_TESTS_PASSED\n'
+        echo "ALL_TESTS_PASSED"
         return 0
     fi
-    printf 'TESTS_FAILED: %s failure(s)\n' "${failures}"
+    echo "TESTS_FAILED: ${failures} failure(s)"
     return 1
 }
 
