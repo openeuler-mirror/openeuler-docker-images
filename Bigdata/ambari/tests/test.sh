@@ -29,6 +29,10 @@ find_bin() {
 
 app_version_output() {
     local txt
+    if [ -f /opt/ambari/version ]; then
+        cat /opt/ambari/version
+        return 0
+    fi
     for txt in /opt/ambari/pom.xml /opt/ambari/ambari-server/pom.xml; do
         [ -f "${txt}" ] || continue
         v="$(cat "${txt}" 2>/dev/null)"
