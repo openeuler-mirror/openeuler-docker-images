@@ -107,3 +107,4 @@ images:
   gulp: gulp
   zstd: zstd
   folly: folly
+  su2: su2
