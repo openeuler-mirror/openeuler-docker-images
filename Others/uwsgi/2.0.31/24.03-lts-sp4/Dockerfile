@@ -17,6 +17,6 @@ RUN wget https://github.com/unbit/uwsgi/archive/refs/tags/${VERSION}.tar.gz \
 
 WORKDIR /opt/uwsgi
 
-RUN make -j
+RUN make -j && install -m 755 uwsgi /usr/local/bin/uwsgi
 
-CMD ["./uwsgi", "--help"]
+CMD ["uwsgi", "--help"]
