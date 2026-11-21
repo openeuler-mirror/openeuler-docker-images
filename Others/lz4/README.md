@@ -18,7 +18,7 @@ The tag of each `lz4` docker image is consist of the version of `lz4` and the ve
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
 |[1.9.3-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/lz4/1.9.3/24.03-lts-sp4/Dockerfile) | lz4 1.9.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
-|[1.10.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/lz4/1.10.0/24.03-lts-sp4/Dockerfile) | lz4 1.10.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[1.11.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/lz4/1.11.1/24.03-lts-sp4/Dockerfile) | lz4 1.11.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.
