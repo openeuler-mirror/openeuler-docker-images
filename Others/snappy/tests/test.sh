@@ -28,6 +28,11 @@ find_bin() {
 }
 
 app_version_output() {
+    local f b
+    for f in /usr/local/lib64/pkgconfig/snappy.pc /usr/local/lib/pkgconfig/snappy.pc; do
+        [ -f "${f}" ] || continue
+        grep -m1 -E '^Version:' "${f}" 2>/dev/null && return 0
+    done
     b="$(find_bin "pkg-config")" && "$b" "--modversion" "snappy" 2>&1 || true
 }
 
