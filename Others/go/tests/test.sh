@@ -1,77 +1,90 @@
 #!/bin/bash
-# KunpengTest functional test for go (version only).
-#
-# CI executes this file inside the image under test with --entrypoint bash and
-# the script directory mounted read-only at /tmp/eptest. Injected env vars:
-# EXPECTED_VERSION (image version dir name), DOCKER_NAMESPACE, DOCKER_PACKAGE,
-# DOCKER_TAG, DOCKER_IMAGE.
-#
-# The only case asserts that go reports exactly ${EXPECTED_VERSION}.
 
 : "${EXPECTED_VERSION:?EXPECTED_VERSION is required}"
 
-APP_NAME="go"
+WORKDIR=""
 
-find_bin() {
-    local name="$1" p
-    command -v "${name}" 2>/dev/null && return 0
-    for p in /usr/local/bin/"${name}" /usr/bin/"${name}" /bin/"${name}" \
-             /usr/local/sbin/"${name}" /usr/sbin/"${name}" /sbin/"${name}" \
-             /opt/*/bin/"${name}" /opt/*/*/bin/"${name}" \
-             /usr/local/*/bin/"${name}" /usr/*/bin/"${name}"; do
-        if [ -x "${p}" ]; then
-            printf '%s\n' "${p}"
-            return 0
-        fi
-    done
-    return 1
-}
-
-app_version_output() {
-    go version 2>&1 | sed "s/^.*go\([0-9]\)/\1/" || true
-}
-
-version_matches() {
-    local token="$1" part
-    token="${token#v}"; token="${token#V}"
-    [ "${token}" = "${EXPECTED_VERSION}" ] && return 0
-    while IFS= read -r part; do
-        [ -n "${part}" ] || continue
-        part="${part#v}"; part="${part#V}"
-        [ "${part}" = "${EXPECTED_VERSION}" ] && return 0
-    done < <(printf '%s\n' "${token}" | tr '/-' '\n')
-    if [[ "${token}" =~ ^([0-9]+(\.[0-9A-Za-z]+)+) ]] && [ "${BASH_REMATCH[1]}" = "${EXPECTED_VERSION}" ]; then
-        return 0
+cleanup() {
+    if [ -n "${WORKDIR}" ] && [ -d "${WORKDIR}" ]; then
+        rm -rf "${WORKDIR}"
     fi
-    return 1
 }
+trap cleanup EXIT
 
 test_version() {
-    local out token
-    out="$(app_version_output 2>&1 || true)"
-    if [ -z "${out}" ]; then
-        printf 'FAIL: %s produced no version output\n' "${APP_NAME}"
+    local out reported
+
+    if ! command -v go >/dev/null 2>&1; then
+        echo "FAIL: go binary not found in PATH"
         return 1
     fi
-    for token in $(printf '%s\n' "${out}" | tr -c 'A-Za-z0-9._+-' ' '); do
-        if version_matches "${token}"; then
-            printf 'PASS: %s reports version %s\n' "${APP_NAME}" "${EXPECTED_VERSION}"
-            return 0
-        fi
-    done
-    printf 'FAIL: expected %s version %s, got: %s\n' "${APP_NAME}" "${EXPECTED_VERSION}" \
-        "$(printf '%s' "${out}" | tr '\n' ' ' | cut -c1-300)"
+
+    out="$(go version 2>&1)"
+    reported="${out#go version go}"
+    reported="${reported%% *}"
+
+    if [ -z "${reported}" ]; then
+        echo "FAIL: could not parse go version from output: ${out}"
+        return 1
+    fi
+
+    if [ "${reported}" = "${EXPECTED_VERSION}" ]; then
+        echo "PASS: exact go version: ${reported}"
+        return 0
+    fi
+
+    echo "FAIL: expected go version ${EXPECTED_VERSION}, got ${reported} from '${out}'"
+    return 1
+}
+
+test_core_function() {
+    local dir out build_out
+
+    dir="$(mktemp -d "${TMPDIR:-/tmp}/go-test.XXXXXX")"
+    WORKDIR="${dir}"
+
+    cat > "${dir}/main.go" <<'EOF'
+package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("Hello from Go")
+}
+EOF
+
+    if ! build_out="$(cd "${dir}" && GOCACHE="${dir}/gocache" go mod init example.com/hello 2>&1)"; then
+        echo "FAIL: go mod init failed: ${build_out}"
+        return 1
+    fi
+
+    if ! build_out="$(cd "${dir}" && GOCACHE="${dir}/gocache" go build -o hello . 2>&1)"; then
+        echo "FAIL: go build failed: ${build_out}"
+        return 1
+    fi
+
+    out="$("${dir}/hello" 2>&1)"
+    if [ "${out}" = "Hello from Go" ]; then
+        echo "PASS: compile and run Go program: ${out}"
+        return 0
+    fi
+
+    echo "FAIL: unexpected program output: ${out}"
     return 1
 }
 
 main() {
     local failures=0
-    test_version || failures=$((failures + 1))
+
+    test_version       || failures=$((failures + 1))
+    test_core_function || failures=$((failures + 1))
+
     if [ "${failures}" -eq 0 ]; then
-        printf 'ALL_TESTS_PASSED\n'
+        echo "ALL_TESTS_PASSED"
         return 0
     fi
-    printf 'TESTS_FAILED: %s failure(s)\n' "${failures}"
+
+    echo "TESTS_FAILED: ${failures} failure(s)"
     return 1
 }
 

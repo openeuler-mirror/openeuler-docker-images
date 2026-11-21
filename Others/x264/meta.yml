@@ -1,2 +1,4 @@
 0480cb05-oe2403sp4:
   path: 0480cb05/24.03-lts-sp4/Dockerfile
+0.165.x-oe2403sp4:
+  path: 0.165.x/24.03-lts-sp4/Dockerfile
