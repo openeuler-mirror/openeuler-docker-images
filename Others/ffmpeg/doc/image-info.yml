@@ -1,0 +1,81 @@
+name: ffmpeg
+category: others
+description: FFmpeg 是一个处理多媒体内容（音频、视频、字幕及相关元数据）的库与工具集合。本镜像包含 ffmpeg、ffprobe 命令行工具、共享库、头文件及 pkg-config 元数据，源码取自 GitHub FFmpeg 仓库 n9.1 标签，并进行 SHA-256 校验。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  ffmpeg镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[9.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/ffmpeg/9.1/24.03-lts-sp4/Dockerfile) | ffmpeg 9.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/ffmpeg:{Tag}
+  ```
+
+usage: |
+  用户可根据自身需求选择对应版本的 `{Tag}`。
+
+  - 拉取镜像
+
+    ```
+    docker pull openeuler/ffmpeg:{Tag}
+    ```
+
+  - 查看 FFmpeg 版本
+
+    ```
+    docker run --rm openeuler/ffmpeg:{Tag} ffmpeg -version
+    ```
+
+  - 转换媒体文件
+
+    将输入媒体文件（如 `input.mp4`）放在当前目录，转换结果以 `output.avi` 保存到同一目录。
+
+    ```
+    docker run --rm -v "$PWD":/workspace openeuler/ffmpeg:{Tag} \
+        ffmpeg -i input.mp4 output.avi
+    ```
+
+  - 启动长期运行容器以便探索
+
+    ```
+    docker run -d --name my-ffmpeg openeuler/ffmpeg:{Tag} sleep infinity
+    ```
+
+  - 查看容器日志
+
+    ```
+    docker logs -f my-ffmpeg
+    ```
+
+  - 进入容器交互式终端
+
+    ```
+    docker exec -it my-ffmpeg bash
+    ```
+
+license: LGPL-2.1-or-later
+similar_packages:
+  - x264: 开源 H.264/AVC 视频编码器。
+  - x265: 开源 H.265/HEVC 视频编码器。
+dependency:
+  - gcc
+  - make
+  - diffutils
+  - pkgconf
+  - nasm (x86_64)
+
+homepage: https://ffmpeg.org
+upstream:
+  version_url: FFmpeg/FFmpeg
+  backend: GitHub
+  version_scheme: RPM
+  version_prefix: n
+  version_filter: dev
