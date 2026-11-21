@@ -11,7 +11,7 @@ tags: |
 
   |    Tag   |  Currently  |   Architectures  |
   |----------|-------------|------------------|
-|[0.9.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/llama.cpp/0.9.0/24.03-lts-sp4/Dockerfile) | llama.cpp 0.9.0 (CANN 9.1.0) on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+  |[0.9.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/AI/llama.cpp/0.9.0/24.03-lts-sp4/Dockerfile) | llama.cpp 0.9.0 (CANN 9.1.0) on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[0.9.0-cann9.1.0-python3.12-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/llama.cpp/0.9.0/24.03-lts-sp4/Dockerfile)| llama.cpp 0.9.0 (CANN 9.1.0) on openEuler 24.03-LTS-SP4 | arm64,amd64 |
 
 download: |
