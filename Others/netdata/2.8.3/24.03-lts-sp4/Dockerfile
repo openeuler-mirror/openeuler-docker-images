@@ -11,7 +11,7 @@ RUN arch="$(uname -m)"; \
     curl -fSL --retry 3 -o /tmp/netdata.run \
         "https://github.com/netdata/netdata/releases/download/v2.8.3/netdata-${nd_arch}-v2.8.3.gz.run" && \
     chmod +x /tmp/netdata.run && \
-    /tmp/netdata.run -- --install-prefix=/opt/netdata --dont-start-it --no-updates --disable-telemetry && \
+    /tmp/netdata.run -- --install-prefix=/opt/netdata --dont-start-it --dont-wait --non-interactive --no-updates --disable-telemetry && \
     rm -f /tmp/netdata.run
 
 WORKDIR /opt
