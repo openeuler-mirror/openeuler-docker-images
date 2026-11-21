@@ -41,7 +41,7 @@ app_version_output() {
              /usr/local/lib/cmake/ggml/ggml-config-version.cmake \
              /usr/local/lib64/cmake/ggml/ggml-config-version.cmake; do
         [ -f "${f}" ] || continue
-        grep -m1 "PACKAGE_VERSION" "${f}" 2>/dev/null && return 0
+        grep -m1 'set(PACKAGE_VERSION "' "${f}" 2>/dev/null && return 0
     done
     for so in /usr/local/lib64/libllama-cli-impl.so /usr/local/lib/libllama-cli-impl.so \
               /usr/local/lib64/libllama.so.0 /usr/local/lib/libllama.so.0; do
