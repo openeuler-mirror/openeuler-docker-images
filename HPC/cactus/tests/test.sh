@@ -1,76 +1,100 @@
 #!/bin/bash
-# KunpengTest functional test for cactus (version only).
-#
-# CI executes this file inside the image under test with --entrypoint bash and
-# the script directory mounted read-only at /tmp/eptest. Injected env vars:
-# EXPECTED_VERSION (image version dir name), DOCKER_NAMESPACE, DOCKER_PACKAGE,
-# DOCKER_TAG, DOCKER_IMAGE.
-#
-# The only case asserts that cactus reports exactly ${EXPECTED_VERSION}.
 
 : "${EXPECTED_VERSION:?EXPECTED_VERSION is required}"
 
-APP_NAME="cactus"
-
-find_bin() {
-    local name="$1" p
-    command -v "${name}" 2>/dev/null && return 0
-    for p in /usr/local/bin/"${name}" /usr/bin/"${name}" /bin/"${name}" \
-             /usr/local/sbin/"${name}" /usr/sbin/"${name}" /sbin/"${name}" \
-             /opt/*/bin/"${name}" /opt/*/*/bin/"${name}" \
-             /usr/local/*/bin/"${name}" /usr/*/bin/"${name}"; do
-        if [ -x "${p}" ]; then
-            printf '%s\n' "${p}"
-            return 0
-        fi
-    done
-    return 1
-}
-
-app_version_output() {
-    local py
-    for py in /opt/cactus/cactus_env/bin/python3 /opt/cactus/cactus_env/bin/python python3; do
-        command -v "${py}" >/dev/null 2>&1 || continue
-        "${py}" -c "import importlib.metadata as m; print(m.version('cactus'))" 2>/dev/null && return 0
-    done
-}
-
-version_matches() {
-    local token="$1" part
-    token="${token#v}"; token="${token#V}"
-    [ "${token}" = "${EXPECTED_VERSION}" ] && return 0
-    while IFS= read -r part; do
-        [ -n "${part}" ] || continue
-        part="${part#v}"; part="${part#V}"
-        [ "${part}" = "${EXPECTED_VERSION}" ] && return 0
-    done < <(printf '%s\n' "${token}" | tr '/-' '\n')
-    if [[ "${token}" =~ ^([0-9]+(\.[0-9A-Za-z]+)+) ]] && [ "${BASH_REMATCH[1]}" = "${EXPECTED_VERSION}" ]; then
-        return 0
+WORKDIR=""
+cleanup() {
+    if [ -n "${WORKDIR}" ] && [ -d "${WORKDIR}" ]; then
+        rm -rf "${WORKDIR}"
     fi
-    return 1
 }
+trap cleanup EXIT
 
-test_version() {
-    local out token
-    out="$(app_version_output 2>&1 || true)"
-    if [ -z "${out}" ]; then
-        printf 'FAIL: %s produced no version output\n' "${APP_NAME}"
+require_binary() {
+    local bin="$1"
+    if ! command -v "${bin}" >/dev/null 2>&1; then
+        printf 'FATAL: required binary not found in PATH: %s\n' "${bin}" >&2
         return 1
     fi
-    for token in $(printf '%s\n' "${out}" | tr -c 'A-Za-z0-9._+-' ' '); do
-        if version_matches "${token}"; then
-            printf 'PASS: %s reports version %s\n' "${APP_NAME}" "${EXPECTED_VERSION}"
-            return 0
-        fi
-    done
-    printf 'FAIL: expected %s version %s, got: %s\n' "${APP_NAME}" "${EXPECTED_VERSION}" \
-        "$(printf '%s' "${out}" | tr '\n' ' ' | cut -c1-300)"
+}
+
+# Cactus is a pure-Python workflow orchestrator installed into the bundled
+# virtualenv. The only authoritative version string at runtime is the installed
+# distribution metadata (setup.py declares `name = "Cactus"`, `version = X`),
+# so query it directly rather than relying on a non-existent `--version` flag.
+test_version() {
+    local out
+    out="$(python3 -c 'import importlib.metadata as md; print(md.version("Cactus"))' 2>&1)"
+    if [ "${out}" = "${EXPECTED_VERSION}" ]; then
+        printf 'PASS: exact cactus version %s\n' "${out}"
+        return 0
+    fi
+    printf 'FAIL: expected version %s, got <%s>\n' "${EXPECTED_VERSION}" "${out}"
     return 1
+}
+
+# `cactus-prepare --seqFileOnly` parses a progressive-cactus seqFile (a NEWICK
+# species tree plus per-genome sequence paths) and rewrites an annotated output
+# seqFile whose leaf paths are remapped into --outDir. It exercises real cactus
+# code (SeqFile/MultiCactusTree parsing and config XML loading) without needing
+# the external alignment binaries or any network access.
+test_prepare_seqfile() {
+    local seqfile outdir outseq out rc
+
+    if ! require_binary "cactus-prepare"; then
+        return 1
+    fi
+
+    WORKDIR="$(mktemp -d)"
+    seqfile="${WORKDIR}/seqfile.txt"
+    outdir="${WORKDIR}/out"
+    outseq="${outdir}/seqfile.txt"
+
+    cat > "${seqfile}" <<'SEQ_EOF'
+(simHuman,simMouse);
+simHuman input/simHuman.fa
+simMouse input/simMouse.fa
+SEQ_EOF
+
+    out="$(cactus-prepare "${seqfile}" --outDir "${outdir}" --outSeqFile "${outseq}" --seqFileOnly 2>&1)"
+    rc=$?
+    if [ "${rc}" -ne 0 ]; then
+        printf 'FAIL: cactus-prepare --seqFileOnly exited %s: %s\n' "${rc}" "${out}"
+        return 1
+    fi
+
+    if [ ! -s "${outseq}" ]; then
+        printf 'FAIL: cactus-prepare produced no output seqFile\n'
+        return 1
+    fi
+
+    if ! grep -qF "simHuman" "${outseq}"; then
+        printf 'FAIL: output seqFile missing leaf name simHuman\n'
+        return 1
+    fi
+    if ! grep -qF "simMouse" "${outseq}"; then
+        printf 'FAIL: output seqFile missing leaf name simMouse\n'
+        return 1
+    fi
+    if ! grep -qF "${outdir}/simHuman.fa" "${outseq}"; then
+        printf 'FAIL: output seqFile missing remapped path for simHuman\n'
+        return 1
+    fi
+    if ! grep -qF "${outdir}/simMouse.fa" "${outseq}"; then
+        printf 'FAIL: output seqFile missing remapped path for simMouse\n'
+        return 1
+    fi
+
+    printf 'PASS: cactus-prepare parsed seqFile and produced annotated output seqFile\n'
+    return 0
 }
 
 main() {
     local failures=0
-    test_version || failures=$((failures + 1))
+
+    test_version         || failures=$((failures + 1))
+    test_prepare_seqfile || failures=$((failures + 1))
+
     if [ "${failures}" -eq 0 ]; then
         printf 'ALL_TESTS_PASSED\n'
         return 0
