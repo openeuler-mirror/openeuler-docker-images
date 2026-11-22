@@ -137,3 +137,4 @@ images:
   ffmpeg: ffmpeg
   r: r
   shiny: shiny
+  zlib: zlib
