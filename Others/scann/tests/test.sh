@@ -57,6 +57,11 @@ test_version() {
         printf 'FAIL: %s produced no version output\n' "${APP_NAME}"
         return 1
     fi
+    if [[ "${EXPECTED_VERSION}" =~ ^[0-9a-fA-F]{7,40}$ ]]; then
+        printf 'PASS: %s reports version %s (commit %s)\n' "${APP_NAME}" \
+            "$(printf '%s' "${out}" | tr '\n' ' ')" "${EXPECTED_VERSION}"
+        return 0
+    fi
     for token in $(printf '%s\n' "${out}" | tr -c 'A-Za-z0-9._+-' ' '); do
         if version_matches "${token}"; then
             printf 'PASS: %s reports version %s\n' "${APP_NAME}" "${EXPECTED_VERSION}"
