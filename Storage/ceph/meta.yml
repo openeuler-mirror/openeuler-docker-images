@@ -11,3 +11,5 @@
 
 16.2.8-oe2403sp4:
   path: 16.2.8/24.03-lts-sp4/Dockerfile
+22.0.0-oe2403sp4:
+  path: 22.0.0/24.03-lts-sp4/Dockerfile
