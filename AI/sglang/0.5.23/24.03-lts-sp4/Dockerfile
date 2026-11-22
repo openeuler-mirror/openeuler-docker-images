@@ -49,7 +49,7 @@ WORKDIR ${SGL_HOME}
 RUN pip3 install --no-cache-dir --break-system-packages \
         --upgrade pip setuptools wheel && \
     pip3 install --no-cache-dir --break-system-packages \
-        sglang
+        --target ${SGL_HOME}/pylib sglang==${VERSION}
 
 # 收集原生库产物
 RUN mkdir -p ${SGL_HOME}/dist/lib && \
@@ -63,6 +63,7 @@ ARG VERSION=0.5.23
 
 ENV LANG=C.UTF-8 \
     SGL_HOME=/opt/sglang \
+    PYTHONPATH=/opt/sglang/pylib \
     PATH=/opt/sglang/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 # 安装运行时依赖（精简版）
