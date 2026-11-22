@@ -33,7 +33,10 @@ find_bin() {
 }
 
 app_version_output() {
-    b="$(find_bin "tidb-server")" && "$b" "-V" 2>&1 || true
+    local b
+    b="$(find_bin "tidb-server")" || b="/tidb-server"
+    [ -x "${b}" ] || return 0
+    "${b}" "-V" 2>&1
 }
 
 version_matches() {
