@@ -34,6 +34,10 @@ ARG VERSION=1.1.7
 
 RUN sed -i '/^meta/ s/^\(.*\)$/#\1/g' /etc/yum.repos.d/openEuler.repo
 
+RUN dnf install -y pkgconf-pkg-config findutils && dnf clean all
+RUN mkdir -p /usr/local/lib/pkgconfig /usr/local/lib64/pkgconfig && \
+    find /usr/local -name snappy.pc -exec cp -v {} /usr/local/lib64/pkgconfig/ \; 2>/dev/null || true
+
 COPY --from=builder /opt/snappy/usr/local/ /usr/local/
 
 # snappy installs via GNUInstallDirs, which resolves to lib64 on openEuler
@@ -42,7 +46,7 @@ COPY --from=builder /opt/snappy/usr/local/ /usr/local/
 RUN printf '/usr/local/lib64\n' > /etc/ld.so.conf.d/snappy.conf \
     && ldconfig
 
-ENV PKG_CONFIG_PATH=/usr/local/lib64/pkgconfig
+ENV PKG_CONFIG_PATH=/usr/local/lib64/pkgconfig:/usr/local/lib/pkgconfig
 
 USER root
 
