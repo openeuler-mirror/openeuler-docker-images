@@ -1,0 +1,167 @@
+diff --git a/Code/Framework/AzQtComponents/AzQtComponents/Components/StyledDockWidget.cpp b/Code/Framework/AzQtComponents/AzQtComponents/Components/StyledDockWidget.cpp
+index 2bc425c..f56257d 100644
+--- a/Code/Framework/AzQtComponents/AzQtComponents/Components/StyledDockWidget.cpp
++++ b/Code/Framework/AzQtComponents/AzQtComponents/Components/StyledDockWidget.cpp
+@@ -114,7 +114,7 @@ namespace AzQtComponents
+         QDockWidget::showEvent(event);
+     }
+ 
+-    bool StyledDockWidget::nativeEvent(const QByteArray& eventType, void* message, qintptr* result)
++    bool StyledDockWidget::nativeEvent(const QByteArray& eventType, void* message, NativeEventResult* result)
+     {
+         return WindowDecorationWrapper::handleNativeEvent(eventType, message, result, this);
+     }
+diff --git a/Code/Framework/AzQtComponents/AzQtComponents/Components/StyledDockWidget.h b/Code/Framework/AzQtComponents/AzQtComponents/Components/StyledDockWidget.h
+index 7a39468..3927ad7 100644
+--- a/Code/Framework/AzQtComponents/AzQtComponents/Components/StyledDockWidget.h
++++ b/Code/Framework/AzQtComponents/AzQtComponents/Components/StyledDockWidget.h
+@@ -37,7 +37,12 @@ namespace AzQtComponents
+ 
+     protected:
+         void closeEvent(QCloseEvent* event) override;
+-        bool nativeEvent(const QByteArray& eventType, void* message, qintptr* result) override;
++#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
++        using NativeEventResult = long;
++#else
++        using NativeEventResult = qintptr;
++#endif
++        bool nativeEvent(const QByteArray& eventType, void* message, NativeEventResult* result) override;
+         bool event(QEvent* event) override;
+         void showEvent(QShowEvent* event) override;
+         void paintEvent(QPaintEvent*) override;
+diff --git a/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/ColorPicker/ColorValidator.h b/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/ColorPicker/ColorValidator.h
+index 01ca873..9eaa09a 100644
+--- a/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/ColorPicker/ColorValidator.h
++++ b/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/ColorPicker/ColorValidator.h
+@@ -87,4 +87,6 @@ namespace AzQtComponents
+     };
+ } // namespace AzQtComponents
+ 
++#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+ Q_DECLARE_METATYPE(AzQtComponents::ColorValidator)
++#endif
+diff --git a/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/Slider.h b/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/Slider.h
+index 9a3f54e..fbec98a 100644
+--- a/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/Slider.h
++++ b/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/Slider.h
+@@ -32,7 +32,11 @@ namespace AzQtComponents
+         explicit CustomSlider(Qt::Orientation orientation, QWidget* parent);
+ 
+         //! Initialize option with the values from this Slider.
++#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
++        void initStyleOption(QStyleOptionSlider* option) const;
++#else
+         void initStyleOption(QStyleOptionSlider* option) const override;
++#endif
+ 
+     protected:
+         void mousePressEvent(QMouseEvent* ev) override;
+diff --git a/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/TabWidget.cpp b/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/TabWidget.cpp
+index 5b8a075..b4dd45b 100644
+--- a/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/TabWidget.cpp
++++ b/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/TabWidget.cpp
+@@ -18,6 +18,7 @@
+ #include <QAction>
+ #include <QActionEvent>
+ #include <QApplication>
++#include <QCursor>
+ #include <QHBoxLayout>
+ #include <QIcon>
+ #include <QLayout>
+@@ -431,11 +432,15 @@ namespace AzQtComponents
+         m_overflowing = OverflowUnchecked;
+     }
+ 
++#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
++    void TabBar::enterEvent(QEvent* event)
++    {
++        m_hoveredTab = tabAt(mapFromGlobal(QCursor::pos()));
++#else
+     void TabBar::enterEvent(QEnterEvent* event)
+     {
+-        auto enterEvent = static_cast<QEnterEvent*>(event);
+-        m_hoveredTab = tabAt(enterEvent->position().toPoint());
+-
++        m_hoveredTab = tabAt(event->position().toPoint());
++#endif
+         QTabBar::enterEvent(event);
+     }
+ 
+diff --git a/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/TabWidget.h b/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/TabWidget.h
+index 80696e1..23104b9 100644
+--- a/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/TabWidget.h
++++ b/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/TabWidget.h
+@@ -167,7 +167,11 @@ namespace AzQtComponents
+     protected:
+         explicit TabBar(QWidget* parent = nullptr);
+ 
++#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
++        void enterEvent(QEvent* event) override;
++#else
+         void enterEvent(QEnterEvent* event) override;
++#endif
+         void leaveEvent(QEvent* event) override;
+         void mousePressEvent(QMouseEvent* mouseEvent) override;
+         void mouseMoveEvent(QMouseEvent* mouseEvent) override;
+diff --git a/Code/Framework/AzQtComponents/AzQtComponents/Components/WindowDecorationWrapper.cpp b/Code/Framework/AzQtComponents/AzQtComponents/Components/WindowDecorationWrapper.cpp
+index 9929dbe..bc90d63 100644
+--- a/Code/Framework/AzQtComponents/AzQtComponents/Components/WindowDecorationWrapper.cpp
++++ b/Code/Framework/AzQtComponents/AzQtComponents/Components/WindowDecorationWrapper.cpp
+@@ -508,7 +508,7 @@ namespace AzQtComponents
+         QFrame::showEvent(ev);
+     }
+ 
+-    bool WindowDecorationWrapper::nativeEvent(const QByteArray& eventType, void* message, qintptr* result)
++    bool WindowDecorationWrapper::nativeEvent(const QByteArray& eventType, void* message, NativeEventResult* result)
+     {
+ #ifdef Q_OS_WIN
+         QWindow* window = windowHandle();
+@@ -543,7 +543,7 @@ namespace AzQtComponents
+     }
+ 
+     /* static */
+-    bool WindowDecorationWrapper::handleNativeEvent(const QByteArray& eventType, void* message, qintptr* result, const QWidget* widget)
++    bool WindowDecorationWrapper::handleNativeEvent(const QByteArray& eventType, void* message, NativeEventResult* result, const QWidget* widget)
+     {
+ #ifdef Q_OS_WIN
+         MSG* msg = static_cast<MSG*>(message);
+diff --git a/Code/Framework/AzQtComponents/AzQtComponents/Components/WindowDecorationWrapper.h b/Code/Framework/AzQtComponents/AzQtComponents/Components/WindowDecorationWrapper.h
+index 2d9a519..271466e 100644
+--- a/Code/Framework/AzQtComponents/AzQtComponents/Components/WindowDecorationWrapper.h
++++ b/Code/Framework/AzQtComponents/AzQtComponents/Components/WindowDecorationWrapper.h
+@@ -104,12 +104,17 @@ namespace AzQtComponents
+         void closeEvent(QCloseEvent* ev) override;
+         void showEvent(QShowEvent* ev) override;
+         void hideEvent(QHideEvent* ev) override;
+-        bool nativeEvent(const QByteArray& eventType, void* message, qintptr* result) override;
++#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
++        using NativeEventResult = long;
++#else
++        using NativeEventResult = qintptr;
++#endif
++        bool nativeEvent(const QByteArray& eventType, void* message, NativeEventResult* result) override;
+         void changeEvent(QEvent* ev) override;
+ 
+     private:
+         friend class StyledDockWidget;
+-        static bool handleNativeEvent(const QByteArray& eventType, void* message, qintptr* result, const QWidget* widget);
++        static bool handleNativeEvent(const QByteArray& eventType, void* message, NativeEventResult* result, const QWidget* widget);
+         static Qt::WindowFlags specialFlagsForOS();
+         static void drawFrame(const QStyleOption *option, QPainter *painter, const QWidget *widget);
+         QWidget* topLevelParent();
+diff --git a/Code/Framework/AzQtComponents/AzQtComponents/Utilities/ColorUtilities.cpp b/Code/Framework/AzQtComponents/AzQtComponents/Utilities/ColorUtilities.cpp
+index 0413343..a999564 100644
+--- a/Code/Framework/AzQtComponents/AzQtComponents/Utilities/ColorUtilities.cpp
++++ b/Code/Framework/AzQtComponents/AzQtComponents/Utilities/ColorUtilities.cpp
+@@ -79,7 +79,11 @@ namespace AzQtComponents
+         static const char Format = 'f';
+         static const int Precision = 3;
+ 
++#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
++        qreal R, G, B, A;
++#else
+         float R, G, B, A;
++#endif
+         color.getRgbF(&R, &G, &B, &A);
+         auto colorStr =
+             includeAlphaChannel
