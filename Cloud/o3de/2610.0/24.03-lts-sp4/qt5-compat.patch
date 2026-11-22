@@ -1,3 +1,54 @@
+diff --git a/Code/Framework/AzQtComponents/AzQtComponents/Components/FancyDocking.cpp b/Code/Framework/AzQtComponents/AzQtComponents/Components/FancyDocking.cpp
+index 69afd8f..420802e 100644
+--- a/Code/Framework/AzQtComponents/AzQtComponents/Components/FancyDocking.cpp
++++ b/Code/Framework/AzQtComponents/AzQtComponents/Components/FancyDocking.cpp
+@@ -1461,7 +1461,11 @@ namespace AzQtComponents
+                     // Construct a new QMouseEvent with a local mouse position that is correct for
+                     // the tab widget. We can't just pass the event being filtered because the mouse
+                     // positions are relative to the widget being watched.
++#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
++                    const auto tabPos = m_state.tabWidget->mapFromGlobal(event->globalPos());
++#else
+                     const auto tabPos = m_state.tabWidget->mapFromGlobal(event->globalPosition());
++#endif
+                     QMouseEvent tabEvent(event->type(), tabPos, tabPos, event->button(), event->buttons(), event->modifiers());
+                     m_state.tabWidget->mouseMoveEvent(&tabEvent);
+                     return true;
+diff --git a/Code/Framework/AzQtComponents/AzQtComponents/Components/InteractiveWindowGeometryChanger.cpp b/Code/Framework/AzQtComponents/AzQtComponents/Components/InteractiveWindowGeometryChanger.cpp
+index d01599e..f26b649 100644
+--- a/Code/Framework/AzQtComponents/AzQtComponents/Components/InteractiveWindowGeometryChanger.cpp
++++ b/Code/Framework/AzQtComponents/AzQtComponents/Components/InteractiveWindowGeometryChanger.cpp
+@@ -253,21 +253,26 @@ namespace AzQtComponents
+ 
+         // Now we do the actual resizing:
+         QRect geometry = m_targetWindow->geometry();
++#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
++        const auto globalPosition = ev->globalPos();
++#else
++        const auto globalPosition = ev->globalPosition();
++#endif
+         if (m_sideToResize & LeftSide)
+         {
+-            geometry.setLeft(ev->globalPosition().x() - 1);
++            geometry.setLeft(globalPosition.x() - 1);
+         }
+         if (m_sideToResize & RightSide)
+         {
+-            geometry.setRight(ev->globalPosition().x());
++            geometry.setRight(globalPosition.x());
+         }
+         if (m_sideToResize & TopSide)
+         {
+-            geometry.setTop(ev->globalPosition().y() - 1);
++            geometry.setTop(globalPosition.y() - 1);
+         }
+         if (m_sideToResize & BottomSide)
+         {
+-            geometry.setBottom(ev->globalPosition().y());
++            geometry.setBottom(globalPosition.y());
+         }
+ 
+         if (geometry.height() >= m_targetWindow->minimumHeight() &&
 diff --git a/Code/Framework/AzQtComponents/AzQtComponents/Components/StyledDockWidget.cpp b/Code/Framework/AzQtComponents/AzQtComponents/Components/StyledDockWidget.cpp
 index 2bc425c..f56257d 100644
 --- a/Code/Framework/AzQtComponents/AzQtComponents/Components/StyledDockWidget.cpp
@@ -29,6 +80,56 @@ index 7a39468..3927ad7 100644
          bool event(QEvent* event) override;
          void showEvent(QShowEvent* event) override;
          void paintEvent(QPaintEvent*) override;
+diff --git a/Code/Framework/AzQtComponents/AzQtComponents/Components/TagSelector.cpp b/Code/Framework/AzQtComponents/AzQtComponents/Components/TagSelector.cpp
+index ec2f510..d1b7b83 100644
+--- a/Code/Framework/AzQtComponents/AzQtComponents/Components/TagSelector.cpp
++++ b/Code/Framework/AzQtComponents/AzQtComponents/Components/TagSelector.cpp
+@@ -48,8 +48,13 @@ namespace AzQtComponents
+ 
+     void TagWidget::mouseMoveEvent(QMouseEvent* event)
+     {
++#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
++        m_lastMouseX = event->pos().x();
++        m_lastMouseY = event->pos().y();
++#else
+         m_lastMouseX = event->position().x();
+         m_lastMouseY = event->position().y();
++#endif
+     }
+ 
+     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+diff --git a/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/AssetFolderThumbnailView.cpp b/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/AssetFolderThumbnailView.cpp
+index 0c1bc23..05bd055 100644
+--- a/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/AssetFolderThumbnailView.cpp
++++ b/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/AssetFolderThumbnailView.cpp
+@@ -802,7 +802,11 @@ namespace AzQtComponents
+                 }
+             }
+ 
++#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
++            itemDelegate(index)->paint(painter, option, index);
++#else
+             itemDelegateForIndex(index)->paint(painter, option, index);
++#endif
+         }
+     }
+ 
+diff --git a/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/CardHeader.cpp b/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/CardHeader.cpp
+index e268894..877fe55 100644
+--- a/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/CardHeader.cpp
++++ b/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/CardHeader.cpp
+@@ -49,7 +49,11 @@ namespace AzQtComponents
+         {
+             if (m_clickable)
+             {
++#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
++                emit clicked(event->globalPos());
++#else
+                 emit clicked(event->globalPosition().toPoint());
++#endif
+             }
+             else
+             {
 diff --git a/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/ColorPicker/ColorValidator.h b/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/ColorPicker/ColorValidator.h
 index 01ca873..9eaa09a 100644
 --- a/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/ColorPicker/ColorValidator.h
@@ -40,6 +141,74 @@ index 01ca873..9eaa09a 100644
 +#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
  Q_DECLARE_METATYPE(AzQtComponents::ColorValidator)
 +#endif
+diff --git a/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/ColorPicker/PaletteView.cpp b/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/ColorPicker/PaletteView.cpp
+index 69b54f4..2e6cc23 100644
+--- a/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/ColorPicker/PaletteView.cpp
++++ b/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/ColorPicker/PaletteView.cpp
+@@ -640,10 +640,17 @@ PaletteView::PaletteView(Palette* palette, Internal::ColorController* controller
+     onColorChanged(m_controller->color());
+ 
+     m_context = new QMenu(this);
++#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
++    m_cut = m_context->addAction(tr("Cut"), this, &PaletteView::cut, QKeySequence::Cut);
++    m_copy = m_context->addAction(tr("Copy"), this, &PaletteView::copy, QKeySequence::Copy);
++    m_paste = m_context->addAction(tr("Paste"), this, &PaletteView::paste, QKeySequence::Paste);
++    m_remove = m_context->addAction(tr("Remove"), this, &PaletteView::removeSelection, QKeySequence::Delete);
++#else
+     m_cut = m_context->addAction(tr("Cut"), QKeySequence::Cut, this, &PaletteView::cut);
+     m_copy = m_context->addAction(tr("Copy"), QKeySequence::Copy, this, &PaletteView::copy);
+     m_paste = m_context->addAction(tr("Paste"), QKeySequence::Paste, this, &PaletteView::paste);
+     m_remove = m_context->addAction(tr("Remove"), QKeySequence::Delete, this, &PaletteView::removeSelection);
++#endif
+     m_update = m_context->addAction(tr("Update to current"), this, [this]() {
+         m_paletteModel->trySet(selectionModel()->currentIndex().row(), m_controller->color());
+     });
+@@ -1019,7 +1026,11 @@ void PaletteView::paintEvent(QPaintEvent* event)
+             option.state |= QStyle::State_HasFocus;
+         }
+ 
++#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
++        itemDelegate(index)->paint(&painter, option, index);
++#else
+         itemDelegateForIndex(index)->paint(&painter, option, index);
++#endif
+     }
+ 
+     if (!m_dropIndicatorRect.isNull())
+@@ -1374,8 +1385,13 @@ bool PaletteView::canDrop(QDropEvent* event)
+ 
+ bool PaletteView::canDrop(QDropEvent* event, QModelIndex& index, int& row)
+ {
+-    index = indexAt(event->position().toPoint());
+-    row = getRootRow(event->position().toPoint(), index);
++#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
++    const QPoint dropPosition = event->pos();
++#else
++    const QPoint dropPosition = event->position().toPoint();
++#endif
++    index = indexAt(dropPosition);
++    row = getRootRow(dropPosition, index);
+ 
+     m_droppingOn = false;
+     m_dropIndicatorRect = {};
+diff --git a/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/LineEdit.cpp b/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/LineEdit.cpp
+index 35169e8..404f5a3 100644
+--- a/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/LineEdit.cpp
++++ b/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/LineEdit.cpp
+@@ -72,8 +72,13 @@ namespace AzQtComponents
+                             if (me->button() == Qt::LeftButton && m_mouseFocusedLineEditSingleClicked == le)
+                             {
+                                 // fake a single click event to place the mouse button
++#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
++                                QMouseEvent fake(
++                                    QEvent::MouseButtonPress, me->localPos(), me->screenPos(), me->button(), me->buttons(), me->modifiers());
++#else
+                                 QMouseEvent fake(
+                                     QEvent::MouseButtonPress, me->position(), me->globalPosition(), me->button(), me->buttons(), me->modifiers());
++#endif
+                                 QCoreApplication::sendEvent(le, &fake);
+                                 m_mouseFocusedLineEditSingleClicked = nullptr;
+                                 return true;
 diff --git a/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/Slider.h b/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/Slider.h
 index 9a3f54e..fbec98a 100644
 --- a/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/Slider.h
@@ -56,6 +225,80 @@ index 9a3f54e..fbec98a 100644
  
      protected:
          void mousePressEvent(QMouseEvent* ev) override;
+diff --git a/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/SpinBox.cpp b/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/SpinBox.cpp
+index a85c4ff..70977f6 100644
+--- a/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/SpinBox.cpp
++++ b/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/SpinBox.cpp
+@@ -56,6 +56,24 @@ static const char* g_spinBoxInitPropertyFlagName = "PropertyInitFlag";
+ static const int g_decimalPrecisonDefault = 7;
+ static const int g_decimalDisplayPrecisionDefault = 3;
+ 
++static QPointF mouseEventPosition(const QMouseEvent* event)
++{
++#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
++    return event->localPos();
++#else
++    return event->position();
++#endif
++}
++
++static QPointF mouseEventGlobalPosition(const QMouseEvent* event)
++{
++#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
++    return event->screenPos();
++#else
++    return event->globalPosition();
++#endif
++}
++
+ class SpinBoxWatcher : public QObject
+ {
+ public:
+@@ -146,13 +164,13 @@ bool SpinBoxWatcher::filterSpinBoxEvents(QAbstractSpinBox* spinBox, QEvent* even
+             auto mouseEvent = static_cast<QMouseEvent*>(event);
+             if ((mouseEvent->buttons() & (Qt::LeftButton | Qt::MiddleButton)) && m_state == Dragging)
+             {
+-                const int delta = mouseEvent->position().x() - m_xPos;
++                const int delta = mouseEventPosition(mouseEvent).x() - m_xPos;
+                 if (qAbs(delta) <= qAbs(m_config.pixelsPerStep))
+                 {
+                     break;
+                 }
+ 
+-                m_xPos = mouseEvent->position().x();
++                m_xPos = mouseEventPosition(mouseEvent).x();
+                 int step = delta > 0 ? 1 : -1;
+                 if (mouseEvent->modifiers() & Qt::ShiftModifier)
+                 {
+@@ -180,7 +198,7 @@ bool SpinBoxWatcher::filterSpinBoxEvents(QAbstractSpinBox* spinBox, QEvent* even
+                 {
+                     const QPoint hotspot = spinBox->cursor().hotSpot();
+                     const QRect screenRect = m_activeScreen->geometry().adjusted(hotspot.x(), hotspot.y(), -hotspot.x(), -hotspot.y());
+-                    QPoint screenPos = mouseEvent->globalPosition().toPoint();
++                    QPoint screenPos = mouseEventGlobalPosition(mouseEvent).toPoint();
+                     const int xPos = screenPos.x();
+                     int newXPos = xPos;
+                     // cursor bounces on the left and right side of the screen
+@@ -429,8 +447,8 @@ bool SpinBoxWatcher::filterSpinBoxEvents(QAbstractSpinBox* spinBox, QEvent* even
+ 
+             if(m_state == Dragging) 
+             {
+-                m_activeScreen = QGuiApplication::screenAt(mouseEvent->globalPosition().toPoint());
+-                m_xPos = mouseEvent->position().x();
++                m_activeScreen = QGuiApplication::screenAt(mouseEventGlobalPosition(mouseEvent).toPoint());
++                m_xPos = mouseEventPosition(mouseEvent).x();
+                 spinBox->grabMouse();
+             }
+             spinBox->setProperty(g_spinBoxDraggingName, m_state == Dragging);
+@@ -631,7 +649,7 @@ bool SpinBoxWatcher::filterLineEditEvents(QLineEdit* lineEdit, QEvent* event)
+                 if (mouseEvent->button() == Qt::LeftButton && m_mouseFocusedSpinBoxSingleClicked == spinBox)
+                 {
+                     // fake a single click event to place the mouse button
+-                    QMouseEvent fake(QEvent::MouseButtonPress, mouseEvent->position(), mouseEvent->globalPosition(), mouseEvent->button(), mouseEvent->buttons(), mouseEvent->modifiers());
++                    QMouseEvent fake(QEvent::MouseButtonPress, mouseEventPosition(mouseEvent), mouseEventGlobalPosition(mouseEvent), mouseEvent->button(), mouseEvent->buttons(), mouseEvent->modifiers());
+                     QCoreApplication::sendEvent(lineEdit, &fake);
+                     m_mouseFocusedSpinBoxSingleClicked = nullptr;
+                     return true;
 diff --git a/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/TabWidget.cpp b/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/TabWidget.cpp
 index 5b8a075..b4dd45b 100644
 --- a/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/TabWidget.cpp
@@ -103,6 +346,22 @@ index 80696e1..23104b9 100644
          void leaveEvent(QEvent* event) override;
          void mousePressEvent(QMouseEvent* mouseEvent) override;
          void mouseMoveEvent(QMouseEvent* mouseEvent) override;
+diff --git a/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/ToolButton.cpp b/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/ToolButton.cpp
+index aedbac1..f5843f4 100644
+--- a/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/ToolButton.cpp
++++ b/Code/Framework/AzQtComponents/AzQtComponents/Components/Widgets/ToolButton.cpp
+@@ -241,7 +241,11 @@ bool ToolButton::drawIndicatorArrowDown(const Style* style, const QStyleOption*
+ 
+     if (QWindow* window = widget->window()->windowHandle())
+     {
++#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
++        originalPixmap = icon.pixmap(window, requestedSize);
++#else
+         originalPixmap = icon.pixmap(requestedSize, window->devicePixelRatio());
++#endif
+     }
+     else
+     {
 diff --git a/Code/Framework/AzQtComponents/AzQtComponents/Components/WindowDecorationWrapper.cpp b/Code/Framework/AzQtComponents/AzQtComponents/Components/WindowDecorationWrapper.cpp
 index 9929dbe..bc90d63 100644
 --- a/Code/Framework/AzQtComponents/AzQtComponents/Components/WindowDecorationWrapper.cpp
