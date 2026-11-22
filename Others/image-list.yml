@@ -136,3 +136,4 @@ images:
   snappy: snappy
   ffmpeg: ffmpeg
   r: r
+  zlib: zlib
