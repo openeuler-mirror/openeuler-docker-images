@@ -55,7 +55,7 @@ test_cli_sha256() {
     expected="${expected%% *}"
 
     out="$( "${O3DE_SH}" sha256 --file-path "${file}" 2>"${WORKDIR}/cli.err" || true )"
-    digest="$(printf '%s' "${out}" | tr -d '[:space:]')"
+    digest="$(printf '%s' "${out}" | grep -Eo '[0-9a-f]{64}' | tail -n 1)"
 
     if [ -n "${digest}" ] && [ "${digest}" = "${expected}" ]; then
         printf 'PASS: o3de CLI sha256 matched sha256sum (%s)\n' "${digest}"
