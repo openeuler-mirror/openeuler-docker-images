@@ -20,3 +20,4 @@ images:
   juicefs: juicefs
   reedsolomon: reedsolomon
   drbd-kernel: drbd-kernel
+  fuse: fuse
