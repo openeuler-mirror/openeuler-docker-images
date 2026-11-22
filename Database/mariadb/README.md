@@ -17,6 +17,7 @@ Learn more about mariadb at [https://mariadb.org/](https://mariadb.org/).
 The tag of each `mariadb` docker image is consist of the version of `mariadb` and the version of basic image. The details are as follows
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[13.1.2-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Database/mariadb/13.1.2/24.03-lts-sp4/Dockerfile) | mariadb 13.1.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[13.1.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/mariadb/13.1.1/24.03-lts-sp4/Dockerfile) | mariadb 13.1.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[13.0.2-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/mariadb/13.0.2/24.03-lts-sp4/Dockerfile) | mariadb 13.0.2 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[12.1.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Database/mariadb/12.1.1/24.03-lts-sp4/Dockerfile)| mariadb 12.1.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
