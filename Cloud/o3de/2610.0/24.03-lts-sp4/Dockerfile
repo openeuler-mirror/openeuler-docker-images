@@ -1,10 +1,16 @@
 ARG BASE=openeuler/openeuler:24.03-lts-sp4
 FROM $BASE
+# autopilot: refresh dnf metadata
+RUN rm -rf /var/cache/dnf /var/cache/yum \
+    && (dnf clean all 2>/dev/null || yum clean all 2>/dev/null || true) \
+    && mkdir -p /etc/dnf \
+    && (grep -qxF skip_if_unavailable=True /etc/dnf/dnf.conf 2>/dev/null \
+        || echo skip_if_unavailable=True >> /etc/dnf/dnf.conf)
 
 ARG VERSION=2610.0
 ARG TARGETARCH
 
-RUN yum install -y git cmake gcc g++ autoconf automake ninja-build clang clang-tools-extra \
+RUN yum install -y git cmake gcc g++ autoconf automake ninja-build clang clang-tools-extra lld \
     xcb-util-keysyms-devel xcb-util-image-devel xcb-util-renderutil-devel \
     xcb-util-wm-devel xcb-util-devel xcb-util-cursor-devel xcb-util-xrm-devel \
     libunwind-devel zstd-devel mesa-libGL-devel fontconfig-devel harfbuzz \
