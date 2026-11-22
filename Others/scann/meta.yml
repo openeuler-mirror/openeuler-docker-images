@@ -23,3 +23,5 @@ cf993d2-oe2403sp4:
   path: cf993d2/24.03-lts-sp4/Dockerfile
 7117df5-oe2403sp4:
   path: 7117df5/24.03-lts-sp4/Dockerfile
+87e25a5ba04d2c4cf0108f0cec96d648fe2b945a-oe2403sp4:
+  path: 87e25a5ba04d2c4cf0108f0cec96d648fe2b945a/24.03-lts-sp4/Dockerfile
