@@ -34,8 +34,10 @@ find_bin() {
 
 app_version_output() {
     local b
-    b="$(find_bin "busybox")" || return 0
+    b="$(find_bin "busybox")" || b=/usr/local/busybox/bin/busybox
+    [ -x "${b}" ] || return 0
     "${b}" "--help" 2>&1 | grep -m1 -o 'BusyBox v[0-9][0-9.]*'
+    grep -a -o -m1 'BusyBox v[0-9][0-9.]*' "${b}" 2>/dev/null
 }
 
 version_matches() {
