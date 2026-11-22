@@ -38,7 +38,7 @@ RUN yum install -y java-17-openjdk java-17-openjdk-devel python3 && \
 
 COPY --from=builder /opt/ambari-src /opt/ambari
 
-RUN echo "3.0.0" > /opt/ambari/version
+RUN echo "3.0.0.0.0" > /opt/ambari/version
 
 ENV AMBARI_HOME=/opt/ambari
 WORKDIR /opt/ambari
