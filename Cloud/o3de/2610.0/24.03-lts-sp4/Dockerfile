@@ -39,7 +39,10 @@ RUN export CC=clang CXX=clang++ && \
         if ! grep -q 'TARGETS pyside6' "$PKGFILE"; then \
             PALFILE=Gems/QtForPython/Code/Source/Platform/Linux/PAL_linux.cmake && \
             sed -i 's/^set(PAL_TRAIT_BUILD_QTFORPYTHON_SUPPORTED TRUE)$/set(PAL_TRAIT_BUILD_QTFORPYTHON_SUPPORTED FALSE)/' "$PALFILE" && \
-            grep -q '^set(PAL_TRAIT_BUILD_QTFORPYTHON_SUPPORTED FALSE)$' "$PALFILE"; \
+            grep -q '^set(PAL_TRAIT_BUILD_QTFORPYTHON_SUPPORTED FALSE)$' "$PALFILE" && \
+            DCCPAL=Gems/AtomLyIntegration/TechnicalArt/DccScriptingInterface/Code/Platform/Linux/PAL_linux.cmake && \
+            sed -i 's/^set(PAL_TRAIT_HAS_QTFORPYTHON TRUE)$/set(PAL_TRAIT_HAS_QTFORPYTHON FALSE)/' "$DCCPAL" && \
+            grep -q '^set(PAL_TRAIT_HAS_QTFORPYTHON FALSE)$' "$DCCPAL"; \
         fi; \
     fi && \
     cmake -B build/linux -S . -G "Ninja Multi-Config" \
