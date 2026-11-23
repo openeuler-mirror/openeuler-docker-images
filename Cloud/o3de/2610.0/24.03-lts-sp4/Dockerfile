@@ -49,7 +49,9 @@ RUN export CC=clang CXX=clang++ && \
         grep -q '^set (PAL_TRAIT_BUILD_ATOM_RPI_MASKED_OCCLUSION_CULLING_SUPPORTED FALSE)$' "$MOCPAL" && \
         MOCTRAIT=Gems/Atom/RPI/Code/Source/Platform/Linux/Atom_RPI_Traits_Linux.h && \
         sed -i 's/^#define AZ_TRAIT_MASKED_OCCLUSION_CULLING_SUPPORTED 1$/#define AZ_TRAIT_MASKED_OCCLUSION_CULLING_SUPPORTED 0/' "$MOCTRAIT" && \
-        grep -q '^#define AZ_TRAIT_MASKED_OCCLUSION_CULLING_SUPPORTED 0$' "$MOCTRAIT"; \
+        grep -q '^#define AZ_TRAIT_MASKED_OCCLUSION_CULLING_SUPPORTED 0$' "$MOCTRAIT" && \
+        find . -name '*.ui' -exec sed -i -E 's|<set>Qt::[A-Za-z_]+\(([^)]*)\)</set>|<set>\1</set>|g' {} + && \
+        ! grep -rqE '<set>Qt::[A-Za-z_]+\(' --include='*.ui' .; \
     fi && \
     cmake -B build/linux -S . -G "Ninja Multi-Config" \
         -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ \
