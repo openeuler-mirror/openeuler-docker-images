@@ -43,7 +43,13 @@ RUN export CC=clang CXX=clang++ && \
             DCCPAL=Gems/AtomLyIntegration/TechnicalArt/DccScriptingInterface/Code/Platform/Linux/PAL_linux.cmake && \
             sed -i 's/^set(PAL_TRAIT_HAS_QTFORPYTHON TRUE)$/set(PAL_TRAIT_HAS_QTFORPYTHON FALSE)/' "$DCCPAL" && \
             grep -q '^set(PAL_TRAIT_HAS_QTFORPYTHON FALSE)$' "$DCCPAL"; \
-        fi; \
+        fi && \
+        MOCPAL=Gems/Atom/RPI/Code/Source/Platform/Linux/PAL_linux.cmake && \
+        sed -i 's/^set (PAL_TRAIT_BUILD_ATOM_RPI_MASKED_OCCLUSION_CULLING_SUPPORTED TRUE)$/set (PAL_TRAIT_BUILD_ATOM_RPI_MASKED_OCCLUSION_CULLING_SUPPORTED FALSE)/' "$MOCPAL" && \
+        grep -q '^set (PAL_TRAIT_BUILD_ATOM_RPI_MASKED_OCCLUSION_CULLING_SUPPORTED FALSE)$' "$MOCPAL" && \
+        MOCTRAIT=Gems/Atom/RPI/Code/Source/Platform/Linux/Atom_RPI_Traits_Linux.h && \
+        sed -i 's/^#define AZ_TRAIT_MASKED_OCCLUSION_CULLING_SUPPORTED 1$/#define AZ_TRAIT_MASKED_OCCLUSION_CULLING_SUPPORTED 0/' "$MOCTRAIT" && \
+        grep -q '^#define AZ_TRAIT_MASKED_OCCLUSION_CULLING_SUPPORTED 0$' "$MOCTRAIT"; \
     fi && \
     cmake -B build/linux -S . -G "Ninja Multi-Config" \
         -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ \
