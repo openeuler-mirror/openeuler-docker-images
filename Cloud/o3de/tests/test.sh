@@ -87,12 +87,33 @@ test_engine_source() {
     return 0
 }
 
+test_editor_binary() {
+    local editor="${O3DE_ROOT}/build/linux/bin/release/Editor"
+
+    if [ ! -x "${editor}" ]; then
+        printf 'FAIL: Editor binary missing at %s\n' "${editor}"
+        return 1
+    fi
+    if ldd "${editor}" 2>/dev/null | grep -q 'not found'; then
+        printf 'FAIL: Editor has unresolved shared libraries:\n%s\n' \
+            "$(ldd "${editor}" 2>/dev/null | grep 'not found' | head -n 10)"
+        return 1
+    fi
+    if ! ldd "${editor}" 2>/dev/null | grep -q 'libQt6Core'; then
+        printf 'FAIL: Editor is not linked against Qt6 (libQt6Core absent)\n'
+        return 1
+    fi
+    printf 'PASS: Editor binary present, all shared libraries resolved, Qt6 linked\n'
+    return 0
+}
+
 main() {
     local failures=0
 
     test_version       || failures=$((failures + 1))
     test_cli_sha256    || failures=$((failures + 1))
     test_engine_source || failures=$((failures + 1))
+    test_editor_binary || failures=$((failures + 1))
 
     if [ "${failures}" -eq 0 ]; then
         printf 'ALL_TESTS_PASSED\n'

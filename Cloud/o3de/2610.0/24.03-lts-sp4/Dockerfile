@@ -9,6 +9,7 @@ RUN rm -rf /var/cache/dnf /var/cache/yum \
 
 ARG VERSION=2610.0
 ARG TARGETARCH
+ARG BUILD_JOBS=8
 
 RUN yum install -y git cmake gcc g++ autoconf automake ninja-build clang clang-tools-extra lld \
     xcb-util-keysyms-devel xcb-util-image-devel xcb-util-renderutil-devel \
@@ -21,20 +22,33 @@ RUN yum install -y git cmake gcc g++ autoconf automake ninja-build clang clang-t
 RUN git clone -b ${VERSION} https://github.com/o3de/o3de.git
 
 WORKDIR /o3de
-COPY qt5-compat.patch /tmp/qt5-compat.patch
 RUN export CC=clang CXX=clang++ && \
     sed -i 's|^\(.*7e94c425039cde14257288fd61dcfb01963e658efbc0ff54f5306b06054700f8\)$|\1 \\\n    --hash=sha256:38a9ef736c01fccdd6600705b09dc574584b89bea478200c5fbf112a6b0d5579|' python/requirements.txt && \
     sed -i '/a2c405445c79c3f5a124573a051062300936b0281fee57637e706453e452746c/a\    --hash=sha256:78618cdbccaa74d3f88d0ad6cb8ac3007f1a6fa5c6f19af64b55ca170bfa1edf \\' python/requirements.txt && \
+    grep -q '38a9ef736c01fccdd6600705b09dc574584b89bea478200c5fbf112a6b0d5579' python/requirements.txt && \
+    grep -q '78618cdbccaa74d3f88d0ad6cb8ac3007f1a6fa5c6f19af64b55ca170bfa1edf' python/requirements.txt && \
     python/get_python.sh && \
     mkdir -p /opt/o3de-packages && \
     if [ "$TARGETARCH" = "arm64" ]; then \
-        git apply /tmp/qt5-compat.patch && \
-        git diff -R 0fb5d654bd5e3e4edbe1517a7c081ddc3531fd52^ HEAD -- cmake/LYWrappers.cmake | git apply && \
-        sed -i 's/3rdParty::pyside6/3rdParty::pyside2/g' Gems/QtForPython/Code/CMakeLists.txt && \
-        sed -i 's/3rdParty::Qt::SvgWidgets/3rdParty::Qt::Svg/g' Code/Framework/AzQtComponents/CMakeLists.txt && \
-        sed -i 's/3rdParty::Qt::OpenGLWidgets/3rdParty::Qt::OpenGL/g' Gems/EMotionFX/Code/CMakeLists.txt; \
+        PKGFILE=cmake/3rdParty/Platform/Linux/BuiltInPackages_linux_aarch64.cmake && \
+        if grep -q 'PACKAGE_NAME qt-5' "$PKGFILE"; then \
+            sed -i -E 's|ly_associate_package\(PACKAGE_NAME qt-[^[:space:]]+[[:space:]]+TARGETS Qt[[:space:]]+PACKAGE_HASH [0-9a-f]+\)|ly_associate_package(PACKAGE_NAME qt-6.12.0-rev4-linux-aarch64 TARGETS Qt PACKAGE_HASH 33944912d6ee7602c139bedf7c536663a4dc730e93fdfcadaba1918464cae1af)|' "$PKGFILE" && \
+            grep -q 'PACKAGE_NAME qt-6.12.0-rev4-linux-aarch64 TARGETS Qt PACKAGE_HASH 33944912d6ee7602c139bedf7c536663a4dc730e93fdfcadaba1918464cae1af' "$PKGFILE" && \
+            ! grep -q 'PACKAGE_NAME qt-5' "$PKGFILE"; \
+        fi && \
+        if ! grep -q 'TARGETS pyside6' "$PKGFILE"; then \
+            PALFILE=Gems/QtForPython/Code/Source/Platform/Linux/PAL_linux.cmake && \
+            sed -i 's/^set(PAL_TRAIT_BUILD_QTFORPYTHON_SUPPORTED TRUE)$/set(PAL_TRAIT_BUILD_QTFORPYTHON_SUPPORTED FALSE)/' "$PALFILE" && \
+            grep -q '^set(PAL_TRAIT_BUILD_QTFORPYTHON_SUPPORTED FALSE)$' "$PALFILE"; \
+        fi; \
     fi && \
     cmake -B build/linux -S . -G "Ninja Multi-Config" \
         -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ \
         -DLY_3RDPARTY_PATH=/opt/o3de-packages && \
-    cmake --build build/linux --target Editor --config release -j8;
+    cmake --build build/linux --target Editor --config release -j${BUILD_JOBS} && \
+    test -x build/linux/bin/release/Editor && \
+    ! ldd build/linux/bin/release/Editor | grep -q 'not found' && \
+    ldd build/linux/bin/release/Editor | grep -q 'libQt6Core' && \
+    printf 'o3de-image-probe\n' > /tmp/o3de-probe.txt && \
+    test "$(scripts/o3de.sh sha256 --file-path /tmp/o3de-probe.txt 2>/dev/null | grep -Eo '[0-9a-f]{64}' | tail -n1)" = "$(sha256sum /tmp/o3de-probe.txt | cut -d' ' -f1)" && \
+    rm -f /tmp/o3de-probe.txt
