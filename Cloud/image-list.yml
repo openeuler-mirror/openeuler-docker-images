@@ -51,3 +51,4 @@ images:
   spring-cloud-config: spring-cloud-config
   spring-cloud-gateway: spring-cloud-gateway
   spring-cloud-kubernetes: spring-cloud-kubernetes
+  spring-cloud-vault: spring-cloud-vault
