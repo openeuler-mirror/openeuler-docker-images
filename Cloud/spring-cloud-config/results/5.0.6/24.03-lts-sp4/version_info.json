@@ -1,0 +1,13 @@
+{
+  "architecture": "aarch64",
+  "os": "openEuler 24.03 (LTS-SP4)",
+  "kernel": "6.6.0-159.4.3.154.oe2403sp4.aarch64",
+  "cpu_model": "Kunpeng-920",
+  "cpu_cores": "8",
+  "docker_version": "29.4.1",
+  "jdk_in_image": "openjdk version \"17.0.20\" 2026-07-21",
+  "image_version": "spring-cloud-config-server 5.0.6 (release-train 2025.1.4)",
+  "software_name": "spring-cloud-config",
+  "software_version": "5.0.6",
+  "test_time": "2026-11-19T08:53:04Z"
+}
