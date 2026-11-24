@@ -16,7 +16,7 @@ The tag of each `folly` docker image is consist of the version of `folly` and th
 
 | Tag | Currently | Architectures |
 |-----|-----------|---------------|
-|[2026.10.12.00-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/folly/2026.10.12.00/24.03-lts-sp4/Dockerfile)| Folly 2026.10.12.00 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[2026.11.23.00-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/folly/2026.11.23.00/24.03-lts-sp4/Dockerfile)| Folly 2026.11.23.00 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.
