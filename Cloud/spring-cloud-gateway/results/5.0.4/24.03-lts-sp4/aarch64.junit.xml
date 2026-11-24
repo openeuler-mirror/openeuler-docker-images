@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuite name="spring-cloud-gateway-aarch64" tests="5" failures="0" errors="0" time="0">
+  <testcase classname="spring-cloud-gateway-tests" name="G-1 gateway starts and reports health UP" />
+  <testcase classname="spring-cloud-gateway-tests" name="G-1 image version matches expectation: spring-cloud-gateway 5.0.4 (release-train 2025.1.4)" />
+  <testcase classname="spring-cloud-gateway-tests" name="G-2 basic route forwards to backend" />
+  <testcase classname="spring-cloud-gateway-tests" name="G-3 StripPrefix rewrite resolves backend path" />
+  <testcase classname="spring-cloud-gateway-tests" name="G-4 load balancing hit both backends (one=6, two=6)" />
+  <testcase classname="spring-cloud-gateway-tests" name="G-5 rate limiting requires redis (set REDIS_HOST to enable)"><skipped /></testcase>
+  <testcase classname="spring-cloud-gateway-tests" name="G-6 long-run stability (set LONG_RUN=1 to enable)"><skipped /></testcase>
+</testsuite>
