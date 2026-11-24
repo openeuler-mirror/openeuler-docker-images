@@ -16,6 +16,7 @@ The tag of each `o3de` docker image is consist of the version of `o3de` and the 
 
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
+|[2610.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/o3de/2610.0/24.03-lts-sp4/Dockerfile) | o3de 2610.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[2605.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/o3de/2605.0/24.03-lts-sp4/Dockerfile) | o3de 2605.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[2409.2-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Cloud/o3de/2409.2/24.03-lts-sp1/Dockerfile) | O3DE 2409.2 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 
