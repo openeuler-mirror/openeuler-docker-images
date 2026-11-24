@@ -1,0 +1,25 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: spring-cloud-vault
+  cloud:
+    vault:
+      # Vault integration is disabled in the image default so the container
+      # can start standalone. Mount your own config (or override env vars)
+      # to enable it, e.g.:
+      #   spring.cloud.vault.enabled=true
+      #   spring.cloud.vault.uri=http://vault-server:8200
+      #   spring.cloud.vault.authentication=TOKEN
+      #   spring.cloud.vault.token=<token>
+      enabled: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
