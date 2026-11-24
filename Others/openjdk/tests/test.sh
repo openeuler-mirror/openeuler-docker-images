@@ -3,12 +3,12 @@
 #
 # CI executes this file inside the image under test with --entrypoint bash and
 # the script directory mounted read-only at /tmp/eptest. Injected env vars:
-# EXPECTED_VERSION (image version dir name, e.g. "28+24"), DOCKER_NAMESPACE,
+# EXPECTED_VERSION (image version dir name, e.g. "28.25"), DOCKER_NAMESPACE,
 # DOCKER_PACKAGE, DOCKER_TAG, DOCKER_IMAGE.
 #
 # openjdk is a JDK (CLI toolchain) with no long-running service. Tests verify:
 #   1) java reports exactly ${EXPECTED_VERSION} (parsed from the runtime build
-#      string emitted by "java --version", e.g. "28-ea+24-2291" -> "28+24");
+#      string emitted by "java --version", e.g. "28-ea+25-2095" -> "28+25");
 #   2) a real compile-and-run round-trip with javac/java.
 
 : "${EXPECTED_VERSION:?EXPECTED_VERSION is required}"
@@ -25,7 +25,7 @@ cleanup() {
 trap cleanup EXIT
 
 test_version() {
-    local out runtime_version feature build reported
+    local out runtime_version feature build reported expected
     if ! command -v "${JAVA_BIN}" >/dev/null 2>&1; then
         printf 'FAIL: binary not found in PATH: %s\n' "${JAVA_BIN}"
         return 1
@@ -49,7 +49,8 @@ test_version() {
         printf 'FAIL: unexpected runtime version format: <%s>\n' "${runtime_version}"
         return 1
     fi
-    if [ "${reported}" != "${EXPECTED_VERSION}" ]; then
+    expected="${EXPECTED_VERSION//./+}"
+    if [ "${reported}" != "${expected}" ]; then
         printf 'FAIL: version mismatch: expected <%s> actual <%s>\n' \
             "${EXPECTED_VERSION}" "${reported}"
         return 1
