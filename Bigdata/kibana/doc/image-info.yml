@@ -1,6 +1,7 @@
 name: kibana
   |[9.2.3-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kibana/9.2.3/24.03-lts-sp1/Dockerfile)| kibana 9.2.3 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
   |[9.1.2-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kibana/9.1.2/24.03-lts-sp1/Dockerfile)| kibana 9.1.2 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
+  |[9.5.7-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kibana/9.5.7/24.03-lts-sp4/Dockerfile) | kibana 9.5.7 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
   |[8.17.3-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Bigdata/kibana/8.17.3/24.03-lts-sp1/Dockerfile)| kibana 8.17.3 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 category: bigdata
 description: Kibana 是 Elastic Stack 的窗口，更确切地说，它是一个基于浏览器的 Elasticsearch 分析和搜索仪表板。
