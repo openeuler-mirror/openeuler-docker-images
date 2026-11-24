@@ -54,7 +54,11 @@ RUN export CC=clang CXX=clang++ && \
         ! grep -rqE '<set>Qt::[A-Za-z_]+\(' --include='*.ui' . && \
         find . -type f \( -name '*.h' -o -name '*.cpp' -o -name '*.hpp' \) \
             -exec sed -i -E 's/\bQ_ENUMS\(/Q_ENUM(/g; s/\bQ_FLAGS\(/Q_FLAG(/g' {} + && \
-        ! grep -rqE '\bQ_(ENUMS|FLAGS)\(' . --include='*.h' --include='*.cpp' --include='*.hpp'; \
+        ! grep -rqE '\bQ_(ENUMS|FLAGS)\(' . --include='*.h' --include='*.cpp' --include='*.hpp' && \
+        FCM=Code/Editor/Util/FileChangeMonitor.cpp && \
+        sed -i 's/std::move(dir\.entryInfoList(QDir::Files|QDir::Dirs|QDir::NoDotAndDotDot))/dir.entryInfoList(QDir::Files|QDir::Dirs|QDir::NoDotAndDotDot)/' "$FCM" && \
+        grep -q 'm_entries.insert(sItem, dir.entryInfoList(' "$FCM" && \
+        ! grep -q 'std::move(dir.entryInfoList(' "$FCM"; \
     fi && \
     cmake -B build/linux -S . -G "Ninja Multi-Config" \
         -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ \
