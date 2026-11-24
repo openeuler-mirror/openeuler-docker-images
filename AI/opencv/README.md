@@ -22,7 +22,7 @@ The tag of each OpenCV docker image consists of the OpenCV version and the versi
 
 | Tags | Currently | Architectures |
 |--|--|--|
-|[5.1.0-cann9.1.0-python3.12-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/opencv/5.1.0-cann9.1.0-python3.12/24.03-lts-sp4/Dockerfile)| OpenCV 5.1.0 (CANN backend, opencv_contrib cannops) with CANN 9.1.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[5.1.0-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/AI/opencv/5.1.0/24.03-lts-sp4/Dockerfile)| OpenCV 5.1.0 (CANN backend, opencv_contrib cannops) with CANN 9.1.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 # Usage
 
@@ -38,7 +38,7 @@ The tag of each OpenCV docker image consists of the OpenCV version and the versi
 # Update DEVICE according to your device (/dev/davinci[0-7])
 export DEVICE=/dev/davinci0
 # Update the opencv image
-export IMAGE=openeuler/opencv:5.1.0-cann9.1.0-python3.12-oe2403sp4
+export IMAGE=openeuler/opencv:5.1.0-oe2403sp4
 docker run --rm \
 --name opencv \
 --device $DEVICE \
