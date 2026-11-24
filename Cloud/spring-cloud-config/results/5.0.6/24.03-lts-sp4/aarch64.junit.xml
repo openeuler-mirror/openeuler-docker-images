@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuite name="spring-cloud-config-aarch64" tests="9" failures="0" errors="0" time="0">
+  <testcase classname="spring-cloud-config-tests" name="C-1 config-server starts and reports health UP" />
+  <testcase classname="spring-cloud-config-tests" name="C-1 image version matches expectation: spring-cloud-config-server 5.0.6 (release-train 2025.1.4)" />
+  <testcase classname="spring-cloud-config-tests" name="C-3 native backend serves mounted config" />
+  <testcase classname="spring-cloud-config-tests" name="C-4 response matches the config-client wire contract" />
+  <testcase classname="spring-cloud-config-tests" name="C-2 git backend serves committed config" />
+  <testcase classname="spring-cloud-config-tests" name="C-5 server serves refreshed git revision" />
+  <testcase classname="spring-cloud-config-tests" name="C-6 encrypt server healthy" />
+  <testcase classname="spring-cloud-config-tests" name="C-6 /encrypt produced ciphertext" />
+  <testcase classname="spring-cloud-config-tests" name="C-6 /decrypt restored the original plaintext" />
+</testsuite>

@@ -48,3 +48,4 @@ images:
   hertz: hertz
   stratovirt: stratovirt
   rdma-core: rdma-core
+  spring-cloud-config: spring-cloud-config
