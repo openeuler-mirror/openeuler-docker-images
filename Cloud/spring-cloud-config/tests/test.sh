@@ -84,9 +84,9 @@ main() {
     stop_app
     mkdir -p /tmp/nativerepo
     printf 'demo:\n  message: ci-ok\n' > /tmp/nativerepo/application.yml
-    SPRING_PROFILES_ACTIVE=native \
+    ( cd /app && SPRING_PROFILES_ACTIVE=native \
     SPRING_CLOUD_CONFIG_SERVER_NATIVE_SEARCHLOCATIONS="file:/tmp/nativerepo" \
-        java -jar "${APP_JAR}" >/tmp/app.log 2>&1 &
+        exec java -jar app.jar >/tmp/app.log 2>&1 ) &
     APP_PID=$!
     if wait_port 180; then
         pass "T-3 application started and listens on port ${APP_PORT}"
