@@ -1,0 +1,61 @@
+name: grpc
+category: others
+description: gRPC 是 Google 开源的高性能通用 RPC 框架，基于 HTTP/2 与 Protocol Buffers，支持多语言与跨平台的服务调用。本镜像基于上游 grpc/grpc C++ 核心源码构建，内置 hello-world 服务端 greeter_server（监听 50051）。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  grpc镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.85.4-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/grpc/1.85.4/24.03-lts-sp4/Dockerfile) | grpc 1.85.4 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/grpc:{Tag}
+  ```
+
+usage: |
+  - 启动容器
+    ```
+    docker run -d --name my-grpc -p 50051:50051 openeuler/grpc:{Tag}
+    ```
+    `my-grpc`启动之后，通过 gRPC 客户端连接 `localhost:50051` 访问服务（50051 为 gRPC 端口，不是 HTTP）。
+
+  - 容器内验证 hello-world 回环
+    ```
+    docker exec -it my-grpc greeter_client --target=localhost:50051
+    ```
+    预期输出 `Greeter received: Hello world`。
+
+  - 容器测试
+
+    查看运行日志
+    ```
+    docker logs -f my-grpc
+    ```
+
+    运行启动shell会话
+    ```
+    docker run -it --rm openeuler/grpc:{Tag} bash
+    ```
+
+license: Apache-2.0 license
+similar_packages:
+  - Dubbo: 阿里巴巴开源的 RPC 框架，主要用于 Java 服务之间的通信。
+  - Apache Thrift: Apache 开源的跨语言 RPC 框架，支持多种传输协议与序列化格式。
+dependency:
+  - glibc
+  - libstdc++
+
+homepage: https://github.com/grpc/grpc
+upstream:
+  version_url: grpc/grpc
+  version_prefix: v
+  version_filter: rc;candidate
+  backend: GitHub
+  version_scheme: RPM
