@@ -49,3 +49,4 @@ images:
   stratovirt: stratovirt
   rdma-core: rdma-core
   spring-cloud-config: spring-cloud-config
+  spring-cloud-gateway: spring-cloud-gateway
