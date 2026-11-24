@@ -37,6 +37,7 @@ images:
   dubbo: dubbo
   fastjson: fastjson
   spring-framework: spring-framework
+  grpc: grpc
   grpc-server: grpc-server
   apr-util: apr-util
   bcache: bcache
