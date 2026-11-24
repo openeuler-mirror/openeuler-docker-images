@@ -74,8 +74,10 @@ main() {
     fi
 
     # ---------- T-3: application boots (integration disabled) and listens ----------
+    # Run from /app so the app loads its default /app/config/application.yml
+    # (the CI testrunner starts this script with a different working dir).
     stop_app
-    java -jar "${APP_JAR}" >/tmp/app.log 2>&1 &
+    ( cd /app && exec java -jar app.jar >/tmp/app.log 2>&1 ) &
     APP_PID=$!
     if wait_port 180; then
         pass "T-3 application started and listens on port ${APP_PORT}"
