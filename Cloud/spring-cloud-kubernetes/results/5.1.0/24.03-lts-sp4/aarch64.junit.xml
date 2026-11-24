@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuite name="spring-cloud-kubernetes-aarch64" tests="3" failures="0" errors="0" time="0">
+  <testcase classname="spring-cloud-kubernetes-tests" name="K-1 container starts and reports health UP" />
+  <testcase classname="spring-cloud-kubernetes-tests" name="K-2 image version matches expectation: spring-cloud-kubernetes 5.1.0 (release-train 2026.0.0)" />
+  <testcase classname="spring-cloud-kubernetes-tests" name="K-3 bundled jar contains BOOT-INF/lib/spring-cloud-starter-kubernetes-client-5.1.0.jar" />
+</testsuite>

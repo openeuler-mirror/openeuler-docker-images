@@ -1,0 +1,22 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: spring-cloud-kubernetes
+  cloud:
+    kubernetes:
+      # Kubernetes integration is disabled in the image default so the
+      # container can start outside a cluster. Mount your own config (or
+      # override env vars) to enable it when running inside Kubernetes:
+      #   spring.cloud.kubernetes.enabled=true
+      enabled: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
