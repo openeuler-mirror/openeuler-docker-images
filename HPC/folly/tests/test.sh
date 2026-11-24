@@ -80,8 +80,8 @@ int main() {
     folly::dynamic obj = folly::dynamic::object
         ("name", "folly-probe")
         ("answer", 42);
-    std::string out = folly::json::serialize(obj);
-    folly::dynamic back = folly::json::parse(out);
+    std::string out = folly::toJson(obj);
+    folly::dynamic back = folly::parseJson(out);
     if (!back.isObject() || back["name"].asString() != "folly-probe" ||
         back["answer"].asInt() != 42) {
         std::cerr << "round-trip mismatch: " << out << std::endl;
@@ -102,6 +102,10 @@ EOF
         printf 'FAIL: pkg-config --static --libs libfolly failed: %s\n' "$(printf '%s' "${libs}" | tr '\n' ' ' | cut -c1-200)"
         return 1
     fi
+    # folly's libfolly.pc lists only path-based deps in Libs.private; its
+    # CMake-target deps (fmt, glog, gflags, pthread) are omitted, so append
+    # them for static linking (matching the README canonical link line).
+    libs="${libs} -lfmt -lglog -lgflags -lpthread"
 
     if ! compile_out="$( "${CXX}" -std=c++20 ${cflags} "${src}" -o "${bin}" ${libs} 2>&1 )"; then
         printf 'FAIL: compile/link of folly probe failed: %s\n' "$(printf '%s' "${compile_out}" | tr '\n' ' ' | cut -c1-300)"
@@ -115,7 +119,7 @@ EOF
     fi
 
     if [ "${run_out}" = "FOLLY_JSON_OK" ]; then
-        printf 'PASS: folly::dynamic <-> folly::json serialize/parse round trip\n'
+        printf 'PASS: folly::toJson <-> folly::parseJson round trip\n'
         return 0
     fi
     printf 'FAIL: unexpected folly probe output: %s\n' "$(printf '%s' "${run_out}" | tr '\n' ' ' | cut -c1-300)"

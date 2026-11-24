@@ -27,10 +27,14 @@ RUN dnf install -y \
       libaio-devel binutils-devel && \
     dnf clean all
 
+# folly's CMake does not derive PACKAGE_VERSION from the git tag; it hardcodes
+# a development default ("0.58.0-dev"), which leaks into libfolly.pc. Pin the
+# installed pkg-config version to the release tag so it matches the image tag.
 RUN git clone --branch v${VERSION} --depth 1 https://github.com/facebook/folly.git /tmp/folly-src && \
     cmake -S /tmp/folly-src -B /tmp/folly-src/_build \
       -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_INSTALL_PREFIX=/usr/local \
+      -DPACKAGE_VERSION=${VERSION} \
       -DBUILD_TESTS=OFF \
       -DBUILD_BENCHMARKS=OFF && \
     cmake --build /tmp/folly-src/_build -j$(nproc) && \
