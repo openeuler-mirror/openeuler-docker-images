@@ -17,7 +17,7 @@
 APP_JAR="/app/app.jar"
 VERSION_FILE="/app/IMAGE_VERSION"
 APP_PORT="${APP_PORT:-8080}"
-STARTER_JAR="BOOT-INF/lib/spring-cloud-gateway-server-${EXPECTED_VERSION}.jar"
+STARTER_JAR="BOOT-INF/lib/spring-cloud-gateway-server-webflux-${EXPECTED_VERSION}.jar"
 
 fail() {
     printf 'FAIL: %s\n' "$1" >&2
