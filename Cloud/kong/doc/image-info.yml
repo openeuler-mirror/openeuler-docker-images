@@ -86,6 +86,13 @@ usage: |
     http://localhost:8002
     ```
 
+  验证安装
+    运行测试脚本校验版本号：
+    ```bash
+    bash tests/test.sh test_version
+    ```
+    输出 `PASS: kong reports version 3.9.5` 表示版本正确。
+
 license: Apache-2.0 license
 similar_packages:
   - Nginx: Nginx 是一个高性能的、轻量级的 Web 服务器和反向代理服务器。它以其出色的性能和可扩展性而闻名，并且在处理高并发请求时表现出色。
