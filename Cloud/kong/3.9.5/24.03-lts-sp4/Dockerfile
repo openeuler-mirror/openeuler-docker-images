@@ -1,5 +1,11 @@
 ARG BASE=openeuler/openeuler:24.03-lts-sp4
 FROM ${BASE}
+# autopilot: refresh dnf metadata
+RUN rm -rf /var/cache/dnf /var/cache/yum \
+    && (dnf clean all 2>/dev/null || yum clean all 2>/dev/null || true) \
+    && mkdir -p /etc/dnf \
+    && (grep -qxF skip_if_unavailable=True /etc/dnf/dnf.conf 2>/dev/null \
+        || echo skip_if_unavailable=True >> /etc/dnf/dnf.conf)
 
 ARG VERSION=3.9.5
 ARG KONG_REPO
@@ -54,4 +60,3 @@ STOPSIGNAL SIGQUIT
 HEALTHCHECK --interval=60s --timeout=10s --retries=10 CMD kong-health
 
 CMD ["kong", "docker-start"]
-
