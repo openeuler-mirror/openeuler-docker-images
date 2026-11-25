@@ -1,5 +1,5 @@
 #!/bin/bash
-set -euo pipefail
+set -uo pipefail
 
 : "${EXPECTED_VERSION:?EXPECTED_VERSION is required}"
 
