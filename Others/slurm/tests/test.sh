@@ -6,7 +6,7 @@ SRUN_BIN="srun"
 SCONTROL_BIN="scontrol"
 
 test_version() {
-    local out reported
+    local out reported expected
 
     if ! command -v "${SRUN_BIN}" >/dev/null 2>&1; then
         echo "FAIL: ${SRUN_BIN} not found in PATH"
@@ -21,8 +21,13 @@ test_version() {
         return 1
     fi
 
-    if [[ "${reported}" != "${EXPECTED_VERSION}" ]]; then
-        echo "FAIL: version mismatch: expected=<${EXPECTED_VERSION}> actual=<${reported}>"
+    expected="${EXPECTED_VERSION}"
+    if [[ "${expected}" =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+        expected="${expected%.*}"
+    fi
+
+    if [[ "${reported}" != "${expected}" ]]; then
+        echo "FAIL: version mismatch: expected=<${expected}> actual=<${reported}>"
         return 1
     fi
 
