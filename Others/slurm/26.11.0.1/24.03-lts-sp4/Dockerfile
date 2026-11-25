@@ -24,6 +24,7 @@ RUN ./configure --prefix=/usr --sysconfdir=/etc/slurm \
         --with-lua && \
     make -j $(nproc) && \
     make install
-RUN mkdir -p /etc/slurm /var/log/slurm /var/spool/slurmctld /var/spool/slurmd
+RUN mkdir -p /etc/slurm /var/log/slurm /var/spool/slurmctld /var/spool/slurmd \
+    && printf 'ClusterName=cluster\nSlurmctldHost=localhost\n' > /etc/slurm/slurm.conf
 WORKDIR /workspace
 CMD ["/bin/bash"]
