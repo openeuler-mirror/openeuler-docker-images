@@ -21,6 +21,7 @@ The tag of each `seaweedfs` docker image is consist of the version of `seaweedfs
 |[3.99-oe2403sp2](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Storage/seaweedfs/3.99/24.03-lts-sp2/Dockerfile) | seaweedfs 3.99 on openEuler 24.03-LTS-SP2 | amd64, arm64 |
 |[3.97-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Storage/seaweedfs/3.97/24.03-lts-sp1/Dockerfile) | seaweedfs 3.97 on openEuler 24.03-LTS-SP1 | amd64, arm64 |
 | [3.85-oe2403sp1](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Storage/seaweedfs/3.85/24.03-lts-sp1/Dockerfile) | seaweedfs 3.85 on openEuler 24.03-LTS-SP1 | amd64, arm64  |
+|[3.99-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Storage/seaweedfs/3.99/24.03-lts-sp4/Dockerfile) | seaweedfs 3.99 on openEuler 24.03-lts-sp4 | amd64, arm64 |
 
 # Usage
 In this usage, users can select the corresponding `{Tag}` based on their requirements.
