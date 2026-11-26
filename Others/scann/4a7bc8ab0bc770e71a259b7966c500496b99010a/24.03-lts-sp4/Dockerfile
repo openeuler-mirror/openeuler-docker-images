@@ -28,4 +28,4 @@ ENV PATH=/opt/python39/bin:$PATH
 LABEL org.opencontainers.image.source="https://github.com/google-research/google-research" \
       org.opencontainers.image.revision="${COMMIT}"
 
-RUN /opt/python39/bin/pip3 install --no-cache-dir -i https://pypi.tuna.tsinghua.edu.cn/simple scann==${VERSION}
+RUN /opt/python39/bin/pip3 install --no-cache-dir -i https://pypi.org/simple scann==${VERSION}
