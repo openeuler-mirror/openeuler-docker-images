@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuite name="spring-cloud-gateway-aarch64" tests="3" failures="0" errors="0" time="0">
+  <testcase classname="spring-cloud-gateway-tests" name="T-1 image version matches expectation: spring-cloud-gateway 5.1.0 (release-train 2026.0.0)" />
+  <testcase classname="spring-cloud-gateway-tests" name="T-2 bundled jar contains BOOT-INF/lib/spring-cloud-gateway-server-webflux-5.1.0.jar" />
+  <testcase classname="spring-cloud-gateway-tests" name="T-3 application started and listens on port 8080" />
+</testsuite>
