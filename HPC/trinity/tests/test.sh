@@ -1,5 +1,5 @@
 #!/bin/bash
-set -euo pipefail
+set -uo pipefail
 
 : "${EXPECTED_VERSION:?EXPECTED_VERSION is required}"
 
@@ -43,6 +43,8 @@ test_assembly() {
     local tmpdir output rc fasta stats n maxlen
 
     tmpdir="$(mktemp -d "${TMPDIR:-/tmp}/trinity-assembly.XXXXXX")"
+
+    trap 'rm -rf "${tmpdir}"' EXIT
 
     if ! python3 - "${tmpdir}/reads.fa" <<'PYEOF'
 import random, sys

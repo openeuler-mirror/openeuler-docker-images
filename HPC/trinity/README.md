@@ -18,7 +18,7 @@ The tag of each `trinity` docker image is consist of the version of `trinity` an
 
 | Tags | Currently | Architectures |
 |------|-----------|---------------|
-| [2.16.1-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/trinity/2.16.1/24.03-lts-sp4/Dockerfile) | Trinity 2.16.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+| [2.16.3-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/trinity/2.16.3/24.03-lts-sp4/Dockerfile) | Trinity 2.16.3 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 
 # Usage
 
