@@ -32,9 +32,14 @@ app_version_output() {
 }
 
 version_matches() {
-    local token="$1" part
+    local token="$1" part base
     token="${token#v}"; token="${token#V}"
     [ "${token}" = "${EXPECTED_VERSION}" ] && return 0
+    base="${EXPECTED_VERSION#v}"; base="${base#V}"
+    case "${base}" in
+        *.*.*.*) base="${base%.*}" ;;
+    esac
+    [ "${token}" = "${base}" ] && return 0
     while IFS= read -r part; do
         [ -n "${part}" ] || continue
         part="${part#v}"; part="${part#V}"
