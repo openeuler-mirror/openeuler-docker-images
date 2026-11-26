@@ -1,5 +1,4 @@
 #!/bin/bash
-set -euo pipefail
 
 : "${EXPECTED_VERSION:?EXPECTED_VERSION is required}"
 
@@ -7,10 +6,12 @@ EINO_MODULE="github.com/cloudwego/eino"
 EINO_DIR="/eino"
 # Eino core (github.com/cloudwego/eino) has no version command and ships no
 # release marker inside the tree at this revision. The exact release is pinned
-# by the Dockerfile tarball URL (v${VERSION}); it cannot be re-derived from the
-# shipped source without echoing a value the test itself supplied. The tests
-# below therefore prove the shipped source is present and functionally usable,
-# and deliberately do not make a circular release-equality claim.
+# by the Dockerfile tarball URL (v${VERSION}) and extracted into /eino without
+# a VCS checkout, so the version string cannot be read back directly from the
+# source. test_version therefore re-derives the release through the Go module
+# graph: a scratch module requires eino at the pinned version, replaces it with
+# /eino, and `go list -m` reports the version the toolchain resolves for that
+# installed source, which is then compared exactly to v${EXPECTED_VERSION}.
 PINNED_VERSION="${EXPECTED_VERSION#v}"
 PINNED_MODULE_VERSION="v${PINNED_VERSION}"
 
@@ -106,6 +107,44 @@ test_eino_module() {
 
     printf 'PASS: eino framework source present at %s (module %s)\n' \
         "${EINO_DIR}" "${EINO_MODULE}"
+}
+
+test_version() {
+    local output rc actual moddir
+
+    moddir="$(mktemp -d)" || {
+        printf 'FAIL: could not create a temporary workspace\n' >&2
+        return 1
+    }
+
+    cat > "${moddir}/go.mod" <<EOF
+module oe-eino-version-check
+
+go 1.18
+
+require ${EINO_MODULE} ${PINNED_MODULE_VERSION}
+
+replace ${EINO_MODULE} => ${EINO_DIR}
+EOF
+
+    output="$(cd "${moddir}" && GOFLAGS=-mod=mod GOPROXY=off GOSUMDB=off GOTOOLCHAIN=local go list -m -f '{{.Version}}' "${EINO_MODULE}" 2>&1)"
+    rc=$?
+    rm -rf "${moddir}"
+
+    if [ "${rc}" -ne 0 ]; then
+        printf 'FAIL: resolving eino module version exited %s: %s\n' \
+            "${rc}" "${output}" >&2
+        return 1
+    fi
+    actual="${output}"
+
+    if [[ "${actual}" != "v${EXPECTED_VERSION}" ]]; then
+        printf 'FAIL: version mismatch: expected=<v%s> actual=<%s>\n' \
+            "${EXPECTED_VERSION}" "${actual}" >&2
+        return 1
+    fi
+
+    printf 'PASS: exact eino version: %s\n' "${actual}"
 }
 
 test_acceptance_module() {
@@ -244,6 +283,9 @@ main() {
         failures=$((failures + 1))
     fi
     if ! test_eino_module; then
+        failures=$((failures + 1))
+    fi
+    if ! test_version; then
         failures=$((failures + 1))
     fi
     if ! test_acceptance_module; then
