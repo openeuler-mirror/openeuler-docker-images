@@ -16,4 +16,6 @@ RUN yum -y install make gcc zlib-devel && \
 
 ENV PATH=/usr/local/bwa/bin:$PATH
 
-CMD ["/bin/bash"]
+# openEuler x86 门禁的 bwa_test.sh 会起容器等日志出现 "bwa" 并校验状态为
+# running；bwa 无参数时只打印用法就退出，所以这里先输出版本信息再常驻。
+CMD ["/bin/bash", "-c", "bwa 2>&1 | head -n 5; exec sleep infinity"]
