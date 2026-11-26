@@ -1,0 +1,16 @@
+{
+  "architectures": [
+    "x86_64",
+    "aarch64"
+  ],
+  "checks": [
+    "native_build",
+    "os_identity",
+    "runtime_test"
+  ],
+  "schema_version": 1,
+  "status": "passed",
+  "task_id": "oe-upgrade-f1fb229cee37b546",
+  "task_key": "f1fb229cee37b546",
+  "validated_run_id": "45738889130"
+}
