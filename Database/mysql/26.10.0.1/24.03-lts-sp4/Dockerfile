@@ -29,7 +29,8 @@ RUN yum update -y && \
         -DMYSQL_TCP_PORT=3306 \
         -DDOWNLOAD_BOOST=1 \
         -DWITH_BOOST=/tmp/boost && \
-    make -j "$(nproc)" && make install && \
+    MAKE_JOBS="$(nproc)"; if [ "${TARGETARCH}" = "arm64" ]; then MAKE_JOBS=4; fi && \
+    make -j "${MAKE_JOBS}" && make install && \
     rm -f mysql.tar.gz && \
     rm -rf /mysql && \
     yum -y remove wget g++ make && \
