@@ -16,4 +16,4 @@ RUN yum -y install make gcc zlib-devel && \
 
 ENV PATH=/usr/local/bwa/bin:$PATH
 
-CMD ["bwa"]
+CMD ["/bin/bash"]
