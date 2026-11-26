@@ -67,6 +67,21 @@ usage: |
   docker exec -it my-erlang /bin/bash
   ```
 
+  查看 Erlang/OTP 版本
+
+  ```
+  docker run --rm openeuler/erlang:{Tag} /usr/local/bin/erl -noshell -eval 'io:format("~s~n", [erlang:system_info(otp_release)]), halt().'
+  ```
+
+  编译并运行模块（命令行）
+
+  将以下示例保存为 `hello.erl`，然后使用 `/usr/local/bin/erlc` 编译：
+
+  ```
+  docker run --rm -v "$PWD":/workspace -w /workspace openeuler/erlang:{Tag} /usr/local/bin/erlc -o /workspace /workspace/hello.erl
+  docker run --rm -v "$PWD":/workspace -w /workspace openeuler/erlang:{Tag} /usr/local/bin/erl -noshell -pa /workspace -eval 'hello:world(), halt().'
+  ```
+
 license: Apache-2.0
 similar_packages:
   - N/A
