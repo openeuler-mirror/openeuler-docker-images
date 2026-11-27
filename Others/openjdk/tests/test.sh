@@ -25,37 +25,29 @@ cleanup() {
 trap cleanup EXIT
 
 test_version() {
-    local out runtime_version feature build reported expected
+    local out feature build
     if ! command -v "${JAVA_BIN}" >/dev/null 2>&1; then
         printf 'FAIL: binary not found in PATH: %s\n' "${JAVA_BIN}"
         return 1
     fi
     out="$("${JAVA_BIN}" --version 2>&1 || true)"
-    runtime_version=""
-    if [[ "${out}" =~ build[[:space:]]+([0-9a-zA-Z.+_-]+) ]]; then
-        runtime_version="${BASH_REMATCH[1]}"
-    fi
-    if [ -z "${runtime_version}" ]; then
-        printf 'FAIL: could not parse build version from "%s --version" output\n' "${JAVA_BIN}"
-        return 1
-    fi
-    reported=""
-    if [[ "${runtime_version}" =~ ^([0-9]+)[^+]*\+([0-9]+) ]]; then
+    feature=""
+    build=""
+    if [[ "${out}" =~ build[[:space:]]+([0-9]+)[^+]*\+([0-9]+) ]]; then
         feature="${BASH_REMATCH[1]}"
         build="${BASH_REMATCH[2]}"
-        reported="${feature}+${build}"
     fi
-    if [ -z "${reported}" ]; then
-        printf 'FAIL: unexpected runtime version format: <%s>\n' "${runtime_version}"
+    if [ -z "${feature}" ] || [ -z "${build}" ]; then
+        printf 'FAIL: could not parse feature/build from "%s --version" output\n' "${JAVA_BIN}"
         return 1
     fi
-    expected="${EXPECTED_VERSION//./+}"
-    if [ "${reported}" != "${expected}" ]; then
+    if [ "${feature}.${build}" != "${EXPECTED_VERSION}" ] && \
+       [ "${feature}+${build}" != "${EXPECTED_VERSION}" ]; then
         printf 'FAIL: version mismatch: expected <%s> actual <%s>\n' \
-            "${EXPECTED_VERSION}" "${reported}"
+            "${EXPECTED_VERSION}" "${feature}+${build}"
         return 1
     fi
-    printf 'PASS: exact version %s\n' "${reported}"
+    printf 'PASS: exact version %s\n' "${EXPECTED_VERSION}"
 }
 
 test_core_function() {

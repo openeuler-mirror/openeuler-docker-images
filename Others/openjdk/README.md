@@ -18,6 +18,7 @@ The tag of each `openjdk` docker image is consist of the version of `openjdk` an
 |    Tag   |  Currently  |   Architectures  |
 |----------|-------------|------------------|
 |[28_25-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/openjdk/28.25/24.03-lts-sp4/Dockerfile)| OpenJDK 28.25 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[28_26-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/openjdk/28.26/24.03-lts-sp4/Dockerfile)| OpenJDK 28.26 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[23_13-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/openjdk/23+13/24.03-lts-sp4/Dockerfile)| OpenJDK 23+13 on openEuler 22.03-LTS-SP4 | amd64, arm64 |
 |[23_13-oe2203sp3](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/openjdk/23+13/22.03-lts-sp3/Dockerfile)| OpenJDK 23+13 on openEuler 22.03-LTS-SP3 | amd64, arm64 |
   
