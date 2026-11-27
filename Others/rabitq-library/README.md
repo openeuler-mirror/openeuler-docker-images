@@ -14,6 +14,7 @@ The tag of each rabitq-library docker image is consist of the version of rabitq-
 | Tags | Currently |  Architectures|
 |--|--|--|
 |[0.7.1-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/rabitq-library/0.7.1/24.03-lts-sp4/Dockerfile) | rabitq 0.7.1 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+|[0.9.0-oe2403sp4](https://atomgit.com/openeuler/openeuler-docker-images/blob/master/Others/rabitq-library/0.9.0/24.03-lts-sp4/Dockerfile) | rabitq 0.9.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[0.7.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/rabitq-library/0.7.0/24.03-lts-sp4/Dockerfile) | rabitq 0.7.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[0.6.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/rabitq-library/0.6.0/24.03-lts-sp4/Dockerfile) | rabitq 0.6.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
 |[0.4.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/Others/rabitq-library/0.4.0/24.03-lts-sp4/Dockerfile) | rabitq 0.4.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
