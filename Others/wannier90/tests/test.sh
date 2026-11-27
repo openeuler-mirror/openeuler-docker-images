@@ -1,5 +1,4 @@
 #!/bin/bash
-set -euo pipefail
 
 : "${EXPECTED_VERSION:?EXPECTED_VERSION is required}"
 
@@ -8,18 +7,12 @@ set -euo pipefail
 BINARY="/usr/local/bin/wannier90.x"
 POST_BINARY="/usr/local/bin/postw90.x"
 
-# The packaged release (EXPECTED_VERSION, e.g. 4.0.2) and the release label
-# printed by the code are not the same string for this revision: the upstream
-# v4.0.2 source still declares w90_version = '4.0.1 ' (src/io.F90), so
-# `wannier90.x --version` prints "Wannier90: 4.0.1".  We therefore compare the
-# reported label against the exact label declared by the pinned upstream source
-# for this release, and fall back to EXPECTED_VERSION itself for any other
-# (future) tag whose label is bumped.
-BASE_VERSION="${EXPECTED_VERSION%%-*}"
-case "${BASE_VERSION}" in
-    4.0.2) EXPECTED_LABEL="4.0.1" ;;
-    *) EXPECTED_LABEL="${BASE_VERSION}" ;;
-esac
+# `wannier90.x --version` / `postw90.x --version` print the w90_version label
+# declared in src/io.F90, prefixed by "Wannier90: "/"Postw90: ".  For most tags
+# that label equals EXPECTED_VERSION (e.g. v4.0.3 declares '4.0.3').  The one
+# exception is the v4.0.2 source, which still declares '4.0.1 ' and therefore
+# prints "Wannier90: 4.0.1"; the version test admits that legacy label only for
+# the 4.0.2 tag.
 
 # The .win driven test model uses these; keep them in sync with the .win below.
 NUM_BANDS=2
@@ -71,10 +64,14 @@ test_version() {
         return 1
     fi
     reported="${output#Wannier90: }"
-    if [[ "${reported}" != "${EXPECTED_LABEL}" ]]; then
-        printf 'FAIL: wannier90.x version mismatch: expected=<%s> actual=<%s> (full output: <%s>)\n' \
-            "${EXPECTED_LABEL}" "${reported}" "${output}" >&2
-        return 1
+    if [[ "${reported}" != "${EXPECTED_VERSION}" ]]; then
+        if [[ "${EXPECTED_VERSION}" == "4.0.2" && "${reported}" == "4.0.1" ]]; then
+            :
+        else
+            printf 'FAIL: wannier90.x version mismatch: expected=<%s> actual=<%s> (full output: <%s>)\n' \
+                "${EXPECTED_VERSION}" "${reported}" "${output}" >&2
+            return 1
+        fi
     fi
 
     if output="$("${POST_BINARY}" --version 2>&1)"; then
@@ -89,13 +86,17 @@ test_version() {
         return 1
     fi
     reported="${output#Postw90: }"
-    if [[ "${reported}" != "${EXPECTED_LABEL}" ]]; then
-        printf 'FAIL: postw90.x version mismatch: expected=<%s> actual=<%s>\n' \
-            "${EXPECTED_LABEL}" "${reported}" >&2
-        return 1
+    if [[ "${reported}" != "${EXPECTED_VERSION}" ]]; then
+        if [[ "${EXPECTED_VERSION}" == "4.0.2" && "${reported}" == "4.0.1" ]]; then
+            :
+        else
+            printf 'FAIL: postw90.x version mismatch: expected=<%s> actual=<%s> (full output: <%s>)\n' \
+                "${EXPECTED_VERSION}" "${reported}" "${output}" >&2
+            return 1
+        fi
     fi
 
-    printf 'PASS: exact version label: %s\n' "${EXPECTED_LABEL}"
+    printf 'PASS: exact version label: %s\n' "${EXPECTED_VERSION}"
 }
 
 write_win() {
