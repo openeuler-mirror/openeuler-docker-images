@@ -34,7 +34,13 @@ usage: |
     docker run --rm openeuler/kubernetes:{Tag} ./_output/bin/kubeadm version
     ```
     该镜像内置 kubeadm，默认执行 `kubeadm --help` 后退出，用于验证上游 Kubernetes 版本与 openEuler 的集成。
-  
+
+  - 运行版本校验测试
+
+    ```
+    docker run --rm --entrypoint bash openeuler/kubernetes:{Tag} tests/test.sh test_version
+    ```
+    测试脚本 test_version 会执行 `kubeadm version -o short` 与 `kubelet --version`，断言版本与镜像 Tag 一致。
 
 license: Apache-2.0 license
 similar_packages:
