@@ -1,0 +1,59 @@
+name: genomation
+category: hpc
+description: genomation 是一个 R 包，用于对基因组区间（genomic intervals）进行总结和注释。用户可以在预定义的功能区域（如启动子、外显子、内含子等）上可视化和量化基因组区间。基因组区间代表具有确定染色体位置的区域，并可能关联一个分值，例如 HT-seq 实验的比对读段、转录因子结合位点、甲基化分值等。该包可以使用任何表格形式的基因组特征数据，只要其中包含基因组区间位置的最小信息即可。此外，它还可以使用 BAM 或 BigWig 文件作为输入。
+environment: |
+  本应用在Docker环境中运行，安装Docker执行如下命令
+  ```
+  yum install -y docker
+  ```
+tags: |
+  genomation镜像的Tag由其版本信息和基础镜像版本信息组成，详细内容如下
+
+  |    Tag   |  Currently  |   Architectures  |
+  |----------|-------------|------------------|
+  |[1.44.0-oe2403sp4](https://gitcode.com/openeuler/openeuler-docker-images/blob/master/HPC/genomation/1.44.0/24.03-lts-sp4/Dockerfile) | genomation 1.44.0 on openEuler 24.03-LTS-SP4 | amd64, arm64 |
+
+download: |
+  拉取镜像到本地
+  ```
+  docker pull openeuler/genomation:{Tag}
+  ```
+
+usage: |
+  - 确保已安装 Docker 环境。
+  - 从 DockerHub 获取 genomation 镜像:
+    ```
+    docker pull openeuler/genomation:{Tag}
+    ```
+  - 启动容器进入 genomation R 环境
+    ```
+    docker run -it --name my-genomation openeuler/genomation:{Tag}
+    ```
+  - 查看运行中容器的日志
+    ```
+    docker logs my-genomation
+    ```
+  - 在运行中的容器内打开交互式 shell
+    ```
+    docker exec -it my-genomation bash
+    ```
+  - 在容器内验证安装
+    ```
+    R -e "library(genomation); packageVersion('genomation')"
+    ```
+
+license: Artistic-2.0
+similar_packages:
+  - GenomicPlot: 用于基因组特征注释与可视化的 R 包（导入 genomation）
+  - methylKit: 用于 DNA 甲基化数据分析的 R 包
+  - EpiCompare: 用于比较和评估表观基因组分析结果的 R 包（导入 genomation）
+dependency:
+  - R (>= 4.6)
+  - Bioconductor 包: Biostrings, GenomicRanges, GenomicAlignments, Rsamtools, rtracklayer 等
+homepage: https://bioconductor.org/packages/genomation/
+upstream:
+  backend: custom
+  version_url: https://bioconductor.org/packages/genomation/
+  version_prefix:
+  version_filter:
+  version_scheme: RPM
