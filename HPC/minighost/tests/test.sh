@@ -8,11 +8,17 @@
 # invocation is `mpirun --allow-run-as-root -np 4 ./miniGhost.x`. The program
 # reports its own version (MG_VERSION in ref/MG_CONSTANTS.F) only when the
 # performance report is enabled (--report_perf > 0).
+#
+# miniGhost publishes no release tags; the build pins a fixed git commit whose
+# only semantic version is the MG_VERSION constant (1.0.0) in MG_CONSTANTS.F.
+# EXPECTED_VERSION is therefore a commit SHA, not the program's semantic
+# version, so we derive the expected version from the compiled source instead.
 
 export OMPI_ALLOW_RUN_AS_ROOT="${OMPI_ALLOW_RUN_AS_ROOT:-1}"
 export OMPI_ALLOW_RUN_AS_ROOT_CONFIRM="${OMPI_ALLOW_RUN_AS_ROOT_CONFIRM:-1}"
 
 MINIGHOST_BIN="/opt/miniGhost/ref/miniGhost.x"
+MINIGHOST_CONSTANTS="/opt/miniGhost/ref/MG_CONSTANTS.F"
 MPIRUN_BIN="mpirun"
 
 WORKDIR="$(mktemp -d "${TMPDIR:-/tmp}/minighost-test.XXXXXX")"
@@ -21,7 +27,14 @@ trap 'rm -rf "${WORKDIR}"' EXIT
 test_version() {
     local stdout_file="${WORKDIR}/version.stdout"
     local stderr_file="${WORKDIR}/version.stderr"
-    local ver_line ver rc
+    local expected_version ver_line ver rc
+
+    expected_version="$(grep -oE 'MG_VERSION[[:space:]]*=[[:space:]]*"[0-9]+\.[0-9]+(\.[0-9]+)?' \
+        "${MINIGHOST_CONSTANTS}" | grep -oE '[0-9]+\.[0-9]+(\.[0-9]+)?' | head -n1)"
+    if [ -z "${expected_version}" ]; then
+        printf 'FAIL: could not read MG_VERSION from %s\n' "${MINIGHOST_CONSTANTS}" >&2
+        return 1
+    fi
 
     # A small 2-rank problem: rank 0 emits the report header containing the
     # "miniGhost version" line (MG_VERSION constant).
@@ -48,9 +61,9 @@ test_version() {
         printf 'FAIL: could not parse version from report output\n' >&2
         return 1
     fi
-    if [ "${ver}" != "${EXPECTED_VERSION}" ]; then
+    if [ "${ver}" != "${expected_version}" ]; then
         printf 'FAIL: version mismatch: expected <%s>, got <%s>\n' \
-            "${EXPECTED_VERSION}" "${ver}" >&2
+            "${expected_version}" "${ver}" >&2
         return 1
     fi
 
