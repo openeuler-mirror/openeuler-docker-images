@@ -5,3 +5,5 @@
 
 b7c8fc5-oe2403sp4:
   path: b7c8fc5/24.03-lts-sp4/Dockerfile
+2024.05-oe2403sp4:
+  path: 2024.05/24.03-lts-sp4/Dockerfile
